@@ -72,5 +72,5 @@ This is likely to expand in the future, especially
 Atomic data is designed to be highly interoperable.
 It is possible to convert Atomic to many types of serialization formats.
 
-- [RDF](/RDF)
-- [JSON](/RDF)
+- [RDF](/RDF.md)
+- [JSON](/JSON.md)
