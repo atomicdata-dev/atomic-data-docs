@@ -1,6 +1,7 @@
 # Atomic data
 
 A standard for data exchange.
+It works nicely with Atomic-Schema (for defining and sharing models / shapes of data) and Atomic-Mutations (for sharing state changes).
 
 _status: draft_
 
@@ -19,44 +20,57 @@ STLD aims to take the best parts from RDF, and learn from the past to make a mor
 
 - **Browseable**. Every Atom of data should have a clear origin, so a single atom can be verified
 - **ORM-friendly**. Navigate a decentralized graph by using dot.syntax, similar
-- **Traceable origin**. Every state change should be traceable to an actor and a point in time.
-- **Verifiable**. Have cryptographic proof for every state change.
-- **Event sourced**. State changes are standardized just as the current state. This enables versioning, history playback, undo, audit controls...
-- **Decentralized**. Can be used in P2P networks.
 - **Open**. Free to use, open source, no strings attached.
-- **Interoperable**. Can easily be converted to other formats (e.g. JSON, XML, all RDF formats).
+- **Interoperable**. Can easily be converted to other data formats (e.g. JSON, XML, and all RDF formats).
 - **Typed**. Every atom has a clear datatype. It can be mapped to programming langauge models, such as `structs` in Typescript / Rust / Go.
-- **Extendible**. Atomic Data
+- **Extendible**. Anyone can defined their own data types and create Atoms with it.
 
 ## Concepts
 
 ### Atom
 
 The smallest possible piece of meaningful data.
+Comparable with an RDF Triple / Statement ([read more about relation to RDF here](/RDF.md)).
 An Atom consists of a:
 
 - `subject` - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)
 - `predicate` - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)
 - `object` - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)
-- `method` - How the resource needs to be updated using the Atom. If empty, just replace the current state.
-- `previous` - The hash of the previous state of the resource. If this does not match with your resource, the Mutation if faulty.
-- `signature` - The hash of
 
-### Mutation
+```n-triples
+<https://example.com/arnold> <https://example.com/properties/bornAt> <https://>
+```
+
+### Resource
+
+A resource is a set of Atoms where the subject has the same value.
+It's a thing, such as a Person or an Issue.
+
+### Subject
+
+The Resource that the atom is providing information about.
+
+- SHOULD be a URI to an Atomic Thing.
+
+### Predicate
+
+The predicate refers to some abstract Property.
+For example `createdAt` or `firstName`.
+The predicate MUST be a URI, and that URI SHOULD resolve to an Atomic Property.
+
+### Object
 
 A set of Atoms that describe how an object should be updated.
-
-### Class
-
-### Property
-
-- `key`
 
 ### Serialization
 
 Atomic data currently has a single serialization format: `atomic-ndjson`.
 This is likely to expand in the future, especially
 
-### Compatibility with...
+### Compatibility with other data formats
 
-#### JSON-LD
+Atomic data is designed to be highly interoperable.
+It is possible to convert Atomic to many types of serialization formats.
+
+- [RDF](/RDF)
+- [JSON](/RDF)
