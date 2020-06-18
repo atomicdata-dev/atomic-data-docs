@@ -23,6 +23,8 @@ Linked data \(RDF / the semantic web\) enables us to use the web as a large, dec
 
 ## Concepts
 
+The base URL for following concepts will be `https://atomicdata.dev/core/`.
+
 ### Atom
 
 The smallest possible piece of meaningful data. Comparable with an RDF Triple / Statement \([read more about relation to RDF here](rdf.md)\). An Atom consists of a:
@@ -31,8 +33,10 @@ The smallest possible piece of meaningful data. Comparable with an RDF Triple / 
 * `predicate` - the property of the Thing that the atom is about. \(must be a URI to an Atomic Property\)
 * `object` - the new piece of information about the Atom \(can be any datatype, as long as its defined by the predicate\)
 
-```text
-<https://example.com/arnold> <https://example.com/properties/bornAt> <https://example.com/properties/bornAt>
+```n-triples
+<https://example.com/arnold> <https://example.com/properties/bornAt> "1991-01-20".
+<https://example.com/arnold> <https://example.com/properties/firstName> "Arnold".
+<https://example.com/arnold> <https://example.com/properties/bestFriend> <https://example.com/britta>.
 ```
 
 ### Resource
@@ -43,7 +47,7 @@ A resource is a set of Atoms where the subject has the same value. It's a thing,
 
 The Resource that the atom is providing information about.
 
-* SHOULD be a URI to an Atomic Thing.
+- MUST be a URI to a Resource, which SHOULD resolve.
 
 ### Predicate
 
@@ -65,4 +69,3 @@ Atomic data is designed to be highly interoperable. It is possible to convert At
 
 * [RDF](rdf.md): some RDF can be automatically converted into valid Atomic data.
 * [JSON](json.md): JSON requires a mapping to Atomic Properties, and explicit
-
