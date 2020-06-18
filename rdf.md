@@ -14,6 +14,7 @@ However, it does differ in some fundamental ways.
 - Atomic has a native Schema model ([Atomic Schema](/ATOMIC-SCHEMA.md)), which helps developers to know what data types they can expect (string, integer, link, array)
 - Atomic does not support `graph` fields in statments.
 - Atomic does not support `blank nodes`.
+- Atomic does not support having multiple statements with the same `<subject> <predicate>`, every one should be unique.
 - Atomic only allows those who control a resource's `subject` URI endpoint to edit the data.
 
 ## Why these changes?

@@ -1,20 +1,25 @@
 # Atomic data
 
-A standard for data exchange. It works nicely with [Atomic-Schema](atomic-schema.md) \(for defining and sharing models / shapes of data\) and [Atomic-Mutations](atomic-mutations.md) \(for sharing state changes\).
+_status: early draft, far from usable_
 
-_status: draft_
+A standard for data exchange.
+It consists of three parts:
 
-Names:
-
-* Atomic data \(related to Atomicity and data atoms\), call the conversion process "atomize"
+- Atomic Data: typed, linked data
+- [Atomic-Schema](atomic-schema.md): defining and sharing models / shapes of data
+- [Atomic-Mutations](atomic-mutations.md): sharing state changes
 
 ## Motivation
 
-Linked data \(RDF / the semantic web\) enables us to use the web as a large, decentralized graph database. However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow. We believe this lack of growth has to do with [some problems that lie in the RDF data model](rdf.md). Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.
+Linked data \(RDF / the semantic web\) enables us to use the web as a large, decentralized graph database.
+However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow.
+We believe this lack of growth has to do with [some problems that lie in the RDF data model](rdf.md).
+Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.
 
 ## Design goals
 
-* **Typed**. Every Atom has a clear datatype. It can be mapped to programming langauge models, such as `structs` in Typescript / Rust / Go.
+* **Typed**. All has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming langauge models, such as `structs` in Typescript / Rust / Go.
+* **Semantic**. Every data Atom and relation has a clear semantic meaning.
 * **Browseable**. Data should explicitly link to other pieces of data, and these links should be followable.
 * **ORM-friendly**. Navigate a _decentralized_ graph by using dot.syntax, similar to how you navigate a JSON object in javascript.
 * **Open**. Free to use, open source, no strings attached.
@@ -41,7 +46,8 @@ The smallest possible piece of meaningful data. Comparable with an RDF Triple / 
 
 ### Resource
 
-A resource is a set of Atoms where the subject has the same value. It's a thing, such as a Person or an Issue.
+A resource is a set of Atoms where the subject has the same value.
+It's a thing, such as a Person or an Issue.
 
 ### Subject
 
@@ -51,7 +57,8 @@ The Resource that the atom is providing information about.
 
 ### Predicate
 
-The predicate is a link that points to an Atomic Property. For example `https://example.com/createdAt` or `https://example.com/firstName`. The predicate MUST be a URI, and that URI SHOULD resolve to an Atomic Property.
+The predicate is a link that points to an Atomic Property. For example `https://example.com/createdAt` or `https://example.com/firstName`.
+The predicate MUST be a URI, and that URI SHOULD resolve to an Atomic Property.
 
 When Atomic Properties correctly resolve, that's when most of the benefits of Atomic Data become real: the static types and the
 
@@ -61,7 +68,8 @@ A set of Atoms that describe how an object should be updated.
 
 ### Serialization
 
-For the time being, existing RDF serialization formats can be used, such as N-Triples, Turtle or JSON-LD. In the future, new \(more constrained and optimized\) serialization formats will be introduced.
+For the time being, existing RDF serialization formats can be used, such as N-Triples, Turtle, HexTuples or JSON-LD.
+In the future, new \(more constrained and optimized\) serialization formats will be introduced.
 
 ### Compatibility with other data formats
 

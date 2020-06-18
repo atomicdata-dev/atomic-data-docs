@@ -9,6 +9,7 @@ Atomic Mutations is a standard for communicating state changes of [Atomic Data](
 - **Verifiable**. Have cryptographic proof for every state change.
 - **Decentralized**. Can be used in P2P networks to send mutations from device to device.
 - **Extendible**. The methods are not fixed, and can be added by anyone.
+- **Streamable**. The state changes could be used in streaming context, e.g. a client app that reads data that changes every second.
 
 ## Motivation
 
@@ -36,4 +37,4 @@ Work in progress, see [HexTuples](https://github.com/ontola/hextuples) and [link
 
 ### Base Methods
 
-See [linked-delta](https:http://purl.org/linked-delta)
+See [linked-delta](http://purl.org/linked-delta)
