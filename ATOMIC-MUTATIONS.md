@@ -12,7 +12,7 @@ Atomic Mutations is a standard for communicating state changes of [Atomic Data](
 
 ## Concepts
 
-### Atomic Mutation
+### Mutation
 
 The smallest possible piece of a state change.
 Comparable with an RDF Triple / Statement.
@@ -23,12 +23,9 @@ An Atom consists of a:
 - `object` - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)
 - `method` - How the resource needs to be updated using the Atom. If empty, just replace the current state.
 - `hash` - The hash of the updated state of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in
-- `signature` - The hash of
-- `date` - A timestamp of when it was created.
+- `date` - A timestamp of when the mutation was created.
 
-### Concepts
-
-####
+### Endpoint
 
 ### Base Methods
 
