@@ -19,5 +19,5 @@ Before we dive into its concepts, we'll talk about why this standard is made in 
 
 Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
 However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow.
-We believe this lack of growth has to do with [some problems that lie in the RDF data model](rdf.md#why-these-changes).
+We believe this lack of growth has to do with [some problems that lie in the RDF data model](../interoperability/rdf.md#why-these-changes).
 Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.

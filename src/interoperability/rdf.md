@@ -11,8 +11,8 @@ However, it does differ in some fundamental ways.
 - Atomic only allows those who control a resource's `subject` URI endpoint to edit the data. This means that you can't add triples about something that you don't control.
 - Atomic has no seperate `datatype` field, but it requires that `Properties` (the resources that are shown when you folllow a `predicate` value) specify a datatype
 - Atomic has no seperate `language` field, but it does support language strings as a Datatype in Properties.
-- Atomic has a native Event (state changes) model ([Atomic Mutations](/ATOMIC-MUTATIONS.md)), which enables communication of state changes
-- Atomic has a native Schema model ([Atomic Schema](/ATOMIC-SCHEMA.md)), which helps developers to know what data types they can expect (string, integer, link, array)
+- Atomic has a native Event (state changes) model ([Atomic Mutations](../mutations/atomic-mutations.md)), which enables communication of state changes
+- Atomic has a native Schema model ([Atomic Schema](../schema/atomic-schema.md)), which helps developers to know what data types they can expect (string, integer, link, array)
 - Atomic does not support `graph` fields in statments.
 - Atomic does not support `blank nodes`.
 - Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination should be unique.

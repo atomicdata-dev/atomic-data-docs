@@ -1,6 +1,6 @@
 # Atomic Mutations
 
-Atomic Mutations is a standard for communicating state changes of [Atomic Data](/README.md).
+Atomic Mutations is a standard for communicating state changes of [Atomic Data](../core/atomic-data-core.md).
 It is the part of Atomic Data that is concerned with writing, editing and updating.
 
 ## Design goals

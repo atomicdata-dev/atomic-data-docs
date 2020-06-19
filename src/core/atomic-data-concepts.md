@@ -5,7 +5,7 @@ The base URL for following concepts will be `https://atomicdata.dev/core/`.
 ## Atom
 
 The smallest possible piece of _meaningful_ data / information.
-The model of an Atom is comparable with an RDF Triple / Statement ([although there are imporant differences](rdf.md)).
+The model of an Atom is comparable with an RDF Triple / Statement ([although there are imporant differences](../interoperability/rdf.md)).
 An Atom consists of three values:
 
 * [`subject`](#Subject) - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)
