@@ -184,13 +184,13 @@ Before we dive into its concepts, we'll talk about why this standard is made in 
 <h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
 <p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
 However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow.
-We believe this lack of growth has to do with <a href="core/rdf.html#why-these-changes">some problems that lie in the RDF data model</a>.
+We believe this lack of growth has to do with <a href="core/../interoperability/rdf.html#why-these-changes">some problems that lie in the RDF data model</a>.
 Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
 <h1><a class="header" href="#atomic-data-concepts" id="atomic-data-concepts">Atomic Data: Concepts</a></h1>
 <p>The base URL for following concepts will be <code>https://atomicdata.dev/core/</code>.</p>
 <h2><a class="header" href="#atom" id="atom">Atom</a></h2>
 <p>The smallest possible piece of <em>meaningful</em> data / information.
-The model of an Atom is comparable with an RDF Triple / Statement (<a href="core/rdf.html">although there are imporant differences</a>).
+The model of an Atom is comparable with an RDF Triple / Statement (<a href="core/../interoperability/rdf.html">although there are imporant differences</a>).
 An Atom consists of three values:</p>
 <ul>
 <li><a href="core/atomic-data-concepts.html#Subject"><code>subject</code></a> - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)</li>
@@ -355,7 +355,7 @@ Perhaps this should be part of the Atomic Base Datatypes.</p>
 <h2><a class="header" href="#whats-a-uri-and-whats-a-url" id="whats-a-uri-and-whats-a-url">What's a URI, and what's a URL?</a></h2>
 <p>URI stands for Unique Resource Identifier</p>
 <h1><a class="header" href="#atomic-mutations" id="atomic-mutations">Atomic Mutations</a></h1>
-<p>Atomic Mutations is a standard for communicating state changes of <a href="mutations//README.html">Atomic Data</a>.
+<p>Atomic Mutations is a standard for communicating state changes of <a href="mutations/../core/atomic-data-core.html">Atomic Data</a>.
 It is the part of Atomic Data that is concerned with writing, editing and updating.</p>
 <h2><a class="header" href="#design-goals-2" id="design-goals-2">Design goals</a></h2>
 <ul>
@@ -434,8 +434,8 @@ However, it does differ in some fundamental ways.</p>
 <li>Atomic only allows those who control a resource's <code>subject</code> URI endpoint to edit the data. This means that you can't add triples about something that you don't control.</li>
 <li>Atomic has no seperate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you folllow a <code>predicate</code> value) specify a datatype</li>
 <li>Atomic has no seperate <code>language</code> field, but it does support language strings as a Datatype in Properties.</li>
-<li>Atomic has a native Event (state changes) model (<a href="interoperability//ATOMIC-MUTATIONS.html">Atomic Mutations</a>), which enables communication of state changes</li>
-<li>Atomic has a native Schema model (<a href="interoperability//ATOMIC-SCHEMA.html">Atomic Schema</a>), which helps developers to know what data types they can expect (string, integer, link, array)</li>
+<li>Atomic has a native Event (state changes) model (<a href="interoperability/../mutations/atomic-mutations.html">Atomic Mutations</a>), which enables communication of state changes</li>
+<li>Atomic has a native Schema model (<a href="interoperability/../schema/atomic-schema.html">Atomic Schema</a>), which helps developers to know what data types they can expect (string, integer, link, array)</li>
 <li>Atomic does not support <code>graph</code> fields in statments.</li>
 <li>Atomic does not support <code>blank nodes</code>.</li>
 <li>Atomic does not support having multiple statements with the same <code>&lt;subject&gt; &lt;predicate&gt;</code>, every combination should be unique.</li>
