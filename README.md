@@ -2,10 +2,19 @@
 
 _A standard for data exchange of decentralized, typed graphs._
 
+View it on [docs.atomicdata.dev](https://docs.atomicdata.dev).
+
 ## About this repo
 
 This repository holds the markdown book for the Atomic Data standard.
-View it on [atomicdata.dev](https://atomicdata.dev).
+
+You can run it locally using [mdBook](https://github.com/rust-lang/mdBook)
+
+```sh
+# This requires at least Rust 1.39 and Cargo to be installed. Once you have installed Rust, type the following in the terminal:
+cargo install mdbook
+mdbook serve
+```
 
 ## Contributing
 

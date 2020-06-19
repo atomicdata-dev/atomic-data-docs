@@ -45,3 +45,9 @@ TODO! Something about endpoints / protocol for pub/sub.
 ### Base Methods
 
 See [linked-delta](http://purl.org/linked-delta)
+
+## FAQ
+
+### Does Atomic Mutations allow for git-like collaboration?
+
+Well, maybe it should.

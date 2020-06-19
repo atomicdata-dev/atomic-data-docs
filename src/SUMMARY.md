@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Atomic Data - Intro](atomic-data.md)
+* [Atomic Data](atomic-data.md)
 * [Atomic Schema](atomic-schema.md)
 * [Atomic Mutations](atomic-mutations.md)
 * [Relation to RDF](rdf.md)

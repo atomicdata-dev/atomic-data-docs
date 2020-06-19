@@ -32,6 +32,8 @@ However, some of the characteristics of RDF might have contributed to its relati
 
 ## Convert Atomic data to RDF
 
+- Since all
+
 ## Convert RDF to Atomic Data
 
 - All `predicates` SHOULD resolve to Atomic Properties, and these SHOULD have a `datatype`. This means that the `datatype` in the original RDF statement can be dropped.

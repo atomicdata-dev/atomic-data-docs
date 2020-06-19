@@ -1,13 +1,14 @@
 # Atomic Data
 
-_status: early draft, far from usable_
+_Status: early draft, far from usable_
+_Author: Joep Meindertsma_
 
-A standard for data exchange that enables decentralized, typed graphs.
+Atomic Data is a standard for exchaning data.
 Inspired by linked data, but more constrained (and easier to use) than RDF.
 
-It consists of three parts:
+It consists of three parts that have a relation to each other:
 
-- [Atomic Data](readme.md): typed, linked data
+- [Atomic Data](atomic-data.md): typed, linked data
 - [Atomic Schema](atomic-schema.md): defining and sharing models / shapes of data
 - [Atomic Mutations](atomic-mutations.md): sharing state changes
 
