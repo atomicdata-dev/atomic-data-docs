@@ -32,7 +32,10 @@ However, some of the characteristics of RDF might have contributed to its relati
 
 ## Convert Atomic data to RDF
 
-- Since all
+Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.
+
+- In conversion to RDF, convert `langstring` objects to Literals with an `xsd:string` datatype
+- Since RDF does not know arrays, it
 
 ## Convert RDF to Atomic Data
 

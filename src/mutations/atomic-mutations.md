@@ -1,6 +1,7 @@
 # Atomic Mutations
 
 Atomic Mutations is a standard for communicating state changes of [Atomic Data](/README.md).
+It is the part of Atomic Data that is concerned with writing, editing and updating.
 
 ## Design goals
 
@@ -32,6 +33,15 @@ An Atom consists of a:
 - `hash` - The hash of the updated state of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in
 - `date` - A timestamp of when the mutation was created.
 
+### Ledger
+
+A Ledger is an (append-only) log of Mutations.
+TODO!
+
+### Commit
+
+A Commit is a set of Mutations, made by some Actor
+
 ### Serialization / Parsing
 
 Work in progress, see [HexTuples](https://github.com/ontola/hextuples) and [linked-delta](https://github.com/ontola/linked-delta).
@@ -45,9 +55,3 @@ TODO! Something about endpoints / protocol for pub/sub.
 ### Base Methods
 
 See [linked-delta](http://purl.org/linked-delta)
-
-## FAQ
-
-### Does Atomic Mutations allow for git-like collaboration?
-
-Well, maybe it should.

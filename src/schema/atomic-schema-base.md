@@ -1,4 +1,4 @@
-# Base Datatypes
+# Atomic Schema: Base Datatypes
 
 The Atomic Base Datatypes consist of some of the most commonly used datatypes.
 

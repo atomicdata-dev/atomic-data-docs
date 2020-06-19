@@ -12,7 +12,7 @@ A Resource can have zero to many Classes, so this might be different from most d
 
 Properties:
 
-- `key` - (required, key)
+- `key` - (required, Slug)
 - `description` - (required, langstring) human readable explanation of what the Class represents.
 - `requiredProperties` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.
 - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed.

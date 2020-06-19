@@ -2,7 +2,7 @@
 
 Atomic Schema is the standard for specifying classes, properties and datatypes in Atomic Data.
 You can compare it to what XSD is for XML.
-The most imporant concept in the Atomic Schema is the Property, which
+The most imporant concepts in the Atomic Schema are the Property and the Datatype.
 
 ## Design Goals
 
@@ -14,17 +14,3 @@ The most imporant concept in the Atomic Schema is the Property, which
 - **Accessible**: Support for languages, easily translateable.
 - **Atomic**: All the design goals of Atomic Data itself also apply here.
 - **Self-describing**: Atomic Schema is to be described with Atomic Schema.
-
-## FAQ
-
-### How do I create a Property that supports multiple Datatypes?
-
-A property only has one single Datatype.
-However, feel free to create a new kind of Datatype that, in turn, refers to other Datatypes.
-Perhaps this should be part of the Atomic Base Datatypes.
-
-### How should a client deal with dot syntax key collisions.
-
-TODO!
-
-###

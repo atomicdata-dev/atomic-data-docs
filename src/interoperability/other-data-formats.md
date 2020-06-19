@@ -1,4 +1,4 @@
-# Relation to other data formats
+# Interoperability: Relation to other data formats
 
 Atomic data is designed to be highly interoperable. It is possible to convert Atomic to many types of serialization formats.
 
