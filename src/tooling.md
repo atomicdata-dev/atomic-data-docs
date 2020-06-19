@@ -27,7 +27,8 @@ atomic add john birthdate 1991-01-20
 
 ## Atomizer (data importer and conversion kit)
 
-- Perhaps a CLI, library or GUI that helps with converting existing formats to
+- Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms
+- Perhaps a CLI, library, GUI or a combination of all of these
 
 ## Language support
 
