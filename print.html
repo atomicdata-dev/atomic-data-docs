@@ -1,0 +1,541 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data - Intro</a></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">5.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#atomic-data" id="atomic-data">Atomic Data</a></h1>
+<p><em>status: early draft, far from usable</em></p>
+<p>A standard for data exchange that enables decentralized, typed graphs.
+Inspired by linked data, but more constrained (and easier to use) than RDF.</p>
+<p>It consists of three parts:</p>
+<ul>
+<li><a href="readme.html">Atomic Data</a>: typed, linked data</li>
+<li><a href="atomic-schema.html">Atomic Schema</a>: defining and sharing models / shapes of data</li>
+<li><a href="atomic-mutations.html">Atomic Mutations</a>: sharing state changes</li>
+</ul>
+<h2><a class="header" href="#design-goals" id="design-goals">Design goals</a></h2>
+<ul>
+<li><strong>Typed</strong>. All Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming langauge models, such as <code>structs</code> or <code>interfaces</code> in Typescript / Rust / Go.</li>
+<li><strong>Semantic</strong>. Every data Atom and relation has a clear semantic meaning.</li>
+<li><strong>Browseable</strong>. Data should explicitly link to other pieces of data, and these links should be followable.</li>
+<li><strong>ORM-friendly</strong>. Navigate a <em>decentralized</em> graph by using dot.syntax, similar to how you navigate a JSON object in javascript.</li>
+<li><strong>Open</strong>. Free to use, open source, no strings attached.</li>
+<li><strong>Interoperable</strong>. Can easily and consitently be converted to other data formats (e.g. JSON, XML, and all RDF formats).</li>
+<li><strong>Clear Ownership</strong>. The URI of the data shows who is in control of the data</li>
+<li><strong>Extensible</strong>. Anyone can define their own data types and create Atoms with it.</li>
+<li><strong>Mergeable</strong>. Any two sets of Atoms can be merged into a sinlge graph without any merge conflicts / name collissions.</li>
+</ul>
+<h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
+<p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
+However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow.
+We believe this lack of growth has to do with <a href="rdf.html#Why-these-changes">some problems that lie in the RDF data model</a>.
+Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
+<h2><a class="header" href="#concepts" id="concepts">Concepts</a></h2>
+<p>The base URL for following concepts will be <code>https://atomicdata.dev/core/</code>.</p>
+<h3><a class="header" href="#atom" id="atom">Atom</a></h3>
+<p>The smallest possible piece of meaningful data / information.
+The model of an Atom is comparable with an RDF Triple / Statement (<a href="rdf.html">although there are imporant differences</a>).
+An Atom consists of a:</p>
+<ul>
+<li><code>subject</code> - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)</li>
+<li><code>predicate</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
+<li><code>object</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)</li>
+</ul>
+<pre><code class="language-n-triples">&lt;https://example.com/arnold&gt; &lt;https://example.com/properties/bornAt&gt; &quot;1991-01-20&quot;.
+&lt;https://example.com/arnold&gt; &lt;https://example.com/properties/firstName&gt; &quot;Arnold&quot;.
+&lt;https://example.com/arnold&gt; &lt;https://example.com/properties/bestFriend&gt; &lt;https://example.com/britta&gt;.
+</code></pre>
+<h3><a class="header" href="#resource" id="resource">Resource</a></h3>
+<p>A Resource is a set of Atoms where the subject has the same value.
+It's a thing, such as a Person or an Issue.</p>
+<h3><a class="header" href="#subject" id="subject">Subject</a></h3>
+<p>The Resource that the Atom is providing information about.
+MUST be a URI to a Resource, which SHOULD resolve and return the Resource.</p>
+<h3><a class="header" href="#predicate" id="predicate">Predicate</a></h3>
+<p>The predicate is a link that points to an Atomic Property. For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.
+The predicate MUST be a URI, and that URI MUST resolve to an Atomic Property.</p>
+<p>When Atomic Properties correctly resolve, that's when most of the benefits of Atomic Data become real: the static types and the</p>
+<h3><a class="header" href="#object" id="object">Object</a></h3>
+<p>A set of Atoms that describe how an object should be updated.</p>
+<h3><a class="header" href="#serialization" id="serialization">Serialization</a></h3>
+<p>For the time being, existing RDF serialization formats can be used, such as N-Triples, Turtle, HexTuples or JSON-LD.
+In the future, new (more constrained and optimized) serialization formats will be introduced.</p>
+<h3><a class="header" href="#compatibility-with-other-data-formats" id="compatibility-with-other-data-formats">Compatibility with other data formats</a></h3>
+<p>Atomic data is designed to be highly interoperable. It is possible to convert Atomic to many types of serialization formats.</p>
+<ul>
+<li><a href="rdf.html">RDF</a>: some RDF can be automatically converted into valid Atomic data.</li>
+<li><a href="json.html">JSON</a>: JSON requires a mapping to Atomic Properties, and explicit</li>
+</ul>
+<h1><a class="header" href="#atomic-schema" id="atomic-schema">Atomic Schema</a></h1>
+<p>Atomic Schema is the standard for specifying classes, properties and datatypes in Atomic Data.
+You can compare it to what XSD is for XML.
+The most imporant concept in the Atomic Schema is the Property, which</p>
+<h2><a class="header" href="#design-goals-1" id="design-goals-1">Design Goals</a></h2>
+<ul>
+<li><strong>Typed</strong>: Every Atom of data has a clear datatype.</li>
+<li><strong>IDE-friendly</strong>: Every property has a simple short key representation (useful in text-based context) that maps to a URL that contains more information.</li>
+<li><strong>Human readable</strong>: All datatypes should have a human-readable represenatation.</li>
+<li><strong>Performant</strong>: Datatypes can have a binary represenatation for optimal storage, communication, serialization and parsing efficiency.</li>
+<li><strong>Extensible</strong>: Anybody can create their own Datatypes, Properties and Classes.</li>
+<li><strong>Accessible</strong>: Support for languages, easily translateable.</li>
+<li><strong>Atomic</strong>: All the design goals of Atomic Data itself also apply here.</li>
+<li><strong>Self-describing</strong>: Atomic Schema is to be described with Atomic Schema.</li>
+</ul>
+<h2><a class="header" href="#concepts-1" id="concepts-1">Concepts</a></h2>
+<p>Whenever you see a key like <code>somevalue</code>, read: <code>https://atomicdata.dev/somevalue</code>.</p>
+<h3><a class="header" href="#class" id="class">Class</a></h3>
+<p><em>uri: <code>https://atomicdata.dev/classes/Datatype</code></em></p>
+<p>A Class is an abstract type of Resource, such as <code>Person</code>.
+It is convention to use an Uppercase in its URI.
+A Resource can have zero to many Classes, so this might be different from most data works.</p>
+<p>Properties:</p>
+<ul>
+<li><code>key</code> - (required, key)</li>
+<li><code>description</code> - (required, langstring) human readable explanation of what the Class represents.</li>
+<li><code>requiredProperties</code> - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.</li>
+<li><code>disallowedProperties</code> - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed.</li>
+<li><code>allowedProperties</code> - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-turtle">&lt;https://example.com/classes/Person&gt; &lt;https://atomicdata.dev/classes/Class&gt; &quot;Class&quot;.
+&lt;https://example.com/classes/Person&gt; &lt;https://atomicdata.dev/property/datatype&gt; &lt;https://atomicdata.dev/datatype/datetime&gt;.
+</code></pre>
+<h3><a class="header" href="#property" id="property">Property</a></h3>
+<p>A Property is an abstract type of Resource that describes the relation between a subject and an object.</p>
+<p>Properties:</p>
+<ul>
+<li><code>key</code> - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.</li>
+<li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype</li>
+<li><code>description</code> - (required) the semantic meaning of the (langstring).</li>
+</ul>
+<pre><code class="language-turtle">&lt;https://example.com/properties/createdAt&gt; &lt;https://atomicdata.dev/property/key&gt; &quot;createdAt&quot;.
+&lt;https://example.com/properties/createdAt&gt; &lt;https://atomicdata.dev/property/datatype&gt; &lt;https://atomicdata.dev/datatype/datetime&gt;.
+</code></pre>
+<h3><a class="header" href="#datatype" id="datatype">Datatype</a></h3>
+<p><em>uri: <code>https://atomicdata.dev/Datatype</code></em></p>
+<p>A Datatype specifies how the the property should be interpreted.</p>
+<ul>
+<li><code>description</code> - (required, langstring) how the datatype functions.</li>
+<li><code>stringSerialization</code> - (required, langstring) how the datatype should be parsed / serialized as an UTF-8 string</li>
+<li><code>stringExample</code> - (required, string) an example stringSerialization example value that should be parsed correclty</li>
+<li><code>binarySerialization</code> - (optional) how the datatype should be parsed / serialized as a byte array.</li>
+<li><code>binaryExample</code> - (optional) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.</li>
+</ul>
+<h2><a class="header" href="#base-datatypes" id="base-datatypes">Base Datatypes</a></h2>
+<p>The Base Datatype Schema consists of some of the most used datatypes.
+These can be extended by you, as everyone can create and link to their own Datatypes.
+Note that systems that parse your data might support only a subset of Datatypes.</p>
+<h3><a class="header" href="#slug" id="slug">Slug</a></h3>
+<p>A string with a limited set of allowed characters, used in IDE / Text editor context.</p>
+<h3><a class="header" href="#atomic-uri" id="atomic-uri">Atomic URI</a></h3>
+<p>A URI that should resolve to an Atomic Resource.</p>
+<h3><a class="header" href="#uri" id="uri">URI</a></h3>
+<p>A Uniform Resource Identifier, preferably a URL.
+Could be HTTPS, or any other type of schema.</p>
+<h3><a class="header" href="#string" id="string">String</a></h3>
+<p><em>uri: <code>https://atomicdata.dev/datatypes/string</code></em></p>
+<p>UTF-8 String, no max character count.
+Newlines use backslash escaped <code>\n</code> characters.
+Should not contain language specific data, use a <code>langstring</code> instead.</p>
+<p>e.g. <code>String time! \n Second line!</code></p>
+<h3><a class="header" href="#multilingual-string-langstring" id="multilingual-string-langstring">Multilingual String (langstring)</a></h3>
+<p><em>uri: <code>https://atomicdata.dev/datatypes/langstring</code></em></p>
+<!--
+So this is something I'm having serious doubts on.
+It seems so verbose and hard to parse.
+However, the underlying problem is kind of tough: we want <subject> <predicate> combination uniqueness...
+... but we also want to have multilingual strings that can be added later.
+-->
+<p>Array of special UTF-8 Strings.
+Each element of the Array starts with a language string code, followed by a newline.</p>
+<p>e.g. <code>[&quot;en-US\nHi there&quot;],[&quot;nl-NL\nHallo daar&quot;]</code></p>
+<h3><a class="header" href="#integer" id="integer">Integer</a></h3>
+<p>Signed Integer, max 64 bit.
+Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
+<p>e.g. <code>-420</code></p>
+<h3><a class="header" href="#boolean" id="boolean">Boolean</a></h3>
+<p>True or false, one or zero.</p>
+<p><strong>String serialization</strong></p>
+<p><code>true</code> or <code>false</code>.</p>
+<p><strong>Binary serialization</strong></p>
+<p>Use a single bit one boolean.</p>
+<p>1 for <code>true</code>, or 0 for <code>false</code>.</p>
+<h3><a class="header" href="#datetime" id="datetime">Datetime</a></h3>
+<p>ISO 8601 encoded string.</p>
+<p>e.g. <code>2020-06-11</code></p>
+<h3><a class="header" href="#mimefile" id="mimefile">MIMEFile</a></h3>
+<p>Any type of file, starting with its <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">mime type</a>
+Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often don't exist in your OS</a>, specifying them seems like a good idea.</p>
+<p><strong>String serialization</strong></p>
+<p>Start with the mimetype string, do a newline <code>\n</code> and continue with the UTF-8 stringified data.</p>
+<ul>
+<li>e.g. <code>application/text\nOh hi mark</code></li>
+<li>e.g. <code>text/html\n&lt;html&gt;&lt;p&gt;oh, hi mark&lt;/p&gt;&lt;/html&gt;</code></li>
+</ul>
+<p><strong>Binary serialization</strong></p>
+<h3><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h3>
+<p>Sequential, ordered list of Atomic URIs.
+Serialized as an
+Note that other types of arrays are not included in this spec, but can be perfectly valid.</p>
+<h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
+<h3><a class="header" href="#how-do-i-create-a-property-that-supports-multiple-datatypes" id="how-do-i-create-a-property-that-supports-multiple-datatypes">How do I create a Property that supports multiple Datatypes?</a></h3>
+<p>A property only has one single Datatype.
+However, feel free to create a new kind of Datatype that, in turn, refers to other Datatypes.
+Perhaps this should be part of the Atomic Base Datatypes.</p>
+<h3><a class="header" href="#how-should-a-client-deal-with-dot-syntax-key-collisions" id="how-should-a-client-deal-with-dot-syntax-key-collisions">How should a client deal with dot syntax key collisions.</a></h3>
+<p>TODO!</p>
+<h3><a class="header" href="#" id=""></a></h3>
+<h1><a class="header" href="#atomic-mutations" id="atomic-mutations">Atomic Mutations</a></h1>
+<p>Atomic Mutations is a standard for communicating state changes of <a href="/README.html">Atomic Data</a>.</p>
+<h2><a class="header" href="#design-goals-2" id="design-goals-2">Design goals</a></h2>
+<ul>
+<li><strong>Event sourced</strong>: State changes are standardized just as the current state. This enables versioning, history playback, undo, audit controls...</li>
+<li><strong>Traceable origin</strong>: Every state change should be traceable to an actor and a point in time.</li>
+<li><strong>Verifiable</strong>: Have cryptographic proof for every state change.</li>
+<li><strong>Decentralized</strong>: Can be used in P2P networks to send mutations from device to device.</li>
+<li><strong>Extendible</strong>: The methods are not fixed, and can be added by anyone.</li>
+<li><strong>Streamable</strong>: The state changes could be used in streaming context, e.g. a client app that reads data that changes every second.</li>
+<li><strong>Atomic</strong>: All the Atomic Data design goals also apply here.</li>
+</ul>
+<h2><a class="header" href="#motivation-1" id="motivation-1">Motivation</a></h2>
+<p>So many problems that confine data exchange are the result of thinking in current-state exchange.
+State synchronization is often an afterthought, and that</p>
+<h2><a class="header" href="#concepts-2" id="concepts-2">Concepts</a></h2>
+<h3><a class="header" href="#mutation" id="mutation">Mutation</a></h3>
+<p>The smallest possible piece of a state change.
+Comparable with an RDF Triple / Statement.
+An Atom consists of a:</p>
+<ul>
+<li><code>subject</code> - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)</li>
+<li><code>predicate</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
+<li><code>object</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)</li>
+<li><code>method</code> - How the resource needs to be updated using the Atom. If empty, just replace the current state.</li>
+<li><code>hash</code> - The hash of the updated state of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in</li>
+<li><code>date</code> - A timestamp of when the mutation was created.</li>
+</ul>
+<h3><a class="header" href="#serialization--parsing" id="serialization--parsing">Serialization / Parsing</a></h3>
+<p>Work in progress, see <a href="https://github.com/ontola/hextuples">HexTuples</a> and <a href="https://github.com/ontola/linked-delta">linked-delta</a>.</p>
+<h3><a class="header" href="#streaming-pubsub" id="streaming-pubsub">Streaming (pub/sub)</a></h3>
+<p>We're using HexTuples-NDJSON, since that allows for streaming parsing of mutations.</p>
+<p>TODO! Something about endpoints / protocol for pub/sub.</p>
+<h3><a class="header" href="#base-methods" id="base-methods">Base Methods</a></h3>
+<p>See <a href="http://purl.org/linked-delta">linked-delta</a></p>
+<h1><a class="header" href="#how-does-atomic-data-relate-to-rdf" id="how-does-atomic-data-relate-to-rdf">How does Atomic Data relate to RDF?</a></h1>
+<p>RDF is the original data model behind linked data.
+It is also the forerunner of Atomic Data, and is therefore highly similar in its philosophy and model.
+Both heavily rely on using URLs, and both have a fundamentally simple and uniform model for data statements.
+Both view the web as a single, connected graph database.
+Because of that, Atomic Data is also highly compatible with RDF - <strong>all Atomic Data can be converted into valid RDF</strong>.
+Atomic Data can be thought of as a <strong>more constrained, type safe version of RDF</strong>.
+However, it does differ in some fundamental ways.</p>
+<ul>
+<li>Atomic only allows those who control a resource's <code>subject</code> URI endpoint to edit the data. This means that you can't add triples about something that you don't control.</li>
+<li>Atomic has no seperate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you folllow a <code>predicate</code> value) specify a datatype</li>
+<li>Atomic has no seperate <code>language</code> field, but it does support language strings as a Datatype in Properties.</li>
+<li>Atomic has a native Event (state changes) model (<a href="/ATOMIC-MUTATIONS.html">Atomic Mutations</a>), which enables communication of state changes</li>
+<li>Atomic has a native Schema model (<a href="/ATOMIC-SCHEMA.html">Atomic Schema</a>), which helps developers to know what data types they can expect (string, integer, link, array)</li>
+<li>Atomic does not support <code>graph</code> fields in statments.</li>
+<li>Atomic does not support <code>blank nodes</code>.</li>
+<li>Atomic does not support having multiple statements with the same <code>&lt;subject&gt; &lt;predicate&gt;</code>, every combination should be unique.</li>
+</ul>
+<h2><a class="header" href="#why-these-changes" id="why-these-changes">Why these changes?</a></h2>
+<p>I love RDF, and have been working with it for quite some time now.
+Using URIs for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
+However, some of the characteristics of RDF might have contributed to its relative lack of adoption.</p>
+<ul>
+<li>Using URLs as keys (in predicates) results in clunky Developer Experience, compared to the short strings that developers are used to in pretty much all languages and data formats. Using URIs as keys also limits interoperability. Adding a required / tightly integrated key mapping (from long URIs to short, simple strings) in Atomic Properties solves this issue.</li>
+<li>RDF lacks a clear solution for dealing with <a href="https://ontola.io/blog/ordered-data-in-rdf/">ordered data</a>, resulting in confusion when developers have to create lists of content. Adding an Array data type as a base data type helps solve this.</li>
+<li>Having both a <code>datatype</code> and a <code>predicate</code> value can lead to confusing situations. For example, the <code>schema:createdAt</code> Property requires an ISO DateTime string, but having a <code>xsd:boolean</code> datatype results in perfectly valid RDF.</li>
+<li>There is no integrated standard for communicating state changes (although <a href="https://github.com/ontola/linked-delta">linked-delta</a> and <a href="https://afs.github.io/rdf-delta/">rdf-delta</a> do exist)</li>
+<li>RDF allows that domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing <em>where data comes from</em> is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.</li>
+<li>The documentation feels dated and verbose. All URLs should resolve to simple, clear explanations and machine readable definitions.</li>
+</ul>
+<h2><a class="header" href="#convert-atomic-data-to-rdf" id="convert-atomic-data-to-rdf">Convert Atomic data to RDF</a></h2>
+<h2><a class="header" href="#convert-rdf-to-atomic-data" id="convert-rdf-to-atomic-data">Convert RDF to Atomic Data</a></h2>
+<ul>
+<li>All <code>predicates</code> SHOULD resolve to Atomic Properties, and these SHOULD have a <code>datatype</code>. This means that the <code>datatype</code> in the original RDF statement can be dropped.</li>
+<li>Literals with a <code>language</code> tag are converted to the <code>atomic:langstring</code> type. TODO! How to fis</li>
+</ul>
+<h1><a class="header" href="#how-does-atomic-data-relate-to-json" id="how-does-atomic-data-relate-to-json">How does Atomic Data relate to JSON?</a></h1>
+<p>Atomic Data requires a bit more information about pieces of data than JSON tends to contain. Let's take a look at an example:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;birthDate&quot;: &quot;1991-01-20&quot;
+}
+</code></pre>
+<p>The following things are missing:</p>
+<ul>
+<li>What is the URI of the resource being described?</li>
+<li>What is the URI of the keys being used? (<code>name</code> and <code>birthDate</code>), and consequentially, how should the values be parsed?</li>
+</ul>
+<p>We can add this data by adding <em>context</em>:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    &quot;name&quot;: &quot;https://example.com/properties/name&quot;,
+    &quot;birthDate&quot;: &quot;https://example.com/properties/birthDate&quot;,
+    &quot;@id&quot;: &quot;https://example.com/people/john&quot;
+  },
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;birthDate&quot;: &quot;1991-01-20&quot;
+}
+</code></pre>
+<p>The JSON above is called JSON-LD. It is still perfectly valid JSON, but it contains more information, and in turn can be converted into RDF formats.
+TODO!</p>
+<h2><a class="header" href="#json-ld-requirements" id="json-ld-requirements">JSON-LD Requirements</a></h2>
+<p>Just make sure the URIs used in the <code>@context</code> resolve to Atomic Properties.</p>
+<h1><a class="header" href="#atomic-ownership" id="atomic-ownership">Atomic Ownership</a></h1>
+<p>Any Atomic Resource has a subject, and that subject will be a URI.
+That URI tells you something about who's in control of the data.
+Resolving that URI will link to the resource itself and show you the latest state.
+However, this works differently on different</p>
+<h2><a class="header" href="#using-https" id="using-https">Using HTTP(S)</a></h2>
+<p>HTTP URLs already show you who's in control, because the domain name points you there.</p>
+<h2><a class="header" href="#using-did" id="using-did">Using DID</a></h2>
+<p>The DID (decentralized identifiers) paves the way for a more decentralized web.</p>
+<p>TODO! Something with DID controllers https://w3c.github.io/did-core/#dfn-did-controllers</p>
+<h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
+<p>At this moment, no real tooling for Atomic Data exists.
+However, basic tooling is required to make this a succes.
+The following list is a set of ideas that we're working on.</p>
+<h2><a class="header" href="#atomic-creator-cli" id="atomic-creator-cli">Atomic creator (CLI)</a></h2>
+<p>A CLI tool for generating Atomic Data.
+Should produce Atomic Mutations.</p>
+<pre><code class="language-sh"># Create an atom
+# atomic &lt;method&gt; &lt;subject&gt; &lt;predicate&gt; &lt;object&gt;
+atomic add john birthdate 1991-01-20
+# It's possible to use these prefixes instead of full URLs, as long as they are defined in a local file (e.g. ~/.ldget/prefixes)
+# If the predicate is not used before, the CLI will ask for the required attributes (datatype, description) and create the Property
+# The object will be parsed accordingly. If it does not meet the requirements, it wll not create the Atom.
+# If everything is well, an Atomic Mutation will be sent to the Atomic Server
+</code></pre>
+<h2><a class="header" href="#atomic-server" id="atomic-server">Atomic server</a></h2>
+<ul>
+<li>Makes sure the created Atomic Resources / Properties / etc. actually resolve</li>
+<li>Might offer useful query options (e.g. Triple Pattern Fragments)</li>
+<li>Offers pub/sub functionality to clients that will want to re-use data</li>
+</ul>
+<h2><a class="header" href="#atomizer-data-importer-and-conversion-kit" id="atomizer-data-importer-and-conversion-kit">Atomizer (data importer and conversion kit)</a></h2>
+<ul>
+<li>Perhaps a CLI, library or GUI that helps with converting existing formats to</li>
+</ul>
+<h2><a class="header" href="#language-support" id="language-support">Language support</a></h2>
+<h2><a class="header" href="#ide-tooling" id="ide-tooling">IDE tooling</a></h2>
+<p>I want to be able to do this:</p>
+<pre><code class="language-js">import atomicfetch from '@atomic/fetch';
+
+const resource = &quot;https://example.com/person/mickey&quot;;
+const class = &quot;https://example.com/classes/Person&quot;;
+
+const fetchedperson = atomicfetch(resource, class)
+
+// IDE tooling is aware that the &quot;example:Person&quot; class requires a &quot;bestFriend&quot; property, which is another &quot;Person&quot;, which has a &quot;firstName&quot;.
+const bestFriendsName = fetchedperson.bestFriend.firstName // =&gt; &quot;Pluto&quot;
+</code></pre>
+<h2><a class="header" href="#libraries" id="libraries">Libraries</a></h2>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
