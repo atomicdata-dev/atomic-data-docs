@@ -16,9 +16,9 @@ Consists of:
 
 A Property is an abstract type of
 
-- `key` - the shortname for the property, used in dot syntax.
+- `key` - the shortname for the property, used in dot syntax. String with no weird chars.
 - `datatype` - a URI to an Atomic Datatype
-- `description` -
+- `description` - Long language string.
 
 ```n-triples
 <https://example.com/properties/createdAt> <https://atomicdata.dev/property/key> "createdAt"
@@ -29,7 +29,7 @@ A Property is an abstract type of
 
 A Datatype specifies how the the property should be interpreted.
 
-* \`\`
+- `description` - explains
 
 ## Base Datatypes
 

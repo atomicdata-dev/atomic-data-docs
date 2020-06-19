@@ -2,10 +2,10 @@
 
 Atomic Data requires a bit more information about pieces of data than JSON tends to contain. Let's take a look at an example:
 
-```javascript
+```json
 {
-  name: "John",
-  birthDate: "1991-01-20"
+  "name": "John",
+  "birthDate": "1991-01-20"
 }
 ```
 
@@ -16,17 +16,21 @@ The following things are missing:
 
 We can add this data by adding _context_:
 
-```javascript
+```json
 {
-  @context: {
-    name: "https://example.com/properties/name",
-    birthDate: "https://example.com/properties/birthDate",
-    @id: "https://example.com/people/john"
+  "@context": {
+    "name": "https://example.com/properties/name",
+    "birthDate": "https://example.com/properties/birthDate",
+    "@id": "https://example.com/people/john"
   },
-  name: "John",
-  birthDate: "1991-01-20"
+  "name": "John",
+  "birthDate": "1991-01-20"
 }
 ```
 
-The JSON above is called JSON-LD. It is still perfectly valid JSON, but it contains more information, and in turn can be converted into other
+The JSON above is called JSON-LD. It is still perfectly valid JSON, but it contains more information, and in turn can be converted into RDF formats.
+TODO!
 
+## JSON-LD Requirements
+
+Just make sure the

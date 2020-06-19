@@ -2,12 +2,25 @@
 
 _status: early draft, far from usable_
 
-A standard for data exchange.
+A standard for data exchange that enables decentralized, typed graphs.
+Inspired by linked data, but more constrained (and easier to use) than RDF.
+
 It consists of three parts:
 
 - Atomic Data: typed, linked data
 - [Atomic-Schema](atomic-schema.md): defining and sharing models / shapes of data
 - [Atomic-Mutations](atomic-mutations.md): sharing state changes
+
+## Design goals
+
+* **Typed**. All data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming langauge models, such as `structs` or `interfaces` in Typescript / Rust / Go.
+* **Semantic**. Every data Atom and relation has a clear semantic meaning.
+* **Browseable**. Data should explicitly link to other pieces of data, and these links should be followable.
+* **ORM-friendly**. Navigate a _decentralized_ graph by using dot.syntax, similar to how you navigate a JSON object in javascript.
+* **Open**. Free to use, open source, no strings attached.
+* **Interoperable**. Can easily and consitently be converted to other data formats \(e.g. JSON, XML, and all RDF formats\).
+* **Clear Ownership**. The URI of the data shows who is in control of the data
+* **Extendible**. Anyone can define their own data types and create Atoms with it.
 
 ## Motivation
 
@@ -15,16 +28,6 @@ Linked data \(RDF / the semantic web\) enables us to use the web as a large, dec
 However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow.
 We believe this lack of growth has to do with [some problems that lie in the RDF data model](rdf.md).
 Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.
-
-## Design goals
-
-* **Typed**. All has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming langauge models, such as `structs` in Typescript / Rust / Go.
-* **Semantic**. Every data Atom and relation has a clear semantic meaning.
-* **Browseable**. Data should explicitly link to other pieces of data, and these links should be followable.
-* **ORM-friendly**. Navigate a _decentralized_ graph by using dot.syntax, similar to how you navigate a JSON object in javascript.
-* **Open**. Free to use, open source, no strings attached.
-* **Interoperable**. Can easily \(and consitently\) be converted to other data formats \(e.g. JSON, XML, and all RDF formats\).
-* **Extendible**. Anyone can defined their own data types and create Atoms with it.
 
 ## Concepts
 
@@ -46,14 +49,13 @@ The smallest possible piece of meaningful data. Comparable with an RDF Triple / 
 
 ### Resource
 
-A resource is a set of Atoms where the subject has the same value.
+A Resource is a set of Atoms where the subject has the same value.
 It's a thing, such as a Person or an Issue.
 
 ### Subject
 
-The Resource that the atom is providing information about.
-
-- MUST be a URI to a Resource, which SHOULD resolve.
+The Resource that the Atom is providing information about.
+MUST be a URI to a Resource, which SHOULD resolve and return the Resource.
 
 ### Predicate
 
