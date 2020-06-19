@@ -1,4 +1,4 @@
-# Atomic Data Tooling
+# Tooling for Atomic Data
 
 At this moment, no real tooling for Atomic Data exists.
 However, basic tooling is required to make this a succes.
@@ -7,6 +7,7 @@ The following list is a set of ideas that we're working on.
 ## Atomic creator (CLI)
 
 A CLI tool for generating Atomic Data.
+Should produce Atomic Mutations.
 
 ```sh
 # Create an atom
