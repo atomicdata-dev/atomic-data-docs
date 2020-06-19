@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-data-concepts.html"><strong aria-hidden="true">1.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-data-serialization.html"><strong aria-hidden="true">1.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-schema-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-schema-base.html"><strong aria-hidden="true">2.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="atomic-schema-faq.html"><strong aria-hidden="true">2.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="other-datatypes.html"><strong aria-hidden="true">4.</strong> Relation to other datatypes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">4.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html" class="active"><strong aria-hidden="true">5.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/atomic-data-core.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/atomic-data-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/atomic-data-serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="schema/atomic-schema.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/atomic-schema-concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="schema/atomic-schema-base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="schema/atomic-schema-faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/atomic-mutations.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/atomic-suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="mutations/atomic-mutations-faq.html"><strong aria-hidden="true">4.2.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/other-data-formats.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html" class="active"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,23 +151,14 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#atomic-ownership" id="atomic-ownership">Atomic Ownership</a></h1>
-<p>Any Atomic Resource has a subject, and that subject will be a URI.
-That URI tells you something about who's in control of the data.
-Resolving that URI will link to the resource itself and show you the latest state.
-However, this works differently on different</p>
-<h2><a class="header" href="#using-https" id="using-https">Using HTTP(S)</a></h2>
-<p>HTTP URLs already show you who's in control, because the domain name points you there.</p>
-<h2><a class="header" href="#using-did" id="using-did">Using DID</a></h2>
-<p>The DID (decentralized identifiers) paves the way for a more decentralized web.</p>
-<p>TODO! Something with DID controllers https://w3c.github.io/did-core/#dfn-did-controllers</p>
+                        <h1><a class="header" href="#ownership" id="ownership">Ownership</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="json.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="interoperability/json.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
@@ -185,7 +176,7 @@ However, this works differently on different</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="json.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="interoperability/json.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
