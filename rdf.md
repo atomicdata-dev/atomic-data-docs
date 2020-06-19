@@ -9,12 +9,12 @@ Atomic Data can be thought of as a **more constrained, type safe version of RDF*
 However, it does differ in some fundamental ways.
 
 - Atomic has no seperate `datatype` field, but it requires that `Properties` (the resources that are shown when you folllow a `predicate` value) specify a datatype
-- Atomic has no seperate `language` field, but it enables that string-type `predicates` specify a datatype
+- Atomic has no seperate `language` field, but it does support language strings as a Datatype in Properties.
 - Atomic has a native Event (state changes) model ([Atomic Mutations](/ATOMIC-MUTATIONS.md)), which enables communication of state changes
 - Atomic has a native Schema model ([Atomic Schema](/ATOMIC-SCHEMA.md)), which helps developers to know what data types they can expect (string, integer, link, array)
 - Atomic does not support `graph` fields in statments.
 - Atomic does not support `blank nodes`.
-- Atomic does not support having multiple statements with the same `<subject> <predicate>`, every one should be unique.
+- Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination should be unique.
 - Atomic only allows those who control a resource's `subject` URI endpoint to edit the data.
 
 ## Why these changes?
@@ -30,9 +30,10 @@ However, some of the characteristics of RDF might have contributed to its relati
 - RDF allows that domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
 - The documentation feels dated and verbose. All URLs should resolve to simple, clear explanations and machine readable definitions.
 
+
 ## Convert Atomic data to RDF
 
 ## Convert RDF to Atomic Data
 
 - All `predicates` SHOULD resolve to Atomic Properties, and these SHOULD have a `datatype`. This means that the `datatype` in the original RDF statement can be dropped.
-- What to do with `language`? TODO!
+- Literals with a `language` tag are converted to the `atomic:langstring` type. TODO! How to fis

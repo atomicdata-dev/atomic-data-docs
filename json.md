@@ -33,4 +33,4 @@ TODO!
 
 ## JSON-LD Requirements
 
-Just make sure the
+Just make sure the URIs used in the `@context` resolve to Atomic Properties.

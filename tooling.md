@@ -40,9 +40,9 @@ import atomicfetch from '@atomic/fetch';
 const resource = "https://example.com/person/mickey";
 const class = "https://example.com/classes/Person";
 
-// IDE could know that the "example:Person" class requires a "bestFriend" property.
 const fetchedperson = atomicfetch(resource, class)
 
+// IDE tooling is aware that the "example:Person" class requires a "bestFriend" property, which is another "Person", which has a "firstName".
 const bestFriendsName = fetchedperson.bestFriend.firstName // => "Pluto"
 
 ```

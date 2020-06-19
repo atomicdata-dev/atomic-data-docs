@@ -20,7 +20,8 @@ It consists of three parts:
 * **Open**. Free to use, open source, no strings attached.
 * **Interoperable**. Can easily and consitently be converted to other data formats \(e.g. JSON, XML, and all RDF formats\).
 * **Clear Ownership**. The URI of the data shows who is in control of the data
-* **Extendible**. Anyone can define their own data types and create Atoms with it.
+* **Extensible**. Anyone can define their own data types and create Atoms with it.
+* **Mergeable**. Any two sets of Atoms can be merged into a sinlge graph without any merge conflicts / name collissions.
 
 ## Motivation
 
