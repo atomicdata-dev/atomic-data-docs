@@ -13,4 +13,7 @@
   * [Relation to JSON](json.md)
 * [Ownership](ownership.md)
 * [Tooling](tooling.md)
+
+-----------
+
 [Get involved](get-involved.md)
