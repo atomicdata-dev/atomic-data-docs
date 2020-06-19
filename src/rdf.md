@@ -8,6 +8,7 @@ Because of that, Atomic Data is also highly compatible with RDF - **all Atomic D
 Atomic Data can be thought of as a **more constrained, type safe version of RDF**.
 However, it does differ in some fundamental ways.
 
+- Atomic only allows those who control a resource's `subject` URI endpoint to edit the data. This means that you can't add triples about something that you don't control.
 - Atomic has no seperate `datatype` field, but it requires that `Properties` (the resources that are shown when you folllow a `predicate` value) specify a datatype
 - Atomic has no seperate `language` field, but it does support language strings as a Datatype in Properties.
 - Atomic has a native Event (state changes) model ([Atomic Mutations](/ATOMIC-MUTATIONS.md)), which enables communication of state changes
@@ -15,7 +16,6 @@ However, it does differ in some fundamental ways.
 - Atomic does not support `graph` fields in statments.
 - Atomic does not support `blank nodes`.
 - Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination should be unique.
-- Atomic only allows those who control a resource's `subject` URI endpoint to edit the data.
 
 ## Why these changes?
 
