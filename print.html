@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data - Intro</a></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">5.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data</a></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">5.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -150,12 +150,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-data" id="atomic-data">Atomic Data</a></h1>
-<p><em>status: early draft, far from usable</em></p>
-<p>A standard for data exchange that enables decentralized, typed graphs.
+<p><em>Status: early draft, far from usable</em>
+<em>Author: Joep Meindertsma</em></p>
+<p>Atomic Data is a standard for exchaning data.
 Inspired by linked data, but more constrained (and easier to use) than RDF.</p>
-<p>It consists of three parts:</p>
+<p>It consists of three parts that have a relation to each other:</p>
 <ul>
-<li><a href="readme.html">Atomic Data</a>: typed, linked data</li>
+<li><a href="atomic-data.html">Atomic Data</a>: typed, linked data</li>
 <li><a href="atomic-schema.html">Atomic Schema</a>: defining and sharing models / shapes of data</li>
 <li><a href="atomic-mutations.html">Atomic Mutations</a>: sharing state changes</li>
 </ul>
@@ -366,6 +367,9 @@ An Atom consists of a:</p>
 <p>TODO! Something about endpoints / protocol for pub/sub.</p>
 <h3><a class="header" href="#base-methods" id="base-methods">Base Methods</a></h3>
 <p>See <a href="http://purl.org/linked-delta">linked-delta</a></p>
+<h2><a class="header" href="#faq-1" id="faq-1">FAQ</a></h2>
+<h3><a class="header" href="#does-atomic-mutations-allow-for-git-like-collaboration" id="does-atomic-mutations-allow-for-git-like-collaboration">Does Atomic Mutations allow for git-like collaboration?</a></h3>
+<p>Well, maybe it should.</p>
 <h1><a class="header" href="#how-does-atomic-data-relate-to-rdf" id="how-does-atomic-data-relate-to-rdf">How does Atomic Data relate to RDF?</a></h1>
 <p>RDF is the original data model behind linked data.
 It is also the forerunner of Atomic Data, and is therefore highly similar in its philosophy and model.
@@ -397,6 +401,9 @@ However, some of the characteristics of RDF might have contributed to its relati
 <li>The documentation feels dated and verbose. All URLs should resolve to simple, clear explanations and machine readable definitions.</li>
 </ul>
 <h2><a class="header" href="#convert-atomic-data-to-rdf" id="convert-atomic-data-to-rdf">Convert Atomic data to RDF</a></h2>
+<ul>
+<li>Since all</li>
+</ul>
 <h2><a class="header" href="#convert-rdf-to-atomic-data" id="convert-rdf-to-atomic-data">Convert RDF to Atomic Data</a></h2>
 <ul>
 <li>All <code>predicates</code> SHOULD resolve to Atomic Properties, and these SHOULD have a <code>datatype</code>. This means that the <code>datatype</code> in the original RDF statement can be dropped.</li>
