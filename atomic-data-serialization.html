@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Tooling - Atomic Data</title>
+        <title>Serialization - Atomic Data</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-data-concepts.html"><strong aria-hidden="true">1.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-data-serialization.html"><strong aria-hidden="true">1.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-schema-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-schema-base.html"><strong aria-hidden="true">2.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="atomic-schema-faq.html"><strong aria-hidden="true">2.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="other-datatypes.html"><strong aria-hidden="true">4.</strong> Relation to other datatypes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">4.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">5.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html" class="active"><strong aria-hidden="true">6.</strong> Tooling</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-data-concepts.html"><strong aria-hidden="true">1.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-data-serialization.html" class="active"><strong aria-hidden="true">1.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-schema-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-schema-base.html"><strong aria-hidden="true">2.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="atomic-schema-faq.html"><strong aria-hidden="true">2.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="other-datatypes.html"><strong aria-hidden="true">4.</strong> Relation to other datatypes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">4.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">5.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,57 +151,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
-<p>At this moment, no real tooling for Atomic Data exists.
-However, basic tooling is required to make this a succes.
-The following list is a set of ideas that we're working on.</p>
-<h2><a class="header" href="#atomic-creator-cli" id="atomic-creator-cli">Atomic creator (CLI)</a></h2>
-<p>A CLI tool for generating Atomic Data.
-Should produce Atomic Mutations.</p>
-<pre><code class="language-sh"># Create an atom
-# atomic &lt;method&gt; &lt;subject&gt; &lt;predicate&gt; &lt;object&gt;
-atomic add john birthdate 1991-01-20
-# It's possible to use these prefixes instead of full URLs, as long as they are defined in a local file (e.g. ~/.ldget/prefixes)
-# If the predicate is not used before, the CLI will ask for the required attributes (datatype, description) and create the Property
-# The object will be parsed accordingly. If it does not meet the requirements, it wll not create the Atom.
-# If everything is well, an Atomic Mutation will be sent to the Atomic Server
-</code></pre>
-<h2><a class="header" href="#atomic-server" id="atomic-server">Atomic server</a></h2>
-<ul>
-<li>Makes sure the created Atomic Resources / Properties / etc. actually resolve</li>
-<li>Might offer useful query options (e.g. Triple Pattern Fragments)</li>
-<li>Offers pub/sub functionality to clients that will want to re-use data</li>
-</ul>
-<h2><a class="header" href="#atomizer-data-importer-and-conversion-kit" id="atomizer-data-importer-and-conversion-kit">Atomizer (data importer and conversion kit)</a></h2>
-<ul>
-<li>Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms</li>
-<li>Perhaps a CLI, library, GUI or a combination of all of these</li>
-</ul>
-<h2><a class="header" href="#language-support" id="language-support">Language support</a></h2>
-<h2><a class="header" href="#ide-tooling" id="ide-tooling">IDE tooling</a></h2>
-<p>I want to be able to do this:</p>
-<pre><code class="language-js">import atomicfetch from '@atomic/fetch';
-
-const resource = &quot;https://example.com/person/mickey&quot;;
-const class = &quot;https://example.com/classes/Person&quot;;
-
-const fetchedperson = atomicfetch(resource, class)
-
-// IDE tooling is aware that the &quot;example:Person&quot; class requires a &quot;bestFriend&quot; property, which is another &quot;Person&quot;, which has a &quot;firstName&quot;.
-const bestFriendsName = fetchedperson.bestFriend.firstName // =&gt; &quot;Pluto&quot;
-</code></pre>
-<h2><a class="header" href="#libraries" id="libraries">Libraries</a></h2>
+                        <h1><a class="header" href="#atomic-data-serialization" id="atomic-data-serialization">Atomic Data: Serialization</a></h1>
+<p>For the time being, existing RDF serialization formats can be used, such as N-Triples, Turtle, HexTuples or JSON-LD.
+In the future, new (more constrained and optimized) serialization formats will be introduced.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="ownership.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="atomic-data-concepts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
+                        
+                            <a rel="next" href="atomic-schema.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -211,11 +178,15 @@ const bestFriendsName = fetchedperson.bestFriend.firstName // =&gt; &quot;Pluto&
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="ownership.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="atomic-data-concepts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
+                
+                    <a rel="next" href="atomic-schema.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 

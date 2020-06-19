@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data</a></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">5.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-data-concepts.html"><strong aria-hidden="true">1.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-data-serialization.html"><strong aria-hidden="true">1.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-schema-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-schema-base.html"><strong aria-hidden="true">2.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="atomic-schema-faq.html"><strong aria-hidden="true">2.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="other-datatypes.html"><strong aria-hidden="true">4.</strong> Relation to other datatypes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">4.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">5.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,11 +152,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-data" id="atomic-data">Atomic Data</a></h1>
-<p><em>Status: early draft, far from usable</em>
-<em>Author: Joep Meindertsma</em></p>
+<p><em>Status: early draft, far from usable. <a href="https://github.com/ontola/atomic-data">Feedback welcome</a>.</em></p>
 <p>Atomic Data is a standard for exchaning data.
-Inspired by linked data, but more constrained (and easier to use) than RDF.</p>
-<p>It consists of three parts that have a relation to each other:</p>
+It is heavily inspired by linked data, but more constrained than RDF.
+It consists of three parts that have a relation to each other:</p>
 <ul>
 <li><a href="atomic-data.html">Atomic Data</a>: typed, linked data</li>
 <li><a href="atomic-schema.html">Atomic Schema</a>: defining and sharing models / shapes of data</li>
@@ -179,42 +178,6 @@ Inspired by linked data, but more constrained (and easier to use) than RDF.</p>
 However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow.
 We believe this lack of growth has to do with <a href="rdf.html#Why-these-changes">some problems that lie in the RDF data model</a>.
 Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
-<h2><a class="header" href="#concepts" id="concepts">Concepts</a></h2>
-<p>The base URL for following concepts will be <code>https://atomicdata.dev/core/</code>.</p>
-<h3><a class="header" href="#atom" id="atom">Atom</a></h3>
-<p>The smallest possible piece of meaningful data / information.
-The model of an Atom is comparable with an RDF Triple / Statement (<a href="rdf.html">although there are imporant differences</a>).
-An Atom consists of a:</p>
-<ul>
-<li><code>subject</code> - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)</li>
-<li><code>predicate</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
-<li><code>object</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)</li>
-</ul>
-<pre><code class="language-n-triples">&lt;https://example.com/arnold&gt; &lt;https://example.com/properties/bornAt&gt; &quot;1991-01-20&quot;.
-&lt;https://example.com/arnold&gt; &lt;https://example.com/properties/firstName&gt; &quot;Arnold&quot;.
-&lt;https://example.com/arnold&gt; &lt;https://example.com/properties/bestFriend&gt; &lt;https://example.com/britta&gt;.
-</code></pre>
-<h3><a class="header" href="#resource" id="resource">Resource</a></h3>
-<p>A Resource is a set of Atoms where the subject has the same value.
-It's a thing, such as a Person or an Issue.</p>
-<h3><a class="header" href="#subject" id="subject">Subject</a></h3>
-<p>The Resource that the Atom is providing information about.
-MUST be a URI to a Resource, which SHOULD resolve and return the Resource.</p>
-<h3><a class="header" href="#predicate" id="predicate">Predicate</a></h3>
-<p>The predicate is a link that points to an Atomic Property. For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.
-The predicate MUST be a URI, and that URI MUST resolve to an Atomic Property.</p>
-<p>When Atomic Properties correctly resolve, that's when most of the benefits of Atomic Data become real: the static types and the</p>
-<h3><a class="header" href="#object" id="object">Object</a></h3>
-<p>A set of Atoms that describe how an object should be updated.</p>
-<h3><a class="header" href="#serialization" id="serialization">Serialization</a></h3>
-<p>For the time being, existing RDF serialization formats can be used, such as N-Triples, Turtle, HexTuples or JSON-LD.
-In the future, new (more constrained and optimized) serialization formats will be introduced.</p>
-<h3><a class="header" href="#compatibility-with-other-data-formats" id="compatibility-with-other-data-formats">Compatibility with other data formats</a></h3>
-<p>Atomic data is designed to be highly interoperable. It is possible to convert Atomic to many types of serialization formats.</p>
-<ul>
-<li><a href="rdf.html">RDF</a>: some RDF can be automatically converted into valid Atomic data.</li>
-<li><a href="json.html">JSON</a>: JSON requires a mapping to Atomic Properties, and explicit</li>
-</ul>
 
                     </main>
 
@@ -223,7 +186,7 @@ In the future, new (more constrained and optimized) serialization formats will b
                         
 
                         
-                            <a rel="next" href="atomic-schema.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="atomic-data-concepts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -237,7 +200,7 @@ In the future, new (more constrained and optimized) serialization formats will b
                 
 
                 
-                    <a rel="next" href="atomic-schema.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="atomic-data-concepts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

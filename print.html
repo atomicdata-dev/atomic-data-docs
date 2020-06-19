@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data</a></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">5.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data.html"><strong aria-hidden="true">1.</strong> Atomic Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-data-concepts.html"><strong aria-hidden="true">1.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-data-serialization.html"><strong aria-hidden="true">1.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-schema.html"><strong aria-hidden="true">2.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-schema-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="atomic-schema-base.html"><strong aria-hidden="true">2.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="atomic-schema-faq.html"><strong aria-hidden="true">2.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="atomic-mutations.html"><strong aria-hidden="true">3.</strong> Atomic Mutations</a></li><li class="chapter-item expanded "><a href="other-datatypes.html"><strong aria-hidden="true">4.</strong> Relation to other datatypes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rdf.html"><strong aria-hidden="true">4.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="json.html"><strong aria-hidden="true">4.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">5.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,11 +154,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-data" id="atomic-data">Atomic Data</a></h1>
-<p><em>Status: early draft, far from usable</em>
-<em>Author: Joep Meindertsma</em></p>
+<p><em>Status: early draft, far from usable. <a href="https://github.com/ontola/atomic-data">Feedback welcome</a>.</em></p>
 <p>Atomic Data is a standard for exchaning data.
-Inspired by linked data, but more constrained (and easier to use) than RDF.</p>
-<p>It consists of three parts that have a relation to each other:</p>
+It is heavily inspired by linked data, but more constrained than RDF.
+It consists of three parts that have a relation to each other:</p>
 <ul>
 <li><a href="atomic-data.html">Atomic Data</a>: typed, linked data</li>
 <li><a href="atomic-schema.html">Atomic Schema</a>: defining and sharing models / shapes of data</li>
@@ -181,9 +180,9 @@ Inspired by linked data, but more constrained (and easier to use) than RDF.</p>
 However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow.
 We believe this lack of growth has to do with <a href="rdf.html#Why-these-changes">some problems that lie in the RDF data model</a>.
 Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
-<h2><a class="header" href="#concepts" id="concepts">Concepts</a></h2>
+<h1><a class="header" href="#atomic-data-concepts" id="atomic-data-concepts">Atomic Data: Concepts</a></h1>
 <p>The base URL for following concepts will be <code>https://atomicdata.dev/core/</code>.</p>
-<h3><a class="header" href="#atom" id="atom">Atom</a></h3>
+<h2><a class="header" href="#atom" id="atom">Atom</a></h2>
 <p>The smallest possible piece of meaningful data / information.
 The model of an Atom is comparable with an RDF Triple / Statement (<a href="rdf.html">although there are imporant differences</a>).
 An Atom consists of a:</p>
@@ -196,27 +195,21 @@ An Atom consists of a:</p>
 &lt;https://example.com/arnold&gt; &lt;https://example.com/properties/firstName&gt; &quot;Arnold&quot;.
 &lt;https://example.com/arnold&gt; &lt;https://example.com/properties/bestFriend&gt; &lt;https://example.com/britta&gt;.
 </code></pre>
-<h3><a class="header" href="#resource" id="resource">Resource</a></h3>
+<h2><a class="header" href="#resource" id="resource">Resource</a></h2>
 <p>A Resource is a set of Atoms where the subject has the same value.
 It's a thing, such as a Person or an Issue.</p>
-<h3><a class="header" href="#subject" id="subject">Subject</a></h3>
+<h2><a class="header" href="#subject" id="subject">Subject</a></h2>
 <p>The Resource that the Atom is providing information about.
 MUST be a URI to a Resource, which SHOULD resolve and return the Resource.</p>
-<h3><a class="header" href="#predicate" id="predicate">Predicate</a></h3>
+<h2><a class="header" href="#predicate" id="predicate">Predicate</a></h2>
 <p>The predicate is a link that points to an Atomic Property. For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.
 The predicate MUST be a URI, and that URI MUST resolve to an Atomic Property.</p>
 <p>When Atomic Properties correctly resolve, that's when most of the benefits of Atomic Data become real: the static types and the</p>
-<h3><a class="header" href="#object" id="object">Object</a></h3>
+<h2><a class="header" href="#object" id="object">Object</a></h2>
 <p>A set of Atoms that describe how an object should be updated.</p>
-<h3><a class="header" href="#serialization" id="serialization">Serialization</a></h3>
+<h1><a class="header" href="#atomic-data-serialization" id="atomic-data-serialization">Atomic Data: Serialization</a></h1>
 <p>For the time being, existing RDF serialization formats can be used, such as N-Triples, Turtle, HexTuples or JSON-LD.
 In the future, new (more constrained and optimized) serialization formats will be introduced.</p>
-<h3><a class="header" href="#compatibility-with-other-data-formats" id="compatibility-with-other-data-formats">Compatibility with other data formats</a></h3>
-<p>Atomic data is designed to be highly interoperable. It is possible to convert Atomic to many types of serialization formats.</p>
-<ul>
-<li><a href="rdf.html">RDF</a>: some RDF can be automatically converted into valid Atomic data.</li>
-<li><a href="json.html">JSON</a>: JSON requires a mapping to Atomic Properties, and explicit</li>
-</ul>
 <h1><a class="header" href="#atomic-schema" id="atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the standard for specifying classes, properties and datatypes in Atomic Data.
 You can compare it to what XSD is for XML.
@@ -232,9 +225,17 @@ The most imporant concept in the Atomic Schema is the Property, which</p>
 <li><strong>Atomic</strong>: All the design goals of Atomic Data itself also apply here.</li>
 <li><strong>Self-describing</strong>: Atomic Schema is to be described with Atomic Schema.</li>
 </ul>
-<h2><a class="header" href="#concepts-1" id="concepts-1">Concepts</a></h2>
+<h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
+<h3><a class="header" href="#how-do-i-create-a-property-that-supports-multiple-datatypes" id="how-do-i-create-a-property-that-supports-multiple-datatypes">How do I create a Property that supports multiple Datatypes?</a></h3>
+<p>A property only has one single Datatype.
+However, feel free to create a new kind of Datatype that, in turn, refers to other Datatypes.
+Perhaps this should be part of the Atomic Base Datatypes.</p>
+<h3><a class="header" href="#how-should-a-client-deal-with-dot-syntax-key-collisions" id="how-should-a-client-deal-with-dot-syntax-key-collisions">How should a client deal with dot syntax key collisions.</a></h3>
+<p>TODO!</p>
+<h3><a class="header" href="#" id=""></a></h3>
+<h1><a class="header" href="#atomic-schema-concepts" id="atomic-schema-concepts">Atomic Schema: Concepts</a></h1>
 <p>Whenever you see a key like <code>somevalue</code>, read: <code>https://atomicdata.dev/somevalue</code>.</p>
-<h3><a class="header" href="#class" id="class">Class</a></h3>
+<h2><a class="header" href="#class" id="class">Class</a></h2>
 <p><em>uri: <code>https://atomicdata.dev/classes/Datatype</code></em></p>
 <p>A Class is an abstract type of Resource, such as <code>Person</code>.
 It is convention to use an Uppercase in its URI.
@@ -251,7 +252,7 @@ A Resource can have zero to many Classes, so this might be different from most d
 <pre><code class="language-turtle">&lt;https://example.com/classes/Person&gt; &lt;https://atomicdata.dev/classes/Class&gt; &quot;Class&quot;.
 &lt;https://example.com/classes/Person&gt; &lt;https://atomicdata.dev/property/datatype&gt; &lt;https://atomicdata.dev/datatype/datetime&gt;.
 </code></pre>
-<h3><a class="header" href="#property" id="property">Property</a></h3>
+<h2><a class="header" href="#property" id="property">Property</a></h2>
 <p>A Property is an abstract type of Resource that describes the relation between a subject and an object.</p>
 <p>Properties:</p>
 <ul>
@@ -262,7 +263,7 @@ A Resource can have zero to many Classes, so this might be different from most d
 <pre><code class="language-turtle">&lt;https://example.com/properties/createdAt&gt; &lt;https://atomicdata.dev/property/key&gt; &quot;createdAt&quot;.
 &lt;https://example.com/properties/createdAt&gt; &lt;https://atomicdata.dev/property/datatype&gt; &lt;https://atomicdata.dev/datatype/datetime&gt;.
 </code></pre>
-<h3><a class="header" href="#datatype" id="datatype">Datatype</a></h3>
+<h2><a class="header" href="#datatype" id="datatype">Datatype</a></h2>
 <p><em>uri: <code>https://atomicdata.dev/Datatype</code></em></p>
 <p>A Datatype specifies how the the property should be interpreted.</p>
 <ul>
@@ -272,24 +273,22 @@ A Resource can have zero to many Classes, so this might be different from most d
 <li><code>binarySerialization</code> - (optional) how the datatype should be parsed / serialized as a byte array.</li>
 <li><code>binaryExample</code> - (optional) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.</li>
 </ul>
-<h2><a class="header" href="#base-datatypes" id="base-datatypes">Base Datatypes</a></h2>
-<p>The Base Datatype Schema consists of some of the most used datatypes.
-These can be extended by you, as everyone can create and link to their own Datatypes.
-Note that systems that parse your data might support only a subset of Datatypes.</p>
-<h3><a class="header" href="#slug" id="slug">Slug</a></h3>
+<h1><a class="header" href="#base-datatypes" id="base-datatypes">Base Datatypes</a></h1>
+<p>The Atomic Base Datatypes consist of some of the most commonly used datatypes.</p>
+<h2><a class="header" href="#slug" id="slug">Slug</a></h2>
 <p>A string with a limited set of allowed characters, used in IDE / Text editor context.</p>
-<h3><a class="header" href="#atomic-uri" id="atomic-uri">Atomic URI</a></h3>
+<h2><a class="header" href="#atomic-uri" id="atomic-uri">Atomic URI</a></h2>
 <p>A URI that should resolve to an Atomic Resource.</p>
-<h3><a class="header" href="#uri" id="uri">URI</a></h3>
+<h2><a class="header" href="#uri" id="uri">URI</a></h2>
 <p>A Uniform Resource Identifier, preferably a URL.
 Could be HTTPS, or any other type of schema.</p>
-<h3><a class="header" href="#string" id="string">String</a></h3>
+<h2><a class="header" href="#string" id="string">String</a></h2>
 <p><em>uri: <code>https://atomicdata.dev/datatypes/string</code></em></p>
 <p>UTF-8 String, no max character count.
 Newlines use backslash escaped <code>\n</code> characters.
 Should not contain language specific data, use a <code>langstring</code> instead.</p>
 <p>e.g. <code>String time! \n Second line!</code></p>
-<h3><a class="header" href="#multilingual-string-langstring" id="multilingual-string-langstring">Multilingual String (langstring)</a></h3>
+<h2><a class="header" href="#multilingual-string-langstring" id="multilingual-string-langstring">Multilingual String (langstring)</a></h2>
 <p><em>uri: <code>https://atomicdata.dev/datatypes/langstring</code></em></p>
 <!--
 So this is something I'm having serious doubts on.
@@ -300,21 +299,21 @@ However, the underlying problem is kind of tough: we want <subject> <predicate> 
 <p>Array of special UTF-8 Strings.
 Each element of the Array starts with a language string code, followed by a newline.</p>
 <p>e.g. <code>[&quot;en-US\nHi there&quot;],[&quot;nl-NL\nHallo daar&quot;]</code></p>
-<h3><a class="header" href="#integer" id="integer">Integer</a></h3>
+<h2><a class="header" href="#integer" id="integer">Integer</a></h2>
 <p>Signed Integer, max 64 bit.
 Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
 <p>e.g. <code>-420</code></p>
-<h3><a class="header" href="#boolean" id="boolean">Boolean</a></h3>
+<h2><a class="header" href="#boolean" id="boolean">Boolean</a></h2>
 <p>True or false, one or zero.</p>
 <p><strong>String serialization</strong></p>
 <p><code>true</code> or <code>false</code>.</p>
 <p><strong>Binary serialization</strong></p>
 <p>Use a single bit one boolean.</p>
 <p>1 for <code>true</code>, or 0 for <code>false</code>.</p>
-<h3><a class="header" href="#datetime" id="datetime">Datetime</a></h3>
+<h2><a class="header" href="#datetime" id="datetime">Datetime</a></h2>
 <p>ISO 8601 encoded string.</p>
 <p>e.g. <code>2020-06-11</code></p>
-<h3><a class="header" href="#mimefile" id="mimefile">MIMEFile</a></h3>
+<h2><a class="header" href="#mimefile" id="mimefile">MIMEFile</a></h2>
 <p>Any type of file, starting with its <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">mime type</a>
 Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often don't exist in your OS</a>, specifying them seems like a good idea.</p>
 <p><strong>String serialization</strong></p>
@@ -324,18 +323,14 @@ Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often
 <li>e.g. <code>text/html\n&lt;html&gt;&lt;p&gt;oh, hi mark&lt;/p&gt;&lt;/html&gt;</code></li>
 </ul>
 <p><strong>Binary serialization</strong></p>
-<h3><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h3>
+<h2><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h2>
 <p>Sequential, ordered list of Atomic URIs.
-Serialized as an
+Serialized as a JSON array with strings.
 Note that other types of arrays are not included in this spec, but can be perfectly valid.</p>
-<h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
-<h3><a class="header" href="#how-do-i-create-a-property-that-supports-multiple-datatypes" id="how-do-i-create-a-property-that-supports-multiple-datatypes">How do I create a Property that supports multiple Datatypes?</a></h3>
-<p>A property only has one single Datatype.
-However, feel free to create a new kind of Datatype that, in turn, refers to other Datatypes.
-Perhaps this should be part of the Atomic Base Datatypes.</p>
-<h3><a class="header" href="#how-should-a-client-deal-with-dot-syntax-key-collisions" id="how-should-a-client-deal-with-dot-syntax-key-collisions">How should a client deal with dot syntax key collisions.</a></h3>
-<p>TODO!</p>
-<h3><a class="header" href="#" id=""></a></h3>
+<ul>
+<li>e.g. <code>[&quot;https://example.com/1&quot;, &quot;https://example.com/1&quot;]</code></li>
+</ul>
+<h1><a class="header" href="#atomic-schema-faq" id="atomic-schema-faq">Atomic Schema: FAQ</a></h1>
 <h1><a class="header" href="#atomic-mutations" id="atomic-mutations">Atomic Mutations</a></h1>
 <p>Atomic Mutations is a standard for communicating state changes of <a href="/README.html">Atomic Data</a>.</p>
 <h2><a class="header" href="#design-goals-2" id="design-goals-2">Design goals</a></h2>
@@ -351,7 +346,7 @@ Perhaps this should be part of the Atomic Base Datatypes.</p>
 <h2><a class="header" href="#motivation-1" id="motivation-1">Motivation</a></h2>
 <p>So many problems that confine data exchange are the result of thinking in current-state exchange.
 State synchronization is often an afterthought, and that</p>
-<h2><a class="header" href="#concepts-2" id="concepts-2">Concepts</a></h2>
+<h2><a class="header" href="#concepts" id="concepts">Concepts</a></h2>
 <h3><a class="header" href="#mutation" id="mutation">Mutation</a></h3>
 <p>The smallest possible piece of a state change.
 Comparable with an RDF Triple / Statement.
@@ -374,6 +369,7 @@ An Atom consists of a:</p>
 <h2><a class="header" href="#faq-1" id="faq-1">FAQ</a></h2>
 <h3><a class="header" href="#does-atomic-mutations-allow-for-git-like-collaboration" id="does-atomic-mutations-allow-for-git-like-collaboration">Does Atomic Mutations allow for git-like collaboration?</a></h3>
 <p>Well, maybe it should.</p>
+<h1><a class="header" href="#relation-to-other-datatypes" id="relation-to-other-datatypes">Relation to other datatypes</a></h1>
 <h1><a class="header" href="#how-does-atomic-data-relate-to-rdf" id="how-does-atomic-data-relate-to-rdf">How does Atomic Data relate to RDF?</a></h1>
 <p>RDF is the original data model behind linked data.
 It is also the forerunner of Atomic Data, and is therefore highly similar in its philosophy and model.
@@ -473,7 +469,8 @@ atomic add john birthdate 1991-01-20
 </ul>
 <h2><a class="header" href="#atomizer-data-importer-and-conversion-kit" id="atomizer-data-importer-and-conversion-kit">Atomizer (data importer and conversion kit)</a></h2>
 <ul>
-<li>Perhaps a CLI, library or GUI that helps with converting existing formats to</li>
+<li>Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms</li>
+<li>Perhaps a CLI, library, GUI or a combination of all of these</li>
 </ul>
 <h2><a class="header" href="#language-support" id="language-support">Language support</a></h2>
 <h2><a class="header" href="#ide-tooling" id="ide-tooling">IDE tooling</a></h2>
