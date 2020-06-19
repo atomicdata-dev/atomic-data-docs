@@ -30,7 +30,6 @@ However, some of the characteristics of RDF might have contributed to its relati
 - RDF allows that domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
 - The documentation feels dated and verbose. All URLs should resolve to simple, clear explanations and machine readable definitions.
 
-
 ## Convert Atomic data to RDF
 
 ## Convert RDF to Atomic Data

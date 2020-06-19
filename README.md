@@ -13,7 +13,7 @@ It consists of three parts:
 
 ## Design goals
 
-* **Typed**. All data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming langauge models, such as `structs` or `interfaces` in Typescript / Rust / Go.
+* **Typed**. All Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming langauge models, such as `structs` or `interfaces` in Typescript / Rust / Go.
 * **Semantic**. Every data Atom and relation has a clear semantic meaning.
 * **Browseable**. Data should explicitly link to other pieces of data, and these links should be followable.
 * **ORM-friendly**. Navigate a _decentralized_ graph by using dot.syntax, similar to how you navigate a JSON object in javascript.
@@ -36,7 +36,9 @@ The base URL for following concepts will be `https://atomicdata.dev/core/`.
 
 ### Atom
 
-The smallest possible piece of meaningful data. Comparable with an RDF Triple / Statement \([read more about relation to RDF here](rdf.md)\). An Atom consists of a:
+The smallest possible piece of meaningful data / information.
+The model of an Atom is comparable with an RDF Triple / Statement \([although there are imporant differences](rdf.md)\).
+An Atom consists of a:
 
 * `subject` - the Thing that the atom is providing information about. \(must be a URI to an Atomic Thing\)
 * `predicate` - the property of the Thing that the atom is about. \(must be a URI to an Atomic Property\)
@@ -61,7 +63,7 @@ MUST be a URI to a Resource, which SHOULD resolve and return the Resource.
 ### Predicate
 
 The predicate is a link that points to an Atomic Property. For example `https://example.com/createdAt` or `https://example.com/firstName`.
-The predicate MUST be a URI, and that URI SHOULD resolve to an Atomic Property.
+The predicate MUST be a URI, and that URI MUST resolve to an Atomic Property.
 
 When Atomic Properties correctly resolve, that's when most of the benefits of Atomic Data become real: the static types and the
 

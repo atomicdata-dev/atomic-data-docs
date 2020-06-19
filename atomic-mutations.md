@@ -32,9 +32,15 @@ An Atom consists of a:
 - `hash` - The hash of the updated state of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in
 - `date` - A timestamp of when the mutation was created.
 
-### Serialization
+### Serialization / Parsing
 
-Work in progress, see [HexTuples](https://github.com/ontola/hextuples) and [linked-delta](https://github.com/ontola/linked-delta)
+Work in progress, see [HexTuples](https://github.com/ontola/hextuples) and [linked-delta](https://github.com/ontola/linked-delta).
+
+### Streaming (pub/sub)
+
+We're using HexTuples-NDJSON, since that allows for streaming parsing of mutations.
+
+TODO! Something about endpoints / protocol for pub/sub.
 
 ### Base Methods
 

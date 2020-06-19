@@ -13,6 +13,7 @@ The most imporant concept in the Atomic Schema is the Property, which
 - **Extensible**: Anybody can create their own Datatypes, Properties and Classes.
 - **Accessible**: Support for languages, easily translateable.
 - **Atomic**: All the design goals of Atomic Data itself also apply here.
+- **Self-describing**: Atomic Schema is to be described with Atomic Schema.
 
 ## Concepts
 
@@ -20,26 +21,40 @@ Whenever you see a key like `somevalue`, read: `https://atomicdata.dev/somevalue
 
 ### Class
 
-A Class is an abstract type of resource, such as `Person`.
+_uri: `https://atomicdata.dev/classes/Datatype`_
 
-Consists of:
+A Class is an abstract type of Resource, such as `Person`.
+It is convention to use an Uppercase in its URI.
+A Resource can have zero to many Classes, so this might be different from most data works.
 
-- `key` - (required)
-- `description` - (required, langstring) human readable explanation of
+Properties:
+
+- `key` - (required, key)
+- `description` - (required, langstring) human readable explanation of what the Class represents.
 - `requiredProperties` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.
+- `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed.
+- `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required.
+
+Example:
+
+```turtle
+<https://example.com/classes/Person> <https://atomicdata.dev/classes/Class> "Class".
+<https://example.com/classes/Person> <https://atomicdata.dev/property/datatype> <https://atomicdata.dev/datatype/datetime>.
+```
 
 ### Property
 
-A Property is an abstract type of relation between a subject and an object.
-It specifies
+A Property is an abstract type of Resource that describes the relation between a subject and an object.
 
-- `key` - (required) the shortname for the property, used in dot syntax. String with no weird chars.
-- `datatype` - (required) a URI to an Atomic Datatype
+Properties:
+
+- `key` - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.
+- `datatype` - (required, Datatype) a URI to an Atomic Datatype
 - `description` - (required) the semantic meaning of the (langstring).
 
-```n-triples
-<https://example.com/properties/createdAt> <https://atomicdata.dev/property/key> "createdAt"
-<https://example.com/properties/createdAt> <https://atomicdata.dev/property/datatype> <https://atomicdata.dev/datatype/datetime>
+```turtle
+<https://example.com/properties/createdAt> <https://atomicdata.dev/property/key> "createdAt".
+<https://example.com/properties/createdAt> <https://atomicdata.dev/property/datatype> <https://atomicdata.dev/datatype/datetime>.
 ```
 
 ### Datatype
@@ -60,9 +75,13 @@ The Base Datatype Schema consists of some of the most used datatypes.
 These can be extended by you, as everyone can create and link to their own Datatypes.
 Note that systems that parse your data might support only a subset of Datatypes.
 
+### Slug
+
+A string with a limited set of allowed characters, used in IDE / Text editor context.
+
 ### Atomic URI
 
-A URI that should resolve to an Atomic resource.
+A URI that should resolve to an Atomic Resource.
 
 ### URI
 
@@ -136,7 +155,6 @@ Start with the mimetype string, do a newline `\n` and continue with the UTF-8 st
 
 **Binary serialization**
 
-
 ### ResourceArray
 
 Sequential, ordered list of Atomic URIs.
@@ -150,3 +168,9 @@ Note that other types of arrays are not included in this spec, but can be perfec
 A property only has one single Datatype.
 However, feel free to create a new kind of Datatype that, in turn, refers to other Datatypes.
 Perhaps this should be part of the Atomic Base Datatypes.
+
+### How should a client deal with dot syntax key collisions.
+
+TODO!
+
+###

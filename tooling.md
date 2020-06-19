@@ -44,7 +44,6 @@ const fetchedperson = atomicfetch(resource, class)
 
 // IDE tooling is aware that the "example:Person" class requires a "bestFriend" property, which is another "Person", which has a "firstName".
 const bestFriendsName = fetchedperson.bestFriend.firstName // => "Pluto"
-
 ```
 
 ## Libraries

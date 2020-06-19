@@ -12,4 +12,5 @@ HTTP URLs already show you who's in control, because the domain name points you 
 ## Using DID
 
 The DID (decentralized identifiers) paves the way for a more decentralized web.
-For Atomic Data,
+
+TODO! Something with DID controllers https://w3c.github.io/did-core/#dfn-did-controllers
