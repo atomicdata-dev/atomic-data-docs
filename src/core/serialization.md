@@ -1,9 +1,8 @@
-# Atomic Data: Serialization
+# Serialization of Atomic Data
 
 Atomic Data is not necessarily bound to a single serialization format.
-It's fundamentally a data model - understanding the difference between the two is essential.
-When you want to share Atomic Data, you'll have to serialize it some way.
-When you want to use Atomic Data, you'll have to parse it in some way.
+It's fundamentally a data model, and that's an important distinction to make.
+We recommend you use `Atomic-NDJSON`, which is specifically designed to be a simple, performant format for Atomic Data.
 
 ## Atomic-NDJSON
 
@@ -38,5 +37,5 @@ Read more about the various existing formats and their respective merits [here](
 
 ## Future formats
 
-In the future, new (more constrained and optimized) serialization formats will be introduced.
-For example a format that
+In the future, new serialization formats will be introduced.
+For example, a fully optimized binary serialization format would make sense.

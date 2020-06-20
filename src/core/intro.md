@@ -1,4 +1,4 @@
-# Atomic Data Core: design goals and motivation
+# Atomic Data Core
 
 The Atomic Data Core describes the fundamental data model of Atomic Data.
 Before we dive into its concepts, we'll talk about why this standard is made in the first place.

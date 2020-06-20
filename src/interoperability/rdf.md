@@ -12,8 +12,8 @@ However, it does differ in some fundamental ways.
 - Atomic requires URL values in its `subjects` and `predicates`, which means that they should be resolveable.
 - Atomic has no seperate `datatype` field, but it requires that `Properties` (the resources that are shown when you folllow a `predicate` value) specify a datatype
 - Atomic has no seperate `language` field, but it does support language strings as a Datatype in Properties.
-- Atomic has a native Event (state changes) model ([Atomic Mutations](../mutations/atomic-mutations.md)), which enables communication of state changes
-- Atomic has a native Schema model ([Atomic Schema](../schema/atomic-schema.md)), which helps developers to know what data types they can expect (string, integer, link, array)
+- Atomic has a native Event (state changes) model ([Atomic Mutations](../mutations/intro.md)), which enables communication of state changes
+- Atomic has a native Schema model ([Atomic Schema](../schema/intro.md)), which helps developers to know what data types they can expect (string, integer, link, array)
 - Atomic does not support `graph` fields in statments.
 - Atomic does not support `blank nodes`.
 - Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination should be unique.

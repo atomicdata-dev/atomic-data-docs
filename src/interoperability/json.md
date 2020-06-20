@@ -11,8 +11,8 @@ Atomic Data requires a bit more information about pieces of data than JSON tends
 
 The following things are missing:
 
-* What is the URI of the resource being described?
-* What is the URI of the keys being used? \(`name` and `birthDate`\), and consequentially, how should the values be parsed?
+* What is the URL of the resource being described?
+* What is the URL of the keys being used? \(`name` and `birthDate`\), and consequentially, how should the values be parsed?
 
 We can add this data by adding _context_:
 
@@ -33,4 +33,4 @@ TODO!
 
 ## JSON-LD Requirements
 
-Just make sure the URIs used in the `@context` resolve to Atomic Properties.
+- Make sure the URLs used in the `@context` resolve to Atomic Properties.

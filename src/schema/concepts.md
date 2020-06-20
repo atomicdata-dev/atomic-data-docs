@@ -1,10 +1,8 @@
 # Atomic Schema: Concepts
 
-Whenever you see a key like `somevalue`, read: `https://atomicdata.dev/somevalue`.
-
 ## Class
 
-_uri: `https://atomicdata.dev/classes/Datatype`_
+_uri: `https://atomicdata.dev/classes/Class`_
 
 A Class is an abstract type of Resource, such as `Person`.
 It is convention to use an Uppercase in its URI.
@@ -20,12 +18,14 @@ Properties:
 
 Example:
 
-```turtle
-<https://example.com/classes/Person> <https://atomicdata.dev/classes/Class> "Class".
-<https://example.com/classes/Person> <https://atomicdata.dev/property/datatype> <https://atomicdata.dev/datatype/datetime>.
+```ndjson
+["https://example.com/classes/Person","https://atomicdata.dev/properties/isA","Class"]
+["https://example.com/classes/Person","https://atomicdata.dev/properties/datatype","https://atomicdata.dev/datatypes/datetime"]
 ```
 
 ## Property
+
+_uri: `https://atomicdata.dev/classes/Class`_
 
 A Property is an abstract type of Resource that describes the relation between a subject and an object.
 
@@ -42,7 +42,7 @@ Properties:
 
 ## Datatype
 
-_uri: `https://atomicdata.dev/Datatype`_
+_uri: `https://atomicdata.dev/classes/Datatype`_
 
 A Datatype specifies how the the property should be interpreted.
 

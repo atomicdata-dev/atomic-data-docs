@@ -35,6 +35,7 @@ In the Atomic Data above, we have:
 The Subject is the first part of an Atom.
 It is the identifier that the rest of the Atom is providing information about.
 It's a URL that points to the Resource.
+The creator of the Subject URL MUST make sure that
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject.
 
 ## Predicate
