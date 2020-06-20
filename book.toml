@@ -5,7 +5,7 @@ description = "Documentation for the Atomic Data standard."
 language = "en"
 
 [output.html]
-google-analytics = "123456"
+google-analytics = "UA-121994595-2"
 git-repository-url = "https://github.com/ontola/atomic-data"
 git-repository-icon = "fa-github"
 
