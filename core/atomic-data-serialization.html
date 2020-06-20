@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/atomic-data-core.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/atomic-data-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/atomic-data-serialization.html" class="active"><strong aria-hidden="true">2.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/atomic-schema.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/atomic-schema-concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/atomic-schema-base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/atomic-schema-faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/atomic-mutations.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/atomic-suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/atomic-mutations-faq.html"><strong aria-hidden="true">4.2.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/other-data-formats.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../ownership.html"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/atomic-data-core.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/atomic-data-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/atomic-data-serialization.html" class="active"><strong aria-hidden="true">2.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/atomic-schema.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/atomic-schema-concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/atomic-schema-base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/atomic-schema-faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/atomic-mutations.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/atomic-suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/atomic-mutations-faq.html"><strong aria-hidden="true">4.2.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/other-data-formats.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../ownership.html"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../storage.html"><strong aria-hidden="true">7.</strong> Storage</a></li><li class="chapter-item expanded "><a href="../querying.html"><strong aria-hidden="true">8.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">9.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,8 +152,34 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-data-serialization" id="atomic-data-serialization">Atomic Data: Serialization</a></h1>
-<p>For the time being, existing RDF serialization formats can be used, such as N-Triples, Turtle, HexTuples or JSON-LD.
-In the future, new (more constrained and optimized) serialization formats will be introduced.</p>
+<p>Atomic Data is not necessarily bound to a single serialization format.
+It's fundamentally a data model - understanding the difference between the two is essential.
+When you want to share Atomic Data, you'll have to serialize it some way.
+When you want to use Atomic Data, you'll have to parse it in some way.</p>
+<h2><a class="header" href="#atomic-ndjson" id="atomic-ndjson">Atomic-NDJSON</a></h2>
+<p>Since the data model of Atomic Data is a bit simpler than RDF, serialization and parsing can be simpler as well.
+In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Predicate and Object.</p>
+<p>It looks like this:</p>
+<pre><code class="language-ndjson">[&quot;https://example.com/subject&quot;,&quot;https://example.com/predicate&quot;,&quot;some object&quot;]
+[&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
+</code></pre>
+<p>NDJSON has some important benefits:</p>
+<ul>
+<li>It visually represents the underlying datamodel (the Atom)</li>
+<li>It can be streaming parsed, i.e. before the entire document is loaded. That is not possible with regular JSON.</li>
+<li>NDJSON parsers are everywhere</li>
+<li>Modern browers have highly performant (ND)JSON parsing, which means that it's <em>fast</em> in one of the most imporant contexts: the browser.</li>
+</ul>
+<p>Mime type (not registered yet!): <code>application/atomic+x-ndjson; charset=utf-8</code></p>
+<p>File name extention:</p>
+<p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
+<h2><a class="header" href="#rdf-serializatinon-formats" id="rdf-serializatinon-formats">RDF serializatinon formats</a></h2>
+<p>Because of the similarties with RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples or JSON-LD.
+<em>However</em>, keep in mind that RDF users will expect other things from their data.
+Read more about the various existing formats and their respective merits <a href="https://ontola.io/blog/rdf-serialization-formats/">here</a>.</p>
+<h2><a class="header" href="#future-formats" id="future-formats">Future formats</a></h2>
+<p>In the future, new (more constrained and optimized) serialization formats will be introduced.
+For example a format that</p>
 
                     </main>
 
