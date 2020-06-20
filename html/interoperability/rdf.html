@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Base Datatypes - Atomic Data</title>
+        <title>Relation to RDF - Atomic Data</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/atomic-data-core.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/atomic-data-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/atomic-data-serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/atomic-schema.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/atomic-schema-concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/atomic-schema-base.html" class="active"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/atomic-schema-faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/atomic-mutations.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/atomic-suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/atomic-mutations-faq.html"><strong aria-hidden="true">4.2.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/other-data-formats.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../ownership.html"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../storage.html"><strong aria-hidden="true">7.</strong> Storage</a></li><li class="chapter-item expanded "><a href="../querying.html"><strong aria-hidden="true">8.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">9.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html" class="active"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,76 +151,67 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#atomic-schema-base-datatypes" id="atomic-schema-base-datatypes">Atomic Schema: Base Datatypes</a></h1>
-<p>The Atomic Base Datatypes consist of some of the most commonly used datatypes.</p>
-<h2><a class="header" href="#slug" id="slug">Slug</a></h2>
-<p>A string with a limited set of allowed characters, used in IDE / Text editor context.</p>
-<h2><a class="header" href="#atomic-uri" id="atomic-uri">Atomic URI</a></h2>
-<p>A URI that should resolve to an Atomic Resource.</p>
-<h2><a class="header" href="#uri" id="uri">URI</a></h2>
-<p>A Uniform Resource Identifier, preferably a URL.
-Could be HTTPS, or any other type of schema.</p>
-<h2><a class="header" href="#string" id="string">String</a></h2>
-<p><em>uri: <code>https://atomicdata.dev/datatypes/string</code></em></p>
-<p>UTF-8 String, no max character count.
-Newlines use backslash escaped <code>\n</code> characters.
-Should not contain language specific data, use a <code>langstring</code> instead.</p>
-<p>e.g. <code>String time! \n Second line!</code></p>
-<h2><a class="header" href="#multilingual-string-langstring" id="multilingual-string-langstring">Multilingual String (langstring)</a></h2>
-<p><em>uri: <code>https://atomicdata.dev/datatypes/langstring</code></em></p>
-<!--
-So this is something I'm having serious doubts on.
-It seems so verbose and hard to parse.
-However, the underlying problem is kind of tough: we want <subject> <predicate> combination uniqueness...
-... but we also want to have multilingual strings that can be added later.
--->
-<p>Array of special UTF-8 Strings.
-Each element of the Array starts with a language string code, followed by a newline.</p>
-<p>e.g. <code>[&quot;en-US\nHi there&quot;],[&quot;nl-NL\nHallo daar&quot;]</code></p>
-<h2><a class="header" href="#integer" id="integer">Integer</a></h2>
-<p>Signed Integer, max 64 bit.
-Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
-<p>e.g. <code>-420</code></p>
-<h2><a class="header" href="#boolean" id="boolean">Boolean</a></h2>
-<p>True or false, one or zero.</p>
-<p><strong>String serialization</strong></p>
-<p><code>true</code> or <code>false</code>.</p>
-<p><strong>Binary serialization</strong></p>
-<p>Use a single bit one boolean.</p>
-<p>1 for <code>true</code>, or 0 for <code>false</code>.</p>
-<h2><a class="header" href="#datetime" id="datetime">Datetime</a></h2>
-<p>ISO 8601 encoded string.</p>
-<p>e.g. <code>2020-06-11</code></p>
-<h2><a class="header" href="#mimefile" id="mimefile">MIMEFile</a></h2>
-<p>Any type of file, starting with its <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">mime type</a>
-Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often don't exist in your OS</a>, specifying them seems like a good idea.</p>
-<p><strong>String serialization</strong></p>
-<p>Start with the mimetype string, do a newline <code>\n</code> and continue with the UTF-8 stringified data.</p>
+                        <h1><a class="header" href="#how-does-atomic-data-relate-to-rdf" id="how-does-atomic-data-relate-to-rdf">How does Atomic Data relate to RDF?</a></h1>
+<p>RDF is the original data model behind linked data.
+It is also the forerunner of Atomic Data, and is therefore highly similar in its philosophy and model.
+Both heavily rely on using URLs, and both have a fundamentally simple and uniform model for data statements.
+Both view the web as a single, connected graph database.
+Because of that, Atomic Data is also highly compatible with RDF - <strong>all Atomic Data can be converted into valid RDF</strong>.
+Atomic Data can be thought of as a <strong>more constrained, type safe version of RDF</strong>.
+However, it does differ in some fundamental ways.</p>
 <ul>
-<li>e.g. <code>application/text\nOh hi mark</code></li>
-<li>e.g. <code>text/html\n&lt;html&gt;&lt;p&gt;oh, hi mark&lt;/p&gt;&lt;/html&gt;</code></li>
+<li>Atomic only allows those who control a resource's <code>subject</code> URL endpoint to edit the data. This means that you can't add triples about something that you don't control.</li>
+<li>Atomic requires URL values in its <code>subjects</code> and <code>predicates</code>, which means that they should be resolveable.</li>
+<li>Atomic has no seperate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you folllow a <code>predicate</code> value) specify a datatype</li>
+<li>Atomic has no seperate <code>language</code> field, but it does support language strings as a Datatype in Properties.</li>
+<li>Atomic has a native Event (state changes) model (<a href="../mutations/intro.html">Atomic Mutations</a>), which enables communication of state changes</li>
+<li>Atomic has a native Schema model (<a href="../schema/intro.html">Atomic Schema</a>), which helps developers to know what data types they can expect (string, integer, link, array)</li>
+<li>Atomic does not support <code>graph</code> fields in statments.</li>
+<li>Atomic does not support <code>blank nodes</code>.</li>
+<li>Atomic does not support having multiple statements with the same <code>&lt;subject&gt; &lt;predicate&gt;</code>, every combination should be unique.</li>
 </ul>
-<p><strong>Binary serialization</strong></p>
-<h2><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h2>
-<p>Sequential, ordered list of Atomic URIs.
-Serialized as a JSON array with strings.
-Note that other types of arrays are not included in this spec, but can be perfectly valid.</p>
+<h2><a class="header" href="#why-these-changes" id="why-these-changes">Why these changes?</a></h2>
+<p>I love RDF, and have been working with it for quite some time now.
+Using URIs (and moreso URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
+However, some of the characteristics of RDF might have contributed to its relative lack of adoption.</p>
 <ul>
-<li>e.g. <code>[&quot;https://example.com/1&quot;, &quot;https://example.com/1&quot;]</code></li>
+<li>Having both a <code>datatype</code> and a <code>predicate</code> value can lead to confusing situations. For example, the <a href="https://schema.org/dateCreated"><code>schema:dateCreated</code></a> Property requires an ISO DateTime string (according to the schema.org definition), but using a value <code>true</code> with an <code>xsd:boolean</code> datatype results in perfectly valid RDF. This means that client software using triples with a <code>schema:dateCreated</code> predicate cannot safely assume that its value will be a DateTime. So if the client wants to use <code>schema:dateCreated</code> values, the client must also specify which type of data it expects, check the datetype field of every Atom and provide logic for when these don't match.</li>
+<li>Using full URI strings as keys (in predicates) results in clunky Developer Experience, compared to the short strings that developers are used to in pretty much all languages and data formats. Adding a required / tightly integrated key mapping (from long URLs to short, simple strings) in Atomic Properties solves this issue, and provides developers a way to write code like this: <code>someAtomicPerson.bestFriend.name =&gt; &quot;Britta&quot;</code>. Although the RDF ecosystem does have some solutions for this (@context objects in JSON-LD, @prefix mappings, the @ontologies library), these prefixes are not defined in Properties themselves and therefore are defined locally only, which means that developers have to manually map them most of the time.</li>
+<li>RDF lacks a clear solution for dealing with <a href="https://ontola.io/blog/ordered-data-in-rdf/">ordered data</a>, resulting in confusion when developers have to create lists of content. Adding an Array data type as a base data type helps solve this.</li>
+<li>There is no integrated standard for communicating state changes (although <a href="https://github.com/ontola/linked-delta">linked-delta</a> and <a href="https://afs.github.io/rdf-delta/">rdf-delta</a> do exist)</li>
+<li>RDF allows that domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing <em>where data comes from</em> is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.</li>
 </ul>
+<p>Besides these technical reasons about the RDF model, I think that there are more reasons to start with a new concept and give it a new name:</p>
+<ul>
+<li>The RDF documentation is intimidating for beginners. When trying to understand RDF, you're likely to traverse. All Core / Schema URLs should resolve to simple, clear explanations with both examples and machine readable definitions.</li>
+<li>There is a lack of learning resources that provide a clear, complete answer to the lifecycle of RDF data: modelling data, making data, hosting it, fetching it, updating it. Atomic Data aims to provide an opinionated answer to all of these steps.</li>
+<li>The Semantic Web community has had a lot of academic attention from formal logic departments, resulting in a highly developed standards for modelling knowledge modelling: the Web Ontology Language (OWL). While this is mostly great, its open-world philosophy and focus on reasoning abilities confuses developers who are simply looking for a simple way to share models in RDF.</li>
+</ul>
+<h2><a class="header" href="#convert-atomic-data-to-rdf" id="convert-atomic-data-to-rdf">Convert Atomic data to RDF</a></h2>
+<p>Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.</p>
+<ul>
+<li>In conversion to RDF, convert <code>langstring</code> objects to Literals with an <code>xsd:string</code> datatype</li>
+</ul>
+<h2><a class="header" href="#convert-rdf-to-atomic-data" id="convert-rdf-to-atomic-data">Convert RDF to Atomic Data</a></h2>
+<ul>
+<li>All <code>predicates</code> SHOULD resolve to Atomic Properties, and these SHOULD have a <code>datatype</code>. This means that the <code>datatype</code> in the original RDF statement can be dropped.</li>
+<li>Literals with a <code>language</code> tag are converted to the <code>atomic:langstring</code> type. TODO! How to fis</li>
+</ul>
+<h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
+<h3><a class="header" href="#" id=""></a></h3>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../schema/atomic-schema-concepts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../interoperability/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../schema/atomic-schema-faq.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../interoperability/json.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -232,13 +223,13 @@ Note that other types of arrays are not included in this spec, but can be perfec
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../schema/atomic-schema-concepts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../interoperability/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../schema/atomic-schema-faq.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../interoperability/json.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

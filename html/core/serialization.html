@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Concepts - Atomic Data</title>
+        <title>Serialization - Atomic Data</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/atomic-data-core.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/atomic-data-concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/atomic-data-serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/atomic-schema.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/atomic-schema-concepts.html" class="active"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/atomic-schema-base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/atomic-schema-faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/atomic-mutations.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/atomic-suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/atomic-mutations-faq.html"><strong aria-hidden="true">4.2.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/other-data-formats.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../ownership.html"><strong aria-hidden="true">6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../storage.html"><strong aria-hidden="true">7.</strong> Storage</a></li><li class="chapter-item expanded "><a href="../querying.html"><strong aria-hidden="true">8.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">9.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html" class="active"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,59 +151,47 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#atomic-schema-concepts" id="atomic-schema-concepts">Atomic Schema: Concepts</a></h1>
-<p>Whenever you see a key like <code>somevalue</code>, read: <code>https://atomicdata.dev/somevalue</code>.</p>
-<h2><a class="header" href="#class" id="class">Class</a></h2>
-<p><em>uri: <code>https://atomicdata.dev/classes/Datatype</code></em></p>
-<p>A Class is an abstract type of Resource, such as <code>Person</code>.
-It is convention to use an Uppercase in its URI.
-A Resource can have zero to many Classes, so this might be different from most data works.</p>
-<p>Properties:</p>
-<ul>
-<li><code>key</code> - (required, Slug)</li>
-<li><code>description</code> - (required, langstring) human readable explanation of what the Class represents.</li>
-<li><code>requiredProperties</code> - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.</li>
-<li><code>disallowedProperties</code> - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed.</li>
-<li><code>allowedProperties</code> - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required.</li>
-</ul>
-<p>Example:</p>
-<pre><code class="language-turtle">&lt;https://example.com/classes/Person&gt; &lt;https://atomicdata.dev/classes/Class&gt; &quot;Class&quot;.
-&lt;https://example.com/classes/Person&gt; &lt;https://atomicdata.dev/property/datatype&gt; &lt;https://atomicdata.dev/datatype/datetime&gt;.
+                        <h1><a class="header" href="#serialization-of-atomic-data" id="serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
+<p>Atomic Data is not necessarily bound to a single serialization format.
+It's fundamentally a data model, and that's an important distinction to make.
+We recommend you use <code>Atomic-NDJSON</code>, which is specifically designed to be a simple, performant format for Atomic Data.</p>
+<h2><a class="header" href="#atomic-ndjson" id="atomic-ndjson">Atomic-NDJSON</a></h2>
+<p>Since the data model of Atomic Data is a bit simpler than RDF, serialization and parsing can be simpler as well.
+In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Predicate and Object.</p>
+<p>It looks like this:</p>
+<pre><code class="language-ndjson">[&quot;https://example.com/subject&quot;,&quot;https://example.com/predicate&quot;,&quot;some object&quot;]
+[&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
-<h2><a class="header" href="#property" id="property">Property</a></h2>
-<p>A Property is an abstract type of Resource that describes the relation between a subject and an object.</p>
-<p>Properties:</p>
+<p>NDJSON has some important benefits:</p>
 <ul>
-<li><code>key</code> - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.</li>
-<li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype</li>
-<li><code>description</code> - (required) the semantic meaning of the (langstring).</li>
+<li>It visually represents the underlying datamodel (the Atom)</li>
+<li>It can be streaming parsed, i.e. before the entire document is loaded. That is not possible with regular JSON.</li>
+<li>NDJSON parsers are everywhere</li>
+<li>Modern browers have highly performant (ND)JSON parsing, which means that it's <em>fast</em> in one of the most imporant contexts: the browser.</li>
 </ul>
-<pre><code class="language-turtle">&lt;https://example.com/properties/createdAt&gt; &lt;https://atomicdata.dev/property/key&gt; &quot;createdAt&quot;.
-&lt;https://example.com/properties/createdAt&gt; &lt;https://atomicdata.dev/property/datatype&gt; &lt;https://atomicdata.dev/datatype/datetime&gt;.
-</code></pre>
-<h2><a class="header" href="#datatype" id="datatype">Datatype</a></h2>
-<p><em>uri: <code>https://atomicdata.dev/Datatype</code></em></p>
-<p>A Datatype specifies how the the property should be interpreted.</p>
-<ul>
-<li><code>description</code> - (required, langstring) how the datatype functions.</li>
-<li><code>stringSerialization</code> - (required, langstring) how the datatype should be parsed / serialized as an UTF-8 string</li>
-<li><code>stringExample</code> - (required, string) an example stringSerialization example value that should be parsed correclty</li>
-<li><code>binarySerialization</code> - (optional) how the datatype should be parsed / serialized as a byte array.</li>
-<li><code>binaryExample</code> - (optional) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.</li>
-</ul>
+<p>Mime type (not registered yet!): <code>application/atomic+x-ndjson; charset=utf-8</code></p>
+<p>File name extention:</p>
+<p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
+<h2><a class="header" href="#rdf-serializatinon-formats" id="rdf-serializatinon-formats">RDF serializatinon formats</a></h2>
+<p>Because of the similarties with RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples or JSON-LD.
+<em>However</em>, keep in mind that RDF users will expect other things from their data.
+Read more about the various existing formats and their respective merits <a href="https://ontola.io/blog/rdf-serialization-formats/">here</a>.</p>
+<h2><a class="header" href="#future-formats" id="future-formats">Future formats</a></h2>
+<p>In the future, new serialization formats will be introduced.
+For example, a fully optimized binary serialization format would make sense.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../schema/atomic-schema.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../core/concepts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../schema/atomic-schema-base.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../core/querying.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -215,13 +203,13 @@ A Resource can have zero to many Classes, so this might be different from most d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../schema/atomic-schema.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../core/concepts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../schema/atomic-schema-base.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../core/querying.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
