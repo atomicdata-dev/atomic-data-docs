@@ -104,5 +104,6 @@ use atomic::{init_store}
 
 fn main() {
   let mut graph = init_store();
+  // TODO! Design a macro solution
 }
 ```
