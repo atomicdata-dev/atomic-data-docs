@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html" class="active"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html" class="active"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Atomic Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,8 +152,11 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-data-concepts" id="atomic-data-concepts">Atomic Data: Concepts</a></h1>
-<p>The base URL for following concepts will be <code>https://atomicdata.dev/core/</code>.</p>
-<h2><a class="header" href="#atom" id="atom">Atom</a></h2>
+<h2><a class="header" href="#atomic-data" id="atomic-data">Atomic Data</a></h2>
+<p>Atomic Data is a data format for representing information on the web.
+Similar to RDF, it is a directed, labeled graph.
+It can be used to express any type of information, inlcuding personal data, vocabularies, metadata, documents, files and more.</p>
+<h2><a class="header" href="#atom-or-atomic-triple" id="atom-or-atomic-triple">Atom (or Atomic Triple)</a></h2>
 <p>The smallest possible piece of <em>meaningful</em> data / information.
 The model of an Atom is comparable with an RDF Triple / Statement (<a href="../interoperability/rdf.html">although there are imporant differences</a>).
 An Atom consists of three values:</p>
@@ -177,25 +180,27 @@ An Atom consists of three values:</p>
 <li>four different Objects (<code>1991-0-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
 </ul>
 <h2><a class="header" href="#subject" id="subject">Subject</a></h2>
-<p>The Subject is the first part of an Atom.
+<p>The Subject (or Atomic Subject) is the first part of an Atom.
 It is the identifier that the rest of the Atom is providing information about.
 It's a URL that points to the Resource.
-The creator of the Subject URL MUST make sure that
-In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject.</p>
+The creator of the Subject MUST make sure that it resolves).
+In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see <a href="querying.html">Atomic Querying</a>.</p>
 <h2><a class="header" href="#predicate" id="predicate">Predicate</a></h2>
-<p>The Predicate is the second part of an Atom.
+<p>The Predicate (or Atomic Predicate) is the second part of an Atom.
 It is a URL that points to an Atomic Property.
 For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.
 The Predicate MUST be a URL, and that URL MUST resolve to an Atomic Property.</p>
-<p>When Atomic Properties correctly resolve, that's when most of the benefits of Atomic Data become real: the static types and the</p>
 <h2><a class="header" href="#object" id="object">Object</a></h2>
-<p>The Object is the third part of an Atom.
-It contains</p>
+<p>The Object (or Atomic Object) is the third part of an Atom.
+Contrary to the Subject and Predicate values, the Object can be of any datatype.
+This includes URLs, strings, integers, dates and more.</p>
+<h2><a class="header" href="#graph" id="graph">Graph</a></h2>
+<p>A Graph is a set of Atoms.
+A Graph can describe various subjects, and may or may not be related.</p>
 <h2><a class="header" href="#resource" id="resource">Resource</a></h2>
-<p>A Resource is a set of Atoms that share the same Subject URL.
+<p>A Resource is a set of Atoms (a Graph) that share the same Subject URL.
 Every thing is Resource, such as the person &quot;Michael Jackson&quot;, or the abstract class &quot;Person&quot;.
-All the concepts on this page are Resources.
-More specifically, they are Classes, which is a subclass of Resources.</p>
+All the concepts on this page are Resources.</p>
 
                     </main>
 

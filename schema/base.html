@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html" class="active"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html" class="active"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Atomic Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,20 +154,23 @@
                         <h1><a class="header" href="#atomic-schema-base-datatypes" id="atomic-schema-base-datatypes">Atomic Schema: Base Datatypes</a></h1>
 <p>The Atomic Base Datatypes consist of some of the most commonly used datatypes.</p>
 <h2><a class="header" href="#slug" id="slug">Slug</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/slug</code></em></p>
 <p>A string with a limited set of allowed characters, used in IDE / Text editor context.</p>
 <h2><a class="header" href="#atomic-uri" id="atomic-uri">Atomic URI</a></h2>
-<p>A URI that should resolve to an Atomic Resource.</p>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/atomicURI</code></em></p>
+<p>A URL that should resolve to an Atomic Resource.</p>
 <h2><a class="header" href="#uri" id="uri">URI</a></h2>
-<p>A Uniform Resource Identifier, preferably a URL.
-Could be HTTPS, or any other type of schema.</p>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/URI</code></em></p>
+<p>A Uniform Resource Identifier, preferably a URL (i.e. an URI that can be fetched).
+Could be HTTP, HTTPS, or any other type of schema.</p>
 <h2><a class="header" href="#string" id="string">String</a></h2>
-<p><em>uri: <code>https://atomicdata.dev/datatypes/string</code></em></p>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/string</code></em></p>
 <p>UTF-8 String, no max character count.
 Newlines use backslash escaped <code>\n</code> characters.
 Should not contain language specific data, use a <code>langstring</code> instead.</p>
 <p>e.g. <code>String time! \n Second line!</code></p>
 <h2><a class="header" href="#multilingual-string-langstring" id="multilingual-string-langstring">Multilingual String (langstring)</a></h2>
-<p><em>uri: <code>https://atomicdata.dev/datatypes/langstring</code></em></p>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/langstring</code></em></p>
 <!--
 So this is something I'm having serious doubts on.
 It seems so verbose and hard to parse.
@@ -178,10 +181,12 @@ However, the underlying problem is kind of tough: we want <subject> <predicate> 
 Each element of the Array starts with a language string code, followed by a newline.</p>
 <p>e.g. <code>[&quot;en-US\nHi there&quot;],[&quot;nl-NL\nHallo daar&quot;]</code></p>
 <h2><a class="header" href="#integer" id="integer">Integer</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/integer</code></em></p>
 <p>Signed Integer, max 64 bit.
 Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
 <p>e.g. <code>-420</code></p>
 <h2><a class="header" href="#boolean" id="boolean">Boolean</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/boolean</code></em></p>
 <p>True or false, one or zero.</p>
 <p><strong>String serialization</strong></p>
 <p><code>true</code> or <code>false</code>.</p>
@@ -189,9 +194,11 @@ Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><co
 <p>Use a single bit one boolean.</p>
 <p>1 for <code>true</code>, or 0 for <code>false</code>.</p>
 <h2><a class="header" href="#datetime" id="datetime">Datetime</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/dateTime</code></em></p>
 <p>ISO 8601 encoded string.</p>
 <p>e.g. <code>2020-06-11</code></p>
 <h2><a class="header" href="#mimefile" id="mimefile">MIMEFile</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/mimeFile</code></em></p>
 <p>Any type of file, starting with its <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">mime type</a>
 Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often don't exist in your OS</a>, specifying them seems like a good idea.</p>
 <p><strong>String serialization</strong></p>
@@ -202,6 +209,7 @@ Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often
 </ul>
 <p><strong>Binary serialization</strong></p>
 <h2><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/resourceArray</code></em></p>
 <p>Sequential, ordered list of Atomic URIs.
 Serialized as a JSON array with strings.
 Note that other types of arrays are not included in this spec, but can be perfectly valid.</p>

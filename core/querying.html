@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html" class="active"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html" class="active"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Atomic Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -160,20 +160,35 @@
 </ul>
 <h2><a class="header" href="#subject-fetching-http" id="subject-fetching-http">Subject fetching (HTTP)</a></h2>
 <p>The simplest way of getting Atomic Data, is by sending an HTTP GET request to the subject URL.
-Set the correct <code>Content-Type</code> header to make sure you</p>
+Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/atomic+x-ndjson</code>.</p>
 <pre><code class="language-HTTP">GET https://example.com/myResource HTTP/1.1
 Content-Type: application/atomic+x-ndjson
 </code></pre>
-<p>The server should respond with a set of Atoms:</p>
+<p>The server should respond with all the Atoms of which the requested URL is the subject:</p>
 <pre><code class="language-HTTP">HTTP/1.1 200 OK
 Content-Type: application/atomic+x-ndjson
 Connection: Closed
 
 [&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;My awesome resource!&quot;]
 </code></pre>
-<p>The example above sets the <code>Content-Type</code> field to the Atomic NDJSON mime type.</p>
 <h2><a class="header" href="#triple-pattern-fragments" id="triple-pattern-fragments">Triple Pattern Fragments</a></h2>
+<p><a href="https://linkeddatafragments.org/specification/triple-pattern-fragments/">Triple Pattern Fragments</a> is an interface for querying linked data.
+It works great for Atomic Data as well.</p>
+<p>An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:</p>
+<p><code>http://example.org/tpf?subject={subject}&amp;predicate={predicate}&amp;object={object}</code></p>
+<p>Make sure to URL encode the <code>subject</code>, <code>predicate</code>, <code>object</code> strings.</p>
+<p>For example, let's search for all Atoms where the object is <code>test</code>.</p>
+<pre><code class="language-HTTP">GET https://example.com/tpf?object=&quot;test&quot; HTTP/1.1
+Content-Type: application/atomic+x-ndjson
+</code></pre>
+<pre><code class="language-HTTP">HTTP/1.1 200 OK
+Content-Type: application/atomic+x-ndjson
+Connection: Closed
+
+[&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;test&quot;]
+</code></pre>
 <h2><a class="header" href="#spaqrl" id="spaqrl">SPAQRL</a></h2>
+<p><a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> is a powerful RDF query language.</p>
 
                     </main>
 

@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html" class="active"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html" class="active"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Atomic Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,11 +152,25 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#storing-atomic-data" id="storing-atomic-data">Storing Atomic Data</a></h1>
-<p>We've discussed serialization and</p>
 <h2><a class="header" href="#schema-completeness" id="schema-completeness">Schema Completeness</a></h2>
-<p>When a Store has a set of Atoms, it might not posess all the information that is required to determine the datatype of each Atom.
-Let's look at an example:</p>
-<pre><code class="language-ndjson">
+<p>When a Graph has a set of Atoms, it might not posess all the information that is required to determine the datatype of each Atom.
+When that is the case, we say the Graph is <em>Schema Complete</em>.</p>
+<p>Imagine some application (perhaps an app running inside a webbrowser) that has only the following data:</p>
+<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/birthDate&quot;,&quot;1991-01-20&quot;]
+</code></pre>
+<p>Now, by looking at this single Atom, we might assume that the Object is an ISO date,
+but this type information is not known yet to the application.
+This type information should be specified in the <code>example:birthDate</code> Property.
+It is the responsibility of the application to make sure it posesses the required Schema data.</p>
+<p>We say a Graph is <em>Schema Complete</em> when it contains <em>at least</em> all the Properties that are used in predicates.</p>
+<p>So let's add the missing Property: <code>https://example.com/birthDate</code></p>
+<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/birthDate&quot;,&quot;1991-01-20&quot;]
+[&quot;https://example.com/birthDate&quot;,&quot;https://atomicdata.dev/datatypes/Datatype&quot;,&quot;https://atomicdata.dev/datatypes/dateTime&quot;]
+</code></pre>
+<p>Now, since we've introduced yet another Property, we need to include that one as well:</p>
+<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/birthDate&quot;,&quot;1991-01-20&quot;]
+[&quot;https://example.com/birthDate&quot;,&quot;https://atomicdata.dev/datatypes/Datatype&quot;,&quot;https://atomicdata.dev/datatypes/dateTime&quot;]
+[&quot;https://atomicdata.dev/datatypes/Datatype&quot;,&quot;https://atomicdata.dev/datatypes/Datatype&quot;,&quot;https://atomicdata.dev/datatypes/atomicURI&quot;]
 </code></pre>
 
                     </main>
