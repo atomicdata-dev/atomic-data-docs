@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -283,7 +283,13 @@ Connection: Closed
 <p>The example above sets the <code>Content-Type</code> field to the Atomic NDJSON mime type.</p>
 <h2><a class="header" href="#triple-pattern-fragments" id="triple-pattern-fragments">Triple Pattern Fragments</a></h2>
 <h2><a class="header" href="#spaqrl" id="spaqrl">SPAQRL</a></h2>
-<h1><a class="header" href="#storage" id="storage">Storage</a></h1>
+<h1><a class="header" href="#storing-atomic-data" id="storing-atomic-data">Storing Atomic Data</a></h1>
+<p>We've discussed serialization and</p>
+<h2><a class="header" href="#schema-completeness" id="schema-completeness">Schema Completeness</a></h2>
+<p>When a Store has a set of Atoms, it might not posess all the information that is required to determine the datatype of each Atom.
+Let's look at an example:</p>
+<pre><code class="language-ndjson">
+</code></pre>
 <h1><a class="header" href="#atomic-schema" id="atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the standard for specifying classes, properties and datatypes in Atomic Data.
 You can compare it to what XSD is for XML.
@@ -433,7 +439,24 @@ It is the part of Atomic Data that is concerned with writing, editing and updati
 <h2><a class="header" href="#motivation-1" id="motivation-1">Motivation</a></h2>
 <p>So many problems that confine data exchange are the result of thinking in current-state exchange.
 State synchronization is often an afterthought, and ... TODO!</p>
-<h1><a class="header" href="#suggestions" id="suggestions">Suggestions</a></h1>
+<h1><a class="header" href="#atomic-suggestions" id="atomic-suggestions">Atomic Suggestions</a></h1>
+<p>Atomic Suggestions is a standard that enables decentralized collaboration on resources.
+It's basically Git for linked data.</p>
+<h2><a class="header" href="#design-goals-3" id="design-goals-3">Design goals</a></h2>
+<ul>
+<li><strong>Asynchronous collaboration</strong>: Various users can work on the same thing at the same time.</li>
+<li><strong>Branching &amp; merging</strong>: Issues that result from async changes (merge conflicts) can be resolved.</li>
+</ul>
+<h2><a class="header" href="#concepts" id="concepts">Concepts</a></h2>
+<h3><a class="header" href="#suggestion" id="suggestion">Suggestion</a></h3>
+<!-- Perhaps suggestions are too similar to Mutations, and should be merged into a single concept? -->
+<p>A Suggestion is a (set of?) Mutation(s?) that is proposed to be appended to some Ledger.
+The important difference between a Suggestion and a Mutation, is that a Mutation has been verified, signed and approved by the Controller.</p>
+<h3><a class="header" href="#controller" id="controller">Controller</a></h3>
+<p>The actor (person / organization) that is in control of a specific Resource and its mutations.</p>
+<h3><a class="header" href="#inbox" id="inbox">Inbox</a></h3>
+<p>An Inbox represents an endpoint that accepts incoming Suggestions.
+It's similar to an e-mail inbox.</p>
 <h1><a class="header" href="#interoperability-relation-to-other-data-formats" id="interoperability-relation-to-other-data-formats">Interoperability: Relation to other data formats</a></h1>
 <p>Atomic data is designed to be highly interoperable. It is possible to convert Atomic to many types of serialization formats.</p>
 <ul>
@@ -519,8 +542,8 @@ TODO!</p>
 </ul>
 <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
 <p>At this moment, no real tooling for Atomic Data exists.
-However, basic tooling is required to make this a succes.
-The following list is a set of ideas that we're working on.</p>
+Great tooling is required to make this a succes.
+The following list is a set of ideas that we're likely to be working on.</p>
 <h2><a class="header" href="#atomic-creator-cli" id="atomic-creator-cli">Atomic creator (CLI)</a></h2>
 <p>A CLI tool for generating Atomic Data.
 Should produce Atomic Mutations.</p>
@@ -543,24 +566,14 @@ atomic add john birthdate 1991-01-20
 <li>Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms</li>
 <li>Perhaps a CLI, library, GUI or a combination of all of these</li>
 </ul>
-<h2><a class="header" href="#language-support" id="language-support">Language support</a></h2>
-<h2><a class="header" href="#ide-tooling--libraries" id="ide-tooling--libraries">IDE tooling &amp; libraries</a></h2>
-<p>I want to be able to do this:</p>
-<pre><code class="language-js">import atomicfetch from '@atomic/fetch';
-
-const resource = &quot;https://example.com/person/mickey&quot;;
-const class = &quot;https://example.com/classes/Person&quot;;
-
-const fetchedperson = atomicfetch(resource, class)
-
-// IDE tooling is aware that the &quot;example:Person&quot; class requires a &quot;bestFriend&quot; property, which is another &quot;Person&quot;, which has a &quot;firstName&quot;.
-const bestFriendsName = fetchedperson.bestFriend.firstName // =&gt; &quot;Pluto&quot;
-</code></pre>
 <h2><a class="header" href="#libraries" id="libraries">Libraries</a></h2>
+<p>The most important tooling for Atomic Data, are libraries.
+Tools that developers use to fetch, manipulate and share Atomic Data inside their applications.
+In this section, I'll create some rough API designs.</p>
 <h3><a class="header" href="#javascript--typescript" id="javascript--typescript">Javascript / Typescript</a></h3>
-<p>We need a library for fetching, storing and converting Atomic Data.</p>
-<p>Here's some pseudocode that indicates how it might function</p>
-<pre><code class="language-js">import {createStore} from '@atomic';
+<p>A JS compatible library, accessible as an NPM package is the most popular and developer friendly way to start.</p>
+<p>Here's some pseudocode that indicates how it might be used:</p>
+<pre><code class="language-js">import {createStore} from '@atomicdata';
 
 const config = {
   // A URL to a TPF compatible endpoint where the data can be fetched
@@ -572,16 +585,53 @@ const config = {
 };
 
 const store = createStore(config); // Initializes the store
-store.fetch(&quot;https://example.com/john&quot;) // Fetches the required data, in this case using the tpf endpoint
 
-const john = store.get(&quot;https://example.com/john&quot;) // Checks the store for the subject,
+// The `classInitializer` function takes an Atomic Class URI as its argument
+// fetches the Class, its Properties and the DataTypes
+// and returns a function that let's you create instances of that class
+const personBuilder = await store.classInitializer(&quot;https://example.com/classes/Person&quot;);
 
-const newPerson = store.makeA(&quot;https://example.com/classes/Person&quot;, {
-  firstName: &quot;Joep&quot;,
-  name: &quot;Meinderstsma&quot;,
+// Create an instance of the Person Class
+// An Atomic Suggestion is sent to the
+const alice = await personBuilder({
+  // The Subject field is optional, but recommended if you want to control its URL.
+  // Otherwise, the Server will pick something
+  subject: &quot;https://example.com/alice&quot;,
+  // The IDE is aware of the existing keys and their acceptable values,
+  // because a conversion from Atomic Classes and Properties
+  // to typescript interfaces can be made automatically
+  firstName: &quot;Alice&quot;,
+  lastName: &quot;Anderson&quot;,
+  bestFriend: &quot;https://example.com/Bob&quot;,
+  birthDate: new Date(&quot;1991-01-20&quot;),
+  // Since the URL in the key below can be fetched, and has a Property + Datatype, the IDE + the compiler can determine that 'true' is an acceptable type.
+  &quot;https://example.com/someOtherProperty&quot;: true,
 })
 
+console.log(person.subject) //=&gt; Should return a newly created identifier
+
+// Checks the store for the subject, and returns it.
+// If it does not exists locally, it will fetch it first using the `tpfEndpoint`.
+const alice = await store.get(&quot;https://example.com/alice&quot;)
+
+// Because of the keys in Atomic Properties, we can use this dot syntax to traverse the graph and get a value
+console.log(alice.bestFriend.firstName); // =&gt; &quot;Bob&quot;
 </code></pre>
+<p>I think a Developer Experience similar to the one above is essential for getting people to create linked data.
+It should be incredibly easy, and this is what enables that.
+However, realizing a library + IDE support as shown above is hard at the least, perhaps even impossible.
+Theoretically, the information is accessible - but I'm not sure whether the IDE and the JS context (e.g. the Typescript compiler) can successfully see which shape is being returned by the <code>classInitializer</code> function.</p>
+<h2><a class="header" href="#rust" id="rust">Rust</a></h2>
+<p>Rust's compiler has strict type checking.
+It also features a very flexible macro language, which could enable intuitive API designs for Atomic Data.
+It could fetch the Properties and Classes at compile time, and convert these to</p>
+<pre><pre class="playpen"><code class="language-rust">use atomic::{init_store}
+
+fn main() {
+  let mut graph = init_store();
+  // TODO! Design a macro solution
+}
+</code></pre></pre>
 <h1><a class="header" href="#get-involved" id="get-involved">Get involved</a></h1>
 <p>Atomic Data is an open specification, and that means that you're very welcome to share your thougts and help make this standard as good as possible.
 Drop an <a href="https://github.com/ontola/atomic-data/issues">issue on Github</a>, or join the <a href="https://discord.gg/ZspQv8">Discord server</a> for voice / text chat.</p>
@@ -633,7 +683,7 @@ Drop an <a href="https://github.com/ontola/atomic-data/issues">issue on Github</
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
                 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-                ga('create', '123456', 'auto');
+                ga('create', 'UA-121994595-2', 'auto');
                 ga('send', 'pageview');
             }
         </script>

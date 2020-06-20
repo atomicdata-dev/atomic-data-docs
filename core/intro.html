@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Concepts - Atomic Data</title>
+        <title>Atomic Data Core - Atomic Data</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html" class="active"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html" class="active"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,64 +151,40 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#atomic-data-concepts" id="atomic-data-concepts">Atomic Data: Concepts</a></h1>
-<p>The base URL for following concepts will be <code>https://atomicdata.dev/core/</code>.</p>
-<h2><a class="header" href="#atom" id="atom">Atom</a></h2>
-<p>The smallest possible piece of <em>meaningful</em> data / information.
-The model of an Atom is comparable with an RDF Triple / Statement (<a href="../interoperability/rdf.html">although there are imporant differences</a>).
-An Atom consists of three values:</p>
+                        <h1><a class="header" href="#atomic-data-core" id="atomic-data-core">Atomic Data Core</a></h1>
+<p>The Atomic Data Core describes the fundamental data model of Atomic Data.
+Before we dive into its concepts, we'll talk about why this standard is made in the first place.</p>
+<h2><a class="header" href="#design-goals" id="design-goals">Design goals</a></h2>
 <ul>
-<li><strong><a href="#Subject">Subject</a></strong>: the Thing that the atom is providing information about.</li>
-<li><strong><a href="#Predicate">Predicate</a></strong>: the property of the Thing that the atom is about.</li>
-<li><strong><a href="#Object">Object</a></strong>: the new piece of information about the Atom.</li>
+<li><strong>Typed</strong>: All Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming langauge models, such as <code>structs</code> or <code>interfaces</code> in Typescript / Rust / Go.</li>
+<li><strong>Semantic</strong>: Every data Atom and relation has a clear semantic meaning.</li>
+<li><strong>Browseable</strong>: Data should explicitly link to other pieces of data, and these links should be followable.</li>
+<li><strong>ORM-friendly</strong>: Navigate a <em>decentralized</em> graph by using dot.syntax, similar to how you navigate a JSON object in javascript.</li>
+<li><strong>Open</strong>: Free to use, open source, no strings attached.</li>
+<li><strong>Interoperable</strong>: Can easily and consitently be converted to other data formats (e.g. JSON, XML, and all RDF formats).</li>
+<li><strong>Clear Ownership</strong>: The URL of the data shows who is in control of the data</li>
+<li><strong>Extensible</strong>: Anyone can define their own data types and create Atoms with it.</li>
+<li><strong>Mergeable</strong>: Any two sets of Atoms can be merged into a sinlge graph without any merge conflicts / name collissions.</li>
 </ul>
-<p>Let's turn this sentence into Atoms:</p>
-<p><code>Arnold, who's born on the 20th of Januari 1991, has a best friend named Britta.</code></p>
-<pre><code class="language-atomic-ndjson">[&quot;https://example.com/arnold&quot; &quot;https://example.com/properties/bornAt&quot; &quot;1991-01-20&quot;]
-[&quot;https://example.com/arnold&quot; &quot;https://example.com/properties/firstName&quot; &quot;Arnold&quot;]
-[&quot;https://example.com/arnold&quot; &quot;https://example.com/properties/bestFriend&quot; &quot;https://example.com/britta&quot;]
-[&quot;https://example.com/britta&quot; &quot;https://example.com/properties/firstName&quot; &quot;Britta&quot;]
-</code></pre>
-<p>In the Atomic Data above, we have:</p>
-<ul>
-<li>four different Atoms (every line is an Atom)</li>
-<li>two different Subjects: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
-<li>three different Predicates (<code>https://example.com/properties/bornAt</code>, <code>https://example.com/properties/firstName</code>, and <code>https://example.com/properties/bestFriend</code>)</li>
-<li>four different Objects (<code>1991-0-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
-</ul>
-<h2><a class="header" href="#subject" id="subject">Subject</a></h2>
-<p>The Subject is the first part of an Atom.
-It is the identifier that the rest of the Atom is providing information about.
-It's a URL that points to the Resource.
-The creator of the Subject URL MUST make sure that
-In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject.</p>
-<h2><a class="header" href="#predicate" id="predicate">Predicate</a></h2>
-<p>The Predicate is the second part of an Atom.
-It is a URL that points to an Atomic Property.
-For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.
-The Predicate MUST be a URL, and that URL MUST resolve to an Atomic Property.</p>
-<p>When Atomic Properties correctly resolve, that's when most of the benefits of Atomic Data become real: the static types and the</p>
-<h2><a class="header" href="#object" id="object">Object</a></h2>
-<p>The Object is the third part of an Atom.
-It contains</p>
-<h2><a class="header" href="#resource" id="resource">Resource</a></h2>
-<p>A Resource is a set of Atoms that share the same Subject URL.
-Every thing is Resource, such as the person &quot;Michael Jackson&quot;, or the abstract class &quot;Person&quot;.
-All the concepts on this page are Resources.
-More specifically, they are Classes, which is a subclass of Resources.</p>
+<h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
+<p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
+Using links everywhere in data has amazing merits: links remove ambiguity, they enable exploration, they enable connected datasets.
+However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow.
+We believe this lack of growth has to do with <a href="../interoperability/rdf.html#why-these-changes">some problems that lie in the RDF data model</a>.
+Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../core/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../atomic-data-overview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../core/serialization.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../core/concepts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -220,13 +196,13 @@ More specifically, they are Classes, which is a subclass of Resources.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../core/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../atomic-data-overview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../core/serialization.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../core/concepts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -249,7 +225,7 @@ More specifically, they are Classes, which is a subclass of Resources.</p>
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
                 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-                ga('create', '123456', 'auto');
+                ga('create', 'UA-121994595-2', 'auto');
                 ga('send', 'pageview');
             }
         </script>
