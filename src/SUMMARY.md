@@ -15,6 +15,8 @@
   * [Relation to RDF](interoperability/rdf.md)
   * [Relation to JSON](interoperability/json.md)
 * [Ownership](ownership.md)
+* [Storage](storage.md)
+* [Querying](querying.md)
 * [Tooling](tooling.md)
 
 -----------

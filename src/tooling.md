@@ -21,9 +21,9 @@ atomic add john birthdate 1991-01-20
 
 ## Atomic server
 
-- Makes sure the created Atomic Resources / Properties / etc. actually resolve
-- Might offer useful query options (e.g. Triple Pattern Fragments)
-- Offers pub/sub functionality to clients that will want to re-use data
+- Respond to requests for created Atomic Resources (including Properties / DataTypes)
+- Offer useful query options (e.g. Triple Pattern Fragments)
+- Offers pub/sub functionality to clients that will want to re-use data (Mutation Feed?)
 
 ## Atomizer (data importer and conversion kit)
 
@@ -32,7 +32,7 @@ atomic add john birthdate 1991-01-20
 
 ## Language support
 
-## IDE tooling
+## IDE tooling & libraries
 
 I want to be able to do this:
 
@@ -49,3 +49,33 @@ const bestFriendsName = fetchedperson.bestFriend.firstName // => "Pluto"
 ```
 
 ## Libraries
+
+### Javascript / Typescript
+
+We need a library for fetching, storing and converting Atomic Data.
+
+Here's some pseudocode that indicates how it might function
+
+```js
+import {createStore} from '@atomic';
+
+const config = {
+  // A URL to a TPF compatible endpoint where the data can be fetched
+  tpfEndpoint: "https://example.com/tpf",
+  // A UTL to an Atomic Mutations endpoint where the client can subscribe to changes
+  mutationsEndpoint: "https://example.com/mutations",
+  // A UTL to an Atomic Suggestions endpoint where the client can send suggested state changes
+  sugestionsEndpoint: "https://example.com/suggestions",
+};
+
+const store = createStore(config); // Initializes the store
+store.fetch("https://example.com/john") // Fetches the required data, in this case using the tpf endpoint
+
+const john = store.get("https://example.com/john") // Checks the store for the subject,
+
+const newPerson = store.makeA("https://example.com/classes/Person", {
+  firstName: "Joep",
+  name: "Meinderstsma",
+})
+
+```

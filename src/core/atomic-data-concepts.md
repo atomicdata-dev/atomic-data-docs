@@ -8,9 +8,9 @@ The smallest possible piece of _meaningful_ data / information.
 The model of an Atom is comparable with an RDF Triple / Statement ([although there are imporant differences](../interoperability/rdf.md)).
 An Atom consists of three values:
 
-* [`subject`](#Subject) - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)
-* [`predicate`](#Predicate) - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)
-* [`object`](#Object) - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)
+* **[Subject](#Subject)**: the Thing that the atom is providing information about.
+* **[Predicate](#Predicate)**: the property of the Thing that the atom is about.
+* **[Object](#Object)**: the new piece of information about the Atom.
 
 Let's turn this sentence into Atoms:
 
@@ -23,25 +23,37 @@ Let's turn this sentence into Atoms:
 ["https://example.com/britta" "https://example.com/properties/firstName" "Britta"]
 ```
 
-## Resource
+In the Atomic Data above, we have:
 
-A Resource is a set of Atoms that share the same Subject URI.
-Every thing is Resource, such as the person "Michael Jackson", or the abstract class "Person".
-All the concepts on this page are Resources.
-More specifically, they are Classes, which is a subclass of Resources.
+- four different Atoms (every line is an Atom)
+- two different Subjects: `https://example.com/arnold` and `https://example.com/britta`.
+- three different Predicates (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
+- four different Objects (`1991-0-20`, `Arnold`, `https://example.com/britta` and `Britta`)
 
 ## Subject
 
-The Resource that the Atom is providing information about.
-MUST be a URI to a Resource, which SHOULD resolve and return the Resource.
+The Subject is the first part of an Atom.
+It is the identifier that the rest of the Atom is providing information about.
+It's a URL that points to the Resource.
+In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject.
 
 ## Predicate
 
-The predicate is a link that points to an Atomic Property. For example `https://example.com/createdAt` or `https://example.com/firstName`.
-The predicate MUST be a URI, and that URI MUST resolve to an Atomic Property.
+The Predicate is the second part of an Atom.
+It is a URL that points to an Atomic Property.
+For example `https://example.com/createdAt` or `https://example.com/firstName`.
+The Predicate MUST be a URL, and that URL MUST resolve to an Atomic Property.
 
 When Atomic Properties correctly resolve, that's when most of the benefits of Atomic Data become real: the static types and the
 
 ## Object
 
-A set of Atoms that describe how an object should be updated.
+The Object is the third part of an Atom.
+It contains
+
+## Resource
+
+A Resource is a set of Atoms that share the same Subject URL.
+Every thing is Resource, such as the person "Michael Jackson", or the abstract class "Person".
+All the concepts on this page are Resources.
+More specifically, they are Classes, which is a subclass of Resources.

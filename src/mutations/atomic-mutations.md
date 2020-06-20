@@ -41,6 +41,7 @@ TODO!
 ### Commit
 
 A Commit is a set of Mutations, made by some Actor
+TODO!
 
 ### Serialization / Parsing
 
