@@ -29,12 +29,14 @@ However, some of the characteristics of RDF might have contributed to its relati
 - RDF lacks a clear solution for dealing with [ordered data](https://ontola.io/blog/ordered-data-in-rdf/), resulting in confusion when developers have to create lists of content. Adding an Array data type as a base data type helps solve this.
 - There is no integrated standard for communicating state changes (although [linked-delta](https://github.com/ontola/linked-delta) and [rdf-delta](https://afs.github.io/rdf-delta/) do exist)
 - RDF allows that domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
+- RDF allows URIs for `subject` and `predicate` value, which means that they don't always have to resolve, or even function as locators. That means that the links don't work, and that restricts how useful the links are. Atomic Data takes a different approach: these links MUST Resolve. Requiring that is part of what enables the type system of Atomic Schema.
 
 Besides these technical reasons about the RDF model, I think that there are more reasons to start with a new concept and give it a new name:
 
 - The RDF documentation is intimidating for beginners. When trying to understand RDF, you're likely to traverse. All Core / Schema URLs should resolve to simple, clear explanations with both examples and machine readable definitions.
 - There is a lack of learning resources that provide a clear, complete answer to the lifecycle of RDF data: modelling data, making data, hosting it, fetching it, updating it. Atomic Data aims to provide an opinionated answer to all of these steps.
 - The Semantic Web community has had a lot of academic attention from formal logic departments, resulting in a highly developed standards for modelling knowledge modelling: the Web Ontology Language (OWL). While this is mostly great, its open-world philosophy and focus on reasoning abilities confuses developers who are simply looking for a simple way to share models in RDF.
+<!-- - Re-using predicate URIs in new contexts can be result in unclear descriptions, since the meaning of predicates can be very class-dependent. For examle, a `name` for a Person means something else than a `name` for a  -->
 
 ## Convert Atomic data to RDF
 
@@ -42,12 +44,7 @@ Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Ato
 
 - In conversion to RDF, convert `langstring` objects to Literals with an `xsd:string` datatype
 
-
 ## Convert RDF to Atomic Data
 
 - All `predicates` SHOULD resolve to Atomic Properties, and these SHOULD have a `datatype`. This means that the `datatype` in the original RDF statement can be dropped.
 - Literals with a `language` tag are converted to the `atomic:langstring` type. TODO! How to fis
-
-## FAQ
-
-###

@@ -1,8 +1,12 @@
 # Atomic Data: Concepts
 
-The base URL for following concepts will be `https://atomicdata.dev/core/`.
+## Atomic Data
 
-## Atom
+Atomic Data is a data format for representing information on the web.
+Similar to RDF, it is a directed, labeled graph.
+It can be used to express any type of information, inlcuding personal data, vocabularies, metadata, documents, files and more.
+
+## Atom (or Atomic Triple)
 
 The smallest possible piece of _meaningful_ data / information.
 The model of an Atom is comparable with an RDF Triple / Statement ([although there are imporant differences](../interoperability/rdf.md)).
@@ -32,29 +36,32 @@ In the Atomic Data above, we have:
 
 ## Subject
 
-The Subject is the first part of an Atom.
+The Subject (or Atomic Subject) is the first part of an Atom.
 It is the identifier that the rest of the Atom is providing information about.
 It's a URL that points to the Resource.
-The creator of the Subject URL MUST make sure that
-In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject.
+The creator of the Subject MUST make sure that it resolves).
+In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see [Atomic Querying](querying.md).
 
 ## Predicate
 
-The Predicate is the second part of an Atom.
+The Predicate (or Atomic Predicate) is the second part of an Atom.
 It is a URL that points to an Atomic Property.
 For example `https://example.com/createdAt` or `https://example.com/firstName`.
 The Predicate MUST be a URL, and that URL MUST resolve to an Atomic Property.
 
-When Atomic Properties correctly resolve, that's when most of the benefits of Atomic Data become real: the static types and the
-
 ## Object
 
-The Object is the third part of an Atom.
-It contains
+The Object (or Atomic Object) is the third part of an Atom.
+Contrary to the Subject and Predicate values, the Object can be of any datatype.
+This includes URLs, strings, integers, dates and more.
+
+## Graph
+
+A Graph is a set of Atoms.
+A Graph can describe various subjects, and may or may not be related.
 
 ## Resource
 
-A Resource is a set of Atoms that share the same Subject URL.
+A Resource is a set of Atoms (a Graph) that share the same Subject URL.
 Every thing is Resource, such as the person "Michael Jackson", or the abstract class "Person".
 All the concepts on this page are Resources.
-More specifically, they are Classes, which is a subclass of Resources.

@@ -11,7 +11,7 @@
   * [Base Datatypes](schema/base.md)
   * [FAQ](schema/faq.md)
 * [Atomic Mutations](mutations/intro.md)
-  * [Suggestions](mutations/suggestions.md)
+  * [Atomic Suggestions](mutations/suggestions.md)
 * [Interoperability](interoperability/intro.md)
   * [Relation to RDF](interoperability/rdf.md)
   * [Relation to JSON](interoperability/json.md)

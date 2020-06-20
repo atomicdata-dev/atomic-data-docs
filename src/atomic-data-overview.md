@@ -11,4 +11,4 @@ You can use parts of Atomic Data seperately, but the standard is designed as a f
 
 - [Atomic Data Core](core/intro.md): the core model for typed, linked data
 - [Atomic Schema](schema/intro.md): defining properties, datatypes and classes
-- [Atomic Mutations](mutations/intro.md): sharing state changes
+- [Atomic Mutations](mutations/intro.md): sharing state changes, verifying changes and collaboration

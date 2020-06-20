@@ -9,14 +9,14 @@ There are multiple ways of getting Atomic Data into some system:
 ## Subject fetching (HTTP)
 
 The simplest way of getting Atomic Data, is by sending an HTTP GET request to the subject URL.
-Set the correct `Content-Type` header to make sure you
+Set the `Content-Type` header to an Atomic Data compatible mime type, such as `application/atomic+x-ndjson`.
 
 ```HTTP
 GET https://example.com/myResource HTTP/1.1
 Content-Type: application/atomic+x-ndjson
 ```
 
-The server should respond with a set of Atoms:
+The server should respond with all the Atoms of which the requested URL is the subject:
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -26,8 +26,32 @@ Connection: Closed
 ["https://example.com/myResource","https://example.com/properties/name","My awesome resource!"]
 ```
 
-The example above sets the `Content-Type` field to the Atomic NDJSON mime type.
-
 ## Triple Pattern Fragments
 
+[Triple Pattern Fragments](https://linkeddatafragments.org/specification/triple-pattern-fragments/) is an interface for querying linked data.
+It works great for Atomic Data as well.
+
+An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:
+
+`http://example.org/tpf?subject={subject}&predicate={predicate}&object={object}`
+
+Make sure to URL encode the `subject`, `predicate`, `object` strings.
+
+For example, let's search for all Atoms where the object is `test`.
+
+```HTTP
+GET https://example.com/tpf?object="test" HTTP/1.1
+Content-Type: application/atomic+x-ndjson
+```
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/atomic+x-ndjson
+Connection: Closed
+
+["https://example.com/myResource","https://example.com/properties/name","test"]
+```
+
 ## SPAQRL
+
+[SPARQL](https://www.w3.org/TR/rdf-sparql-query/) is a powerful RDF query language.

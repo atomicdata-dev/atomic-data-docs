@@ -1,11 +1,10 @@
-
 # Atomic Mutations: Concepts
 
 ## Mutation
 
 The smallest possible piece of a state change.
-Comparable with an RDF Triple / Statement.
-An Atom consists of a:
+A mutation describes how an Resource should be updated.
+An Atomic Mutation consists of a:
 
 - `subject` - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)
 - `predicate` - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)
@@ -13,6 +12,8 @@ An Atom consists of a:
 - `method` - How the resource needs to be updated using the Atom. If empty, just replace the current state.
 - `hash` - The hash of the updated state of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in
 - `date` - A timestamp of when the mutation was created.
+<!-- Should it have an actor?  -->
+- `actor` - A timestamp of when the mutation was created.
 
 ## Ledger
 
@@ -26,9 +27,16 @@ A Commit is a set of Mutations, made by some Actor
 
 TODO!
 
-## Serialization / Parsing
+## Serialization with AtomicMutations-ndjson
 
-Work in progress, see [HexTuples](https://github.com/ontola/hextuples) and [linked-delta](https://github.com/ontola/linked-delta).
+Altough Mutations can be communicated with
+
+Work in progress, see [linked-delta](https://github.com/ontola/linked-delta).
+
+
+
+```ndjson
+```
 
 ## Streaming (pub/sub)
 

@@ -1,8 +1,10 @@
 # Atomic Schema: Concepts
 
+When Properties are listed, their identifier should be prepended with: `https://atomicdata.dev/properties/`.
+
 ## Class
 
-_uri: `https://atomicdata.dev/classes/Class`_
+_URL: `https://atomicdata.dev/classes/Class`_
 
 A Class is an abstract type of Resource, such as `Person`.
 It is convention to use an Uppercase in its URI.
@@ -10,7 +12,7 @@ A Resource can have zero to many Classes, so this might be different from most d
 
 Properties:
 
-- `key` - (required, Slug)
+- `key` - (required, Slug) a short string that makes it easy to find this Class from a comma
 - `description` - (required, langstring) human readable explanation of what the Class represents.
 - `requiredProperties` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.
 - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed.
@@ -25,14 +27,15 @@ Example:
 
 ## Property
 
-_uri: `https://atomicdata.dev/classes/Class`_
+_URL: `https://atomicdata.dev/classes/Class`_
 
 A Property is an abstract type of Resource that describes the relation between a subject and an object.
 
 Properties:
 
 - `key` - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.
-- `datatype` - (required, Datatype) a URI to an Atomic Datatype
+- `datatype` - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Object in an Atom where the Predicate is the
+- `classtype` - (optional, Class) if the `datatype` is an Atomic URI, the `classtype` defines which class(es?) is (are?) acceptable.
 - `description` - (required) the semantic meaning of the (langstring).
 
 ```turtle
@@ -42,7 +45,7 @@ Properties:
 
 ## Datatype
 
-_uri: `https://atomicdata.dev/classes/Datatype`_
+_URL: `https://atomicdata.dev/classes/Datatype`_
 
 A Datatype specifies how the the property should be interpreted.
 
