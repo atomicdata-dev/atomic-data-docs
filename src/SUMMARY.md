@@ -5,7 +5,7 @@
   * [Concepts](core/concepts.md)
   * [Serialization](core/serialization.md)
   * [Querying](core/querying.md)
-  * [Storage](storage.md)
+  * [Storage](core/storage.md)
 * [Atomic Schema](schema/intro.md)
   * [Concepts](schema/concepts.md)
   * [Base Datatypes](schema/base.md)
