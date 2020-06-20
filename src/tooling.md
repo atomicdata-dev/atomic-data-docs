@@ -1,8 +1,8 @@
 # Tooling for Atomic Data
 
 At this moment, no real tooling for Atomic Data exists.
-However, basic tooling is required to make this a succes.
-The following list is a set of ideas that we're working on.
+Great tooling is required to make this a succes.
+The following list is a set of ideas that we're likely to be working on.
 
 ## Atomic creator (CLI)
 
@@ -30,34 +30,20 @@ atomic add john birthdate 1991-01-20
 - Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms
 - Perhaps a CLI, library, GUI or a combination of all of these
 
-## Language support
-
-## IDE tooling & libraries
-
-I want to be able to do this:
-
-```js
-import atomicfetch from '@atomic/fetch';
-
-const resource = "https://example.com/person/mickey";
-const class = "https://example.com/classes/Person";
-
-const fetchedperson = atomicfetch(resource, class)
-
-// IDE tooling is aware that the "example:Person" class requires a "bestFriend" property, which is another "Person", which has a "firstName".
-const bestFriendsName = fetchedperson.bestFriend.firstName // => "Pluto"
-```
-
 ## Libraries
+
+The most important tooling for Atomic Data, are libraries.
+Tools that developers use to fetch, manipulate and share Atomic Data inside their applications.
+In this section, I'll create some rough API designs.
 
 ### Javascript / Typescript
 
-We need a library for fetching, storing and converting Atomic Data.
+A JS compatible library, accessible as an NPM package is the most popular and developer friendly way to start.
 
-Here's some pseudocode that indicates how it might function
+Here's some pseudocode that indicates how it might be used:
 
 ```js
-import {createStore} from '@atomic';
+import {createStore} from '@atomicdata';
 
 const config = {
   // A URL to a TPF compatible endpoint where the data can be fetched
@@ -69,13 +55,54 @@ const config = {
 };
 
 const store = createStore(config); // Initializes the store
-store.fetch("https://example.com/john") // Fetches the required data, in this case using the tpf endpoint
 
-const john = store.get("https://example.com/john") // Checks the store for the subject,
+// The `classInitializer` function takes an Atomic Class URI as its argument
+// fetches the Class, its Properties and the DataTypes
+// and returns a function that let's you create instances of that class
+const personBuilder = await store.classInitializer("https://example.com/classes/Person");
 
-const newPerson = store.makeA("https://example.com/classes/Person", {
-  firstName: "Joep",
-  name: "Meinderstsma",
+// Create an instance of the Person Class
+// An Atomic Suggestion is sent to the
+const alice = await personBuilder({
+  // The Subject field is optional, but recommended if you want to control its URL.
+  // Otherwise, the Server will pick something
+  subject: "https://example.com/alice",
+  // The IDE is aware of the existing keys and their acceptable values,
+  // because a conversion from Atomic Classes and Properties
+  // to typescript interfaces can be made automatically
+  firstName: "Alice",
+  lastName: "Anderson",
+  bestFriend: "https://example.com/Bob",
+  birthDate: new Date("1991-01-20"),
+  // Since the URL in the key below can be fetched, and has a Property + Datatype, the IDE + the compiler can determine that 'true' is an acceptable type.
+  "https://example.com/someOtherProperty": true,
 })
 
+console.log(person.subject) //=> Should return a newly created identifier
+
+// Checks the store for the subject, and returns it.
+// If it does not exists locally, it will fetch it first using the `tpfEndpoint`.
+const alice = await store.get("https://example.com/alice")
+
+// Because of the keys in Atomic Properties, we can use this dot syntax to traverse the graph and get a value
+console.log(alice.bestFriend.firstName); // => "Bob"
+```
+
+I think a Developer Experience similar to the one above is essential for getting people to create linked data.
+It should be incredibly easy, and this is what enables that.
+However, realizing a library + IDE support as shown above is hard at the least, perhaps even impossible.
+Theoretically, the information is accessible - but I'm not sure whether the IDE and the JS context (e.g. the Typescript compiler) can successfully see which shape is being returned by the `classInitializer` function.
+
+## Rust
+
+Rust's compiler has strict type checking.
+It also features a very flexible macro language, which could enable intuitive API designs for Atomic Data.
+It could fetch the Properties and Classes at compile time, and convert these to
+
+```rust
+use atomic::{init_store}
+
+fn main() {
+  let mut graph = init_store();
+}
 ```
