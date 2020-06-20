@@ -1,7 +1,5 @@
 # Atomic Schema: Concepts
 
-When Properties are listed, their identifier should be prepended with: `https://atomicdata.dev/properties/`.
-
 ## Class
 
 _URL: `https://atomicdata.dev/classes/Class`_
