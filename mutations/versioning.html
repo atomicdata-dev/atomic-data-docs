@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Querying - Atomic Data</title>
+        <title>Versioning - Atomic Data</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html" class="active"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html"><strong aria-hidden="true">4.2.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/storage.html"><strong aria-hidden="true">2.4.</strong> Storage</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.1.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html" class="active"><strong aria-hidden="true">4.2.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">6.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,61 +151,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#querying-atomic-data" id="querying-atomic-data">Querying Atomic Data</a></h1>
-<p>There are multiple ways of getting Atomic Data into some system:</p>
+                        <h1><a class="header" href="#versioning" id="versioning">Versioning</a></h1>
+<p>When Atomic Mutations are applied to some Resource, the resource will change.
+However, its identifier (the Subject) will often remain the same.</p>
 <ul>
-<li>Subject Fetching requests a single subject right from its source</li>
-<li>Triple Pattern Fragments allows querying for specific (combinations of) Subject, Predicate and Object values.</li>
-<li>SRARQL is a powerful Query language for traversing graphs</li>
+<li>Versioned representations should provide a link to the authority that might update it, and a link to where the latest version can be found.</li>
+<li>The latest version should have a link to its permanent verison.</li>
+<li>Should <a href="../interoperability/ipfs.html">IPFS</a> content-hash URLs be used for Versioned resources?</li>
 </ul>
-<h2><a class="header" href="#subject-fetching-http" id="subject-fetching-http">Subject fetching (HTTP)</a></h2>
-<p>The simplest way of getting Atomic Data, is by sending an HTTP GET request to the subject URL.
-Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/atomic+x-ndjson</code>.</p>
-<pre><code class="language-HTTP">GET https://example.com/myResource HTTP/1.1
-Content-Type: application/atomic+x-ndjson
-</code></pre>
-<p>The server should respond with all the Atoms of which the requested URL is the subject:</p>
-<pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: application/atomic+x-ndjson
-Connection: Closed
-
-[&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;My awesome resource!&quot;]
-</code></pre>
-<h2><a class="header" href="#triple-pattern-fragments" id="triple-pattern-fragments">Triple Pattern Fragments</a></h2>
-<p><a href="https://linkeddatafragments.org/specification/triple-pattern-fragments/">Triple Pattern Fragments</a> is an interface for querying RDF.
-It works great for Atomic Data as well.</p>
-<p>An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:</p>
-<p><code>http://example.org/tpf?subject={subject}&amp;predicate={predicate}&amp;object={object}</code></p>
-<p>Make sure to URL encode the <code>subject</code>, <code>predicate</code>, <code>object</code> strings.</p>
-<p>For example, let's search for all Atoms where the object is <code>test</code>.</p>
-<pre><code class="language-HTTP">GET https://example.com/tpf?object=&quot;test&quot; HTTP/1.1
-Content-Type: application/atomic+x-ndjson
-</code></pre>
-<pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: application/atomic+x-ndjson
-Connection: Closed
-
-[&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;test&quot;]
-</code></pre>
-<h2><a class="header" href="#bulk-api" id="bulk-api">Bulk API</a></h2>
-<p><a href="https://github.com/ontola/bulk-api">Bulk-API</a> is an (currently still closed) in-development specification for asking for multiple Subjects in one request.
-This is especially useful in browser clients that traverse the graph iteratively, and HTTP/2 is not an option.</p>
-<h2><a class="header" href="#spaqrl" id="spaqrl">SPAQRL</a></h2>
-<p><a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> is a powerful RDF query language.
-Since all Atomic Data is also valid RDF, it is possible to query Atomic Data using SPARQL.</p>
+<h2><a class="header" href="#hashing" id="hashing">Hashing</a></h2>
+<ul>
+<li>Serialize all Atoms of the Subject (the entire Resource) as Atomic-NDJSON</li>
+<li>Sort all lines (every atom) alphabetically</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../core/serialization.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../mutations/suggestions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../core/storage.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../interoperability/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -217,13 +188,13 @@ Since all Atomic Data is also valid RDF, it is possible to query Atomic Data usi
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../core/serialization.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../mutations/suggestions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../core/storage.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../interoperability/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
