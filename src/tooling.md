@@ -4,6 +4,13 @@ At this moment, no real tooling for Atomic Data exists.
 Great tooling is required to make this a succes.
 The following list is a set of ideas that we're likely to be working on.
 
+## Atomic Validator
+
+Takes some Graph as an input, and validates its contents.
+Could be useful for many purposes, and should be one of the first things to become available.
+Not only should this parse Atomic-NDJSON, it should also make sure the URLs resolve and the DataTypes resolve.
+Perhaps it should also return if non-standard Datatypes are being used, and if so, which ones.
+
 ## Atomic creator (CLI)
 
 A CLI tool for generating Atomic Data.
@@ -13,7 +20,8 @@ Should produce Atomic Mutations.
 # Create an atom
 # atomic <method> <subject> <predicate> <object>
 atomic add john birthdate 1991-01-20
-# It's possible to use these prefixes instead of full URLs, as long as they are defined in a local file (e.g. ~/.ldget/prefixes)
+# It's possible to use these keys instead of full URLs, as long as they are known locally,
+# either in a local Atomic store a local prefixes file (e.g. ~/.ldget/prefixes)
 # If the predicate is not used before, the CLI will ask for the required attributes (datatype, description) and create the Property
 # The object will be parsed accordingly. If it does not meet the requirements, it wll not create the Atom.
 # If everything is well, an Atomic Mutation will be sent to the Atomic Server
@@ -21,9 +29,10 @@ atomic add john birthdate 1991-01-20
 
 ## Atomic server
 
-- Respond to requests for created Atomic Resources (including Properties / DataTypes)
+- Makes a graph available at some endpoint.
+- Responds to requests for created Atomic Resources (including Properties / DataTypes)
 - Offer useful query options (e.g. Triple Pattern Fragments)
-- Offers pub/sub functionality to clients that will want to re-use data (Mutation Feed?)
+- Offers pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)
 
 ## Atomizer (data importer and conversion kit)
 
@@ -36,7 +45,7 @@ The most important tooling for Atomic Data, are libraries.
 Tools that developers use to fetch, manipulate and share Atomic Data inside their applications.
 In this section, I'll create some rough API designs.
 
-### Javascript / Typescript
+### Atomic-js (Javascript / Typescript)
 
 A JS compatible library, accessible as an NPM package is the most popular and developer friendly way to start.
 
@@ -93,7 +102,7 @@ It should be incredibly easy, and this is what enables that.
 However, realizing a library + IDE support as shown above is hard at the least, perhaps even impossible.
 Theoretically, the information is accessible - but I'm not sure whether the IDE and the JS context (e.g. the Typescript compiler) can successfully see which shape is being returned by the `classInitializer` function.
 
-## Rust
+### Atomic-rs
 
 Rust's compiler has strict type checking.
 It also features a very flexible macro language, which could enable intuitive API designs for Atomic Data.
@@ -105,5 +114,10 @@ use atomic::{init_store}
 fn main() {
   let mut graph = init_store();
   // TODO! Design a macro solution
+
 }
 ```
+
+## Atomic Browsser
+
+A web-browser application that enables viewing, browsing, navigating Atomic Data.

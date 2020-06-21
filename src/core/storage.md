@@ -32,3 +32,6 @@ Now, since we've introduced yet another Property, we need to include that one as
 ["https://example.com/birthDate","https://atomicdata.dev/datatypes/Datatype","https://atomicdata.dev/datatypes/dateTime"]
 ["https://atomicdata.dev/datatypes/Datatype","https://atomicdata.dev/datatypes/Datatype","https://atomicdata.dev/datatypes/atomicURI"]
 ```
+
+Since all valid Atomic Data requires predicates to resolve to Atomic Properties, which are required to have an associated DataType...
+We can safely say that the last atom in the example above (the one describing `https://atomicdata.dev/datatypes/Datatype`) will have to be present in all Schema Complete Atomic Graphs.

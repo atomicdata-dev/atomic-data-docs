@@ -1,6 +1,6 @@
 # Atomic Schema: Base Datatypes
 
-The Atomic Base Datatypes consist of some of the most commonly used datatypes.
+The Atomic Base Datatypes consist of some of the most commonly used [Datatypes](concepts.md#Datatype).
 
 ## Slug
 
@@ -12,7 +12,7 @@ A string with a limited set of allowed characters, used in IDE / Text editor con
 
 _URL: `https://atomicdata.dev/datatypes/atomicURI`_
 
-A URL that should resolve to an Atomic Resource.
+A URL that should resolve to an [Atomic Resource](../core/concepts.md#Resource).
 
 ## URI
 

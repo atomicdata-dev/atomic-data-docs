@@ -25,7 +25,7 @@ NDJSON has some important benefits:
 
 Mime type (not registered yet!): `application/atomic+x-ndjson; charset=utf-8`
 
-File name extention:
+File name extention: `.atm`
 
 Disclaimer: note that Atomic-NDJSON is useful for communicating _current state_, but not for _state changes_.
 

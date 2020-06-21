@@ -28,7 +28,7 @@ Connection: Closed
 
 ## Triple Pattern Fragments
 
-[Triple Pattern Fragments](https://linkeddatafragments.org/specification/triple-pattern-fragments/) is an interface for querying linked data.
+[Triple Pattern Fragments](https://linkeddatafragments.org/specification/triple-pattern-fragments/) is an interface for querying RDF.
 It works great for Atomic Data as well.
 
 An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:
@@ -52,6 +52,12 @@ Connection: Closed
 ["https://example.com/myResource","https://example.com/properties/name","test"]
 ```
 
+## Bulk API
+
+[Bulk-API](https://github.com/ontola/bulk-api) is an (currently still closed) in-development specification for asking for multiple Subjects in one request.
+This is especially useful in browser clients that traverse the graph iteratively, and HTTP/2 is not an option.
+
 ## SPAQRL
 
 [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) is a powerful RDF query language.
+Since all Atomic Data is also valid RDF, it is possible to query Atomic Data using SPARQL.
