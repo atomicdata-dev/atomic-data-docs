@@ -11,6 +11,7 @@
   * [Base Datatypes](schema/base.md)
   * [FAQ](schema/faq.md)
 * [Atomic Mutations](mutations/intro.md)
+  * [Concepts](mutations/concepts.md)
   * [Suggestions](mutations/suggestions.md)
   * [Versioning](mutations/versioning.md)
 * [Interoperability](interoperability/intro.md)
