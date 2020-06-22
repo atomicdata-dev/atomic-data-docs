@@ -1,5 +1,11 @@
 # How does Atomic Data relate to JSON?
 
+## From Atomic Data to JSON
+
+
+
+## From JSON to Atomic Data
+
 Atomic Data requires a bit more information about pieces of data than JSON tends to contain. Let's take a look at an example:
 
 ```json

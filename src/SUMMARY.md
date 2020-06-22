@@ -5,7 +5,6 @@
   * [Concepts](core/concepts.md)
   * [Serialization](core/serialization.md)
   * [Querying](core/querying.md)
-  * [Storage](core/storage.md)
 * [Atomic Schema](schema/intro.md)
   * [Concepts](schema/concepts.md)
   * [Base Datatypes](schema/base.md)
@@ -18,6 +17,7 @@
   * [Relation to IPFS](interoperability/ipfs.md)
   * [Relation to RDF](interoperability/rdf.md)
   * [Relation to JSON](interoperability/json.md)
+* [Types of Atomic Graphs](core/graphs.md)
 * [Tooling](tooling.md)
 
 -----------

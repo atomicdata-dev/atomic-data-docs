@@ -1,10 +1,13 @@
-# Atomic Data: Concepts
+# Atomic Data Core: Concepts
+
+Understanding the Core concepts of Atomic Data are fundamental for reading the rest of the documentation.
 
 ## Atomic Data
 
 Atomic Data is a data format for representing information on the web.
-Similar to RDF, it is a directed, labeled graph.
+It is a directed, labeled graph, similar to RDF.
 It can be used to express any type of information, inlcuding personal data, vocabularies, metadata, documents, files and more.
+Contrary to some other (labeled) graph data models, a relationship between two items (Resources) does not have attributes.
 
 ## Atom (or Atomic Triple)
 
@@ -20,11 +23,11 @@ Let's turn this sentence into Atoms:
 
 `Arnold, who's born on the 20th of Januari 1991, has a best friend named Britta.`
 
-```atomic-ndjson
-["https://example.com/arnold" "https://example.com/properties/bornAt" "1991-01-20"]
-["https://example.com/arnold" "https://example.com/properties/firstName" "Arnold"]
-["https://example.com/arnold" "https://example.com/properties/bestFriend" "https://example.com/britta"]
-["https://example.com/britta" "https://example.com/properties/firstName" "Britta"]
+```ad3
+["https://example.com/arnold","https://example.com/properties/bornAt","1991-01-20"]
+["https://example.com/arnold","https://example.com/properties/firstName","Arnold"]
+["https://example.com/arnold","https://example.com/properties/bestFriend","https://example.com/britta"]
+["https://example.com/britta","https://example.com/properties/firstName","Britta"]
 ```
 
 In the Atomic Data above, we have:
@@ -39,7 +42,7 @@ In the Atomic Data above, we have:
 The Subject (or Atomic Subject) is the first part of an Atom.
 It is the identifier that the rest of the Atom is providing information about.
 It's a URL that points to the Resource.
-The creator of the Subject MUST make sure that it resolves).
+The creator of the Subject MUST make sure that it resolves.
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see [Atomic Querying](querying.md).
 
 ## Predicate
@@ -47,6 +50,7 @@ In other words: following / downloading the Subject link will provide you with a
 The Predicate (or Atomic Predicate) is the second part of an Atom.
 It is a URL that points to an Atomic Property.
 For example `https://example.com/createdAt` or `https://example.com/firstName`.
+<!-- Making this a requirement is what makes Atomic Data typed and semantic -->
 The Predicate MUST be a URL, and that URL MUST resolve to an Atomic Property.
 
 ## Object
@@ -59,6 +63,7 @@ This includes URLs, strings, integers, dates and more.
 
 A Graph is a set of Atoms.
 A Graph can describe various subjects, and may or may not be related.
+Graphs can have several characteristics (Schema Complete, Valid, Closed)
 
 ## Resource
 

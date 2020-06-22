@@ -5,7 +5,7 @@ Before we dive into its concepts, we'll talk about why this standard is made in 
 
 ## Design goals
 
-* **Typed**: All Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming langauge models, such as `structs` or `interfaces` in Typescript / Rust / Go.
+* **Typed**: All valid Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming langauge models, such as `structs` or `interfaces` in Typescript / Rust / Go.
 * **Semantic**: Every data Atom and relation has a clear semantic meaning.
 * **Browseable**: Data should explicitly link to other pieces of data, and these links should be followable.
 * **ORM-friendly**: Navigate a _decentralized_ graph by using dot.syntax, similar to how you navigate a JSON object in javascript.

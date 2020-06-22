@@ -31,7 +31,7 @@ Should not contain language specific data, use a `langstring` instead.
 
 e.g. `String time! \n Second line!`
 
-## Multilingual String (langstring)
+## Langstring
 
 _URL: `https://atomicdata.dev/datatypes/langstring`_
 
@@ -105,3 +105,5 @@ Serialized as a JSON array with strings.
 Note that other types of arrays are not included in this spec, but can be perfectly valid.
 
 - e.g. `["https://example.com/1", "https://example.com/1"]`
+
+##

@@ -2,9 +2,9 @@
 
 Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
-We recommend you use `Atomic-NDJSON`, which is specifically designed to be a simple, performant format for Atomic Data.
+We recommend you use `AtomicTriples`, which is specifically designed to be a simple, performant format for Atomic Data.
 
-## Atomic-NDJSON
+## AtomicTriples-ndjson (.ad3)
 
 Since the data model of Atomic Data is a bit simpler than RDF, serialization and parsing can be simpler as well.
 In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Predicate and Object.
@@ -23,11 +23,23 @@ NDJSON has some important benefits:
 - NDJSON parsers are everywhere
 - Modern browers have highly performant (ND)JSON parsing, which means that it's _fast_ in one of the most imporant contexts: the browser.
 
-Mime type (not registered yet!): `application/atomic+x-ndjson; charset=utf-8`
-
-File name extention: `.atm`
+- _Mime type (not registered yet!): `application/ad3+x-ndjson; charset=utf-8`_
+- _File name extention: `.ad3`_
 
 Disclaimer: note that Atomic-NDJSON is useful for communicating _current state_, but not for _state changes_.
+
+## AtomicDoubles-ndjson (.ad2)
+
+AtomicDoubles is similar to Atomic3, with one exception: the subject is left out.
+This is especially useful for creating data where the subject URL is not yet known, for example if you want to create an IPFS or let the server decide create some identifer.
+
+```ndjson
+["https://example.com/predicate","some object"]
+["https://example.com/otherProperty","https://example.com/somethingelse"]
+```
+
+- _Mime type (not registered yet!): `application/ad2+x-ndjson; charset=utf-8`_
+- _File name extention: `.ad2`_
 
 ## RDF serializatinon formats
 

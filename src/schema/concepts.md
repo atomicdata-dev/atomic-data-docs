@@ -17,7 +17,7 @@ A Property provides some semantic information about the relationship (in its `de
 Properties:
 
 - `key` - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.
-- `description` - (required) the semantic meaning of the (langstring).
+- `description` - (optional, [Langstring](base.md#Langstring)) the semantic meaning of the.
 - `datatype` - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Object in an Atom where the Predicate is the
 - `classtype` - (optional, Class) if the `datatype` is an Atomic URI, the `classtype` defines which class(es?) is (are?) acceptable.
 
@@ -50,11 +50,12 @@ Properties:
 
 - `key` - (required, Slug) a short string shorthand.
 - `description` - (required, langstring) human readable explanation of what the Class represents.
-- `requiredProperties` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.
+- `requires` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.
+- `recommends` - (optional, ResourceArray) a list of Properties that are recommended.
 <!-- Maybe remove this next one? -->
-- `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed.
+<!-- - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed. -->
 <!-- What are the consequences of this? How to deal with this field if there are more classes in a Subject? -->
-- `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required.
+<!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
 
 Example:
 
@@ -62,3 +63,7 @@ Example:
 ["https://example.com/classes/Person","https://atomicdata.dev/properties/isA","Class"]
 ["https://example.com/classes/Person","https://atomicdata.dev/properties/datatype","https://atomicdata.dev/datatypes/datetime"]
 ```
+
+Incoming Properties:
+
+- `hasClass` - A property that any resource

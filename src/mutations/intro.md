@@ -7,7 +7,7 @@ _Disclaimer: This part of the draft spec lacks even more clarity than the others
 
 ## Design goals
 
-- **Event sourced**: State changes are standardized just as the current state. This enables versioning, history playback, undo, audit controls...
+- **Event sourced**: Store State changes, as well as the current state. This enables versioning, history playback, undo, audit controls, and more.
 - **Traceable origin**: Every state change should be traceable to an actor and a point in time.
 - **Verifiable**: Have cryptographic proof for every state change.
 - **Decentralized**: Can be used in P2P networks to send mutations from device to device.

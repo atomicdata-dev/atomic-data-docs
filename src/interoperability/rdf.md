@@ -35,7 +35,7 @@ Besides these technical reasons about the RDF model, I think that there are more
 
 - The RDF documentation is intimidating for beginners. When trying to understand RDF, you're likely to traverse. All Core / Schema URLs should resolve to simple, clear explanations with both examples and machine readable definitions.
 - There is a lack of learning resources that provide a clear, complete answer to the lifecycle of RDF data: modelling data, making data, hosting it, fetching it, updating it. Atomic Data aims to provide an opinionated answer to all of these steps.
-- The Semantic Web community has had a lot of academic attention from formal logic departments, resulting in a highly developed standards for modelling knowledge modelling: the Web Ontology Language (OWL). While this is mostly great, its open-world philosophy and focus on reasoning abilities confuses developers who are simply looking for a simple way to share models in RDF.
+- The Semantic Web community has had a lot of academic attention from formal logic departments, resulting in a highly developed standard for knowledge modelling: the Web Ontology Language (OWL). While this is mostly great, its open-world philosophy and focus on reasoning abilities can confuse developers who are simply looking for a simple way to share models in RDF.
 <!-- - Re-using predicate URIs in new contexts can be result in unclear descriptions, since the meaning of predicates can be very class-dependent. For examle, a `name` for a Person means something else than a `name` for a  -->
 
 ## Convert Atomic data to RDF

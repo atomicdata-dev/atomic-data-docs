@@ -1,13 +1,19 @@
 # Atomic Ownership
 
-Any Atomic Resource has a subject, and that subject will be a URI.
-That URI tells you something about who's in control of the data.
-Resolving that URI will link to the resource itself and show you the latest state.
-However, this works differently on different
+## Owner
+
+TODO! Define owner.
 
 ## Using HTTP(S)
 
+Any Atomic Resource has a Subject, and that Subject will be a URL.
+Resolving that URL will link to the resource itself and show you the latest state.
 HTTP URLs already show you who's in control, because the domain name points you there.
+
+## Using IPFS
+
+Since IPFS uses content-based addressing, the URL will always change when the content changes.
+This means that we need some other system of showing where the
 
 ## Using DID
 
