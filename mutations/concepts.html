@@ -161,7 +161,7 @@ An Atomic Mutation consists of a:</p>
 <li><code>predicate</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
 <li><code>object</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)</li>
 <li><code>method</code> - How the resource needs to be updated using the Atom. If empty, just replace the current state.</li>
-<li><code>hash</code> - The hash of the updated state of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in</li>
+<li><code>hash</code> - The <a href="versioning.html#Hashing">IPFS URL</a> of the updated version of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in</li>
 <li><code>date</code> - A timestamp of when the mutation was created.</li>
 </ul>
 <!-- Should it have an actor?  -->
@@ -177,7 +177,8 @@ An Atomic Mutation consists of a:</p>
 <h2><a class="header" href="#serialization-with-atomicmutations-ndjson" id="serialization-with-atomicmutations-ndjson">Serialization with AtomicMutations-ndjson</a></h2>
 <p>Altough Mutations can be communicated with</p>
 <p>Work in progress, see <a href="https://github.com/ontola/linked-delta">linked-delta</a>.</p>
-<pre><code class="language-ndjson"></code></pre>
+<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;, &quot;https://example.com/properties/lastName&quot;, &quot;Mc'Lovin&quot;, &quot;https://purl.org/linked-delta/add&quot;, &quot;AEF1245612F3&quot;]
+</code></pre>
 <h2><a class="header" href="#streaming-pubsub" id="streaming-pubsub">Streaming (pub/sub)</a></h2>
 <p>We're using HexTuples-NDJSON, since that allows for streaming parsing of mutations.</p>
 <p>TODO! Something about endpoints / protocol for pub/sub.</p>

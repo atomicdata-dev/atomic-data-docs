@@ -186,7 +186,11 @@ In fact, a single Atom can be represented by an array of three strings, respecti
 <p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
 <h2><a class="header" href="#atomicdoubles-ndjson-ad2" id="atomicdoubles-ndjson-ad2">AtomicDoubles-ndjson (.ad2)</a></h2>
 <p>AtomicDoubles is similar to Atomic3, with one exception: the subject is left out.
-This is especially useful for creating data where the subject URL is not yet known, for example if you want to create an IPFS or let the server decide create some identifer.</p>
+This is useful in at least two scenarios:</p>
+<ul>
+<li>The Subject is not yet known (for example, because it still has to be determined by some server or hash function).</li>
+<li>The Subject is already known by the client, and leaving it out saves data.</li>
+</ul>
 <pre><code class="language-ndjson">[&quot;https://example.com/predicate&quot;,&quot;some object&quot;]
 [&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>

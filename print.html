@@ -276,7 +276,11 @@ In fact, a single Atom can be represented by an array of three strings, respecti
 <p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
 <h2><a class="header" href="#atomicdoubles-ndjson-ad2" id="atomicdoubles-ndjson-ad2">AtomicDoubles-ndjson (.ad2)</a></h2>
 <p>AtomicDoubles is similar to Atomic3, with one exception: the subject is left out.
-This is especially useful for creating data where the subject URL is not yet known, for example if you want to create an IPFS or let the server decide create some identifer.</p>
+This is useful in at least two scenarios:</p>
+<ul>
+<li>The Subject is not yet known (for example, because it still has to be determined by some server or hash function).</li>
+<li>The Subject is already known by the client, and leaving it out saves data.</li>
+</ul>
 <pre><code class="language-ndjson">[&quot;https://example.com/predicate&quot;,&quot;some object&quot;]
 [&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
@@ -369,8 +373,8 @@ A Property provides some semantic information about the relationship (in its <co
 <li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Object in an Atom where the Predicate is the</li>
 <li><code>classtype</code> - (optional, Class) if the <code>datatype</code> is an Atomic URI, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
 </ul>
-<pre><code class="language-turtle">&lt;https://example.com/properties/createdAt&gt; &lt;https://atomicdata.dev/property/key&gt; &quot;createdAt&quot;.
-&lt;https://example.com/properties/createdAt&gt; &lt;https://atomicdata.dev/property/datatype&gt; &lt;https://atomicdata.dev/datatype/datetime&gt;.
+<pre><code class="language-ndjson">[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/key&quot;,&quot;createdAt&quot;]
+[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/datatype&quot;,&quot;https://atomicdata.dev/datatype/datetime&quot;]
 </code></pre>
 <h2><a class="header" href="#datatype" id="datatype">Datatype</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/classes/Datatype</code></em></p>
@@ -528,7 +532,7 @@ An Atomic Mutation consists of a:</p>
 <li><code>predicate</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
 <li><code>object</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)</li>
 <li><code>method</code> - How the resource needs to be updated using the Atom. If empty, just replace the current state.</li>
-<li><code>hash</code> - The hash of the updated state of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in</li>
+<li><code>hash</code> - The <a href="mutations/versioning.html#Hashing">IPFS URL</a> of the updated version of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in</li>
 <li><code>date</code> - A timestamp of when the mutation was created.</li>
 </ul>
 <!-- Should it have an actor?  -->
@@ -544,7 +548,8 @@ An Atomic Mutation consists of a:</p>
 <h2><a class="header" href="#serialization-with-atomicmutations-ndjson" id="serialization-with-atomicmutations-ndjson">Serialization with AtomicMutations-ndjson</a></h2>
 <p>Altough Mutations can be communicated with</p>
 <p>Work in progress, see <a href="https://github.com/ontola/linked-delta">linked-delta</a>.</p>
-<pre><code class="language-ndjson"></code></pre>
+<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;, &quot;https://example.com/properties/lastName&quot;, &quot;Mc'Lovin&quot;, &quot;https://purl.org/linked-delta/add&quot;, &quot;AEF1245612F3&quot;]
+</code></pre>
 <h2><a class="header" href="#streaming-pubsub" id="streaming-pubsub">Streaming (pub/sub)</a></h2>
 <p>We're using HexTuples-NDJSON, since that allows for streaming parsing of mutations.</p>
 <p>TODO! Something about endpoints / protocol for pub/sub.</p>
@@ -569,7 +574,7 @@ The important difference between a Suggestion and a Mutation, is that a Mutation
 <h3><a class="header" href="#inbox" id="inbox">Inbox</a></h3>
 <p>An Inbox represents an endpoint that accepts incoming Suggestions.
 It's similar to an e-mail inbox.</p>
-<h1><a class="header" href="#versioning" id="versioning">Versioning</a></h1>
+<h1><a class="header" href="#atomic-data-versioning" id="atomic-data-versioning">Atomic Data Versioning</a></h1>
 <p>When Atomic Mutations are applied to some Resource, the resource will change.
 However, its identifier (the Subject) will often remain the same.</p>
 <ul>
