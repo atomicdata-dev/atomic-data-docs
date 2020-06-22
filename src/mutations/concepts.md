@@ -10,7 +10,7 @@ An Atomic Mutation consists of a:
 - `predicate` - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)
 - `object` - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)
 - `method` - How the resource needs to be updated using the Atom. If empty, just replace the current state.
-- `hash` - The hash of the updated state of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in
+- `hash` - The [IPFS URL](versioning.md#Hashing) of the updated version of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in
 - `date` - A timestamp of when the mutation was created.
 <!-- Should it have an actor?  -->
 - `actor` - A timestamp of when the mutation was created.
@@ -33,9 +33,8 @@ Altough Mutations can be communicated with
 
 Work in progress, see [linked-delta](https://github.com/ontola/linked-delta).
 
-
-
 ```ndjson
+["https://example.com/john", "https://example.com/properties/lastName", "Mc'Lovin", "https://purl.org/linked-delta/add", "AEF1245612F3"]
 ```
 
 ## Streaming (pub/sub)

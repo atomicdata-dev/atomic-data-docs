@@ -31,7 +31,10 @@ Disclaimer: note that Atomic-NDJSON is useful for communicating _current state_,
 ## AtomicDoubles-ndjson (.ad2)
 
 AtomicDoubles is similar to Atomic3, with one exception: the subject is left out.
-This is especially useful for creating data where the subject URL is not yet known, for example if you want to create an IPFS or let the server decide create some identifer.
+This is useful in at least two scenarios:
+
+- The Subject is not yet known (for example, because it still has to be determined by some server or hash function).
+- The Subject is already known by the client, and leaving it out saves data.
 
 ```ndjson
 ["https://example.com/predicate","some object"]

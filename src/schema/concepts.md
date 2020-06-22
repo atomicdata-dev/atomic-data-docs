@@ -21,9 +21,9 @@ Properties:
 - `datatype` - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Object in an Atom where the Predicate is the
 - `classtype` - (optional, Class) if the `datatype` is an Atomic URI, the `classtype` defines which class(es?) is (are?) acceptable.
 
-```turtle
-<https://example.com/properties/createdAt> <https://atomicdata.dev/property/key> "createdAt".
-<https://example.com/properties/createdAt> <https://atomicdata.dev/property/datatype> <https://atomicdata.dev/datatype/datetime>.
+```ndjson
+["https://example.com/properties/createdAt","https://atomicdata.dev/property/key","createdAt"]
+["https://example.com/properties/createdAt","https://atomicdata.dev/property/datatype","https://atomicdata.dev/datatype/datetime"]
 ```
 
 ## Datatype

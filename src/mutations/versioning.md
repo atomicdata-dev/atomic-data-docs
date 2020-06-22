@@ -1,4 +1,4 @@
-# Versioning
+# Atomic Data Versioning
 
 When Atomic Mutations are applied to some Resource, the resource will change.
 However, its identifier (the Subject) will often remain the same.
