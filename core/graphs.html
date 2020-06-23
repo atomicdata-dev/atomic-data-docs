@@ -165,7 +165,7 @@ In this section, we define some of these aspects of Graphs.</p>
 <h2><a class="header" href="#valid-graphs" id="valid-graphs">Valid Graphs</a></h2>
 <p>We refer to a Graph as Valid, if the following constraints are met:</p>
 <ul>
-<li><strong>The Datatypes are correctly used</strong>. The Graph does not contain Atoms where the Datatype of the Object does not match the Datatype of the Property of the Atom.</li>
+<li><strong>The Datatypes are correctly used</strong>. The Graph does not contain Atoms where the Datatype of the Value does not match the Datatype of the Property of the Atom.</li>
 <li><strong>The links work</strong>. All URLs used in the Graph (Subject, Property, Value) resolve correctly to the required Datatype.</li>
 <li><strong>The Class Restrictions are met</strong>. If a Class sets required properties, these must be present in Resources that are instances of that Class.</li>
 </ul>
@@ -174,16 +174,26 @@ Services should specify whether they check the validity of graphs.</p>
 <h2><a class="header" href="#closed-graph" id="closed-graph">Closed Graph</a></h2>
 <p>A Graph is Closed, when the Resources of all URLs are present in the Graph.
 In other words, if you were to fetch and download every single URL in a Graph, you would not have any more Atoms than before.
-Closed Graphs are <em>rarely</em> required, it's often perfectly fine to have outgoing links that do not have been fetched.</p>
+There are no more unfetched outgoing links.</p>
+<p>Closed Graphs are <em>rarely</em> required in Atomic Data; it's often perfectly fine to have outgoing links that do not have been fetched.</p>
+<h2><a class="header" href="#verified-graph" id="verified-graph">Verified Graph</a></h2>
+<p>When you are given some Atomic Graph by someone, you initially don't know for sure whether the Atoms themselves are actually created by the one controlling the subject URL.
+Someone may have tempered with the data, or fabricated it.</p>
+<p>The process of Verification can be done in two ways:</p>
+<ol>
+<li><strong>Request the subjects, and check if the atoms match</strong>.</li>
+<li><strong>Verify the signatures of the Resources or Mutations</strong></li>
+</ol>
+<p>When one of these steps is taken, we say that the Graph is Verified.</p>
 <h2><a class="header" href="#schema-complete-graphs" id="schema-complete-graphs">Schema Complete Graphs</a></h2>
 <p>When a Graph has a set of Atoms, it might not posess all the information that is required to determine the datatype of each Atom.
 When that is the case, we say the Graph is <em>Schema Complete</em>.</p>
-<p>Having a Schema Complete Graph is essential for determining what the Datatype is of an Object.
+<p>Having a Schema Complete Graph is essential for determining what the Datatype is of a Value.
 Most implementations of Atomic Data will need Schema Completenss to create fitting views, or apply functinoal business logic.</p>
 <p>Imagine some application (perhaps an app running inside a webbrowser) that has only the following data:</p>
 <pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/birthDate&quot;,&quot;1991-01-20&quot;]
 </code></pre>
-<p>Now, by looking at this single Atom, we might assume that the Object is an ISO date,
+<p>Now, by looking at this single Atom, we might assume that the Value is an ISO date,
 but this type information is not known yet to the application.
 This type information should be specified in the <code>example:birthDate</code> Property.
 It is the responsibility of the application to make sure it posesses the required Schema data.</p>
@@ -198,7 +208,8 @@ It is the responsibility of the application to make sure it posesses the require
 [&quot;https://atomicdata.dev/datatypes/Datatype&quot;,&quot;https://atomicdata.dev/datatypes/Datatype&quot;,&quot;https://atomicdata.dev/datatypes/atomicURI&quot;]
 </code></pre>
 <p>Since all valid Atomic Data requires Property fields to resolve to Atomic Properties Classes, which are required to have an associated DataType...
-We can safely say that the last atom in the example above (the one describing <code>https://atomicdata.dev/datatypes/Datatype</code>) will have to be present in all Schema Complete Atomic Graphs.</p>
+We can safely say that the last atom in the example above (the one describing <code>https://atomicdata.dev/datatypes/Datatype</code>) will have to be pre
+sent in all Schema Complete Atomic Graphs.</p>
 
                     </main>
 

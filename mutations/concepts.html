@@ -158,8 +158,8 @@ A mutation describes how an Resource should be updated.
 An Atomic Mutation consists of a:</p>
 <ul>
 <li><code>subject</code> - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)</li>
-<li><code>predicate</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
-<li><code>object</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)</li>
+<li><code>property</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
+<li><code>value</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the property)</li>
 <li><code>method</code> - How the resource needs to be updated using the Atom. If empty, just replace the current state.</li>
 <li><code>hash</code> - The <a href="versioning.html#Hashing">IPFS URL</a> of the updated version of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in</li>
 <li><code>date</code> - A timestamp of when the mutation was created.</li>

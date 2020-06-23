@@ -226,12 +226,14 @@ The creator of the Subject MUST make sure that it resolves.
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see <a href="core/querying.html">Atomic Querying</a>.</p>
 <h2><a class="header" href="#property" id="property">Property</a></h2>
 <p>The Property field is the second part of an Atom.
+In RDF, this is called a <code>predicate</code>.
 It is a URL that points to an Atomic <a href="core/../schema/classes.html#Property">Property</a>.
 For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.</p>
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
 <p>The Property MUST be a URL, and that URL MUST resolve to an Atomic Property.</p>
 <h2><a class="header" href="#value" id="value">Value</a></h2>
 <p>The Value field is the third part of an Atom.
+In RDF, this is called an <code>object</code>.
 Contrary to the Subject and Property values, the Value can be of any datatype.
 This includes URLs, strings, integers, dates and more.</p>
 <h2><a class="header" href="#graph" id="graph">Graph</a></h2>
@@ -253,47 +255,34 @@ It's fundamentally a data model, and that's an important distinction to make.
 We recommend you use <code>AtomicTriples</code>, which is specifically designed to be a simple, performant format for Atomic Data.</p>
 <h2><a class="header" href="#atomictriples-ndjson-ad3" id="atomictriples-ndjson-ad3">AtomicTriples-ndjson (.ad3)</a></h2>
 <p>Since the data model of Atomic Data is a bit simpler than RDF, serialization and parsing can be simpler as well.
-In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Predicate and Object.</p>
+In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.</p>
 <p>It looks like this:</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/subject&quot;,&quot;https://example.com/predicate&quot;,&quot;some object&quot;]
+<pre><code class="language-ndjson">[&quot;https://example.com/subject&quot;,&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
+<p>We use Newline Delimited JSON (<a href="http://ndjson.org/">NDJSON</a>), which is just a large JSONG string with newlines between each object.</p>
 <p>NDJSON has some important benefits:</p>
 <ul>
-<li>
-<p>It visually represents the underlying datamodel (the Atom)</p>
-</li>
-<li>
-<p>It can be streaming parsed, i.e. before the entire document is loaded. That is not possible with regular JSON.</p>
-</li>
-<li>
-<p>NDJSON parsers are everywhere</p>
-</li>
-<li>
-<p>Modern browers have highly performant (ND)JSON parsing, which means that it's <em>fast</em> in one of the most imporant contexts: the browser.</p>
-</li>
-<li>
-<p><em>Mime type (not registered yet!): <code>application/ad3-ndjson</code></em></p>
-</li>
-<li>
-<p><em>File name extention: <code>.ad3</code></em></p>
-</li>
+<li>It visually represents the underlying datamodel (the Atom)</li>
+<li>It can be streaming parsed, i.e. before the entire document is loaded. That is not possible with regular JSON.</li>
+<li>NDJSON parsers are everywhere</li>
+<li>Modern browers have highly performant JSON parsing, which means that it's <em>fast</em> in one of the most imporant contexts: the browser.</li>
 </ul>
+<p><em>Mime type (not registered yet!): <code>application/ad3-ndjson</code></em></p>
+<p><em>File name extention: <code>.ad3</code></em></p>
 <p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
 <h2><a class="header" href="#atomicdoubles-ndjson-ad2" id="atomicdoubles-ndjson-ad2">AtomicDoubles-ndjson (.ad2)</a></h2>
-<!-- Perhaps this is not a good idea, because:
-- It requires to store where it got the data
-- It does not allow for
- -->
-<p>AtomicDoubles is similar to Atomic3, with one exception: the subject is left out.
-This is useful in at least two scenarios:</p>
+<p>AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
+For many usecases, omitting the Subject is a <em>bad idea</em>.</p>
+<p>However, it can be useful in (at least) two scenarios:</p>
 <ul>
-<li>The Subject is not yet known (for example, because it still has to be determined by some server or hash function).</li>
-<li>The Subject is already known by the client, and leaving it out saves data.</li>
+<li>The <strong>Subject is not yet known</strong> (for example, because it still has to be determined by some server or hash function).</li>
+<li>The <strong>Subject is already known by the client</strong>, and leaving it out saves bandwith. This happens for example during Subject Fetching, where the request itself contains the Subject, because the fetched URL itself is the Subject of all returned triples. Note that in this scenario, the server is unable to include</li>
 </ul>
-<pre><code class="language-ndjson">[&quot;https://example.com/predicate&quot;,&quot;some object&quot;]
+<pre><code class="language-ndjson">[&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
+<p>This format is <strong>not suitable for persistent storage</strong> or peer to peer sharing - it is only useful when</p>
 <ul>
 <li><em>Mime type (not registered yet!): <code>application/ad2-ndjson</code></em></li>
 <li><em>File name extention: <code>.ad2</code></em></li>
@@ -309,38 +298,39 @@ For example, a fully optimized binary serialization format would make sense.</p>
 <p>There are multiple ways of getting Atomic Data into some system:</p>
 <ul>
 <li><a href="core/querying.html#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
-<li><a href="core/querying.html#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Predicate and Object values.</li>
+<li><a href="core/querying.html#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Property and Value.</li>
 </ul>
 <!-- - [**Bulk-API**](#bulk-api) allows fetching multiple subjects in one request -->
 <ul>
 <li><a href="core/querying.html#SPARQL"><strong>SRARQL</strong></a> is a powerful Query language for traversing graphs</li>
 </ul>
 <h2><a class="header" href="#subject-fetching-http" id="subject-fetching-http">Subject fetching (HTTP)</a></h2>
-<p>The simplest way of getting Atomic Data, is by sending an HTTP GET request to the subject URL.
-Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/atomic+x-ndjson</code>.</p>
+<p>The simplest way of getting Atomic Data when the Subject is an HTTP URL, is by sending a GET request to the subject URL.
+Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/ad3-ndjson</code>.</p>
 <pre><code class="language-HTTP">GET https://example.com/myResource HTTP/1.1
-Content-Type: application/atomic+x-ndjson
+Content-Type: application/ad3-ndjson
 </code></pre>
-<p>The server should respond with all the Atoms of which the requested URL is the subject:</p>
+<p>The server SHOULD respond with all the Atoms of which the requested URL is the subject:</p>
 <pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: application/atomic+x-ndjson
+Content-Type: application/ad3-ndjson
 Connection: Closed
 
 [&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;My awesome resource!&quot;]
 </code></pre>
+<p>The server MAY also include other resources, if they are deemed relevant.</p>
 <h2><a class="header" href="#triple-pattern-fragments" id="triple-pattern-fragments">Triple Pattern Fragments</a></h2>
 <p><a href="https://linkeddatafragments.org/specification/triple-pattern-fragments/">Triple Pattern Fragments</a> (TPF) is an interface for querying RDF.
 It works great for Atomic Data as well.</p>
 <p>An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:</p>
-<p><code>http://example.org/tpf?subject={subject}&amp;predicate={predicate}&amp;object={object}</code></p>
-<p>Make sure to URL encode the <code>subject</code>, <code>predicate</code>, <code>object</code> strings.</p>
-<p>For example, let's search for all Atoms where the object is <code>test</code>.</p>
-<pre><code class="language-HTTP">GET https://example.com/tpf?object=&quot;test&quot; HTTP/1.1
-Content-Type: application/atomic+x-ndjson
+<p><code>http://example.org/tpf?subject={subject}&amp;property={property}&amp;value={value}</code></p>
+<p>Make sure to URL encode the <code>subject</code>, <code>property</code>, <code>value</code> strings.</p>
+<p>For example, let's search for all Atoms where the value is <code>test</code>.</p>
+<pre><code class="language-HTTP">GET https://example.com/tpf?value=&quot;test&quot; HTTP/1.1
+Content-Type: application/ad3-ndjson
 </code></pre>
 <p>This is the HTTP response:</p>
 <pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: application/atomic+x-ndjson
+Content-Type: application/ad3-ndjson
 Connection: Closed
 
 [&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;test&quot;]
@@ -373,7 +363,7 @@ You can compare it to what XSD is for XML.</p>
 <h1><a class="header" href="#atomic-schema-classes" id="atomic-schema-classes">Atomic Schema: Classes</a></h1>
 <p>In short, Atomic Schema works like this:</p>
 <ul>
-<li>The Predicate value in an Atom links to a Property. It is important that these resolve.</li>
+<li>The Property field in an Atom links to a Property Class. It is important that these resolve.</li>
 <li>This Property tells something about its semantic meaning, and links to a Datatype.</li>
 <li>The Datatype tells</li>
 <li>A Resource <em>could</em> have one or more classes, which <em>could</em> provide information about which Properties are expected or required.</li>
@@ -389,7 +379,7 @@ Here's a <a href="schema/properties.html">list of useful Properties</a>.</p>
 <ul>
 <li><code>shortname</code> - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.</li>
 <li><code>description</code> - (optional, <a href="schema/datatypes.html#Langstring">Langstring</a>) the semantic meaning of the.</li>
-<li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Object in an Atom where the Predicate is the</li>
+<li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the</li>
 <li><code>classtype</code> - (optional, Class) if the <code>datatype</code> is an Atomic URI, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
 </ul>
 <pre><code class="language-ndjson">[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/shortname&quot;,&quot;createdAt&quot;]
@@ -397,7 +387,7 @@ Here's a <a href="schema/properties.html">list of useful Properties</a>.</p>
 </code></pre>
 <h2><a class="header" href="#datatype" id="datatype">Datatype</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/classes/Datatype</code></em></p>
-<p>A Datatype specifies how an <code>Object</code> value should be interpreted.
+<p>A Datatype specifies how a <code>Value</code> value should be interpreted.
 Datatypes are concepts such as <code>boolean</code>, <code>string</code>, <code>integer</code>.
 Since DatatTypes can be linked to, you dan define your own.
 However, using non-standard datatypes limits how many applications will know what to do with the data.</p>
@@ -500,7 +490,7 @@ Note that other types of arrays are not included in this spec, but can be perfec
 </ul>
 <h2><a class="header" href="#" id=""></a></h2>
 <h1><a class="header" href="#atomic-schema---properties" id="atomic-schema---properties">Atomic Schema - Properties</a></h1>
-<p>To recap: a <a href="schema/classes.html#property">Property</a> is the thing that you find when you follow the link of a Predicate.
+<p>To recap: a <a href="schema/classes.html#property">Property</a> is the thing that you find when you follow the link of a Property Field.
 The following list of Properties is part of Atomic Schema.</p>
 <h2><a class="header" href="#-1" id="-1"></a></h2>
 <h1><a class="header" href="#atomic-schema-faq" id="atomic-schema-faq">Atomic Schema FAQ</a></h1>
@@ -513,7 +503,7 @@ Perhaps this should be part of the Atomic Base Datatypes.</p>
 <li>Generic datatype?</li>
 </ul>
 <h2><a class="header" href="#how-should-a-client-deal-with-dot-syntax-key-collisions" id="how-should-a-client-deal-with-dot-syntax-key-collisions">How should a client deal with dot syntax key collisions?</a></h2>
-<p>Atomic Data guarantees <code>&lt;subject&gt; &lt;predicate&gt;</code> uniqueness, but when you're working on Atomic Data in an IDE / text editor, you're likely to use the <code>key</code> of the <code>Property</code>.</p>
+<p>Atomic Data guarantees <code>&lt;subject&gt; &lt;property&gt;</code> uniqueness, but when you're working on Atomic Data in an IDE / text editor, you're likely to use the <code>key</code> of the <code>Property</code>.</p>
 <p>For example:</p>
 <pre><code class="language-ndjson">[&quot;https://example.com/people/123&quot;, &quot;https://example.com/name&quot;, &quot;John&quot;]
 [&quot;https://example.com/people/123&quot;, &quot;https://somepage.example.com/name&quot;, &quot;John&quot;]
@@ -560,8 +550,8 @@ A mutation describes how an Resource should be updated.
 An Atomic Mutation consists of a:</p>
 <ul>
 <li><code>subject</code> - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)</li>
-<li><code>predicate</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
-<li><code>object</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)</li>
+<li><code>property</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
+<li><code>value</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the property)</li>
 <li><code>method</code> - How the resource needs to be updated using the Atom. If empty, just replace the current state.</li>
 <li><code>hash</code> - The <a href="mutations/versioning.html#Hashing">IPFS URL</a> of the updated version of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in</li>
 <li><code>date</code> - A timestamp of when the mutation was created.</li>
@@ -729,7 +719,7 @@ However, some of the characteristics of RDF might have contributed to its relati
 <h2><a class="header" href="#convert-atomic-data-to-rdf" id="convert-atomic-data-to-rdf">Convert Atomic data to RDF</a></h2>
 <p>Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.</p>
 <ul>
-<li>In conversion to RDF, convert <code>langstring</code> objects to Literals with an <code>xsd:string</code> datatype</li>
+<li>Convert Atoms with <code>langstring</code> Values to Literals with an <code>xsd:string</code> datatype and the language in the tag.</li>
 </ul>
 <h2><a class="header" href="#convert-rdf-to-atomic-data" id="convert-rdf-to-atomic-data">Convert RDF to Atomic Data</a></h2>
 <ul>
@@ -811,7 +801,7 @@ In this section, we define some of these aspects of Graphs.</p>
 <h2><a class="header" href="#valid-graphs" id="valid-graphs">Valid Graphs</a></h2>
 <p>We refer to a Graph as Valid, if the following constraints are met:</p>
 <ul>
-<li><strong>The Datatypes are correctly used</strong>. The Graph does not contain Atoms where the Datatype of the Object does not match the Datatype of the Property of the Atom.</li>
+<li><strong>The Datatypes are correctly used</strong>. The Graph does not contain Atoms where the Datatype of the Value does not match the Datatype of the Property of the Atom.</li>
 <li><strong>The links work</strong>. All URLs used in the Graph (Subject, Property, Value) resolve correctly to the required Datatype.</li>
 <li><strong>The Class Restrictions are met</strong>. If a Class sets required properties, these must be present in Resources that are instances of that Class.</li>
 </ul>
@@ -820,16 +810,26 @@ Services should specify whether they check the validity of graphs.</p>
 <h2><a class="header" href="#closed-graph" id="closed-graph">Closed Graph</a></h2>
 <p>A Graph is Closed, when the Resources of all URLs are present in the Graph.
 In other words, if you were to fetch and download every single URL in a Graph, you would not have any more Atoms than before.
-Closed Graphs are <em>rarely</em> required, it's often perfectly fine to have outgoing links that do not have been fetched.</p>
+There are no more unfetched outgoing links.</p>
+<p>Closed Graphs are <em>rarely</em> required in Atomic Data; it's often perfectly fine to have outgoing links that do not have been fetched.</p>
+<h2><a class="header" href="#verified-graph" id="verified-graph">Verified Graph</a></h2>
+<p>When you are given some Atomic Graph by someone, you initially don't know for sure whether the Atoms themselves are actually created by the one controlling the subject URL.
+Someone may have tempered with the data, or fabricated it.</p>
+<p>The process of Verification can be done in two ways:</p>
+<ol>
+<li><strong>Request the subjects, and check if the atoms match</strong>.</li>
+<li><strong>Verify the signatures of the Resources or Mutations</strong></li>
+</ol>
+<p>When one of these steps is taken, we say that the Graph is Verified.</p>
 <h2><a class="header" href="#schema-complete-graphs" id="schema-complete-graphs">Schema Complete Graphs</a></h2>
 <p>When a Graph has a set of Atoms, it might not posess all the information that is required to determine the datatype of each Atom.
 When that is the case, we say the Graph is <em>Schema Complete</em>.</p>
-<p>Having a Schema Complete Graph is essential for determining what the Datatype is of an Object.
+<p>Having a Schema Complete Graph is essential for determining what the Datatype is of a Value.
 Most implementations of Atomic Data will need Schema Completenss to create fitting views, or apply functinoal business logic.</p>
 <p>Imagine some application (perhaps an app running inside a webbrowser) that has only the following data:</p>
 <pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/birthDate&quot;,&quot;1991-01-20&quot;]
 </code></pre>
-<p>Now, by looking at this single Atom, we might assume that the Object is an ISO date,
+<p>Now, by looking at this single Atom, we might assume that the Value is an ISO date,
 but this type information is not known yet to the application.
 This type information should be specified in the <code>example:birthDate</code> Property.
 It is the responsibility of the application to make sure it posesses the required Schema data.</p>
@@ -844,7 +844,8 @@ It is the responsibility of the application to make sure it posesses the require
 [&quot;https://atomicdata.dev/datatypes/Datatype&quot;,&quot;https://atomicdata.dev/datatypes/Datatype&quot;,&quot;https://atomicdata.dev/datatypes/atomicURI&quot;]
 </code></pre>
 <p>Since all valid Atomic Data requires Property fields to resolve to Atomic Properties Classes, which are required to have an associated DataType...
-We can safely say that the last atom in the example above (the one describing <code>https://atomicdata.dev/datatypes/Datatype</code>) will have to be present in all Schema Complete Atomic Graphs.</p>
+We can safely say that the last atom in the example above (the one describing <code>https://atomicdata.dev/datatypes/Datatype</code>) will have to be pre
+sent in all Schema Complete Atomic Graphs.</p>
 <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
 <p>At this moment, no real tooling for Atomic Data exists.
 Great tooling is required to make this a succes.
@@ -863,7 +864,7 @@ atomic add john birthdate 1991-01-20
 # It's possible to use these keys instead of full URLs, as long as they are known locally,
 # either in a local Atomic store a local prefixes file (e.g. ~/.ldget/prefixes)
 # If the property is not used before, the CLI will ask for the required attributes (datatype, description) and create the Property
-# The object will be parsed accordingly. If it does not meet the requirements, it wll not create the Atom.
+# The value will be parsed accordingly. If it does not meet the requirements, it wll not create the Atom.
 # If everything is well, an Atomic Mutation will be sent to the Atomic Server
 </code></pre>
 <h2><a class="header" href="#atomic-server" id="atomic-server">Atomic server</a></h2>

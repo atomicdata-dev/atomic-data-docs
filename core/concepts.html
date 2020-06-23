@@ -189,12 +189,14 @@ The creator of the Subject MUST make sure that it resolves.
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see <a href="querying.html">Atomic Querying</a>.</p>
 <h2><a class="header" href="#property" id="property">Property</a></h2>
 <p>The Property field is the second part of an Atom.
+In RDF, this is called a <code>predicate</code>.
 It is a URL that points to an Atomic <a href="../schema/classes.html#Property">Property</a>.
 For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.</p>
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
 <p>The Property MUST be a URL, and that URL MUST resolve to an Atomic Property.</p>
 <h2><a class="header" href="#value" id="value">Value</a></h2>
 <p>The Value field is the third part of an Atom.
+In RDF, this is called an <code>object</code>.
 Contrary to the Subject and Property values, the Value can be of any datatype.
 This includes URLs, strings, integers, dates and more.</p>
 <h2><a class="header" href="#graph" id="graph">Graph</a></h2>

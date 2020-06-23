@@ -154,7 +154,7 @@
                         <h1><a class="header" href="#atomic-schema-classes" id="atomic-schema-classes">Atomic Schema: Classes</a></h1>
 <p>In short, Atomic Schema works like this:</p>
 <ul>
-<li>The Predicate value in an Atom links to a Property. It is important that these resolve.</li>
+<li>The Property field in an Atom links to a Property Class. It is important that these resolve.</li>
 <li>This Property tells something about its semantic meaning, and links to a Datatype.</li>
 <li>The Datatype tells</li>
 <li>A Resource <em>could</em> have one or more classes, which <em>could</em> provide information about which Properties are expected or required.</li>
@@ -170,7 +170,7 @@ Here's a <a href="properties.html">list of useful Properties</a>.</p>
 <ul>
 <li><code>shortname</code> - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.</li>
 <li><code>description</code> - (optional, <a href="datatypes.html#Langstring">Langstring</a>) the semantic meaning of the.</li>
-<li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Object in an Atom where the Predicate is the</li>
+<li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the</li>
 <li><code>classtype</code> - (optional, Class) if the <code>datatype</code> is an Atomic URI, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
 </ul>
 <pre><code class="language-ndjson">[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/shortname&quot;,&quot;createdAt&quot;]
@@ -178,7 +178,7 @@ Here's a <a href="properties.html">list of useful Properties</a>.</p>
 </code></pre>
 <h2><a class="header" href="#datatype" id="datatype">Datatype</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/classes/Datatype</code></em></p>
-<p>A Datatype specifies how an <code>Object</code> value should be interpreted.
+<p>A Datatype specifies how a <code>Value</code> value should be interpreted.
 Datatypes are concepts such as <code>boolean</code>, <code>string</code>, <code>integer</code>.
 Since DatatTypes can be linked to, you dan define your own.
 However, using non-standard datatypes limits how many applications will know what to do with the data.</p>

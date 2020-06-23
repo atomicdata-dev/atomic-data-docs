@@ -157,47 +157,34 @@ It's fundamentally a data model, and that's an important distinction to make.
 We recommend you use <code>AtomicTriples</code>, which is specifically designed to be a simple, performant format for Atomic Data.</p>
 <h2><a class="header" href="#atomictriples-ndjson-ad3" id="atomictriples-ndjson-ad3">AtomicTriples-ndjson (.ad3)</a></h2>
 <p>Since the data model of Atomic Data is a bit simpler than RDF, serialization and parsing can be simpler as well.
-In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Predicate and Object.</p>
+In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.</p>
 <p>It looks like this:</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/subject&quot;,&quot;https://example.com/predicate&quot;,&quot;some object&quot;]
+<pre><code class="language-ndjson">[&quot;https://example.com/subject&quot;,&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
+<p>We use Newline Delimited JSON (<a href="http://ndjson.org/">NDJSON</a>), which is just a large JSONG string with newlines between each object.</p>
 <p>NDJSON has some important benefits:</p>
 <ul>
-<li>
-<p>It visually represents the underlying datamodel (the Atom)</p>
-</li>
-<li>
-<p>It can be streaming parsed, i.e. before the entire document is loaded. That is not possible with regular JSON.</p>
-</li>
-<li>
-<p>NDJSON parsers are everywhere</p>
-</li>
-<li>
-<p>Modern browers have highly performant (ND)JSON parsing, which means that it's <em>fast</em> in one of the most imporant contexts: the browser.</p>
-</li>
-<li>
-<p><em>Mime type (not registered yet!): <code>application/ad3-ndjson</code></em></p>
-</li>
-<li>
-<p><em>File name extention: <code>.ad3</code></em></p>
-</li>
+<li>It visually represents the underlying datamodel (the Atom)</li>
+<li>It can be streaming parsed, i.e. before the entire document is loaded. That is not possible with regular JSON.</li>
+<li>NDJSON parsers are everywhere</li>
+<li>Modern browers have highly performant JSON parsing, which means that it's <em>fast</em> in one of the most imporant contexts: the browser.</li>
 </ul>
+<p><em>Mime type (not registered yet!): <code>application/ad3-ndjson</code></em></p>
+<p><em>File name extention: <code>.ad3</code></em></p>
 <p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
 <h2><a class="header" href="#atomicdoubles-ndjson-ad2" id="atomicdoubles-ndjson-ad2">AtomicDoubles-ndjson (.ad2)</a></h2>
-<!-- Perhaps this is not a good idea, because:
-- It requires to store where it got the data
-- It does not allow for
- -->
-<p>AtomicDoubles is similar to Atomic3, with one exception: the subject is left out.
-This is useful in at least two scenarios:</p>
+<p>AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
+For many usecases, omitting the Subject is a <em>bad idea</em>.</p>
+<p>However, it can be useful in (at least) two scenarios:</p>
 <ul>
-<li>The Subject is not yet known (for example, because it still has to be determined by some server or hash function).</li>
-<li>The Subject is already known by the client, and leaving it out saves data.</li>
+<li>The <strong>Subject is not yet known</strong> (for example, because it still has to be determined by some server or hash function).</li>
+<li>The <strong>Subject is already known by the client</strong>, and leaving it out saves bandwith. This happens for example during Subject Fetching, where the request itself contains the Subject, because the fetched URL itself is the Subject of all returned triples. Note that in this scenario, the server is unable to include</li>
 </ul>
-<pre><code class="language-ndjson">[&quot;https://example.com/predicate&quot;,&quot;some object&quot;]
+<pre><code class="language-ndjson">[&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
+<p>This format is <strong>not suitable for persistent storage</strong> or peer to peer sharing - it is only useful when</p>
 <ul>
 <li><em>Mime type (not registered yet!): <code>application/ad2-ndjson</code></em></li>
 <li><em>File name extention: <code>.ad2</code></em></li>

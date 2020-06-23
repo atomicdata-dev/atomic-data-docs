@@ -155,38 +155,39 @@
 <p>There are multiple ways of getting Atomic Data into some system:</p>
 <ul>
 <li><a href="#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
-<li><a href="#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Predicate and Object values.</li>
+<li><a href="#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Property and Value.</li>
 </ul>
 <!-- - [**Bulk-API**](#bulk-api) allows fetching multiple subjects in one request -->
 <ul>
 <li><a href="#SPARQL"><strong>SRARQL</strong></a> is a powerful Query language for traversing graphs</li>
 </ul>
 <h2><a class="header" href="#subject-fetching-http" id="subject-fetching-http">Subject fetching (HTTP)</a></h2>
-<p>The simplest way of getting Atomic Data, is by sending an HTTP GET request to the subject URL.
-Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/atomic+x-ndjson</code>.</p>
+<p>The simplest way of getting Atomic Data when the Subject is an HTTP URL, is by sending a GET request to the subject URL.
+Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/ad3-ndjson</code>.</p>
 <pre><code class="language-HTTP">GET https://example.com/myResource HTTP/1.1
-Content-Type: application/atomic+x-ndjson
+Content-Type: application/ad3-ndjson
 </code></pre>
-<p>The server should respond with all the Atoms of which the requested URL is the subject:</p>
+<p>The server SHOULD respond with all the Atoms of which the requested URL is the subject:</p>
 <pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: application/atomic+x-ndjson
+Content-Type: application/ad3-ndjson
 Connection: Closed
 
 [&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;My awesome resource!&quot;]
 </code></pre>
+<p>The server MAY also include other resources, if they are deemed relevant.</p>
 <h2><a class="header" href="#triple-pattern-fragments" id="triple-pattern-fragments">Triple Pattern Fragments</a></h2>
 <p><a href="https://linkeddatafragments.org/specification/triple-pattern-fragments/">Triple Pattern Fragments</a> (TPF) is an interface for querying RDF.
 It works great for Atomic Data as well.</p>
 <p>An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:</p>
-<p><code>http://example.org/tpf?subject={subject}&amp;predicate={predicate}&amp;object={object}</code></p>
-<p>Make sure to URL encode the <code>subject</code>, <code>predicate</code>, <code>object</code> strings.</p>
-<p>For example, let's search for all Atoms where the object is <code>test</code>.</p>
-<pre><code class="language-HTTP">GET https://example.com/tpf?object=&quot;test&quot; HTTP/1.1
-Content-Type: application/atomic+x-ndjson
+<p><code>http://example.org/tpf?subject={subject}&amp;property={property}&amp;value={value}</code></p>
+<p>Make sure to URL encode the <code>subject</code>, <code>property</code>, <code>value</code> strings.</p>
+<p>For example, let's search for all Atoms where the value is <code>test</code>.</p>
+<pre><code class="language-HTTP">GET https://example.com/tpf?value=&quot;test&quot; HTTP/1.1
+Content-Type: application/ad3-ndjson
 </code></pre>
 <p>This is the HTTP response:</p>
 <pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: application/atomic+x-ndjson
+Content-Type: application/ad3-ndjson
 Connection: Closed
 
 [&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;test&quot;]
