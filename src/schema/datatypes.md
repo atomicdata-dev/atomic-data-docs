@@ -1,6 +1,6 @@
 # Atomic Schema: Base Datatypes
 
-The Atomic Base Datatypes consist of some of the most commonly used [Datatypes](concepts.md#Datatype).
+The Atomic Base Datatypes consist of some of the most commonly used [Datatypes](classes.md#Datatype).
 
 ## Slug
 
@@ -40,6 +40,7 @@ So this is something I'm having serious doubts on.
 It seems so verbose and hard to parse.
 However, the underlying problem is kind of tough: we want <subject> <predicate> combination uniqueness...
 ... but we also want to have multilingual strings that can be added later.
+Perhaps this should not be a Datatype
 -->
 
 Array of special UTF-8 Strings.
@@ -93,8 +94,6 @@ Start with the mimetype string, do a newline `\n` and continue with the UTF-8 st
 
 - e.g. `application/text\nOh hi mark`
 - e.g. `text/html\n<html><p>oh, hi mark</p></html>`
-
-**Binary serialization**
 
 ## ResourceArray
 

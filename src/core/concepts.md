@@ -16,7 +16,7 @@ The model of an Atom is comparable with an RDF Triple / Statement ([although the
 An Atom consists of three values:
 
 * **[Subject](#Subject)**: the Thing that the atom is providing information about.
-* **[Predicate](#Predicate)**: the property of the Thing that the atom is about.
+* **[Property](#Property)**: the property of the Thing that the atom is about (will always be a URL to a [Property](../schema/concepts.md#Property)).
 * **[Object](#Object)**: the new piece of information about the Atom.
 
 Let's turn this sentence into Atoms:
@@ -34,29 +34,29 @@ In the Atomic Data above, we have:
 
 - four different Atoms (every line is an Atom)
 - two different Subjects: `https://example.com/arnold` and `https://example.com/britta`.
-- three different Predicates (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
+- three different Propertys (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
 - four different Objects (`1991-0-20`, `Arnold`, `https://example.com/britta` and `Britta`)
 
 ## Subject
 
-The Subject (or Atomic Subject) is the first part of an Atom.
+The Subject field is the first part of an Atom.
 It is the identifier that the rest of the Atom is providing information about.
 It's a URL that points to the Resource.
 The creator of the Subject MUST make sure that it resolves.
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see [Atomic Querying](querying.md).
 
-## Predicate
+## Property
 
-The Predicate (or Atomic Predicate) is the second part of an Atom.
-It is a URL that points to an Atomic Property.
+The Property field is the second part of an Atom.
+It is a URL that points to an Atomic [Property](../schema/classes.md#Property).
 For example `https://example.com/createdAt` or `https://example.com/firstName`.
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
-The Predicate MUST be a URL, and that URL MUST resolve to an Atomic Property.
+The Property MUST be a URL, and that URL MUST resolve to an Atomic Property.
 
-## Object
+## Value
 
-The Object (or Atomic Object) is the third part of an Atom.
-Contrary to the Subject and Predicate values, the Object can be of any datatype.
+The Value field is the third part of an Atom.
+Contrary to the Subject and Property values, the Object can be of any datatype.
 This includes URLs, strings, integers, dates and more.
 
 ## Graph
@@ -70,3 +70,8 @@ Graphs can have several characteristics (Schema Complete, Valid, Closed)
 A Resource is a set of Atoms (a Graph) that share the same Subject URL.
 Every thing is Resource, such as the person "Michael Jackson", or the abstract class "Person".
 All the concepts on this page are Resources.
+A
+
+Properties:
+
+- `a` - (optional, AtomicURL) the [Class]() of the Resource.

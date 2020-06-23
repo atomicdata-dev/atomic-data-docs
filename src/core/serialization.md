@@ -23,13 +23,17 @@ NDJSON has some important benefits:
 - NDJSON parsers are everywhere
 - Modern browers have highly performant (ND)JSON parsing, which means that it's _fast_ in one of the most imporant contexts: the browser.
 
-- _Mime type (not registered yet!): `application/ad3+x-ndjson; charset=utf-8`_
+- _Mime type (not registered yet!): `application/ad3-ndjson`_
 - _File name extention: `.ad3`_
 
 Disclaimer: note that Atomic-NDJSON is useful for communicating _current state_, but not for _state changes_.
 
 ## AtomicDoubles-ndjson (.ad2)
 
+<!-- Perhaps this is not a good idea, because:
+- It requires to store where it got the data
+- It does not allow for
+ -->
 AtomicDoubles is similar to Atomic3, with one exception: the subject is left out.
 This is useful in at least two scenarios:
 
@@ -41,7 +45,7 @@ This is useful in at least two scenarios:
 ["https://example.com/otherProperty","https://example.com/somethingelse"]
 ```
 
-- _Mime type (not registered yet!): `application/ad2+x-ndjson; charset=utf-8`_
+- _Mime type (not registered yet!): `application/ad2-ndjson`_
 - _File name extention: `.ad2`_
 
 ## RDF serializatinon formats

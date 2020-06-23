@@ -7,6 +7,19 @@ However, its identifier (the Subject) will often remain the same.
 - The latest version should have a link to its permanent verison.
 - Should [IPFS](../interoperability/ipfs.md) content-hash URLs be used for Versioned resources?
 
+## Versioned Resources
+
+Properties:
+
+<!-- Maybe this is not required, if we assume that the subject URL should always show the latest? -->
+- latest: (ResourceArray, optional)
+- versions: (ResourceArray, optional)
+- currentVersion: (ResourceURL, required)
+
+## Static Resource
+
+A static resource has a _content adressible_ URL, which means that its URL will never change.
+
 ## Hashing
 
 - Serialize all Atoms of the Subject (the entire Resource) as Atomic-NDJSON

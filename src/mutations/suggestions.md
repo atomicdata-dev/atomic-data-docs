@@ -1,6 +1,6 @@
 # Atomic Suggestions
 
-Atomic Suggestions is a standard that enables decentralized collaboration on resources.
+Atomic Suggestions is a proposed standard that enables decentralized collaboration on resources.
 It's basically Git for linked data.
 <!-- It describes how proposals for data changes -->
 

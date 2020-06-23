@@ -1,6 +1,6 @@
 # Atomic Schema
 
-Atomic Schema is the standard for specifying classes, properties and datatypes in Atomic Data.
+Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
 You can compare it to what XSD is for XML.
 
 This section will define various Classes, Properties and Datatypes (discussed in [Atomic Core: Concepts](../core/concepts.md)).

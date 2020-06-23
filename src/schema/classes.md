@@ -1,4 +1,4 @@
-# Atomic Schema: Concepts
+# Atomic Schema: Classes
 
 In short, Atomic Schema works like this:
 
@@ -11,18 +11,20 @@ In short, Atomic Schema works like this:
 
 _URL: `https://atomicdata.dev/classes/Class`_
 
-A Property is an abstract type of Resource that describes the relation between a subject and an object.
-A Property provides some semantic information about the relationship (in its `description`), it provides a shorthand (the `key`) and it links to a Datatype.
+The Property Class.
+A Property is an abstract type of Resource that describes the relation between a Subject and an Object.
+A Property provides some semantic information about the relationship (in its `description`), it provides a shorthand (the `shortname`) and it links to a Datatype.
+Here's a [list of useful Properties](properties.md).
 
-Properties:
+Properties of a Property instance:
 
-- `key` - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.
-- `description` - (optional, [Langstring](base.md#Langstring)) the semantic meaning of the.
+- `shortname` - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.
+- `description` - (optional, [Langstring](datatypes.md#Langstring)) the semantic meaning of the.
 - `datatype` - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Object in an Atom where the Predicate is the
 - `classtype` - (optional, Class) if the `datatype` is an Atomic URI, the `classtype` defines which class(es?) is (are?) acceptable.
 
 ```ndjson
-["https://example.com/properties/createdAt","https://atomicdata.dev/property/key","createdAt"]
+["https://example.com/properties/createdAt","https://atomicdata.dev/property/shortname","createdAt"]
 ["https://example.com/properties/createdAt","https://atomicdata.dev/property/datatype","https://atomicdata.dev/datatype/datetime"]
 ```
 
@@ -31,12 +33,17 @@ Properties:
 _URL: `https://atomicdata.dev/classes/Datatype`_
 
 A Datatype specifies how an `Object` value should be interpreted.
+Datatypes are concepts such as `boolean`, `string`, `integer`.
+Since DatatTypes can be linked to, you dan define your own.
+However, using non-standard datatypes limits how many applications will know what to do with the data.
+
+Properties:
 
 - `description` - (required, langstring) how the datatype functions.
 - `stringSerialization` - (required, langstring) how the datatype should be parsed / serialized as an UTF-8 string
 - `stringExample` - (required, string) an example stringSerialization example value that should be parsed correclty
-- `binarySerialization` - (optional) how the datatype should be parsed / serialized as a byte array.
-- `binaryExample` - (optional) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.
+- `binarySerialization` - (optional, langstring) how the datatype should be parsed / serialized as a byte array.
+- `binaryExample` - (optional, string) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.
 
 ## Class
 
@@ -44,18 +51,18 @@ _URL: `https://atomicdata.dev/classes/Class`_
 
 A Class is an abstract type of Resource, such as `Person`.
 It is convention to use an Uppercase in its URI.
-A Resource can have zero to many Classes, so this might be different from most data works.
+Note that in Atomic Data, a Resource can have several Classes - not just a single one.
 
 Properties:
 
-- `key` - (required, Slug) a short string shorthand.
+- `shortname` - (required, Slug) a short string shorthand.
 - `description` - (required, langstring) human readable explanation of what the Class represents.
 - `requires` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.
 - `recommends` - (optional, ResourceArray) a list of Properties that are recommended.
 <!-- Maybe remove this next one? -->
 <!-- - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed. -->
-<!-- What are the consequences of this? How to deal with this field if there are more classes in a Subject? -->
-<!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
+<!-- What are the consequences of this? How to deal with this field if there are more classes in aSSubject? -->
+O!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
 
 Example:
 
@@ -66,4 +73,4 @@ Example:
 
 Incoming Properties:
 
-- `hasClass` - A property that any resource
+- `class` - The Class of the Resource

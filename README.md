@@ -1,6 +1,6 @@
 # Atomic Data Docs
 
-_A standard for data exchange of decentralized, typed graphs._
+_A proposed standard for data exchange of decentralized, typed graphs._
 
 View it on [docs.atomicdata.dev](https://docs.atomicdata.dev).
 

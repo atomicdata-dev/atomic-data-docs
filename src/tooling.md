@@ -18,11 +18,11 @@ Should produce Atomic Mutations.
 
 ```sh
 # Create an atom
-# atomic <method> <subject> <predicate> <object>
+# atomic <method> <subject> <property> <value>
 atomic add john birthdate 1991-01-20
 # It's possible to use these keys instead of full URLs, as long as they are known locally,
 # either in a local Atomic store a local prefixes file (e.g. ~/.ldget/prefixes)
-# If the predicate is not used before, the CLI will ask for the required attributes (datatype, description) and create the Property
+# If the property is not used before, the CLI will ask for the required attributes (datatype, description) and create the Property
 # The object will be parsed accordingly. If it does not meet the requirements, it wll not create the Atom.
 # If everything is well, an Atomic Mutation will be sent to the Atomic Server
 ```

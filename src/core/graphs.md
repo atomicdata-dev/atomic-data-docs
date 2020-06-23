@@ -16,7 +16,7 @@ These concepts are important when creating an implementation of a Store.
 We refer to a Graph as Valid, if the following constraints are met:
 
 - **The Datatypes are correctly used**. The Graph does not contain Atoms where the Datatype of the Object does not match the Datatype of the Property of the Atom.
-- **The links work**. All URLs used in the Graph (Subject, Predicate, Object) resolve correctly to the required Datatype.
+- **The links work**. All URLs used in the Graph (Subject, Property, Value) resolve correctly to the required Datatype.
 - **The Class Restrictions are met**. If a Class sets required properties, these must be present in Resources that are instances of that Class.
 
 Making sure Graphs are Valid is of great imporance to anyone creating, sharing or using Atomic Data.
@@ -47,7 +47,7 @@ but this type information is not known yet to the application.
 This type information should be specified in the `example:birthDate` Property.
 It is the responsibility of the application to make sure it posesses the required Schema data.
 
-We say a Graph is _Schema Complete_ when it contains _at least_ all the Properties that are used in predicates.
+We say a Graph is _Schema Complete_ when it contains _at least_ all the Propertie Classes that are used in the Property fields.
 
 So let's add the missing Property: `https://example.com/birthDate`
 
@@ -64,5 +64,5 @@ Now, since we've introduced yet another Property, we need to include that one as
 ["https://atomicdata.dev/datatypes/Datatype","https://atomicdata.dev/datatypes/Datatype","https://atomicdata.dev/datatypes/atomicURI"]
 ```
 
-Since all valid Atomic Data requires predicates to resolve to Atomic Properties, which are required to have an associated DataType...
+Since all valid Atomic Data requires Property fields to resolve to Atomic Properties Classes, which are required to have an associated DataType...
 We can safely say that the last atom in the example above (the one describing `https://atomicdata.dev/datatypes/Datatype`) will have to be present in all Schema Complete Atomic Graphs.

@@ -6,6 +6,10 @@ A property only has one single Datatype.
 However, feel free to create a new kind of Datatype that, in turn, refers to other Datatypes.
 Perhaps this should be part of the Atomic Base Datatypes.
 
+Solutions:
+
+- Generic datatype?
+
 ## How should a client deal with dot syntax key collisions?
 
 Atomic Data guarantees `<subject> <predicate>` uniqueness, but when you're working on Atomic Data in an IDE / text editor, you're likely to use the `key` of the `Property`.
