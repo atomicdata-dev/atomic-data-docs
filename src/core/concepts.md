@@ -15,9 +15,9 @@ The smallest possible piece of _meaningful_ data / information.
 The model of an Atom is comparable with an RDF Triple / Statement ([although there are imporant differences](../interoperability/rdf.md)).
 An Atom consists of three values:
 
-* **[Subject](#Subject)**: the Thing that the atom is providing information about.
-* **[Property](#Property)**: the property of the Thing that the atom is about (will always be a URL to a [Property](../schema/classes.md#Property)).
-* **[Value](#Value)**: the new piece of information about the Atom.
+* **[Subject](#subject)**: the Thing that the atom is providing information about.
+* **[Property](#property)**: the property of the Thing that the atom is about (will always be a URL to a [Property](../schema/classes.md#property)).
+* **[Value](#value)**: the new piece of information about the Atom.
 
 Let's turn this sentence into Atoms:
 
