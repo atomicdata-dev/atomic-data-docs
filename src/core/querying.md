@@ -4,7 +4,7 @@ There are multiple ways of getting Atomic Data into some system:
 
 - [**Subject Fetching**](#subject-fetching-http) requests a single subject right from its source
 - [**Triple Pattern Fragments**](#triple-pattern-fragments) allows querying for specific (combinations of) Subject, Predicate and Object values.
-- [**Bulk-API**](#bulk-api) allows fetching multiple subjects in one request
+<!-- - [**Bulk-API**](#bulk-api) allows fetching multiple subjects in one request -->
 - [**SRARQL**](#SPARQL) is a powerful Query language for traversing graphs
 
 ## Subject fetching (HTTP)
@@ -54,11 +54,11 @@ Connection: Closed
 
 ["https://example.com/myResource","https://example.com/properties/name","test"]
 ```
-
+<!--
 ## Bulk API
 
-[Bulk-API](https://github.com/ontola/bulk-api) is an (currently still closed) in-development specification for asking for multiple Subjects in one request.
-This is especially useful in browser clients that traverse the graph iteratively, and HTTP/2 is not an option.
+Bulk-API is an (currently still closed) in-development specification for asking for multiple Subjects in one request.
+This is especially useful in browser clients that traverse the graph iteratively, and HTTP/2 is not an option. -->
 
 ## SPARQL
 

@@ -16,8 +16,8 @@ The model of an Atom is comparable with an RDF Triple / Statement ([although the
 An Atom consists of three values:
 
 * **[Subject](#Subject)**: the Thing that the atom is providing information about.
-* **[Property](#Property)**: the property of the Thing that the atom is about (will always be a URL to a [Property](../schema/concepts.md#Property)).
-* **[Object](#Object)**: the new piece of information about the Atom.
+* **[Property](#Property)**: the property of the Thing that the atom is about (will always be a URL to a [Property](../schema/classes.md#Property)).
+* **[Value](#Value)**: the new piece of information about the Atom.
 
 Let's turn this sentence into Atoms:
 
@@ -35,7 +35,7 @@ In the Atomic Data above, we have:
 - four different Atoms (every line is an Atom)
 - two different Subjects: `https://example.com/arnold` and `https://example.com/britta`.
 - three different Propertys (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
-- four different Objects (`1991-0-20`, `Arnold`, `https://example.com/britta` and `Britta`)
+- four different Values (`1991-0-20`, `Arnold`, `https://example.com/britta` and `Britta`)
 
 ## Subject
 
@@ -56,7 +56,7 @@ The Property MUST be a URL, and that URL MUST resolve to an Atomic Property.
 ## Value
 
 The Value field is the third part of an Atom.
-Contrary to the Subject and Property values, the Object can be of any datatype.
+Contrary to the Subject and Property values, the Value can be of any datatype.
 This includes URLs, strings, integers, dates and more.
 
 ## Graph
@@ -74,4 +74,4 @@ A
 
 Properties:
 
-- `a` - (optional, AtomicURL) the [Class]() of the Resource.
+- `a` - (optional, AtomicURL) the [Class](../schema/classes.md#class) of the Resource.

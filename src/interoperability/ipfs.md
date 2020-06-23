@@ -25,7 +25,7 @@ Also, IPFS is not as fast as HTTP - at least for now.
 
 Here's an example, serialized to Atomic-NDJSON:
 
-[https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL]
+[https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL](https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL)
 
 ```ndjson
 ["https://atomicdata.dev/helloworld","https://atomicdata.dev/properties/description","Hello world!"]

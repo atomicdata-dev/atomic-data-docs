@@ -11,8 +11,9 @@ In short, Atomic Schema works like this:
 
 _URL: `https://atomicdata.dev/classes/Class`_
 
-The Property Class.
-A Property is an abstract type of Resource that describes the relation between a Subject and an Object.
+The Property class.
+The thing that the Property field should link to.
+A Property is an abstract type of Resource that describes the relation between a Subject and a Value.
 A Property provides some semantic information about the relationship (in its `description`), it provides a shorthand (the `shortname`) and it links to a Datatype.
 Here's a [list of useful Properties](properties.md).
 
