@@ -164,8 +164,8 @@ The model of an Atom is comparable with an RDF Triple / Statement (<a href="../i
 An Atom consists of three values:</p>
 <ul>
 <li><strong><a href="#Subject">Subject</a></strong>: the Thing that the atom is providing information about.</li>
-<li><strong><a href="#Property">Property</a></strong>: the property of the Thing that the atom is about (will always be a URL to a <a href="../schema/concepts.html#Property">Property</a>).</li>
-<li><strong><a href="#Object">Object</a></strong>: the new piece of information about the Atom.</li>
+<li><strong><a href="#Property">Property</a></strong>: the property of the Thing that the atom is about (will always be a URL to a <a href="../schema/classes.html#Property">Property</a>).</li>
+<li><strong><a href="#Value">Value</a></strong>: the new piece of information about the Atom.</li>
 </ul>
 <p>Let's turn this sentence into Atoms:</p>
 <p><code>Arnold, who's born on the 20th of Januari 1991, has a best friend named Britta.</code></p>
@@ -179,7 +179,7 @@ An Atom consists of three values:</p>
 <li>four different Atoms (every line is an Atom)</li>
 <li>two different Subjects: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
 <li>three different Propertys (<code>https://example.com/properties/bornAt</code>, <code>https://example.com/properties/firstName</code>, and <code>https://example.com/properties/bestFriend</code>)</li>
-<li>four different Objects (<code>1991-0-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
+<li>four different Values (<code>1991-0-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
 </ul>
 <h2><a class="header" href="#subject" id="subject">Subject</a></h2>
 <p>The Subject field is the first part of an Atom.
@@ -195,7 +195,7 @@ For example <code>https://example.com/createdAt</code> or <code>https://example.
 <p>The Property MUST be a URL, and that URL MUST resolve to an Atomic Property.</p>
 <h2><a class="header" href="#value" id="value">Value</a></h2>
 <p>The Value field is the third part of an Atom.
-Contrary to the Subject and Property values, the Object can be of any datatype.
+Contrary to the Subject and Property values, the Value can be of any datatype.
 This includes URLs, strings, integers, dates and more.</p>
 <h2><a class="header" href="#graph" id="graph">Graph</a></h2>
 <p>A Graph is a set of Atoms.
@@ -208,7 +208,7 @@ All the concepts on this page are Resources.
 A</p>
 <p>Properties:</p>
 <ul>
-<li><code>a</code> - (optional, AtomicURL) the <a href="">Class</a> of the Resource.</li>
+<li><code>a</code> - (optional, AtomicURL) the <a href="../schema/classes.html#class">Class</a> of the Resource.</li>
 </ul>
 
                     </main>

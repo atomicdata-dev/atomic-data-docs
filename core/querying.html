@@ -156,7 +156,9 @@
 <ul>
 <li><a href="#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
 <li><a href="#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Predicate and Object values.</li>
-<li><a href="#bulk-api"><strong>Bulk-API</strong></a> allows fetching multiple subjects in one request</li>
+</ul>
+<!-- - [**Bulk-API**](#bulk-api) allows fetching multiple subjects in one request -->
+<ul>
 <li><a href="#SPARQL"><strong>SRARQL</strong></a> is a powerful Query language for traversing graphs</li>
 </ul>
 <h2><a class="header" href="#subject-fetching-http" id="subject-fetching-http">Subject fetching (HTTP)</a></h2>
@@ -189,9 +191,11 @@ Connection: Closed
 
 [&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;test&quot;]
 </code></pre>
-<h2><a class="header" href="#bulk-api" id="bulk-api">Bulk API</a></h2>
-<p><a href="https://github.com/ontola/bulk-api">Bulk-API</a> is an (currently still closed) in-development specification for asking for multiple Subjects in one request.
-This is especially useful in browser clients that traverse the graph iteratively, and HTTP/2 is not an option.</p>
+<!--
+## Bulk API
+
+Bulk-API is an (currently still closed) in-development specification for asking for multiple Subjects in one request.
+This is especially useful in browser clients that traverse the graph iteratively, and HTTP/2 is not an option. -->
 <h2><a class="header" href="#sparql" id="sparql">SPARQL</a></h2>
 <p><a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> is a powerful RDF query language.
 Since all Atomic Data is also valid RDF, it is possible to query Atomic Data using SPARQL.</p>
