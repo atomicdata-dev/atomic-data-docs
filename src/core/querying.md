@@ -3,29 +3,31 @@
 There are multiple ways of getting Atomic Data into some system:
 
 - [**Subject Fetching**](#subject-fetching-http) requests a single subject right from its source
-- [**Triple Pattern Fragments**](#triple-pattern-fragments) allows querying for specific (combinations of) Subject, Predicate and Object values.
+- [**Triple Pattern Fragments**](#triple-pattern-fragments) allows querying for specific (combinations of) Subject, Property and Value.
 <!-- - [**Bulk-API**](#bulk-api) allows fetching multiple subjects in one request -->
 - [**SRARQL**](#SPARQL) is a powerful Query language for traversing graphs
 
 ## Subject fetching (HTTP)
 
-The simplest way of getting Atomic Data, is by sending an HTTP GET request to the subject URL.
-Set the `Content-Type` header to an Atomic Data compatible mime type, such as `application/atomic+x-ndjson`.
+The simplest way of getting Atomic Data when the Subject is an HTTP URL, is by sending a GET request to the subject URL.
+Set the `Content-Type` header to an Atomic Data compatible mime type, such as `application/ad3-ndjson`.
 
 ```HTTP
 GET https://example.com/myResource HTTP/1.1
-Content-Type: application/atomic+x-ndjson
+Content-Type: application/ad3-ndjson
 ```
 
-The server should respond with all the Atoms of which the requested URL is the subject:
+The server SHOULD respond with all the Atoms of which the requested URL is the subject:
 
 ```HTTP
 HTTP/1.1 200 OK
-Content-Type: application/atomic+x-ndjson
+Content-Type: application/ad3-ndjson
 Connection: Closed
 
 ["https://example.com/myResource","https://example.com/properties/name","My awesome resource!"]
 ```
+
+The server MAY also include other resources, if they are deemed relevant.
 
 ## Triple Pattern Fragments
 
@@ -34,22 +36,22 @@ It works great for Atomic Data as well.
 
 An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:
 
-`http://example.org/tpf?subject={subject}&predicate={predicate}&object={object}`
+`http://example.org/tpf?subject={subject}&property={property}&value={value}`
 
-Make sure to URL encode the `subject`, `predicate`, `object` strings.
+Make sure to URL encode the `subject`, `property`, `value` strings.
 
-For example, let's search for all Atoms where the object is `test`.
+For example, let's search for all Atoms where the value is `test`.
 
 ```HTTP
-GET https://example.com/tpf?object="test" HTTP/1.1
-Content-Type: application/atomic+x-ndjson
+GET https://example.com/tpf?value="test" HTTP/1.1
+Content-Type: application/ad3-ndjson
 ```
 
 This is the HTTP response:
 
 ```HTTP
 HTTP/1.1 200 OK
-Content-Type: application/atomic+x-ndjson
+Content-Type: application/ad3-ndjson
 Connection: Closed
 
 ["https://example.com/myResource","https://example.com/properties/name","test"]

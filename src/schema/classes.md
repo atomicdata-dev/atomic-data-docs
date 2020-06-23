@@ -2,7 +2,7 @@
 
 In short, Atomic Schema works like this:
 
-- The Predicate value in an Atom links to a Property. It is important that these resolve.
+- The Property field in an Atom links to a Property Class. It is important that these resolve.
 - This Property tells something about its semantic meaning, and links to a Datatype.
 - The Datatype tells
 - A Resource _could_ have one or more classes, which _could_ provide information about which Properties are expected or required.
@@ -21,7 +21,7 @@ Properties of a Property instance:
 
 - `shortname` - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.
 - `description` - (optional, [Langstring](datatypes.md#Langstring)) the semantic meaning of the.
-- `datatype` - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Object in an Atom where the Predicate is the
+- `datatype` - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the
 - `classtype` - (optional, Class) if the `datatype` is an Atomic URI, the `classtype` defines which class(es?) is (are?) acceptable.
 
 ```ndjson
@@ -33,7 +33,7 @@ Properties of a Property instance:
 
 _URL: `https://atomicdata.dev/classes/Datatype`_
 
-A Datatype specifies how an `Object` value should be interpreted.
+A Datatype specifies how a `Value` value should be interpreted.
 Datatypes are concepts such as `boolean`, `string`, `integer`.
 Since DatatTypes can be linked to, you dan define your own.
 However, using non-standard datatypes limits how many applications will know what to do with the data.

@@ -12,7 +12,7 @@ Solutions:
 
 ## How should a client deal with dot syntax key collisions?
 
-Atomic Data guarantees `<subject> <predicate>` uniqueness, but when you're working on Atomic Data in an IDE / text editor, you're likely to use the `key` of the `Property`.
+Atomic Data guarantees `<subject> <property>` uniqueness, but when you're working on Atomic Data in an IDE / text editor, you're likely to use the `key` of the `Property`.
 
 For example:
 

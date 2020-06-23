@@ -46,7 +46,7 @@ Besides these technical reasons about the RDF model, I think that there are more
 
 Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.
 
-- In conversion to RDF, convert `langstring` objects to Literals with an `xsd:string` datatype
+- Convert Atoms with `langstring` Values to Literals with an `xsd:string` datatype and the language in the tag.
 
 ## Convert RDF to Atomic Data
 

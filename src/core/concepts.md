@@ -48,6 +48,7 @@ In other words: following / downloading the Subject link will provide you with a
 ## Property
 
 The Property field is the second part of an Atom.
+In RDF, this is called a `predicate`.
 It is a URL that points to an Atomic [Property](../schema/classes.md#Property).
 For example `https://example.com/createdAt` or `https://example.com/firstName`.
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
@@ -56,6 +57,7 @@ The Property MUST be a URL, and that URL MUST resolve to an Atomic Property.
 ## Value
 
 The Value field is the third part of an Atom.
+In RDF, this is called an `object`.
 Contrary to the Subject and Property values, the Value can be of any datatype.
 This includes URLs, strings, integers, dates and more.
 
