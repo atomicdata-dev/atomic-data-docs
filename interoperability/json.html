@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/concepts.html"><strong aria-hidden="true">3.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../schema/base.html"><strong aria-hidden="true">3.2.</strong> Base Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html" class="active"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../core/graphs.html"><strong aria-hidden="true">6.</strong> Types of Atomic Graphs</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/properties.html"><strong aria-hidden="true">3.3.</strong> Properties</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html" class="active"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../core/graphs.html"><strong aria-hidden="true">6.</strong> Types of Atomic Graphs</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,20 +152,22 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#how-does-atomic-data-relate-to-json" id="how-does-atomic-data-relate-to-json">How does Atomic Data relate to JSON?</a></h1>
-<h2><a class="header" href="#from-atomic-data-to-json" id="from-atomic-data-to-json">From Atomic Data to JSON</a></h2>
+<p>Atomic Data is a stricter subset of RDF, and the most popular serialization of RDF for JSON data is <a href="https://json-ld.org/">JSON-LD</a>.
+When converting JSON to Atomic Data and the other way around, its best to use this format.</p>
 <h2><a class="header" href="#from-json-to-atomic-data" id="from-json-to-atomic-data">From JSON to Atomic Data</a></h2>
-<p>Atomic Data requires a bit more information about pieces of data than JSON tends to contain. Let's take a look at an example:</p>
+<p>Atomic Data requires a bit more information about pieces of data than JSON tends to contain. Let's take a look at a regular JSON example:</p>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;John&quot;,
   &quot;birthDate&quot;: &quot;1991-01-20&quot;
 }
 </code></pre>
-<p>The following things are missing:</p>
+<p>We need more information to convert this JSON into Atomic Data.
+The following things are missing:</p>
 <ul>
-<li>What is the URL of the resource being described?</li>
-<li>What is the URL of the keys being used? (<code>name</code> and <code>birthDate</code>), and consequentially, how should the values be parsed?</li>
+<li>What is the Subject URL of the resource being described?</li>
+<li>What is the Prediate URL of the keys being used? (<code>name</code> and <code>birthDate</code>), and consequentially, how should the values be parsed? What are their DataTypes?</li>
 </ul>
-<p>We can add this data by adding <em>context</em>:</p>
+<p>We can add this data by adding some <em>@context</em>:</p>
 <pre><code class="language-json">{
   &quot;@context&quot;: {
     &quot;name&quot;: &quot;https://example.com/properties/name&quot;,
@@ -176,11 +178,39 @@
   &quot;birthDate&quot;: &quot;1991-01-20&quot;
 }
 </code></pre>
-<p>The JSON above is called JSON-LD. It is still perfectly valid JSON, but it contains more information, and in turn can be converted into RDF formats.
-TODO!</p>
+<p>The JSON above is called JSON-LD.
+It is still perfectly valid JSON, but it contains more information, and in turn can be converted into RDF formats.</p>
+<h2><a class="header" href="#from-atomic-data-to-json" id="from-atomic-data-to-json">From Atomic Data to JSON</a></h2>
+<p>Since Atomic Schema requires the presence of a <code>key</code> slug in Properties, converting Atomic Data to JSON results in dev-friendly objects with nice shorthands.</p>
+<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/properties/lastname&quot;,&quot;Houdini&quot;]
+[&quot;https://example.com/john&quot;,&quot;https://example.com/properties/bestFriend&quot;,&quot;https://example.com/sarah&quot;]
+</code></pre>
+<p>Can be automatically converted to:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    &quot;name&quot;: &quot;https://example.com/properties/lastname&quot;,
+    &quot;bestFriend&quot;: &quot;https://example.com/properties/bestFriend&quot;,
+  },
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;bestFriend&quot;: {
+    &quot;@id&quot;: &quot;https://example.com/sarah&quot;
+  },
+}
+</code></pre>
+<p>The <code>@context</code> object provides a <em>mapping</em> to the original URLs.
+The <code>@id</code> key shows that the value should be interpreted as a link (a URI).</p>
 <h2><a class="header" href="#json-ld-requirements" id="json-ld-requirements">JSON-LD Requirements</a></h2>
 <ul>
 <li>Make sure the URLs used in the <code>@context</code> resolve to Atomic Properties.</li>
+</ul>
+<!-- Not sure about this.. maybe use RDF collections or some other model? -->
+<ul>
+<li>Convert JSON-LD arrays into ResourceArrays</li>
+<li>Creating nested JSON objects is possible (by resolving the identifiers from <code>@id</code> relations), but it is up to the serializer to decide how deep this object nesting should happen.</li>
+</ul>
+<h2><a class="header" href="#considerations" id="considerations">Considerations</a></h2>
+<ul>
+<li>Whilst JSON-LD is great for traditional JSON usage (dot.syntax ORM style navigation of objects), it is not great for linked data usage.</li>
 </ul>
 
                     </main>

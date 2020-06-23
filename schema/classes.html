@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Concepts - Atomic Data</title>
+        <title>Classes - Atomic Data</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/properties.html"><strong aria-hidden="true">3.3.</strong> Properties</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/concepts.html" class="active"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../core/graphs.html"><strong aria-hidden="true">6.</strong> Types of Atomic Graphs</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html" class="active"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/properties.html"><strong aria-hidden="true">3.3.</strong> Properties</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../core/graphs.html"><strong aria-hidden="true">6.</strong> Types of Atomic Graphs</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,52 +151,81 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#atomic-mutations-concepts" id="atomic-mutations-concepts">Atomic Mutations: Concepts</a></h1>
-<h2><a class="header" href="#mutation" id="mutation">Mutation</a></h2>
-<p>The smallest possible piece of a state change.
-A mutation describes how an Resource should be updated.
-An Atomic Mutation consists of a:</p>
+                        <h1><a class="header" href="#atomic-schema-classes" id="atomic-schema-classes">Atomic Schema: Classes</a></h1>
+<p>In short, Atomic Schema works like this:</p>
 <ul>
-<li><code>subject</code> - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)</li>
-<li><code>predicate</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
-<li><code>object</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the predicate)</li>
-<li><code>method</code> - How the resource needs to be updated using the Atom. If empty, just replace the current state.</li>
-<li><code>hash</code> - The <a href="versioning.html#Hashing">IPFS URL</a> of the updated version of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in</li>
-<li><code>date</code> - A timestamp of when the mutation was created.</li>
+<li>The Predicate value in an Atom links to a Property. It is important that these resolve.</li>
+<li>This Property tells something about its semantic meaning, and links to a Datatype.</li>
+<li>The Datatype tells</li>
+<li>A Resource <em>could</em> have one or more classes, which <em>could</em> provide information about which Properties are expected or required.</li>
 </ul>
-<!-- Should it have an actor?  -->
+<h2><a class="header" href="#property" id="property">Property</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/classes/Class</code></em></p>
+<p>The Property Class.
+A Property is an abstract type of Resource that describes the relation between a Subject and an Object.
+A Property provides some semantic information about the relationship (in its <code>description</code>), it provides a shorthand (the <code>shortname</code>) and it links to a Datatype.
+Here's a <a href="properties.html">list of useful Properties</a>.</p>
+<p>Properties of a Property instance:</p>
 <ul>
-<li><code>actor</code> - A timestamp of when the mutation was created.</li>
+<li><code>shortname</code> - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.</li>
+<li><code>description</code> - (optional, <a href="datatypes.html#Langstring">Langstring</a>) the semantic meaning of the.</li>
+<li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Object in an Atom where the Predicate is the</li>
+<li><code>classtype</code> - (optional, Class) if the <code>datatype</code> is an Atomic URI, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
 </ul>
-<h2><a class="header" href="#ledger" id="ledger">Ledger</a></h2>
-<p>A Ledger is an (append-only) log of Mutations.</p>
-<p>TODO!</p>
-<h2><a class="header" href="#commit" id="commit">Commit</a></h2>
-<p>A Commit is a set of Mutations, made by some Actor</p>
-<p>TODO!</p>
-<h2><a class="header" href="#serialization-with-atomicmutations-ndjson" id="serialization-with-atomicmutations-ndjson">Serialization with AtomicMutations-ndjson</a></h2>
-<p>Altough Mutations can be communicated with</p>
-<p>Work in progress, see <a href="https://github.com/ontola/linked-delta">linked-delta</a>.</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;, &quot;https://example.com/properties/lastName&quot;, &quot;Mc'Lovin&quot;, &quot;https://purl.org/linked-delta/add&quot;, &quot;AEF1245612F3&quot;]
+<pre><code class="language-ndjson">[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/shortname&quot;,&quot;createdAt&quot;]
+[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/datatype&quot;,&quot;https://atomicdata.dev/datatype/datetime&quot;]
 </code></pre>
-<h2><a class="header" href="#streaming-pubsub" id="streaming-pubsub">Streaming (pub/sub)</a></h2>
-<p>We're using HexTuples-NDJSON, since that allows for streaming parsing of mutations.</p>
-<p>TODO! Something about endpoints / protocol for pub/sub.</p>
-<h2><a class="header" href="#base-methods" id="base-methods">Base Methods</a></h2>
-<p>See <a href="http://purl.org/linked-delta">linked-delta</a></p>
+<h2><a class="header" href="#datatype" id="datatype">Datatype</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/classes/Datatype</code></em></p>
+<p>A Datatype specifies how an <code>Object</code> value should be interpreted.
+Datatypes are concepts such as <code>boolean</code>, <code>string</code>, <code>integer</code>.
+Since DatatTypes can be linked to, you dan define your own.
+However, using non-standard datatypes limits how many applications will know what to do with the data.</p>
+<p>Properties:</p>
+<ul>
+<li><code>description</code> - (required, langstring) how the datatype functions.</li>
+<li><code>stringSerialization</code> - (required, langstring) how the datatype should be parsed / serialized as an UTF-8 string</li>
+<li><code>stringExample</code> - (required, string) an example stringSerialization example value that should be parsed correclty</li>
+<li><code>binarySerialization</code> - (optional, langstring) how the datatype should be parsed / serialized as a byte array.</li>
+<li><code>binaryExample</code> - (optional, string) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.</li>
+</ul>
+<h2><a class="header" href="#class" id="class">Class</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/classes/Class</code></em></p>
+<p>A Class is an abstract type of Resource, such as <code>Person</code>.
+It is convention to use an Uppercase in its URI.
+Note that in Atomic Data, a Resource can have several Classes - not just a single one.</p>
+<p>Properties:</p>
+<ul>
+<li><code>shortname</code> - (required, Slug) a short string shorthand.</li>
+<li><code>description</code> - (required, langstring) human readable explanation of what the Class represents.</li>
+<li><code>requires</code> - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.</li>
+<li><code>recommends</code> - (optional, ResourceArray) a list of Properties that are recommended.</li>
+</ul>
+<!-- Maybe remove this next one? -->
+<!-- - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed. -->
+<!-- What are the consequences of this? How to deal with this field if there are more classes in aSSubject? -->
+<p>O!-- - <code>allowedProperties</code> - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. --&gt;</p>
+<p>Example:</p>
+<pre><code class="language-ndjson">[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;Class&quot;]
+[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/datatype&quot;,&quot;https://atomicdata.dev/datatypes/datetime&quot;]
+</code></pre>
+<p>Incoming Properties:</p>
+<ul>
+<li><code>class</code> - The Class of the Resource</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../mutations/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../schema/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../mutations/suggestions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../schema/datatypes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -208,13 +237,13 @@ An Atomic Mutation consists of a:</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../mutations/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../schema/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../mutations/suggestions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../schema/datatypes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
