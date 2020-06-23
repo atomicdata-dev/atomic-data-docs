@@ -215,9 +215,13 @@ An Atom consists of three values:</p>
 <ul>
 <li>four different Atoms (every line is an Atom)</li>
 <li>two different Subjects: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
-<li>three different Propertys (<code>https://example.com/properties/bornAt</code>, <code>https://example.com/properties/firstName</code>, and <code>https://example.com/properties/bestFriend</code>)</li>
+<li>three different Properties (<code>https://example.com/properties/bornAt</code>, <code>https://example.com/properties/firstName</code>, and <code>https://example.com/properties/bestFriend</code>)</li>
 <li>four different Values (<code>1991-0-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
 </ul>
+<p>All Subjects and Properties are URLs, they are links that can be retrieved.
+One of the Values is a URL, too, but what are the others?
+Their Datatypes are defined by the Properties.
+For example, the <code>https://example.com/properties/bornAt</code> Property requires an ISO Date string, and the <code>https://example.com/properties/firstName</code> Property requires a regular string.</p>
 <h2><a class="header" href="#subject" id="subject">Subject</a></h2>
 <p>The Subject field is the first part of an Atom.
 It is the identifier that the rest of the Atom is providing information about.
@@ -230,7 +234,7 @@ In RDF, this is called a <code>predicate</code>.
 It is a URL that points to an Atomic <a href="core/../schema/classes.html#Property">Property</a>.
 For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.</p>
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
-<p>The Property MUST be a URL, and that URL MUST resolve to an Atomic Property.</p>
+<p>The Property field MUST be a URL, and that URL MUST resolve to an Atomic Property, which contains information about the Datatype.</p>
 <h2><a class="header" href="#value" id="value">Value</a></h2>
 <p>The Value field is the third part of an Atom.
 In RDF, this is called an <code>object</code>.
