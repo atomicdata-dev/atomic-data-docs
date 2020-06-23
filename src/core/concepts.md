@@ -34,8 +34,13 @@ In the Atomic Data above, we have:
 
 - four different Atoms (every line is an Atom)
 - two different Subjects: `https://example.com/arnold` and `https://example.com/britta`.
-- three different Propertys (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
+- three different Properties (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
 - four different Values (`1991-0-20`, `Arnold`, `https://example.com/britta` and `Britta`)
+
+All Subjects and Properties are URLs, they are links that can be retrieved.
+One of the Values is a URL, too, but what are the others?
+Their Datatypes are defined by the Properties.
+For example, the `https://example.com/properties/bornAt` Property requires an ISO Date string, and the `https://example.com/properties/firstName` Property requires a regular string.
 
 ## Subject
 
@@ -52,7 +57,7 @@ In RDF, this is called a `predicate`.
 It is a URL that points to an Atomic [Property](../schema/classes.md#Property).
 For example `https://example.com/createdAt` or `https://example.com/firstName`.
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
-The Property MUST be a URL, and that URL MUST resolve to an Atomic Property.
+The Property field MUST be a URL, and that URL MUST resolve to an Atomic Property, which contains information about the Datatype.
 
 ## Value
 
