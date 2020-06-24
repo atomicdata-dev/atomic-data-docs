@@ -19,4 +19,4 @@ Things you can do:
 - Tim Berners-Lee (for everything he did for linked data and the web)
 - Ruben Verborgh (for doing great work with RDF, such as the TPF spec)
 - All the other people who worked on the RDF specification
-- Pat McConnell (lots of valuable feedback on initial Atomic Data docs)
+- Pat McBennett (lots of valuable feedback on initial Atomic Data docs)
