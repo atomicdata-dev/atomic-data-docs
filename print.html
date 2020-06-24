@@ -349,18 +349,17 @@ This is especially useful in browser clients that traverse the graph iteratively
 Since all Atomic Data is also valid RDF, it is possible to query Atomic Data using SPARQL.</p>
 <h1><a class="header" href="#atomic-schema" id="atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
-You can compare it to what XSD is for XML.</p>
+You can compare it to what XSD is for XML.
+Atomic Schema deals with the</p>
 <p>This section will define various Classes, Properties and Datatypes (discussed in <a href="schema/../core/concepts.html">Atomic Core: Concepts</a>).</p>
-<!-- Making this a requirement is what makes Atomic Data typed and semantic -->
-<p>Some of these Classes, Properties and Datatypes are <em>optional</em> to use, but</p>
 <h2><a class="header" href="#design-goals-1" id="design-goals-1">Design Goals</a></h2>
 <ul>
 <li><strong>Typed</strong>: Every Atom of data has a clear datatype.</li>
 <li><strong>IDE-friendly</strong>: Every property has a simple short key representation (useful in text-based context) that maps to a URL that contains more information.</li>
-<li><strong>Human readable</strong>: All Datatypes should have a human-readable represenatation.</li>
+<li><strong>Self-documenting</strong>: When seeing a piece of data, simply following links will explain you how the model is to be understood. This removes the need for (most of) existing API documentation.</li>
 <li><strong>Performant</strong>: Datatypes can have a binary represenatation for optimal storage, communication, serialization and parsing efficiency.</li>
 <li><strong>Extensible</strong>: Anybody can create their own Datatypes, Properties and Classes.</li>
-<li><strong>Accessible</strong>: Support for languages, easily translateable.</li>
+<li><strong>Accessible</strong>: Support for languages, easily translateable. Useful for humans and machines.</li>
 <li><strong>Atomic</strong>: All the design goals of Atomic Data itself also apply here.</li>
 <li><strong>Self-describing</strong>: Atomic Schema is to be described as Atomic Data using Atomic Schema.</li>
 </ul>
@@ -368,23 +367,34 @@ You can compare it to what XSD is for XML.</p>
 <h2><a class="header" href="#how-do-i-create-a-property-that-supports-multiple-datatypes" id="how-do-i-create-a-property-that-supports-multiple-datatypes">How do I create a Property that supports multiple Datatypes?</a></h2>
 <p>A property only has one single Datatype.
 However, feel free to create a new kind of Datatype that, in turn, refers to other Datatypes.
-Perhaps this should be part of the Atomic Base Datatypes.</p>
-<p>Solutions:</p>
-<ul>
-<li>Generic datatype?</li>
-</ul>
-<h2><a class="header" href="#how-should-a-client-deal-with-dot-syntax-key-collisions" id="how-should-a-client-deal-with-dot-syntax-key-collisions">How should a client deal with dot syntax key collisions?</a></h2>
-<p>Atomic Data guarantees <code>&lt;subject&gt; &lt;property&gt;</code> uniqueness, but when you're working on Atomic Data in an IDE / text editor, you're likely to use the <code>key</code> of the <code>Property</code>.</p>
+Perhaps Generics, or Option like types should be part of the Atomic Base Datatypes.</p>
+<h2><a class="header" href="#how-should-a-client-deal-with-shortname-collisions" id="how-should-a-client-deal-with-shortname-collisions">How should a client deal with Shortname collisions?</a></h2>
+<p>Atomic Data guarantees Subject-Property uniqueness, which means that Valid Resources are guanranteed to have only one of each Property.
+Properties offer Shortnames, which are short strings.
+These strings SHOULD be unique inside Classes, but these are not guaranteed to be unique inside all Resources.
+Note that Resources can have multiple Classes, and throught that, they can have colliding Shortnames.
+Resources are also free to inlcude Properties from other Classes, and their Shortnames, too, might collide.</p>
 <p>For example:</p>
 <pre><code class="language-ndjson">[&quot;https://example.com/people/123&quot;, &quot;https://example.com/name&quot;, &quot;John&quot;]
 [&quot;https://example.com/people/123&quot;, &quot;https://somepage.example.com/name&quot;, &quot;John&quot;]
 </code></pre>
-<p>Let's assume that <code>https://somepage.example.com/name</code> and <code>https://example.com/name</code> are Properties that have a <code>key</code> with the object <code>name</code>.</p>
-<pre><code class="language-ndjson">[&quot;https://somepage.example.com/name&quot;]
-</code></pre>
-<p>This</p>
-<h2><a class="header" href="#atomic-data-uses-a-lot-of-links-how-do-you-deal-with-links-that-dont-work" id="atomic-data-uses-a-lot-of-links-how-do-you-deal-with-links-that-dont-work">Atomic Data uses a lot of links. How do you deal with links that don't work?</a></h2>
+<p>Let's assume that <code>https://somepage.example.com/name</code> and <code>https://example.com/name</code> are Properties that have the Shortname: <code>name</code>.</p>
+<p>What if a client tries something such as <code>people123.name</code>?
+To consistently return a single value, we need some form or precendence, and it goes like this:</p>
 <ol>
+<li>The earlier Class mentioned in the <code>class</code> Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collissions in required and recommended properties, which means that they might have. If these exist internally, sort the properties from A-Z.</li>
+</ol>
+<!-- This  -->
+<ol>
+<li>When the Properties are not part of any of the mentioned Classes, use Alphabetical sorting of the Property URL.</li>
+</ol>
+<p>When shortname colisions are possible, it's recomended to not use the shortname, but use the URL of the Property:</p>
+<pre><code>people123.&quot;https://example.com/name&quot;
+</code></pre>
+<h2><a class="header" href="#atomic-data-uses-a-lot-of-links-how-do-you-deal-with-links-that-dont-work" id="atomic-data-uses-a-lot-of-links-how-do-you-deal-with-links-that-dont-work">Atomic Data uses a lot of links. How do you deal with links that don't work?</a></h2>
+<p>Fir</p>
+<ol>
+<li>Use URIs schemes that use content adressing, such as IPFS URIs.</li>
 <li>Use URIs schemes that use content adressing, such as IPFS URIs.</li>
 </ol>
 <h2><a class="header" href="#whats-a-uri-and-whats-a-url" id="whats-a-uri-and-whats-a-url">What's a URI, and what's a URL?</a></h2>
@@ -836,8 +846,9 @@ fn main() {
 <ul>
 <li>Thom van Kalkeren (who came up with many great ideas on how to work with RDF)</li>
 <li>Tim Berners-Lee (for everything he did for linked data and the web)</li>
-<li>Ruben Verborgh (for doing great work with RDF)</li>
+<li>Ruben Verborgh (for doing great work with RDF, such as the TPF spec)</li>
 <li>All the other people who worked on the RDF specification</li>
+<li>Pat McConnell (lots of valuable feedback on initial Atomic Data docs)</li>
 </ul>
 
                     </main>

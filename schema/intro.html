@@ -153,18 +153,17 @@
                     <main>
                         <h1><a class="header" href="#atomic-schema" id="atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
-You can compare it to what XSD is for XML.</p>
+You can compare it to what XSD is for XML.
+Atomic Schema deals with the</p>
 <p>This section will define various Classes, Properties and Datatypes (discussed in <a href="../core/concepts.html">Atomic Core: Concepts</a>).</p>
-<!-- Making this a requirement is what makes Atomic Data typed and semantic -->
-<p>Some of these Classes, Properties and Datatypes are <em>optional</em> to use, but</p>
 <h2><a class="header" href="#design-goals" id="design-goals">Design Goals</a></h2>
 <ul>
 <li><strong>Typed</strong>: Every Atom of data has a clear datatype.</li>
 <li><strong>IDE-friendly</strong>: Every property has a simple short key representation (useful in text-based context) that maps to a URL that contains more information.</li>
-<li><strong>Human readable</strong>: All Datatypes should have a human-readable represenatation.</li>
+<li><strong>Self-documenting</strong>: When seeing a piece of data, simply following links will explain you how the model is to be understood. This removes the need for (most of) existing API documentation.</li>
 <li><strong>Performant</strong>: Datatypes can have a binary represenatation for optimal storage, communication, serialization and parsing efficiency.</li>
 <li><strong>Extensible</strong>: Anybody can create their own Datatypes, Properties and Classes.</li>
-<li><strong>Accessible</strong>: Support for languages, easily translateable.</li>
+<li><strong>Accessible</strong>: Support for languages, easily translateable. Useful for humans and machines.</li>
 <li><strong>Atomic</strong>: All the design goals of Atomic Data itself also apply here.</li>
 <li><strong>Self-describing</strong>: Atomic Schema is to be described as Atomic Data using Atomic Schema.</li>
 </ul>
