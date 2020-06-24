@@ -11,4 +11,3 @@ git-repository-icon = "fa-github"
 
 # Results in an extra folder in ./book, which breaks the website, since github serves from root.
 [output.linkcheck]
-optional = true
