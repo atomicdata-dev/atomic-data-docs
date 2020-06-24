@@ -152,13 +152,15 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-schema-classes" id="atomic-schema-classes">Atomic Schema: Classes</a></h1>
-<p>In short, Atomic Schema works like this:</p>
+<h2><a class="header" href="#how-to-read-classes" id="how-to-read-classes">How to read classes</a></h2>
+<p>Example:</p>
 <ul>
-<li>The Property field in an Atom links to a Property resource. It is important that this URL resolves.</li>
-<li>This Property tells something about its semantic meaning, and links to a Datatype.</li>
-<li>The Datatype tells</li>
-<li>A Resource <em>could</em> have one or more classes, which <em>could</em> provide information about which Properties are expected or required.</li>
+<li><code>description</code> - (required, AtomicURL, LangString) human readable explanation of what the Class represents.</li>
 </ul>
+<p>Means:</p>
+<p>This class has a <em>required</em> property with shortname <code>description</code>.
+This Property has a Datatype of <code>AtomicURL</code>, and a classtype of <code>LangString</code>.</p>
+<p><em>Note: the URLs for properties are missing and will be added at a later time.</em></p>
 <h2><a class="header" href="#property" id="property">Property</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/classes/Property</code></em></p>
 <p>The Property class.
@@ -170,8 +172,8 @@ Here's a <a href="properties.html">list of useful Properties</a>.</p>
 <ul>
 <li><code>shortname</code> - (required, Slug) the shortname for the property, used in ORM-style dot syntax (<code>thing.property.anotherproperty</code>).</li>
 <li><code>description</code> - (optional, <a href="datatypes.html#Langstring">Langstring</a>) the semantic meaning of the.</li>
-<li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the</li>
-<li><code>classtype</code> - (optional, Class) if the <code>datatype</code> is an Atomic URI, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
+<li><code>datatype</code> - (required, AtomicURL, Datatype) a URL to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the</li>
+<li><code>classtype</code> - (optional, AtomicURL, Class) if the <code>datatype</code> is an Atomic URL, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
 </ul>
 <pre><code class="language-ndjson">[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/shortname&quot;,&quot;createdAt&quot;]
 [&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/datatype&quot;,&quot;https://atomicdata.dev/datatype/datetime&quot;]
@@ -185,9 +187,9 @@ However, using non-standard datatypes limits how many applications will know wha
 <p>Properties:</p>
 <ul>
 <li><code>description</code> - (required, langstring) how the datatype functions.</li>
-<li><code>stringSerialization</code> - (required, langstring) how the datatype should be parsed / serialized as an UTF-8 string</li>
+<li><code>stringSerialization</code> - (required, AtomicURL, LangString) how the datatype should be parsed / serialized as an UTF-8 string</li>
 <li><code>stringExample</code> - (required, string) an example stringSerialization example value that should be parsed correclty</li>
-<li><code>binarySerialization</code> - (optional, langstring) how the datatype should be parsed / serialized as a byte array.</li>
+<li><code>binarySerialization</code> - (optional, AtomicURL, LangString) how the datatype should be parsed / serialized as a byte array.</li>
 <li><code>binaryExample</code> - (optional, string) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.</li>
 </ul>
 <h2><a class="header" href="#class" id="class">Class</a></h2>
@@ -198,7 +200,7 @@ Note that in Atomic Data, a Resource can have several Classes - not just a singl
 <p>Properties:</p>
 <ul>
 <li><code>shortname</code> - (required, Slug) a short string shorthand.</li>
-<li><code>description</code> - (required, langstring) human readable explanation of what the Class represents.</li>
+<li><code>description</code> - (required, AtomicURL, LangString) human readable explanation of what the Class represents.</li>
 <li><code>requires</code> - (optional, ResourceArray) a list of Properties that are required. If absent, none are required. These SHOULD have unique shortnames.</li>
 <li><code>recommends</code> - (optional, ResourceArray) a list of Properties that are recommended. These SHOULD have unique shortnames.</li>
 </ul>
@@ -213,6 +215,13 @@ Note that in Atomic Data, a Resource can have several Classes - not just a singl
 <p>Incoming Properties:</p>
 <ul>
 <li><code>class</code> - The Class of the Resource</li>
+</ul>
+<h2><a class="header" href="#langstring" id="langstring">LangString</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/classes/Class</code></em></p>
+<p>A language specific string. (<a href="https://github.com/ontola/atomic-data/issues/6">discussion</a>)</p>
+<ul>
+<li><code>lang</code> - (required, string) a <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag, e.g. <code>en-US</code>.</li>
+<li><code>text</code> - (required, string) the contents of the string.</li>
 </ul>
 
                     </main>

@@ -151,8 +151,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#atomic-schema-base-datatypes" id="atomic-schema-base-datatypes">Atomic Schema: Base Datatypes</a></h1>
-<p>The Atomic Base Datatypes consist of some of the most commonly used <a href="classes.html#Datatype">Datatypes</a>.</p>
+                        <h1><a class="header" href="#atomic-schema-datatypes" id="atomic-schema-datatypes">Atomic Schema: Datatypes</a></h1>
+<p>The Atomic Datatypes consist of some of the most commonly used <a href="classes.html#Datatype">Datatypes</a>.</p>
+<p>A Datatype is</p>
 <h2><a class="header" href="#slug" id="slug">Slug</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/slug</code></em></p>
 <p>A string with a limited set of allowed characters, used in IDE / Text editor context.</p>
@@ -167,20 +168,8 @@ Could be HTTP, HTTPS, or any other type of schema.</p>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/string</code></em></p>
 <p>UTF-8 String, no max character count.
 Newlines use backslash escaped <code>\n</code> characters.
-Should not contain language specific data, use a <code>langstring</code> instead.</p>
+Should not contain language specific data, use a <code>langstring</code> instead (which is a linked resource).</p>
 <p>e.g. <code>String time! \n Second line!</code></p>
-<h2><a class="header" href="#langstring" id="langstring">Langstring</a></h2>
-<p><em>URL: <code>https://atomicdata.dev/datatypes/langstring</code></em></p>
-<!--
-So this is something I'm having serious doubts on.
-It seems so verbose and hard to parse.
-However, the underlying problem is kind of tough: we want <subject> <predicate> combination uniqueness...
-... but we also want to have multilingual strings that can be added later.
-Perhaps this should not be a Datatype
--->
-<p>Array of special UTF-8 Strings.
-Each element of the Array starts with a language string code, followed by a newline.</p>
-<p>e.g. <code>[&quot;en-US\nHi there&quot;],[&quot;nl-NL\nHallo daar&quot;]</code></p>
 <h2><a class="header" href="#integer" id="integer">Integer</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/integer</code></em></p>
 <p>Signed Integer, max 64 bit.

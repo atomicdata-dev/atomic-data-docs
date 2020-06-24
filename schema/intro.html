@@ -159,7 +159,7 @@ Atomic Schema deals with the</p>
 <h2><a class="header" href="#design-goals" id="design-goals">Design Goals</a></h2>
 <ul>
 <li><strong>Typed</strong>: Every Atom of data has a clear datatype.</li>
-<li><strong>IDE-friendly</strong>: Every property has a simple short key representation (useful in text-based context) that maps to a URL that contains more information.</li>
+<li><strong>IDE-friendly</strong>: You should not have to type full URLs - the schema sets shornames.</li>
 <li><strong>Self-documenting</strong>: When seeing a piece of data, simply following links will explain you how the model is to be understood. This removes the need for (most of) existing API documentation.</li>
 <li><strong>Performant</strong>: Datatypes can have a binary represenatation for optimal storage, communication, serialization and parsing efficiency.</li>
 <li><strong>Extensible</strong>: Anybody can create their own Datatypes, Properties and Classes.</li>
@@ -167,6 +167,20 @@ Atomic Schema deals with the</p>
 <li><strong>Atomic</strong>: All the design goals of Atomic Data itself also apply here.</li>
 <li><strong>Self-describing</strong>: Atomic Schema is to be described as Atomic Data using Atomic Schema.</li>
 </ul>
+<h2><a class="header" href="#in-short" id="in-short">In short</a></h2>
+<p>In short, Atomic Schema works like this:</p>
+<p>The <strong>Property</strong> <em>field</em> in an Atom links to a Property <em>Resource</em>. It is important that the URL to the Property Resource resolves.
+This Property does three things:</p>
+<ol>
+<li>it tells something about its semantic meaning, and links to a Datatype.</li>
+<li>it links to a Datatype or Class, which indicates which Value is acceptable.</li>
+<li>it provides a Shortname, which is used for ORM.</li>
+</ol>
+<p><strong>DataTypes</strong> define the shape of the Value, e.g. a Number (<code>124</code>) or Boolean (<code>true</code>).</p>
+<p><strong>Classes</strong> are a special kind of Resource that describe an abstract class of things (such as &quot;Person&quot; or &quot;Blog&quot;).
+Classes can <em>recommend</em> or <em>require</em> a set of Properties.
+They behave as Models, similar to <code>struts</code> in C or <code>interfaces</code> in Typescript.
+A Resource <em>could</em> have one or more classes, which <em>could</em> provide information about which Properties are expected or required.</p>
 
                     </main>
 
