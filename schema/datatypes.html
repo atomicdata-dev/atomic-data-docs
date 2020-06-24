@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Versioning - Atomic Data</title>
+        <title>Datatypes - Atomic Data</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/properties.html"><strong aria-hidden="true">3.3.</strong> Properties</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html" class="active"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../core/graphs.html"><strong aria-hidden="true">6.</strong> Types of Atomic Graphs</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html" class="active"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/properties.html"><strong aria-hidden="true">3.3.</strong> Properties</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../core/graphs.html"><strong aria-hidden="true">6.</strong> Types of Atomic Graphs</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,42 +151,85 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#atomic-data-versioning" id="atomic-data-versioning">Atomic Data Versioning</a></h1>
-<p>When Atomic Mutations are applied to some Resource, the resource will change.
-However, its identifier (the Subject) will often remain the same.</p>
+                        <h1><a class="header" href="#atomic-schema-base-datatypes" id="atomic-schema-base-datatypes">Atomic Schema: Base Datatypes</a></h1>
+<p>The Atomic Base Datatypes consist of some of the most commonly used <a href="classes.html#Datatype">Datatypes</a>.</p>
+<h2><a class="header" href="#slug" id="slug">Slug</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/slug</code></em></p>
+<p>A string with a limited set of allowed characters, used in IDE / Text editor context.</p>
+<h2><a class="header" href="#atomic-uri" id="atomic-uri">Atomic URI</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/atomicURI</code></em></p>
+<p>A URL that should resolve to an <a href="../core/concepts.html#Resource">Atomic Resource</a>.</p>
+<h2><a class="header" href="#uri" id="uri">URI</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/URI</code></em></p>
+<p>A Uniform Resource Identifier, preferably a URL (i.e. an URI that can be fetched).
+Could be HTTP, HTTPS, or any other type of schema.</p>
+<h2><a class="header" href="#string" id="string">String</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/string</code></em></p>
+<p>UTF-8 String, no max character count.
+Newlines use backslash escaped <code>\n</code> characters.
+Should not contain language specific data, use a <code>langstring</code> instead.</p>
+<p>e.g. <code>String time! \n Second line!</code></p>
+<h2><a class="header" href="#langstring" id="langstring">Langstring</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/langstring</code></em></p>
+<!--
+So this is something I'm having serious doubts on.
+It seems so verbose and hard to parse.
+However, the underlying problem is kind of tough: we want <subject> <predicate> combination uniqueness...
+... but we also want to have multilingual strings that can be added later.
+Perhaps this should not be a Datatype
+-->
+<p>Array of special UTF-8 Strings.
+Each element of the Array starts with a language string code, followed by a newline.</p>
+<p>e.g. <code>[&quot;en-US\nHi there&quot;],[&quot;nl-NL\nHallo daar&quot;]</code></p>
+<h2><a class="header" href="#integer" id="integer">Integer</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/integer</code></em></p>
+<p>Signed Integer, max 64 bit.
+Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
+<p>e.g. <code>-420</code></p>
+<h2><a class="header" href="#boolean" id="boolean">Boolean</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/boolean</code></em></p>
+<p>True or false, one or zero.</p>
+<p><strong>String serialization</strong></p>
+<p><code>true</code> or <code>false</code>.</p>
+<p><strong>Binary serialization</strong></p>
+<p>Use a single bit one boolean.</p>
+<p>1 for <code>true</code>, or 0 for <code>false</code>.</p>
+<h2><a class="header" href="#datetime" id="datetime">Datetime</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/dateTime</code></em></p>
+<p>ISO 8601 encoded string.</p>
+<p>e.g. <code>2020-06-11</code></p>
+<h2><a class="header" href="#mimefile" id="mimefile">MIMEFile</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/mimeFile</code></em></p>
+<p>Any type of file, starting with its <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">mime type</a>
+Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often don't exist in your OS</a>, specifying them seems like a good idea.</p>
+<p><strong>String serialization</strong></p>
+<p>Start with the mimetype string, do a newline <code>\n</code> and continue with the UTF-8 stringified data.</p>
 <ul>
-<li>Versioned representations should provide a link to the authority that might update it, and a link to where the latest version can be found.</li>
-<li>The latest version should have a link to its permanent verison.</li>
-<li>Should <a href="../interoperability/ipfs.html">IPFS</a> content-hash URLs be used for Versioned resources?</li>
+<li>e.g. <code>application/text\nOh hi mark</code></li>
+<li>e.g. <code>text/html\n&lt;html&gt;&lt;p&gt;oh, hi mark&lt;/p&gt;&lt;/html&gt;</code></li>
 </ul>
-<h2><a class="header" href="#versioned-resources" id="versioned-resources">Versioned Resources</a></h2>
-<p>Properties:</p>
-<!-- Maybe this is not required, if we assume that the subject URL should always show the latest? -->
+<h2><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/resourceArray</code></em></p>
+<p>Sequential, ordered list of Atomic URIs.
+Serialized as a JSON array with strings.
+Note that other types of arrays are not included in this spec, but can be perfectly valid.</p>
 <ul>
-<li>latest: (ResourceArray, optional)</li>
-<li>versions: (ResourceArray, optional)</li>
-<li>currentVersion: (ResourceURL, required)</li>
+<li>e.g. <code>[&quot;https://example.com/1&quot;, &quot;https://example.com/1&quot;]</code></li>
 </ul>
-<h2><a class="header" href="#static-resource" id="static-resource">Static Resource</a></h2>
-<p>A static resource has a <em>content adressible</em> URL, which means that its URL will never change.</p>
-<h2><a class="header" href="#hashing" id="hashing">Hashing</a></h2>
-<ul>
-<li>Serialize all Atoms of the Subject (the entire Resource) as Atomic-NDJSON</li>
-<li>Sort all lines (every atom) alphabetically</li>
-</ul>
+<h2><a class="header" href="#" id=""></a></h2>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../mutations/suggestions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../schema/classes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../interoperability/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../schema/properties.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -198,13 +241,13 @@ However, its identifier (the Subject) will often remain the same.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../mutations/suggestions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../schema/classes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../interoperability/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../schema/properties.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

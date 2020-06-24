@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.1.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="core/graphs.html"><strong aria-hidden="true">6.</strong> Types of Atomic Graphs</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/properties.html"><strong aria-hidden="true">3.3.</strong> Properties</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="core/graphs.html"><strong aria-hidden="true">6.</strong> Types of Atomic Graphs</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -363,6 +363,139 @@ Atomic Schema deals with the</p>
 <li><strong>Atomic</strong>: All the design goals of Atomic Data itself also apply here.</li>
 <li><strong>Self-describing</strong>: Atomic Schema is to be described as Atomic Data using Atomic Schema.</li>
 </ul>
+<h1><a class="header" href="#atomic-schema-classes" id="atomic-schema-classes">Atomic Schema: Classes</a></h1>
+<p>In short, Atomic Schema works like this:</p>
+<ul>
+<li>The Property field in an Atom links to a Property Class. It is important that these resolve.</li>
+<li>This Property tells something about its semantic meaning, and links to a Datatype.</li>
+<li>The Datatype tells</li>
+<li>A Resource <em>could</em> have one or more classes, which <em>could</em> provide information about which Properties are expected or required.</li>
+</ul>
+<h2><a class="header" href="#property-1" id="property-1">Property</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/classes/Class</code></em></p>
+<p>The Property class.
+The thing that the Property field should link to.
+A Property is an abstract type of Resource that describes the relation between a Subject and a Value.
+A Property provides some semantic information about the relationship (in its <code>description</code>), it provides a shorthand (the <code>shortname</code>) and it links to a Datatype.
+Here's a <a href="schema/properties.html">list of useful Properties</a>.</p>
+<p>Properties of a Property instance:</p>
+<ul>
+<li><code>shortname</code> - (required, Slug) the shortname for the property, used in ORM-style dot syntax (<code>thing.property.anotherproperty</code>).</li>
+<li><code>description</code> - (optional, <a href="schema/datatypes.html#Langstring">Langstring</a>) the semantic meaning of the.</li>
+<li><code>datatype</code> - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the</li>
+<li><code>classtype</code> - (optional, Class) if the <code>datatype</code> is an Atomic URI, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
+</ul>
+<pre><code class="language-ndjson">[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/shortname&quot;,&quot;createdAt&quot;]
+[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/datatype&quot;,&quot;https://atomicdata.dev/datatype/datetime&quot;]
+</code></pre>
+<h2><a class="header" href="#datatype" id="datatype">Datatype</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/classes/Datatype</code></em></p>
+<p>A Datatype specifies how a <code>Value</code> value should be interpreted.
+Datatypes are concepts such as <code>boolean</code>, <code>string</code>, <code>integer</code>.
+Since DatatTypes can be linked to, you dan define your own.
+However, using non-standard datatypes limits how many applications will know what to do with the data.</p>
+<p>Properties:</p>
+<ul>
+<li><code>description</code> - (required, langstring) how the datatype functions.</li>
+<li><code>stringSerialization</code> - (required, langstring) how the datatype should be parsed / serialized as an UTF-8 string</li>
+<li><code>stringExample</code> - (required, string) an example stringSerialization example value that should be parsed correclty</li>
+<li><code>binarySerialization</code> - (optional, langstring) how the datatype should be parsed / serialized as a byte array.</li>
+<li><code>binaryExample</code> - (optional, string) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.</li>
+</ul>
+<h2><a class="header" href="#class" id="class">Class</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/classes/Class</code></em></p>
+<p>A Class is an abstract type of Resource, such as <code>Person</code>.
+It is convention to use an Uppercase in its URI.
+Note that in Atomic Data, a Resource can have several Classes - not just a single one.</p>
+<p>Properties:</p>
+<ul>
+<li><code>shortname</code> - (required, Slug) a short string shorthand.</li>
+<li><code>description</code> - (required, langstring) human readable explanation of what the Class represents.</li>
+<li><code>requires</code> - (optional, ResourceArray) a list of Properties that are required. If absent, none are required. These SHOULD have unique shortnames.</li>
+<li><code>recommends</code> - (optional, ResourceArray) a list of Properties that are recommended. These SHOULD have unique shortnames.</li>
+</ul>
+<!-- Maybe remove this next one? -->
+<!-- - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed. -->
+<!-- What are the consequences of this? How to deal with this field if there are more classes in aSSubject? -->
+<!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
+<p>Example:</p>
+<pre><code class="language-ndjson">[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;Class&quot;]
+[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/datatype&quot;,&quot;https://atomicdata.dev/datatypes/datetime&quot;]
+</code></pre>
+<p>Incoming Properties:</p>
+<ul>
+<li><code>class</code> - The Class of the Resource</li>
+</ul>
+<h1><a class="header" href="#atomic-schema-base-datatypes" id="atomic-schema-base-datatypes">Atomic Schema: Base Datatypes</a></h1>
+<p>The Atomic Base Datatypes consist of some of the most commonly used <a href="schema/classes.html#Datatype">Datatypes</a>.</p>
+<h2><a class="header" href="#slug" id="slug">Slug</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/slug</code></em></p>
+<p>A string with a limited set of allowed characters, used in IDE / Text editor context.</p>
+<h2><a class="header" href="#atomic-uri" id="atomic-uri">Atomic URI</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/atomicURI</code></em></p>
+<p>A URL that should resolve to an <a href="schema/../core/concepts.html#Resource">Atomic Resource</a>.</p>
+<h2><a class="header" href="#uri" id="uri">URI</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/URI</code></em></p>
+<p>A Uniform Resource Identifier, preferably a URL (i.e. an URI that can be fetched).
+Could be HTTP, HTTPS, or any other type of schema.</p>
+<h2><a class="header" href="#string" id="string">String</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/string</code></em></p>
+<p>UTF-8 String, no max character count.
+Newlines use backslash escaped <code>\n</code> characters.
+Should not contain language specific data, use a <code>langstring</code> instead.</p>
+<p>e.g. <code>String time! \n Second line!</code></p>
+<h2><a class="header" href="#langstring" id="langstring">Langstring</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/langstring</code></em></p>
+<!--
+So this is something I'm having serious doubts on.
+It seems so verbose and hard to parse.
+However, the underlying problem is kind of tough: we want <subject> <predicate> combination uniqueness...
+... but we also want to have multilingual strings that can be added later.
+Perhaps this should not be a Datatype
+-->
+<p>Array of special UTF-8 Strings.
+Each element of the Array starts with a language string code, followed by a newline.</p>
+<p>e.g. <code>[&quot;en-US\nHi there&quot;],[&quot;nl-NL\nHallo daar&quot;]</code></p>
+<h2><a class="header" href="#integer" id="integer">Integer</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/integer</code></em></p>
+<p>Signed Integer, max 64 bit.
+Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
+<p>e.g. <code>-420</code></p>
+<h2><a class="header" href="#boolean" id="boolean">Boolean</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/boolean</code></em></p>
+<p>True or false, one or zero.</p>
+<p><strong>String serialization</strong></p>
+<p><code>true</code> or <code>false</code>.</p>
+<p><strong>Binary serialization</strong></p>
+<p>Use a single bit one boolean.</p>
+<p>1 for <code>true</code>, or 0 for <code>false</code>.</p>
+<h2><a class="header" href="#datetime" id="datetime">Datetime</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/dateTime</code></em></p>
+<p>ISO 8601 encoded string.</p>
+<p>e.g. <code>2020-06-11</code></p>
+<h2><a class="header" href="#mimefile" id="mimefile">MIMEFile</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/mimeFile</code></em></p>
+<p>Any type of file, starting with its <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">mime type</a>
+Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often don't exist in your OS</a>, specifying them seems like a good idea.</p>
+<p><strong>String serialization</strong></p>
+<p>Start with the mimetype string, do a newline <code>\n</code> and continue with the UTF-8 stringified data.</p>
+<ul>
+<li>e.g. <code>application/text\nOh hi mark</code></li>
+<li>e.g. <code>text/html\n&lt;html&gt;&lt;p&gt;oh, hi mark&lt;/p&gt;&lt;/html&gt;</code></li>
+</ul>
+<h2><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/resourceArray</code></em></p>
+<p>Sequential, ordered list of Atomic URIs.
+Serialized as a JSON array with strings.
+Note that other types of arrays are not included in this spec, but can be perfectly valid.</p>
+<ul>
+<li>e.g. <code>[&quot;https://example.com/1&quot;, &quot;https://example.com/1&quot;]</code></li>
+</ul>
+<h2><a class="header" href="#" id=""></a></h2>
+<h1><a class="header" href="#atomic-schema---properties" id="atomic-schema---properties">Atomic Schema - Properties</a></h1>
+<p>To recap: a <a href="schema/classes.html#property">Property</a> is the thing that you find when you follow the link of a Property Field.
+The following list of Properties is part of Atomic Schema.</p>
+<h2><a class="header" href="#-1" id="-1"></a></h2>
 <h1><a class="header" href="#atomic-schema-faq" id="atomic-schema-faq">Atomic Schema FAQ</a></h1>
 <h2><a class="header" href="#how-do-i-create-a-property-that-supports-multiple-datatypes" id="how-do-i-create-a-property-that-supports-multiple-datatypes">How do I create a Property that supports multiple Datatypes?</a></h2>
 <p>A property only has one single Datatype.
