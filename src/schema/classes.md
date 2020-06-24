@@ -2,10 +2,27 @@
 
 In short, Atomic Schema works like this:
 
-- The Property field in an Atom links to a Property resource. It is important that this URL resolves.
-- This Property tells something about its semantic meaning, and links to a Datatype.
-- The Datatype tells
-- A Resource _could_ have one or more classes, which _could_ provide information about which Properties are expected or required.
+The Property _field_ in an Atom links to a Property _Resource_. It is important that the URL to the Property Resource resolves.
+This Property does three things:
+
+1. it tells something about its semantic meaning, and links to a Datatype.
+1. it links to a Datatype or Class.
+1. it provides a Shortname.
+
+A Resource _could_ have one or more classes, which _could_ provide information about which Properties are expected or required.
+
+## How to read classes
+
+Example:
+
+- `description` - (required, AtomicURL, LangString) human readable explanation of what the Class represents.
+
+Means:
+
+This class has a _required_ property with shortname `description`.
+This Property has a Datatype of `AtomicURL`, and a classtype of `LangString`.
+
+_Note: the URLs for properties are missing and will be added at a later time._
 
 ## Property
 
@@ -21,8 +38,8 @@ Properties of a Property instance:
 
 - `shortname` - (required, Slug) the shortname for the property, used in ORM-style dot syntax (`thing.property.anotherproperty`).
 - `description` - (optional, [Langstring](datatypes.md#Langstring)) the semantic meaning of the.
-- `datatype` - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the
-- `classtype` - (optional, Class) if the `datatype` is an Atomic URI, the `classtype` defines which class(es?) is (are?) acceptable.
+- `datatype` - (required, AtomicURL, Datatype) a URL to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the
+- `classtype` - (optional, AtomicURL, Class) if the `datatype` is an Atomic URL, the `classtype` defines which class(es?) is (are?) acceptable.
 
 ```ndjson
 ["https://example.com/properties/createdAt","https://atomicdata.dev/property/shortname","createdAt"]
@@ -41,9 +58,9 @@ However, using non-standard datatypes limits how many applications will know wha
 Properties:
 
 - `description` - (required, langstring) how the datatype functions.
-- `stringSerialization` - (required, langstring) how the datatype should be parsed / serialized as an UTF-8 string
+- `stringSerialization` - (required, AtomicURL, LangString) how the datatype should be parsed / serialized as an UTF-8 string
 - `stringExample` - (required, string) an example stringSerialization example value that should be parsed correclty
-- `binarySerialization` - (optional, langstring) how the datatype should be parsed / serialized as a byte array.
+- `binarySerialization` - (optional, AtomicURL, LangString) how the datatype should be parsed / serialized as a byte array.
 - `binaryExample` - (optional, string) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.
 
 ## Class
@@ -57,7 +74,7 @@ Note that in Atomic Data, a Resource can have several Classes - not just a singl
 Properties:
 
 - `shortname` - (required, Slug) a short string shorthand.
-- `description` - (required, langstring) human readable explanation of what the Class represents.
+- `description` - (required, AtomicURL, LangString) human readable explanation of what the Class represents.
 - `requires` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required. These SHOULD have unique shortnames.
 - `recommends` - (optional, ResourceArray) a list of Properties that are recommended. These SHOULD have unique shortnames.
 <!-- Maybe remove this next one? -->
@@ -75,3 +92,12 @@ Example:
 Incoming Properties:
 
 - `class` - The Class of the Resource
+
+## LangString
+
+_URL: `https://atomicdata.dev/classes/Class`_
+
+A language specific string.
+
+- `lang` - (required, string) a [BCP 47](http://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. `en-US`.
+- `text` - (required, string) the contents of the string.

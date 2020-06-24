@@ -2,6 +2,8 @@
 
 The Atomic Base Datatypes consist of some of the most commonly used [Datatypes](classes.md#Datatype).
 
+A Datatype is
+
 ## Slug
 
 _URL: `https://atomicdata.dev/datatypes/slug`_
@@ -27,26 +29,9 @@ _URL: `https://atomicdata.dev/datatypes/string`_
 
 UTF-8 String, no max character count.
 Newlines use backslash escaped `\n` characters.
-Should not contain language specific data, use a `langstring` instead.
+Should not contain language specific data, use a `langstring` instead (which is a linked resource).
 
 e.g. `String time! \n Second line!`
-
-## Langstring
-
-_URL: `https://atomicdata.dev/datatypes/langstring`_
-
-<!--
-So this is something I'm having serious doubts on.
-It seems so verbose and hard to parse.
-However, the underlying problem is kind of tough: we want <subject> <predicate> combination uniqueness...
-... but we also want to have multilingual strings that can be added later.
-Perhaps this should not be a Datatype
--->
-
-Array of special UTF-8 Strings.
-Each element of the Array starts with a language string code, followed by a newline.
-
-e.g. `["en-US\nHi there"],["nl-NL\nHallo daar"]`
 
 ## Integer
 
