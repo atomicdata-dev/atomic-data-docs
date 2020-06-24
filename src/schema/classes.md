@@ -19,7 +19,7 @@ Here's a [list of useful Properties](properties.md).
 
 Properties of a Property instance:
 
-- `shortname` - (required, Slug) the shortname for the property, used in dot syntax. String with a-Z characters only. Case sensitive.
+- `shortname` - (required, Slug) the shortname for the property, used in ORM-style dot syntax (`thing.property.anotherproperty`).
 - `description` - (optional, [Langstring](datatypes.md#Langstring)) the semantic meaning of the.
 - `datatype` - (required, Datatype) a URI to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the
 - `classtype` - (optional, Class) if the `datatype` is an Atomic URI, the `classtype` defines which class(es?) is (are?) acceptable.
@@ -58,12 +58,12 @@ Properties:
 
 - `shortname` - (required, Slug) a short string shorthand.
 - `description` - (required, langstring) human readable explanation of what the Class represents.
-- `requires` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required.
-- `recommends` - (optional, ResourceArray) a list of Properties that are recommended.
+- `requires` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required. These SHOULD have unique shortnames.
+- `recommends` - (optional, ResourceArray) a list of Properties that are recommended. These SHOULD have unique shortnames.
 <!-- Maybe remove this next one? -->
 <!-- - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed. -->
 <!-- What are the consequences of this? How to deal with this field if there are more classes in aSSubject? -->
-O!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
+<!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
 
 Example:
 

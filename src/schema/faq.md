@@ -4,15 +4,15 @@
 
 A property only has one single Datatype.
 However, feel free to create a new kind of Datatype that, in turn, refers to other Datatypes.
-Perhaps this should be part of the Atomic Base Datatypes.
+Perhaps Generics, or Option like types should be part of the Atomic Base Datatypes.
 
-Solutions:
+## How should a client deal with Shortname collisions?
 
-- Generic datatype?
-
-## How should a client deal with dot syntax key collisions?
-
-Atomic Data guarantees `<subject> <property>` uniqueness, but when you're working on Atomic Data in an IDE / text editor, you're likely to use the `key` of the `Property`.
+Atomic Data guarantees Subject-Property uniqueness, which means that Valid Resources are guanranteed to have only one of each Property.
+Properties offer Shortnames, which are short strings.
+These strings SHOULD be unique inside Classes, but these are not guaranteed to be unique inside all Resources.
+Note that Resources can have multiple Classes, and throught that, they can have colliding Shortnames.
+Resources are also free to inlcude Properties from other Classes, and their Shortnames, too, might collide.
 
 For example:
 
@@ -21,16 +21,26 @@ For example:
 ["https://example.com/people/123", "https://somepage.example.com/name", "John"]
 ```
 
-Let's assume that `https://somepage.example.com/name` and `https://example.com/name` are Properties that have a `key` with the object `name`.
+Let's assume that `https://somepage.example.com/name` and `https://example.com/name` are Properties that have the Shortname: `name`.
 
-```ndjson
-["https://somepage.example.com/name"]
+What if a client tries something such as `people123.name`?
+To consistently return a single value, we need some form or precendence, and it goes like this:
+
+1. The earlier Class mentioned in the `class` Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collissions in required and recommended properties, which means that they might have. If these exist internally, sort the properties from A-Z.
+<!-- This  -->
+1. When the Properties are not part of any of the mentioned Classes, use Alphabetical sorting of the Property URL.
+
+When shortname colisions are possible, it's recomended to not use the shortname, but use the URL of the Property:
+
 ```
-
-This
+people123."https://example.com/name"
+```
 
 ## Atomic Data uses a lot of links. How do you deal with links that don't work?
 
+Fir
+
+1. Use URIs schemes that use content adressing, such as IPFS URIs.
 1. Use URIs schemes that use content adressing, such as IPFS URIs.
 
 ## What's a URI, and what's a URL?
