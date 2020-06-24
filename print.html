@@ -451,7 +451,6 @@ Note that in Atomic Data, a Resource can have several Classes - not just a singl
 </ul>
 <h1><a class="header" href="#atomic-schema-datatypes" id="atomic-schema-datatypes">Atomic Schema: Datatypes</a></h1>
 <p>The Atomic Datatypes consist of some of the most commonly used <a href="schema/classes.html#Datatype">Datatypes</a>.</p>
-<p>A Datatype is</p>
 <h2><a class="header" href="#slug" id="slug">Slug</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/slug</code></em></p>
 <p>A string with a limited set of allowed characters, used in IDE / Text editor context.</p>
@@ -489,7 +488,6 @@ Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><co
 <p><em>URL: <code>https://atomicdata.dev/datatypes/mimeFile</code></em></p>
 <p>Any type of file, starting with its <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">mime type</a>
 Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often don't exist in your OS</a>, specifying them seems like a good idea.</p>
-<p><strong>String serialization</strong></p>
 <p>Start with the mimetype string, do a newline <code>\n</code> and continue with the UTF-8 stringified data.</p>
 <ul>
 <li>e.g. <code>application/text\nOh hi mark</code></li>
@@ -503,7 +501,6 @@ Note that other types of arrays are not included in this spec, but can be perfec
 <ul>
 <li>e.g. <code>[&quot;https://example.com/1&quot;, &quot;https://example.com/1&quot;]</code></li>
 </ul>
-<h2><a class="header" href="#" id=""></a></h2>
 <h1><a class="header" href="#atomic-schema-faq" id="atomic-schema-faq">Atomic Schema FAQ</a></h1>
 <h2><a class="header" href="#how-do-i-create-a-property-that-supports-multiple-datatypes" id="how-do-i-create-a-property-that-supports-multiple-datatypes">How do I create a Property that supports multiple Datatypes?</a></h2>
 <p>A property only has one single Datatype.
