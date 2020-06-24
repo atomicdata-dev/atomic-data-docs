@@ -2,14 +2,14 @@
 
 In short, Atomic Schema works like this:
 
-- The Property field in an Atom links to a Property Class. It is important that these resolve.
+- The Property field in an Atom links to a Property resource. It is important that this URL resolves.
 - This Property tells something about its semantic meaning, and links to a Datatype.
 - The Datatype tells
 - A Resource _could_ have one or more classes, which _could_ provide information about which Properties are expected or required.
 
 ## Property
 
-_URL: `https://atomicdata.dev/classes/Class`_
+_URL: `https://atomicdata.dev/classes/Property`_
 
 The Property class.
 The thing that the Property field should link to.
