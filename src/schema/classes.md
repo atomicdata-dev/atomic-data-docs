@@ -1,16 +1,5 @@
 # Atomic Schema: Classes
 
-In short, Atomic Schema works like this:
-
-The Property _field_ in an Atom links to a Property _Resource_. It is important that the URL to the Property Resource resolves.
-This Property does three things:
-
-1. it tells something about its semantic meaning, and links to a Datatype.
-1. it links to a Datatype or Class.
-1. it provides a Shortname.
-
-A Resource _could_ have one or more classes, which _could_ provide information about which Properties are expected or required.
-
 ## How to read classes
 
 Example:
@@ -97,7 +86,7 @@ Incoming Properties:
 
 _URL: `https://atomicdata.dev/classes/Class`_
 
-A language specific string.
+A language specific string. ([discussion](https://github.com/ontola/atomic-data/issues/6))
 
 - `lang` - (required, string) a [BCP 47](http://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. `en-US`.
 - `text` - (required, string) the contents of the string.

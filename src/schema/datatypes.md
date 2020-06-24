@@ -1,6 +1,6 @@
-# Atomic Schema: Base Datatypes
+# Atomic Schema: Datatypes
 
-The Atomic Base Datatypes consist of some of the most commonly used [Datatypes](classes.md#Datatype).
+The Atomic Datatypes consist of some of the most commonly used [Datatypes](classes.md#Datatype).
 
 A Datatype is
 
