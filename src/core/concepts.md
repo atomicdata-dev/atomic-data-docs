@@ -6,7 +6,7 @@ Understanding the Core concepts of Atomic Data are fundamental for reading the r
 
 Atomic Data is a data format for representing information on the web.
 It is a directed, labeled graph, similar to RDF.
-It can be used to express any type of information, inlcuding personal data, vocabularies, metadata, documents, files and more.
+It can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
 Contrary to some other (labeled) graph data models, a relationship between two items (Resources) does not have attributes.
 
 ## Atom (or Atomic Triple)

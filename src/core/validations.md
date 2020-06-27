@@ -92,5 +92,7 @@ As long as a graph contains links to HTTP Resources, it is not Frozen, since res
 
 Freezing a Graph, therefore, entails converting all resources to IFPS (or another content-addressable schema) Resources, and using only IPFS URLs.
 
-Freezing a Graph has performance benefits for clients, since clients can easily verify if they already have (part of) the Graph locally, simply by comapring the URLs or Resources.
+Freezing a Graph has performance benefits for clients, since clients can easily verify if they already have (part of) the Graph locally, simply by comparing the URLs or Resources.
 It also helps to make sure the content can be shared peer to peer
+
+Note that **Graphs with cyclical relations cannot be frozen**, since every iteration that you'd try to freeze will change its references and therefore also its contents, and therefore also its content hash.

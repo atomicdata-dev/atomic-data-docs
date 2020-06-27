@@ -22,6 +22,7 @@ The thing that the Property field should link to.
 A Property is an abstract type of Resource that describes the relation between a Subject and a Value.
 A Property provides some semantic information about the relationship (in its `description`), it provides a shorthand (the `shortname`) and it links to a Datatype.
 Here's a [list of useful Properties](properties.md).
+You can constrain properties further by using [SHACL Properties](https://www.w3.org/TR/shacl/#property-shapes).
 
 Properties of a Property instance:
 
@@ -41,12 +42,12 @@ _URL: `https://atomicdata.dev/classes/Datatype`_
 
 A Datatype specifies how a `Value` value should be interpreted.
 Datatypes are concepts such as `boolean`, `string`, `integer`.
-Since DatatTypes can be linked to, you dan define your own.
+Since DataTypes can be linked to, you dan define your own.
 However, using non-standard datatypes limits how many applications will know what to do with the data.
 
 Properties:
 
-- `description` - (required, langstring) how the datatype functions.
+- `description` - (required, LangString) how the datatype functions.
 - `stringSerialization` - (required, AtomicURL, LangString) how the datatype should be parsed / serialized as an UTF-8 string
 - `stringExample` - (required, string) an example stringSerialization example value that should be parsed correctly
 - `binarySerialization` - (optional, AtomicURL, LangString) how the datatype should be parsed / serialized as a byte array.
@@ -59,6 +60,7 @@ _URL: `https://atomicdata.dev/classes/Class`_
 A Class is an abstract type of Resource, such as `Person`.
 It is convention to use an Uppercase in its URI.
 Note that in Atomic Data, a Resource can have several Classes - not just a single one.
+If you need to set more complex constraints to your Classes (e.g. maximum string length, Properties that depend on each other), check out [SHACL](https://www.w3.org/TR/shacl/).
 
 Properties:
 
@@ -71,22 +73,11 @@ Properties:
 <!-- What are the consequences of this? How to deal with this field if there are more classes in aSSubject? -->
 <!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
 
+A resource indicates it is an _instance_ of that class by adding a `https://atomicdata.dev/properties/isA` Atom.
+
 Example:
 
 ```ndjson
 ["https://example.com/classes/Person","https://atomicdata.dev/properties/isA","Class"]
 ["https://example.com/classes/Person","https://atomicdata.dev/properties/datatype","https://atomicdata.dev/datatypes/datetime"]
 ```
-
-Incoming Properties:
-
-- `class` - The Class of the Resource
-
-## LangString
-
-_URL: `https://atomicdata.dev/classes/Class`_
-
-A language specific string. ([discussion](https://github.com/ontola/atomic-data/issues/6))
-
-- `lang` - (required, string) a [BCP 47](http://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. `en-US`.
-- `text` - (required, string) the contents of the string.
