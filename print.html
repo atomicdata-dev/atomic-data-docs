@@ -171,6 +171,20 @@ You can use parts of Atomic Data separately, but the standard is designed as a f
 <li><a href="schema/intro.html">Atomic Schema</a>: defining properties, datatypes and classes</li>
 <li><a href="mutations/intro.html">Atomic Mutations</a>: sharing state changes, verifying changes and collaboration</li>
 </ul>
+<h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
+<p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
+Using links everywhere in data has amazing merits: links remove ambiguity, they enable exploration, they enable connected datasets.
+Linked Data could help to democratize the web by decentralizing information storage, and giving people more control.</p>
+<p>At <a href="ontola.io/">Ontola</a>, we've been working with linked data quite intensely for the last couple of years.
+We went all-in, and challenged ourselves to create software that communicates exclusively using RDF.
+That has been an inspiring, but also sometimes a frustrating journey.
+While building various production grade apps (e.g. our e-democracy platform <a href="https://argu.co/">Argu.co</a>, which is used by various governments), we had to solve many problems.
+Some related to modeling, serializing, and rendering RDF.
+Most of these problems we've tackled by having a tight grip on the data that we create, and another part is creating new standards and various libraries.</p>
+<p>It's been almost 20 years since the introduction of linked data, and its adoption has been slow.
+We know that some of its merits are undeniable, and we truly want the semantic web to succeed.
+We believe the lack of growth partially has to do with a lack of tooling, but also with <a href="../interoperability/rdf.html#why-these-changes">some problems that lie in the RDF data model</a>.</p>
+<p>Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
 <h1><a class="header" href="#atomic-data-core" id="atomic-data-core">Atomic Data Core</a></h1>
 <p>The Atomic Data Core describes the fundamental data model of Atomic Data.
 Before we dive into its concepts, we'll talk about why this standard is made in the first place.</p>
@@ -187,12 +201,6 @@ Before we dive into its concepts, we'll talk about why this standard is made in 
 <li><strong>Typed</strong>: All valid Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming language models, such as <code>structs</code> or <code>interfaces</code> in Typescript / Rust / Go.</li>
 </ul>
 <p>Note that for these last four goals, <a href="core/../schema/intro.html">Atomic Schema</a> is required.</p>
-<h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
-<p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
-Using links everywhere in data has amazing merits: links remove ambiguity, they enable exploration, they enable connected datasets.
-However, it's been almost 20 years since the introduction of linked data, and its adoption has been slow.
-We believe this lack of growth has to do with <a href="core/../interoperability/rdf.html#why-these-changes">some problems that lie in the RDF data model</a>.
-Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
 <h1><a class="header" href="#atomic-data-core-concepts" id="atomic-data-core-concepts">Atomic Data Core: Concepts</a></h1>
 <p>Understanding the Core concepts of Atomic Data are fundamental for reading the rest of the documentation.</p>
 <h2><a class="header" href="#atomic-data" id="atomic-data">Atomic Data</a></h2>
@@ -324,6 +332,7 @@ https://schema.org/birthDate: 1991-01-20
 # Perhaps support relative paths to other local resources
 bestFriend: ./mary
 </code></pre>
+<p>Perhaps YAML isn't the right pick for this, because it's kind of hard to parse.</p>
 <h3><a class="header" href="#atomicdata-binary" id="atomicdata-binary">AtomicData-Binary</a></h3>
 <p>Possible extension: <code>.adb</code></p>
 <p>A binary serialization format, designed to be performant and highly compressed.
