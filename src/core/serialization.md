@@ -89,6 +89,8 @@ https://schema.org/birthDate: 1991-01-20
 bestFriend: ./mary
 ```
 
+Perhaps YAML isn't the right pick for this, because it's kind of hard to parse.
+
 ### AtomicData-Binary
 
 Possible extension: `.adb`
