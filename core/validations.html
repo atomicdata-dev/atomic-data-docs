@@ -222,8 +222,9 @@ A <a href="https://flyingzumwalt.gitbooks.io/decentralized-web-primer/avenues-fo
 Due to its static nature, we call it <em>Frozen</em>.
 As long as a graph contains links to HTTP Resources, it is not Frozen, since responses from that HTTP address might change over time.</p>
 <p>Freezing a Graph, therefore, entails converting all resources to IFPS (or another content-addressable schema) Resources, and using only IPFS URLs.</p>
-<p>Freezing a Graph has performance benefits for clients, since clients can easily verify if they already have (part of) the Graph locally, simply by comapring the URLs or Resources.
+<p>Freezing a Graph has performance benefits for clients, since clients can easily verify if they already have (part of) the Graph locally, simply by comparing the URLs or Resources.
 It also helps to make sure the content can be shared peer to peer</p>
+<p>Note that <strong>Graphs with cyclical relations cannot be frozen</strong>, since every iteration that you'd try to freeze will change its references and therefore also its contents, and therefore also its content hash.</p>
 
                     </main>
 

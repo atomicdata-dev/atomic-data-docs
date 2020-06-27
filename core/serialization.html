@@ -160,47 +160,78 @@
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
 We recommend you use <code>AtomicTriples</code>, which is specifically designed to be a simple, performant format for Atomic Data.</p>
-<h2><a class="header" href="#atomictriples-ndjson-ad3" id="atomictriples-ndjson-ad3">AtomicTriples-ndjson (.ad3)</a></h2>
+<h2><a class="header" href="#atomictriples-ad3" id="atomictriples-ad3">AtomicTriples (.ad3)</a></h2>
 <p>Since the data model of Atomic Data is a bit simpler than RDF, serialization and parsing can be simpler as well.
 In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.</p>
 <p>It looks like this:</p>
 <pre><code class="language-ndjson">[&quot;https://example.com/subject&quot;,&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
-<p>We use Newline Delimited JSON (<a href="http://ndjson.org/">NDJSON</a>), which is just a large JSONG string with newlines between each object.</p>
+<p>It uses Newline Delimited JSON (<a href="http://ndjson.org/">NDJSON</a>) for serialization, which is just a large string with newlines between each JSON object.</p>
 <p>NDJSON has some important benefits:</p>
 <ul>
-<li>It visually represents the underlying data-model (the Atom)</li>
-<li>It can be streaming parsed, i.e. before the entire document is loaded. That is not possible with regular JSON.</li>
-<li>NDJSON parsers are everywhere</li>
-<li>Modern browsers have highly performant JSON parsing, which means that it's <em>fast</em> in one of the most important contexts: the browser.</li>
+<li><strong>Streaming parsing</strong>: An NDJSON document can be parsed before it's fully loaded / transmitted. That is not possible with regular JSON.</li>
+<li><strong>High compatibility</strong>: NDJSON parsers can use JSON parsers, and are therefore everywhere</li>
+<li><strong>Performance</strong>: Modern browsers have highly performant JSON parsing, which means that it's <em>fast</em> in one of the most important contexts: the browser.</li>
 </ul>
 <p><em>Mime type (not registered yet!): <code>application/ad3-ndjson</code></em></p>
 <p><em>File name extension: <code>.ad3</code></em></p>
 <p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
-<h2><a class="header" href="#atomicdoubles-ndjson-ad2" id="atomicdoubles-ndjson-ad2">AtomicDoubles-ndjson (.ad2)</a></h2>
+<h2><a class="header" href="#atomicdoubles-ad2" id="atomicdoubles-ad2">AtomicDoubles (.ad2)</a></h2>
 <p>AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
-For many use-cases, omitting the Subject is a <em>bad idea</em>.</p>
-<p>However, it can be useful in (at least) two scenarios:</p>
+For many use-cases, omitting the Subject is a <em>bad idea</em>.
+It means that you can't describe multiple resources in a single document, and that is useful in many contexts.</p>
+<p>However, omitting the subject can be useful in (at least) two scenarios:</p>
 <ul>
-<li>The <strong>Subject is not yet known</strong> (for example, because it still has to be determined by some server or hash function).</li>
-<li>The <strong>Subject is already known by the client</strong>, and leaving it out saves bandwith. This happens for example during Subject Fetching, where the request itself contains the Subject, because the fetched URL itself is the Subject of all returned triples. Note that in this scenario, the server is unable to include</li>
+<li>The <strong>Subject is not yet known when creating the data</strong> (for example, because it still has to be determined by some server or hash function).</li>
+<li>The <strong>Subject is already known by the client</strong>, and leaving it out saves bandwidth. This happens for example during Subject Fetching, where the request itself contains the Subject, because the fetched URL itself is the Subject of all returned triples. Note that in this scenario, the server is unable to include</li>
 </ul>
 <pre><code class="language-ndjson">[&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
-<p>This format is <strong>not suitable for persistent storage</strong> or peer to peer sharing - it is only useful when</p>
 <ul>
 <li><em>Mime type (not registered yet!): <code>application/ad2-ndjson</code></em></li>
 <li><em>File name extension: <code>.ad2</code></em></li>
 </ul>
-<h2><a class="header" href="#rdf-serializatinon-formats" id="rdf-serializatinon-formats">RDF serializatinon formats</a></h2>
+<h2><a class="header" href="#rdf-serialization-formats" id="rdf-serialization-formats">RDF serialization formats</a></h2>
 <p>Because of the similarities with RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples or JSON-LD.
 <em>However</em>, keep in mind that RDF users will expect other things from their data.
-Read more about the various existing formats and their respective merits <a href="https://ontola.io/blog/rdf-serialization-formats/">here</a>.</p>
-<h2><a class="header" href="#future-formats" id="future-formats">Future formats</a></h2>
+Read more about the various existing formats and their respective merits <a href="https://ontola.io/blog/rdf-serialization-formats/">here</a>.
+Read more about serializing Atomic Data to RDF in the <a href="../interoperability/rdf.html">RDF interoperability section</a>.</p>
+<h2><a class="header" href="#future-serialization-formats" id="future-serialization-formats">Future serialization formats</a></h2>
 <p>In the future, new serialization formats will be introduced.
-For example, a fully optimized binary serialization format would make sense.</p>
+Here's some (vague) ideas that might inspire you to design one:</p>
+<h3><a class="header" href="#atomicdata-fs" id="atomicdata-fs">AtomicData-FS</a></h3>
+<p>Possible extension: <code>.adf</code></p>
+<p>FS stands for FileSystem.
+It should be designed as a format that's easy to manipulate Atomic Data by hand, using plaintext editors and IDE software.
+It fits nicely in our line-based paradigm, where we us IDEs and Github to manage our information.
+It should use Shortnames wherever possible to make life easier for those who modify instances.
+It might use hierarchical path structures to shape URLs.
+It might use hierarchical path structures to shape data, and set constraints (e.g. all items directly in the <code>./person</code> directory should be Person instances).
+Folder structure should reflect the structure inside URLs.</p>
+<p>Note that this format is <em>not</em> useful for sending arbitrary Atomic Data to some client.
+It is useful for managing Atomic Data from a filesystem.</p>
+<p>An example AtomicData-FS dir can be <a href="../">found in the repo</a>.</p>
+<pre><code># in ./projectDir/people/john.adf
+# serialization uses YAML syntax
+firstName: John
+lastName: McLovin
+# If a Property is not available in the Class, you can the URL of the property
+https://schema.org/birthDate: 1991-01-20
+# Perhaps support relative paths to other local resources
+bestFriend: ./mary
+</code></pre>
+<h3><a class="header" href="#atomicdata-binary" id="atomicdata-binary">AtomicData-Binary</a></h3>
+<p>Possible extension: <code>.adb</code></p>
+<p>A binary serialization format, designed to be performant and highly compressed.
+Perhaps it works like this:</p>
+<ul>
+<li>An <code>adb</code> file consists of a large sequence of Maps and Statements</li>
+<li>A <em>Map</em> is a combination of an internal identifiers (the <em>ID</em>, some short binary object) and a URL strings. These make sure that URLs can be used again cheaply, if they are used multiple times.</li>
+<li>A <em>Statement</em> is a set of two IDs and a value, which can be a String, a URL or some binary format.</li>
+<li>Perhaps some extra compression is possible, because many URLs will have a common domain.</li>
+</ul>
 
                     </main>
 
