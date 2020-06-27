@@ -3,7 +3,12 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Types of Atomic Graphs - Atomic Data</title>
+        <title>Types of Graph Validations - Atomic Data</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -11,6 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
@@ -19,8 +25,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -81,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../core/graphs.html" class="active"><strong aria-hidden="true">6.</strong> Types of Atomic Graphs</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.3.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="../core/validations.html" class="active"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,15 +156,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#types-of-atomic-graphs" id="types-of-atomic-graphs">Types of Atomic Graphs</a></h1>
+                        <h1><a class="header" href="#atomic-graph-validations" id="atomic-graph-validations">Atomic Graph Validations</a></h1>
 <p>An Graph is a set of Atoms.
-Since Atomic Data is desgigned to facilitate decentralized data storage, Graphs will often lack information or contain invalid data.
-In this section, we define some of these aspects of Graphs.</p>
+Since Atomic Data is designed to facilitate decentralized data storage, Graphs will often lack information or contain invalid data.
+In this section, we define some of these concepts.</p>
 <ul>
 <li>A <strong>Valid Graph</strong> contains no mismatches between Datatypes from Properties and their usage in Atoms</li>
 <li>A <strong>Closed Graph</strong> contains no unfetched outgoing links</li>
-<li>A <strong>Verified Graph</strong> contains only Atoms from a verified Author</li>
+<li>A <strong>Verified Graph</strong> contains only Atoms from verified Authors</li>
 <li>A <strong>Schema Complete Graph</strong> contains all used linked Properties</li>
+<li>A <strong>Frozen Graph</strong> contains content-addressing identifiers (e.g. IPFS), all the way down</li>
 </ul>
 <p>These concepts are important when creating an implementation of a Store.</p>
 <h2><a class="header" href="#valid-graphs" id="valid-graphs">Valid Graphs</a></h2>
@@ -169,7 +175,7 @@ In this section, we define some of these aspects of Graphs.</p>
 <li><strong>The links work</strong>. All URLs used in the Graph (Subject, Property, Value) resolve correctly to the required Datatype.</li>
 <li><strong>The Class Restrictions are met</strong>. If a Class sets required properties, these must be present in Resources that are instances of that Class.</li>
 </ul>
-<p>Making sure Graphs are Valid is of great imporance to anyone creating, sharing or using Atomic Data.
+<p>Making sure Graphs are Valid is of great importance to anyone creating, sharing or using Atomic Data.
 Services should specify whether they check the validity of graphs.</p>
 <h2><a class="header" href="#closed-graph" id="closed-graph">Closed Graph</a></h2>
 <p>A Graph is Closed, when the Resources of all URLs are present in the Graph.
@@ -186,18 +192,18 @@ Someone may have tempered with the data, or fabricated it.</p>
 </ol>
 <p>When one of these steps is taken, we say that the Graph is Verified.</p>
 <h2><a class="header" href="#schema-complete-graphs" id="schema-complete-graphs">Schema Complete Graphs</a></h2>
-<p>When a Graph has a set of Atoms, it might not posess all the information that is required to determine the datatype of each Atom.
+<p>When a Graph has a set of Atoms, it might not possess all the information that is required to determine the datatype of each Atom.
 When that is the case, we say the Graph is <em>Schema Complete</em>.</p>
 <p>Having a Schema Complete Graph is essential for determining what the Datatype is of a Value.
-Most implementations of Atomic Data will need Schema Completenss to create fitting views, or apply functinoal business logic.</p>
-<p>Imagine some application (perhaps an app running inside a webbrowser) that has only the following data:</p>
+Most implementations of Atomic Data will need Schema Completeness to create fitting views, or apply functional business logic.</p>
+<p>Imagine some application (perhaps an app running inside a web-browser) that has only the following data:</p>
 <pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/birthDate&quot;,&quot;1991-01-20&quot;]
 </code></pre>
 <p>Now, by looking at this single Atom, we might assume that the Value is an ISO date,
 but this type information is not known yet to the application.
 This type information should be specified in the <code>example:birthDate</code> Property.
-It is the responsibility of the application to make sure it posesses the required Schema data.</p>
-<p>We say a Graph is <em>Schema Complete</em> when it contains <em>at least</em> all the Propertie Classes that are used in the Property fields.</p>
+It is the responsibility of the application to make sure it possess the required Schema data.</p>
+<p>We say a Graph is <em>Schema Complete</em> when it contains <em>at least</em> all the Property Classes that are used in the Property fields.</p>
 <p>So let's add the missing Property: <code>https://example.com/birthDate</code></p>
 <pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/birthDate&quot;,&quot;1991-01-20&quot;]
 [&quot;https://example.com/birthDate&quot;,&quot;https://atomicdata.dev/datatypes/Datatype&quot;,&quot;https://atomicdata.dev/datatypes/dateTime&quot;]
@@ -210,6 +216,14 @@ It is the responsibility of the application to make sure it posesses the require
 <p>Since all valid Atomic Data requires Property fields to resolve to Atomic Properties Classes, which are required to have an associated DataType...
 We can safely say that the last atom in the example above (the one describing <code>https://atomicdata.dev/datatypes/Datatype</code>) will have to be pre
 sent in all Schema Complete Atomic Graphs.</p>
+<h2><a class="header" href="#frozen-graphs" id="frozen-graphs">Frozen Graphs</a></h2>
+<p>A Frozen Graph consists only of resources with content-addressing identifiers as Subjects.
+A <a href="https://flyingzumwalt.gitbooks.io/decentralized-web-primer/avenues-for-access/lessons/power-of-content-addressing.html">content-addressable</a> URL (such as an IPFS URL) refers to specific content, that is absolutely certain not to change over time.
+Due to its static nature, we call it <em>Frozen</em>.
+As long as a graph contains links to HTTP Resources, it is not Frozen, since responses from that HTTP address might change over time.</p>
+<p>Freezing a Graph, therefore, entails converting all resources to IFPS (or another content-addressable schema) Resources, and using only IPFS URLs.</p>
+<p>Freezing a Graph has performance benefits for clients, since clients can easily verify if they already have (part of) the Graph locally, simply by comapring the URLs or Resources.
+It also helps to make sure the content can be shared peer to peer</p>
 
                     </main>
 
@@ -270,11 +284,7 @@ sent in all Schema Complete Atomic Graphs.</p>
         
 
         
-        
-        
-        <script type="text/javascript">
-            window.playpen_copyable = true;
-        </script>
+
         
 
         
