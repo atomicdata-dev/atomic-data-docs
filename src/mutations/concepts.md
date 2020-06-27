@@ -4,6 +4,7 @@
 
 The smallest possible piece of a state change.
 A mutation describes how an Resource should be updated.
+Mutations are very similar to Atoms, but they contain more information.
 An Atomic Mutation consists of a:
 
 - `subject` - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)
@@ -19,7 +20,7 @@ An Atomic Mutation consists of a:
 
 A Ledger is an (append-only) log of Mutations.
 
-TODO!
+- `mutations` (required, ResourceArray) - A list of all the mutations, from old to new.
 
 ## Commit
 
@@ -29,7 +30,7 @@ TODO!
 
 ## Serialization with AtomicMutations-ndjson
 
-Altough Mutations can be communicated with
+Although Mutations can be communicated with
 
 Work in progress, see [linked-delta](https://github.com/ontola/linked-delta).
 

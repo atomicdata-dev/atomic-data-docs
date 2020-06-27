@@ -8,11 +8,11 @@ Perhaps Generics, or Option like types should be part of the Atomic Base Datatyp
 
 ## How should a client deal with Shortname collisions?
 
-Atomic Data guarantees Subject-Property uniqueness, which means that Valid Resources are guanranteed to have only one of each Property.
+Atomic Data guarantees Subject-Property uniqueness, which means that Valid Resources are guaranteed to have only one of each Property.
 Properties offer Shortnames, which are short strings.
 These strings SHOULD be unique inside Classes, but these are not guaranteed to be unique inside all Resources.
-Note that Resources can have multiple Classes, and throught that, they can have colliding Shortnames.
-Resources are also free to inlcude Properties from other Classes, and their Shortnames, too, might collide.
+Note that Resources can have multiple Classes, and through that, they can have colliding Shortnames.
+Resources are also free to include Properties from other Classes, and their Shortnames, too, might collide.
 
 For example:
 
@@ -24,13 +24,13 @@ For example:
 Let's assume that `https://somepage.example.com/name` and `https://example.com/name` are Properties that have the Shortname: `name`.
 
 What if a client tries something such as `people123.name`?
-To consistently return a single value, we need some form or precendence, and it goes like this:
+To consistently return a single value, we need some form or precedence, and it goes like this:
 
-1. The earlier Class mentioned in the `class` Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collissions in required and recommended properties, which means that they might have. If these exist internally, sort the properties from A-Z.
+1. The earlier Class mentioned in the `class` Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collisions in required and recommended properties, which means that they might have. If these exist internally, sort the properties from A-Z.
 <!-- This  -->
 1. When the Properties are not part of any of the mentioned Classes, use Alphabetical sorting of the Property URL.
 
-When shortname colisions are possible, it's recomended to not use the shortname, but use the URL of the Property:
+When shortname collisions are possible, it's recommended to not use the shortname, but use the URL of the Property:
 
 ```
 people123."https://example.com/name"
@@ -38,10 +38,7 @@ people123."https://example.com/name"
 
 ## Atomic Data uses a lot of links. How do you deal with links that don't work?
 
-Fir
-
-1. Use URIs schemes that use content adressing, such as IPFS URIs.
-1. Use URIs schemes that use content adressing, such as IPFS URIs.
+1. Use URIs schemes that use content dressing, such as IPFS URIs.
 
 ## What's a URI, and what's a URL?
 

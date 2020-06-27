@@ -48,9 +48,9 @@ Properties:
 
 - `description` - (required, langstring) how the datatype functions.
 - `stringSerialization` - (required, AtomicURL, LangString) how the datatype should be parsed / serialized as an UTF-8 string
-- `stringExample` - (required, string) an example stringSerialization example value that should be parsed correclty
+- `stringExample` - (required, string) an example stringSerialization example value that should be parsed correctly
 - `binarySerialization` - (optional, AtomicURL, LangString) how the datatype should be parsed / serialized as a byte array.
-- `binaryExample` - (optional, string) an example stringSerialization that should be parsed correclty. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.
+- `binaryExample` - (optional, string) an example stringSerialization that should be parsed correctly. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.
 
 ## Class
 

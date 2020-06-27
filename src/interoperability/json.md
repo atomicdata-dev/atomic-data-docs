@@ -18,7 +18,7 @@ We need more information to convert this JSON into Atomic Data.
 The following things are missing:
 
 * What is the Subject URL of the resource being described?
-* What is the Prediate URL of the keys being used? (`name` and `birthDate`), and consequentially, how should the values be parsed? What are their DataTypes?
+* What is the Predicate URL of the keys being used? (`name` and `birthDate`), and consequentially, how should the values be parsed? What are their DataTypes?
 
 We can add this data by adding some _@context_:
 

@@ -17,7 +17,7 @@
   * [Relation to IPFS](interoperability/ipfs.md)
   * [Relation to RDF](interoperability/rdf.md)
   * [Relation to JSON](interoperability/json.md)
-* [Types of Atomic Graphs](core/graphs.md)
+* [Types of Graph Validations](core/validations.md)
 * [Tooling](tooling.md)
 
 -----------

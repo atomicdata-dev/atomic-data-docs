@@ -1,7 +1,7 @@
 # Tooling for Atomic Data
 
 At this moment, no real tooling for Atomic Data exists.
-Great tooling is required to make this a succes.
+Great tooling is required to make this a success.
 The following list is a set of ideas that we're likely to be working on.
 
 ## Atomic Validator
@@ -118,6 +118,6 @@ fn main() {
 }
 ```
 
-## Atomic Browsser
+## Atomic Browser
 
 A web-browser application that enables viewing, browsing, navigating Atomic Data.

@@ -26,5 +26,5 @@ Atomic Data and Atomic Mutations aim to make this easier by using cryptography f
 
 ## In short
 
-- [Atomic Mutations](concepts.md) are small pieces of information that descibe how a Resource was changed. Think of these as Commits which are
-- [Atomic Suggestions](concepts.md) are small pieces of information that suggest how a Resource should be changed.
+- [Atomic Mutations](concepts.md) describe how a Resource _was changed_.
+- [Atomic Suggestions](concepts.md) suggest how a Resource _should be changed_.

@@ -4,7 +4,7 @@ When Atomic Mutations are applied to some Resource, the resource will change.
 However, its identifier (the Subject) will often remain the same.
 
 - Versioned representations should provide a link to the authority that might update it, and a link to where the latest version can be found.
-- The latest version should have a link to its permanent verison.
+- The latest version should have a link to its permanent version.
 - Should [IPFS](../interoperability/ipfs.md) content-hash URLs be used for Versioned resources?
 
 ## Versioned Resources
@@ -18,7 +18,7 @@ Properties:
 
 ## Static Resource
 
-A static resource has a _content adressible_ URL, which means that its URL will never change.
+A static resource has a _content addressable_ URL, which means that its URL will never change.
 
 ## Hashing
 

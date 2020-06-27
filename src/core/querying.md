@@ -4,7 +4,6 @@ There are multiple ways of getting Atomic Data into some system:
 
 - [**Subject Fetching**](#subject-fetching-http) requests a single subject right from its source
 - [**Triple Pattern Fragments**](#triple-pattern-fragments) allows querying for specific (combinations of) Subject, Property and Value.
-<!-- - [**Bulk-API**](#bulk-api) allows fetching multiple subjects in one request -->
 - [**SRARQL**](#SPARQL) is a powerful Query language for traversing graphs
 
 ## Subject fetching (HTTP)
@@ -28,6 +27,10 @@ Connection: Closed
 ```
 
 The server MAY also include other resources, if they are deemed relevant.
+
+## Subject Fetching (IPFS)
+
+IPFS is a new protocol for sharing data using content-addressing.
 
 ## Triple Pattern Fragments
 
@@ -65,4 +68,4 @@ This is especially useful in browser clients that traverse the graph iteratively
 ## SPARQL
 
 [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) is a powerful RDF query language.
-Since all Atomic Data is also valid RDF, it is possible to query Atomic Data using SPARQL.
+Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.

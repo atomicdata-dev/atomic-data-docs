@@ -8,6 +8,6 @@ Although Git started as in invention to manage changes to the
 
 Similarities:
 
-- Mutations and Commits both use hasing to identify previous state
+- Mutations and Commits both use hashes to identify previous state
 - Both allow for decentralized storage
 - Both work with

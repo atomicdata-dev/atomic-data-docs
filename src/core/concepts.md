@@ -12,7 +12,7 @@ Contrary to some other (labeled) graph data models, a relationship between two i
 ## Atom (or Atomic Triple)
 
 The smallest possible piece of _meaningful_ data / information.
-The model of an Atom is comparable with an RDF Triple / Statement ([although there are imporant differences](../interoperability/rdf.md)).
+The model of an Atom is comparable with an RDF Triple / Statement ([although there are important differences](../interoperability/rdf.md)).
 An Atom consists of three values:
 
 * **[Subject](#subject)**: the Thing that the atom is providing information about.

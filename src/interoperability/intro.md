@@ -11,4 +11,4 @@ It is possible to convert Atomic to many types of serialization formats.
 
 ## Protocols
 
-* [IPFS](ipfs.md): Content-based adressing to prevent 404s and centralization
+* [IPFS](ipfs.md): Content-based addressing to prevent 404s and centralization

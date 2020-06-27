@@ -20,21 +20,21 @@ We use Newline Delimited JSON ([NDJSON](http://ndjson.org/)), which is just a la
 
 NDJSON has some important benefits:
 
-- It visually represents the underlying datamodel (the Atom)
+- It visually represents the underlying data-model (the Atom)
 - It can be streaming parsed, i.e. before the entire document is loaded. That is not possible with regular JSON.
 - NDJSON parsers are everywhere
-- Modern browers have highly performant JSON parsing, which means that it's _fast_ in one of the most imporant contexts: the browser.
+- Modern browsers have highly performant JSON parsing, which means that it's _fast_ in one of the most important contexts: the browser.
 
 _Mime type (not registered yet!): `application/ad3-ndjson`_
 
-_File name extention: `.ad3`_
+_File name extension: `.ad3`_
 
 Disclaimer: note that Atomic-NDJSON is useful for communicating _current state_, but not for _state changes_.
 
 ## AtomicDoubles-ndjson (.ad2)
 
 AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
-For many usecases, omitting the Subject is a _bad idea_.
+For many use-cases, omitting the Subject is a _bad idea_.
 
 However, it can be useful in (at least) two scenarios:
 
@@ -49,11 +49,11 @@ However, it can be useful in (at least) two scenarios:
 This format is **not suitable for persistent storage** or peer to peer sharing - it is only useful when
 
 - _Mime type (not registered yet!): `application/ad2-ndjson`_
-- _File name extention: `.ad2`_
+- _File name extension: `.ad2`_
 
 ## RDF serializatinon formats
 
-Because of the similarties with RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples or JSON-LD.
+Because of the similarities with RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples or JSON-LD.
 _However_, keep in mind that RDF users will expect other things from their data.
 Read more about the various existing formats and their respective merits [here](https://ontola.io/blog/rdf-serialization-formats/).
 
