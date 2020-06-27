@@ -6,7 +6,7 @@ lastName: McLovin
 https://schema.org/birthDate: 1991-01-20
 # Perhaps support relative paths
 bestFriend: ./mary
-# This is a LangString
+# This is a TranslationBox
 # It actually represents a new Resource with a unique URL
 # Its URL can be generated deterministically by using the Shortname of the Property
 lifeStory:

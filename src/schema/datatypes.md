@@ -27,7 +27,7 @@ _URL: `https://atomicdata.dev/datatypes/string`_
 
 UTF-8 String, no max character count.
 Newlines use backslash escaped `\n` characters.
-Should not contain language specific data, use a `langstring` instead (which is a linked resource).
+Should not contain language specific data, use a [TranslationBox](translations.md) instead.
 
 e.g. `String time! \n Second line!`
 

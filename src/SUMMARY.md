@@ -8,6 +8,7 @@
 * [Atomic Schema](schema/intro.md)
   * [Classes](schema/classes.md)
   * [Datatypes](schema/datatypes.md)
+  * [Translations](schema/translations.md)
   * [FAQ](schema/faq.md)
 * [Atomic Mutations](mutations/intro.md)
   * [Concepts](mutations/concepts.md)

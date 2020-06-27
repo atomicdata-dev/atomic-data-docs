@@ -76,7 +76,7 @@ Folder structure should reflect the structure inside URLs.
 Note that this format is _not_ useful for sending arbitrary Atomic Data to some client.
 It is useful for managing Atomic Data from a filesystem.
 
-An example AtomicData-FS dir can be [found in the repo](../).
+An example AtomicData-FS dir can be [found in the repo](https://github.com/ontola/atomic-data/tree/master/examples/atomic-fs/people).
 
 ```
 # in ./projectDir/people/john.adf
