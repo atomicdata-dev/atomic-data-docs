@@ -13,7 +13,6 @@ An Atomic Mutation consists of a:
 - `method` - How the resource needs to be updated using the Atom. If empty, just replace the current state.
 - `hash` - The [IPFS URL](versioning.md#Hashing) of the updated version of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in
 - `date` - A timestamp of when the mutation was created.
-<!-- Should it have an actor?  -->
 - `actor` - A timestamp of when the mutation was created.
 
 ## Ledger

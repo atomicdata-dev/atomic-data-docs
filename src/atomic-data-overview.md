@@ -26,7 +26,7 @@ While building various production grade apps (e.g. our e-democracy platform [Arg
 Some related to modeling, serializing, and rendering RDF.
 Most of these problems we've tackled by having a tight grip on the data that we create, and another part is creating new standards and various libraries.
 
-It's been almost 20 years since the introduction of linked data, and its adoption has been slow.
+It's been almost 15 years since the [introduction of linked data](https://www.w3.org/DesignIssues/LinkedData.html), and its adoption has been slow.
 We know that some of its merits are undeniable, and we truly want the semantic web to succeed.
 We believe the lack of growth partially has to do with a lack of tooling, but also with [some problems that lie in the RDF data model](../interoperability/rdf.md#why-these-changes).
 
