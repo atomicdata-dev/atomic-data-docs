@@ -64,18 +64,6 @@ ISO 8601 encoded string.
 
 e.g. `2020-06-11`
 
-## MIMEFile
-
-_URL: `https://atomicdata.dev/datatypes/mimeFile`_
-
-Any type of file, starting with its [mime type](https://www.iana.org/assignments/media-types/media-types.xhtml)
-Although MIME types [often don't exist in your OS](https://stackoverflow.com/a/29019569/2502163), specifying them seems like a good idea.
-
-Start with the mimetype string, do a newline `\n` and continue with the UTF-8 stringified data.
-
-- e.g. `application/text\nOh hi mark`
-- e.g. `text/html\n<html><p>oh, hi mark</p></html>`
-
 ## ResourceArray
 
 _URL: `https://atomicdata.dev/datatypes/resourceArray`_
