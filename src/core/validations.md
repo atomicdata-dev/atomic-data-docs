@@ -23,7 +23,7 @@ We refer to a Graph as Valid, if the following constraints are met:
 Making sure Graphs are Valid is of great importance to anyone creating, sharing or using Atomic Data.
 Services should specify whether they check the validity of graphs.
 
-## Closed Graph
+## Closed Graphs
 
 A Graph is Closed, when the Resources of all URLs are present in the Graph.
 In other words, if you were to fetch and download every single URL in a Graph, you would not have any more Atoms than before.
@@ -31,7 +31,7 @@ There are no more unfetched outgoing links.
 
 Closed Graphs are _rarely_ required in Atomic Data; it's often perfectly fine to have outgoing links that do not have been fetched.
 
-## Verified Graph
+## Verified Graphs
 
 When you are given some Atomic Graph by someone, you initially don't know for sure whether the Atoms themselves are actually created by the one controlling the subject URL.
 Someone may have tempered with the data, or fabricated it.
@@ -86,7 +86,7 @@ sent in all Schema Complete Atomic Graphs.
 ## Frozen Graphs
 
 A Frozen Graph consists only of resources with content-addressing identifiers as Subjects.
-A [content-addressable](https://flyingzumwalt.gitbooks.io/decentralized-web-primer/avenues-for-access/lessons/power-of-content-addressing.html) URL (such as an IPFS URL) refers to specific content, that is absolutely certain not to change over time.
+A [content-addressable](https://flyingzumwalt.gitbooks.io/decentralized-web-primer/avenues-for-access/lessons/power-of-content-addressing.html) URL (such as an IPFS URL) refers to specific immutable content, that is absolutely certain not to change over time.
 Due to its static nature, we call it _Frozen_.
 As long as a graph contains links to HTTP Resources, it is not Frozen, since responses from that HTTP address might change over time.
 

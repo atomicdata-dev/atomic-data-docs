@@ -66,8 +66,9 @@ Properties:
 
 - `shortname` - (required, Slug) a short string shorthand.
 - `description` - (required, AtomicURL, TranslationBox) human readable explanation of what the Class represents.
-- `requires` - (optional, ResourceArray) a list of Properties that are required. If absent, none are required. These SHOULD have unique shortnames.
-- `recommends` - (optional, ResourceArray) a list of Properties that are recommended. These SHOULD have unique shortnames.
+- `requires` - (optional, ResourceArray, Property) a list of Properties that are required. If absent, none are required. These SHOULD have unique shortnames.
+- `recommends` - (optional, ResourceArray, Property) a list of Properties that are recommended. These SHOULD have unique shortnames.
+- `deprecatedProperties` - (optional, ResourceArray, Property) - a list of Properties that should no longer be used.
 <!-- Maybe remove this next one? -->
 <!-- - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed. -->
 <!-- What are the consequences of this? How to deal with this field if there are more classes in aSSubject? -->
@@ -78,6 +79,7 @@ A resource indicates it is an _instance_ of that class by adding a `https://atom
 Example:
 
 ```ndjson
-["https://example.com/classes/Person","https://atomicdata.dev/properties/isA","Class"]
-["https://example.com/classes/Person","https://atomicdata.dev/properties/datatype","https://atomicdata.dev/datatypes/datetime"]
+["https://example.com/classes/Person","https://atomicdata.dev/properties/isA","https://atomicdata.dev/classes/Class"]
+["https://example.com/classes/Person","https://atomicdata.dev/properties/recommends","https://example.com/classes/Person/recommends"]
+["https://example.com/classes/Person/recommends","https://atomicdata.dev/properties/isA","https://atomicdata.dev/dataTypes/ResourceArray"]
 ```

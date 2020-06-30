@@ -56,7 +56,7 @@ Use a single bit one boolean.
 
 1 for `true`, or 0 for `false`.
 
-##  Datetime
+##  DateTime
 
 _URL: `https://atomicdata.dev/datatypes/dateTime`_
 
@@ -71,5 +71,6 @@ _URL: `https://atomicdata.dev/datatypes/resourceArray`_
 Sequential, ordered list of Atomic URIs.
 Serialized as a JSON array with strings.
 Note that other types of arrays are not included in this spec, but can be perfectly valid.
+([discussion]())
 
 - e.g. `["https://example.com/1", "https://example.com/1"]`

@@ -33,11 +33,17 @@ atomic add john birthdate 1991-01-20
 - Responds to requests for created Atomic Resources (including Properties / DataTypes)
 - Offer useful query options (e.g. Triple Pattern Fragments)
 - Offers pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)
+- Offer a browser-friendly HTML presentation? (Atomic Preview)
 
 ## Atomizer (data importer and conversion kit)
 
 - Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms
 - Perhaps a CLI, library, GUI or a combination of all of these
+
+## Atomic Preview
+
+- A simple widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.
+- Would be useful for documentation, and as a default view for Atomic Data.
 
 ## Libraries
 
