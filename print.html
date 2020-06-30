@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.1.</strong> Relation to IPFS</a></li><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.2.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li></ol></li><li class="chapter-item expanded "><a href="core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.3.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -161,11 +161,13 @@
                         <h1><a class="header" href="#atomic-data-overview" id="atomic-data-overview">Atomic Data Overview</a></h1>
 <p><em>Status: early draft, far from usable. <a href="get-involved.html">Feedback welcome</a>.</em></p>
 <p>Atomic Data is a proposed standard for modeling and exchanging data.
-It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.
-Atomic Data is heavily inspired by <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, and can be thought of as a more strict subset of RDF.
-Atomic Data is typed (you know if something is a <code>string</code>, <code>number</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.
+It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.</p>
+<p>Atomic Data is especially suitable for knowledge graphs, distributed datasets, semantic data, p2p applications, decentralized apps, and data that is meant to be highly reusable.
+It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.</p>
+<p>Atomic Data is <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, as it is a more strict subset of RDF.
+It is typed (you know if something is a <code>string</code>, <code>number</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.
 Atomic Data has a standard for synchronizing data by communicating state changes, called <a href="mutations/intro.html">Atomic Mutations</a>.
-You can use parts of Atomic Data separately, but the standard is designed as a full data management package that makes it easier to create, share and use structured data on the web.</p>
+You can use parts of Atomic Data separately, but the standard is designed as a full, integrated data management package that makes it easier to create, share and use structured data on the web.</p>
 <ul>
 <li><a href="core/intro.html">Atomic Data Core</a>: the core model for typed, Linked Data</li>
 <li><a href="schema/intro.html">Atomic Schema</a>: defining properties, datatypes and classes</li>
@@ -174,14 +176,16 @@ You can use parts of Atomic Data separately, but the standard is designed as a f
 <h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
 <p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
 Using links everywhere in data has amazing merits: links remove ambiguity, they enable exploration, they enable connected datasets.
-Linked Data could help to democratize the web by decentralizing information storage, and giving people more control.</p>
+Linked Data could help to democratize the web by decentralizing information storage, and giving people more control.
+The Solid Project by Tim Berners-Lee is a great example of why linked data can help to create a more decentralized web.</p>
 <p>At <a href="ontola.io/">Ontola</a>, we've been working with linked data quite intensely for the last couple of years.
-We went all-in, and challenged ourselves to create software that communicates exclusively using RDF.
+We went all-in on RDF, and challenged ourselves to create software that communicates exclusively using it.
 That has been an inspiring, but also sometimes a frustrating journey.
 While building various production grade apps (e.g. our e-democracy platform <a href="https://argu.co/">Argu.co</a>, which is used by various governments), we had to solve many problems.
-Some related to modeling, serializing, and rendering RDF.
-Most of these problems we've tackled by having a tight grip on the data that we create, and another part is creating new standards and various libraries.</p>
-<p>It's been almost 15 years since the <a href="https://www.w3.org/DesignIssues/LinkedData.html">introduction of linked data</a>, and its adoption has been slow.
+How to properly model data in RDF? How to deal with sequences? How do you deal with mutations? Converting to HTML? Typing? CORS?
+We tackled some of these problems by having a tight grip on the data that we create (e.g. we know the type of data, because we control the resources), and another part is creating new protocols, formats, tools, and libraries.
+But it took a long time, and it was hard.
+It's been almost 15 years since the <a href="https://www.w3.org/DesignIssues/LinkedData.html">introduction of linked data</a>, and its adoption has been slow.
 We know that some of its merits are undeniable, and we truly want the semantic web to succeed.
 We believe the lack of growth partially has to do with a lack of tooling, but also with <a href="../interoperability/rdf.html#why-these-changes">some problems that lie in the RDF data model</a>.</p>
 <p>Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
@@ -473,8 +477,9 @@ If you need to set more complex constraints to your Classes (e.g. maximum string
 <ul>
 <li><code>shortname</code> - (required, Slug) a short string shorthand.</li>
 <li><code>description</code> - (required, AtomicURL, TranslationBox) human readable explanation of what the Class represents.</li>
-<li><code>requires</code> - (optional, ResourceArray) a list of Properties that are required. If absent, none are required. These SHOULD have unique shortnames.</li>
-<li><code>recommends</code> - (optional, ResourceArray) a list of Properties that are recommended. These SHOULD have unique shortnames.</li>
+<li><code>requires</code> - (optional, ResourceArray, Property) a list of Properties that are required. If absent, none are required. These SHOULD have unique shortnames.</li>
+<li><code>recommends</code> - (optional, ResourceArray, Property) a list of Properties that are recommended. These SHOULD have unique shortnames.</li>
+<li><code>deprecatedProperties</code> - (optional, ResourceArray, Property) - a list of Properties that should no longer be used.</li>
 </ul>
 <!-- Maybe remove this next one? -->
 <!-- - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed. -->
@@ -482,8 +487,9 @@ If you need to set more complex constraints to your Classes (e.g. maximum string
 <!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
 <p>A resource indicates it is an <em>instance</em> of that class by adding a <code>https://atomicdata.dev/properties/isA</code> Atom.</p>
 <p>Example:</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;Class&quot;]
-[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/datatype&quot;,&quot;https://atomicdata.dev/datatypes/datetime&quot;]
+<pre><code class="language-ndjson">[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;https://atomicdata.dev/classes/Class&quot;]
+[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/recommends&quot;,&quot;https://example.com/classes/Person/recommends&quot;]
+[&quot;https://example.com/classes/Person/recommends&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;https://atomicdata.dev/dataTypes/ResourceArray&quot;]
 </code></pre>
 <h1><a class="header" href="#atomic-schema-datatypes" id="atomic-schema-datatypes">Atomic Schema: Datatypes</a></h1>
 <p>The Atomic Datatypes consist of some of the most commonly used <a href="schema/classes.html#Datatype">Datatypes</a>.</p>
@@ -516,24 +522,16 @@ Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><co
 <p><strong>Binary serialization</strong></p>
 <p>Use a single bit one boolean.</p>
 <p>1 for <code>true</code>, or 0 for <code>false</code>.</p>
-<h2><a class="header" href="#datetime" id="datetime">Datetime</a></h2>
+<h2><a class="header" href="#datetime" id="datetime">DateTime</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/dateTime</code></em></p>
 <p>ISO 8601 encoded string.</p>
 <p>e.g. <code>2020-06-11</code></p>
-<h2><a class="header" href="#mimefile" id="mimefile">MIMEFile</a></h2>
-<p><em>URL: <code>https://atomicdata.dev/datatypes/mimeFile</code></em></p>
-<p>Any type of file, starting with its <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">mime type</a>
-Although MIME types <a href="https://stackoverflow.com/a/29019569/2502163">often don't exist in your OS</a>, specifying them seems like a good idea.</p>
-<p>Start with the mimetype string, do a newline <code>\n</code> and continue with the UTF-8 stringified data.</p>
-<ul>
-<li>e.g. <code>application/text\nOh hi mark</code></li>
-<li>e.g. <code>text/html\n&lt;html&gt;&lt;p&gt;oh, hi mark&lt;/p&gt;&lt;/html&gt;</code></li>
-</ul>
 <h2><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/resourceArray</code></em></p>
 <p>Sequential, ordered list of Atomic URIs.
 Serialized as a JSON array with strings.
-Note that other types of arrays are not included in this spec, but can be perfectly valid.</p>
+Note that other types of arrays are not included in this spec, but can be perfectly valid.
+(<a href="schema/">discussion</a>)</p>
 <ul>
 <li>e.g. <code>[&quot;https://example.com/1&quot;, &quot;https://example.com/1&quot;]</code></li>
 </ul>
@@ -698,31 +696,6 @@ However, its identifier (the Subject) will often remain the same.</p>
 <ul>
 <li><a href="interoperability/ipfs.html">IPFS</a>: Content-based addressing to prevent 404s and centralization</li>
 </ul>
-<h1><a class="header" href="#atomic-data-and-ipfs" id="atomic-data-and-ipfs">Atomic Data and IPFS</a></h1>
-<h2><a class="header" href="#what-is-ipfs" id="what-is-ipfs">What is IPFS</a></h2>
-<p>IPFS (the InterPlanetary File System) is a standard that enables decentralized file storage and retrieval using content-based identifiers.
-Instead of using an HTTP URL like <code>http://example.com/helloworld</code>, it uses the IPFS scheme, such as <code>ipfs:QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL</code>.
-IPFS identifies things based on their unique content hash (the long, seemingly random string) using a thing called a Merkle DAG (<a href="https://medium.com/textileio/whats-really-happening-when-you-add-a-file-to-ipfs-ae3b8b5e4b0f#:%7E:text=In%20practice%2C%20content%20addressing%20systems,function%2C%20to%20produce%20a%20digest.&amp;text=From%20raw%20image%20to%20cryptographic%20digest%20to%20content%20id%20(multihash).">this great article</a> explains it nicely).
-This simple idea (plus some not so simple network protocols) allows for decentralized, temper-proof storage of data.
-This fixes some issues with HTTP that are related to its centralized philosophy: no more 404s!</p>
-<h2><a class="header" href="#why-is-ipfs-especially-interesting-for-atomic-data" id="why-is-ipfs-especially-interesting-for-atomic-data">Why is IPFS especially interesting for Atomic Data</a></h2>
-<p>Atomic Data is highly dependent on the availability of Resources, especially Properties and Datatypes.
-These resources are meant to be re-used a lot, and that would make everything expensive.</p>
-<h2><a class="header" href="#considerations-using-ipfs-urls" id="considerations-using-ipfs-urls">Considerations using IPFS URLs</a></h2>
-<p>They are static, their contents can never change.
-This is great for some types of data, but horrible for others.
-If you're describing a time-dependent thing (such as a person's job),
-If you're describing personal, private information, its also a bad idea to use IPFS, because it's designed to be permanent.
-Also, IPFS is not as fast as HTTP - at least for now.</p>
-<h2><a class="header" href="#example-of-atomic-data-on-ipfs" id="example-of-atomic-data-on-ipfs">Example of Atomic Data on IPFS</a></h2>
-<p>Here's an example, serialized to Atomic-NDJSON:</p>
-<p><a href="https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL">https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL</a></p>
-<pre><code class="language-ndjson">[&quot;https://atomicdata.dev/helloworld&quot;,&quot;https://atomicdata.dev/properties/description&quot;,&quot;Hello world!&quot;]
-</code></pre>
-<h2><a class="header" href="#atomic-data-and-ipld" id="atomic-data-and-ipld">Atomic Data and IPLD</a></h2>
-<p>IPLD (not IPFS) stands for InterPlanetary Linked Data, but is not related to RDF.
-The scope seems fundamentally different from RDF, too, but I have to read more about this.
-TODO!</p>
 <h1><a class="header" href="#how-does-atomic-data-relate-to-rdf" id="how-does-atomic-data-relate-to-rdf">How does Atomic Data relate to RDF?</a></h1>
 <p>RDF is the original data model behind linked data.
 It is also the forerunner of Atomic Data, and is therefore highly similar in its philosophy and model.
@@ -773,7 +746,7 @@ However, some of the characteristics of RDF might have contributed to its relati
 <li>Using full URI strings as keys (in RDF <code>predicates</code>) results in a relatively clunky Developer Experience. Consider the short strings that developers are used to in pretty much all languages and data formats (<code>object.attribute</code>). Adding a <em>required</em> / tightly integrated key mapping (from long URLs to short, simple strings) in Atomic Properties solves this issue, and provides developers a way to write code like this: <code>someAtomicPerson.bestFriend.name =&gt; &quot;Britta&quot;</code>. Although the RDF ecosystem does have some solutions for this (@context objects in JSON-LD, @prefix mappings, the @ontologies library), these prefixes are not defined in Properties themselves and therefore are defined locally only, which means that developers have to manually map them most of the time. This is why Atomic Data introduces a <code>shortname</code> field in Properties, which forces modelers to choose a 'key' that can be used in ORM contexts.</li>
 <li>RDF lacks a clear solution for dealing with <a href="https://ontola.io/blog/ordered-data-in-rdf/">ordered data</a>, resulting in confusion when developers have to create lists of content. Adding an Array data type as a base data type helps solve this. (<a href="https://github.com/ontola/atomic-data/issues/4">discussion</a>)</li>
 <li>There is no integrated standard for communicating state changes. Although <a href="https://github.com/ontola/linked-delta">linked-delta</a> and <a href="https://afs.github.io/rdf-delta/">rdf-delta</a> do exist, they aren't referred to by the RDF spec. I think developers need guidance when learning a new system such as RDF, and that's why <a href="interoperability/../mutations/intro.html">Atomic Mutations</a> is included in this book.</li>
-<li>RDF allows that <code>anne</code> creates statements about the subject <code>john</code>. The reasoning behind this, was that it was possible to say things about thingsIn other words, domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing <em>where data comes from</em> is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.</li>
+<li>RDF allows that <code>anne.com</code> creates and hosts statements about the subject <code>john.com</code>. In other words, domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing <em>where data comes from</em> is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.</li>
 <li>RDF allows blank nodes, Atomic Data does not. They make things easier for content providers, but make things <a href="http://richard.cyganiak.de/blog/2011/03/blank-nodes-considered-harmful/">harder for content consumers</a>. They severely limit how client systems can store the data, as name collisions with blank nodes are very possible. They make sense in hand-written Turtle files, but that argument doesn't hold for systems that create the data (and the identifiers) for you. It's very much possible to design systems that create reliable URLs without any overhead for the data creator.</li>
 <li>RDF allows any type of URIs for <code>subject</code> and <code>predicate</code> value, which means they can be URLs, but don't have to be. This means they don't always resolve, or even function as locators. The links don't work, and that restricts how useful the links are. Atomic Data takes a different approach: these links MUST Resolve. Requiring that is part of what enables the type system of Atomic Schema</li>
 <li>Validating RDF graphs is hard. Validating both the <em>shape</em> (whether required fields are present) of RDF data, as well as its <em>authenticity</em> (whether we can trust the individual Statements) is complex. Shape validations are possible using both <a href="https://www.w3.org/TR/shacl/">SHACL</a> and <a href="https://shex.io/">SHEX</a>, and they are both very powerful and well designed.</li>
@@ -786,9 +759,11 @@ However, some of the characteristics of RDF might have contributed to its relati
 </ul>
 <!-- - Re-using predicate URIs in new contexts can be result in unclear descriptions, since the meaning of predicates can be very class-dependent. For example, a `name` for a Person means something else than a `name` for a  -->
 <h2><a class="header" href="#convert-atomic-data-to-rdf" id="convert-atomic-data-to-rdf">Convert Atomic data to RDF</a></h2>
-<p>Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.</p>
+<p>Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.
+However, contrary to Atomic Data, RDF has optional Language and Datatype elements in every statement.</p>
 <ul>
 <li>Convert Atoms with linked <code>TranslationBox</code> Resources to Literals with an <code>xsd:string</code> datatype and the corresponding language in the tag.</li>
+<li>Dereference the Property and Datatype from Atomic Properties, and add the URLs in <code>datatypes</code> in RDF statements.</li>
 </ul>
 <h2><a class="header" href="#convert-rdf-to-atomic-data" id="convert-rdf-to-atomic-data">Convert RDF to Atomic Data</a></h2>
 <ul>
@@ -857,6 +832,31 @@ The <code>@id</code> key shows that the value should be interpreted as a link (a
 <ul>
 <li>Whilst JSON-LD is great for traditional JSON usage (dot.syntax ORM style navigation of objects), it is not great for linked data usage.</li>
 </ul>
+<h1><a class="header" href="#atomic-data-and-ipfs" id="atomic-data-and-ipfs">Atomic Data and IPFS</a></h1>
+<h2><a class="header" href="#what-is-ipfs" id="what-is-ipfs">What is IPFS</a></h2>
+<p>IPFS (the InterPlanetary File System) is a standard that enables decentralized file storage and retrieval using content-based identifiers.
+Instead of using an HTTP URL like <code>http://example.com/helloworld</code>, it uses the IPFS scheme, such as <code>ipfs:QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL</code>.
+IPFS identifies things based on their unique content hash (the long, seemingly random string) using a thing called a Merkle DAG (<a href="https://medium.com/textileio/whats-really-happening-when-you-add-a-file-to-ipfs-ae3b8b5e4b0f#:%7E:text=In%20practice%2C%20content%20addressing%20systems,function%2C%20to%20produce%20a%20digest.&amp;text=From%20raw%20image%20to%20cryptographic%20digest%20to%20content%20id%20(multihash).">this great article</a> explains it nicely).
+This simple idea (plus some not so simple network protocols) allows for decentralized, temper-proof storage of data.
+This fixes some issues with HTTP that are related to its centralized philosophy: no more 404s!</p>
+<h2><a class="header" href="#why-is-ipfs-especially-interesting-for-atomic-data" id="why-is-ipfs-especially-interesting-for-atomic-data">Why is IPFS especially interesting for Atomic Data</a></h2>
+<p>Atomic Data is highly dependent on the availability of Resources, especially Properties and Datatypes.
+These resources are meant to be re-used a lot, and that would make everything expensive.</p>
+<h2><a class="header" href="#considerations-using-ipfs-urls" id="considerations-using-ipfs-urls">Considerations using IPFS URLs</a></h2>
+<p>They are static, their contents can never change.
+This is great for some types of data, but horrible for others.
+If you're describing a time-dependent thing (such as a person's job),
+If you're describing personal, private information, its also a bad idea to use IPFS, because it's designed to be permanent.
+Also, IPFS is not as fast as HTTP - at least for now.</p>
+<h2><a class="header" href="#example-of-atomic-data-on-ipfs" id="example-of-atomic-data-on-ipfs">Example of Atomic Data on IPFS</a></h2>
+<p>Here's an example, serialized to Atomic-NDJSON:</p>
+<p><a href="https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL">https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL</a></p>
+<pre><code class="language-ndjson">[&quot;https://atomicdata.dev/helloworld&quot;,&quot;https://atomicdata.dev/properties/description&quot;,&quot;Hello world!&quot;]
+</code></pre>
+<h2><a class="header" href="#atomic-data-and-ipld" id="atomic-data-and-ipld">Atomic Data and IPLD</a></h2>
+<p>IPLD (not IPFS) stands for InterPlanetary Linked Data, but is not related to RDF.
+The scope seems fundamentally different from RDF, too, but I have to read more about this.
+TODO!</p>
 <h1><a class="header" href="#atomic-graph-validations" id="atomic-graph-validations">Atomic Graph Validations</a></h1>
 <p>An Graph is a set of Atoms.
 Since Atomic Data is designed to facilitate decentralized data storage, Graphs will often lack information or contain invalid data.
@@ -878,12 +878,12 @@ In this section, we define some of these concepts.</p>
 </ul>
 <p>Making sure Graphs are Valid is of great importance to anyone creating, sharing or using Atomic Data.
 Services should specify whether they check the validity of graphs.</p>
-<h2><a class="header" href="#closed-graph" id="closed-graph">Closed Graph</a></h2>
+<h2><a class="header" href="#closed-graphs" id="closed-graphs">Closed Graphs</a></h2>
 <p>A Graph is Closed, when the Resources of all URLs are present in the Graph.
 In other words, if you were to fetch and download every single URL in a Graph, you would not have any more Atoms than before.
 There are no more unfetched outgoing links.</p>
 <p>Closed Graphs are <em>rarely</em> required in Atomic Data; it's often perfectly fine to have outgoing links that do not have been fetched.</p>
-<h2><a class="header" href="#verified-graph" id="verified-graph">Verified Graph</a></h2>
+<h2><a class="header" href="#verified-graphs" id="verified-graphs">Verified Graphs</a></h2>
 <p>When you are given some Atomic Graph by someone, you initially don't know for sure whether the Atoms themselves are actually created by the one controlling the subject URL.
 Someone may have tempered with the data, or fabricated it.</p>
 <p>The process of Verification can be done in two ways:</p>
@@ -919,7 +919,7 @@ We can safely say that the last atom in the example above (the one describing <c
 sent in all Schema Complete Atomic Graphs.</p>
 <h2><a class="header" href="#frozen-graphs" id="frozen-graphs">Frozen Graphs</a></h2>
 <p>A Frozen Graph consists only of resources with content-addressing identifiers as Subjects.
-A <a href="https://flyingzumwalt.gitbooks.io/decentralized-web-primer/avenues-for-access/lessons/power-of-content-addressing.html">content-addressable</a> URL (such as an IPFS URL) refers to specific content, that is absolutely certain not to change over time.
+A <a href="https://flyingzumwalt.gitbooks.io/decentralized-web-primer/avenues-for-access/lessons/power-of-content-addressing.html">content-addressable</a> URL (such as an IPFS URL) refers to specific immutable content, that is absolutely certain not to change over time.
 Due to its static nature, we call it <em>Frozen</em>.
 As long as a graph contains links to HTTP Resources, it is not Frozen, since responses from that HTTP address might change over time.</p>
 <p>Freezing a Graph, therefore, entails converting all resources to IFPS (or another content-addressable schema) Resources, and using only IPFS URLs.</p>
@@ -953,11 +953,17 @@ atomic add john birthdate 1991-01-20
 <li>Responds to requests for created Atomic Resources (including Properties / DataTypes)</li>
 <li>Offer useful query options (e.g. Triple Pattern Fragments)</li>
 <li>Offers pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)</li>
+<li>Offer a browser-friendly HTML presentation? (Atomic Preview)</li>
 </ul>
 <h2><a class="header" href="#atomizer-data-importer-and-conversion-kit" id="atomizer-data-importer-and-conversion-kit">Atomizer (data importer and conversion kit)</a></h2>
 <ul>
 <li>Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms</li>
 <li>Perhaps a CLI, library, GUI or a combination of all of these</li>
+</ul>
+<h2><a class="header" href="#atomic-preview" id="atomic-preview">Atomic Preview</a></h2>
+<ul>
+<li>A simple widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.</li>
+<li>Would be useful for documentation, and as a default view for Atomic Data.</li>
 </ul>
 <h2><a class="header" href="#libraries" id="libraries">Libraries</a></h2>
 <p>The most important tooling for Atomic Data, are libraries.
