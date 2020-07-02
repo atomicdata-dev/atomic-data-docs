@@ -9,6 +9,8 @@ Atomic Data can be thought of as a **more constrained, type safe version of RDF*
 However, it does differ in some fundamental ways.
 
 - Atomic calls the three parts of a Triple `subject`, `property` and `value`, instead of `subject`, `predicate`, `object`.
+- Atomic has no difference between `literal`, `named node` and `blank node` objects - these are all `values`, but with different datatypes.
+- Atomic does not support `blank nodes`.
 - Atomic requires URL (not URI) values in its `subjects` and `predicates` (properties), which means that they should be resolvable.
 - Atomic only allows those who control a resource's `subject` URL endpoint to edit the data. This means that you can't add triples about something that you don't control.
 - Atomic has no separate `datatype` field, but it requires that `Properties` (the resources that are shown when you follow a `predicate` value) specify a datatype
@@ -16,7 +18,6 @@ However, it does differ in some fundamental ways.
 - Atomic has a native Event (state changes) model ([Atomic Mutations](../mutations/intro.md)), which enables communication of state changes
 - Atomic has a native Schema model ([Atomic Schema](../schema/intro.md)), which helps developers to know what data types they can expect (string, integer, link, array)
 - Atomic does not support `graph` fields in statements.
-- Atomic does not support `blank nodes`.
 
 - Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination should be unique.
 
@@ -28,11 +29,53 @@ However, some of the characteristics of RDF might have contributed to its relati
 
 ### Changing the names
 
-RDF's `subject`, `predicate` and `object` terminology can be confusing to newcomers, so Atomic Data uses `subject`, `property`, `value`. This more closely resembles known CS terminology. ([discussion](https://github.com/ontola/atomic-data/issues/3))
+RDF's `subject`, `predicate` and `object` terminology can be confusing to newcomers, so Atomic Data uses `subject`, `property`, `value`. This more closely resembles common CS terminology. ([discussion](https://github.com/ontola/atomic-data/issues/3))
+
+### No more literals / named nodes
+
+In RDF, an `object` can either be a `named node`, `blank node` or `literal`. A `literal` has a `value`, a `datatype` and an optional `language` (if the `literal` is a string).
+Although RDF statements are often called `triples`, a single statement can consist of five fields: `subject`, `predicate`, `object`, `language`, `datatype`.
+Having five fields is way more than most information systems. Usually we have just `key` and `value`.
+This difference leads to compatibility issues when using RDF in applications.
+In practice, clients have to run a lot of checks before they can use the data - which makes RDF in most contexts harder to use than something such as JSON.
+
+Atomic Data drops the `named node` / `literal` distinction.
+We just have `values`, and they are interpreted by looking at the `datatype`, which is defined in the `property`.
+When a value is a URL, we don't call it a named node, but we simply use a URL datatype.
+
+### Requiring URLs
+
+RDF allows any type of URIs for `subject` and `predicate` value, which means they can be URLs, but don't have to be. This means they don't always resolve, or even function as locators. The links don't work, and that restricts how useful the links are. Atomic Data takes a different approach: these links MUST Resolve. Requiring Properties to resolve is part of what enables the type system of Atomic Schema - they provide the `shortname` and `datatype`.
+
+Requiring URLs makes things easier for data users, at the cost of the data producer.
+With Atomic Data, the data producer MUST offer the triples at the URL of the subject.
+This is a challenge - especially with the current (lack of) tooling.
+
+However - making sure that links _actually work_ offer tremendous benefits for data consumers, and that advantage is often worth the extra trouble.
+
+### No more blank nodes
+
+RDF allows `blank nodes` (resources with identifiers that exist only locally), Atomic Data does not.
+They make things easier for content providers, but make things [harder for content consumers](http://richard.cyganiak.de/blog/2011/03/blank-nodes-considered-harmful/).
+They severely limit how client systems can store data, as name collisions with blank nodes are possible and cache invalidation is hard (or impossible) with blank nodes.
+
+Blank nodes make a lot of sense in hand-written RDF (e.g. Turtle) files.
+However, that argument doesn't hold for systems that create the identifiers for you.
+Although data creators _should_ have means to specify URLs for certain resources, they _should not_ have to specify every single one.
+Ideally, the interface that you use as a data producer will create (persistent, resolvable) identifiers when you create the resources.
+
+### Limiting subject usage
+
+RDF allows that `anne.com` creates and hosts statements about the subject `john.com`. In other words, domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
 
 ### Combining datatype and predicate
 
-Having both a `datatype` and a `predicate` value can lead to confusing situations. For example, the [`schema:dateCreated`](https://schema.org/dateCreated) Property requires an ISO DateTime string (according to the schema.org definition), but using a value `true` with an `xsd:boolean` datatype results in perfectly valid RDF. This means that client software using triples with a `schema:dateCreated` predicate cannot safely assume that its value will be a DateTime. So if the client wants to use `schema:dateCreated` values, the client must also specify which type of data it expects, check the datatype field of every Atom and provide logic for when these don't match. Also important combining `datatype` and `predicate` fits the model of most programmers and langauges better - just look at how every single struct / model / class / shape is defined in programming languages: `key: datatype`. This is why Atomic Data requires that a `predicate` links to a Property which must have a `Datatype`.
+Having both a `datatype` and a `predicate` value can lead to confusing situations.
+For example, the [`schema:dateCreated`](https://schema.org/dateCreated) Property requires an ISO DateTime string (according to the schema.org definition), but using a value `true` with an `xsd:boolean` datatype results in perfectly valid RDF.
+This means that client software using triples with a `schema:dateCreated` predicate cannot safely assume that its value will be a DateTime.
+So if the client wants to use `schema:dateCreated` values, the client must also specify which type of data it expects, check the datatype field of every Atom and provide logic for when these don't match.
+Also important combining `datatype` and `predicate` fits the model of most programmers and langauges better - just look at how every single struct / model / class / shape is defined in programming languages: `key: datatype`.
+This is why Atomic Data requires that a `predicate` links to a Property which must have a `Datatype`.
 
 ### Adding shortnames (slugs / keys) in Properties
 
@@ -40,23 +83,14 @@ Using full URI strings as keys (in RDF `predicates`) results in a relatively clu
 
 ### Adding native arrays
 
-RDF lacks a clear solution for dealing with [ordered data](https://ontola.io/blog/ordered-data-in-rdf/), resulting in confusion when developers have to create lists of content. Adding an Array data type as a base data type helps solve this. ([discussion](https://github.com/ontola/atomic-data/issues/4))
+RDF lacks a clear solution for dealing with [ordered data](https://ontola.io/blog/ordered-data-in-rdf/), resulting in confusion when developers have to create lists of content.
+Adding an Array data type as a base data type helps solve this. ([discussion](https://github.com/ontola/atomic-data/issues/4))
 
 ### Adding a native mutation standard
 
-There is no integrated standard for communicating state changes. Although [linked-delta](https://github.com/ontola/linked-delta) and [rdf-delta](https://afs.github.io/rdf-delta/) do exist, they aren't referred to by the RDF spec. I think developers need guidance when learning a new system such as RDF, and that's why [Atomic Mutations](../mutations/intro.md) is included in this book.
-
-### Limiting subject usage
-
-RDF allows that `anne.com` creates and hosts statements about the subject `john.com`. In other words, domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
-
-### Dropping blank nodes
-
-RDF allows blank nodes, Atomic Data does not. They make things easier for content providers, but make things [harder for content consumers](http://richard.cyganiak.de/blog/2011/03/blank-nodes-considered-harmful/). They severely limit how client systems can store the data, as name collisions with blank nodes are very possible. They make sense in hand-written Turtle files, but that argument doesn't hold for systems that create the data (and the identifiers) for you. It's very much possible to design systems that create reliable URLs without any overhead for the data creator.
-
-### Requiring URLs
-
-RDF allows any type of URIs for `subject` and `predicate` value, which means they can be URLs, but don't have to be. This means they don't always resolve, or even function as locators. The links don't work, and that restricts how useful the links are. Atomic Data takes a different approach: these links MUST Resolve. Requiring that is part of what enables the type system of Atomic Schema
+There is no integrated standard for communicating state changes.
+Although [linked-delta](https://github.com/ontola/linked-delta) and [rdf-delta](https://afs.github.io/rdf-delta/) do exist, they aren't referred to by the RDF spec.
+I think developers need guidance when learning a new system such as RDF, and that's why [Atomic Mutations](../mutations/intro.md) is included in this book.
 
 ### Adding a schema language
 
@@ -64,10 +98,11 @@ Validating RDF graphs is hard. Validating both the _shape_ (whether required fie
 
 ### A new name, with new docs
 
-Besides these technical reasons about the RDF model, I think that there are more reasons to start with a new concept and give it a new name:
+Besides the technical reasons described above, I think that there are social reasons to start with a new concept and give it a new name:
 
-- The RDF documentation is intimidating for beginners. When trying to understand RDF, you're likely to traverse. All Core / Schema URLs should resolve to simple, clear explanations with both examples and machine readable definitions.
-- There is a lack of learning resources that provide a clear, complete answer to the lifecycle of RDF data: modeling data, making data, hosting it, fetching it, updating it. Atomic Data aims to provide an opinionated answer to all of these steps.
+- The RDF vocabulary is intimidating. When trying to understand RDF, you're likely to traverse many pages with new concepts: `literal`, `named node`, `graph`, `predicate`, `named graph`, `blank node`... The core specification provides a formal description of these concepts, but fails to do this in a way that results in quick understanding and workable intuitions. Even experienced RDF developers tend to be confused about the nuances of the core model.
+- There is a lack of learning resources that provide a clear, complete answer to the lifecycle of RDF data: modeling data, making data, hosting it, fetching it, updating it. Atomic Data aims to provide an opinionated answer to all of these steps. It feels more like a one-stop-shop for questions that developers are likely to encounter, whilst keeping the extendability.
+- All Core / Schema URLs should resolve to simple, clear explanations with both examples and machine readable definitions. Especially the Property and Class concepts.
 - The Semantic Web community has had a lot of academic attention from formal logic departments, resulting in a highly developed standard for knowledge modeling: the Web Ontology Language (OWL). While this is mostly great, its open-world philosophy and focus on reasoning abilities can confuse developers who are simply looking for a simple way to share models in RDF.
 <!-- - Re-using predicate URIs in new contexts can be result in unclear descriptions, since the meaning of predicates can be very class-dependent. For example, a `name` for a Person means something else than a `name` for a  -->
 
