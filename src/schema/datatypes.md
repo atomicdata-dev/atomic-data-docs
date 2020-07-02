@@ -7,6 +7,7 @@ The Atomic Datatypes consist of some of the most commonly used [Datatypes](class
 _URL: `https://atomicdata.dev/datatypes/slug`_
 
 A string with a limited set of allowed characters, used in IDE / Text editor context.
+Similar to [`xsd:token`](http://books.xmlschemata.org/relaxng/ch19-77319.html)
 
 ## Atomic URI
 

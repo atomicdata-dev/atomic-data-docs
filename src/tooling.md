@@ -93,10 +93,10 @@ const alice = await personBuilder({
   "https://example.com/someOtherProperty": true,
 })
 
-console.log(person.subject) //=> Should return a newly created identifier
+console.log(person.subject) //=> Should return a newly created identifier, https://example.com/alice
 
 // Checks the store for the subject, and returns it.
-// If it does not exists locally, it will fetch it first using the `tpfEndpoint`.
+// If the subject does not exists locally, it will fetch it first using the `tpfEndpoint`.
 const alice = await store.get("https://example.com/alice")
 
 // Because of the keys in Atomic Properties, we can use this dot syntax to traverse the graph and get a value

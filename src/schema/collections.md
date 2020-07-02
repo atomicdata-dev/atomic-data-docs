@@ -16,3 +16,13 @@ Members can be of the same type (Class), but don't have to be.
 Properties:
 
 - `pages`: (required, ResourceArray) - a set of
+- `iriTemplate`: () - `https://argu.co/argu/discussions{?display,filter%5B%5D*,sort%5B%5D*,page,page_size,type,before%5B%5D*}{#fragment}`
+- `sortOptions`:
+- `totalItems`:
+- `totalItems`:
+
+## Page
+
+## Sorting
+
+- `sortKey`
