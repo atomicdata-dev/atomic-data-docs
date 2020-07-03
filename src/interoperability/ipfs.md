@@ -5,6 +5,7 @@
 IPFS (the InterPlanetary File System) is a standard that enables decentralized file storage and retrieval using content-based identifiers.
 Instead of using an HTTP URL like `http://example.com/helloworld`, it uses the IPFS scheme, such as `ipfs:QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL`.
 IPFS identifies things based on their unique content hash (the long, seemingly random string) using a thing called a Merkle DAG ([this great article](https://medium.com/textileio/whats-really-happening-when-you-add-a-file-to-ipfs-ae3b8b5e4b0f#:~:text=In%20practice%2C%20content%20addressing%20systems,function%2C%20to%20produce%20a%20digest.&text=From%20raw%20image%20to%20cryptographic%20digest%20to%20content%20id%20(multihash).) explains it nicely).
+This is called a [CID](https://github.com/multiformats/cid), or Content ID.
 This simple idea (plus some not so simple network protocols) allows for decentralized, temper-proof storage of data.
 This fixes some issues with HTTP that are related to its centralized philosophy: no more 404s!
 

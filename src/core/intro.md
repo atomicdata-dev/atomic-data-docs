@@ -8,7 +8,7 @@ Before we dive into its concepts, we'll talk about why this standard is made in 
 * **Browsable**: Data should explicitly link to other pieces of data, and these links should be followable.
 * **Semantic**: Every data Atom and relation has a clear semantic meaning.
 * **Open**: Free to use, open source, no strings attached.
-* **Clear Ownership**: The URL of the data shows who is in control of the data.
+* **Clear Ownership**: The data shows who is in control of the data, so new versions of the data can easily be retrieved.
 * **Mergeable**: Any two sets of Atoms can be merged into a single graph without any merge conflicts / name collisions.
 * **Interoperable**: Can easily and constantly be converted to other data formats (e.g. JSON, XML, and all RDF formats).
 * **Extensible**: Anyone can define their own data types and create Atoms with it.
