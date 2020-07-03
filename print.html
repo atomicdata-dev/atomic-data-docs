@@ -197,7 +197,7 @@ Before we dive into its concepts, we'll talk about why this standard is made in 
 <li><strong>Browsable</strong>: Data should explicitly link to other pieces of data, and these links should be followable.</li>
 <li><strong>Semantic</strong>: Every data Atom and relation has a clear semantic meaning.</li>
 <li><strong>Open</strong>: Free to use, open source, no strings attached.</li>
-<li><strong>Clear Ownership</strong>: The URL of the data shows who is in control of the data.</li>
+<li><strong>Clear Ownership</strong>: The data shows who is in control of the data, so new versions of the data can easily be retrieved.</li>
 <li><strong>Mergeable</strong>: Any two sets of Atoms can be merged into a single graph without any merge conflicts / name collisions.</li>
 <li><strong>Interoperable</strong>: Can easily and constantly be converted to other data formats (e.g. JSON, XML, and all RDF formats).</li>
 <li><strong>Extensible</strong>: Anyone can define their own data types and create Atoms with it.</li>
@@ -886,6 +886,7 @@ The <code>@id</code> key shows that the value should be interpreted as a link (a
 <p>IPFS (the InterPlanetary File System) is a standard that enables decentralized file storage and retrieval using content-based identifiers.
 Instead of using an HTTP URL like <code>http://example.com/helloworld</code>, it uses the IPFS scheme, such as <code>ipfs:QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL</code>.
 IPFS identifies things based on their unique content hash (the long, seemingly random string) using a thing called a Merkle DAG (<a href="https://medium.com/textileio/whats-really-happening-when-you-add-a-file-to-ipfs-ae3b8b5e4b0f#:%7E:text=In%20practice%2C%20content%20addressing%20systems,function%2C%20to%20produce%20a%20digest.&amp;text=From%20raw%20image%20to%20cryptographic%20digest%20to%20content%20id%20(multihash).">this great article</a> explains it nicely).
+This is called a <a href="https://github.com/multiformats/cid">CID</a>, or Content ID.
 This simple idea (plus some not so simple network protocols) allows for decentralized, temper-proof storage of data.
 This fixes some issues with HTTP that are related to its centralized philosophy: no more 404s!</p>
 <h2><a class="header" href="#why-is-ipfs-especially-interesting-for-atomic-data" id="why-is-ipfs-especially-interesting-for-atomic-data">Why is IPFS especially interesting for Atomic Data</a></h2>
