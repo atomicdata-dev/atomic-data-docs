@@ -165,46 +165,54 @@ Because of that, Atomic Data is also highly compatible with RDF - <strong>all At
 Atomic Data can be thought of as a <strong>more constrained, type safe version of RDF</strong>.
 However, it does differ in some fundamental ways.</p>
 <ul>
-<li>
-<p>Atomic calls the three parts of a Triple <code>subject</code>, <code>property</code> and <code>value</code>, instead of <code>subject</code>, <code>predicate</code>, <code>object</code>.</p>
-</li>
-<li>
-<p>Atomic has no difference between <code>literal</code>, <code>named node</code> and <code>blank node</code> objects - these are all <code>values</code>, but with different datatypes.</p>
-</li>
-<li>
-<p>Atomic does not support <code>blank nodes</code>.</p>
-</li>
-<li>
-<p>Atomic requires URL (not URI) values in its <code>subjects</code> and <code>predicates</code> (properties), which means that they should be resolvable.</p>
-</li>
-<li>
-<p>Atomic only allows those who control a resource's <code>subject</code> URL endpoint to edit the data. This means that you can't add triples about something that you don't control.</p>
-</li>
-<li>
-<p>Atomic has no separate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you follow a <code>predicate</code> value) specify a datatype</p>
-</li>
-<li>
-<p>Atomic has no separate <code>language</code> field, but it does support <a href="../schema/translations.html">Translation Resources</a>.</p>
-</li>
-<li>
-<p>Atomic has a native Event (state changes) model (<a href="../mutations/intro.html">Atomic Mutations</a>), which enables communication of state changes</p>
-</li>
-<li>
-<p>Atomic has a native Schema model (<a href="../schema/intro.html">Atomic Schema</a>), which helps developers to know what data types they can expect (string, integer, link, array)</p>
-</li>
-<li>
-<p>Atomic does not support <code>graph</code> fields in statements.</p>
-</li>
-<li>
-<p>Atomic does not support having multiple statements with the same <code>&lt;subject&gt; &lt;predicate&gt;</code>, every combination should be unique.</p>
-</li>
+<li>Atomic calls the three parts of a Triple <code>subject</code>, <code>property</code> and <code>value</code>, instead of <code>subject</code>, <code>predicate</code>, <code>object</code>.</li>
+<li>Atomic does not support having multiple statements with the same <code>&lt;subject&gt; &lt;predicate&gt;</code>, every combination should be unique.</li>
+<li>Atomic has no difference between <code>literal</code>, <code>named node</code> and <code>blank node</code> objects - these are all <code>values</code>, but with different datatypes.</li>
+<li>Atomic does not support <code>blank nodes</code>.</li>
+<li>Atomic requires URL (not URI) values in its <code>subjects</code> and <code>predicates</code> (properties), which means that they should be resolvable.</li>
+<li>Atomic only allows those who control a resource's <code>subject</code> URL endpoint to edit the data. This means that you can't add triples about something that you don't control.</li>
+<li>Atomic has no separate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you follow a <code>predicate</code> value) specify a datatype</li>
+<li>Atomic has no separate <code>language</code> field, but it does support <a href="../schema/translations.html">Translation Resources</a>.</li>
+<li>Atomic has a native Event (state changes) model (<a href="../mutations/intro.html">Atomic Mutations</a>), which enables communication of state changes</li>
+<li>Atomic has a native Schema model (<a href="../schema/intro.html">Atomic Schema</a>), which helps developers to know what data types they can expect (string, integer, link, array)</li>
+<li>Atomic does not support <code>graph</code> fields in statements.</li>
 </ul>
 <h2><a class="header" href="#why-these-changes" id="why-these-changes">Why these changes?</a></h2>
 <p>I love RDF, and have been working with it for quite some time now.
 Using URIs (and more-so URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
 However, some of the characteristics of RDF might have contributed to its relative lack of adoption.</p>
+<p>As a developer who uses RDF data, I want to be able to do something like this:</p>
+<pre><code class="language-js">const joep = get(&quot;https://example.com/person/joep&quot;)
+
+// Fetches the employer relation at possibly some other domain, checks that resource for a property with the 'name' shortkey
+console.log(joep.employer().name()) // =&gt; &quot;Ontola.io&quot;
+</code></pre>
+<p>To do this, we need a couple of things:</p>
+<ul>
+<li>Traverse data on various domains (which is already possible with RDF)</li>
+<li>Map properties to keys</li>
+<li>Have typed properties</li>
+<li>Have unique <code>subject-predicate</code> combinations</li>
+</ul>
+<h3><a class="header" href="#selecting-rdf-values-is-difficult" id="selecting-rdf-values-is-difficult">Selecting RDF values is difficult</a></h3>
+<p>One of the main reasons for making changes to RDF, has to do with how hard it is to identify a specific value (<code>object</code>) in RDF.
+For example, let's say I want to render someone's birthday.
+The triple containing that birthday may exist in some named graph, which means I first need to target that graph.
+Then I need to know how to get access to that graph - hopefully by fetching its URL.
+Then, I need to make sure that I have one triple - not multiple.
+Then, I need to make sure that the datatype is actually the type that I need (e.g. an ISO DateTime).</p>
 <h3><a class="header" href="#changing-the-names" id="changing-the-names">Changing the names</a></h3>
-<p>RDF's <code>subject</code>, <code>predicate</code> and <code>object</code> terminology can be confusing to newcomers, so Atomic Data uses <code>subject</code>, <code>property</code>, <code>value</code>. This more closely resembles common CS terminology. (<a href="https://github.com/ontola/atomic-data/issues/3">discussion</a>)</p>
+<p>RDF's <code>subject</code>, <code>predicate</code> and <code>object</code> terminology can be confusing to newcomers, so Atomic Data uses <code>subject</code>, <code>property</code>, <code>value</code>.
+This more closely resembles common CS terminology. (<a href="https://github.com/ontola/atomic-data/issues/3">discussion</a>)</p>
+<h2><a class="header" href="#subject--predicate-uniqueness" id="subject--predicate-uniqueness">Subject + Predicate uniqueness</a></h2>
+<p>In RDF, it's very much possible for a graph to contain multiple statements that share both a <code>subject</code> and a <code>predicate</code>.
+One of the reasons this is possible, is because RDF graphs should always be mergeable.
+However, this introduces some extra complexity for data users.
+Whereas most languages and datatypes have <code>key-value</code> uniqueness that allow for unambiguous value selection, RDF clients have to deal with the possibility that multiple triples with the same <code>subject-predicate</code> combination might exist.</p>
+<p>Atomic Data requires <code>subject-property</code> uniqueness, which means that this is no longer an issue for clients.
+However, in order to guarantee this, and still retain <em>graph merge-ability</em> we also need to limit who creates statements about a subject.</p>
+<h3><a class="header" href="#limiting-subject-usage" id="limiting-subject-usage">Limiting subject usage</a></h3>
+<p>RDF allows that <code>anne.com</code> creates and hosts statements about the subject <code>john.com</code>. In other words, domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing <em>where data comes from</em> is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.</p>
 <h3><a class="header" href="#no-more-literals--named-nodes" id="no-more-literals--named-nodes">No more literals / named nodes</a></h3>
 <p>In RDF, an <code>object</code> can either be a <code>named node</code>, <code>blank node</code> or <code>literal</code>. A <code>literal</code> has a <code>value</code>, a <code>datatype</code> and an optional <code>language</code> (if the <code>literal</code> is a string).
 Although RDF statements are often called <code>triples</code>, a single statement can consist of five fields: <code>subject</code>, <code>predicate</code>, <code>object</code>, <code>language</code>, <code>datatype</code>.
@@ -228,8 +236,6 @@ They severely limit how client systems can store data, as name collisions with b
 However, that argument doesn't hold for systems that create the identifiers for you.
 Although data creators <em>should</em> have means to specify URLs for certain resources, they <em>should not</em> have to specify every single one.
 Ideally, the interface that you use as a data producer will create (persistent, resolvable) identifiers when you create the resources.</p>
-<h3><a class="header" href="#limiting-subject-usage" id="limiting-subject-usage">Limiting subject usage</a></h3>
-<p>RDF allows that <code>anne.com</code> creates and hosts statements about the subject <code>john.com</code>. In other words, domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing <em>where data comes from</em> is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.</p>
 <h3><a class="header" href="#combining-datatype-and-predicate" id="combining-datatype-and-predicate">Combining datatype and predicate</a></h3>
 <p>Having both a <code>datatype</code> and a <code>predicate</code> value can lead to confusing situations.
 For example, the <a href="https://schema.org/dateCreated"><code>schema:dateCreated</code></a> Property requires an ISO DateTime string (according to the schema.org definition), but using a value <code>true</code> with an <code>xsd:boolean</code> datatype results in perfectly valid RDF.
