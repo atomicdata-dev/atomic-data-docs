@@ -9,6 +9,7 @@ Atomic Data can be thought of as a **more constrained, type safe version of RDF*
 However, it does differ in some fundamental ways.
 
 - Atomic calls the three parts of a Triple `subject`, `property` and `value`, instead of `subject`, `predicate`, `object`.
+- Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination should be unique.
 - Atomic has no difference between `literal`, `named node` and `blank node` objects - these are all `values`, but with different datatypes.
 - Atomic does not support `blank nodes`.
 - Atomic requires URL (not URI) values in its `subjects` and `predicates` (properties), which means that they should be resolvable.
@@ -19,17 +20,55 @@ However, it does differ in some fundamental ways.
 - Atomic has a native Schema model ([Atomic Schema](../schema/intro.md)), which helps developers to know what data types they can expect (string, integer, link, array)
 - Atomic does not support `graph` fields in statements.
 
-- Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination should be unique.
-
 ## Why these changes?
 
 I love RDF, and have been working with it for quite some time now.
 Using URIs (and more-so URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
 However, some of the characteristics of RDF might have contributed to its relative lack of adoption.
 
+As a developer who uses RDF data, I want to be able to do something like this:
+
+```js
+const joep = get("https://example.com/person/joep")
+
+// Fetches the employer relation at possibly some other domain, checks that resource for a property with the 'name' shortkey
+console.log(joep.employer().name()) // => "Ontola.io"
+```
+
+To do this, we need a couple of things:
+
+- Traverse data on various domains (which is already possible with RDF)
+- Map properties to keys
+- Have typed properties
+- Have unique `subject-predicate` combinations
+
+### Selecting RDF values is difficult
+
+One of the main reasons for making changes to RDF, has to do with how hard it is to identify a specific value (`object`) in RDF.
+For example, let's say I want to render someone's birthday.
+The triple containing that birthday may exist in some named graph, which means I first need to target that graph.
+Then I need to know how to get access to that graph - hopefully by fetching its URL.
+Then, I need to make sure that I have one triple - not multiple.
+Then, I need to make sure that the datatype is actually the type that I need (e.g. an ISO DateTime).
+
 ### Changing the names
 
-RDF's `subject`, `predicate` and `object` terminology can be confusing to newcomers, so Atomic Data uses `subject`, `property`, `value`. This more closely resembles common CS terminology. ([discussion](https://github.com/ontola/atomic-data/issues/3))
+RDF's `subject`, `predicate` and `object` terminology can be confusing to newcomers, so Atomic Data uses `subject`, `property`, `value`.
+This more closely resembles common CS terminology. ([discussion](https://github.com/ontola/atomic-data/issues/3))
+
+## Subject + Predicate uniqueness
+
+In RDF, it's very much possible for a graph to contain multiple statements that share both a `subject` and a `predicate`.
+One of the reasons this is possible, is because RDF graphs should always be mergeable.
+However, this introduces some extra complexity for data users.
+Whereas most languages and datatypes have `key-value` uniqueness that allow for unambiguous value selection, RDF clients have to deal with the possibility that multiple triples with the same `subject-predicate` combination might exist.
+
+Atomic Data requires `subject-property` uniqueness, which means that this is no longer an issue for clients.
+However, in order to guarantee this, and still retain _graph merge-ability_ we also need to limit who creates statements about a subject.
+
+### Limiting subject usage
+
+RDF allows that `anne.com` creates and hosts statements about the subject `john.com`. In other words, domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
 
 ### No more literals / named nodes
 
@@ -63,10 +102,6 @@ Blank nodes make a lot of sense in hand-written RDF (e.g. Turtle) files.
 However, that argument doesn't hold for systems that create the identifiers for you.
 Although data creators _should_ have means to specify URLs for certain resources, they _should not_ have to specify every single one.
 Ideally, the interface that you use as a data producer will create (persistent, resolvable) identifiers when you create the resources.
-
-### Limiting subject usage
-
-RDF allows that `anne.com` creates and hosts statements about the subject `john.com`. In other words, domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
 
 ### Combining datatype and predicate
 

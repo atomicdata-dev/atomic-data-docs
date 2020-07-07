@@ -9,9 +9,9 @@ _URL: `https://atomicdata.dev/datatypes/slug`_
 A string with a limited set of allowed characters, used in IDE / Text editor context.
 Similar to [`xsd:token`](http://books.xmlschemata.org/relaxng/ch19-77319.html)
 
-## Atomic URI
+## Atomic URL
 
-_URL: `https://atomicdata.dev/datatypes/atomicURI`_
+_URL: `https://atomicdata.dev/datatypes/atomicURL`_
 
 A URL that should resolve to an [Atomic Resource](../core/concepts.md#Resource).
 
