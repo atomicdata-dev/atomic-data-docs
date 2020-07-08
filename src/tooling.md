@@ -11,20 +11,25 @@ Could be useful for many purposes, and should be one of the first things to beco
 Not only should this parse Atomic-NDJSON, it should also make sure the URLs resolve and the DataTypes resolve.
 Perhaps it should also return if non-standard Datatypes are being used, and if so, which ones.
 
-## Atomic creator (CLI)
+## Atomic-cli
 
 A CLI tool for generating Atomic Data.
-Should produce Atomic Mutations.
 
 ```sh
-# Create an atom
-# atomic <method> <subject> <property> <value>
-atomic add john birthdate 1991-01-20
-# It's possible to use these keys instead of full URLs, as long as they are known locally,
-# either in a local Atomic store a local prefixes file (e.g. ~/.ldget/prefixes)
-# If the property is not used before, the CLI will ask for the required attributes (datatype, description) and create the Property
-# The value will be parsed accordingly. If it does not meet the requirements, it wll not create the Atom.
-# If everything is well, an Atomic Mutation will be sent to the Atomic Server
+# Add a mapping, and store the Atomic Class locally
+atomic map person https://example.com/person
+# Create a new instance with that Class
+atomic new person
+name (required): John McLovin
+age: 31
+Created at: ipfs:Qwhp2fh3o8hfo8w7fhwo77w38ohw3o78fhw3ho78w3o837ho8fwh8o7fh37ho
+# link to an Atomic Server where you can upload your stuff
+# If you don't, your data exists locally and gets published to IPFS
+atomic setup
+# install ontologies and add their shortnames to bookmarks
+atomic install https://atomicdata.dev/ontologies/meetings
+# when no URL is given, use the Ontola repo's ontologies
+atomic install meetings
 ```
 
 ## Atomic server
