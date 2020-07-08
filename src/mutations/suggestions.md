@@ -2,18 +2,32 @@
 
 Atomic Suggestions is a proposed standard that enables decentralized collaboration on resources.
 It's basically Git for linked data.
-<!-- It describes how proposals for data changes -->
+Practically, it should enable right-clicking on any piece of Atomic Data on the web, and suggesting an edit to the owner.
 
 ## Design goals
 
 - **Asynchronous collaboration**: Various users can work on the same thing at the same time.
 - **Branching & merging**: Issues that result from async changes (merge conflicts) can be resolved.
 
-## Concepts
+## Fork
+
+Forking is the first step to making a suggestion.
+Forking refers to:
+
+- copying some resource
+- changing the subject URL to some URL that you control
+- adding a reference to the original URL using the `atomic:originalSubject` Property.
+
+The newly created copy with the different URL is a _Fork_.
+Since the Fork is a resource that you own (see [Ownership](ownership.md)), you can make changes to is.
+
+Whenever you make changes, the app making the changes _should_ keep track of them as Atomic Mutations.
+These Mutations make it easier to apply (small) changes to (large) resources, even when multiple people are working on the same thing at the same time.
 
 ### Suggestion
 
-<!-- Perhaps suggestions are too similar to Mutations, and should be merged into a single concept? -->
+When you've forked some resource and made some changes, you can Suggest these changes to the original owner.
+This is done by sending an HTTP POST request containing the mutations to the Owner URL.
 
 A Suggestion is a (set of?) Mutation(s?) that is proposed to be appended to some Ledger.
 The important difference between a Suggestion and a Mutation, is that a Mutation has been verified, signed and approved by the Controller.
