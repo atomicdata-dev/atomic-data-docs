@@ -645,16 +645,28 @@ An Atomic Mutation consists of a:</p>
 <p>See <a href="http://purl.org/linked-delta">linked-delta</a></p>
 <h1><a class="header" href="#atomic-suggestions" id="atomic-suggestions">Atomic Suggestions</a></h1>
 <p>Atomic Suggestions is a proposed standard that enables decentralized collaboration on resources.
-It's basically Git for linked data.</p>
-<!-- It describes how proposals for data changes -->
+It's basically Git for linked data.
+Practically, it should enable right-clicking on any piece of Atomic Data on the web, and suggesting an edit to the owner.</p>
 <h2><a class="header" href="#design-goals-3" id="design-goals-3">Design goals</a></h2>
 <ul>
 <li><strong>Asynchronous collaboration</strong>: Various users can work on the same thing at the same time.</li>
 <li><strong>Branching &amp; merging</strong>: Issues that result from async changes (merge conflicts) can be resolved.</li>
 </ul>
-<h2><a class="header" href="#concepts" id="concepts">Concepts</a></h2>
+<h2><a class="header" href="#fork" id="fork">Fork</a></h2>
+<p>Forking is the first step to making a suggestion.
+Forking refers to:</p>
+<ul>
+<li>copying some resource</li>
+<li>changing the subject URL to some URL that you control</li>
+<li>adding a reference to the original URL using the <code>atomic:originalSubject</code> Property.</li>
+</ul>
+<p>The newly created copy with the different URL is a <em>Fork</em>.
+Since the Fork is a resource that you own (see <a href="mutations/ownership.html">Ownership</a>), you can make changes to is.</p>
+<p>Whenever you make changes, the app making the changes <em>should</em> keep track of them as Atomic Mutations.
+These Mutations make it easier to apply (small) changes to (large) resources, even when multiple people are working on the same thing at the same time.</p>
 <h3><a class="header" href="#suggestion" id="suggestion">Suggestion</a></h3>
-<!-- Perhaps suggestions are too similar to Mutations, and should be merged into a single concept? -->
+<p>When you've forked some resource and made some changes, you can Suggest these changes to the original owner.
+This is done by sending an HTTP POST request containing the mutations to the Owner URL.</p>
 <p>A Suggestion is a (set of?) Mutation(s?) that is proposed to be appended to some Ledger.
 The important difference between a Suggestion and a Mutation, is that a Mutation has been verified, signed and approved by the Controller.</p>
 <h3><a class="header" href="#controller" id="controller">Controller</a></h3>
