@@ -157,25 +157,30 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
-<p>At this moment, no real tooling for Atomic Data exists.
+<p>At this moment, <strong>no real tooling for Atomic Data exists</strong>.
 Great tooling is required to make this a success.
-The following list is a set of ideas that we're likely to be working on.</p>
+This document contains a set of ideas that would help achieve that success.</p>
 <h2><a class="header" href="#atomic-validator" id="atomic-validator">Atomic Validator</a></h2>
 <p>Takes some Graph as an input, and validates its contents.
 Could be useful for many purposes, and should be one of the first things to become available.
 Not only should this parse Atomic-NDJSON, it should also make sure the URLs resolve and the DataTypes resolve.
 Perhaps it should also return if non-standard Datatypes are being used, and if so, which ones.</p>
-<h2><a class="header" href="#atomic-creator-cli" id="atomic-creator-cli">Atomic creator (CLI)</a></h2>
-<p>A CLI tool for generating Atomic Data.
-Should produce Atomic Mutations.</p>
-<pre><code class="language-sh"># Create an atom
-# atomic &lt;method&gt; &lt;subject&gt; &lt;property&gt; &lt;value&gt;
-atomic add john birthdate 1991-01-20
-# It's possible to use these keys instead of full URLs, as long as they are known locally,
-# either in a local Atomic store a local prefixes file (e.g. ~/.ldget/prefixes)
-# If the property is not used before, the CLI will ask for the required attributes (datatype, description) and create the Property
-# The value will be parsed accordingly. If it does not meet the requirements, it wll not create the Atom.
-# If everything is well, an Atomic Mutation will be sent to the Atomic Server
+<h2><a class="header" href="#atomic-cli" id="atomic-cli">Atomic-cli</a></h2>
+<p>A CLI tool for generating Atomic Data.</p>
+<pre><code class="language-sh"># Add a mapping, and store the Atomic Class locally
+atomic map person https://example.com/person
+# Create a new instance with that Class
+atomic new person
+name (required): John McLovin
+age: 31
+Created at: ipfs:Qwhp2fh3o8hfo8w7fhwo77w38ohw3o78fhw3ho78w3o837ho8fwh8o7fh37ho
+# link to an Atomic Server where you can upload your stuff
+# If you don't, your data exists locally and gets published to IPFS
+atomic setup
+# install ontologies and add their shortnames to bookmarks
+atomic install https://atomicdata.dev/ontologies/meetings
+# when no URL is given, use the Ontola repo's ontologies
+atomic install meetings
 </code></pre>
 <h2><a class="header" href="#atomic-server" id="atomic-server">Atomic server</a></h2>
 <ul>
