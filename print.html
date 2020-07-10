@@ -747,16 +747,18 @@ However, this is also valid RDF:</p>
 &lt;example:joep&gt; &lt;schema:birthDate&gt; &quot;2000-02-30&quot;^^xsd:date &lt;example:someNamedGraph&gt;
 </code></pre>
 <p>Now things get more complicated if you just want to render the birthdate:</p>
-<pre><code>1. **Select the named graph**. The triple containing that birthday may exist in some named graph, which means I first need to identify and fetch that graph.
-1. **Select the subject**.
-1. **Select the predicate**.
-1. **Select the datatype**. You probably need a specific datatype (in this case, a Date), so you need to select all the triples that match that datatype.
-1. **Select the language**. Same could be true for language, too, but that is not neessary in this birthdate example.
-1. **Select the triple**. Even after all our previous selectors, we _still_ might have multiple values. How do I know which is the triple I'm supposed to use?
-</code></pre>
+<ol>
+<li><strong>Select the named graph</strong>. The triple containing that birthday may exist in some named graph different from the <code>subject</code> URL, which means that I first need to identify and fetch that graph.</li>
+<li><strong>Select the subject</strong>.</li>
+<li><strong>Select the predicate</strong>.</li>
+<li><strong>Select the datatype</strong>. You probably need a specific datatype (in this case, a Date), so you need to filter the triples to match that specific datatype.</li>
+<li><strong>Select the language</strong>. Same could be true for language, too, but that is not necessary in this birthdate example.</li>
+<li><strong>Select the triple</strong>. Even after all our previous selectors, we <em>still</em> might have multiple values. How do I know which is the triple I'm supposed to use?</li>
+</ol>
 <p>To be fair, with lots of RDF data, only steps 2 and 3 are needed.
 But if you're building a system that uses RDF, that system also needs to deal with steps 1,4,5 and 6.
-As a developer who uses RDF data, I want to be able to do something like this:</p>
+This complexity is the direct result of the lack of <code>subject-predicate</code> uniqueness.</p>
+<p>As a developer who uses RDF data, I want to be able to do something like this:</p>
 <pre><code class="language-js">// Fetches the resource
 const joep = get(&quot;https://example.com/person/joep&quot;)
 
@@ -774,9 +776,11 @@ You can't do that with RDF, as long as you add some constraints:</p>
 <li>Link properties to datatypes</li>
 </ul>
 <h3><a class="header" href="#less-focus-on-semantics-more-on-usability" id="less-focus-on-semantics-more-on-usability">Less focus on semantics, more on usability</a></h3>
-<p>One of the core ideas of the semantic web, is that anyone should be able to say anything about anything, using triples.
+<p>One of the core ideas of the semantic web, is that anyone should be able to say anything about anything, using semantic triples.
 This is one of the reasons why it can be so hard to select a specific value in RDF.
 When you want to make all graphs mergeable (which is a great idea), but also want to allow anyone to create any triples about any subject, you get <code>subject-predicate</code> non-uniqueness.
+For the Semantic Web, having <em>semantic</em> triples is great.
+For linked data, and connecting datasets, having atomic triples (with unique <code>subject-predicate</code> combinations) seems preferable.
 Atomic Data chooses a more constrained approach, which makes it easier to use the data, but at the cost of some expressiveness.</p>
 <h3><a class="header" href="#changing-the-names" id="changing-the-names">Changing the names</a></h3>
 <p>RDF's <code>subject</code>, <code>predicate</code> and <code>object</code> terminology can be confusing to newcomers, so Atomic Data uses <code>subject</code>, <code>property</code>, <code>value</code>.
