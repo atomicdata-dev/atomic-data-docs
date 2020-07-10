@@ -1,7 +1,7 @@
 # How does Atomic Data relate to RDF?
 
-RDF is the original data model behind linked data.
-It is also the forerunner of Atomic Data, and is therefore highly similar in its philosophy and model.
+RDF (the [Resource Description Framework](https://www.w3.org/TR/rdf-primer/)) is a W3C specification from 1999 that describes the original data model for linked data.
+It is the forerunner of Atomic Data, and is therefore highly similar in its model.
 Both heavily rely on using URLs, and both have a fundamentally simple and uniform model for data statements.
 Both view the web as a single, connected graph database.
 Because of that, Atomic Data is also highly compatible with RDF - **all Atomic Data can be converted into valid RDF**.
@@ -18,7 +18,6 @@ However, it does differ in some fundamental ways.
 - Atomic has no separate `language` field, but it does support [Translation Resources](../schema/translations.md).
 - Atomic has a native Event (state changes) model ([Atomic Mutations](../mutations/intro.md)), which enables communication of state changes
 - Atomic has a native Schema model ([Atomic Schema](../schema/intro.md)), which helps developers to know what data types they can expect (string, integer, link, array)
-- Atomic does not support `graph` fields in statements.
 
 ## Why these changes?
 
@@ -26,37 +25,72 @@ I love RDF, and have been working with it for quite some time now.
 Using URIs (and more-so URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
 However, some of the characteristics of RDF might have contributed to its relative lack of adoption.
 
+### Difficulty in selecting values
+
+One of the main reasons for having more strict requirements, has to do with how hard it is to identify a specific value (`object`) in RDF.
+For example, let's say I want to render someone's birthday:
+
+```ttl
+<example:joep> <schema:birthDate> "1991-01-20"^^xsd:date
+```
+
+Rendering this item might be as simple as fetching the subject, taking the predicate, parse it as a date.
+However, this is also valid RDF:
+
+```ttl
+<example:joep> <schema:birthDate> "1991-01-20"^^xsd:date <example:someNamedGraph>
+<example:joep> <schema:birthDate> <example:birthDateObject> <example:someNamedGraph>
+<example:joep> <schema:birthDate> "20th of januari 1991"@en <example:someNamedGraph>
+<example:joep> <schema:birthDate> "20 januari 1991"@nl <example:someNamedGraph>
+<example:joep> <schema:birthDate> "2000-02-30"^^xsd:date <example:someNamedGraph>
+```
+
+Now things get more complicated if you just want to render the birthdate:
+
+```
+1. **Select the named graph**. The triple containing that birthday may exist in some named graph, which means I first need to identify and fetch that graph.
+1. **Select the subject**.
+1. **Select the predicate**.
+1. **Select the datatype**. You probably need a specific datatype (in this case, a Date), so you need to select all the triples that match that datatype.
+1. **Select the language**. Same could be true for language, too, but that is not neessary in this birthdate example.
+1. **Select the triple**. Even after all our previous selectors, we _still_ might have multiple values. How do I know which is the triple I'm supposed to use?
+```
+
+To be fair, with lots of RDF data, only steps 2 and 3 are needed.
+But if you're building a system that uses RDF, that system also needs to deal with steps 1,4,5 and 6.
 As a developer who uses RDF data, I want to be able to do something like this:
 
 ```js
+// Fetches the resource
 const joep = get("https://example.com/person/joep")
 
+// Returns the value of the birthDate atom
+console.log(joep.birthDate()) // => Date(1991-01-20)
 // Fetches the employer relation at possibly some other domain, checks that resource for a property with the 'name' shortkey
 console.log(joep.employer().name()) // => "Ontola.io"
 ```
 
-To do this, we need a couple of things:
+Basically, I'd like to use all knowledge of the world as if it were a big JSON object.
+You can't do that with RDF, as long as you add some constraints:
 
 - Traverse data on various domains (which is already possible with RDF)
-- Map properties to keys
-- Have typed properties
-- Have unique `subject-predicate` combinations
+- Have [unique `subject-predicate` combinations](#subject-predicate-uniqueness)
+- Map properties URLs to keys (which often requires local mapping with RDF)
+- Link properties to datatypes
 
-### Selecting RDF values is difficult
+### Less focus on semantics, more on usability
 
-One of the main reasons for making changes to RDF, has to do with how hard it is to identify a specific value (`object`) in RDF.
-For example, let's say I want to render someone's birthday.
-The triple containing that birthday may exist in some named graph, which means I first need to target that graph.
-Then I need to know how to get access to that graph - hopefully by fetching its URL.
-Then, I need to make sure that I have one triple - not multiple.
-Then, I need to make sure that the datatype is actually the type that I need (e.g. an ISO DateTime).
+One of the core ideas of the semantic web, is that anyone should be able to say anything about anything, using triples.
+This is one of the reasons why it can be so hard to select a specific value in RDF.
+When you want to make all graphs mergeable (which is a great idea), but also want to allow anyone to create any triples about any subject, you get `subject-predicate` non-uniqueness.
+Atomic Data chooses a more constrained approach, which makes it easier to use the data, but at the cost of some expressiveness.
 
 ### Changing the names
 
 RDF's `subject`, `predicate` and `object` terminology can be confusing to newcomers, so Atomic Data uses `subject`, `property`, `value`.
 This more closely resembles common CS terminology. ([discussion](https://github.com/ontola/atomic-data/issues/3))
 
-## Subject + Predicate uniqueness
+### Subject + Predicate uniqueness
 
 In RDF, it's very much possible for a graph to contain multiple statements that share both a `subject` and a `predicate`.
 One of the reasons this is possible, is because RDF graphs should always be mergeable.
@@ -68,7 +102,11 @@ However, in order to guarantee this, and still retain _graph merge-ability_ we a
 
 ### Limiting subject usage
 
-RDF allows that `anne.com` creates and hosts statements about the subject `john.com`. In other words, domain A creates statements about domain B. This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data. Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement. It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
+RDF allows that `anne.com` creates and hosts statements about the subject `john.com`.
+In other words, domain A creates statements about domain B.
+This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data.
+Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement.
+It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
 
 ### No more literals / named nodes
 
@@ -109,12 +147,16 @@ Having both a `datatype` and a `predicate` value can lead to confusing situation
 For example, the [`schema:dateCreated`](https://schema.org/dateCreated) Property requires an ISO DateTime string (according to the schema.org definition), but using a value `true` with an `xsd:boolean` datatype results in perfectly valid RDF.
 This means that client software using triples with a `schema:dateCreated` predicate cannot safely assume that its value will be a DateTime.
 So if the client wants to use `schema:dateCreated` values, the client must also specify which type of data it expects, check the datatype field of every Atom and provide logic for when these don't match.
-Also important combining `datatype` and `predicate` fits the model of most programmers and langauges better - just look at how every single struct / model / class / shape is defined in programming languages: `key: datatype`.
+Also important combining `datatype` and `predicate` fits the model of most programmers and languages better - just look at how every single struct / model / class / shape is defined in programming languages: `key: datatype`.
 This is why Atomic Data requires that a `predicate` links to a Property which must have a `Datatype`.
 
 ### Adding shortnames (slugs / keys) in Properties
 
-Using full URI strings as keys (in RDF `predicates`) results in a relatively clunky Developer Experience. Consider the short strings that developers are used to in pretty much all languages and data formats (`object.attribute`). Adding a _required_ / tightly integrated key mapping (from long URLs to short, simple strings) in Atomic Properties solves this issue, and provides developers a way to write code like this: `someAtomicPerson.bestFriend.name => "Britta"`. Although the RDF ecosystem does have some solutions for this (@context objects in JSON-LD, @prefix mappings, the @ontologies library), these prefixes are not defined in Properties themselves and therefore are defined locally only, which means that developers have to manually map them most of the time. This is why Atomic Data introduces a `shortname` field in Properties, which forces modelers to choose a 'key' that can be used in ORM contexts.
+Using full URI strings as keys (in RDF `predicates`) results in a relatively clunky Developer Experience.
+Consider the short strings that developers are used to in pretty much all languages and data formats (`object.attribute`).
+Adding a _required_ / tightly integrated key mapping (from long URLs to short, simple strings) in Atomic Properties solves this issue, and provides developers a way to write code like this: `someAtomicPerson.bestFriend.name => "Britta"`.
+Although the RDF ecosystem does have some solutions for this (@context objects in JSON-LD, @prefix mappings, the @ontologies library), these prefixes are not defined in Properties themselves and therefore are often defined locally or separate from the ontology, which means that developers have to manually map them most of the time.
+This is why Atomic Data introduces a `shortname` field in Properties, which forces modelers to choose a 'key' that can be used in ORM contexts.
 
 ### Adding native arrays
 
@@ -139,7 +181,6 @@ Besides the technical reasons described above, I think that there are social rea
 - There is a lack of learning resources that provide a clear, complete answer to the lifecycle of RDF data: modeling data, making data, hosting it, fetching it, updating it. Atomic Data aims to provide an opinionated answer to all of these steps. It feels more like a one-stop-shop for questions that developers are likely to encounter, whilst keeping the extendability.
 - All Core / Schema URLs should resolve to simple, clear explanations with both examples and machine readable definitions. Especially the Property and Class concepts.
 - The Semantic Web community has had a lot of academic attention from formal logic departments, resulting in a highly developed standard for knowledge modeling: the Web Ontology Language (OWL). While this is mostly great, its open-world philosophy and focus on reasoning abilities can confuse developers who are simply looking for a simple way to share models in RDF.
-<!-- - Re-using predicate URIs in new contexts can be result in unclear descriptions, since the meaning of predicates can be very class-dependent. For example, a `name` for a Person means something else than a `name` for a  -->
 
 ## Convert RDF to Atomic Data
 
