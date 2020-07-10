@@ -47,17 +47,17 @@ However, this is also valid RDF:
 
 Now things get more complicated if you just want to render the birthdate:
 
-```
-1. **Select the named graph**. The triple containing that birthday may exist in some named graph, which means I first need to identify and fetch that graph.
+1. **Select the named graph**. The triple containing that birthday may exist in some named graph different from the `subject` URL, which means that I first need to identify and fetch that graph.
 1. **Select the subject**.
 1. **Select the predicate**.
-1. **Select the datatype**. You probably need a specific datatype (in this case, a Date), so you need to select all the triples that match that datatype.
-1. **Select the language**. Same could be true for language, too, but that is not neessary in this birthdate example.
+1. **Select the datatype**. You probably need a specific datatype (in this case, a Date), so you need to filter the triples to match that specific datatype.
+1. **Select the language**. Same could be true for language, too, but that is not necessary in this birthdate example.
 1. **Select the triple**. Even after all our previous selectors, we _still_ might have multiple values. How do I know which is the triple I'm supposed to use?
-```
 
 To be fair, with lots of RDF data, only steps 2 and 3 are needed.
 But if you're building a system that uses RDF, that system also needs to deal with steps 1,4,5 and 6.
+This complexity is the direct result of the lack of `subject-predicate` uniqueness.
+
 As a developer who uses RDF data, I want to be able to do something like this:
 
 ```js
@@ -80,9 +80,11 @@ You can't do that with RDF, as long as you add some constraints:
 
 ### Less focus on semantics, more on usability
 
-One of the core ideas of the semantic web, is that anyone should be able to say anything about anything, using triples.
+One of the core ideas of the semantic web, is that anyone should be able to say anything about anything, using semantic triples.
 This is one of the reasons why it can be so hard to select a specific value in RDF.
 When you want to make all graphs mergeable (which is a great idea), but also want to allow anyone to create any triples about any subject, you get `subject-predicate` non-uniqueness.
+For the Semantic Web, having _semantic_ triples is great.
+For linked data, and connecting datasets, having atomic triples (with unique `subject-predicate` combinations) seems preferable.
 Atomic Data chooses a more constrained approach, which makes it easier to use the data, but at the cost of some expressiveness.
 
 ### Changing the names
