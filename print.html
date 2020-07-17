@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.3.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="core/paths.html"><strong aria-hidden="true">2.4.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.3.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -215,11 +215,11 @@ Contrary to some other (labeled) graph data models, a relationship between two i
 <h2><a class="header" href="#atom-or-atomic-triple" id="atom-or-atomic-triple">Atom (or Atomic Triple)</a></h2>
 <p>The smallest possible piece of <em>meaningful</em> data / information.
 The model of an Atom is comparable with an RDF Triple / Statement (<a href="core/../interoperability/rdf.html">although there are important differences</a>).
-An Atom consists of three values:</p>
+An Atom consists of three fields:</p>
 <ul>
-<li><strong><a href="core/concepts.html#subject">Subject</a></strong>: the Thing that the atom is providing information about.</li>
-<li><strong><a href="core/concepts.html#property">Property</a></strong>: the property of the Thing that the atom is about (will always be a URL to a <a href="core/../schema/classes.html#property">Property</a>).</li>
-<li><strong><a href="core/concepts.html#value">Value</a></strong>: the new piece of information about the Atom.</li>
+<li><strong><a href="core/concepts.html#subject-field">Subject</a></strong>: the Thing that the atom is providing information about.</li>
+<li><strong><a href="core/concepts.html#property-field">Property</a></strong>: the property of the Thing that the atom is about (will always be a URL to a <a href="core/../schema/classes.html#property">Property</a>).</li>
+<li><strong><a href="core/concepts.html#value-field">Value</a></strong>: the new piece of information about the Atom.</li>
 </ul>
 <p>Let's turn this sentence into Atoms:</p>
 <p><code>Arnold, who's born on the 20th of Januari 1991, has a best friend named Britta.</code></p>
@@ -239,20 +239,20 @@ An Atom consists of three values:</p>
 One of the Values is a URL, too, but what are the others?
 Their Datatypes are defined by the Properties.
 For example, the <code>https://example.com/properties/bornAt</code> Property requires an ISO Date string, and the <code>https://example.com/properties/firstName</code> Property requires a regular string.</p>
-<h2><a class="header" href="#subject" id="subject">Subject</a></h2>
+<h2><a class="header" href="#subject-field" id="subject-field">Subject field</a></h2>
 <p>The Subject field is the first part of an Atom.
 It is the identifier that the rest of the Atom is providing information about.
 It's a URL that points to the Resource.
 The creator of the Subject MUST make sure that it resolves.
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see <a href="core/querying.html">Atomic Querying</a>.</p>
-<h2><a class="header" href="#property" id="property">Property</a></h2>
+<h2><a class="header" href="#property-field" id="property-field">Property field</a></h2>
 <p>The Property field is the second part of an Atom.
 In RDF, this is called a <code>predicate</code>.
 It is a URL that points to an Atomic <a href="core/../schema/classes.html#Property">Property</a>.
 For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.</p>
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
 <p>The Property field MUST be a URL, and that URL MUST resolve to an Atomic Property, which contains information about the Datatype.</p>
-<h2><a class="header" href="#value" id="value">Value</a></h2>
+<h2><a class="header" href="#value-field" id="value-field">Value field</a></h2>
 <p>The Value field is the third part of an Atom.
 In RDF, this is called an <code>object</code>.
 Contrary to the Subject and Property values, the Value can be of any datatype.
@@ -270,6 +270,8 @@ A</p>
 <ul>
 <li><code>a</code> - (optional, AtomicURL) the <a href="core/../schema/classes.html#class">Class</a> of the Resource.</li>
 </ul>
+<h2><a class="header" href="#atomic-web" id="atomic-web">Atomic Web</a></h2>
+<p>The Atomic Web refers to all Atomic Graphs on the web.</p>
 <h1><a class="header" href="#serialization-of-atomic-data" id="serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
@@ -350,10 +352,14 @@ Perhaps it works like this:</p>
 <h1><a class="header" href="#querying-atomic-data" id="querying-atomic-data">Querying Atomic Data</a></h1>
 <p>There are multiple ways of getting Atomic Data into some system:</p>
 <ul>
+<li><a href="core/paths.html"><strong>Atomic Paths</strong></a> is a simple way to traverse Atomic Graphs and target specific values</li>
 <li><a href="core/querying.html#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
 <li><a href="core/querying.html#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Property and Value.</li>
 <li><a href="core/querying.html#SPARQL"><strong>SRARQL</strong></a> is a powerful Query language for traversing graphs</li>
 </ul>
+<h2><a class="header" href="#atomic-paths" id="atomic-paths">Atomic Paths</a></h2>
+<p>An Atomic Path is a string that consist of one or more URLs, which when traversed point to an item.
+For more information, see <a href="core/paths.html">Atomic Paths</a>.</p>
 <h2><a class="header" href="#subject-fetching-http" id="subject-fetching-http">Subject fetching (HTTP)</a></h2>
 <p>The simplest way of getting Atomic Data when the Subject is an HTTP URL, is by sending a GET request to the subject URL.
 Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/ad3-ndjson</code>.</p>
@@ -395,6 +401,52 @@ This is especially useful in browser clients that traverse the graph iteratively
 <h2><a class="header" href="#sparql" id="sparql">SPARQL</a></h2>
 <p><a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> is a powerful RDF query language.
 Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.</p>
+<h1><a class="header" href="#atomic-paths-1" id="atomic-paths-1">Atomic Paths</a></h1>
+<p>An Atomic Path is a string that consists of at least one URL, followed by one or more URLs or Shortnames.
+Every single value in an Atomic Resource can be targeted through such a Path.
+They can be used as identifiers for specific Values.</p>
+<p>The simplest path, is the URL of a resource, which represents the entire Resource with all its properties.
+If you want to target a specific atom, you can use an Atomic Path with a second URL.
+This second URL can be replaced by a Shortname, if the Resource is an instance of a class which has properties with that shortname (sounds more complicated than it is).</p>
+<h2><a class="header" href="#example" id="example">Example</a></h2>
+<p>Let's start with this simple graph:</p>
+<pre><code class="language-json">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
+</code></pre>
+<p>Then the following Path targets the <code>McLovin</code> value:</p>
+<p><code>https://example.com/john https://example.com/lastname</code> =&gt; <code>McLovin</code></p>
+<p>If the resource is an instance of a Class (an <code>atomic:isA</code> property), you can use the Shortnames of the Properties that are referred to by that class.
+Since John is an instance of a Person, he migth have a <code>lastname</code> which maps to <code>https://example.com/latname</code>.</p>
+<p><code>https://example.com/john lastname</code> =&gt; <code>McLovin</code></p>
+<p>We can also traverse relationships:</p>
+<pre><code class="language-json">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
+[&quot;https://example.com/john&quot;, &quot;https://example.com/employer&quot;, &quot;https://example.com/XCorp&quot;]
+[&quot;https://example.com/XCorp&quot;, &quot;https://example.com/description&quot;, &quot;The greatest company!&quot;]
+</code></pre>
+<p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
+<h2><a class="header" href="#serialization" id="serialization">Serialization</a></h2>
+<p>Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.</p>
+<p>For example:</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://example.com/john&quot;,
+  &quot;@context&quot;: &quot;https://example.com/person&quot;,
+  &quot;hasShoes&quot;: [
+    {
+      &quot;name&quot;: &quot;Mr. Boot&quot;,
+    },
+    {
+      &quot;name&quot;: &quot;Sunny Sandals&quot;,
+    }
+  ]
+}
+</code></pre>
+<p>The Path of <code>Mr. Boot</code> is:</p>
+<pre><code>https://example.com/john hasShoes 1 name
+</code></pre>
+<p>Notice how the Resource with the <code>name: Mr. Boot</code> does not have an explicit <code>@id</code>, but it <em>does</em> have a Path.</p>
+<p>This Path is useful for storing the value in other serialization formats, such as <code>.ad3</code>:</p>
+<pre><code class="language-ad3">[&quot;https://example.com/john https://example.com/hasShoes 0&quot;, &quot;https://example.com/name&quot;, &quot;Mr. Boot&quot;]
+[&quot;https://example.com/john https://example.com/hasShoes 1&quot;, &quot;https://example.com/name&quot;, &quot;Sunny Sandals&quot;]
+</code></pre>
 <h1><a class="header" href="#atomic-schema" id="atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
 You can compare it to what XSD is for XML.
@@ -435,7 +487,7 @@ A Resource <em>could</em> have one or more classes, which <em>could</em> provide
 <p>This class has a <em>required</em> property with shortname <code>description</code>.
 This Property has a Datatype of <code>AtomicURL</code>, and these should point to <code>TranslationBox</code> instances.</p>
 <p><em>Note: the URLs for properties are missing and will be added at a later time.</em></p>
-<h2><a class="header" href="#property-1" id="property-1">Property</a></h2>
+<h2><a class="header" href="#property" id="property">Property</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/classes/Property</code></em></p>
 <p>The Property class.
 The thing that the Property field should link to.
@@ -721,7 +773,7 @@ However, it does differ in some fundamental ways.</p>
 <li>Atomic calls the three parts of a Triple <code>subject</code>, <code>property</code> and <code>value</code>, instead of <code>subject</code>, <code>predicate</code>, <code>object</code>.</li>
 <li>Atomic does not support having multiple statements with the same <code>&lt;subject&gt; &lt;predicate&gt;</code>, every combination should be unique.</li>
 <li>Atomic has no difference between <code>literal</code>, <code>named node</code> and <code>blank node</code> objects - these are all <code>values</code>, but with different datatypes.</li>
-<li>Atomic does not support <code>blank nodes</code>.</li>
+<li>Atomic uses <code>paths</code> instead of <code>blank nodes</code></li>
 <li>Atomic requires URL (not URI) values in its <code>subjects</code> and <code>predicates</code> (properties), which means that they should be resolvable.</li>
 <li>Atomic only allows those who control a resource's <code>subject</code> URL endpoint to edit the data. This means that you can't add triples about something that you don't control.</li>
 <li>Atomic has no separate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you follow a <code>predicate</code> value) specify a datatype</li>
@@ -813,14 +865,21 @@ When a value is a URL, we don't call it a named node, but we simply use a URL da
 With Atomic Data, the data producer MUST offer the triples at the URL of the subject.
 This is a challenge - especially with the current (lack of) tooling.</p>
 <p>However - making sure that links <em>actually work</em> offer tremendous benefits for data consumers, and that advantage is often worth the extra trouble.</p>
-<h3><a class="header" href="#no-more-blank-nodes" id="no-more-blank-nodes">No more blank nodes</a></h3>
-<p>RDF allows <code>blank nodes</code> (resources with identifiers that exist only locally), Atomic Data does not.
-They make things easier for content providers, but make things <a href="http://richard.cyganiak.de/blog/2011/03/blank-nodes-considered-harmful/">harder for content consumers</a>.
-They severely limit how client systems can store data, as name collisions with blank nodes are possible and cache invalidation is hard (or impossible) with blank nodes.</p>
-<p>Blank nodes make a lot of sense in hand-written RDF (e.g. Turtle) files.
-However, that argument doesn't hold for systems that create the identifiers for you.
-Although data creators <em>should</em> have means to specify URLs for certain resources, they <em>should not</em> have to specify every single one.
-Ideally, the interface that you use as a data producer will create (persistent, resolvable) identifiers when you create the resources.</p>
+<h3><a class="header" href="#replace-blank-nodes-with-paths" id="replace-blank-nodes-with-paths">Replace blank nodes with paths</a></h3>
+<p><code>blank nodes</code> are resources with identifiers that exist only locally.
+They make life easier for data producers, who can easily create nested resources without having to mint all the URLs.
+In most data models, blank nodes are the default.
+For example, we nest JSON object without thinking twice.</p>
+<p>Unfortunately, blank nodes tend to make things harder for clients.
+These clients will now need to keep track of where these blank nodes came from, and they need to create internal identifiers that will not collide.
+Cache invalidation with blank nodes also becomes a challenge.
+To make this a bit easier, Atomic Data introduces a new way of dealing with names of things that you have not given a URL yet: <a href="interoperability/../core/paths.html">Atomic Paths</a>.</p>
+<p>Since Atomic Data has <code>subject-predicate</code> uniqueness, we can use the <em>path</em> of triples as a unique identifier:</p>
+<pre><code>https://example.com/john https://schema.org/employer
+</code></pre>
+<p>So the way an Atomic Data store should store <code>blank nodes</code>, is simply as an atom with a Path as its URL.
+This prevents collisions and still makes it easy to point to a specific value.</p>
+<p>Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.</p>
 <h3><a class="header" href="#combining-datatype-and-predicate" id="combining-datatype-and-predicate">Combining datatype and predicate</a></h3>
 <p>Having both a <code>datatype</code> and a <code>predicate</code> value can lead to confusing situations.
 For example, the <a href="https://schema.org/dateCreated"><code>schema:dateCreated</code></a> Property requires an ISO DateTime string (according to the schema.org definition), but using a value <code>true</code> with an <code>xsd:boolean</code> datatype results in perfectly valid RDF.
@@ -1122,7 +1181,16 @@ console.log(person.subject) //=&gt; Should return a newly created identifier, ht
 const alice = await store.get(&quot;https://example.com/alice&quot;)
 
 // Because of the keys in Atomic Properties, we can use this dot syntax to traverse the graph and get a value
-console.log(alice.bestFriend.firstName); // =&gt; &quot;Bob&quot;
+console.log(await alice.path(&quot;bestFriend.firstName&quot;)).value(); // =&gt; &quot;Bob&quot;
+// What should happen here?
+console.log(await alice.bestFriend); // =&gt; {...}
+
+// It's also possible to convert a resource to a native JS object.
+// By specifying the depth, nested resources will be fetched as well.
+const aliceJS = await store.get(&quot;https://example.com/alice&quot;).toJS(depth: 2)
+
+console.log(aliceJS.bestFriend) // =&gt; { name: Bob, birthdate: Date(1991-01-20)}
+
 </code></pre>
 <p>I think a Developer Experience similar to the one above is essential for getting people to create linked data.
 It should be incredibly easy, and this is what enables that.
