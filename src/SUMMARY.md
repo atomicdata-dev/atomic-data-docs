@@ -5,6 +5,7 @@
   * [Concepts](core/concepts.md)
   * [Serialization](core/serialization.md)
   * [Querying](core/querying.md)
+  * [Paths](core/paths.md)
 * [Atomic Schema](schema/intro.md)
   * [Classes](schema/classes.md)
   * [Datatypes](schema/datatypes.md)

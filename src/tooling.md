@@ -105,7 +105,16 @@ console.log(person.subject) //=> Should return a newly created identifier, https
 const alice = await store.get("https://example.com/alice")
 
 // Because of the keys in Atomic Properties, we can use this dot syntax to traverse the graph and get a value
-console.log(alice.bestFriend.firstName); // => "Bob"
+console.log(await alice.path("bestFriend.firstName")).value(); // => "Bob"
+// What should happen here?
+console.log(await alice.bestFriend); // => {...}
+
+// It's also possible to convert a resource to a native JS object.
+// By specifying the depth, nested resources will be fetched as well.
+const aliceJS = await store.get("https://example.com/alice").toJS(depth: 2)
+
+console.log(aliceJS.bestFriend) // => { name: Bob, birthdate: Date(1991-01-20)}
+
 ```
 
 I think a Developer Experience similar to the one above is essential for getting people to create linked data.

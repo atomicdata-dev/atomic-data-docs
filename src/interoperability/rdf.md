@@ -11,7 +11,7 @@ However, it does differ in some fundamental ways.
 - Atomic calls the three parts of a Triple `subject`, `property` and `value`, instead of `subject`, `predicate`, `object`.
 - Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination should be unique.
 - Atomic has no difference between `literal`, `named node` and `blank node` objects - these are all `values`, but with different datatypes.
-- Atomic does not support `blank nodes`.
+- Atomic uses `paths` instead of `blank nodes`
 - Atomic requires URL (not URI) values in its `subjects` and `predicates` (properties), which means that they should be resolvable.
 - Atomic only allows those who control a resource's `subject` URL endpoint to edit the data. This means that you can't add triples about something that you don't control.
 - Atomic has no separate `datatype` field, but it requires that `Properties` (the resources that are shown when you follow a `predicate` value) specify a datatype
@@ -132,16 +132,28 @@ This is a challenge - especially with the current (lack of) tooling.
 
 However - making sure that links _actually work_ offer tremendous benefits for data consumers, and that advantage is often worth the extra trouble.
 
-### No more blank nodes
+### Replace blank nodes with paths
 
-RDF allows `blank nodes` (resources with identifiers that exist only locally), Atomic Data does not.
-They make things easier for content providers, but make things [harder for content consumers](http://richard.cyganiak.de/blog/2011/03/blank-nodes-considered-harmful/).
-They severely limit how client systems can store data, as name collisions with blank nodes are possible and cache invalidation is hard (or impossible) with blank nodes.
+`blank nodes` are resources with identifiers that exist only locally.
+They make life easier for data producers, who can easily create nested resources without having to mint all the URLs.
+In most data models, blank nodes are the default.
+For example, we nest JSON object without thinking twice.
 
-Blank nodes make a lot of sense in hand-written RDF (e.g. Turtle) files.
-However, that argument doesn't hold for systems that create the identifiers for you.
-Although data creators _should_ have means to specify URLs for certain resources, they _should not_ have to specify every single one.
-Ideally, the interface that you use as a data producer will create (persistent, resolvable) identifiers when you create the resources.
+Unfortunately, blank nodes tend to make things harder for clients.
+These clients will now need to keep track of where these blank nodes came from, and they need to create internal identifiers that will not collide.
+Cache invalidation with blank nodes also becomes a challenge.
+To make this a bit easier, Atomic Data introduces a new way of dealing with names of things that you have not given a URL yet: [Atomic Paths](../core/paths.md).
+
+Since Atomic Data has `subject-predicate` uniqueness, we can use the _path_ of triples as a unique identifier:
+
+```
+https://example.com/john https://schema.org/employer
+```
+
+So the way an Atomic Data store should store `blank nodes`, is simply as an atom with a Path as its URL.
+This prevents collisions and still makes it easy to point to a specific value.
+
+Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.
 
 ### Combining datatype and predicate
 

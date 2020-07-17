@@ -13,11 +13,11 @@ Contrary to some other (labeled) graph data models, a relationship between two i
 
 The smallest possible piece of _meaningful_ data / information.
 The model of an Atom is comparable with an RDF Triple / Statement ([although there are important differences](../interoperability/rdf.md)).
-An Atom consists of three values:
+An Atom consists of three fields:
 
-* **[Subject](#subject)**: the Thing that the atom is providing information about.
-* **[Property](#property)**: the property of the Thing that the atom is about (will always be a URL to a [Property](../schema/classes.md#property)).
-* **[Value](#value)**: the new piece of information about the Atom.
+* **[Subject](#subject-field)**: the Thing that the atom is providing information about.
+* **[Property](#property-field)**: the property of the Thing that the atom is about (will always be a URL to a [Property](../schema/classes.md#property)).
+* **[Value](#value-field)**: the new piece of information about the Atom.
 
 Let's turn this sentence into Atoms:
 
@@ -42,7 +42,7 @@ One of the Values is a URL, too, but what are the others?
 Their Datatypes are defined by the Properties.
 For example, the `https://example.com/properties/bornAt` Property requires an ISO Date string, and the `https://example.com/properties/firstName` Property requires a regular string.
 
-## Subject
+## Subject field
 
 The Subject field is the first part of an Atom.
 It is the identifier that the rest of the Atom is providing information about.
@@ -50,7 +50,7 @@ It's a URL that points to the Resource.
 The creator of the Subject MUST make sure that it resolves.
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see [Atomic Querying](querying.md).
 
-## Property
+## Property field
 
 The Property field is the second part of an Atom.
 In RDF, this is called a `predicate`.
@@ -59,7 +59,7 @@ For example `https://example.com/createdAt` or `https://example.com/firstName`.
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
 The Property field MUST be a URL, and that URL MUST resolve to an Atomic Property, which contains information about the Datatype.
 
-## Value
+## Value field
 
 The Value field is the third part of an Atom.
 In RDF, this is called an `object`.
@@ -82,3 +82,7 @@ A
 Properties:
 
 - `a` - (optional, AtomicURL) the [Class](../schema/classes.md#class) of the Resource.
+
+## Atomic Web
+
+The Atomic Web refers to all Atomic Graphs on the web.
