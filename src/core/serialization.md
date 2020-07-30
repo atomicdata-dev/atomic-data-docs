@@ -2,12 +2,11 @@
 
 Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
-We recommend you use `AtomicTriples`, which is specifically designed to be a simple, performant format for Atomic Data.
+However, it's recommended to use `AtomicTriples`, which is specifically designed to be a simple, performant format for Atomic Data.
 
 ## AtomicTriples (.ad3)
 
-Since the data model of Atomic Data is a bit simpler than RDF, serialization and parsing can be simpler as well.
-In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.
+A single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.
 
 It looks like this:
 
@@ -21,7 +20,7 @@ It uses Newline Delimited JSON ([NDJSON](http://ndjson.org/)) for serialization,
 NDJSON has some important benefits:
 
 - **Streaming parsing**: An NDJSON document can be parsed before it's fully loaded / transmitted. That is not possible with regular JSON.
-- **High compatibility**: NDJSON parsers can use JSON parsers, and are therefore everywhere
+- **High compatibility**: NDJSON parsers can use JSON parsers, and are therefore everywhere.
 - **Performance**: Modern browsers have highly performant JSON parsing, which means that it's _fast_ in one of the most important contexts: the browser.
 
 _Mime type (not registered yet!): `application/ad3-ndjson`_
@@ -29,6 +28,8 @@ _Mime type (not registered yet!): `application/ad3-ndjson`_
 _File name extension: `.ad3`_
 
 Disclaimer: note that Atomic-NDJSON is useful for communicating _current state_, but not for _state changes_.
+
+Atomic Triples is heavily inspired by [NDJSON HexTuples](https://github.com/ontola/hextuples).
 
 ## AtomicDoubles (.ad2)
 

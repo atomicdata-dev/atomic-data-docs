@@ -21,13 +21,14 @@ Then the following Path targets the `McLovin` value:
 `https://example.com/john https://example.com/lastname` => `McLovin`
 
 If the resource is an instance of a Class (an `atomic:isA` property), you can use the Shortnames of the Properties that are referred to by that class.
-Since John is an instance of a Person, he migth have a `lastname` which maps to `https://example.com/latname`.
+Since John is an instance of a Person, he might have a `lastname` which maps to `https://example.com/latname`.
 
 `https://example.com/john lastname` => `McLovin`
 
 We can also traverse relationships:
 
-```json
+```ad3
+["https://example.com/john", "https://atomicdata.dev/properties/isA", "https://example.com/Person"]
 ["https://example.com/john", "https://example.com/lastName", "McLovin"]
 ["https://example.com/john", "https://example.com/employer", "https://example.com/XCorp"]
 ["https://example.com/XCorp", "https://example.com/description", "The greatest company!"]
@@ -35,7 +36,16 @@ We can also traverse relationships:
 
 `https://example.com/john employer description` => `The greatest company!`
 
-## Serialization
+In the example above, the XCorp subject exists and is the source of the `The greatest company!` value.
+However, using paths, it's also possible to created nested resources _without creating new URLs for all children_.
+If you've worked with RDF, this is what Blank Nodes are used for.
+
+Let's make the path above resolve without having an explicit URL for XCorp:
+
+```ad3
+["https://example.com/john", "https://example.com/lastName", "McLovin"]
+["https://example.com/john https://example.com/employer", "https://example.com/description", "The greatest company!"]
+```
 
 Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.
 
@@ -62,11 +72,13 @@ The Path of `Mr. Boot` is:
 https://example.com/john hasShoes 1 name
 ```
 
-Notice how the Resource with the `name: Mr. Boot` does not have an explicit `@id`, but it _does_ have a Path.
-
 This Path is useful for storing the value in other serialization formats, such as `.ad3`:
 
 ```ad3
 ["https://example.com/john https://example.com/hasShoes 0", "https://example.com/name", "Mr. Boot"]
 ["https://example.com/john https://example.com/hasShoes 1", "https://example.com/name", "Sunny Sandals"]
 ```
+
+You can target an item in an array by using a number to indicate its position, starting with 0.
+
+Notice how the Resource with the `name: Mr. Boot` does not have an explicit `@id`, but it _does_ have a Path.

@@ -15,7 +15,7 @@ Things you can do:
 
 ## Special thanks to:
 
-- Thom van Kalkeren (who came up with many great ideas on how to work with RDF)
+- Thom van Kalkeren (who came up with many great ideas on how to work with RDF, such as [HexTuples](https://github.com/ontola/hextuples) and [linked-delta](https://github.com/ontola/linked-delta))
 - Tim Berners-Lee (for everything he did for linked data and the web)
 - Ruben Verborgh (for doing great work with RDF, such as the TPF spec)
 - All the other people who worked on the RDF specification

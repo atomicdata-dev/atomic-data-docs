@@ -24,7 +24,7 @@ For example:
 Let's assume that `https://somepage.example.com/name` and `https://example.com/name` are Properties that have the Shortname: `name`.
 
 What if a client tries something such as `people123.name`?
-To consistently return a single value, we need some form or precedence, and it goes like this:
+To consistently return a single value, we need some type of _precedence_:
 
 1. The earlier Class mentioned in the `class` Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collisions in required and recommended properties, which means that they might have. If these exist internally, sort the properties from A-Z.
 <!-- This  -->
@@ -43,3 +43,10 @@ people123."https://example.com/name"
 ## What's a URI, and what's a URL?
 
 URI stands for Unique Resource Identifier
+
+## How does Atomic Schema relate to SHACL / SheX / OWL / RDFS?
+
+These RDF ontologies are extremely powerful, well-documented and versatile.
+
+Atomic Schema does _not_ aim to be an formal ontological semantic framework - it is way too simple for that.
+It's just a simple modeling tool.

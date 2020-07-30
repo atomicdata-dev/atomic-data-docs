@@ -25,16 +25,16 @@ I love RDF, and have been working with it for quite some time now.
 Using URIs (and more-so URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
 However, some of the characteristics of RDF might have contributed to its relative lack of adoption.
 
-### Difficulty in selecting values
+### It's too hard to select a specific value (object) in RDF
 
-One of the main reasons for having more strict requirements, has to do with how hard it is to identify a specific value (`object`) in RDF.
 For example, let's say I want to render someone's birthday:
 
 ```ttl
 <example:joep> <schema:birthDate> "1991-01-20"^^xsd:date
 ```
 
-Rendering this item might be as simple as fetching the subject, taking the predicate, parse it as a date.
+Rendering this item might be as simple as fetching the subject URL, filtering by predicate URL, and parsing the `object` as a date.
+
 However, this is also valid RDF:
 
 ```ttl
@@ -54,7 +54,7 @@ Now things get more complicated if you just want to render the birthdate:
 1. **Select the language**. Same could be true for language, too, but that is not necessary in this birthdate example.
 1. **Select the triple**. Even after all our previous selectors, we _still_ might have multiple values. How do I know which is the triple I'm supposed to use?
 
-To be fair, with lots of RDF data, only steps 2 and 3 are needed.
+To be fair, with most RDF data, only steps 2 and 3 are needed, since there are no `subject-predicate` collisions.
 But if you're building a system that uses RDF, that system also needs to deal with steps 1,4,5 and 6.
 This complexity is the direct result of the lack of `subject-predicate` uniqueness.
 
@@ -71,12 +71,12 @@ console.log(joep.employer().name()) // => "Ontola.io"
 ```
 
 Basically, I'd like to use all knowledge of the world as if it were a big JSON object.
-You can't do that with RDF, as long as you add some constraints:
+Being able to do that, requires some things that are present in JSON, and some things that are present in RDF
 
 - Traverse data on various domains (which is already possible with RDF)
-- Have [unique `subject-predicate` combinations](#subject-predicate-uniqueness)
-- Map properties URLs to keys (which often requires local mapping with RDF)
-- Link properties to datatypes
+- Have [unique `subject-predicate` combinations](#subject-predicate-uniqueness) (which is default in JSON)
+- Map properties URLs to keys (which often requires local mapping with RDF, e.g. in JSON-LD)
+- Link properties to datatypes (which is possible with ontologies like SHACL / SHEX)
 
 ### Less focus on semantics, more on usability
 
@@ -100,15 +100,41 @@ However, this introduces some extra complexity for data users.
 Whereas most languages and datatypes have `key-value` uniqueness that allow for unambiguous value selection, RDF clients have to deal with the possibility that multiple triples with the same `subject-predicate` combination might exist.
 
 Atomic Data requires `subject-property` uniqueness, which means that this is no longer an issue for clients.
-However, in order to guarantee this, and still retain _graph merge-ability_ we also need to limit who creates statements about a subject.
+However, in order to guarantee this, and still retain _graph merge-ability_ we also need to limit who creates statements about a subject:
 
 ### Limiting subject usage
 
 RDF allows that `anne.com` creates and hosts statements about the subject `john.com`.
 In other words, domain A creates statements about domain B.
+It allows anyone to say anything about any subject, thus allowing for extending data that is not under your control.
+
+For example, developers at both Ontola and Inrupt (two companies that work a lot with RDF) use this feature to extend the Schema.org ontology with translations.
+This means they can still use standards from Schema.org, and have their own translations of these concepts.
+
+However, I think this is a flawed approach.
+In the example above, two companies are adding statements about a subject.
+In this case, both are adding translations.
+They're doing the same work twice.
+And as more and more people will use that same resource, they will be forced to add the same translations, again and again.
+
+I think one of the core perks of linked data, is being able to make your information highly re-usable.
+When you've created statements about an external thing, these statements are hard to re-use.
+
+A different
+
 This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data.
-Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement.
+Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data.
+Many subjects in RDF don't actually resolve to all the known triples of the statement.
 It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
+When triples are created about a resource in a place other than where the subject is hosted, these triples are hard to share.
+
+The way RDF projects deal with this, is by using _named graphs_.
+As a consequence, all systems that use these triples should keep track of another field for every atom.
+To make things worse, it makes `subject-predicate` _impossible_ to guarantee.
+That's a high price to pay.
+
+I've asked two colleagues working on RDF about this constraint, and both were critical.
+The reason
 
 ### No more literals / named nodes
 
@@ -155,6 +181,8 @@ This prevents collisions and still makes it easy to point to a specific value.
 
 Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.
 
+You can read more about Atomic Paths [here](../core/paths.md).
+
 ### Combining datatype and predicate
 
 Having both a `datatype` and a `predicate` value can lead to confusing situations.
@@ -185,7 +213,20 @@ I think developers need guidance when learning a new system such as RDF, and tha
 
 ### Adding a schema language
 
-Validating RDF graphs is hard. Validating both the _shape_ (whether required fields are present) of RDF data, as well as its _authenticity_ (whether we can trust the individual Statements) is complex. Shape validations are possible using both [SHACL](https://www.w3.org/TR/shacl/) and [SHEX](https://shex.io/), and they are both very powerful and well designed.
+A schema language is necessary to constrain and validate instances of data.
+This is very useful when creating domain-specific standards, which can in turn be used to generate forms or language-specific types / interfaces.
+Shape validations are already possible in RDF using both [SHACL](https://www.w3.org/TR/shacl/) and [SHEX](https://shex.io/), and these are both very powerful and well designed.
+
+However, with Atomic Data, I'm going for simplicity.
+This also means providing an all-inclusive documentation.
+I want people who read this book to have a decent grasp of creating, modeling, sharing, versioning and querying data.
+It should provide all information that most developers (new to linked data) will need to get started quickly.
+Simply linking to SHACL / SHEX documentation could be intimidating for new developers, who simply want to define a simple shape with a few keys and datatypes.
+
+Also, SHACL requires named graphs (which are not specified in Atomic Data) and SHEX requires a new serialization format, which might limit adoption.
+Atomic Data has some unique constrains (such as subject-predicate uniqueness) which also might make things more complicated when using SHEX / SHACL.
+
+_However_, it is not the intention of Atomic Data to create a modeling abstraction that is just as powerful as the ones mentioned above, so perhaps it is better to include a SHACL / SHEX tutorial and come up with a nice integration of both worlds.
 
 ### A new name, with new docs
 
