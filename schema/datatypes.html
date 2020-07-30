@@ -161,7 +161,8 @@
 <h2><a class="header" href="#slug" id="slug">Slug</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/slug</code></em></p>
 <p>A string with a limited set of allowed characters, used in IDE / Text editor context.
-Similar to <a href="http://books.xmlschemata.org/relaxng/ch19-77319.html"><code>xsd:token</code></a></p>
+Only letters, numbers and dashes are allowed.</p>
+<p>Regex: <code>^[a-z0-9]+(?:-[a-z0-9]+)*$</code></p>
 <h2><a class="header" href="#atomic-url" id="atomic-url">Atomic URL</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/atomicURL</code></em></p>
 <p>A URL that should resolve to an <a href="../core/concepts.html#Resource">Atomic Resource</a>.</p>

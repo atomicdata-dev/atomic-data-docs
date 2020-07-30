@@ -159,10 +159,9 @@
                         <h1><a class="header" href="#serialization-of-atomic-data" id="serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
-We recommend you use <code>AtomicTriples</code>, which is specifically designed to be a simple, performant format for Atomic Data.</p>
+However, it's recommended to use <code>AtomicTriples</code>, which is specifically designed to be a simple, performant format for Atomic Data.</p>
 <h2><a class="header" href="#atomictriples-ad3" id="atomictriples-ad3">AtomicTriples (.ad3)</a></h2>
-<p>Since the data model of Atomic Data is a bit simpler than RDF, serialization and parsing can be simpler as well.
-In fact, a single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.</p>
+<p>A single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.</p>
 <p>It looks like this:</p>
 <pre><code class="language-ndjson">[&quot;https://example.com/subject&quot;,&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
@@ -171,12 +170,13 @@ In fact, a single Atom can be represented by an array of three strings, respecti
 <p>NDJSON has some important benefits:</p>
 <ul>
 <li><strong>Streaming parsing</strong>: An NDJSON document can be parsed before it's fully loaded / transmitted. That is not possible with regular JSON.</li>
-<li><strong>High compatibility</strong>: NDJSON parsers can use JSON parsers, and are therefore everywhere</li>
+<li><strong>High compatibility</strong>: NDJSON parsers can use JSON parsers, and are therefore everywhere.</li>
 <li><strong>Performance</strong>: Modern browsers have highly performant JSON parsing, which means that it's <em>fast</em> in one of the most important contexts: the browser.</li>
 </ul>
 <p><em>Mime type (not registered yet!): <code>application/ad3-ndjson</code></em></p>
 <p><em>File name extension: <code>.ad3</code></em></p>
 <p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
+<p>Atomic Triples is heavily inspired by <a href="https://github.com/ontola/hextuples">NDJSON HexTuples</a>.</p>
 <h2><a class="header" href="#atomicdoubles-ad2" id="atomicdoubles-ad2">AtomicDoubles (.ad2)</a></h2>
 <p>AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
 For many use-cases, omitting the Subject is a <em>bad idea</em>.

@@ -180,13 +180,12 @@ However, it does differ in some fundamental ways.</p>
 <p>I love RDF, and have been working with it for quite some time now.
 Using URIs (and more-so URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
 However, some of the characteristics of RDF might have contributed to its relative lack of adoption.</p>
-<h3><a class="header" href="#difficulty-in-selecting-values" id="difficulty-in-selecting-values">Difficulty in selecting values</a></h3>
-<p>One of the main reasons for having more strict requirements, has to do with how hard it is to identify a specific value (<code>object</code>) in RDF.
-For example, let's say I want to render someone's birthday:</p>
+<h3><a class="header" href="#its-too-hard-to-select-a-specific-value-object-in-rdf" id="its-too-hard-to-select-a-specific-value-object-in-rdf">It's too hard to select a specific value (object) in RDF</a></h3>
+<p>For example, let's say I want to render someone's birthday:</p>
 <pre><code class="language-ttl">&lt;example:joep&gt; &lt;schema:birthDate&gt; &quot;1991-01-20&quot;^^xsd:date
 </code></pre>
-<p>Rendering this item might be as simple as fetching the subject, taking the predicate, parse it as a date.
-However, this is also valid RDF:</p>
+<p>Rendering this item might be as simple as fetching the subject URL, filtering by predicate URL, and parsing the <code>object</code> as a date.</p>
+<p>However, this is also valid RDF:</p>
 <pre><code class="language-ttl">&lt;example:joep&gt; &lt;schema:birthDate&gt; &quot;1991-01-20&quot;^^xsd:date &lt;example:someNamedGraph&gt;
 &lt;example:joep&gt; &lt;schema:birthDate&gt; &lt;example:birthDateObject&gt; &lt;example:someNamedGraph&gt;
 &lt;example:joep&gt; &lt;schema:birthDate&gt; &quot;20th of januari 1991&quot;@en &lt;example:someNamedGraph&gt;
@@ -202,7 +201,7 @@ However, this is also valid RDF:</p>
 <li><strong>Select the language</strong>. Same could be true for language, too, but that is not necessary in this birthdate example.</li>
 <li><strong>Select the triple</strong>. Even after all our previous selectors, we <em>still</em> might have multiple values. How do I know which is the triple I'm supposed to use?</li>
 </ol>
-<p>To be fair, with lots of RDF data, only steps 2 and 3 are needed.
+<p>To be fair, with most RDF data, only steps 2 and 3 are needed, since there are no <code>subject-predicate</code> collisions.
 But if you're building a system that uses RDF, that system also needs to deal with steps 1,4,5 and 6.
 This complexity is the direct result of the lack of <code>subject-predicate</code> uniqueness.</p>
 <p>As a developer who uses RDF data, I want to be able to do something like this:</p>
@@ -215,12 +214,12 @@ console.log(joep.birthDate()) // =&gt; Date(1991-01-20)
 console.log(joep.employer().name()) // =&gt; &quot;Ontola.io&quot;
 </code></pre>
 <p>Basically, I'd like to use all knowledge of the world as if it were a big JSON object.
-You can't do that with RDF, as long as you add some constraints:</p>
+Being able to do that, requires some things that are present in JSON, and some things that are present in RDF</p>
 <ul>
 <li>Traverse data on various domains (which is already possible with RDF)</li>
-<li>Have <a href="#subject-predicate-uniqueness">unique <code>subject-predicate</code> combinations</a></li>
-<li>Map properties URLs to keys (which often requires local mapping with RDF)</li>
-<li>Link properties to datatypes</li>
+<li>Have <a href="#subject-predicate-uniqueness">unique <code>subject-predicate</code> combinations</a> (which is default in JSON)</li>
+<li>Map properties URLs to keys (which often requires local mapping with RDF, e.g. in JSON-LD)</li>
+<li>Link properties to datatypes (which is possible with ontologies like SHACL / SHEX)</li>
 </ul>
 <h3><a class="header" href="#less-focus-on-semantics-more-on-usability" id="less-focus-on-semantics-more-on-usability">Less focus on semantics, more on usability</a></h3>
 <p>One of the core ideas of the semantic web, is that anyone should be able to say anything about anything, using semantic triples.
@@ -238,13 +237,32 @@ One of the reasons this is possible, is because RDF graphs should always be merg
 However, this introduces some extra complexity for data users.
 Whereas most languages and datatypes have <code>key-value</code> uniqueness that allow for unambiguous value selection, RDF clients have to deal with the possibility that multiple triples with the same <code>subject-predicate</code> combination might exist.</p>
 <p>Atomic Data requires <code>subject-property</code> uniqueness, which means that this is no longer an issue for clients.
-However, in order to guarantee this, and still retain <em>graph merge-ability</em> we also need to limit who creates statements about a subject.</p>
+However, in order to guarantee this, and still retain <em>graph merge-ability</em> we also need to limit who creates statements about a subject:</p>
 <h3><a class="header" href="#limiting-subject-usage" id="limiting-subject-usage">Limiting subject usage</a></h3>
 <p>RDF allows that <code>anne.com</code> creates and hosts statements about the subject <code>john.com</code>.
 In other words, domain A creates statements about domain B.
-This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data.
-Knowing <em>where data comes from</em> is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data. Many subjects in RDF don't actually resolve to all the known triples of the statement.
-It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.</p>
+It allows anyone to say anything about any subject, thus allowing for extending data that is not under your control.</p>
+<p>For example, developers at both Ontola and Inrupt (two companies that work a lot with RDF) use this feature to extend the Schema.org ontology with translations.
+This means they can still use standards from Schema.org, and have their own translations of these concepts.</p>
+<p>However, I think this is a flawed approach.
+In the example above, two companies are adding statements about a subject.
+In this case, both are adding translations.
+They're doing the same work twice.
+And as more and more people will use that same resource, they will be forced to add the same translations, again and again.</p>
+<p>I think one of the core perks of linked data, is being able to make your information highly re-usable.
+When you've created statements about an external thing, these statements are hard to re-use.</p>
+<p>A different</p>
+<p>This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data.
+Knowing <em>where data comes from</em> is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data.
+Many subjects in RDF don't actually resolve to all the known triples of the statement.
+It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
+When triples are created about a resource in a place other than where the subject is hosted, these triples are hard to share.</p>
+<p>The way RDF projects deal with this, is by using <em>named graphs</em>.
+As a consequence, all systems that use these triples should keep track of another field for every atom.
+To make things worse, it makes <code>subject-predicate</code> <em>impossible</em> to guarantee.
+That's a high price to pay.</p>
+<p>I've asked two colleagues working on RDF about this constraint, and both were critical.
+The reason</p>
 <h3><a class="header" href="#no-more-literals--named-nodes" id="no-more-literals--named-nodes">No more literals / named nodes</a></h3>
 <p>In RDF, an <code>object</code> can either be a <code>named node</code>, <code>blank node</code> or <code>literal</code>. A <code>literal</code> has a <code>value</code>, a <code>datatype</code> and an optional <code>language</code> (if the <code>literal</code> is a string).
 Although RDF statements are often called <code>triples</code>, a single statement can consist of five fields: <code>subject</code>, <code>predicate</code>, <code>object</code>, <code>language</code>, <code>datatype</code>.
@@ -275,6 +293,7 @@ To make this a bit easier, Atomic Data introduces a new way of dealing with name
 <p>So the way an Atomic Data store should store <code>blank nodes</code>, is simply as an atom with a Path as its URL.
 This prevents collisions and still makes it easy to point to a specific value.</p>
 <p>Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.</p>
+<p>You can read more about Atomic Paths <a href="../core/paths.html">here</a>.</p>
 <h3><a class="header" href="#combining-datatype-and-predicate" id="combining-datatype-and-predicate">Combining datatype and predicate</a></h3>
 <p>Having both a <code>datatype</code> and a <code>predicate</code> value can lead to confusing situations.
 For example, the <a href="https://schema.org/dateCreated"><code>schema:dateCreated</code></a> Property requires an ISO DateTime string (according to the schema.org definition), but using a value <code>true</code> with an <code>xsd:boolean</code> datatype results in perfectly valid RDF.
@@ -296,7 +315,17 @@ Adding an Array data type as a base data type helps solve this. (<a href="https:
 Although <a href="https://github.com/ontola/linked-delta">linked-delta</a> and <a href="https://afs.github.io/rdf-delta/">rdf-delta</a> do exist, they aren't referred to by the RDF spec.
 I think developers need guidance when learning a new system such as RDF, and that's why <a href="../mutations/intro.html">Atomic Mutations</a> is included in this book.</p>
 <h3><a class="header" href="#adding-a-schema-language" id="adding-a-schema-language">Adding a schema language</a></h3>
-<p>Validating RDF graphs is hard. Validating both the <em>shape</em> (whether required fields are present) of RDF data, as well as its <em>authenticity</em> (whether we can trust the individual Statements) is complex. Shape validations are possible using both <a href="https://www.w3.org/TR/shacl/">SHACL</a> and <a href="https://shex.io/">SHEX</a>, and they are both very powerful and well designed.</p>
+<p>A schema language is necessary to constrain and validate instances of data.
+This is very useful when creating domain-specific standards, which can in turn be used to generate forms or language-specific types / interfaces.
+Shape validations are already possible in RDF using both <a href="https://www.w3.org/TR/shacl/">SHACL</a> and <a href="https://shex.io/">SHEX</a>, and these are both very powerful and well designed.</p>
+<p>However, with Atomic Data, I'm going for simplicity.
+This also means providing an all-inclusive documentation.
+I want people who read this book to have a decent grasp of creating, modeling, sharing, versioning and querying data.
+It should provide all information that most developers (new to linked data) will need to get started quickly.
+Simply linking to SHACL / SHEX documentation could be intimidating for new developers, who simply want to define a simple shape with a few keys and datatypes.</p>
+<p>Also, SHACL requires named graphs (which are not specified in Atomic Data) and SHEX requires a new serialization format, which might limit adoption.
+Atomic Data has some unique constrains (such as subject-predicate uniqueness) which also might make things more complicated when using SHEX / SHACL.</p>
+<p><em>However</em>, it is not the intention of Atomic Data to create a modeling abstraction that is just as powerful as the ones mentioned above, so perhaps it is better to include a SHACL / SHEX tutorial and come up with a nice integration of both worlds.</p>
 <h3><a class="header" href="#a-new-name-with-new-docs" id="a-new-name-with-new-docs">A new name, with new docs</a></h3>
 <p>Besides the technical reasons described above, I think that there are social reasons to start with a new concept and give it a new name:</p>
 <ul>

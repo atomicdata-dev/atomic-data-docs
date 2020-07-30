@@ -170,15 +170,22 @@ This second URL can be replaced by a Shortname, if the Resource is an instance o
 <p>Then the following Path targets the <code>McLovin</code> value:</p>
 <p><code>https://example.com/john https://example.com/lastname</code> =&gt; <code>McLovin</code></p>
 <p>If the resource is an instance of a Class (an <code>atomic:isA</code> property), you can use the Shortnames of the Properties that are referred to by that class.
-Since John is an instance of a Person, he migth have a <code>lastname</code> which maps to <code>https://example.com/latname</code>.</p>
+Since John is an instance of a Person, he might have a <code>lastname</code> which maps to <code>https://example.com/latname</code>.</p>
 <p><code>https://example.com/john lastname</code> =&gt; <code>McLovin</code></p>
 <p>We can also traverse relationships:</p>
-<pre><code class="language-json">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
+<pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://atomicdata.dev/properties/isA&quot;, &quot;https://example.com/Person&quot;]
+[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
 [&quot;https://example.com/john&quot;, &quot;https://example.com/employer&quot;, &quot;https://example.com/XCorp&quot;]
 [&quot;https://example.com/XCorp&quot;, &quot;https://example.com/description&quot;, &quot;The greatest company!&quot;]
 </code></pre>
 <p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
-<h2><a class="header" href="#serialization" id="serialization">Serialization</a></h2>
+<p>In the example above, the XCorp subject exists and is the source of the <code>The greatest company!</code> value.
+However, using paths, it's also possible to created nested resources <em>without creating new URLs for all children</em>.
+If you've worked with RDF, this is what Blank Nodes are used for.</p>
+<p>Let's make the path above resolve without having an explicit URL for XCorp:</p>
+<pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
+[&quot;https://example.com/john https://example.com/employer&quot;, &quot;https://example.com/description&quot;, &quot;The greatest company!&quot;]
+</code></pre>
 <p>Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.</p>
 <p>For example:</p>
 <pre><code class="language-json">{
@@ -197,11 +204,12 @@ Since John is an instance of a Person, he migth have a <code>lastname</code> whi
 <p>The Path of <code>Mr. Boot</code> is:</p>
 <pre><code>https://example.com/john hasShoes 1 name
 </code></pre>
-<p>Notice how the Resource with the <code>name: Mr. Boot</code> does not have an explicit <code>@id</code>, but it <em>does</em> have a Path.</p>
 <p>This Path is useful for storing the value in other serialization formats, such as <code>.ad3</code>:</p>
 <pre><code class="language-ad3">[&quot;https://example.com/john https://example.com/hasShoes 0&quot;, &quot;https://example.com/name&quot;, &quot;Mr. Boot&quot;]
 [&quot;https://example.com/john https://example.com/hasShoes 1&quot;, &quot;https://example.com/name&quot;, &quot;Sunny Sandals&quot;]
 </code></pre>
+<p>You can target an item in an array by using a number to indicate its position, starting with 0.</p>
+<p>Notice how the Resource with the <code>name: Mr. Boot</code> does not have an explicit <code>@id</code>, but it <em>does</em> have a Path.</p>
 
                     </main>
 
