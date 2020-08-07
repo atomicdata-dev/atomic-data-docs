@@ -21,3 +21,5 @@ For example:
 ```
 
 Every single property used for Translation strings are instances of the Translation class.
+
+A translation string uses the [MDString](https://https://atomicdata.dev/datatypes/MDString) datatype, which means it allows Markdown syntax.

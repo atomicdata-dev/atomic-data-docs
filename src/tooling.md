@@ -1,19 +1,13 @@
 # Tooling for Atomic Data
 
-At this moment, **no real tooling for Atomic Data exists**.
+At this moment, **barely any tooling for Atomic Data exists**.
 Great tooling is required to make this a success.
 This document contains a set of ideas that would help achieve that success.
-
-## Atomic Validator
-
-Takes some Graph as an input, and validates its contents.
-Could be useful for many purposes, and should be one of the first things to become available.
-Not only should this parse Atomic-NDJSON, it should also make sure the URLs resolve and the DataTypes resolve.
-Perhaps it should also return if non-standard Datatypes are being used, and if so, which ones.
 
 ## Atomic-cli
 
 A CLI tool for generating Atomic Data.
+A first (Rust) implementation can be found [here](https://github.com/joepio/atomic).
 
 ```sh
 # Add a mapping, and store the Atomic Class locally
@@ -32,6 +26,13 @@ atomic install https://atomicdata.dev/ontologies/meetings
 atomic install meetings
 ```
 
+## Atomic Validator
+
+Takes some Graph as an input, and validates its contents.
+Could be useful for many purposes, and should be one of the first things to become available.
+Not only should this parse Atomic-NDJSON, it should also make sure the URLs resolve and the DataTypes resolve.
+Perhaps it should also return if non-standard Datatypes are being used, and if so, which ones.
+
 ## Atomic server
 
 - Makes a graph available at some endpoint.
@@ -39,6 +40,8 @@ atomic install meetings
 - Offer useful query options (e.g. Triple Pattern Fragments)
 - Offers pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)
 - Offer a browser-friendly HTML presentation? (Atomic Preview)
+
+WIP implementation can de found [here](https://github.com/joepio/atomic).
 
 ## Atomizer (data importer and conversion kit)
 
@@ -55,6 +58,10 @@ atomic install meetings
 The most important tooling for Atomic Data, are libraries.
 Tools that developers use to fetch, manipulate and share Atomic Data inside their applications.
 In this section, I'll create some rough API designs.
+
+### Atomic-rs
+
+Basic implementation can be found [here](https://github.com/joepio/atomic).
 
 ### Atomic-js (Javascript / Typescript)
 
@@ -121,22 +128,6 @@ I think a Developer Experience similar to the one above is essential for getting
 It should be incredibly easy, and this is what enables that.
 However, realizing a library + IDE support as shown above is hard at the least, perhaps even impossible.
 Theoretically, the information is accessible - but I'm not sure whether the IDE and the JS context (e.g. the Typescript compiler) can successfully see which shape is being returned by the `classInitializer` function.
-
-### Atomic-rs
-
-Rust's compiler has strict type checking.
-It also features a very flexible macro language, which could enable intuitive API designs for Atomic Data.
-It could fetch the Properties and Classes at compile time, and convert these to
-
-```rust
-use atomic::{init_store}
-
-fn main() {
-  let mut graph = init_store();
-  // TODO! Design a macro solution
-
-}
-```
 
 ## Atomic Browser
 

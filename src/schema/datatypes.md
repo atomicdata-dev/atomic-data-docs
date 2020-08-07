@@ -34,11 +34,35 @@ Should not contain language specific data, use a [TranslationBox](translations.m
 
 e.g. `String time! \n Second line!`
 
+## MDString
+
+_URL: `https://https://atomicdata.dev/datatypes/MDString`_
+
+A markdown string, using the [CommonMark syntax](https://commonmark.org/).
+UTF-8 formatted, no max character count, newlines are `\n`.
+
+e.g.
+
+```md
+# Heading
+
+Paragraph with [link](https://example.com).
+```
+
 ## Integer
 
 _URL: `https://atomicdata.dev/datatypes/integer`_
 
 Signed Integer, max 64 bit.
+Max value: [`9223372036854775807`](https://en.wikipedia.org/wiki/9,223,372,036,854,775,807)
+
+e.g. `-420`
+
+## Float
+
+_URL: `https://atomicdata.dev/datatypes/float`_
+
+Number with a comma.
 Max value: [`9223372036854775807`](https://en.wikipedia.org/wiki/9,223,372,036,854,775,807)
 
 e.g. `-420`
@@ -59,13 +83,23 @@ Use a single bit one boolean.
 
 1 for `true`, or 0 for `false`.
 
-##  DateTime
+## Date
 
-_URL: `https://atomicdata.dev/datatypes/dateTime`_
+ISO date _without time_.
+YYYY-MM-DD.
 
-ISO 8601 encoded string.
+e.g. `1991-01-20`
 
-e.g. `2020-06-11`
+##  Timestamp
+
+_URL: `https://atomicdata.dev/datatypes/timestamp`_
+
+Similar to [Unix Timestamp](https://www.unixtimestamp.com/).
+Milliseconds since midnight UTC 1970 jan 01 (aka the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time)).
+Use this for most DateTime fields.
+Signed 64 bit integer (instead of 32 bit in Unix systems).
+
+e.g. `1596798919` (= 07 Aug 2020 11:15:19)
 
 ## ResourceArray
 
