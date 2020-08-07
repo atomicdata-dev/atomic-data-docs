@@ -571,9 +571,23 @@ Could be HTTP, HTTPS, or any other type of schema.</p>
 Newlines use backslash escaped <code>\n</code> characters.
 Should not contain language specific data, use a <a href="schema/translations.html">TranslationBox</a> instead.</p>
 <p>e.g. <code>String time! \n Second line!</code></p>
+<h2><a class="header" href="#mdstring" id="mdstring">MDString</a></h2>
+<p><em>URL: <code>https://https://atomicdata.dev/datatypes/MDString</code></em></p>
+<p>A markdown string, using the <a href="https://commonmark.org/">CommonMark syntax</a>.
+UTF-8 formatted, no max character count, newlines are <code>\n</code>.</p>
+<p>e.g.</p>
+<pre><code class="language-md"># Heading
+
+Paragraph with [link](https://example.com).
+</code></pre>
 <h2><a class="header" href="#integer" id="integer">Integer</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/integer</code></em></p>
 <p>Signed Integer, max 64 bit.
+Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
+<p>e.g. <code>-420</code></p>
+<h2><a class="header" href="#float" id="float">Float</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/float</code></em></p>
+<p>Number with a comma.
 Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
 <p>e.g. <code>-420</code></p>
 <h2><a class="header" href="#boolean" id="boolean">Boolean</a></h2>
@@ -584,10 +598,17 @@ Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><co
 <p><strong>Binary serialization</strong></p>
 <p>Use a single bit one boolean.</p>
 <p>1 for <code>true</code>, or 0 for <code>false</code>.</p>
-<h2><a class="header" href="#datetime" id="datetime">DateTime</a></h2>
-<p><em>URL: <code>https://atomicdata.dev/datatypes/dateTime</code></em></p>
-<p>ISO 8601 encoded string.</p>
-<p>e.g. <code>2020-06-11</code></p>
+<h2><a class="header" href="#date" id="date">Date</a></h2>
+<p>ISO date <em>without time</em>.
+YYYY-MM-DD.</p>
+<p>e.g. <code>1991-01-20</code></p>
+<h2><a class="header" href="#timestamp" id="timestamp">Timestamp</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/timestamp</code></em></p>
+<p>Similar to <a href="https://www.unixtimestamp.com/">Unix Timestamp</a>.
+Milliseconds since midnight UTC 1970 jan 01 (aka the <a href="https://en.wikipedia.org/wiki/Unix_time">Unix Epoch</a>).
+Use this for most DateTime fields.
+Signed 64 bit integer (instead of 32 bit in Unix systems).</p>
+<p>e.g. <code>1596798919</code> (= 07 Aug 2020 11:15:19)</p>
 <h2><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/resourceArray</code></em></p>
 <p>Sequential, ordered list of Atomic URIs.
@@ -612,6 +633,7 @@ Use a <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a> language 
 [&quot;https://example.com/johns/lifestory&quot;,&quot;https://atomicdata.dev/langs/nl&quot;,&quot;Tsja, John werd geboren en stierf later.&quot;]
 </code></pre>
 <p>Every single property used for Translation strings are instances of the Translation class.</p>
+<p>A translation string uses the <a href="https://https://atomicdata.dev/datatypes/MDString">MDString</a> datatype, which means it allows Markdown syntax.</p>
 <h1><a class="header" href="#atomic-schema-faq" id="atomic-schema-faq">Atomic Schema FAQ</a></h1>
 <h2><a class="header" href="#how-do-i-create-a-property-that-supports-multiple-datatypes" id="how-do-i-create-a-property-that-supports-multiple-datatypes">How do I create a Property that supports multiple Datatypes?</a></h2>
 <p>A property only has one single Datatype.
@@ -1131,16 +1153,12 @@ As long as a graph contains links to HTTP Resources, it is not Frozen, since res
 It also helps to make sure the content can be shared peer to peer</p>
 <p>Note that <strong>Graphs with cyclical relations cannot be frozen</strong>, since every iteration that you'd try to freeze will change its references and therefore also its contents, and therefore also its content hash.</p>
 <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
-<p>At this moment, <strong>no real tooling for Atomic Data exists</strong>.
+<p>At this moment, <strong>barely any tooling for Atomic Data exists</strong>.
 Great tooling is required to make this a success.
 This document contains a set of ideas that would help achieve that success.</p>
-<h2><a class="header" href="#atomic-validator" id="atomic-validator">Atomic Validator</a></h2>
-<p>Takes some Graph as an input, and validates its contents.
-Could be useful for many purposes, and should be one of the first things to become available.
-Not only should this parse Atomic-NDJSON, it should also make sure the URLs resolve and the DataTypes resolve.
-Perhaps it should also return if non-standard Datatypes are being used, and if so, which ones.</p>
 <h2><a class="header" href="#atomic-cli" id="atomic-cli">Atomic-cli</a></h2>
-<p>A CLI tool for generating Atomic Data.</p>
+<p>A CLI tool for generating Atomic Data.
+A first (Rust) implementation can be found <a href="https://github.com/joepio/atomic">here</a>.</p>
 <pre><code class="language-sh"># Add a mapping, and store the Atomic Class locally
 atomic map person https://example.com/person
 # Create a new instance with that Class
@@ -1156,6 +1174,11 @@ atomic install https://atomicdata.dev/ontologies/meetings
 # when no URL is given, use the Ontola repo's ontologies
 atomic install meetings
 </code></pre>
+<h2><a class="header" href="#atomic-validator" id="atomic-validator">Atomic Validator</a></h2>
+<p>Takes some Graph as an input, and validates its contents.
+Could be useful for many purposes, and should be one of the first things to become available.
+Not only should this parse Atomic-NDJSON, it should also make sure the URLs resolve and the DataTypes resolve.
+Perhaps it should also return if non-standard Datatypes are being used, and if so, which ones.</p>
 <h2><a class="header" href="#atomic-server" id="atomic-server">Atomic server</a></h2>
 <ul>
 <li>Makes a graph available at some endpoint.</li>
@@ -1164,6 +1187,7 @@ atomic install meetings
 <li>Offers pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)</li>
 <li>Offer a browser-friendly HTML presentation? (Atomic Preview)</li>
 </ul>
+<p>WIP implementation can de found <a href="https://github.com/joepio/atomic">here</a>.</p>
 <h2><a class="header" href="#atomizer-data-importer-and-conversion-kit" id="atomizer-data-importer-and-conversion-kit">Atomizer (data importer and conversion kit)</a></h2>
 <ul>
 <li>Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms</li>
@@ -1178,6 +1202,8 @@ atomic install meetings
 <p>The most important tooling for Atomic Data, are libraries.
 Tools that developers use to fetch, manipulate and share Atomic Data inside their applications.
 In this section, I'll create some rough API designs.</p>
+<h3><a class="header" href="#atomic-rs" id="atomic-rs">Atomic-rs</a></h3>
+<p>Basic implementation can be found <a href="https://github.com/joepio/atomic">here</a>.</p>
 <h3><a class="header" href="#atomic-js-javascript--typescript" id="atomic-js-javascript--typescript">Atomic-js (Javascript / Typescript)</a></h3>
 <p>A JS compatible library, accessible as an NPM package is the most popular and developer friendly way to start.</p>
 <p>Here's some pseudocode that indicates how it might be used:</p>
@@ -1238,18 +1264,6 @@ console.log(aliceJS.bestFriend) // =&gt; { name: Bob, birthdate: Date(1991-01-20
 It should be incredibly easy, and this is what enables that.
 However, realizing a library + IDE support as shown above is hard at the least, perhaps even impossible.
 Theoretically, the information is accessible - but I'm not sure whether the IDE and the JS context (e.g. the Typescript compiler) can successfully see which shape is being returned by the <code>classInitializer</code> function.</p>
-<h3><a class="header" href="#atomic-rs" id="atomic-rs">Atomic-rs</a></h3>
-<p>Rust's compiler has strict type checking.
-It also features a very flexible macro language, which could enable intuitive API designs for Atomic Data.
-It could fetch the Properties and Classes at compile time, and convert these to</p>
-<pre><pre class="playpen"><code class="language-rust">use atomic::{init_store}
-
-fn main() {
-  let mut graph = init_store();
-  // TODO! Design a macro solution
-
-}
-</code></pre></pre>
 <h2><a class="header" href="#atomic-browser" id="atomic-browser">Atomic Browser</a></h2>
 <p>A web-browser application that enables viewing, browsing, navigating Atomic Data.</p>
 <h1><a class="header" href="#get-involved" id="get-involved">Get involved</a></h1>

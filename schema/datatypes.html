@@ -176,9 +176,23 @@ Could be HTTP, HTTPS, or any other type of schema.</p>
 Newlines use backslash escaped <code>\n</code> characters.
 Should not contain language specific data, use a <a href="translations.html">TranslationBox</a> instead.</p>
 <p>e.g. <code>String time! \n Second line!</code></p>
+<h2><a class="header" href="#mdstring" id="mdstring">MDString</a></h2>
+<p><em>URL: <code>https://https://atomicdata.dev/datatypes/MDString</code></em></p>
+<p>A markdown string, using the <a href="https://commonmark.org/">CommonMark syntax</a>.
+UTF-8 formatted, no max character count, newlines are <code>\n</code>.</p>
+<p>e.g.</p>
+<pre><code class="language-md"># Heading
+
+Paragraph with [link](https://example.com).
+</code></pre>
 <h2><a class="header" href="#integer" id="integer">Integer</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/integer</code></em></p>
 <p>Signed Integer, max 64 bit.
+Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
+<p>e.g. <code>-420</code></p>
+<h2><a class="header" href="#float" id="float">Float</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/float</code></em></p>
+<p>Number with a comma.
 Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><code>9223372036854775807</code></a></p>
 <p>e.g. <code>-420</code></p>
 <h2><a class="header" href="#boolean" id="boolean">Boolean</a></h2>
@@ -189,10 +203,17 @@ Max value: <a href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807"><co
 <p><strong>Binary serialization</strong></p>
 <p>Use a single bit one boolean.</p>
 <p>1 for <code>true</code>, or 0 for <code>false</code>.</p>
-<h2><a class="header" href="#datetime" id="datetime">DateTime</a></h2>
-<p><em>URL: <code>https://atomicdata.dev/datatypes/dateTime</code></em></p>
-<p>ISO 8601 encoded string.</p>
-<p>e.g. <code>2020-06-11</code></p>
+<h2><a class="header" href="#date" id="date">Date</a></h2>
+<p>ISO date <em>without time</em>.
+YYYY-MM-DD.</p>
+<p>e.g. <code>1991-01-20</code></p>
+<h2><a class="header" href="#timestamp" id="timestamp">Timestamp</a></h2>
+<p><em>URL: <code>https://atomicdata.dev/datatypes/timestamp</code></em></p>
+<p>Similar to <a href="https://www.unixtimestamp.com/">Unix Timestamp</a>.
+Milliseconds since midnight UTC 1970 jan 01 (aka the <a href="https://en.wikipedia.org/wiki/Unix_time">Unix Epoch</a>).
+Use this for most DateTime fields.
+Signed 64 bit integer (instead of 32 bit in Unix systems).</p>
+<p>e.g. <code>1596798919</code> (= 07 Aug 2020 11:15:19)</p>
 <h2><a class="header" href="#resourcearray" id="resourcearray">ResourceArray</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/resourceArray</code></em></p>
 <p>Sequential, ordered list of Atomic URIs.
