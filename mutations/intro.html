@@ -159,7 +159,7 @@
                         <h1><a class="header" href="#atomic-mutations" id="atomic-mutations">Atomic Mutations</a></h1>
 <p>Atomic Mutations is a proposed standard for communicating state changes of <a href="../core/intro.html">Atomic Data</a>.
 It is the part of Atomic Data that is concerned with writing, editing and updating.</p>
-<p><em>Disclaimer: This part of the draft spec lacks even more clarity than the others, and is constantly moving.</em></p>
+<p><em>Disclaimer: This part of the draft spec is highly WIP.</em></p>
 <h2><a class="header" href="#design-goals" id="design-goals">Design goals</a></h2>
 <ul>
 <li><strong>Event sourced</strong>: Store State changes, as well as the current state. This enables versioning, history playback, undo, audit controls, and more.</li>
@@ -168,6 +168,7 @@ It is the part of Atomic Data that is concerned with writing, editing and updati
 <li><strong>Decentralized</strong>: Can be used in P2P networks to send mutations from device to device.</li>
 <li><strong>Extensible</strong>: The methods are not fixed, and can be added by anyone.</li>
 <li><strong>Streamable</strong>: The state changes could be used in streaming context, e.g. a client app that reads data that changes every second.</li>
+<li><strong>Pub/Sub</strong>: Easy to subscribe to changes and get notified on changes.</li>
 <li><strong>Atomic</strong>: All the Atomic Data design goals also apply here.</li>
 </ul>
 <h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>

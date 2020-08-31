@@ -157,8 +157,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#how-does-atomic-data-relate-to-json" id="how-does-atomic-data-relate-to-json">How does Atomic Data relate to JSON?</a></h1>
-<p>Atomic Data is a stricter subset of RDF, and the most popular serialization of RDF for JSON data is <a href="https://json-ld.org/">JSON-LD</a>.
-When converting JSON to Atomic Data and the other way around, its best to use this format.</p>
+<p>Because JSON is so popular, Atomic Data is designed to be easily serializable to JSON.</p>
+<p>Atomic Data is a strict subset of RDF, and the most popular serialization of RDF for JSON data is <a href="https://json-ld.org/">JSON-LD</a>.
+All JSON-LD is perfectly valid JSON, but with a couple of handy features.</p>
 <h2><a class="header" href="#from-json-to-atomic-data" id="from-json-to-atomic-data">From JSON to Atomic Data</a></h2>
 <p>Atomic Data requires a bit more information about pieces of data than JSON tends to contain. Let's take a look at a regular JSON example:</p>
 <pre><code class="language-json">{

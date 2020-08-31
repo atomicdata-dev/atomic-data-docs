@@ -157,12 +157,11 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
-<p>At this moment, <strong>barely any tooling for Atomic Data exists</strong>.
-Great tooling is required to make this a success.
-This document contains a set of ideas that would help achieve that success.</p>
-<h2><a class="header" href="#atomic-cli" id="atomic-cli">Atomic-cli</a></h2>
-<p>A CLI tool for generating Atomic Data.
-A first (Rust) implementation can be found <a href="https://github.com/joepio/atomic">here</a>.</p>
+<p>Because Atomic Data is very young, <strong>little tooling for Atomic Data exists</strong>.
+Great tooling is required to make this a success.</p>
+<h2><a class="header" href="#existing-tooling" id="existing-tooling">Existing tooling</a></h2>
+<h3><a class="header" href="#atomic-cli" id="atomic-cli"><code>atomic-cli</code></a></h3>
+<p>A tool for generating / querying Atomic Data from the command line.</p>
 <pre><code class="language-sh"># Add a mapping, and store the Atomic Class locally
 atomic map person https://example.com/person
 # Create a new instance with that Class
@@ -178,20 +177,28 @@ atomic install https://atomicdata.dev/ontologies/meetings
 # when no URL is given, use the Ontola repo's ontologies
 atomic install meetings
 </code></pre>
-<h2><a class="header" href="#atomic-validator" id="atomic-validator">Atomic Validator</a></h2>
-<p>Takes some Graph as an input, and validates its contents.
-Could be useful for many purposes, and should be one of the first things to become available.
-Not only should this parse Atomic-NDJSON, it should also make sure the URLs resolve and the DataTypes resolve.
-Perhaps it should also return if non-standard Datatypes are being used, and if so, which ones.</p>
-<h2><a class="header" href="#atomic-server" id="atomic-server">Atomic server</a></h2>
+<p>MIT licensed <a href="%5Bhere%5D(https://github.com/joepio/atomic/cli)">repo here</a>.</p>
+<h3><a class="header" href="#atomic-lib-rust" id="atomic-lib-rust"><code>atomic-lib</code> (Rust)</a></h3>
+<p>Library that contains:</p>
+<ul>
+<li>An in-memory store</li>
+<li>Parsing (AD3) / Serialization (AD3, JSON, more to come)</li>
+<li>Path traversal</li>
+<li>Basic validation</li>
+</ul>
+<p>MIT licensed <a href="%5Bhere%5D(https://github.com/joepio/atomic/lib)">repo here</a>.</p>
+<h3><a class="header" href="#atomic-server" id="atomic-server"><code>atomic-server</code></a></h3>
+<p>Server for hosting Atomic Data. Uses <code>atomic-lib</code>.</p>
 <ul>
 <li>Makes a graph available at some endpoint.</li>
 <li>Responds to requests for created Atomic Resources (including Properties / DataTypes)</li>
-<li>Offer useful query options (e.g. Triple Pattern Fragments)</li>
-<li>Offers pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)</li>
-<li>Offer a browser-friendly HTML presentation? (Atomic Preview)</li>
+<li>Useful query options (e.g. Triple Pattern Fragments)</li>
+<li>Browser-friendly HTML presentation</li>
+<li>Pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)</li>
 </ul>
-<p>WIP implementation can de found <a href="https://github.com/joepio/atomic">here</a>.</p>
+<p>MIT licensed <a href="%5Bhere%5D(https://github.com/joepio/atomic/server)">repo here</a>.</p>
+<h2><a class="header" href="#some-ideas-for-tooling" id="some-ideas-for-tooling">Some ideas for tooling</a></h2>
+<p>This document contains a set of ideas that would help achieve that success.</p>
 <h2><a class="header" href="#atomizer-data-importer-and-conversion-kit" id="atomizer-data-importer-and-conversion-kit">Atomizer (data importer and conversion kit)</a></h2>
 <ul>
 <li>Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms</li>
@@ -199,16 +206,10 @@ Perhaps it should also return if non-standard Datatypes are being used, and if s
 </ul>
 <h2><a class="header" href="#atomic-preview" id="atomic-preview">Atomic Preview</a></h2>
 <ul>
-<li>A simple widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.</li>
+<li>A simple (JS) widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.</li>
 <li>Would be useful for documentation, and as a default view for Atomic Data.</li>
 </ul>
-<h2><a class="header" href="#libraries" id="libraries">Libraries</a></h2>
-<p>The most important tooling for Atomic Data, are libraries.
-Tools that developers use to fetch, manipulate and share Atomic Data inside their applications.
-In this section, I'll create some rough API designs.</p>
-<h3><a class="header" href="#atomic-rs" id="atomic-rs">Atomic-rs</a></h3>
-<p>Basic implementation can be found <a href="https://github.com/joepio/atomic">here</a>.</p>
-<h3><a class="header" href="#atomic-js-javascript--typescript" id="atomic-js-javascript--typescript">Atomic-js (Javascript / Typescript)</a></h3>
+<h2><a class="header" href="#atomic-js-javascript--typescript" id="atomic-js-javascript--typescript">Atomic-js (Javascript / Typescript)</a></h2>
 <p>A JS compatible library, accessible as an NPM package is the most popular and developer friendly way to start.</p>
 <p>Here's some pseudocode that indicates how it might be used:</p>
 <pre><code class="language-js">import {createStore} from '@atomicdata';

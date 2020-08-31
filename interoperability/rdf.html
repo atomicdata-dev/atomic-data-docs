@@ -187,22 +187,26 @@ However, some of the characteristics of RDF might have contributed to its relati
 <p>Rendering this item might be as simple as fetching the subject URL, filtering by predicate URL, and parsing the <code>object</code> as a date.</p>
 <p>However, this is also valid RDF:</p>
 <pre><code class="language-ttl">&lt;example:joep&gt; &lt;schema:birthDate&gt; &quot;1991-01-20&quot;^^xsd:date &lt;example:someNamedGraph&gt;
-&lt;example:joep&gt; &lt;schema:birthDate&gt; &lt;example:birthDateObject&gt; &lt;example:someNamedGraph&gt;
+&lt;example:joep&gt; &lt;schema:birthDate&gt; &lt;example:birthDateObject&gt; &lt;example:someOtherNamedGraph&gt;
 &lt;example:joep&gt; &lt;schema:birthDate&gt; &quot;20th of januari 1991&quot;@en &lt;example:someNamedGraph&gt;
 &lt;example:joep&gt; &lt;schema:birthDate&gt; &quot;20 januari 1991&quot;@nl &lt;example:someNamedGraph&gt;
 &lt;example:joep&gt; &lt;schema:birthDate&gt; &quot;2000-02-30&quot;^^xsd:date &lt;example:someNamedGraph&gt;
 </code></pre>
-<p>Now things get more complicated if you just want to render the birthdate:</p>
+<p>Now things get more complicated if you just want to select the original birthdate value:</p>
 <ol>
 <li><strong>Select the named graph</strong>. The triple containing that birthday may exist in some named graph different from the <code>subject</code> URL, which means that I first need to identify and fetch that graph.</li>
 <li><strong>Select the subject</strong>.</li>
 <li><strong>Select the predicate</strong>.</li>
 <li><strong>Select the datatype</strong>. You probably need a specific datatype (in this case, a Date), so you need to filter the triples to match that specific datatype.</li>
 <li><strong>Select the language</strong>. Same could be true for language, too, but that is not necessary in this birthdate example.</li>
-<li><strong>Select the triple</strong>. Even after all our previous selectors, we <em>still</em> might have multiple values. How do I know which is the triple I'm supposed to use?</li>
+<li><strong>Select the specific triple</strong>. Even after all our previous selectors, we <em>still</em> might have multiple values. How do I know which is the triple I'm supposed to use?</li>
 </ol>
-<p>To be fair, with most RDF data, only steps 2 and 3 are needed, since there are no <code>subject-predicate</code> collisions.
-But if you're building a system that uses RDF, that system also needs to deal with steps 1,4,5 and 6.
+<p>To be fair, with a lot of RDF data, only steps 2 and 3 are needed, since there are often no <code>subject-predicate</code> collisions.
+And if you <em>control</em> the data of the source, you can set any constraints that you like, inlcluding <code>subject-predicate</code> uniqueness.
+But if you're building a system that uses arbitrary RDF, that system also needs to deal with steps 1,4,5 and 6.
+That often means writing a lot of conditionals and other client-side logic to get the value that you need.
+It also means that serializing to a format like JSON becomes complicated - you can't just map predicates to keys - you might get collisions.
+Oh, and you can't use key-value stores for storing RDF, at least not in a trivial way.
 This complexity is the direct result of the lack of <code>subject-predicate</code> uniqueness.</p>
 <p>As a developer who uses RDF data, I want to be able to do something like this:</p>
 <pre><code class="language-js">// Fetches the resource

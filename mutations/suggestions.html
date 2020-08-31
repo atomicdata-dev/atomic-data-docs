@@ -165,14 +165,15 @@ Practically, it should enable right-clicking on any piece of Atomic Data on the 
 <li><strong>Asynchronous collaboration</strong>: Various users can work on the same thing at the same time.</li>
 <li><strong>Branching &amp; merging</strong>: Issues that result from async changes (merge conflicts) can be resolved.</li>
 </ul>
-<h2><a class="header" href="#fork" id="fork">Fork</a></h2>
+<h2><a class="header" href="#concepts" id="concepts">Concepts</a></h2>
+<h3><a class="header" href="#fork" id="fork">Fork</a></h3>
 <p>Forking is the first step to making a suggestion.
 Forking refers to:</p>
-<ul>
+<ol>
 <li>copying some resource</li>
 <li>changing the subject URL to some URL that you control</li>
 <li>adding a reference to the original URL using the <code>atomic:originalSubject</code> Property.</li>
-</ul>
+</ol>
 <p>The newly created copy with the different URL is a <em>Fork</em>.
 Since the Fork is a resource that you own (see <a href="ownership.html">Ownership</a>), you can make changes to is.</p>
 <p>Whenever you make changes, the app making the changes <em>should</em> keep track of them as Atomic Mutations.
@@ -185,8 +186,16 @@ The important difference between a Suggestion and a Mutation, is that a Mutation
 <h3><a class="header" href="#controller" id="controller">Controller</a></h3>
 <p>The actor (person / organization) that is in control of a specific Resource and its mutations.</p>
 <h3><a class="header" href="#inbox" id="inbox">Inbox</a></h3>
-<p>An Inbox represents an endpoint that accepts incoming Suggestions.
+<p>An Inbox represents a resource that contains incoming Suggestions.
 It's similar to an e-mail inbox.</p>
+<h2><a class="header" href="#protocol" id="protocol">Protocol</a></h2>
+<p>Let's</p>
+<pre><code class="language-http">POST example.com/sarah HTTP/1.1
+Host: foo.example
+Content-Type: application/ad3-ndjson
+
+[&quot;https://example.com/sarah&quot;,&quot;https://example.com/description&quot;,&quot;&quot;]
+</code></pre>
 
                     </main>
 

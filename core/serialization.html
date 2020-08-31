@@ -163,7 +163,7 @@ However, it's recommended to use <code>AtomicTriples</code>, which is specifical
 <h2><a class="header" href="#atomictriples-ad3" id="atomictriples-ad3">AtomicTriples (.ad3)</a></h2>
 <p>A single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.</p>
 <p>It looks like this:</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/subject&quot;,&quot;https://example.com/property&quot;,&quot;some object&quot;]
+<pre><code class="language-ad3">[&quot;https://example.com/subject&quot;,&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
 <p>It uses Newline Delimited JSON (<a href="http://ndjson.org/">NDJSON</a>) for serialization, which is just a large string with newlines between each JSON object.</p>
@@ -181,17 +181,26 @@ However, it's recommended to use <code>AtomicTriples</code>, which is specifical
 <p>AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
 For many use-cases, omitting the Subject is a <em>bad idea</em>.
 It means that you can't describe multiple resources in a single document, and that is useful in many contexts.</p>
-<p>However, omitting the subject can be useful in (at least) two scenarios:</p>
+<p>However, omitting the subject can be useful in (at least) three scenarios:</p>
 <ul>
 <li>The <strong>Subject is not yet known when creating the data</strong> (for example, because it still has to be determined by some server or hash function).</li>
 <li>The <strong>Subject is already known by the client</strong>, and leaving it out saves bandwidth. This happens for example during Subject Fetching, where the request itself contains the Subject, because the fetched URL itself is the Subject of all returned triples. Note that in this scenario, the server is unable to include</li>
+<li>The <strong>Atoms are only valid coming from a specific source</strong>. Since</li>
 </ul>
 <pre><code class="language-ndjson">[&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
+<p>Keep in mind that this approach also has some downsides:</p>
 <ul>
-<li><em>Mime type (not registered yet!): <code>application/ad2-ndjson</code></em></li>
-<li><em>File name extension: <code>.ad2</code></em></li>
+<li>
+<p>It becomes impossible to include other resources in a single serialized document / response.</p>
+</li>
+<li>
+<p><em>Mime type (not registered yet!): <code>application/ad2-ndjson</code></em></p>
+</li>
+<li>
+<p><em>File name extension: <code>.ad2</code></em></p>
+</li>
 </ul>
 <h2><a class="header" href="#rdf-serialization-formats" id="rdf-serialization-formats">RDF serialization formats</a></h2>
 <p>Because of the similarities with RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples or JSON-LD.
