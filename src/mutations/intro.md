@@ -3,7 +3,7 @@
 Atomic Mutations is a proposed standard for communicating state changes of [Atomic Data](../core/intro.md).
 It is the part of Atomic Data that is concerned with writing, editing and updating.
 
-_Disclaimer: This part of the draft spec lacks even more clarity than the others, and is constantly moving._
+_Disclaimer: This part of the draft spec is highly WIP._
 
 ## Design goals
 
@@ -13,6 +13,7 @@ _Disclaimer: This part of the draft spec lacks even more clarity than the others
 - **Decentralized**: Can be used in P2P networks to send mutations from device to device.
 - **Extensible**: The methods are not fixed, and can be added by anyone.
 - **Streamable**: The state changes could be used in streaming context, e.g. a client app that reads data that changes every second.
+- **Pub/Sub**: Easy to subscribe to changes and get notified on changes.
 - **Atomic**: All the Atomic Data design goals also apply here.
 
 ## Motivation

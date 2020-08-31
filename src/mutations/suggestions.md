@@ -9,14 +9,16 @@ Practically, it should enable right-clicking on any piece of Atomic Data on the 
 - **Asynchronous collaboration**: Various users can work on the same thing at the same time.
 - **Branching & merging**: Issues that result from async changes (merge conflicts) can be resolved.
 
-## Fork
+## Concepts
+
+### Fork
 
 Forking is the first step to making a suggestion.
 Forking refers to:
 
-- copying some resource
-- changing the subject URL to some URL that you control
-- adding a reference to the original URL using the `atomic:originalSubject` Property.
+1. copying some resource
+1. changing the subject URL to some URL that you control
+1. adding a reference to the original URL using the `atomic:originalSubject` Property.
 
 The newly created copy with the different URL is a _Fork_.
 Since the Fork is a resource that you own (see [Ownership](ownership.md)), you can make changes to is.
@@ -38,5 +40,17 @@ The actor (person / organization) that is in control of a specific Resource and 
 
 ### Inbox
 
-An Inbox represents an endpoint that accepts incoming Suggestions.
+An Inbox represents a resource that contains incoming Suggestions.
 It's similar to an e-mail inbox.
+
+## Protocol
+
+Let's
+
+```http
+POST example.com/sarah HTTP/1.1
+Host: foo.example
+Content-Type: application/ad3-ndjson
+
+["https://example.com/sarah","https://example.com/description",""]
+```

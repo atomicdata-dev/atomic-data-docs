@@ -1,13 +1,13 @@
 # Tooling for Atomic Data
 
-At this moment, **barely any tooling for Atomic Data exists**.
+Because Atomic Data is very young, **little tooling for Atomic Data exists**.
 Great tooling is required to make this a success.
-This document contains a set of ideas that would help achieve that success.
 
-## Atomic-cli
+## Existing tooling
 
-A CLI tool for generating Atomic Data.
-A first (Rust) implementation can be found [here](https://github.com/joepio/atomic).
+### `atomic-cli`
+
+A tool for generating / querying Atomic Data from the command line.
 
 ```sh
 # Add a mapping, and store the Atomic Class locally
@@ -26,22 +26,35 @@ atomic install https://atomicdata.dev/ontologies/meetings
 atomic install meetings
 ```
 
-## Atomic Validator
+MIT licensed [repo here]([here](https://github.com/joepio/atomic/cli)).
 
-Takes some Graph as an input, and validates its contents.
-Could be useful for many purposes, and should be one of the first things to become available.
-Not only should this parse Atomic-NDJSON, it should also make sure the URLs resolve and the DataTypes resolve.
-Perhaps it should also return if non-standard Datatypes are being used, and if so, which ones.
+### `atomic-lib` (Rust)
 
-## Atomic server
+Library that contains:
+
+- An in-memory store
+- Parsing (AD3) / Serialization (AD3, JSON, more to come)
+- Path traversal
+- Basic validation
+
+MIT licensed [repo here]([here](https://github.com/joepio/atomic/lib)).
+
+
+### `atomic-server`
+
+Server for hosting Atomic Data. Uses `atomic-lib`.
 
 - Makes a graph available at some endpoint.
 - Responds to requests for created Atomic Resources (including Properties / DataTypes)
-- Offer useful query options (e.g. Triple Pattern Fragments)
-- Offers pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)
-- Offer a browser-friendly HTML presentation? (Atomic Preview)
+- Useful query options (e.g. Triple Pattern Fragments)
+- Browser-friendly HTML presentation
+- Pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)
 
-WIP implementation can de found [here](https://github.com/joepio/atomic).
+MIT licensed [repo here]([here](https://github.com/joepio/atomic/server)).
+
+## Some ideas for tooling
+
+This document contains a set of ideas that would help achieve that success.
 
 ## Atomizer (data importer and conversion kit)
 
@@ -50,20 +63,10 @@ WIP implementation can de found [here](https://github.com/joepio/atomic).
 
 ## Atomic Preview
 
-- A simple widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.
+- A simple (JS) widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.
 - Would be useful for documentation, and as a default view for Atomic Data.
 
-## Libraries
-
-The most important tooling for Atomic Data, are libraries.
-Tools that developers use to fetch, manipulate and share Atomic Data inside their applications.
-In this section, I'll create some rough API designs.
-
-### Atomic-rs
-
-Basic implementation can be found [here](https://github.com/joepio/atomic).
-
-### Atomic-js (Javascript / Typescript)
+## Atomic-js (Javascript / Typescript)
 
 A JS compatible library, accessible as an NPM package is the most popular and developer friendly way to start.
 

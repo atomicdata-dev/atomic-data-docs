@@ -39,23 +39,27 @@ However, this is also valid RDF:
 
 ```ttl
 <example:joep> <schema:birthDate> "1991-01-20"^^xsd:date <example:someNamedGraph>
-<example:joep> <schema:birthDate> <example:birthDateObject> <example:someNamedGraph>
+<example:joep> <schema:birthDate> <example:birthDateObject> <example:someOtherNamedGraph>
 <example:joep> <schema:birthDate> "20th of januari 1991"@en <example:someNamedGraph>
 <example:joep> <schema:birthDate> "20 januari 1991"@nl <example:someNamedGraph>
 <example:joep> <schema:birthDate> "2000-02-30"^^xsd:date <example:someNamedGraph>
 ```
 
-Now things get more complicated if you just want to render the birthdate:
+Now things get more complicated if you just want to select the original birthdate value:
 
 1. **Select the named graph**. The triple containing that birthday may exist in some named graph different from the `subject` URL, which means that I first need to identify and fetch that graph.
 1. **Select the subject**.
 1. **Select the predicate**.
 1. **Select the datatype**. You probably need a specific datatype (in this case, a Date), so you need to filter the triples to match that specific datatype.
 1. **Select the language**. Same could be true for language, too, but that is not necessary in this birthdate example.
-1. **Select the triple**. Even after all our previous selectors, we _still_ might have multiple values. How do I know which is the triple I'm supposed to use?
+1. **Select the specific triple**. Even after all our previous selectors, we _still_ might have multiple values. How do I know which is the triple I'm supposed to use?
 
-To be fair, with most RDF data, only steps 2 and 3 are needed, since there are no `subject-predicate` collisions.
-But if you're building a system that uses RDF, that system also needs to deal with steps 1,4,5 and 6.
+To be fair, with a lot of RDF data, only steps 2 and 3 are needed, since there are often no `subject-predicate` collisions.
+And if you _control_ the data of the source, you can set any constraints that you like, inlcluding `subject-predicate` uniqueness.
+But if you're building a system that uses arbitrary RDF, that system also needs to deal with steps 1,4,5 and 6.
+That often means writing a lot of conditionals and other client-side logic to get the value that you need.
+It also means that serializing to a format like JSON becomes complicated - you can't just map predicates to keys - you might get collisions.
+Oh, and you can't use key-value stores for storing RDF, at least not in a trivial way.
 This complexity is the direct result of the lack of `subject-predicate` uniqueness.
 
 As a developer who uses RDF data, I want to be able to do something like this:

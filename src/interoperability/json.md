@@ -1,7 +1,9 @@
 # How does Atomic Data relate to JSON?
 
-Atomic Data is a stricter subset of RDF, and the most popular serialization of RDF for JSON data is [JSON-LD](https://json-ld.org/).
-When converting JSON to Atomic Data and the other way around, its best to use this format.
+Because JSON is so popular, Atomic Data is designed to be easily serializable to JSON.
+
+Atomic Data is a strict subset of RDF, and the most popular serialization of RDF for JSON data is [JSON-LD](https://json-ld.org/).
+All JSON-LD is perfectly valid JSON, but with a couple of handy features.
 
 ## From JSON to Atomic Data
 

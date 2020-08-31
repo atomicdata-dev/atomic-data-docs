@@ -10,7 +10,7 @@ A single Atom can be represented by an array of three strings, respectively repr
 
 It looks like this:
 
-```ndjson
+```ad3
 ["https://example.com/subject","https://example.com/property","some object"]
 ["https://example.com/subject","https://example.com/otherProperty","https://example.com/somethingelse"]
 ```
@@ -37,15 +37,20 @@ AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is le
 For many use-cases, omitting the Subject is a _bad idea_.
 It means that you can't describe multiple resources in a single document, and that is useful in many contexts.
 
-However, omitting the subject can be useful in (at least) two scenarios:
+However, omitting the subject can be useful in (at least) three scenarios:
 
 - The **Subject is not yet known when creating the data** (for example, because it still has to be determined by some server or hash function).
 - The **Subject is already known by the client**, and leaving it out saves bandwidth. This happens for example during Subject Fetching, where the request itself contains the Subject, because the fetched URL itself is the Subject of all returned triples. Note that in this scenario, the server is unable to include
+- The **Atoms are only valid coming from a specific source**. Since
 
 ```ndjson
 ["https://example.com/property","some object"]
 ["https://example.com/otherProperty","https://example.com/somethingelse"]
 ```
+
+Keep in mind that this approach also has some downsides:
+
+- It becomes impossible to include other resources in a single serialized document / response.
 
 - _Mime type (not registered yet!): `application/ad2-ndjson`_
 - _File name extension: `.ad2`_

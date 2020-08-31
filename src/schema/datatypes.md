@@ -34,9 +34,9 @@ Should not contain language specific data, use a [TranslationBox](translations.m
 
 e.g. `String time! \n Second line!`
 
-## MDString
+## Markdown
 
-_URL: `https://https://atomicdata.dev/datatypes/MDString`_
+_URL: `https://https://atomicdata.dev/datatypes/markdown`_
 
 A markdown string, using the [CommonMark syntax](https://commonmark.org/).
 UTF-8 formatted, no max character count, newlines are `\n`.
