@@ -44,17 +44,21 @@ MIT licensed [repo here]([here](https://github.com/joepio/atomic/lib)).
 
 Server for hosting Atomic Data. Uses `atomic-lib`.
 
-- Makes a graph available at some endpoint.
-- Responds to requests for created Atomic Resources (including Properties / DataTypes)
+- Responds to requests for created Atomic Resources, makes atomic data available at their URL.
+- Manages data on disk.
 - Useful query options (e.g. Triple Pattern Fragments)
-- Browser-friendly HTML presentation
-- Pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)
+- Browser-friendly HTML presentation, JSON serialization, AD3 serialization.
 
 MIT licensed [repo here]([here](https://github.com/joepio/atomic/server)).
 
 ## Some ideas for tooling
 
 This document contains a set of ideas that would help achieve that success.
+
+## ATOML / VSCode Extension
+
+Extending the TOML format to map it to Atomic Classes.
+This will make editing .TOML files awesome by providing on-screen validation, autocompletion and documentation for fields.
 
 ## Atomizer (data importer and conversion kit)
 

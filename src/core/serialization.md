@@ -2,7 +2,7 @@
 
 Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
-However, it's recommended to use `AtomicTriples`, which is specifically designed to be a simple, performant format for Atomic Data.
+However, it's recommended to use `ad3`, which is specifically designed to be a simple and performant format for Atomic Data.
 
 ## AtomicTriples (.ad3)
 
@@ -30,6 +30,61 @@ _File name extension: `.ad3`_
 Disclaimer: note that Atomic-NDJSON is useful for communicating _current state_, but not for _state changes_.
 
 Atomic Triples is heavily inspired by [NDJSON HexTuples](https://github.com/ontola/hextuples).
+
+Example serialization implementation written in Rust, to show you how _easy_ it is to serialize this!
+
+```rust
+pub fn serialize_atoms_to_ad3(atoms: Vec<Atom>) -> AtomicResult<String> {
+    let mut string = String::new();
+    for atom in atoms {
+        // Use an exsting JSON serialization library to take care of the hard work (escaping quotes, etc.)
+        let mut ad3_atom = serde_json::to_string(&vec![&atom.subject, &atom.property, &atom.value])?;
+        ad3_atom.push_str("\n");
+        &string.push_str(&*ad3_atom);
+    }
+    return Ok(string);
+}
+```
+
+And an example parser:
+
+```rust
+pub fn parse_ad3<'a, 'b>(string: &'b String) -> AtomicResult<Vec<Atom>> {
+    let mut atoms: Vec<Atom> = Vec::new();
+    for line in string.lines() {
+        match line.chars().next() {
+            // These are comments
+            Some('#') => {}
+            Some(' ') => {}
+            // That's an array, let's do this!
+            Some('[') => {
+                let string_vec: Vec<String> =
+                    parse_json_array(line).expect(&*format!("Parsing error in {:?}", line));
+                if string_vec.len() != 3 {
+                    return Err(format!(
+                        "Wrong length of array at line {:?}: wrong length of array, should be 3",
+                        line
+                    )
+                    .into());
+                }
+                let subject = &string_vec[0];
+                let property = &string_vec[1];
+                let value = &string_vec[2];
+                atoms.push(Atom::new(subject, property, value));
+            }
+            Some(char) => {
+                return Err(format!(
+                    "AD3 Parsing error at {:?}, cannot start with {}",
+                    line, char
+                )
+                .into())
+            }
+            None => {}
+        };
+    }
+    return Ok(atoms);
+}
+```
 
 ## AtomicDoubles (.ad2)
 
