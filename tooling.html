@@ -190,15 +190,17 @@ atomic install meetings
 <h3><a class="header" href="#atomic-server" id="atomic-server"><code>atomic-server</code></a></h3>
 <p>Server for hosting Atomic Data. Uses <code>atomic-lib</code>.</p>
 <ul>
-<li>Makes a graph available at some endpoint.</li>
-<li>Responds to requests for created Atomic Resources (including Properties / DataTypes)</li>
+<li>Responds to requests for created Atomic Resources, makes atomic data available at their URL.</li>
+<li>Manages data on disk.</li>
 <li>Useful query options (e.g. Triple Pattern Fragments)</li>
-<li>Browser-friendly HTML presentation</li>
-<li>Pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)</li>
+<li>Browser-friendly HTML presentation, JSON serialization, AD3 serialization.</li>
 </ul>
 <p>MIT licensed <a href="%5Bhere%5D(https://github.com/joepio/atomic/server)">repo here</a>.</p>
 <h2><a class="header" href="#some-ideas-for-tooling" id="some-ideas-for-tooling">Some ideas for tooling</a></h2>
 <p>This document contains a set of ideas that would help achieve that success.</p>
+<h2><a class="header" href="#atoml--vscode-extension" id="atoml--vscode-extension">ATOML / VSCode Extension</a></h2>
+<p>Extending the TOML format to map it to Atomic Classes.
+This will make editing .TOML files awesome by providing on-screen validation, autocompletion and documentation for fields.</p>
 <h2><a class="header" href="#atomizer-data-importer-and-conversion-kit" id="atomizer-data-importer-and-conversion-kit">Atomizer (data importer and conversion kit)</a></h2>
 <ul>
 <li>Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms</li>

@@ -275,7 +275,7 @@ A</p>
 <h1><a class="header" href="#serialization-of-atomic-data" id="serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
-However, it's recommended to use <code>AtomicTriples</code>, which is specifically designed to be a simple, performant format for Atomic Data.</p>
+However, it's recommended to use <code>ad3</code>, which is specifically designed to be a simple and performant format for Atomic Data.</p>
 <h2><a class="header" href="#atomictriples-ad3" id="atomictriples-ad3">AtomicTriples (.ad3)</a></h2>
 <p>A single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.</p>
 <p>It looks like this:</p>
@@ -293,6 +293,63 @@ However, it's recommended to use <code>AtomicTriples</code>, which is specifical
 <p><em>File name extension: <code>.ad3</code></em></p>
 <p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
 <p>Atomic Triples is heavily inspired by <a href="https://github.com/ontola/hextuples">NDJSON HexTuples</a>.</p>
+<p>Example serialization implementation written in Rust, to show you how <em>easy</em> it is to serialize this!</p>
+<pre><pre class="playpen"><code class="language-rust">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>pub fn serialize_atoms_to_ad3(atoms: Vec&lt;Atom&gt;) -&gt; AtomicResult&lt;String&gt; {
+    let mut string = String::new();
+    for atom in atoms {
+        // Use an exsting JSON serialization library to take care of the hard work (escaping quotes, etc.)
+        let mut ad3_atom = serde_json::to_string(&amp;vec![&amp;atom.subject, &amp;atom.property, &amp;atom.value])?;
+        ad3_atom.push_str(&quot;\n&quot;);
+        &amp;string.push_str(&amp;*ad3_atom);
+    }
+    return Ok(string);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>And an example parser:</p>
+<pre><pre class="playpen"><code class="language-rust">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>pub fn parse_ad3&lt;'a, 'b&gt;(string: &amp;'b String) -&gt; AtomicResult&lt;Vec&lt;Atom&gt;&gt; {
+    let mut atoms: Vec&lt;Atom&gt; = Vec::new();
+    for line in string.lines() {
+        match line.chars().next() {
+            // These are comments
+            Some('#') =&gt; {}
+            Some(' ') =&gt; {}
+            // That's an array, let's do this!
+            Some('[') =&gt; {
+                let string_vec: Vec&lt;String&gt; =
+                    parse_json_array(line).expect(&amp;*format!(&quot;Parsing error in {:?}&quot;, line));
+                if string_vec.len() != 3 {
+                    return Err(format!(
+                        &quot;Wrong length of array at line {:?}: wrong length of array, should be 3&quot;,
+                        line
+                    )
+                    .into());
+                }
+                let subject = &amp;string_vec[0];
+                let property = &amp;string_vec[1];
+                let value = &amp;string_vec[2];
+                atoms.push(Atom::new(subject, property, value));
+            }
+            Some(char) =&gt; {
+                return Err(format!(
+                    &quot;AD3 Parsing error at {:?}, cannot start with {}&quot;,
+                    line, char
+                )
+                .into())
+            }
+            None =&gt; {}
+        };
+    }
+    return Ok(atoms);
+}
+<span class="boring">}
+</span></code></pre></pre>
 <h2><a class="header" href="#atomicdoubles-ad2" id="atomicdoubles-ad2">AtomicDoubles (.ad2)</a></h2>
 <p>AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
 For many use-cases, omitting the Subject is a <em>bad idea</em>.
@@ -1210,15 +1267,17 @@ atomic install meetings
 <h3><a class="header" href="#atomic-server" id="atomic-server"><code>atomic-server</code></a></h3>
 <p>Server for hosting Atomic Data. Uses <code>atomic-lib</code>.</p>
 <ul>
-<li>Makes a graph available at some endpoint.</li>
-<li>Responds to requests for created Atomic Resources (including Properties / DataTypes)</li>
+<li>Responds to requests for created Atomic Resources, makes atomic data available at their URL.</li>
+<li>Manages data on disk.</li>
 <li>Useful query options (e.g. Triple Pattern Fragments)</li>
-<li>Browser-friendly HTML presentation</li>
-<li>Pub/sub functionality to clients that will want to listen to changes (Mutation Feed?)</li>
+<li>Browser-friendly HTML presentation, JSON serialization, AD3 serialization.</li>
 </ul>
 <p>MIT licensed <a href="%5Bhere%5D(https://github.com/joepio/atomic/server)">repo here</a>.</p>
 <h2><a class="header" href="#some-ideas-for-tooling" id="some-ideas-for-tooling">Some ideas for tooling</a></h2>
 <p>This document contains a set of ideas that would help achieve that success.</p>
+<h2><a class="header" href="#atoml--vscode-extension" id="atoml--vscode-extension">ATOML / VSCode Extension</a></h2>
+<p>Extending the TOML format to map it to Atomic Classes.
+This will make editing .TOML files awesome by providing on-screen validation, autocompletion and documentation for fields.</p>
 <h2><a class="header" href="#atomizer-data-importer-and-conversion-kit" id="atomizer-data-importer-and-conversion-kit">Atomizer (data importer and conversion kit)</a></h2>
 <ul>
 <li>Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms</li>

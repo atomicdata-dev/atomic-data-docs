@@ -159,7 +159,7 @@
                         <h1><a class="header" href="#serialization-of-atomic-data" id="serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
-However, it's recommended to use <code>AtomicTriples</code>, which is specifically designed to be a simple, performant format for Atomic Data.</p>
+However, it's recommended to use <code>ad3</code>, which is specifically designed to be a simple and performant format for Atomic Data.</p>
 <h2><a class="header" href="#atomictriples-ad3" id="atomictriples-ad3">AtomicTriples (.ad3)</a></h2>
 <p>A single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.</p>
 <p>It looks like this:</p>
@@ -177,6 +177,63 @@ However, it's recommended to use <code>AtomicTriples</code>, which is specifical
 <p><em>File name extension: <code>.ad3</code></em></p>
 <p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
 <p>Atomic Triples is heavily inspired by <a href="https://github.com/ontola/hextuples">NDJSON HexTuples</a>.</p>
+<p>Example serialization implementation written in Rust, to show you how <em>easy</em> it is to serialize this!</p>
+<pre><pre class="playpen"><code class="language-rust">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>pub fn serialize_atoms_to_ad3(atoms: Vec&lt;Atom&gt;) -&gt; AtomicResult&lt;String&gt; {
+    let mut string = String::new();
+    for atom in atoms {
+        // Use an exsting JSON serialization library to take care of the hard work (escaping quotes, etc.)
+        let mut ad3_atom = serde_json::to_string(&amp;vec![&amp;atom.subject, &amp;atom.property, &amp;atom.value])?;
+        ad3_atom.push_str(&quot;\n&quot;);
+        &amp;string.push_str(&amp;*ad3_atom);
+    }
+    return Ok(string);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>And an example parser:</p>
+<pre><pre class="playpen"><code class="language-rust">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>pub fn parse_ad3&lt;'a, 'b&gt;(string: &amp;'b String) -&gt; AtomicResult&lt;Vec&lt;Atom&gt;&gt; {
+    let mut atoms: Vec&lt;Atom&gt; = Vec::new();
+    for line in string.lines() {
+        match line.chars().next() {
+            // These are comments
+            Some('#') =&gt; {}
+            Some(' ') =&gt; {}
+            // That's an array, let's do this!
+            Some('[') =&gt; {
+                let string_vec: Vec&lt;String&gt; =
+                    parse_json_array(line).expect(&amp;*format!(&quot;Parsing error in {:?}&quot;, line));
+                if string_vec.len() != 3 {
+                    return Err(format!(
+                        &quot;Wrong length of array at line {:?}: wrong length of array, should be 3&quot;,
+                        line
+                    )
+                    .into());
+                }
+                let subject = &amp;string_vec[0];
+                let property = &amp;string_vec[1];
+                let value = &amp;string_vec[2];
+                atoms.push(Atom::new(subject, property, value));
+            }
+            Some(char) =&gt; {
+                return Err(format!(
+                    &quot;AD3 Parsing error at {:?}, cannot start with {}&quot;,
+                    line, char
+                )
+                .into())
+            }
+            None =&gt; {}
+        };
+    }
+    return Ok(atoms);
+}
+<span class="boring">}
+</span></code></pre></pre>
 <h2><a class="header" href="#atomicdoubles-ad2" id="atomicdoubles-ad2">AtomicDoubles (.ad2)</a></h2>
 <p>AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
 For many use-cases, omitting the Subject is a <em>bad idea</em>.
