@@ -747,7 +747,7 @@ It is the part of Atomic Data that is concerned with writing, editing and updati
 <li><strong>Event sourced</strong>: Store State changes, as well as the current state. This enables versioning, history playback, undo, audit controls, and more.</li>
 <li><strong>Traceable origin</strong>: Every state change should be traceable to an actor and a point in time.</li>
 <li><strong>Verifiable</strong>: Have cryptographic proof for every state change.</li>
-<li><strong>Decentralized</strong>: Can be used in P2P networks to send mutations from device to device.</li>
+<li><strong>Decentralized</strong>: Can be used in P2P networks to send mutations from device to device. See <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">CRDT</a>.</li>
 <li><strong>Extensible</strong>: The methods are not fixed, and can be added by anyone.</li>
 <li><strong>Streamable</strong>: The state changes could be used in streaming context, e.g. a client app that reads data that changes every second.</li>
 <li><strong>Pub/Sub</strong>: Easy to subscribe to changes and get notified on changes.</li>
