@@ -10,7 +10,7 @@ _Disclaimer: This part of the draft spec is highly WIP._
 - **Event sourced**: Store State changes, as well as the current state. This enables versioning, history playback, undo, audit controls, and more.
 - **Traceable origin**: Every state change should be traceable to an actor and a point in time.
 - **Verifiable**: Have cryptographic proof for every state change.
-- **Decentralized**: Can be used in P2P networks to send mutations from device to device.
+- **Decentralized**: Can be used in P2P networks to send mutations from device to device. See [CRDT](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type).
 - **Extensible**: The methods are not fixed, and can be added by anyone.
 - **Streamable**: The state changes could be used in streaming context, e.g. a client app that reads data that changes every second.
 - **Pub/Sub**: Easy to subscribe to changes and get notified on changes.
