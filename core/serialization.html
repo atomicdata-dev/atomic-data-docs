@@ -160,8 +160,9 @@
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
 However, it's recommended to use <code>ad3</code>, which is specifically designed to be a simple and performant format for Atomic Data.</p>
-<h2><a class="header" href="#atomictriples-ad3" id="atomictriples-ad3">AtomicTriples (.ad3)</a></h2>
-<p>A single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.</p>
+<h2><a class="header" href="#ad3" id="ad3">AD3</a></h2>
+<p>AD3 stands for <em>Atomic Data Triples</em>, and it's the simplest and fastest way to serialize / parse Atomic Data.</p>
+<p>AD3 represents a single Atom as a single line, containing a JSON array of three strings, respectively representing the Subject, Property and Value.</p>
 <p>It looks like this:</p>
 <pre><code class="language-ad3">[&quot;https://example.com/subject&quot;,&quot;https://example.com/property&quot;,&quot;some object&quot;]
 [&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
@@ -234,10 +235,10 @@ However, it's recommended to use <code>ad3</code>, which is specifically designe
 }
 <span class="boring">}
 </span></code></pre></pre>
-<h2><a class="header" href="#atomicdoubles-ad2" id="atomicdoubles-ad2">AtomicDoubles (.ad2)</a></h2>
-<p>AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
-For many use-cases, omitting the Subject is a <em>bad idea</em>.
-It means that you can't describe multiple resources in a single document, and that is useful in many contexts.</p>
+<h2><a class="header" href="#ad2" id="ad2">AD2</a></h2>
+<p>AD2 (Atomic Data Doubles) is similar to AtomicTriples, with one exception: the Subject is left out.
+For many use-cases, omitting the Subject is a <em>bad idea</em> - you'll most often need AD2!
+having no subject means that you can't describe multiple resources in a single document, and that is useful in many contexts.</p>
 <p>However, omitting the subject can be useful in (at least) three scenarios:</p>
 <ul>
 <li>The <strong>Subject is not yet known when creating the data</strong> (for example, because it still has to be determined by some server or hash function).</li>
