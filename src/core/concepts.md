@@ -4,56 +4,76 @@ Understanding the Core concepts of Atomic Data are fundamental for reading the r
 
 ## Atomic Data
 
-Atomic Data is a data format for representing information on the web.
+Atomic Data is a data model for sharing information on the web.
 It is a directed, labeled graph, similar to RDF.
 It can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
 Contrary to some other (labeled) graph data models, a relationship between two items (Resources) does not have attributes.
+It's designed to be easily serializable to both JSON and linked data formats.
 
 ## Atom (or Atomic Triple)
 
 The smallest possible piece of _meaningful_ data / information.
-The model of an Atom is comparable with an RDF Triple / Statement ([although there are important differences](../interoperability/rdf.md)).
+You can think of an Atom as a single cell in a spreadsheet or database.
 An Atom consists of three fields:
 
 * **[Subject](#subject-field)**: the Thing that the atom is providing information about.
 * **[Property](#property-field)**: the property of the Thing that the atom is about (will always be a URL to a [Property](../schema/classes.md#property)).
 * **[Value](#value-field)**: the new piece of information about the Atom.
 
+If you're familiar with RDF, you'll notice similarities.
+An Atom is comparable with an RDF Triple / Statement ([although there are important differences](../interoperability/rdf.md)).
+
 Let's turn this sentence into Atoms:
 
-`Arnold, who's born on the 20th of Januari 1991, has a best friend named Britta.`
+`Arnold Peters, who's born on the 20th of Januari 1991, has a best friend named Britta Smalls.`
+
+Subject | Property | Value
+--- | --- | ---
+Arnold | last name | Peters
+Arnold | birthdate | 1991-01-20
+Arnold | best friend | Britta
+Britta | last name | Smalls
+
+The table above shows easily readable strings, but in reality, Atomic Data will almost exclusively consist of links (URLs).
+The standard serialization format for Atomic Data is AD3, which looks like this:
 
 ```ad3
-["https://example.com/arnold","https://example.com/properties/bornAt","1991-01-20"]
-["https://example.com/arnold","https://example.com/properties/firstName","Arnold"]
+["https://example.com/arnold","https://example.com/properties/lastname","Peters"]
+["https://example.com/arnold","https://example.com/properties/birthDate","1991-01-20"]
 ["https://example.com/arnold","https://example.com/properties/bestFriend","https://example.com/britta"]
-["https://example.com/britta","https://example.com/properties/firstName","Britta"]
+["https://example.com/britta","https://example.com/properties/lastname","Smalls"]
 ```
 
 In the Atomic Data above, we have:
 
-- four different Atoms (every line is an Atom)
-- two different Subjects: `https://example.com/arnold` and `https://example.com/britta`.
-- three different Properties (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
-- four different Values (`1991-0-20`, `Arnold`, `https://example.com/britta` and `Britta`)
+- four different **Atoms** (every line is an Atom)
+- two different **Subjects**: `https://example.com/arnold` and `https://example.com/britta`.
+- three different **Properties** (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
+- four different **Values** (`1991-01-20`, `Arnold`, `https://example.com/britta` and `Britta`)
 
-All Subjects and Properties are URLs, they are links that can be retrieved.
-One of the Values is a URL, too, but what are the others?
-Their Datatypes are defined by the Properties.
+All Subjects and Properties are Atomic URLs: they are links that point to more Atomic Data.
+One of the Values is a URL, too, but we also have values like `Arnold` and `1991-01-20`.
+These Values have different _Datatypes_
+In most other data formats, the datatypes are limited and are visually distinct.
+JSON, for example, has `array`, `object`, `string`, `number` and `boolean`.
+In Atomic Data, however, datatypes are defined somewhere else, and are extendible.
+To find the Datatype of an Atom, you fetch the Property, and that one has a Datatype.
 For example, the `https://example.com/properties/bornAt` Property requires an ISO Date string, and the `https://example.com/properties/firstName` Property requires a regular string.
+This might seem a little tedious and weird at first, but is has some nice advantages!
+Their Datatypes are defined in the Properties.
 
 ## Subject field
 
 The Subject field is the first part of an Atom.
 It is the identifier that the rest of the Atom is providing information about.
-It's a URL that points to the Resource.
+The Subject field is a URL that points to the Resource.
 The creator of the Subject MUST make sure that it resolves.
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see [Atomic Querying](querying.md).
+This also means that the creator of a Resource must make sure that it is available at its URL - probably by hosting the data, or by using some service that hosts it.
 
 ## Property field
 
 The Property field is the second part of an Atom.
-In RDF, this is called a `predicate`.
 It is a URL that points to an Atomic [Property](../schema/classes.md#Property).
 For example `https://example.com/createdAt` or `https://example.com/firstName`.
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
@@ -75,13 +95,12 @@ Graphs can have several characteristics (Schema Complete, Valid, Closed)
 ## Resource
 
 A Resource is a set of Atoms (a Graph) that share the same Subject URL.
-Every thing is Resource, such as the person "Michael Jackson", or the abstract class "Person".
-All the concepts on this page are Resources.
-A
-
-Properties:
-
-- `a` - (optional, AtomicURL) the [Class](../schema/classes.md#class) of the Resource.
+You can think of a Resource as a single row in a spreadsheet or database.
+In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
+A Resource consists of at least one Atom, so it always has some Property and some Value.
+The most important Property of a Resource is the `isa` Property, which refers to which _Class_ it belongs (e.g. Person or Blogpost).
+A Class can specify _required_ and _recommended_ properties.
+More on that in the Atomic Schema chapter!
 
 ## Atomic Web
 
