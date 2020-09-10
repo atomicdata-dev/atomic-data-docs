@@ -6,7 +6,7 @@ Things you can do:
 
 - Clone the [Book Repo](https://github.com/ontola/atomic-data/) and read some of the inline comments, which might help start some discussions
 - Drop an [issue on Github](https://github.com/ontola/atomic-data/issues) to share your suggestions or criticism
-- Join the [Discord server](https://discord.gg/ZspQv8) for voice / text chat
+- Join the [Discord server](https://discord.gg/a72Rv2P) for voice / text chat
 - Support our suggested [W3C Community Group](https://www.w3.org/community/blog/2020/06/22/proposed-group-atomic-data-community-group/)
 
 ## Authors:

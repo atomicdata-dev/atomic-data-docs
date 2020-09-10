@@ -3,6 +3,7 @@
 _A proposed standard for data exchange of decentralized, typed graphs._
 
 View it on [docs.atomicdata.dev](https://docs.atomicdata.dev).
+If you're looking for an (early) implementation of Atomic data, check out [atomic](https://github.com/joepio/atomic) (server + cli + lib).
 
 ## About this repo
 
@@ -23,3 +24,4 @@ mdbook serve
 
 Add an issue or open a PR!
 All thoughts are welcome.
+Also, check out the [Discord](https://discord.gg/a72Rv2P).

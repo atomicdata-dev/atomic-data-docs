@@ -4,9 +4,11 @@ Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
 However, it's recommended to use `ad3`, which is specifically designed to be a simple and performant format for Atomic Data.
 
-## AtomicTriples (.ad3)
+## AD3
 
-A single Atom can be represented by an array of three strings, respectively representing the Subject, Property and Value.
+AD3 stands for _Atomic Data Triples_, and it's the simplest and fastest way to serialize / parse Atomic Data.
+
+AD3 represents a single Atom as a single line, containing a JSON array of three strings, respectively representing the Subject, Property and Value.
 
 It looks like this:
 
@@ -86,11 +88,11 @@ pub fn parse_ad3<'a, 'b>(string: &'b String) -> AtomicResult<Vec<Atom>> {
 }
 ```
 
-## AtomicDoubles (.ad2)
+## AD2
 
-AtomicDoubles is similar to AtomicTriples, with one exception: the Subject is left out.
-For many use-cases, omitting the Subject is a _bad idea_.
-It means that you can't describe multiple resources in a single document, and that is useful in many contexts.
+AD2 (Atomic Data Doubles) is similar to AtomicTriples, with one exception: the Subject is left out.
+For many use-cases, omitting the Subject is a _bad idea_ - you'll most often need AD2!
+having no subject means that you can't describe multiple resources in a single document, and that is useful in many contexts.
 
 However, omitting the subject can be useful in (at least) three scenarios:
 
