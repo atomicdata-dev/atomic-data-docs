@@ -124,8 +124,6 @@ And as more and more people will use that same resource, they will be forced to 
 I think one of the core perks of linked data, is being able to make your information highly re-usable.
 When you've created statements about an external thing, these statements are hard to re-use.
 
-A different
-
 This means that someone using RDF data about domain B cannot know that domain B is actually the source of the data.
 Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data.
 Many subjects in RDF don't actually resolve to all the known triples of the statement.
