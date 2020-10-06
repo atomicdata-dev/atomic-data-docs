@@ -15,7 +15,7 @@ _Note: the URLs for properties are missing and will be added at a later time._
 
 ## Property
 
-_URL: `https://atomicdata.dev/classes/Property`_
+_URL: [`https://atomicdata.dev/classes/Property`](https://atomicdata.dev/classes/Property)_
 
 The Property class.
 The thing that the Property field should link to.
@@ -26,10 +26,10 @@ You can constrain properties further by using [SHACL Properties](https://www.w3.
 
 Properties of a Property instance:
 
-- `shortname` - (required, Slug) the shortname for the property, used in ORM-style dot syntax (`thing.property.anotherproperty`).
-- `description` - (optional, AtomicURL, TranslationBox) the semantic meaning of the.
-- `datatype` - (required, AtomicURL, Datatype) a URL to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the
-- `classtype` - (optional, AtomicURL, Class) if the `datatype` is an Atomic URL, the `classtype` defines which class(es?) is (are?) acceptable.
+- [`shortname`](https://atomicdata.dev/properties/shortname) - (required, Slug) the shortname for the property, used in ORM-style dot syntax (`thing.property.anotherproperty`).
+- [`description`](https://atomicdata.dev/properties/description) - (optional, AtomicURL, TranslationBox) the semantic meaning of the.
+- [`datatype`](https://atomicdata.dev/properties/datatype) - (required, AtomicURL, Datatype) a URL to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the
+- [`classtype`](https://atomicdata.dev/properties/classtype) - (optional, AtomicURL, Class) if the `datatype` is an Atomic URL, the `classtype` defines which class(es?) is (are?) acceptable.
 
 ```ndjson
 ["https://example.com/properties/createdAt","https://atomicdata.dev/property/shortname","createdAt"]
@@ -78,7 +78,7 @@ A resource indicates it is an _instance_ of that class by adding a `https://atom
 
 Example:
 
-```ndjson
+```ad3
 ["https://example.com/classes/Person","https://atomicdata.dev/properties/isA","https://atomicdata.dev/classes/Class"]
 ["https://example.com/classes/Person","https://atomicdata.dev/properties/recommends","https://example.com/classes/Person/recommends"]
 ["https://example.com/classes/Person/recommends","https://atomicdata.dev/properties/isA","https://atomicdata.dev/dataTypes/ResourceArray"]

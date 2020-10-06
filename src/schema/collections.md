@@ -1,6 +1,6 @@
 # Atomic Collections
 
-Sooner or later, developers will have to deal with long lists of items.
+Sooner or later, developers will have to deal with (long) lists of items.
 For example, a set of blog posts, activities or users.
 Collections often need to be paginated, sorted, and filtered.
 For dealing with these problems, we have Atomic Collections.
@@ -15,13 +15,15 @@ Members can be of the same type (Class), but don't have to be.
 
 Properties:
 
-- `pages`: (required, ResourceArray) - a set of
+- `pages`: (required, ResourceArray) - a set of Pages, from first to last.
 - `iriTemplate`: () - `https://argu.co/argu/discussions{?display,filter%5B%5D*,sort%5B%5D*,page,page_size,type,before%5B%5D*}{#fragment}`
 - `sortOptions`:
 - `totalItems`:
 - `totalItems`:
 
 ## Page
+
+- `members`
 
 ## Sorting
 

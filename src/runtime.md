@@ -13,7 +13,7 @@ This is what the Atomic Runtime allows for.
 ## ART: Atomic Runtime Interface
 
 This is standardized set of query options that allow for fetching data from an Atomic Store.
-It uses the WASI (WebAssmemly Systems Interface) standard for
+It uses the WASI (WebAssembly Systems Interface) standard for
 
 ## Creating an Analysis
 

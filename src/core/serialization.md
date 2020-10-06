@@ -4,6 +4,9 @@ Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
 However, it's recommended to use `ad3`, which is specifically designed to be a simple and performant format for Atomic Data.
 
+Atomic Data is designed to be serializable to idiomatic (clean, nice) [JSON](../interoperability/json).
+It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and [other serialization formats](https://ontola.io/blog/rdf-serialization-formats/).
+
 ## AD3
 
 AD3 stands for _Atomic Data Triples_, and it's the simplest and fastest way to serialize / parse Atomic Data.
@@ -29,9 +32,11 @@ _Mime type (not registered yet!): `application/ad3-ndjson`_
 
 _File name extension: `.ad3`_
 
-Disclaimer: note that Atomic-NDJSON is useful for communicating _current state_, but not for _state changes_.
+Disclaimer: note that AD3 is useful for communicating _current state_, but not for _state changes_.
 
-Atomic Triples is heavily inspired by [NDJSON HexTuples](https://github.com/ontola/hextuples).
+You can validate AD3 at [atomicdata.dev/validate](https://atomicdata.dev/validate).
+
+Atomic Triples is heavily inspired by [HexTuples-NDJSON](https://github.com/ontola/hextuples).
 
 Example serialization implementation written in Rust, to show you how _easy_ it is to serialize this!
 

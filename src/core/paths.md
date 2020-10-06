@@ -12,7 +12,7 @@ This second URL can be replaced by a Shortname, if the Resource is an instance o
 
 Let's start with this simple graph:
 
-```json
+```ad3
 ["https://example.com/john", "https://example.com/lastName", "McLovin"]
 ```
 
@@ -38,14 +38,27 @@ We can also traverse relationships:
 
 In the example above, the XCorp subject exists and is the source of the `The greatest company!` value.
 However, using paths, it's also possible to created nested resources _without creating new URLs for all children_.
-If you've worked with RDF, this is what Blank Nodes are used for.
 
-Let's make the path above resolve without having an explicit URL for XCorp:
+## Nested Resources
+
+All Atomic Data Resources that we've discussed so far have a URL as a subject.
+Unfortunately, creating unique and resolvable URLs can be a bother, and sometimes not necessary.
+If you've worked with RDF, this is what Blank Nodes are used for.
+In Atomic Data, we have something similar: _Nested Resources_.
+
+Let's use a Nested Resource in the example from the previous section:
 
 ```ad3
 ["https://example.com/john", "https://example.com/lastName", "McLovin"]
 ["https://example.com/john https://example.com/employer", "https://example.com/description", "The greatest company!"]
 ```
+
+By combining two Subject URLs into a single string, we've created a nested resource.
+The Subjet of the nested resource is `https://example.com/john https://example.com/employer`, including the spacebar.
+
+Note that the path from before still resolves:
+
+`https://example.com/john employer description` => `The greatest company!`
 
 Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.
 

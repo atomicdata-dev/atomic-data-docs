@@ -12,6 +12,8 @@ In this section, we define some of these concepts.
 
 These concepts are important when creating an implementation of a Store.
 
+You can validate AD3 at [atomicdata.dev/validate](https://atomicdata.dev/validate)
+
 ## Valid Graphs
 
 We refer to a Graph as Valid, if the following constraints are met:

@@ -9,11 +9,12 @@ That's why Atomic Data has the _Ownership_ concept.
 The Owner of a Resource is the _authority_ of the content of the resource and its mutations.
 It can be either a person or some more abstract entity, such as an organization or some hardware running somewhere.
 You can think of an Owner as the one accepting Pull Requests in a Git repository.
+By _default_, the Owner is the Domain.
 
 The Owner identifies itself using a generated key-pair.
 It signs authored Mutations with his private key, so others can verify the authenticity of the Mutations using the corresponding public key.
 
-An owner SHOULD be explicitly referred to from every single Resource using the `owner` Property:
+If the Owner is not the domain, the owner SHOULD be explicitly referred to using the `owner` Property:
 
 - `owner` (required, AtomicURL, Owner) - the Owner of the resource
 
@@ -25,8 +26,7 @@ HTTP URLs already show you who's in control, because the domain name points you 
 
 ## Using IPFS
 
-Since IPFS uses content-based addressing, the URL will always change when the content changes.
-This means that we need some other system of showing where the
+TODO!
 
 ## Using DID
 

@@ -39,7 +39,7 @@ We can add this data by adding some _@context_:
 The JSON above is called JSON-LD.
 It is still perfectly valid JSON, but it contains more information, and in turn can be converted into RDF formats.
 
-## From Atomic Data to JSON
+## From Atomic Data to JSON-LD
 
 Since Atomic Schema requires the presence of a `key` slug in Properties, converting Atomic Data to JSON results in dev-friendly objects with nice shorthands.
 
