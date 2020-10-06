@@ -1,22 +1,21 @@
-# Atomic Mutations
+# Atomic Commits
 
 _Disclaimer: This part of the draft spec is highly WIP._
 
-Atomic Mutations is a proposed standard for communicating state changes of [Atomic Data](../core/intro.md).
-It is the part of Atomic Data that is concerned with writing, editing and updating.
-You can think of it as Git for structured data.
+Atomic Commits is a proposed standard for communicating state changes of [Atomic Data](../core/intro.md).
+It is the part of Atomic Data that is concerned with writing, editing, removing and updating information.
 
 ## Design goals
 
 - **Event sourced**: Store and standardize _changes_, as well as the _current_ state. This enables versioning, history playback, undo, audit logs, and more.
 - **Traceable origin**: Every change should be traceable to an actor and a point in time.
 - **Verifiable**: Have cryptographic proof for every change. Know _when_, and _what_ was changed by _whom_.
-- **Identifiable**: A single mutation has an identifier - it is a resource.
-- **Decentralized**: Can be used in P2P networks to send mutations from device to device.
-- **Extensible**: The methods inside a mutation are not fixed, and can be added by anyone.
-- **Streamable**: The mutations could be used in streaming context, e.g. a client app that reads data that changes every second.
-- **Pub/Sub**: Easy to subscribe to changes and get notified on changes.
-- **ACID-compliant**: An Atomic Mutation will only occur if it results in a valid state.
+- **Identifiable**: A single commit has an identifier - it is a resource.
+- **Decentralized**: Commits can be shared in P2P networks from device to device, whilst maintaining verifiability.
+- **Extensible**: The methods inside a commit are not fixed. Use-case specific methods can be added by anyone.
+- **Streamable**: The commits could be used in streaming context.
+- **Pub/Sub**: Subscribe to changes and get notified on changes.
+- **ACID-compliant**: An Atomic commit will only occur if it results in a valid state.
 - **Atomic**: All the Atomic Data design goals also apply here.
 
 ## Motivation
@@ -40,16 +39,11 @@ This approach has a couple of issues:
 
 Keeping track of where data comes from is essential to knowing whether you can trust it - whether you consider it to be true.
 When you want to persist data, that quickly becomes bothersome.
-Atomic Data and Atomic Mutations aim to make this easier by using cryptography for ensuring data comes from some particular source, and is therefore trustworthy.
+Atomic Data and Atomic Commits aim to make this easier by using cryptography for ensuring data comes from some particular source, and is therefore trustworthy.
 
 ## FAQ
 
-### Is Atomic Mutations a Conflict-free Replicated Data Type (CRDT)?
+### Is Atomic Commits a Conflict-free Replicated Data Type (CRDT)?
 
 Since Atomic Data always has a clear _owner_, all changes are coming from a single source or truth.
 This prevents a lot of the issues that CRDT aims to solve, such as two people working on the same word at the same time in some text editor.
-
-## In short
-
-- [Atomic Mutations](concepts.md) describe how a Resource _was changed_.
-- [Atomic Suggestions](concepts.md) suggest how a Resource _should be changed_.
