@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="core/paths.html"><strong aria-hidden="true">2.4.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="mutations/intro.html"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.3.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="core/paths.html"><strong aria-hidden="true">2.4.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="commits/intro.html"><strong aria-hidden="true">4.</strong> Atomic Commits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="commits/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.3.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -292,6 +292,8 @@ More on that in the Atomic Schema chapter!</p>
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
 However, it's recommended to use <code>ad3</code>, which is specifically designed to be a simple and performant format for Atomic Data.</p>
+<p>Atomic Data is designed to be serializable to idiomatic (clean, nice) <a href="core/../interoperability/json">JSON</a>.
+It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and <a href="https://ontola.io/blog/rdf-serialization-formats/">other serialization formats</a>.</p>
 <h2><a class="header" href="#ad3" id="ad3">AD3</a></h2>
 <p>AD3 stands for <em>Atomic Data Triples</em>, and it's the simplest and fastest way to serialize / parse Atomic Data.</p>
 <p>AD3 represents a single Atom as a single line, containing a JSON array of three strings, respectively representing the Subject, Property and Value.</p>
@@ -308,8 +310,9 @@ However, it's recommended to use <code>ad3</code>, which is specifically designe
 </ul>
 <p><em>Mime type (not registered yet!): <code>application/ad3-ndjson</code></em></p>
 <p><em>File name extension: <code>.ad3</code></em></p>
-<p>Disclaimer: note that Atomic-NDJSON is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
-<p>Atomic Triples is heavily inspired by <a href="https://github.com/ontola/hextuples">NDJSON HexTuples</a>.</p>
+<p>Disclaimer: note that AD3 is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
+<p>You can validate AD3 at <a href="https://atomicdata.dev/validate">atomicdata.dev/validate</a>.</p>
+<p>Atomic Triples is heavily inspired by <a href="https://github.com/ontola/hextuples">HexTuples-NDJSON</a>.</p>
 <p>Example serialization implementation written in Rust, to show you how <em>easy</em> it is to serialize this!</p>
 <pre><pre class="playpen"><code class="language-rust">
 <span class="boring">#![allow(unused_variables)]
@@ -493,7 +496,7 @@ If you want to target a specific atom, you can use an Atomic Path with a second 
 This second URL can be replaced by a Shortname, if the Resource is an instance of a class which has properties with that shortname (sounds more complicated than it is).</p>
 <h2><a class="header" href="#example" id="example">Example</a></h2>
 <p>Let's start with this simple graph:</p>
-<pre><code class="language-json">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
+<pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
 </code></pre>
 <p>Then the following Path targets the <code>McLovin</code> value:</p>
 <p><code>https://example.com/john https://example.com/lastname</code> =&gt; <code>McLovin</code></p>
@@ -508,12 +511,20 @@ Since John is an instance of a Person, he might have a <code>lastname</code> whi
 </code></pre>
 <p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
 <p>In the example above, the XCorp subject exists and is the source of the <code>The greatest company!</code> value.
-However, using paths, it's also possible to created nested resources <em>without creating new URLs for all children</em>.
-If you've worked with RDF, this is what Blank Nodes are used for.</p>
-<p>Let's make the path above resolve without having an explicit URL for XCorp:</p>
+However, using paths, it's also possible to created nested resources <em>without creating new URLs for all children</em>.</p>
+<h2><a class="header" href="#nested-resources" id="nested-resources">Nested Resources</a></h2>
+<p>All Atomic Data Resources that we've discussed so far have a URL as a subject.
+Unfortunately, creating unique and resolvable URLs can be a bother, and sometimes not necessary.
+If you've worked with RDF, this is what Blank Nodes are used for.
+In Atomic Data, we have something similar: <em>Nested Resources</em>.</p>
+<p>Let's use a Nested Resource in the example from the previous section:</p>
 <pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
 [&quot;https://example.com/john https://example.com/employer&quot;, &quot;https://example.com/description&quot;, &quot;The greatest company!&quot;]
 </code></pre>
+<p>By combining two Subject URLs into a single string, we've created a nested resource.
+The Subjet of the nested resource is <code>https://example.com/john https://example.com/employer</code>, including the spacebar.</p>
+<p>Note that the path from before still resolves:</p>
+<p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
 <p>Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.</p>
 <p>For example:</p>
 <pre><code class="language-json">{
@@ -579,7 +590,7 @@ A Resource <em>could</em> have one or more classes, which <em>could</em> provide
 This Property has a Datatype of <code>AtomicURL</code>, and these should point to <code>TranslationBox</code> instances.</p>
 <p><em>Note: the URLs for properties are missing and will be added at a later time.</em></p>
 <h2><a class="header" href="#property" id="property">Property</a></h2>
-<p><em>URL: <code>https://atomicdata.dev/classes/Property</code></em></p>
+<p><em>URL: <a href="https://atomicdata.dev/classes/Property"><code>https://atomicdata.dev/classes/Property</code></a></em></p>
 <p>The Property class.
 The thing that the Property field should link to.
 A Property is an abstract type of Resource that describes the relation between a Subject and a Value.
@@ -588,10 +599,10 @@ Here's a <a href="schema/properties.html">list of useful Properties</a>.
 You can constrain properties further by using <a href="https://www.w3.org/TR/shacl/#property-shapes">SHACL Properties</a>.</p>
 <p>Properties of a Property instance:</p>
 <ul>
-<li><code>shortname</code> - (required, Slug) the shortname for the property, used in ORM-style dot syntax (<code>thing.property.anotherproperty</code>).</li>
-<li><code>description</code> - (optional, AtomicURL, TranslationBox) the semantic meaning of the.</li>
-<li><code>datatype</code> - (required, AtomicURL, Datatype) a URL to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the</li>
-<li><code>classtype</code> - (optional, AtomicURL, Class) if the <code>datatype</code> is an Atomic URL, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
+<li><a href="https://atomicdata.dev/properties/shortname"><code>shortname</code></a> - (required, Slug) the shortname for the property, used in ORM-style dot syntax (<code>thing.property.anotherproperty</code>).</li>
+<li><a href="https://atomicdata.dev/properties/description"><code>description</code></a> - (optional, AtomicURL, TranslationBox) the semantic meaning of the.</li>
+<li><a href="https://atomicdata.dev/properties/datatype"><code>datatype</code></a> - (required, AtomicURL, Datatype) a URL to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the</li>
+<li><a href="https://atomicdata.dev/properties/classtype"><code>classtype</code></a> - (optional, AtomicURL, Class) if the <code>datatype</code> is an Atomic URL, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
 </ul>
 <pre><code class="language-ndjson">[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/shortname&quot;,&quot;createdAt&quot;]
 [&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/datatype&quot;,&quot;https://atomicdata.dev/datatype/datetime&quot;]
@@ -630,7 +641,7 @@ If you need to set more complex constraints to your Classes (e.g. maximum string
 <!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
 <p>A resource indicates it is an <em>instance</em> of that class by adding a <code>https://atomicdata.dev/properties/isA</code> Atom.</p>
 <p>Example:</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;https://atomicdata.dev/classes/Class&quot;]
+<pre><code class="language-ad3">[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;https://atomicdata.dev/classes/Class&quot;]
 [&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/recommends&quot;,&quot;https://example.com/classes/Person/recommends&quot;]
 [&quot;https://example.com/classes/Person/recommends&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;https://atomicdata.dev/dataTypes/ResourceArray&quot;]
 </code></pre>
@@ -755,135 +766,93 @@ To consistently return a single value, we need some type of <em>precedence</em>:
 <p>These RDF ontologies are extremely powerful, well-documented and versatile.</p>
 <p>Atomic Schema does <em>not</em> aim to be an formal ontological semantic framework - it is way too simple for that.
 It's just a simple modeling tool.</p>
-<h1><a class="header" href="#atomic-mutations" id="atomic-mutations">Atomic Mutations</a></h1>
-<p>Atomic Mutations is a proposed standard for communicating state changes of <a href="mutations/../core/intro.html">Atomic Data</a>.
-It is the part of Atomic Data that is concerned with writing, editing and updating.</p>
+<h1><a class="header" href="#atomic-commits" id="atomic-commits">Atomic Commits</a></h1>
 <p><em>Disclaimer: This part of the draft spec is highly WIP.</em></p>
+<p>Atomic Commits is a proposed standard for communicating state changes of <a href="commits/../core/intro.html">Atomic Data</a>.
+It is the part of Atomic Data that is concerned with writing, editing, removing and updating information.</p>
 <h2><a class="header" href="#design-goals-2" id="design-goals-2">Design goals</a></h2>
 <ul>
-<li><strong>Event sourced</strong>: Store State changes, as well as the current state. This enables versioning, history playback, undo, audit controls, and more.</li>
-<li><strong>Traceable origin</strong>: Every state change should be traceable to an actor and a point in time.</li>
-<li><strong>Verifiable</strong>: Have cryptographic proof for every state change.</li>
-<li><strong>Decentralized</strong>: Can be used in P2P networks to send mutations from device to device. See <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">CRDT</a>.</li>
-<li><strong>Extensible</strong>: The methods are not fixed, and can be added by anyone.</li>
-<li><strong>Streamable</strong>: The state changes could be used in streaming context, e.g. a client app that reads data that changes every second.</li>
-<li><strong>Pub/Sub</strong>: Easy to subscribe to changes and get notified on changes.</li>
+<li><strong>Event sourced</strong>: Store and standardize <em>changes</em>, as well as the <em>current</em> state. This enables versioning, history playback, undo, audit logs, and more.</li>
+<li><strong>Traceable origin</strong>: Every change should be traceable to an actor and a point in time.</li>
+<li><strong>Verifiable</strong>: Have cryptographic proof for every change. Know <em>when</em>, and <em>what</em> was changed by <em>whom</em>.</li>
+<li><strong>Identifiable</strong>: A single commit has an identifier - it is a resource.</li>
+<li><strong>Decentralized</strong>: Commits can be shared in P2P networks from device to device, whilst maintaining verifiability.</li>
+<li><strong>Extensible</strong>: The methods inside a commit are not fixed. Use-case specific methods can be added by anyone.</li>
+<li><strong>Streamable</strong>: The commits could be used in streaming context.</li>
+<li><strong>Pub/Sub</strong>: Subscribe to changes and get notified on changes.</li>
+<li><strong>ACID-compliant</strong>: An Atomic commit will only occur if it results in a valid state.</li>
 <li><strong>Atomic</strong>: All the Atomic Data design goals also apply here.</li>
 </ul>
 <h2><a class="header" href="#motivation-1" id="motivation-1">Motivation</a></h2>
-<p>So many problems that confine data exchange are the result of thinking in current-state exchange.
-State synchronization is often an afterthought, and ... TODO!</p>
+<p>Although it's a good idea to keep data at the source as much as possible, we'll often need to synchronize two systems.
+For example when data has to be queried or indexed differently than its source can support.
+Doing this synchronization can be very difficult, since most of our software is designed to only maintain and share the <em>current state</em> of a system.</p>
+<p>I noticed this mainly when working on OpenBesluitvorming.nl - an open data project where we aimed to fetch and standardize meeting data (votes, meeting minutes, documents) from 150+ local governments in the Netherlands.
+We wrote software that fetched data from various systems (who all had different models, serialization formats and APIs), transformed this data to a single standard and share it through an API and a fulltext search endpoint.
+One of the hard parts was keeping our data in sync with the sources.
+How could we now if something was changed upstream?
+We queried all these systems every night for <em>all meetings from the next and previous month</em>, and made deep comparisons to our own data.</p>
+<p>This approach has a couple of issues:</p>
+<ul>
+<li>It costs a lot of resources, both for us and for the data suppliers.</li>
+<li>It's not real-time - we can only run this once every 24 ours (because of how costly it is).</li>
+<li>It's very prone to errors. We've had issues during all phases of Extraction, Transformation and Loading (ETL) processing.</li>
+<li>It causes privacy issues. When some data at the source is removed (because it contained faulty or privacy sensitive data), how do we learn about that?</li>
+</ul>
 <p>Keeping track of where data comes from is essential to knowing whether you can trust it - whether you consider it to be true.
 When you want to persist data, that quickly becomes bothersome.
-Atomic Data and Atomic Mutations aim to make this easier by using cryptography for ensuring data comes from some particular source, and is therefore trustworthy.</p>
-<h2><a class="header" href="#in-short-1" id="in-short-1">In short</a></h2>
-<ul>
-<li><a href="mutations/concepts.html">Atomic Mutations</a> describe how a Resource <em>was changed</em>.</li>
-<li><a href="mutations/concepts.html">Atomic Suggestions</a> suggest how a Resource <em>should be changed</em>.</li>
-</ul>
-<h1><a class="header" href="#atomic-mutations-concepts" id="atomic-mutations-concepts">Atomic Mutations: Concepts</a></h1>
-<h2><a class="header" href="#mutation" id="mutation">Mutation</a></h2>
-<p>The smallest possible piece of a state change.
-A mutation describes how an Resource should be updated.
-Mutations are very similar to Atoms, but they contain more information.
-An Atomic Mutation consists of a:</p>
-<ul>
-<li><code>subject</code> - the Thing that the atom is providing information about. (must be a URI to an Atomic Thing)</li>
-<li><code>property</code> - the property of the Thing that the atom is about. (must be a URI to an Atomic Property)</li>
-<li><code>value</code> - the new piece of information about the Atom (can be any datatype, as long as its defined by the property)</li>
-<li><code>method</code> - How the resource needs to be updated using the Atom. If empty, just replace the current state.</li>
-<li><code>hash</code> - The <a href="mutations/versioning.html#Hashing">IPFS URL</a> of the updated version of the resource. If this does not match with your resource, the Mutation is faulty. The hash can be empty if it is sent in</li>
-<li><code>date</code> - A timestamp of when the mutation was created.</li>
-<li><code>actor</code> - A timestamp of when the mutation was created.</li>
-</ul>
-<h2><a class="header" href="#ledger" id="ledger">Ledger</a></h2>
-<p>A Ledger is an (append-only) log of Mutations.</p>
-<ul>
-<li><code>mutations</code> (required, ResourceArray) - A list of all the mutations, from old to new.</li>
-</ul>
+Atomic Data and Atomic Commits aim to make this easier by using cryptography for ensuring data comes from some particular source, and is therefore trustworthy.</p>
+<h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
+<h3><a class="header" href="#is-atomic-commits-a-conflict-free-replicated-data-type-crdt" id="is-atomic-commits-a-conflict-free-replicated-data-type-crdt">Is Atomic Commits a Conflict-free Replicated Data Type (CRDT)?</a></h3>
+<p>Since Atomic Data always has a clear <em>owner</em>, all changes are coming from a single source or truth.
+This prevents a lot of the issues that CRDT aims to solve, such as two people working on the same word at the same time in some text editor.</p>
+<h1><a class="header" href="#atomic-commits-concepts" id="atomic-commits-concepts">Atomic Commits: Concepts</a></h1>
 <h2><a class="header" href="#commit" id="commit">Commit</a></h2>
-<p>A Commit is a set of Mutations, made by some Actor</p>
-<p>TODO!</p>
-<h2><a class="header" href="#serialization-with-atomicmutations-ndjson" id="serialization-with-atomicmutations-ndjson">Serialization with AtomicMutations-ndjson</a></h2>
-<p>Although Mutations can be communicated with</p>
-<p>Work in progress, see <a href="https://github.com/ontola/linked-delta">linked-delta</a>.</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;, &quot;https://example.com/properties/lastName&quot;, &quot;Mc'Lovin&quot;, &quot;https://purl.org/linked-delta/add&quot;, &quot;AEF1245612F3&quot;]
+<p>The smallest possible piece of a state change.
+A Commit describes how an Resource should be updated.
+The <strong>required fields</strong> are:</p>
+<ul>
+<li><code>subject</code> - the Resource that the Commit is providing information about. (must be a URI to an Atomic Resource)</li>
+<li><code>author</code> - The Atomic URL of the Actor's profile - which in turn should contain a <code>publicKey</code>.</li>
+<li><code>signature</code> - A SHA-256 hash of the JSON-serialized Commit (without the <code>signature</code> field), signed by the <code>actor</code>'s <code>privateKey</code>. This proves that the author is indeed the one who created this exact commit. The signature of the Commit is also used as the identifier of the commit.</li>
+<li><code>created_at</code> - A UNIX timestamp of when the commit was created.</li>
+</ul>
+<p>The <strong>optional method fields</strong> describe how the data should be changed:</p>
+<ul>
+<li><code>set</code> - a Nested Resource which contains all the new or edited fields.</li>
+<li><code>remove</code> - an array of Properties that need to be removed (including their values).</li>
+<li><code>destroy</code> - whether the Resource needs to be removed</li>
+</ul>
+<h3><a class="header" href="#serialization-with-json" id="serialization-with-json">Serialization with JSON</a></h3>
+<p>Let's look at an example Commit:</p>
+<pre><code class="language-json">{
+  &quot;subject&quot;: &quot;http://examle.com/someResource&quot;,
+  &quot;created_at&quot;: 1601239744,
+  &quot;author&quot;: &quot;https://example.com/profile&quot;,
+  &quot;set&quot;: {
+    &quot;https://atomicdata.dev/properties/description&quot;: &quot;my new resource description&quot;
+  },
+  &quot;remove&quot;: [&quot;https://atomicdata.dev/properties/shortname&quot;],
+  &quot;destroy&quot;: false,
+  &quot;signature&quot;: &quot;24c7d4b3c1b6b5f924243d67dbfc33fb680b5d3e2a77614cebe03c4a2840d29a&quot;
+}
 </code></pre>
-<h2><a class="header" href="#streaming-pubsub" id="streaming-pubsub">Streaming (pub/sub)</a></h2>
-<p>We're using HexTuples-NDJSON, since that allows for streaming parsing of mutations.</p>
-<p>TODO! Something about endpoints / protocol for pub/sub.</p>
-<h2><a class="header" href="#base-methods" id="base-methods">Base Methods</a></h2>
-<p>See <a href="http://purl.org/linked-delta">linked-delta</a></p>
-<h1><a class="header" href="#atomic-suggestions" id="atomic-suggestions">Atomic Suggestions</a></h1>
-<p>Atomic Suggestions is a proposed standard that enables decentralized collaboration on resources.
-It's basically Git for linked data.
-Practically, it should enable right-clicking on any piece of Atomic Data on the web, and suggesting an edit to the owner.</p>
-<h2><a class="header" href="#design-goals-3" id="design-goals-3">Design goals</a></h2>
+<p>This Commit can be sent to any Atomic Server.
+This server, in turn, should verify the signature and the author's rights before the server applies the Commit.</p>
+<h2><a class="header" href="#applying-a-commit" id="applying-a-commit">Applying a commit</a></h2>
+<p>An example implementation can be viewed in <a href="https://github.com/joepio/atomic/blob/e43cdd065dc813a1aecf409023fa40d66ab386f9/lib/src/storelike.rs#L74">Atomic-Lib (WIP)</a>.</p>
+<h2><a class="header" href="#ledger" id="ledger">Ledger</a></h2>
+<p>A Ledger is an (append-only) log of Commits.</p>
 <ul>
-<li><strong>Asynchronous collaboration</strong>: Various users can work on the same thing at the same time.</li>
-<li><strong>Branching &amp; merging</strong>: Issues that result from async changes (merge conflicts) can be resolved.</li>
-</ul>
-<h2><a class="header" href="#concepts" id="concepts">Concepts</a></h2>
-<h3><a class="header" href="#fork" id="fork">Fork</a></h3>
-<p>Forking is the first step to making a suggestion.
-Forking refers to:</p>
-<ol>
-<li>copying some resource</li>
-<li>changing the subject URL to some URL that you control</li>
-<li>adding a reference to the original URL using the <code>atomic:originalSubject</code> Property.</li>
-</ol>
-<p>The newly created copy with the different URL is a <em>Fork</em>.
-Since the Fork is a resource that you own (see <a href="mutations/ownership.html">Ownership</a>), you can make changes to is.</p>
-<p>Whenever you make changes, the app making the changes <em>should</em> keep track of them as Atomic Mutations.
-These Mutations make it easier to apply (small) changes to (large) resources, even when multiple people are working on the same thing at the same time.</p>
-<h3><a class="header" href="#suggestion" id="suggestion">Suggestion</a></h3>
-<p>When you've forked some resource and made some changes, you can Suggest these changes to the original owner.
-This is done by sending an HTTP POST request containing the mutations to the Owner URL.</p>
-<p>A Suggestion is a (set of?) Mutation(s?) that is proposed to be appended to some Ledger.
-The important difference between a Suggestion and a Mutation, is that a Mutation has been verified, signed and approved by the Controller.</p>
-<h3><a class="header" href="#controller" id="controller">Controller</a></h3>
-<p>The actor (person / organization) that is in control of a specific Resource and its mutations.</p>
-<h3><a class="header" href="#inbox" id="inbox">Inbox</a></h3>
-<p>An Inbox represents a resource that contains incoming Suggestions.
-It's similar to an e-mail inbox.</p>
-<h2><a class="header" href="#protocol" id="protocol">Protocol</a></h2>
-<p>Let's</p>
-<pre><code class="language-http">POST example.com/sarah HTTP/1.1
-Host: foo.example
-Content-Type: application/ad3-ndjson
-
-[&quot;https://example.com/sarah&quot;,&quot;https://example.com/description&quot;,&quot;&quot;]
-</code></pre>
-<h1><a class="header" href="#atomic-data-versioning" id="atomic-data-versioning">Atomic Data Versioning</a></h1>
-<p>When Atomic Mutations are applied to some Resource, the resource will change.
-However, its identifier (the Subject) will often remain the same.</p>
-<ul>
-<li>Versioned representations should provide a link to the authority that might update it, and a link to where the latest version can be found.</li>
-<li>The latest version should have a link to its permanent version.</li>
-<li>Should <a href="mutations/../interoperability/ipfs.html">IPFS</a> content-hash URLs be used for Versioned resources?</li>
-</ul>
-<h2><a class="header" href="#versioned-resources" id="versioned-resources">Versioned Resources</a></h2>
-<p>Properties:</p>
-<!-- Maybe this is not required, if we assume that the subject URL should always show the latest? -->
-<ul>
-<li>latest: (ResourceArray, optional)</li>
-<li>versions: (ResourceArray, optional)</li>
-<li>currentVersion: (ResourceURL, required)</li>
-</ul>
-<h2><a class="header" href="#static-resource" id="static-resource">Static Resource</a></h2>
-<p>A static resource has a <em>content addressable</em> URL, which means that its URL will never change.</p>
-<h2><a class="header" href="#hashing" id="hashing">Hashing</a></h2>
-<ul>
-<li>Serialize all Atoms of the Subject (the entire Resource) as Atomic-NDJSON</li>
-<li>Sort all lines (every atom) alphabetically</li>
+<li><code>Commits</code> (required, ResourceArray) - A list of all the Commits, from old to new.</li>
 </ul>
 <h1><a class="header" href="#interoperability-relation-to-other-technology" id="interoperability-relation-to-other-technology">Interoperability: Relation to other technology</a></h1>
-<p>Atomic data is designed to be highly interoperable.</p>
+<p>Atomic data is designed to be highly interoperable.
+It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and <a href="https://ontola.io/blog/rdf-serialization-formats/">other serialization formats</a>.</p>
 <h2><a class="header" href="#data-formats" id="data-formats">Data formats</a></h2>
-<p>It is possible to convert Atomic to many types of serialization formats.</p>
 <ul>
-<li><a href="interoperability/rdf.html">RDF</a>: some RDF can be automatically converted into valid Atomic data.</li>
-<li><a href="interoperability/json.html">JSON</a>: JSON requires a mapping to Atomic Properties, and explicit</li>
+<li><a href="interoperability/json.html">JSON</a>: Atomic Data is designed to be easily serializable to clean, idiomatic JSON. However, if you want to turn JSON into Atomic Data, you'll have to make sure that all keys in the JSON object are URLs that link to Atomic Properties, and the data itself also has to be available at its Subject URL.</li>
+<li><a href="interoperability/rdf.html">RDF</a>: Atomic Data is a strict subset of RDF, and can therefore be trivially serialized to all RDF formats (Turtle, N-triples, RDF/XML, JSON-LD, and others). The other way around is more difficult. Turning RDF into Atomic Data requires that all predicates are Atomic Properties, the values must match its properties datatype, the atoms must be available at the subject URL, and the subject-predicate combinations must be unique.</li>
 </ul>
 <h2><a class="header" href="#protocols" id="protocols">Protocols</a></h2>
 <ul>
@@ -1122,7 +1091,7 @@ The following things are missing:</p>
 </code></pre>
 <p>The JSON above is called JSON-LD.
 It is still perfectly valid JSON, but it contains more information, and in turn can be converted into RDF formats.</p>
-<h2><a class="header" href="#from-atomic-data-to-json" id="from-atomic-data-to-json">From Atomic Data to JSON</a></h2>
+<h2><a class="header" href="#from-atomic-data-to-json-ld" id="from-atomic-data-to-json-ld">From Atomic Data to JSON-LD</a></h2>
 <p>Since Atomic Schema requires the presence of a <code>key</code> slug in Properties, converting Atomic Data to JSON results in dev-friendly objects with nice shorthands.</p>
 <pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/properties/lastname&quot;,&quot;Houdini&quot;]
 [&quot;https://example.com/john&quot;,&quot;https://example.com/properties/bestFriend&quot;,&quot;https://example.com/sarah&quot;]
@@ -1192,6 +1161,7 @@ In this section, we define some of these concepts.</p>
 <li>A <strong>Frozen Graph</strong> contains content-addressing identifiers (e.g. IPFS), all the way down</li>
 </ul>
 <p>These concepts are important when creating an implementation of a Store.</p>
+<p>You can validate AD3 at <a href="https://atomicdata.dev/validate">atomicdata.dev/validate</a></p>
 <h2><a class="header" href="#valid-graphs" id="valid-graphs">Valid Graphs</a></h2>
 <p>We refer to a Graph as Valid, if the following constraints are met:</p>
 <ul>

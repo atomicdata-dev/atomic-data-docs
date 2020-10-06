@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Atomic Mutations - Atomic Data</title>
+        <title>Atomic Commits - Atomic Data</title>
         
         
 
@@ -86,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/paths.html"><strong aria-hidden="true">2.4.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../mutations/intro.html" class="active"><strong aria-hidden="true">4.</strong> Atomic Mutations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mutations/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../mutations/suggestions.html"><strong aria-hidden="true">4.2.</strong> Suggestions</a></li><li class="chapter-item expanded "><a href="../mutations/versioning.html"><strong aria-hidden="true">4.3.</strong> Versioning</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.3.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="../core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/paths.html"><strong aria-hidden="true">2.4.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../commits/intro.html" class="active"><strong aria-hidden="true">4.</strong> Atomic Commits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../commits/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.3.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="../core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -156,32 +156,46 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#atomic-mutations" id="atomic-mutations">Atomic Mutations</a></h1>
-<p>Atomic Mutations is a proposed standard for communicating state changes of <a href="../core/intro.html">Atomic Data</a>.
-It is the part of Atomic Data that is concerned with writing, editing and updating.</p>
+                        <h1><a class="header" href="#atomic-commits" id="atomic-commits">Atomic Commits</a></h1>
 <p><em>Disclaimer: This part of the draft spec is highly WIP.</em></p>
+<p>Atomic Commits is a proposed standard for communicating state changes of <a href="../core/intro.html">Atomic Data</a>.
+It is the part of Atomic Data that is concerned with writing, editing, removing and updating information.</p>
 <h2><a class="header" href="#design-goals" id="design-goals">Design goals</a></h2>
 <ul>
-<li><strong>Event sourced</strong>: Store State changes, as well as the current state. This enables versioning, history playback, undo, audit controls, and more.</li>
-<li><strong>Traceable origin</strong>: Every state change should be traceable to an actor and a point in time.</li>
-<li><strong>Verifiable</strong>: Have cryptographic proof for every state change.</li>
-<li><strong>Decentralized</strong>: Can be used in P2P networks to send mutations from device to device. See <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">CRDT</a>.</li>
-<li><strong>Extensible</strong>: The methods are not fixed, and can be added by anyone.</li>
-<li><strong>Streamable</strong>: The state changes could be used in streaming context, e.g. a client app that reads data that changes every second.</li>
-<li><strong>Pub/Sub</strong>: Easy to subscribe to changes and get notified on changes.</li>
+<li><strong>Event sourced</strong>: Store and standardize <em>changes</em>, as well as the <em>current</em> state. This enables versioning, history playback, undo, audit logs, and more.</li>
+<li><strong>Traceable origin</strong>: Every change should be traceable to an actor and a point in time.</li>
+<li><strong>Verifiable</strong>: Have cryptographic proof for every change. Know <em>when</em>, and <em>what</em> was changed by <em>whom</em>.</li>
+<li><strong>Identifiable</strong>: A single commit has an identifier - it is a resource.</li>
+<li><strong>Decentralized</strong>: Commits can be shared in P2P networks from device to device, whilst maintaining verifiability.</li>
+<li><strong>Extensible</strong>: The methods inside a commit are not fixed. Use-case specific methods can be added by anyone.</li>
+<li><strong>Streamable</strong>: The commits could be used in streaming context.</li>
+<li><strong>Pub/Sub</strong>: Subscribe to changes and get notified on changes.</li>
+<li><strong>ACID-compliant</strong>: An Atomic commit will only occur if it results in a valid state.</li>
 <li><strong>Atomic</strong>: All the Atomic Data design goals also apply here.</li>
 </ul>
 <h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
-<p>So many problems that confine data exchange are the result of thinking in current-state exchange.
-State synchronization is often an afterthought, and ... TODO!</p>
+<p>Although it's a good idea to keep data at the source as much as possible, we'll often need to synchronize two systems.
+For example when data has to be queried or indexed differently than its source can support.
+Doing this synchronization can be very difficult, since most of our software is designed to only maintain and share the <em>current state</em> of a system.</p>
+<p>I noticed this mainly when working on OpenBesluitvorming.nl - an open data project where we aimed to fetch and standardize meeting data (votes, meeting minutes, documents) from 150+ local governments in the Netherlands.
+We wrote software that fetched data from various systems (who all had different models, serialization formats and APIs), transformed this data to a single standard and share it through an API and a fulltext search endpoint.
+One of the hard parts was keeping our data in sync with the sources.
+How could we now if something was changed upstream?
+We queried all these systems every night for <em>all meetings from the next and previous month</em>, and made deep comparisons to our own data.</p>
+<p>This approach has a couple of issues:</p>
+<ul>
+<li>It costs a lot of resources, both for us and for the data suppliers.</li>
+<li>It's not real-time - we can only run this once every 24 ours (because of how costly it is).</li>
+<li>It's very prone to errors. We've had issues during all phases of Extraction, Transformation and Loading (ETL) processing.</li>
+<li>It causes privacy issues. When some data at the source is removed (because it contained faulty or privacy sensitive data), how do we learn about that?</li>
+</ul>
 <p>Keeping track of where data comes from is essential to knowing whether you can trust it - whether you consider it to be true.
 When you want to persist data, that quickly becomes bothersome.
-Atomic Data and Atomic Mutations aim to make this easier by using cryptography for ensuring data comes from some particular source, and is therefore trustworthy.</p>
-<h2><a class="header" href="#in-short" id="in-short">In short</a></h2>
-<ul>
-<li><a href="concepts.html">Atomic Mutations</a> describe how a Resource <em>was changed</em>.</li>
-<li><a href="concepts.html">Atomic Suggestions</a> suggest how a Resource <em>should be changed</em>.</li>
-</ul>
+Atomic Data and Atomic Commits aim to make this easier by using cryptography for ensuring data comes from some particular source, and is therefore trustworthy.</p>
+<h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
+<h3><a class="header" href="#is-atomic-commits-a-conflict-free-replicated-data-type-crdt" id="is-atomic-commits-a-conflict-free-replicated-data-type-crdt">Is Atomic Commits a Conflict-free Replicated Data Type (CRDT)?</a></h3>
+<p>Since Atomic Data always has a clear <em>owner</em>, all changes are coming from a single source or truth.
+This prevents a lot of the issues that CRDT aims to solve, such as two people working on the same word at the same time in some text editor.</p>
 
                     </main>
 
@@ -194,7 +208,7 @@ Atomic Data and Atomic Mutations aim to make this easier by using cryptography f
                         
 
                         
-                            <a rel="next" href="../mutations/concepts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../commits/concepts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -212,7 +226,7 @@ Atomic Data and Atomic Mutations aim to make this easier by using cryptography f
                 
 
                 
-                    <a rel="next" href="../mutations/concepts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../commits/concepts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
