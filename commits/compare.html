@@ -1,0 +1,408 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Compared to - Atomic Data</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation for the Atomic Data standard.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/paths.html"><strong aria-hidden="true">2.4.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../commits/intro.html"><strong aria-hidden="true">4.</strong> Atomic Commits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../commits/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../commits/compare.html" class="active"><strong aria-hidden="true">4.2.</strong> Compared to</a></li></ol></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">5.3.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="../core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Atomic Data</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        <a href="https://github.com/ontola/atomic-data" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#atomic-commits-compared-to-other-rdf-delta-models" id="atomic-commits-compared-to-other-rdf-delta-models">Atomic Commits compared to other (RDF) delta models</a></h1>
+<p>Let's compare the Atomic Commit approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
+First, I'll briefly discuss the existing examples (<a href="https://github.com/ontola/atomic-data/issues">open a PR / issue</a> if we're missing something!).
+After that, we'll discuss how Atomic Data differs from the existing ones.</p>
+<h2><a class="header" href="#rdf-delta" id="rdf-delta">RDF-Delta</a></h2>
+<p>https://afs.github.io/rdf-delta/</p>
+<p>Describes changes (RDF Patches) in a specialized turtle-like serialization format.</p>
+<pre><code>TX .
+PA &quot;rdf&quot; &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; .
+PA &quot;owl&quot; &quot;http://www.w3.org/2002/07/owl#&quot; .
+PA &quot;rdfs&quot; &quot;http://www.w3.org/2000/01/rdf-schema#&quot; .
+A &lt;http://example/SubClass&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/2002/07/owl#Class&gt; .
+A &lt;http://example/SubClass&gt; &lt;http://www.w3.org/2000/01/rdf-schema#subClassOf&gt; &lt;http://example/SUPER_CLASS&gt; .
+A &lt;http://example/SubClass&gt; &lt;http://www.w3.org/2000/01/rdf-schema#label&gt; &quot;SubClass&quot; .
+TC .
+</code></pre>
+<p>Similar to Atomic Commits, these Delta's should have identifiers (URLs), which are denoted in a header.</p>
+<h2><a class="header" href="#delta-ld" id="delta-ld">Delta-LD</a></h2>
+<p>http://www.tara.tcd.ie/handle/2262/91407</p>
+<h2><a class="header" href="#patchr" id="patchr">PatchR</a></h2>
+<p>https://www.igi-global.com/article/patchr/135561</p>
+<h2><a class="header" href="#ld-patch" id="ld-patch">LD-Patch</a></h2>
+<p>https://www.w3.org/TR/ldpatch/</p>
+<pre><code>PATCH /timbl HTTP/1.1
+Host: example.org
+Content-Length: 478
+Content-Type: text/ldpatch
+If-Match: &quot;abc123&quot;
+
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix profile: &lt;http://ogp.me/ns/profile#&gt; .
+@prefix ex: &lt;http://example.org/vocab#&gt; .
+
+Delete { &lt;#&gt; profile:first_name &quot;Tim&quot; } .
+Add {
+  &lt;#&gt; profile:first_name &quot;Timothy&quot; ;
+    profile:image &lt;https://example.org/timbl.jpg&gt; .
+} .
+
+Bind ?workLocation &lt;#&gt; / schema:workLocation .
+Cut ?workLocation .
+
+UpdateList &lt;#&gt; ex:preferredLanguages 1..2 ( &quot;fr-CH&quot; ) .
+
+Bind ?event &lt;#&gt; / schema:performerIn [ / schema:url = &lt;https://www.w3.org/2012/ldp/wiki/F2F5&gt; ]  .
+Add { ?event rdf:type schema:Event } .
+
+Bind ?ted &lt;http://conferences.ted.com/TED2009/&gt; / ^schema:url ! .
+Delete { ?ted schema:startDate &quot;2009-02-04&quot; } .
+Add {
+  ?ted schema:location [
+    schema:name &quot;Long Beach, California&quot; ;
+    schema:geo [
+      schema:latitude &quot;33.7817&quot; ;
+      schema:longitude &quot;-118.2054&quot;
+    ]
+  ]
+} .
+</code></pre>
+<h2><a class="header" href="#linked-delta" id="linked-delta">Linked-Delta</a></h2>
+<p>https://github.com/ontola/linked-delta</p>
+<p>An N-Quads serialized delta format.
+Methods are URLs, which means they are extensible.
+Does not specify how to bundle lines.
+Used in production of a web app that we're working on.
+Designed with simplicity (no new serialization format, simple to parse) and performance in mind.</p>
+<pre><code>Initial state:
+
+&lt;http://example.org/resource&gt; &lt;http://example.org/predicate&gt; &quot;Old value 🙈&quot; .
+
+Linked-Delta:
+
+&lt;http://example.org/resource&gt; &lt;http://example.org/predicate&gt; &quot;New value 🐵&quot; &lt;http://purl.org/linked-delta/replace&gt; .
+
+New state:
+
+&lt;http://example.org/resource&gt; &lt;http://example.org/predicate&gt; &quot;New value 🐵&quot; .
+</code></pre>
+<h2><a class="header" href="#json-patch" id="json-patch">JSON-PATCH</a></h2>
+<p>http://jsonpatch.com/</p>
+<p>A simple way to edit JSON objects:</p>
+<pre><code>The original document
+
+{
+  &quot;baz&quot;: &quot;qux&quot;,
+  &quot;foo&quot;: &quot;bar&quot;
+}
+
+The patch
+
+[
+  { &quot;op&quot;: &quot;replace&quot;, &quot;path&quot;: &quot;/baz&quot;, &quot;value&quot;: &quot;boo&quot; },
+  { &quot;op&quot;: &quot;add&quot;, &quot;path&quot;: &quot;/hello&quot;, &quot;value&quot;: [&quot;world&quot;] },
+  { &quot;op&quot;: &quot;remove&quot;, &quot;path&quot;: &quot;/foo&quot; }
+]
+
+The result
+
+{
+  &quot;baz&quot;: &quot;boo&quot;,
+  &quot;hello&quot;: [&quot;world&quot;]
+}
+</code></pre>
+<p>It uses the <a href="http://tools.ietf.org/html/rfc6901">JSON-Pointer spec</a> for denoting <code>path</code>s.
+It has quite a bunch of implementations, in various languages.</p>
+<h2><a class="header" href="#json-ld-patch" id="json-ld-patch">JSON-LD-PATCH</a></h2>
+<p>https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH</p>
+<p>A JSON denoted patch notation for RDF.
+Seems similar to the <a href="https://www.w3.org/TR/rdf-json/">RDF/JSON</a> serialization format.
+Uses string literals as operators / methods.
+Conceptually perhaps most similar to linked-delta.</p>
+<pre><code>[
+  {
+    &quot;op&quot;: &quot;add&quot;,
+    &quot;s&quot;: &quot;http://example.org/my/resource&quot;,
+    &quot;p&quot;: &quot;http://example.org/ontology#title&quot;,
+    &quot;o&quot;: {
+      &quot;value&quot;: &quot;New Title&quot;,
+      &quot;type&quot;: &quot;http://www.w3.org/2001/XMLSchema#string&quot;
+    }
+  }
+]
+</code></pre>
+<h2><a class="header" href="#sparql-update" id="sparql-update">SPARQL UPDATE</a></h2>
+<p>https://www.w3.org/TR/sparql11-update/</p>
+<p>SPARQL queries that change data.</p>
+<pre><code class="language-sparql">PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
+INSERT DATA
+{
+  &lt;http://example/book1&gt; dc:title &quot;A new book&quot; ;
+                         dc:creator &quot;A.N.Other&quot; .
+}
+</code></pre>
+<p>Allows for very powerful queries, combined with updates.
+E.g. rename all persons named <code>Bill</code> to <code>William</code>:</p>
+<pre><code>PREFIX foaf:  &lt;http://xmlns.com/foaf/0.1/&gt;
+
+WITH &lt;http://example/addresses&gt;
+DELETE { ?person foaf:givenName 'Bill' }
+INSERT { ?person foaf:givenName 'William' }
+WHERE
+  { ?person foaf:givenName 'Bill'
+  }
+</code></pre>
+<p>SPARQL Update is the most powerful of the formats, but also perhaps the most difficult to implement and understand.</p>
+<h2><a class="header" href="#atomic-commits" id="atomic-commits">Atomic Commits</a></h2>
+<p>Let's talk about the differences between the concepts above and Atomic Commits.</p>
+<p>For starters, Atomic Commits can only work with a <em>specific subset</em> of RDF, namely Atomic Data.
+RDF allows for blank nodes, does not have subject-predicate uniqueness and offers named graphs - which all make it hard to unambiguously select a single value.
+Most of the alternative patch / delta models described above had to support these concepts.
+Atomic Data is more strict and constrained than RDF.
+It does not support named graphs and blank nodes.
+This enables a simpler approach to describing state changes, but it also means that Atomic Commits will not work with most existing RDF data.</p>
+<p>Secondly, individual Atomic Commits are tightly coupled to specific Resources.
+A single Commit cannot change multiple resources - and most of the models discussed above to enable this.
+This is a big constraint, and it does not allow for things like compact migrations in a database.
+However, this resource-bound constraint opens up some interesting possibilities:</p>
+<ul>
+<li>it becomes easier to combine it with <em>authorization</em> (i.e. check if the person has the correct rights to edit some resource): simply check if the Author has the rights to edit the Subject.</li>
+<li>it makes it easier to find all Commits for a Resource, which is useful when constructing a history / audit log / previous version.</li>
+</ul>
+<p>Thirdly, Atomic Commits don't introduce a new serialization format.
+It's just JSON.
+This means that it will feel familiar for most developers, and will be supported by many existing environments.</p>
+<p>Finally, Atomic Commits use cryptography (hashing) to determine authenticity of commits.
+This concept is borrowed from git commits, which also uses signatures to prove authorship.
+As is the case with git, this also allows for verfiable P2P sharing of changes.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../commits/concepts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../interoperability/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../commits/concepts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../interoperability/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-121994595-2', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
