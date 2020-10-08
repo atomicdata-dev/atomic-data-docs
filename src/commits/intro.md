@@ -1,8 +1,8 @@
 # Atomic Commits
 
-_Disclaimer: This part of the draft spec is highly WIP._
+_Disclaimer: Work in progress, prone to change._
 
-Atomic Commits is a proposed standard for communicating state changes of [Atomic Data](../core/intro.md).
+Atomic Commits is a proposed standard for communicating state changes (events / transactions / patches / deltas / mutations) of [Atomic Data](../core/intro.md).
 It is the part of Atomic Data that is concerned with writing, editing, removing and updating information.
 
 ## Design goals
@@ -14,6 +14,7 @@ It is the part of Atomic Data that is concerned with writing, editing, removing 
 - **Decentralized**: Commits can be shared in P2P networks from device to device, whilst maintaining verifiability.
 - **Extensible**: The methods inside a commit are not fixed. Use-case specific methods can be added by anyone.
 - **Streamable**: The commits could be used in streaming context.
+- **Familiar**: Introduces as little new stuff as possible (no new formats or language to learn)
 - **Pub/Sub**: Subscribe to changes and get notified on changes.
 - **ACID-compliant**: An Atomic commit will only occur if it results in a valid state.
 - **Atomic**: All the Atomic Data design goals also apply here.
@@ -37,6 +38,10 @@ This approach has a couple of issues:
 - It's very prone to errors. We've had issues during all phases of Extraction, Transformation and Loading (ETL) processing.
 - It causes privacy issues. When some data at the source is removed (because it contained faulty or privacy sensitive data), how do we learn about that?
 
+Persisting and sharing state changes could solve these issues.
+In order for this to work, we need to standardize this for all data suppliers.
+We need a specification that is easy to understand for most developers.
+
 Keeping track of where data comes from is essential to knowing whether you can trust it - whether you consider it to be true.
 When you want to persist data, that quickly becomes bothersome.
 Atomic Data and Atomic Commits aim to make this easier by using cryptography for ensuring data comes from some particular source, and is therefore trustworthy.
@@ -47,3 +52,7 @@ Atomic Data and Atomic Commits aim to make this easier by using cryptography for
 
 Since Atomic Data always has a clear _owner_, all changes are coming from a single source or truth.
 This prevents a lot of the issues that CRDT aims to solve, such as two people working on the same word at the same time in some text editor.
+
+### How does it compare to other delta formats?
+
+See the [compare section](./compare)

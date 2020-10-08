@@ -13,6 +13,7 @@
   * [FAQ](schema/faq.md)
 * [Atomic Commits](commits/intro.md)
   * [Concepts](commits/concepts.md)
+  * [Compared to](commits/compare.md)
 * [Interoperability](interoperability/intro.md)
   * [Relation to RDF](interoperability/rdf.md)
   * [Relation to JSON](interoperability/json.md)
