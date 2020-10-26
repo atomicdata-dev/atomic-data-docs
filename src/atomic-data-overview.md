@@ -1,6 +1,6 @@
 # Atomic Data Overview
 
-_Status: early draft, far from usable. [Feedback welcome](get-involved.md)._
+_Status: early draft, [feedback welcome](get-involved.md). Early Rust implementation accessible [here](https://github.com/joepio/atomic)._
 
 Atomic Data is a proposed standard for modeling and exchanging data.
 It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.
