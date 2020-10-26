@@ -172,6 +172,21 @@ Before we dive into its concepts, we'll talk about why this standard is made in 
 <li><strong>Typed</strong>: All valid Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming language models, such as <code>structs</code> or <code>interfaces</code> in Typescript / Rust / Go.</li>
 </ul>
 <p>Note that for these last four goals, <a href="../schema/intro.html">Atomic Schema</a> is required.</p>
+<h2><a class="header" href="#when-should-you-use-atomic-data" id="when-should-you-use-atomic-data">When should you use Atomic Data</a></h2>
+<ul>
+<li><strong>Flexible schemas</strong>. When dealing with structured wikis or semantic data, various instances of things will have different attributes. Atomic Data allows <em>any</em> kind of property on <em>any</em> resource.</li>
+<li><strong>High-value open data</strong>. Atomic Data is a bit harder to create, but it is easier to re-use and understand. It's use of URLs for properties makes data self-documenting.</li>
+<li><strong>Standardization is important</strong>. When multiple groups of people have to use the same schema, Atomic Data provides easy ways to constrain and validate the data.</li>
+<li><strong>Multi-class / multi-model</strong>. Contrary to (SQL) tables, Atomic Data allows a single thing to have multiple classes, each with their own properties.</li>
+<li><strong>Connected / decentralized data</strong>. With Atomic Data, you use URLs to point to things on other computers. This makes it possible to connect datasets very explicitly, without creating copies.</li>
+<li><strong>Interactive data</strong>. When users need to make changes</li>
+<li><strong>RDF as Output</strong>. Atomic Data serializes to idiomatic, clean RDF (Turtle / JSON-LD / n-triples / RDF/XML).</li>
+</ul>
+<h2><a class="header" href="#when-not-to-use-atomic-data" id="when-not-to-use-atomic-data">When not to use Atomic Data</a></h2>
+<ul>
+<li><strong>Internal use only</strong>. If you're not sharing structured data, Atomic Data will probably only make things harder for you.</li>
+<li><strong>Big Data</strong>. If you're dealing with TeraBytes of data, you probably don't want to use Atomic Data.</li>
+</ul>
 
                     </main>
 

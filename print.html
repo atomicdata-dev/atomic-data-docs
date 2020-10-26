@@ -205,6 +205,21 @@ Before we dive into its concepts, we'll talk about why this standard is made in 
 <li><strong>Typed</strong>: All valid Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming language models, such as <code>structs</code> or <code>interfaces</code> in Typescript / Rust / Go.</li>
 </ul>
 <p>Note that for these last four goals, <a href="core/../schema/intro.html">Atomic Schema</a> is required.</p>
+<h2><a class="header" href="#when-should-you-use-atomic-data" id="when-should-you-use-atomic-data">When should you use Atomic Data</a></h2>
+<ul>
+<li><strong>Flexible schemas</strong>. When dealing with structured wikis or semantic data, various instances of things will have different attributes. Atomic Data allows <em>any</em> kind of property on <em>any</em> resource.</li>
+<li><strong>High-value open data</strong>. Atomic Data is a bit harder to create, but it is easier to re-use and understand. It's use of URLs for properties makes data self-documenting.</li>
+<li><strong>Standardization is important</strong>. When multiple groups of people have to use the same schema, Atomic Data provides easy ways to constrain and validate the data.</li>
+<li><strong>Multi-class / multi-model</strong>. Contrary to (SQL) tables, Atomic Data allows a single thing to have multiple classes, each with their own properties.</li>
+<li><strong>Connected / decentralized data</strong>. With Atomic Data, you use URLs to point to things on other computers. This makes it possible to connect datasets very explicitly, without creating copies.</li>
+<li><strong>Interactive data</strong>. When users need to make changes</li>
+<li><strong>RDF as Output</strong>. Atomic Data serializes to idiomatic, clean RDF (Turtle / JSON-LD / n-triples / RDF/XML).</li>
+</ul>
+<h2><a class="header" href="#when-not-to-use-atomic-data" id="when-not-to-use-atomic-data">When not to use Atomic Data</a></h2>
+<ul>
+<li><strong>Internal use only</strong>. If you're not sharing structured data, Atomic Data will probably only make things harder for you.</li>
+<li><strong>Big Data</strong>. If you're dealing with TeraBytes of data, you probably don't want to use Atomic Data.</li>
+</ul>
 <h1><a class="header" href="#atomic-data-core-concepts" id="atomic-data-core-concepts">Atomic Data Core: Concepts</a></h1>
 <p>Understanding the Core concepts of Atomic Data are fundamental for reading the rest of the documentation.</p>
 <h2><a class="header" href="#atomic-data" id="atomic-data">Atomic Data</a></h2>
@@ -814,44 +829,65 @@ This prevents a lot of the issues that CRDT aims to solve, such as two people wo
 <p>See the <a href="commits/./compare">compare section</a></p>
 <h1><a class="header" href="#atomic-commits-concepts" id="atomic-commits-concepts">Atomic Commits: Concepts</a></h1>
 <h2><a class="header" href="#commit" id="commit">Commit</a></h2>
-<p>The smallest possible piece of a state change.
-A Commit describes how an Resource should be updated.
+<p>A Commit describes how a Resource must be updated.
 The <strong>required fields</strong> are:</p>
 <ul>
-<li><code>subject</code> - the Resource that the Commit is providing information about. (must be a URI to an Atomic Resource)</li>
-<li><code>author</code> - The Atomic URL of the Actor's profile - which in turn should contain a <code>publicKey</code>.</li>
-<li><code>signature</code> - A SHA-256 hash of the JSON-serialized Commit (without the <code>signature</code> field), signed by the <code>actor</code>'s <code>privateKey</code>. This proves that the author is indeed the one who created this exact commit. The signature of the Commit is also used as the identifier of the commit.</li>
-<li><code>created_at</code> - A UNIX timestamp of when the commit was created.</li>
+<li><code>subject</code> - The thing being changed. A Resource Subject URL that the Commit is providing information about.</li>
+<li><code>author</code> - Who's making the change. The Atomic URL of the Author's profile - which in turn must contain a <code>publicKey</code>.</li>
+<li><code>signature</code> - Cryptographic proof of the change. A hash of the JSON-serialized Commit (without the <code>signature</code> field), signed by the <code>actor</code>'s <code>privateKey</code>. This proves that the author is indeed the one who created this exact commit. The signature of the Commit is also used as the identifier of the commit.</li>
+<li><code>createdAt</code> - When the change was made. A UNIX timestamp number of when the commit was created.</li>
 </ul>
-<p>The <strong>optional method fields</strong> describe how the data should be changed:</p>
+<p>The <strong>optional method fields</strong> describe how the data must be changed:</p>
 <ul>
-<li><code>set</code> - a Nested Resource which contains all the new or edited fields.</li>
+<li><code>destroy</code> - If true, the existing Resource will be removed.</li>
 <li><code>remove</code> - an array of Properties that need to be removed (including their values).</li>
-<li><code>destroy</code> - whether the Resource needs to be removed</li>
+<li><code>set</code> - a Nested Resource which contains all the new or edited fields.</li>
 </ul>
+<p>These commands are executed in the order above.
+This means that you can set <code>destroy</code> to <code>true</code> and include <code>set</code>, which empties the existing resource and sets new values.</p>
+<h3><a class="header" href="#posting-commits-using-http" id="posting-commits-using-http">Posting commits using HTTP</a></h3>
+<p>Since Commits contains cryptographic proof of authorship, they can be accepted at a public endpoint.
+There is no need for authentication.</p>
+<p>A commit should be sent (using an HTTPS POST request) to a <code>/commmit</code> endpoint of an Atomic Server.
+The server then checks the signature and the author rights, and responds with a <code>2xx</code> status code if it succeeded, or an <code>5xx</code> error if something went wrong.
+The error will be a JSON object.</p>
 <h3><a class="header" href="#serialization-with-json" id="serialization-with-json">Serialization with JSON</a></h3>
 <p>Let's look at an example Commit:</p>
 <pre><code class="language-json">{
   &quot;subject&quot;: &quot;http://examle.com/someResource&quot;,
-  &quot;created_at&quot;: 1601239744,
+  &quot;createdAt&quot;: 1601239744,
   &quot;author&quot;: &quot;https://example.com/profile&quot;,
   &quot;set&quot;: {
     &quot;https://atomicdata.dev/properties/description&quot;: &quot;my new resource description&quot;
   },
   &quot;remove&quot;: [&quot;https://atomicdata.dev/properties/shortname&quot;],
-  &quot;destroy&quot;: false,
   &quot;signature&quot;: &quot;24c7d4b3c1b6b5f924243d67dbfc33fb680b5d3e2a77614cebe03c4a2840d29a&quot;
 }
 </code></pre>
 <p>This Commit can be sent to any Atomic Server.
 This server, in turn, should verify the signature and the author's rights before the server applies the Commit.</p>
-<h2><a class="header" href="#applying-a-commit" id="applying-a-commit">Applying a commit</a></h2>
-<p>An example implementation can be viewed in <a href="https://github.com/joepio/atomic/blob/e43cdd065dc813a1aecf409023fa40d66ab386f9/lib/src/storelike.rs#L74">Atomic-Lib (WIP)</a>.</p>
-<h2><a class="header" href="#ledger" id="ledger">Ledger</a></h2>
-<p>A Ledger is an (append-only) log of Commits.</p>
+<h3><a class="header" href="#calculating-the-signature" id="calculating-the-signature">Calculating the signature</a></h3>
+<p>The signature is a base64 encoded Ed25519 signature of the deterministically serialized Commit.
+Calculating the signature is a delicate process that should be followed to the letter - even a single character in the wrong place will result in an incorrect signature, which makes the Commit invalid.</p>
+<p>The first step is <strong>serializing the commit deterministically</strong>.
+This means that the process will always end in the exact same string.</p>
 <ul>
-<li><code>Commits</code> (required, ResourceArray) - A list of all the Commits, from old to new.</li>
+<li>Serialize the Commit as JSON.</li>
+<li>Do not serialize the signature field.</li>
+<li>Do not include empty objects or arrays.</li>
+<li>If <code>destroy</code> is false, do not include it.</li>
+<li>All keys are sorted alphabetically - both in the root object, as in any nested objects.</li>
+<li>The JSON is minified: no newlines, no spaces.</li>
 </ul>
+<p><a href="https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81">Here's an example implementation of this process written in Rust</a>.</p>
+<p>This will result in a string.
+The next step is to sign this string using the Ed25519 private key.
+This signature is a byte array, which should be encoded in base64.
+Make sure that the Author's URL resolves to a Resource that contains the linked public key.</p>
+<p>Congratulations, you've just created a valid Commit!</p>
+<h2><a class="header" href="#author" id="author">Author</a></h2>
+<p>An Author is a person, organization, computer or other type of agent that can create and sign Commits.
+The most important property of the Author is the</p>
 <h1><a class="header" href="#atomic-commits-compared-to-other-rdf-delta-models" id="atomic-commits-compared-to-other-rdf-delta-models">Atomic Commits compared to other (RDF) delta models</a></h1>
 <p>Let's compare the Atomic Commit approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
 First, I'll briefly discuss the existing examples (<a href="https://github.com/ontola/atomic-data/issues">open a PR / issue</a> if we're missing something!).
