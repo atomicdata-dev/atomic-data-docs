@@ -907,11 +907,45 @@ TC .
 <p>Similar to Atomic Commits, these Delta's should have identifiers (URLs), which are denoted in a header.</p>
 <h2><a class="header" href="#delta-ld" id="delta-ld">Delta-LD</a></h2>
 <p><a href="commits/">http://www.tara.tcd.ie/handle/2262/91407</a></p>
-<p>Spec for classifying and representing state changes between two RDF resources.</p>
+<p>Spec for classifying and representing state changes between two RDF resources.
+I wasn't able to find a serialization or an implementation for this.</p>
 <h2><a class="header" href="#patchr" id="patchr">PatchR</a></h2>
 <p><a href="commits/">https://www.igi-global.com/article/patchr/135561</a></p>
+<p>An ontology for RDF change <em>requests</em>.
+Looks very interesting.
+The <a href="http://patchr.s16a.org/ontologies/patchr">URL</a>, unfortunately, does not resolve.
+I'm not able to find any implementations.</p>
+<pre><code class="language-turtle">prefix :      &lt;http://example.org/&gt; .
+@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix pat:  &lt;http://purl.org/hpi/patchr#&gt; .
+@prefix guo:  &lt;http://webr3.org/owl/guo#&gt; .
+@prefix prov: &lt;http://purl.org/net/provenance/ns#&gt; .
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix dbp:  &lt;http://dbpedia.org/resource/&gt; .
+@prefix dbo:  &lt;http://dbpedia.org/ontology/&gt; .
+
+:Patch_15 a pat:Patch ;
+  pat:appliesTo &lt;http://dbpedia.org/void.ttl#DBpedia_3.5&gt; ;
+  pat:status pat:Open ;
+  pat:update [
+    a guo:UpdateInstruction ;
+    guo:target_graph &lt;http://dbpedia.org/&gt; ;
+    guo:target_subject dbp:Oregon ;
+    guo:delete [dbo:language dbp:De_jure ] ;
+    guo:insert [dbo:language dbp:English_language ]
+  ] ;
+  prov:wasGeneratedBy [a prov:Activity ;
+  pat:confidence &quot;0.5&quot;^^xsd:decimal ;
+  prov:wasAssociatedWith :WhoKnows ;
+  prov:actedOnBehalfOf :WhoKnows#Player_25 ;
+  prov:performedAt &quot;...&quot;^^xsd:dateTime ] .
+</code></pre>
 <h2><a class="header" href="#ld-patch" id="ld-patch">LD-Patch</a></h2>
 <p><a href="commits/">https://www.w3.org/TR/ldpatch/</a></p>
+<p>This offers quite a few features besides adding and deleting triples, such as updating lists.
+It's a unique serialization format, inspired by turtle.
+Some implementations exists, such as one in <a href="https://github.com/ruby-rdf/ld-patch">ruby</a> which is</p>
 <pre><code>PATCH /timbl HTTP/1.1
 Host: example.org
 Content-Length: 478
@@ -1001,6 +1035,7 @@ It has quite a bunch of implementations, in various languages.</p>
 Seems similar to the <a href="https://www.w3.org/TR/rdf-json/">RDF/JSON</a> serialization format.
 Uses string literals as operators / methods.
 Conceptually perhaps most similar to linked-delta.</p>
+<p>Has a <a href="https://developer.aliyun.com/mirror/npm/package/jsonld-patch">JS implementation</a>.</p>
 <pre><code>[
   {
     &quot;op&quot;: &quot;add&quot;,
