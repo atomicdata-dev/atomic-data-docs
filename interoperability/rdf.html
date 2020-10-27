@@ -173,7 +173,7 @@ However, it does differ in some fundamental ways.</p>
 <li>Atomic only allows those who control a resource's <code>subject</code> URL endpoint to edit the data. This means that you can't add triples about something that you don't control.</li>
 <li>Atomic has no separate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you follow a <code>predicate</code> value) specify a datatype</li>
 <li>Atomic has no separate <code>language</code> field, but it does support <a href="../schema/translations.html">Translation Resources</a>.</li>
-<li>Atomic has a native Event (state changes) model (<a href="../mutations/intro.html">Atomic Mutations</a>), which enables communication of state changes</li>
+<li>Atomic has a native Event (state changes) model (<a href="../commits/intro.html">Atomic Commits</a>), which enables communication of state changes</li>
 <li>Atomic has a native Schema model (<a href="../schema/intro.html">Atomic Schema</a>), which helps developers to know what data types they can expect (string, integer, link, array)</li>
 </ul>
 <h2><a class="header" href="#why-these-changes" id="why-these-changes">Why these changes?</a></h2>
@@ -313,10 +313,10 @@ This is why Atomic Data introduces a <code>shortname</code> field in Properties,
 <h3><a class="header" href="#adding-native-arrays" id="adding-native-arrays">Adding native arrays</a></h3>
 <p>RDF lacks a clear solution for dealing with <a href="https://ontola.io/blog/ordered-data-in-rdf/">ordered data</a>, resulting in confusion when developers have to create lists of content.
 Adding an Array data type as a base data type helps solve this. (<a href="https://github.com/ontola/atomic-data/issues/4">discussion</a>)</p>
-<h3><a class="header" href="#adding-a-native-mutation-standard" id="adding-a-native-mutation-standard">Adding a native mutation standard</a></h3>
+<h3><a class="header" href="#adding-a-native-state-changes-standard" id="adding-a-native-state-changes-standard">Adding a native state changes standard</a></h3>
 <p>There is no integrated standard for communicating state changes.
 Although <a href="https://github.com/ontola/linked-delta">linked-delta</a> and <a href="https://afs.github.io/rdf-delta/">rdf-delta</a> do exist, they aren't referred to by the RDF spec.
-I think developers need guidance when learning a new system such as RDF, and that's why <a href="../mutations/intro.html">Atomic Mutations</a> is included in this book.</p>
+I think developers need guidance when learning a new system such as RDF, and that's why <a href="../commits/intro.html">Atomic Commits</a> is included in this book.</p>
 <h3><a class="header" href="#adding-a-schema-language" id="adding-a-schema-language">Adding a schema language</a></h3>
 <p>A schema language is necessary to constrain and validate instances of data.
 This is very useful when creating domain-specific standards, which can in turn be used to generate forms or language-specific types / interfaces.

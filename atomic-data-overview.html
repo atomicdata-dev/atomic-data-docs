@@ -164,12 +164,12 @@ It uses links to connect pieces of data, and therefore makes it easier to connec
 It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.</p>
 <p>Atomic Data is <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, as it is a more strict subset of RDF.
 It is typed (you know if something is a <code>string</code>, <code>number</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.
-Atomic Data has a standard for synchronizing data by communicating state changes, called <a href="mutations/intro.html">Atomic Mutations</a>.
+Atomic Data has a standard for synchronizing data by communicating state changes, called <a href="commits/intro.html">Atomic Commits</a>.
 You can use parts of Atomic Data separately, but the standard is designed as a full, integrated data management package that makes it easier to create, share and use structured data on the web.</p>
 <ul>
 <li><a href="core/intro.html">Atomic Data Core</a>: the core model for typed, Linked Data</li>
 <li><a href="schema/intro.html">Atomic Schema</a>: defining properties, datatypes and classes</li>
-<li><a href="mutations/intro.html">Atomic Mutations</a>: sharing state changes, verifying changes and collaboration</li>
+<li><a href="commits/intro.html">Atomic Commits</a>: sharing state changes, verifying changes and collaboration</li>
 </ul>
 <h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
 <p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
@@ -179,8 +179,8 @@ The Solid Project by Tim Berners-Lee is a great example of why linked data can h
 <p>At <a href="ontola.io/">Ontola</a>, we've been working with linked data quite intensely for the last couple of years.
 We went all-in on RDF, and challenged ourselves to create software that communicates exclusively using it.
 That has been an inspiring, but also sometimes a frustrating journey.
-While building various production grade apps (e.g. our e-democracy platform <a href="https://argu.co/">Argu.co</a>, which is used by various governments), we had to solve many problems.
-How to properly model data in RDF? How to deal with sequences? How do you deal with mutations? Converting to HTML? Typing? CORS?
+While building various production grade apps (e.g. our e-democracy platform <a href="https://argu.co/">Argu.co</a>, which is used by various governments), we had to <a href="https://ontola.io/blog/full-stack-linked-data/">solve many problems</a>.
+How to properly model data in RDF? How to deal with sequences? How to communicate state changes? Converting RDF to HTML? Typing? CORS?
 We tackled some of these problems by having a tight grip on the data that we create (e.g. we know the type of data, because we control the resources), and another part is creating new protocols, formats, tools, and libraries.
 But it took a long time, and it was hard.
 It's been almost 15 years since the <a href="https://www.w3.org/DesignIssues/LinkedData.html">introduction of linked data</a>, and its adoption has been slow.

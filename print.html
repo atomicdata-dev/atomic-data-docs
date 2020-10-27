@@ -166,12 +166,12 @@ It uses links to connect pieces of data, and therefore makes it easier to connec
 It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.</p>
 <p>Atomic Data is <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, as it is a more strict subset of RDF.
 It is typed (you know if something is a <code>string</code>, <code>number</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.
-Atomic Data has a standard for synchronizing data by communicating state changes, called <a href="mutations/intro.html">Atomic Mutations</a>.
+Atomic Data has a standard for synchronizing data by communicating state changes, called <a href="commits/intro.html">Atomic Commits</a>.
 You can use parts of Atomic Data separately, but the standard is designed as a full, integrated data management package that makes it easier to create, share and use structured data on the web.</p>
 <ul>
 <li><a href="core/intro.html">Atomic Data Core</a>: the core model for typed, Linked Data</li>
 <li><a href="schema/intro.html">Atomic Schema</a>: defining properties, datatypes and classes</li>
-<li><a href="mutations/intro.html">Atomic Mutations</a>: sharing state changes, verifying changes and collaboration</li>
+<li><a href="commits/intro.html">Atomic Commits</a>: sharing state changes, verifying changes and collaboration</li>
 </ul>
 <h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
 <p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
@@ -181,8 +181,8 @@ The Solid Project by Tim Berners-Lee is a great example of why linked data can h
 <p>At <a href="ontola.io/">Ontola</a>, we've been working with linked data quite intensely for the last couple of years.
 We went all-in on RDF, and challenged ourselves to create software that communicates exclusively using it.
 That has been an inspiring, but also sometimes a frustrating journey.
-While building various production grade apps (e.g. our e-democracy platform <a href="https://argu.co/">Argu.co</a>, which is used by various governments), we had to solve many problems.
-How to properly model data in RDF? How to deal with sequences? How do you deal with mutations? Converting to HTML? Typing? CORS?
+While building various production grade apps (e.g. our e-democracy platform <a href="https://argu.co/">Argu.co</a>, which is used by various governments), we had to <a href="https://ontola.io/blog/full-stack-linked-data/">solve many problems</a>.
+How to properly model data in RDF? How to deal with sequences? How to communicate state changes? Converting RDF to HTML? Typing? CORS?
 We tackled some of these problems by having a tight grip on the data that we create (e.g. we know the type of data, because we control the resources), and another part is creating new protocols, formats, tools, and libraries.
 But it took a long time, and it was hard.
 It's been almost 15 years since the <a href="https://www.w3.org/DesignIssues/LinkedData.html">introduction of linked data</a>, and its adoption has been slow.
@@ -889,11 +889,11 @@ Make sure that the Author's URL resolves to a Resource that contains the linked 
 <p>An Author is a person, organization, computer or other type of agent that can create and sign Commits.
 The most important property of the Author is the</p>
 <h1><a class="header" href="#atomic-commits-compared-to-other-rdf-delta-models" id="atomic-commits-compared-to-other-rdf-delta-models">Atomic Commits compared to other (RDF) delta models</a></h1>
-<p>Let's compare the Atomic Commit approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
+<p>Let's compare the <a href="commits/concepts">Atomic Commit</a> approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
 First, I'll briefly discuss the existing examples (<a href="https://github.com/ontola/atomic-data/issues">open a PR / issue</a> if we're missing something!).
 After that, we'll discuss how Atomic Data differs from the existing ones.</p>
 <h2><a class="header" href="#rdf-delta" id="rdf-delta">RDF-Delta</a></h2>
-<p>https://afs.github.io/rdf-delta/</p>
+<p><a href="commits/">https://afs.github.io/rdf-delta/</a></p>
 <p>Describes changes (RDF Patches) in a specialized turtle-like serialization format.</p>
 <pre><code>TX .
 PA &quot;rdf&quot; &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; .
@@ -906,11 +906,12 @@ TC .
 </code></pre>
 <p>Similar to Atomic Commits, these Delta's should have identifiers (URLs), which are denoted in a header.</p>
 <h2><a class="header" href="#delta-ld" id="delta-ld">Delta-LD</a></h2>
-<p>http://www.tara.tcd.ie/handle/2262/91407</p>
+<p><a href="commits/">http://www.tara.tcd.ie/handle/2262/91407</a></p>
+<p>Spec for classifying and representing state changes between two RDF resources.</p>
 <h2><a class="header" href="#patchr" id="patchr">PatchR</a></h2>
-<p>https://www.igi-global.com/article/patchr/135561</p>
+<p><a href="commits/">https://www.igi-global.com/article/patchr/135561</a></p>
 <h2><a class="header" href="#ld-patch" id="ld-patch">LD-Patch</a></h2>
-<p>https://www.w3.org/TR/ldpatch/</p>
+<p><a href="commits/">https://www.w3.org/TR/ldpatch/</a></p>
 <pre><code>PATCH /timbl HTTP/1.1
 Host: example.org
 Content-Length: 478
@@ -949,7 +950,7 @@ Add {
 } .
 </code></pre>
 <h2><a class="header" href="#linked-delta" id="linked-delta">Linked-Delta</a></h2>
-<p>https://github.com/ontola/linked-delta</p>
+<p><a href="commits/">https://github.com/ontola/linked-delta</a></p>
 <p>An N-Quads serialized delta format.
 Methods are URLs, which means they are extensible.
 Does not specify how to bundle lines.
@@ -968,7 +969,7 @@ New state:
 &lt;http://example.org/resource&gt; &lt;http://example.org/predicate&gt; &quot;New value 🐵&quot; .
 </code></pre>
 <h2><a class="header" href="#json-patch" id="json-patch">JSON-PATCH</a></h2>
-<p>http://jsonpatch.com/</p>
+<p><a href="commits/">http://jsonpatch.com/</a></p>
 <p>A simple way to edit JSON objects:</p>
 <pre><code>The original document
 
@@ -995,7 +996,7 @@ The result
 <p>It uses the <a href="http://tools.ietf.org/html/rfc6901">JSON-Pointer spec</a> for denoting <code>path</code>s.
 It has quite a bunch of implementations, in various languages.</p>
 <h2><a class="header" href="#json-ld-patch" id="json-ld-patch">JSON-LD-PATCH</a></h2>
-<p>https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH</p>
+<p><a href="commits/">https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH</a></p>
 <p>A JSON denoted patch notation for RDF.
 Seems similar to the <a href="https://www.w3.org/TR/rdf-json/">RDF/JSON</a> serialization format.
 Uses string literals as operators / methods.
@@ -1013,7 +1014,7 @@ Conceptually perhaps most similar to linked-delta.</p>
 ]
 </code></pre>
 <h2><a class="header" href="#sparql-update" id="sparql-update">SPARQL UPDATE</a></h2>
-<p>https://www.w3.org/TR/sparql11-update/</p>
+<p><a href="commits/">https://www.w3.org/TR/sparql11-update/</a></p>
 <p>SPARQL queries that change data.</p>
 <pre><code class="language-sparql">PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
 INSERT DATA
@@ -1055,7 +1056,7 @@ It's just JSON.
 This means that it will feel familiar for most developers, and will be supported by many existing environments.</p>
 <p>Finally, Atomic Commits use cryptography (hashing) to determine authenticity of commits.
 This concept is borrowed from git commits, which also uses signatures to prove authorship.
-As is the case with git, this also allows for verfiable P2P sharing of changes.</p>
+As is the case with git, this also allows for verifiable P2P sharing of changes.</p>
 <h1><a class="header" href="#interoperability-relation-to-other-technology" id="interoperability-relation-to-other-technology">Interoperability: Relation to other technology</a></h1>
 <p>Atomic data is designed to be highly interoperable.
 It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and <a href="https://ontola.io/blog/rdf-serialization-formats/">other serialization formats</a>.</p>
@@ -1085,7 +1086,7 @@ However, it does differ in some fundamental ways.</p>
 <li>Atomic only allows those who control a resource's <code>subject</code> URL endpoint to edit the data. This means that you can't add triples about something that you don't control.</li>
 <li>Atomic has no separate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you follow a <code>predicate</code> value) specify a datatype</li>
 <li>Atomic has no separate <code>language</code> field, but it does support <a href="interoperability/../schema/translations.html">Translation Resources</a>.</li>
-<li>Atomic has a native Event (state changes) model (<a href="interoperability/../mutations/intro.html">Atomic Mutations</a>), which enables communication of state changes</li>
+<li>Atomic has a native Event (state changes) model (<a href="interoperability/../commits/intro.html">Atomic Commits</a>), which enables communication of state changes</li>
 <li>Atomic has a native Schema model (<a href="interoperability/../schema/intro.html">Atomic Schema</a>), which helps developers to know what data types they can expect (string, integer, link, array)</li>
 </ul>
 <h2><a class="header" href="#why-these-changes" id="why-these-changes">Why these changes?</a></h2>
@@ -1225,10 +1226,10 @@ This is why Atomic Data introduces a <code>shortname</code> field in Properties,
 <h3><a class="header" href="#adding-native-arrays" id="adding-native-arrays">Adding native arrays</a></h3>
 <p>RDF lacks a clear solution for dealing with <a href="https://ontola.io/blog/ordered-data-in-rdf/">ordered data</a>, resulting in confusion when developers have to create lists of content.
 Adding an Array data type as a base data type helps solve this. (<a href="https://github.com/ontola/atomic-data/issues/4">discussion</a>)</p>
-<h3><a class="header" href="#adding-a-native-mutation-standard" id="adding-a-native-mutation-standard">Adding a native mutation standard</a></h3>
+<h3><a class="header" href="#adding-a-native-state-changes-standard" id="adding-a-native-state-changes-standard">Adding a native state changes standard</a></h3>
 <p>There is no integrated standard for communicating state changes.
 Although <a href="https://github.com/ontola/linked-delta">linked-delta</a> and <a href="https://afs.github.io/rdf-delta/">rdf-delta</a> do exist, they aren't referred to by the RDF spec.
-I think developers need guidance when learning a new system such as RDF, and that's why <a href="interoperability/../mutations/intro.html">Atomic Mutations</a> is included in this book.</p>
+I think developers need guidance when learning a new system such as RDF, and that's why <a href="interoperability/../commits/intro.html">Atomic Commits</a> is included in this book.</p>
 <h3><a class="header" href="#adding-a-schema-language" id="adding-a-schema-language">Adding a schema language</a></h3>
 <p>A schema language is necessary to constrain and validate instances of data.
 This is very useful when creating domain-specific standards, which can in turn be used to generate forms or language-specific types / interfaces.
@@ -1392,7 +1393,7 @@ Someone may have tempered with the data, or fabricated it.</p>
 <p>The process of Verification can be done in two ways:</p>
 <ol>
 <li><strong>Request the subjects, and check if the atoms match</strong>.</li>
-<li><strong>Verify the signatures of the Resources or Mutations</strong></li>
+<li><strong>Verify the signatures of the Resources or Commits</strong></li>
 </ol>
 <p>When one of these steps is taken, we say that the Graph is Verified.</p>
 <h2><a class="header" href="#schema-complete-graphs" id="schema-complete-graphs">Schema Complete Graphs</a></h2>
@@ -1492,10 +1493,8 @@ This will make editing .TOML files awesome by providing on-screen validation, au
 const config = {
   // A URL to a TPF compatible endpoint where the data can be fetched
   tpfEndpoint: &quot;https://example.com/tpf&quot;,
-  // A UTL to an Atomic Mutations endpoint where the client can subscribe to changes
-  mutationsEndpoint: &quot;https://example.com/mutations&quot;,
-  // A UTL to an Atomic Suggestions endpoint where the client can send suggested state changes
-  sugestionsEndpoint: &quot;https://example.com/suggestions&quot;,
+  // A URL to an Atomic Commits endpoint where the client can subscribe to changes
+  commitssEndpoint: &quot;https://example.com/commits&quot;,
 };
 
 const store = createStore(config); // Initializes the store

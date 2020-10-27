@@ -219,10 +219,8 @@ This will make editing .TOML files awesome by providing on-screen validation, au
 const config = {
   // A URL to a TPF compatible endpoint where the data can be fetched
   tpfEndpoint: &quot;https://example.com/tpf&quot;,
-  // A UTL to an Atomic Mutations endpoint where the client can subscribe to changes
-  mutationsEndpoint: &quot;https://example.com/mutations&quot;,
-  // A UTL to an Atomic Suggestions endpoint where the client can send suggested state changes
-  sugestionsEndpoint: &quot;https://example.com/suggestions&quot;,
+  // A URL to an Atomic Commits endpoint where the client can subscribe to changes
+  commitssEndpoint: &quot;https://example.com/commits&quot;,
 };
 
 const store = createStore(config); // Initializes the store

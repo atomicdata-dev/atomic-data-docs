@@ -157,11 +157,11 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-commits-compared-to-other-rdf-delta-models" id="atomic-commits-compared-to-other-rdf-delta-models">Atomic Commits compared to other (RDF) delta models</a></h1>
-<p>Let's compare the Atomic Commit approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
+<p>Let's compare the <a href="concepts">Atomic Commit</a> approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
 First, I'll briefly discuss the existing examples (<a href="https://github.com/ontola/atomic-data/issues">open a PR / issue</a> if we're missing something!).
 After that, we'll discuss how Atomic Data differs from the existing ones.</p>
 <h2><a class="header" href="#rdf-delta" id="rdf-delta">RDF-Delta</a></h2>
-<p>https://afs.github.io/rdf-delta/</p>
+<p><a href="">https://afs.github.io/rdf-delta/</a></p>
 <p>Describes changes (RDF Patches) in a specialized turtle-like serialization format.</p>
 <pre><code>TX .
 PA &quot;rdf&quot; &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; .
@@ -174,11 +174,12 @@ TC .
 </code></pre>
 <p>Similar to Atomic Commits, these Delta's should have identifiers (URLs), which are denoted in a header.</p>
 <h2><a class="header" href="#delta-ld" id="delta-ld">Delta-LD</a></h2>
-<p>http://www.tara.tcd.ie/handle/2262/91407</p>
+<p><a href="">http://www.tara.tcd.ie/handle/2262/91407</a></p>
+<p>Spec for classifying and representing state changes between two RDF resources.</p>
 <h2><a class="header" href="#patchr" id="patchr">PatchR</a></h2>
-<p>https://www.igi-global.com/article/patchr/135561</p>
+<p><a href="">https://www.igi-global.com/article/patchr/135561</a></p>
 <h2><a class="header" href="#ld-patch" id="ld-patch">LD-Patch</a></h2>
-<p>https://www.w3.org/TR/ldpatch/</p>
+<p><a href="">https://www.w3.org/TR/ldpatch/</a></p>
 <pre><code>PATCH /timbl HTTP/1.1
 Host: example.org
 Content-Length: 478
@@ -217,7 +218,7 @@ Add {
 } .
 </code></pre>
 <h2><a class="header" href="#linked-delta" id="linked-delta">Linked-Delta</a></h2>
-<p>https://github.com/ontola/linked-delta</p>
+<p><a href="">https://github.com/ontola/linked-delta</a></p>
 <p>An N-Quads serialized delta format.
 Methods are URLs, which means they are extensible.
 Does not specify how to bundle lines.
@@ -236,7 +237,7 @@ New state:
 &lt;http://example.org/resource&gt; &lt;http://example.org/predicate&gt; &quot;New value 🐵&quot; .
 </code></pre>
 <h2><a class="header" href="#json-patch" id="json-patch">JSON-PATCH</a></h2>
-<p>http://jsonpatch.com/</p>
+<p><a href="">http://jsonpatch.com/</a></p>
 <p>A simple way to edit JSON objects:</p>
 <pre><code>The original document
 
@@ -263,7 +264,7 @@ The result
 <p>It uses the <a href="http://tools.ietf.org/html/rfc6901">JSON-Pointer spec</a> for denoting <code>path</code>s.
 It has quite a bunch of implementations, in various languages.</p>
 <h2><a class="header" href="#json-ld-patch" id="json-ld-patch">JSON-LD-PATCH</a></h2>
-<p>https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH</p>
+<p><a href="">https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH</a></p>
 <p>A JSON denoted patch notation for RDF.
 Seems similar to the <a href="https://www.w3.org/TR/rdf-json/">RDF/JSON</a> serialization format.
 Uses string literals as operators / methods.
@@ -281,7 +282,7 @@ Conceptually perhaps most similar to linked-delta.</p>
 ]
 </code></pre>
 <h2><a class="header" href="#sparql-update" id="sparql-update">SPARQL UPDATE</a></h2>
-<p>https://www.w3.org/TR/sparql11-update/</p>
+<p><a href="">https://www.w3.org/TR/sparql11-update/</a></p>
 <p>SPARQL queries that change data.</p>
 <pre><code class="language-sparql">PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
 INSERT DATA
@@ -323,7 +324,7 @@ It's just JSON.
 This means that it will feel familiar for most developers, and will be supported by many existing environments.</p>
 <p>Finally, Atomic Commits use cryptography (hashing) to determine authenticity of commits.
 This concept is borrowed from git commits, which also uses signatures to prove authorship.
-As is the case with git, this also allows for verfiable P2P sharing of changes.</p>
+As is the case with git, this also allows for verifiable P2P sharing of changes.</p>
 
                     </main>
 
