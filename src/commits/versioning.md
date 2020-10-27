@@ -1,6 +1,6 @@
 # Atomic Data Versioning
 
-When Atomic Mutations are applied to some Resource, the resource will change.
+When Atomic Commits are applied to some Resource, the resource will change.
 However, its identifier (the Subject) will often remain the same.
 
 - Versioned representations should provide a link to the authority that might update it, and a link to where the latest version can be found.

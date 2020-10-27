@@ -23,20 +23,20 @@ Forking refers to:
 The newly created copy with the different URL is a _Fork_.
 Since the Fork is a resource that you own (see [Ownership](ownership.md)), you can make changes to is.
 
-Whenever you make changes, the app making the changes _should_ keep track of them as Atomic Mutations.
-These Mutations make it easier to apply (small) changes to (large) resources, even when multiple people are working on the same thing at the same time.
+Whenever you make changes, the app making the changes _should_ keep track of them as Atomic Commits.
+These Commits make it easier to apply (small) changes to (large) resources, even when multiple people are working on the same thing at the same time.
 
 ### Suggestion
 
 When you've forked some resource and made some changes, you can Suggest these changes to the original owner.
-This is done by sending an HTTP POST request containing the mutations to the Owner URL.
+This is done by sending an HTTP POST request containing the Commits to the Owner URL.
 
-A Suggestion is a (set of?) Mutation(s?) that is proposed to be appended to some Ledger.
-The important difference between a Suggestion and a Mutation, is that a Mutation has been verified, signed and approved by the Controller.
+A Suggestion is a (set of?) Commit(s?) that is proposed to be appended to some Ledger.
+The important difference between a Suggestion and a Commit, is that a Commit has been verified, signed and approved by the Controller.
 
 ### Controller
 
-The actor (person / organization) that is in control of a specific Resource and its mutations.
+The actor (person / organization) that is in control of a specific Resource and its Commits.
 
 ### Inbox
 

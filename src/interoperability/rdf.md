@@ -16,7 +16,7 @@ However, it does differ in some fundamental ways.
 - Atomic only allows those who control a resource's `subject` URL endpoint to edit the data. This means that you can't add triples about something that you don't control.
 - Atomic has no separate `datatype` field, but it requires that `Properties` (the resources that are shown when you follow a `predicate` value) specify a datatype
 - Atomic has no separate `language` field, but it does support [Translation Resources](../schema/translations.md).
-- Atomic has a native Event (state changes) model ([Atomic Mutations](../mutations/intro.md)), which enables communication of state changes
+- Atomic has a native Event (state changes) model ([Atomic Commits](../commits/intro.md)), which enables communication of state changes
 - Atomic has a native Schema model ([Atomic Schema](../schema/intro.md)), which helps developers to know what data types they can expect (string, integer, link, array)
 
 ## Why these changes?
@@ -207,11 +207,11 @@ This is why Atomic Data introduces a `shortname` field in Properties, which forc
 RDF lacks a clear solution for dealing with [ordered data](https://ontola.io/blog/ordered-data-in-rdf/), resulting in confusion when developers have to create lists of content.
 Adding an Array data type as a base data type helps solve this. ([discussion](https://github.com/ontola/atomic-data/issues/4))
 
-### Adding a native mutation standard
+### Adding a native state changes standard
 
 There is no integrated standard for communicating state changes.
 Although [linked-delta](https://github.com/ontola/linked-delta) and [rdf-delta](https://afs.github.io/rdf-delta/) do exist, they aren't referred to by the RDF spec.
-I think developers need guidance when learning a new system such as RDF, and that's why [Atomic Mutations](../mutations/intro.md) is included in this book.
+I think developers need guidance when learning a new system such as RDF, and that's why [Atomic Commits](../commits/intro.md) is included in this book.
 
 ### Adding a schema language
 

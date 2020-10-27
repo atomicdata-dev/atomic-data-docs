@@ -1,12 +1,12 @@
 # Atomic Commits compared to other (RDF) delta models
 
-Let's compare the Atomic Commit approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
+Let's compare the [Atomic Commit](concepts) approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
 First, I'll briefly discuss the existing examples ([open a PR / issue](https://github.com/ontola/atomic-data/issues) if we're missing something!).
 After that, we'll discuss how Atomic Data differs from the existing ones.
 
 ## RDF-Delta
 
-https://afs.github.io/rdf-delta/
+[https://afs.github.io/rdf-delta/]()
 
 Describes changes (RDF Patches) in a specialized turtle-like serialization format.
 
@@ -25,15 +25,18 @@ Similar to Atomic Commits, these Delta's should have identifiers (URLs), which a
 
 ## Delta-LD
 
-http://www.tara.tcd.ie/handle/2262/91407
+[http://www.tara.tcd.ie/handle/2262/91407]()
+
+Spec for classifying and representing state changes between two RDF resources.
+
 
 ## PatchR
 
-https://www.igi-global.com/article/patchr/135561
+[https://www.igi-global.com/article/patchr/135561]()
 
 ## LD-Patch
 
-https://www.w3.org/TR/ldpatch/
+[https://www.w3.org/TR/ldpatch/]()
 
 ```
 PATCH /timbl HTTP/1.1
@@ -76,7 +79,7 @@ Add {
 
 ## Linked-Delta
 
-https://github.com/ontola/linked-delta
+[https://github.com/ontola/linked-delta]()
 
 An N-Quads serialized delta format.
 Methods are URLs, which means they are extensible.
@@ -100,7 +103,7 @@ New state:
 
 ## JSON-PATCH
 
-http://jsonpatch.com/
+[http://jsonpatch.com/]()
 
 A simple way to edit JSON objects:
 
@@ -133,7 +136,7 @@ It has quite a bunch of implementations, in various languages.
 
 ## JSON-LD-PATCH
 
-https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH
+[https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH]()
 
 A JSON denoted patch notation for RDF.
 Seems similar to the [RDF/JSON](https://www.w3.org/TR/rdf-json/) serialization format.
@@ -156,7 +159,7 @@ Conceptually perhaps most similar to linked-delta.
 
 ## SPARQL UPDATE
 
-https://www.w3.org/TR/sparql11-update/
+[https://www.w3.org/TR/sparql11-update/]()
 
 SPARQL queries that change data.
 
@@ -210,4 +213,4 @@ This means that it will feel familiar for most developers, and will be supported
 
 Finally, Atomic Commits use cryptography (hashing) to determine authenticity of commits.
 This concept is borrowed from git commits, which also uses signatures to prove authorship.
-As is the case with git, this also allows for verfiable P2P sharing of changes.
+As is the case with git, this also allows for verifiable P2P sharing of changes.

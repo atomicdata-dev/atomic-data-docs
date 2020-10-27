@@ -82,10 +82,8 @@ import {createStore} from '@atomicdata';
 const config = {
   // A URL to a TPF compatible endpoint where the data can be fetched
   tpfEndpoint: "https://example.com/tpf",
-  // A UTL to an Atomic Mutations endpoint where the client can subscribe to changes
-  mutationsEndpoint: "https://example.com/mutations",
-  // A UTL to an Atomic Suggestions endpoint where the client can send suggested state changes
-  sugestionsEndpoint: "https://example.com/suggestions",
+  // A URL to an Atomic Commits endpoint where the client can subscribe to changes
+  commitssEndpoint: "https://example.com/commits",
 };
 
 const store = createStore(config); // Initializes the store

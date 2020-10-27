@@ -41,7 +41,7 @@ Someone may have tempered with the data, or fabricated it.
 The process of Verification can be done in two ways:
 
 1. **Request the subjects, and check if the atoms match**.
-1. **Verify the signatures of the Resources or Mutations**
+1. **Verify the signatures of the Resources or Commits**
 
 When one of these steps is taken, we say that the Graph is Verified.
 
