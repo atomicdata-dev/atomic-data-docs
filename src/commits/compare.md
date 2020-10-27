@@ -28,15 +28,52 @@ Similar to Atomic Commits, these Delta's should have identifiers (URLs), which a
 [http://www.tara.tcd.ie/handle/2262/91407]()
 
 Spec for classifying and representing state changes between two RDF resources.
-
+I wasn't able to find a serialization or an implementation for this.
 
 ## PatchR
 
 [https://www.igi-global.com/article/patchr/135561]()
 
+An ontology for RDF change _requests_.
+Looks very interesting.
+The [URL](http://patchr.s16a.org/ontologies/patchr), unfortunately, does not resolve.
+I'm not able to find any implementations.
+
+```turtle
+prefix :      <http://example.org/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix pat:  <http://purl.org/hpi/patchr#> .
+@prefix guo:  <http://webr3.org/owl/guo#> .
+@prefix prov: <http://purl.org/net/provenance/ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dbp:  <http://dbpedia.org/resource/> .
+@prefix dbo:  <http://dbpedia.org/ontology/> .
+
+:Patch_15 a pat:Patch ;
+  pat:appliesTo <http://dbpedia.org/void.ttl#DBpedia_3.5> ;
+  pat:status pat:Open ;
+  pat:update [
+    a guo:UpdateInstruction ;
+    guo:target_graph <http://dbpedia.org/> ;
+    guo:target_subject dbp:Oregon ;
+    guo:delete [dbo:language dbp:De_jure ] ;
+    guo:insert [dbo:language dbp:English_language ]
+  ] ;
+  prov:wasGeneratedBy [a prov:Activity ;
+  pat:confidence "0.5"^^xsd:decimal ;
+  prov:wasAssociatedWith :WhoKnows ;
+  prov:actedOnBehalfOf :WhoKnows#Player_25 ;
+  prov:performedAt "..."^^xsd:dateTime ] .
+```
+
 ## LD-Patch
 
 [https://www.w3.org/TR/ldpatch/]()
+
+This offers quite a few features besides adding and deleting triples, such as updating lists.
+It's a unique serialization format, inspired by turtle.
+Some implementations exists, such as one in [ruby](https://github.com/ruby-rdf/ld-patch) which is
 
 ```
 PATCH /timbl HTTP/1.1
@@ -142,6 +179,8 @@ A JSON denoted patch notation for RDF.
 Seems similar to the [RDF/JSON](https://www.w3.org/TR/rdf-json/) serialization format.
 Uses string literals as operators / methods.
 Conceptually perhaps most similar to linked-delta.
+
+Has a [JS implementation](https://developer.aliyun.com/mirror/npm/package/jsonld-patch).
 
 ```
 [
