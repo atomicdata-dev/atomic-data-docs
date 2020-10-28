@@ -178,7 +178,7 @@ You can use parts of Atomic Data separately, but the standard is designed as a f
 Using links everywhere in data has amazing merits: links remove ambiguity, they enable exploration, they enable connected datasets.
 Linked Data could help to democratize the web by decentralizing information storage, and giving people more control.
 The Solid Project by Tim Berners-Lee is a great example of why linked data can help to create a more decentralized web.</p>
-<p>At <a href="ontola.io/">Ontola</a>, we've been working with linked data quite intensely for the last couple of years.
+<p>At <a href="https://ontola.io/">Ontola</a>, we've been working with linked data quite intensely for the last couple of years.
 We went all-in on RDF, and challenged ourselves to create software that communicates exclusively using it.
 That has been an inspiring, but also sometimes a frustrating journey.
 While building various production grade apps (e.g. our e-democracy platform <a href="https://argu.co/">Argu.co</a>, which is used by various governments), we had to <a href="https://ontola.io/blog/full-stack-linked-data/">solve many problems</a>.
@@ -187,7 +187,7 @@ We tackled some of these problems by having a tight grip on the data that we cre
 But it took a long time, and it was hard.
 It's been almost 15 years since the <a href="https://www.w3.org/DesignIssues/LinkedData.html">introduction of linked data</a>, and its adoption has been slow.
 We know that some of its merits are undeniable, and we truly want the semantic web to succeed.
-We believe the lack of growth partially has to do with a lack of tooling, but also with <a href="../interoperability/rdf.html#why-these-changes">some problems that lie in the RDF data model</a>.</p>
+We believe the lack of growth partially has to do with a lack of tooling, but also with <a href="interoperability/rdf.html#why-these-changes">some problems that lie in the RDF data model</a>.</p>
 <p>Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
 <h1><a class="header" href="#atomic-data-core" id="atomic-data-core">Atomic Data Core</a></h1>
 <p>The Atomic Data Core describes the fundamental data model of Atomic Data.
@@ -307,7 +307,7 @@ More on that in the Atomic Schema chapter!</p>
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
 However, it's recommended to use <code>ad3</code>, which is specifically designed to be a simple and performant format for Atomic Data.</p>
-<p>Atomic Data is designed to be serializable to idiomatic (clean, nice) <a href="core/../interoperability/json">JSON</a>.
+<p>Atomic Data is designed to be serializable to idiomatic (clean, nice) <a href="core/../interoperability/json.html">JSON</a>.
 It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and <a href="https://ontola.io/blog/rdf-serialization-formats/">other serialization formats</a>.</p>
 <h2><a class="header" href="#ad3" id="ad3">AD3</a></h2>
 <p>AD3 stands for <em>Atomic Data Triples</em>, and it's the simplest and fastest way to serialize / parse Atomic Data.</p>
@@ -610,7 +610,6 @@ This Property has a Datatype of <code>AtomicURL</code>, and these should point t
 The thing that the Property field should link to.
 A Property is an abstract type of Resource that describes the relation between a Subject and a Value.
 A Property provides some semantic information about the relationship (in its <code>description</code>), it provides a shorthand (the <code>shortname</code>) and it links to a Datatype.
-Here's a <a href="schema/properties.html">list of useful Properties</a>.
 You can constrain properties further by using <a href="https://www.w3.org/TR/shacl/#property-shapes">SHACL Properties</a>.</p>
 <p>Properties of a Property instance:</p>
 <ul>
@@ -742,7 +741,7 @@ Use a <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a> language 
 [&quot;https://example.com/johns/lifestory&quot;,&quot;https://atomicdata.dev/langs/nl&quot;,&quot;Tsja, John werd geboren en stierf later.&quot;]
 </code></pre>
 <p>Every single property used for Translation strings are instances of the Translation class.</p>
-<p>A translation string uses the <a href="https://https://atomicdata.dev/datatypes/MDString">MDString</a> datatype, which means it allows Markdown syntax.</p>
+<p>A translation string uses the <a href="https://atomicdata.dev/datatypes/markdown">MDString</a> datatype, which means it allows Markdown syntax.</p>
 <h1><a class="header" href="#atomic-schema-faq" id="atomic-schema-faq">Atomic Schema FAQ</a></h1>
 <h2><a class="header" href="#how-do-i-create-a-property-that-supports-multiple-datatypes" id="how-do-i-create-a-property-that-supports-multiple-datatypes">How do I create a Property that supports multiple Datatypes?</a></h2>
 <p>A property only has one single Datatype.
@@ -826,7 +825,7 @@ Atomic Data and Atomic Commits aim to make this easier by using cryptography for
 <p>Since Atomic Data always has a clear <em>owner</em>, all changes are coming from a single source or truth.
 This prevents a lot of the issues that CRDT aims to solve, such as two people working on the same word at the same time in some text editor.</p>
 <h3><a class="header" href="#how-does-it-compare-to-other-delta-formats" id="how-does-it-compare-to-other-delta-formats">How does it compare to other delta formats?</a></h3>
-<p>See the <a href="commits/./compare">compare section</a></p>
+<p>See the <a href="commits/compare.html">compare section</a></p>
 <h1><a class="header" href="#atomic-commits-concepts" id="atomic-commits-concepts">Atomic Commits: Concepts</a></h1>
 <h2><a class="header" href="#commit" id="commit">Commit</a></h2>
 <p>A Commit describes how a Resource must be updated.
@@ -881,15 +880,15 @@ This means that the process will always end in the exact same string.</p>
 </ul>
 <p><a href="https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81">Here's an example implementation of this process written in Rust</a>.</p>
 <p>This will result in a string.
-The next step is to sign this string using the Ed25519 private key.
-This signature is a byte array, which should be encoded in base64.
+The next step is to sign this string using the Ed25519 private key from the Author.
+This signature is a byte array, which should be encoded in base64 for serialization.
 Make sure that the Author's URL resolves to a Resource that contains the linked public key.</p>
 <p>Congratulations, you've just created a valid Commit!</p>
 <h2><a class="header" href="#author" id="author">Author</a></h2>
 <p>An Author is a person, organization, computer or other type of agent that can create and sign Commits.
 The most important property of the Author is the</p>
 <h1><a class="header" href="#atomic-commits-compared-to-other-rdf-delta-models" id="atomic-commits-compared-to-other-rdf-delta-models">Atomic Commits compared to other (RDF) delta models</a></h1>
-<p>Let's compare the <a href="commits/concepts">Atomic Commit</a> approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
+<p>Let's compare the <a href="commits/concepts.html">Atomic Commit</a> approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
 First, I'll briefly discuss the existing examples (<a href="https://github.com/ontola/atomic-data/issues">open a PR / issue</a> if we're missing something!).
 After that, we'll discuss how Atomic Data differs from the existing ones.</p>
 <h2><a class="header" href="#rdf-delta" id="rdf-delta">RDF-Delta</a></h2>
@@ -912,9 +911,7 @@ I wasn't able to find a serialization or an implementation for this.</p>
 <h2><a class="header" href="#patchr" id="patchr">PatchR</a></h2>
 <p><a href="commits/">https://www.igi-global.com/article/patchr/135561</a></p>
 <p>An ontology for RDF change <em>requests</em>.
-Looks very interesting.
-The <a href="http://patchr.s16a.org/ontologies/patchr">URL</a>, unfortunately, does not resolve.
-I'm not able to find any implementations.</p>
+Looks very interesting, but I'm not able to find any implementations.</p>
 <pre><code class="language-turtle">prefix :      &lt;http://example.org/&gt; .
 @prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -1486,7 +1483,7 @@ atomic install https://atomicdata.dev/ontologies/meetings
 # when no URL is given, use the Ontola repo's ontologies
 atomic install meetings
 </code></pre>
-<p>MIT licensed <a href="%5Bhere%5D(https://github.com/joepio/atomic/cli)">repo here</a>.</p>
+<p>MIT licensed <a href="https://github.com/joepio/atomic">repo here</a>.</p>
 <h3><a class="header" href="#atomic-lib-rust" id="atomic-lib-rust"><code>atomic-lib</code> (Rust)</a></h3>
 <p>Library that contains:</p>
 <ul>
@@ -1495,7 +1492,7 @@ atomic install meetings
 <li>Path traversal</li>
 <li>Basic validation</li>
 </ul>
-<p>MIT licensed <a href="%5Bhere%5D(https://github.com/joepio/atomic/lib)">repo here</a>.</p>
+<p>MIT licensed <a href="https://github.com/joepio/atomic">repo here</a>.</p>
 <h3><a class="header" href="#atomic-server" id="atomic-server"><code>atomic-server</code></a></h3>
 <p>Server for hosting Atomic Data. Uses <code>atomic-lib</code>.</p>
 <ul>
@@ -1504,7 +1501,7 @@ atomic install meetings
 <li>Useful query options (e.g. Triple Pattern Fragments)</li>
 <li>Browser-friendly HTML presentation, JSON serialization, AD3 serialization.</li>
 </ul>
-<p>MIT licensed <a href="%5Bhere%5D(https://github.com/joepio/atomic/server)">repo here</a>.</p>
+<p>MIT licensed <a href="https://github.com/joepio/atomic">repo here</a>.</p>
 <h2><a class="header" href="#some-ideas-for-tooling" id="some-ideas-for-tooling">Some ideas for tooling</a></h2>
 <p>This document contains a set of ideas that would help achieve that success.</p>
 <h2><a class="header" href="#atoml--vscode-extension" id="atoml--vscode-extension">ATOML / VSCode Extension</a></h2>
