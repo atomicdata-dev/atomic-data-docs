@@ -1,6 +1,6 @@
 # Atomic Commits compared to other (RDF) delta models
 
-Let's compare the [Atomic Commit](concepts) approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
+Let's compare the [Atomic Commit](concepts.md) approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
 First, I'll briefly discuss the existing examples ([open a PR / issue](https://github.com/ontola/atomic-data/issues) if we're missing something!).
 After that, we'll discuss how Atomic Data differs from the existing ones.
 
@@ -35,9 +35,7 @@ I wasn't able to find a serialization or an implementation for this.
 [https://www.igi-global.com/article/patchr/135561]()
 
 An ontology for RDF change _requests_.
-Looks very interesting.
-The [URL](http://patchr.s16a.org/ontologies/patchr), unfortunately, does not resolve.
-I'm not able to find any implementations.
+Looks very interesting, but I'm not able to find any implementations.
 
 ```turtle
 prefix :      <http://example.org/> .

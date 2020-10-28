@@ -55,4 +55,4 @@ This prevents a lot of the issues that CRDT aims to solve, such as two people wo
 
 ### How does it compare to other delta formats?
 
-See the [compare section](./compare)
+See the [compare section](compare.md)

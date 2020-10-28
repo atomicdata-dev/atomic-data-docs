@@ -4,7 +4,7 @@ Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
 However, it's recommended to use `ad3`, which is specifically designed to be a simple and performant format for Atomic Data.
 
-Atomic Data is designed to be serializable to idiomatic (clean, nice) [JSON](../interoperability/json).
+Atomic Data is designed to be serializable to idiomatic (clean, nice) [JSON](../interoperability/json.md).
 It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and [other serialization formats](https://ontola.io/blog/rdf-serialization-formats/).
 
 ## AD3

@@ -21,7 +21,6 @@ The Property class.
 The thing that the Property field should link to.
 A Property is an abstract type of Resource that describes the relation between a Subject and a Value.
 A Property provides some semantic information about the relationship (in its `description`), it provides a shorthand (the `shortname`) and it links to a Datatype.
-Here's a [list of useful Properties](properties.md).
 You can constrain properties further by using [SHACL Properties](https://www.w3.org/TR/shacl/#property-shapes).
 
 Properties of a Property instance:

@@ -66,8 +66,8 @@ This means that the process will always end in the exact same string.
 [Here's an example implementation of this process written in Rust](https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81).
 
 This will result in a string.
-The next step is to sign this string using the Ed25519 private key.
-This signature is a byte array, which should be encoded in base64.
+The next step is to sign this string using the Ed25519 private key from the Author.
+This signature is a byte array, which should be encoded in base64 for serialization.
 Make sure that the Author's URL resolves to a Resource that contains the linked public key.
 
 Congratulations, you've just created a valid Commit!

@@ -26,7 +26,7 @@ atomic install https://atomicdata.dev/ontologies/meetings
 atomic install meetings
 ```
 
-MIT licensed [repo here]([here](https://github.com/joepio/atomic/cli)).
+MIT licensed [repo here](https://github.com/joepio/atomic).
 
 ### `atomic-lib` (Rust)
 
@@ -37,7 +37,7 @@ Library that contains:
 - Path traversal
 - Basic validation
 
-MIT licensed [repo here]([here](https://github.com/joepio/atomic/lib)).
+MIT licensed [repo here](https://github.com/joepio/atomic).
 
 
 ### `atomic-server`
@@ -49,7 +49,7 @@ Server for hosting Atomic Data. Uses `atomic-lib`.
 - Useful query options (e.g. Triple Pattern Fragments)
 - Browser-friendly HTML presentation, JSON serialization, AD3 serialization.
 
-MIT licensed [repo here]([here](https://github.com/joepio/atomic/server)).
+MIT licensed [repo here](https://github.com/joepio/atomic).
 
 ## Some ideas for tooling
 

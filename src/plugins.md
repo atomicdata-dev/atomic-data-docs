@@ -5,7 +5,7 @@ They enhance the functionality of an Atomic Server.
 For example, they can:
 
 - Extend existing resources (e.g. automatic translations)
-- Provide new endpoints with custom functionality (e.g. full text search or some new query system)
+- Provide new endpoints (maybe even ports?) with custom functionality (e.g. full text search for pod data, an e-mail server)
 - Periodically execute some code (e.g. fetch new data from a source)
 - Add datatypes and validation
 
