@@ -1,4 +1,4 @@
-# Atomic Data Overview
+# Atomic Data Docs - Overview
 
 _Status: early draft, [feedback welcome](get-involved.md). Early Rust implementation accessible [here](https://github.com/joepio/atomic)._
 

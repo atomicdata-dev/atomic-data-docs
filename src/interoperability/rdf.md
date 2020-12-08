@@ -59,8 +59,9 @@ And if you _control_ the data of the source, you can set any constraints that yo
 But if you're building a system that uses arbitrary RDF, that system also needs to deal with steps 1,4,5 and 6.
 That often means writing a lot of conditionals and other client-side logic to get the value that you need.
 It also means that serializing to a format like JSON becomes complicated - you can't just map predicates to keys - you might get collisions.
-Oh, and you can't use key-value stores for storing RDF, at least not in a trivial way.
-This complexity is the direct result of the lack of `subject-predicate` uniqueness.
+And you can't use key-value stores for storing RDF, at least not in a trivial way.
+Every single _selected value_ should be treated as an array of unknown datatypes, and that makes it really difficult to build software.
+All complexity is the direct result of the lack of `subject-predicate` uniqueness.
 
 As a developer who uses RDF data, I want to be able to do something like this:
 
@@ -75,7 +76,7 @@ console.log(joep.employer().name()) // => "Ontola.io"
 ```
 
 Basically, I'd like to use all knowledge of the world as if it were a big JSON object.
-Being able to do that, requires some things that are present in JSON, and some things that are present in RDF
+Being able to do that, requires using some things that are present in JSON, and using some things that are present in RDF.
 
 - Traverse data on various domains (which is already possible with RDF)
 - Have [unique `subject-predicate` combinations](#subject-predicate-uniqueness) (which is default in JSON)
