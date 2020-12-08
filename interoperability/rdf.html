@@ -206,8 +206,9 @@ And if you <em>control</em> the data of the source, you can set any constraints 
 But if you're building a system that uses arbitrary RDF, that system also needs to deal with steps 1,4,5 and 6.
 That often means writing a lot of conditionals and other client-side logic to get the value that you need.
 It also means that serializing to a format like JSON becomes complicated - you can't just map predicates to keys - you might get collisions.
-Oh, and you can't use key-value stores for storing RDF, at least not in a trivial way.
-This complexity is the direct result of the lack of <code>subject-predicate</code> uniqueness.</p>
+And you can't use key-value stores for storing RDF, at least not in a trivial way.
+Every single <em>selected value</em> should be treated as an array of unknown datatypes, and that makes it really difficult to build software.
+All complexity is the direct result of the lack of <code>subject-predicate</code> uniqueness.</p>
 <p>As a developer who uses RDF data, I want to be able to do something like this:</p>
 <pre><code class="language-js">// Fetches the resource
 const joep = get(&quot;https://example.com/person/joep&quot;)
@@ -218,7 +219,7 @@ console.log(joep.birthDate()) // =&gt; Date(1991-01-20)
 console.log(joep.employer().name()) // =&gt; &quot;Ontola.io&quot;
 </code></pre>
 <p>Basically, I'd like to use all knowledge of the world as if it were a big JSON object.
-Being able to do that, requires some things that are present in JSON, and some things that are present in RDF</p>
+Being able to do that, requires using some things that are present in JSON, and using some things that are present in RDF.</p>
 <ul>
 <li>Traverse data on various domains (which is already possible with RDF)</li>
 <li>Have <a href="#subject-predicate-uniqueness">unique <code>subject-predicate</code> combinations</a> (which is default in JSON)</li>
