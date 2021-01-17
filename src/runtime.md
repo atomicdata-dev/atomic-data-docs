@@ -10,10 +10,10 @@ Sharing confidential / privacy / sensitive data is inherently risky, so it is un
 From the data owner perspective, it is safer to run any analysis locally, and send back the result to the researcher.
 This is what the Atomic Runtime allows for.
 
-## ART: Atomic Runtime Interface
+## Atomic Runtime Interface
 
 This is standardized set of query options that allow for fetching data from an Atomic Store.
-It uses the WASI (WebAssembly Systems Interface) standard for
+It uses the WASI (WebAssmemly Systems Interface) (TODO)
 
 ## Creating an Analysis
 
