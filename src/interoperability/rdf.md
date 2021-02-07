@@ -4,24 +4,26 @@ RDF (the [Resource Description Framework](https://www.w3.org/TR/rdf-primer/)) is
 It is the forerunner of Atomic Data, and is therefore highly similar in its model.
 Both heavily rely on using URLs, and both have a fundamentally simple and uniform model for data statements.
 Both view the web as a single, connected graph database.
-Because of that, Atomic Data is also highly compatible with RDF - **all Atomic Data can be converted into valid RDF**.
+Because of that, Atomic Data is also highly compatible with RDF - **all Atomic Data is also valid RDF**.
 Atomic Data can be thought of as a **more constrained, type safe version of RDF**.
 However, it does differ in some fundamental ways.
 
 - Atomic calls the three parts of a Triple `subject`, `property` and `value`, instead of `subject`, `predicate`, `object`.
-- Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination should be unique.
-- Atomic has no difference between `literal`, `named node` and `blank node` objects - these are all `values`, but with different datatypes.
-- Atomic uses `paths` instead of `blank nodes`
-- Atomic requires URL (not URI) values in its `subjects` and `predicates` (properties), which means that they should be resolvable.
+- Atomic does not support having multiple statements with the same `<subject> <predicate>`, every combination must be unique.
+- Atomic does not have `literals`, `named nodes` and `blank nodes` - these are all `values`, but with different datatypes.
+- Atomic uses `nested Resources` and `paths` instead of `blank nodes`
+- Atomic requires URL (not URI) values in its `subjects` and `properties` (predicates), which means that they should be resolvable. Properties must resolve to an `Atomic Property`, which describes its datatype.
 - Atomic only allows those who control a resource's `subject` URL endpoint to edit the data. This means that you can't add triples about something that you don't control.
-- Atomic has no separate `datatype` field, but it requires that `Properties` (the resources that are shown when you follow a `predicate` value) specify a datatype
+- Atomic has no separate `datatype` field, but it requires that `Properties` (the resources that are shown when you follow a `predicate` value) specify a datatype. However, it is allowed to serialize the datatype explicitly, of course.
 - Atomic has no separate `language` field, but it does support [Translation Resources](../schema/translations.md).
 - Atomic has a native Event (state changes) model ([Atomic Commits](../commits/intro.md)), which enables communication of state changes
 - Atomic has a native Schema model ([Atomic Schema](../schema/intro.md)), which helps developers to know what data types they can expect (string, integer, link, array)
+- Atomic does not support Named Graphs. These should not be needed, because all statements should be retrievable by fetching the Subject of a resource. However, it _is_ allowed to include other resources in a response.
 
 ## Why these changes?
 
 I love RDF, and have been working with it for quite some time now.
+I started a company that specializes in Linked Data, and we use it extensively in our products and services.
 Using URIs (and more-so URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
 However, some of the characteristics of RDF might have contributed to its relative lack of adoption.
 
@@ -61,14 +63,13 @@ That often means writing a lot of conditionals and other client-side logic to ge
 It also means that serializing to a format like JSON becomes complicated - you can't just map predicates to keys - you might get collisions.
 And you can't use key-value stores for storing RDF, at least not in a trivial way.
 Every single _selected value_ should be treated as an array of unknown datatypes, and that makes it really difficult to build software.
-All complexity is the direct result of the lack of `subject-predicate` uniqueness.
+All this complexity is the direct result of the lack of `subject-predicate` uniqueness.
 
 As a developer who uses RDF data, I want to be able to do something like this:
 
 ```js
 // Fetches the resource
 const joep = get("https://example.com/person/joep")
-
 // Returns the value of the birthDate atom
 console.log(joep.birthDate()) // => Date(1991-01-20)
 // Fetches the employer relation at possibly some other domain, checks that resource for a property with the 'name' shortkey
@@ -258,6 +259,8 @@ This tooling should help to create URLs, Properties, and host everything on an e
 ## Convert Atomic data to RDF
 
 Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.
+This is why `atomic` can already serialize data to RDF ([example](https://atomicdata.dev/classes/Property.ttl)).
+
 However, contrary to Atomic Data, RDF has optional Language and Datatype elements in every statement.
 It is good practice to use these RDF concepts when serializing Atomic Data into Turtle / RDF/XML, or other [RDF serialization formats](https://ontola.io/blog/rdf-serialization-formats/).
 
