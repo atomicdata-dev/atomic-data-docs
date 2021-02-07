@@ -5,6 +5,25 @@ Great tooling is required to make this a success.
 
 ## Existing tooling
 
+### `atomic-server`
+
+Server for hosting Atomic Data. Uses `atomic-lib`.
+
+- Responds to requests for created Atomic Resources, makes atomic data available at their URL.
+- Manages data on disk.
+- Useful query options (e.g. Triple Pattern Fragments)
+- Browser-friendly HTML presentation, JSON serialization, AD3 serialization.
+
+MIT licensed [repo here](https://github.com/joepio/atomic).
+
+### `atomic-react`
+
+Data browser + react typescript / javascript front-end library.
+
+demo [here](joepio.github.io/atomic-react/).
+
+MIT licensed [repo here](https://github.com/joepio/atomic-react)
+
 ### `atomic-cli`
 
 A tool for generating / querying Atomic Data from the command line.
@@ -36,18 +55,6 @@ Library that contains:
 - Parsing (AD3) / Serialization (AD3, JSON, more to come)
 - Path traversal
 - Basic validation
-
-MIT licensed [repo here](https://github.com/joepio/atomic).
-
-
-### `atomic-server`
-
-Server for hosting Atomic Data. Uses `atomic-lib`.
-
-- Responds to requests for created Atomic Resources, makes atomic data available at their URL.
-- Manages data on disk.
-- Useful query options (e.g. Triple Pattern Fragments)
-- Browser-friendly HTML presentation, JSON serialization, AD3 serialization.
 
 MIT licensed [repo here](https://github.com/joepio/atomic).
 
