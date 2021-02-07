@@ -1,7 +1,5 @@
 # Atomic Data Docs - Overview
 
-_Status: early draft, [feedback welcome](get-involved.md). Early Rust implementation accessible [here](https://github.com/joepio/atomic)._
-
 Atomic Data is a proposed standard for modeling and exchanging data.
 It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.
 
@@ -16,6 +14,16 @@ You can use parts of Atomic Data separately, but the standard is designed as a f
 - [Atomic Data Core](core/intro.md): the core model for typed, Linked Data
 - [Atomic Schema](schema/intro.md): defining properties, datatypes and classes
 - [Atomic Commits](commits/intro.md): sharing state changes, verifying changes and collaboration
+
+## Get Started
+
+If you want to read more about how Atomic Data works - read on.
+If you'd rather play and discover for yourself, play with the existing [tooling](tooling.md):
+
+- Server: [atomic-server](https://github.com/joepio/atomic) (powers [atomicdata.dev](https://atomicdata.dev), run with `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`)
+- Front-end browser + typescript client library: [atomic-react](https://github.com/joepio/atomic-react) ([demo](joepio.github.io/atomic-react/))
+- CLI (atomic-cli): [atomic-cli](https://github.com/joepio/atomic) (`cargo install atomic-cli`)
+- Rust library: [atomic-lib](https://github.com/joepio/atomic)
 
 ## Motivation
 

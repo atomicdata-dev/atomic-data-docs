@@ -1,5 +1,10 @@
 # Tooling for Atomic Data
 
+- Server: [atomic-server](https://github.com/joepio/atomic)
+- Front-end browser + typescript client library: [atomic-react](https://github.com/joepio/atomic-react)
+- CLI (atomic-cli): [atomic-cli](https://github.com/joepio/atomic)
+- Rust library: [atomic-lib](https://github.com/joepio/atomic)
+
 ## `atomic-server`
 
 Server for hosting Atomic Data. Uses `atomic-lib`.
@@ -9,13 +14,17 @@ Server for hosting Atomic Data. Uses `atomic-lib`.
 - Useful query options (e.g. Triple Pattern Fragments)
 - Browser-friendly HTML presentation, JSON serialization, AD3 serialization.
 
+One liner: `$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`
+
+[demo](https://atomicdata.dev/)
+
 [MIT licensed repository + issue tracker](https://github.com/joepio/atomic).
 
 ## `atomic-react`
 
 Data browser + react typescript / javascript front-end library.
 
-[demo](https://joepio.github.io/atomic-react/).
+[demo](https://joepio.github.io/atomic-react/)
 
 [MIT licensed repository + issue tracker](https://github.com/joepio/atomic-react).
 
@@ -53,10 +62,13 @@ Visit https://github.com/joepio/atomic for more info
 
 ## `atomic-lib` (Rust)
 
-Library that contains:
+Library that powers `atomic-server` and `atomic-cli`. Features:
 
 - An in-memory store
 - Parsing (JSON-AD, AD3) / Serialization (JSON-AD, AD3, JSON-LD, TTL, N-Triples)
+- Commit validation and processing
+- TPF queries
+- Constructing Collections
 - Path traversal
 - Basic validation
 
@@ -65,11 +77,6 @@ Library that contains:
 ## Want to add to this list? Some ideas for tooling
 
 This document contains a set of ideas that would help achieve that success.
-
-## ATOML / VSCode Extension
-
-Extending the TOML format to map it to Atomic Classes.
-This will make editing .TOML files awesome by providing on-screen validation, autocompletion and documentation for fields.
 
 ## Atomizer (data importer and conversion kit)
 
@@ -80,3 +87,7 @@ This will make editing .TOML files awesome by providing on-screen validation, au
 
 - A simple (JS) widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.
 - Would be useful for documentation, and as a default view for Atomic Data.
+
+## Atomic-Dart + Flutter
+
+Library + front-end app for browsing / manipulating Atomic Data on mobile devices.
