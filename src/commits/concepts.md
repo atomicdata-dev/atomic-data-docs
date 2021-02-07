@@ -2,13 +2,18 @@
 
 ## Commit
 
-A Commit describes how a Resource must be updated.
+_url: [https://atomicdata.dev/classes/Commit](https://atomicdata.dev/classes/Commit)_
+
+A Commit is a Resource that describes how a Resource must be updated.
+It can be used for auditing, versioning and feeds.
+It is cryptographically signed by an [Agent](https://atomicdata.dev/classes/Agent).
+
 The **required fields** are:
 
 - `subject` - The thing being changed. A Resource Subject URL that the Commit is providing information about.
-- `author` - Who's making the change. The Atomic URL of the Author's profile - which in turn must contain a `publicKey`.
-- `signature` - Cryptographic proof of the change. A hash of the JSON-serialized Commit (without the `signature` field), signed by the `actor`'s `privateKey`. This proves that the author is indeed the one who created this exact commit. The signature of the Commit is also used as the identifier of the commit.
-- `createdAt` - When the change was made. A UNIX timestamp number of when the commit was created.
+- `signer` - Who's making the change. The Atomic URL of the Author's profile - which in turn must contain a `publicKey`.
+- `signature` - Cryptographic proof of the change. A hash of the JSON-AD serialized Commit (without the `signature` field), signed by the Agent's `private-key`. This proves that the author is indeed the one who created this exact commit. The signature of the Commit is also used as the identifier of the commit.
+- `created-at` - When the change was made. A UNIX timestamp number of when the commit was created.
 
 The **optional method fields** describe how the data must be changed:
 
@@ -28,20 +33,23 @@ A commit should be sent (using an HTTPS POST request) to a `/commmit` endpoint o
 The server then checks the signature and the author rights, and responds with a `2xx` status code if it succeeded, or an `5xx` error if something went wrong.
 The error will be a JSON object.
 
-### Serialization with JSON
+### Serialization with JSON-AD
 
 Let's look at an example Commit:
 
 ```json
 {
-  "subject": "http://examle.com/someResource",
-  "createdAt": 1601239744,
-  "author": "https://example.com/profile",
-  "set": {
-    "https://atomicdata.dev/properties/description": "my new resource description"
+  "@id": "https://atomicdata.dev/commits/3n+U/3OvymF86Ha6S9MQZtRVIQAAL0rv9ZQpjViht4emjnqKxj4wByiO9RhfL+qwoxTg0FMwKQsNg6d0QU7pAw==",
+  "https://atomicdata.dev/properties/createdAt": 1611489929370,
+  "https://atomicdata.dev/properties/isA": [
+    "https://atomicdata.dev/classes/Commit"
+  ],
+  "https://atomicdata.dev/properties/set": {
+    "https://atomicdata.dev/properties/shortname": "1611489928"
   },
-  "remove": ["https://atomicdata.dev/properties/shortname"],
-  "signature": "24c7d4b3c1b6b5f924243d67dbfc33fb680b5d3e2a77614cebe03c4a2840d29a"
+  "https://atomicdata.dev/properties/signature": "3n+U/3OvymF86Ha6S9MQZtRVIQAAL0rv9ZQpjViht4emjnqKxj4wByiO9RhfL+qwoxTg0FMwKQsNg6d0QU7pAw==",
+  "https://atomicdata.dev/properties/signer": "https://surfy.ddns.net/agents/9YCs7htDdF4yBAiA4HuHgjsafg+xZIrtZNELz4msCmc=",
+  "https://atomicdata.dev/properties/subject": "https://atomicdata.dev/test"
 }
 ```
 
@@ -56,12 +64,12 @@ Calculating the signature is a delicate process that should be followed to the l
 The first step is **serializing the commit deterministically**.
 This means that the process will always end in the exact same string.
 
-- Serialize the Commit as JSON.
+- Serialize the Commit as JSON-AD.
 - Do not serialize the signature field.
 - Do not include empty objects or arrays.
 - If `destroy` is false, do not include it.
 - All keys are sorted alphabetically - both in the root object, as in any nested objects.
-- The JSON is minified: no newlines, no spaces.
+- The JSON-AD is minified: no newlines, no spaces.
 
 [Here's an example implementation of this process written in Rust](https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81).
 
