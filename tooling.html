@@ -157,37 +157,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
-<p>Because Atomic Data is very young, <strong>little tooling for Atomic Data exists</strong>.
-Great tooling is required to make this a success.</p>
-<h2><a class="header" href="#existing-tooling" id="existing-tooling">Existing tooling</a></h2>
-<h3><a class="header" href="#atomic-cli" id="atomic-cli"><code>atomic-cli</code></a></h3>
-<p>A tool for generating / querying Atomic Data from the command line.</p>
-<pre><code class="language-sh"># Add a mapping, and store the Atomic Class locally
-atomic map person https://example.com/person
-# Create a new instance with that Class
-atomic new person
-name (required): John McLovin
-age: 31
-Created at: ipfs:Qwhp2fh3o8hfo8w7fhwo77w38ohw3o78fhw3ho78w3o837ho8fwh8o7fh37ho
-# link to an Atomic Server where you can upload your stuff
-# If you don't, your data exists locally and gets published to IPFS
-atomic setup
-# install ontologies and add their shortnames to bookmarks
-atomic install https://atomicdata.dev/ontologies/meetings
-# when no URL is given, use the Ontola repo's ontologies
-atomic install meetings
-</code></pre>
-<p>MIT licensed <a href="https://github.com/joepio/atomic">repo here</a>.</p>
-<h3><a class="header" href="#atomic-lib-rust" id="atomic-lib-rust"><code>atomic-lib</code> (Rust)</a></h3>
-<p>Library that contains:</p>
-<ul>
-<li>An in-memory store</li>
-<li>Parsing (AD3) / Serialization (AD3, JSON, more to come)</li>
-<li>Path traversal</li>
-<li>Basic validation</li>
-</ul>
-<p>MIT licensed <a href="https://github.com/joepio/atomic">repo here</a>.</p>
-<h3><a class="header" href="#atomic-server" id="atomic-server"><code>atomic-server</code></a></h3>
+<h2><a class="header" href="#atomic-server" id="atomic-server"><code>atomic-server</code></a></h2>
 <p>Server for hosting Atomic Data. Uses <code>atomic-lib</code>.</p>
 <ul>
 <li>Responds to requests for created Atomic Resources, makes atomic data available at their URL.</li>
@@ -195,8 +165,48 @@ atomic install meetings
 <li>Useful query options (e.g. Triple Pattern Fragments)</li>
 <li>Browser-friendly HTML presentation, JSON serialization, AD3 serialization.</li>
 </ul>
-<p>MIT licensed <a href="https://github.com/joepio/atomic">repo here</a>.</p>
-<h2><a class="header" href="#some-ideas-for-tooling" id="some-ideas-for-tooling">Some ideas for tooling</a></h2>
+<p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
+<h2><a class="header" href="#atomic-react" id="atomic-react"><code>atomic-react</code></a></h2>
+<p>Data browser + react typescript / javascript front-end library.</p>
+<p><a href="https://joepio.github.io/atomic-react/">demo</a>.</p>
+<p><a href="https://github.com/joepio/atomic-react">MIT licensed repository + issue tracker</a>.</p>
+<h2><a class="header" href="#atomic-cli" id="atomic-cli"><code>atomic-cli</code></a></h2>
+<p>A tool for generating / querying Atomic Data from the command line. Install with <code>cargo install atomic-cli</code>.</p>
+<pre><code>atomic 0.20.0
+Joep Meindertsma &lt;joep@ontola.io&gt;
+Create, share, fetch and model linked atomic data!
+
+USAGE:
+    atomic-cli [SUBCOMMAND]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    destroy    Permanently removes a Resource. Uses Commits.
+    edit       Edit a single Atom from a Resource using your text editor. Uses Commits.
+    get        Traverses a Path and prints the resulting Resource or Value.
+    help       Prints this message or the help of the given subcommand(s)
+    list       List all bookmarks
+    new        Create a Resource
+    remove     Remove a single Atom from a Resource. Uses Commits.
+    set        Update an Atom's value. Uses Commits.
+    tpf        Finds Atoms using Triple Pattern Fragments.
+
+Visit https://github.com/joepio/atomic for more info
+</code></pre>
+<p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
+<h2><a class="header" href="#atomic-lib-rust" id="atomic-lib-rust"><code>atomic-lib</code> (Rust)</a></h2>
+<p>Library that contains:</p>
+<ul>
+<li>An in-memory store</li>
+<li>Parsing (JSON-AD, AD3) / Serialization (JSON-AD, AD3, JSON-LD, TTL, N-Triples)</li>
+<li>Path traversal</li>
+<li>Basic validation</li>
+</ul>
+<p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
+<h2><a class="header" href="#want-to-add-to-this-list-some-ideas-for-tooling" id="want-to-add-to-this-list-some-ideas-for-tooling">Want to add to this list? Some ideas for tooling</a></h2>
 <p>This document contains a set of ideas that would help achieve that success.</p>
 <h2><a class="header" href="#atoml--vscode-extension" id="atoml--vscode-extension">ATOML / VSCode Extension</a></h2>
 <p>Extending the TOML format to map it to Atomic Classes.
@@ -211,66 +221,6 @@ This will make editing .TOML files awesome by providing on-screen validation, au
 <li>A simple (JS) widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.</li>
 <li>Would be useful for documentation, and as a default view for Atomic Data.</li>
 </ul>
-<h2><a class="header" href="#atomic-js-javascript--typescript" id="atomic-js-javascript--typescript">Atomic-js (Javascript / Typescript)</a></h2>
-<p>A JS compatible library, accessible as an NPM package is the most popular and developer friendly way to start.</p>
-<p>Here's some pseudocode that indicates how it might be used:</p>
-<pre><code class="language-js">import {createStore} from '@atomicdata';
-
-const config = {
-  // A URL to a TPF compatible endpoint where the data can be fetched
-  tpfEndpoint: &quot;https://example.com/tpf&quot;,
-  // A URL to an Atomic Commits endpoint where the client can subscribe to changes
-  commitssEndpoint: &quot;https://example.com/commits&quot;,
-};
-
-const store = createStore(config); // Initializes the store
-
-// The `classInitializer` function takes an Atomic Class URI as its argument
-// fetches the Class, its Properties and the DataTypes
-// and returns a function that let's you create instances of that class
-const personBuilder = await store.classInitializer(&quot;https://example.com/classes/Person&quot;);
-
-// Create an instance of the Person Class
-// An Atomic Suggestion is sent to the
-const alice = await personBuilder({
-  // The Subject field is optional, but recommended if you want to control its URL.
-  // Otherwise, the Server will pick something
-  subject: &quot;https://example.com/alice&quot;,
-  // The IDE is aware of the existing keys and their acceptable values,
-  // because a conversion from Atomic Classes and Properties
-  // to typescript interfaces can be made automatically
-  firstName: &quot;Alice&quot;,
-  lastName: &quot;Anderson&quot;,
-  bestFriend: &quot;https://example.com/Bob&quot;,
-  birthDate: new Date(&quot;1991-01-20&quot;),
-  // Since the URL in the key below can be fetched, and has a Property + Datatype, the IDE + the compiler can determine that 'true' is an acceptable type.
-  &quot;https://example.com/someOtherProperty&quot;: true,
-})
-
-console.log(person.subject) //=&gt; Should return a newly created identifier, https://example.com/alice
-
-// Checks the store for the subject, and returns it.
-// If the subject does not exists locally, it will fetch it first using the `tpfEndpoint`.
-const alice = await store.get(&quot;https://example.com/alice&quot;)
-
-// Because of the keys in Atomic Properties, we can use this dot syntax to traverse the graph and get a value
-console.log(await alice.path(&quot;bestFriend.firstName&quot;)).value(); // =&gt; &quot;Bob&quot;
-// What should happen here?
-console.log(await alice.bestFriend); // =&gt; {...}
-
-// It's also possible to convert a resource to a native JS object.
-// By specifying the depth, nested resources will be fetched as well.
-const aliceJS = await store.get(&quot;https://example.com/alice&quot;).toJS(depth: 2)
-
-console.log(aliceJS.bestFriend) // =&gt; { name: Bob, birthdate: Date(1991-01-20)}
-
-</code></pre>
-<p>I think a Developer Experience similar to the one above is essential for getting people to create linked data.
-It should be incredibly easy, and this is what enables that.
-However, realizing a library + IDE support as shown above is hard at the least, perhaps even impossible.
-Theoretically, the information is accessible - but I'm not sure whether the IDE and the JS context (e.g. the Typescript compiler) can successfully see which shape is being returned by the <code>classInitializer</code> function.</p>
-<h2><a class="header" href="#atomic-browser" id="atomic-browser">Atomic Browser</a></h2>
-<p>A web-browser application that enables viewing, browsing, navigating Atomic Data.</p>
 
                     </main>
 

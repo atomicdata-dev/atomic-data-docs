@@ -162,10 +162,13 @@ Every single value in an Atomic Resource can be targeted through such a Path.
 They can be used as identifiers for specific Values.</p>
 <p>The simplest path, is the URL of a resource, which represents the entire Resource with all its properties.
 If you want to target a specific atom, you can use an Atomic Path with a second URL.
-This second URL can be replaced by a Shortname, if the Resource is an instance of a class which has properties with that shortname (sounds more complicated than it is).</p>
+This second URL can be replaced by a Shortname, if the Resource is an instance of a class which has properties with that Shortname (sounds more complicated than it is).</p>
 <h2><a class="header" href="#example" id="example">Example</a></h2>
-<p>Let's start with this simple graph:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
+<p>Let's start with this simple Resource:</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://example.com/john&quot;,
+  &quot;https://example.com/lastName&quot;: &quot;McLovin&quot;,
+}
 </code></pre>
 <p>Then the following Path targets the <code>McLovin</code> value:</p>
 <p><code>https://example.com/john https://example.com/lastname</code> =&gt; <code>McLovin</code></p>
@@ -173,10 +176,14 @@ This second URL can be replaced by a Shortname, if the Resource is an instance o
 Since John is an instance of a Person, he might have a <code>lastname</code> which maps to <code>https://example.com/latname</code>.</p>
 <p><code>https://example.com/john lastname</code> =&gt; <code>McLovin</code></p>
 <p>We can also traverse relationships:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://atomicdata.dev/properties/isA&quot;, &quot;https://example.com/Person&quot;]
-[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
-[&quot;https://example.com/john&quot;, &quot;https://example.com/employer&quot;, &quot;https://example.com/XCorp&quot;]
-[&quot;https://example.com/XCorp&quot;, &quot;https://example.com/description&quot;, &quot;The greatest company!&quot;]
+<pre><code class="language-json">[{
+  &quot;@id&quot;: &quot;https://example.com/john&quot;,
+  &quot;https://example.com/lastName&quot;: &quot;McLovin&quot;,
+  &quot;https://example.com/employer&quot;: &quot;https://example.com/XCorp&quot;,
+},{
+  &quot;@id&quot;: &quot;https://example.com/XCorp&quot;,
+  &quot;https://example.com/description&quot;: &quot;The greatest company!&quot;,
+}]
 </code></pre>
 <p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
 <p>In the example above, the XCorp subject exists and is the source of the <code>The greatest company!</code> value.
@@ -187,37 +194,38 @@ Unfortunately, creating unique and resolvable URLs can be a bother, and sometime
 If you've worked with RDF, this is what Blank Nodes are used for.
 In Atomic Data, we have something similar: <em>Nested Resources</em>.</p>
 <p>Let's use a Nested Resource in the example from the previous section:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
-[&quot;https://example.com/john https://example.com/employer&quot;, &quot;https://example.com/description&quot;, &quot;The greatest company!&quot;]
+<pre><code class="language-json">  {
+  &quot;@id&quot;: &quot;https://example.com/john&quot;,
+  &quot;https://example.com/lastName&quot;: &quot;McLovin&quot;,
+  &quot;https://example.com/employer&quot;: {
+    &quot;https://example.com/description&quot;: &quot;The greatest company!&quot;,
+  },
+}
 </code></pre>
 <p>By combining two Subject URLs into a single string, we've created a nested resource.
-The Subjet of the nested resource is <code>https://example.com/john https://example.com/employer</code>, including the spacebar.</p>
+The Subject of the nested resource is <code>https://example.com/john https://example.com/employer</code>, including the spacebar.</p>
 <p>Note that the path from before still resolves:</p>
 <p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
-<p>Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.</p>
+<p>We can also navigate Arrays using paths</p>
 <p>For example:</p>
 <pre><code class="language-json">{
   &quot;@id&quot;: &quot;https://example.com/john&quot;,
-  &quot;@context&quot;: &quot;https://example.com/person&quot;,
   &quot;hasShoes&quot;: [
     {
-      &quot;name&quot;: &quot;Mr. Boot&quot;,
+      &quot;https://example.com/name&quot;: &quot;Mr. Boot&quot;,
     },
     {
-      &quot;name&quot;: &quot;Sunny Sandals&quot;,
+      &quot;https://example.com/name&quot;: &quot;Sunny Sandals&quot;,
     }
   ]
 }
 </code></pre>
 <p>The Path of <code>Mr. Boot</code> is:</p>
-<pre><code>https://example.com/john hasShoes 1 name
-</code></pre>
-<p>This Path is useful for storing the value in other serialization formats, such as <code>.ad3</code>:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/john https://example.com/hasShoes 0&quot;, &quot;https://example.com/name&quot;, &quot;Mr. Boot&quot;]
-[&quot;https://example.com/john https://example.com/hasShoes 1&quot;, &quot;https://example.com/name&quot;, &quot;Sunny Sandals&quot;]
+<pre><code>https://example.com/john hasShoes 0 name
 </code></pre>
 <p>You can target an item in an array by using a number to indicate its position, starting with 0.</p>
-<p>Notice how the Resource with the <code>name: Mr. Boot</code> does not have an explicit <code>@id</code>, but it <em>does</em> have a Path.</p>
+<p>Notice how the Resource with the <code>name: Mr. Boot</code> does not have an explicit <code>@id</code>, but it <em>does</em> have a Path.
+This means that we still have a unique, globally resolvable identifier - yay!</p>
 
                     </main>
 

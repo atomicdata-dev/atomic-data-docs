@@ -221,15 +221,24 @@ Before we dive into its concepts, we'll talk about why this standard is made in 
 <li><strong>Big Data</strong>. If you're dealing with TeraBytes of data, you probably don't want to use Atomic Data.</li>
 </ul>
 <h1><a class="header" href="#atomic-data-core-concepts" id="atomic-data-core-concepts">Atomic Data Core: Concepts</a></h1>
-<p>Understanding the Core concepts of Atomic Data are fundamental for reading the rest of the documentation.</p>
 <h2><a class="header" href="#atomic-data" id="atomic-data">Atomic Data</a></h2>
 <p>Atomic Data is a data model for sharing information on the web.
-It is a directed, labeled graph, similar to RDF.
 It can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
-Contrary to some other (labeled) graph data models, a relationship between two items (Resources) does not have attributes.
-It's designed to be easily serializable to both JSON and linked data formats.</p>
+It's designed to be easily serializable to both JSON and linked data formats.
+It is <em>typed</em> data model, which means that every value should be validated and predictable.</p>
+<p>It is a directed, labeled graph, similar to RDF, so contrary to some other (labeled) graph data models (e.g. NEO4j), a relationship between two items (Resources) does not have attributes.</p>
+<h2><a class="header" href="#resource" id="resource">Resource</a></h2>
+<p>A Resource is a bunch of information about a single things.
+Formally, it is a set of Atoms (a Graph) that share the same Subject URL.
+You can think of a Resource as a single row in a spreadsheet or database.
+In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
+A Resource consists of at least one Atom, so it always has some Property and some Value.
+The most important Property of a Resource is the <a href="https://atomicdata.dev/properties/isA"><code>is-a</code></a> Property, which refers to which <em>Class</em> it belongs (e.g. Person or Blogpost).
+A Class can specify <a href="https://atomicdata.dev/properties/requires"><code>required</code></a> and <a href="https://atomicdata.dev/properties/recommends"><code>recommended</code></a> properties.
+More on that in the Atomic Schema chapter!</p>
 <h2><a class="header" href="#atom-or-atomic-triple" id="atom-or-atomic-triple">Atom (or Atomic Triple)</a></h2>
-<p>The smallest possible piece of <em>meaningful</em> data / information.
+<p>Every Resource is composed of Atoms.
+The Atom is the smallest possible piece of <em>meaningful</em> data / information.
 You can think of an Atom as a single cell in a spreadsheet or database.
 An Atom consists of three fields:</p>
 <ul>
@@ -248,16 +257,21 @@ An Atom is comparable with an RDF Triple / Statement (<a href="core/../interoper
 <tr><td>Britta</td><td>last name</td><td>Smalls</td></tr>
 </tbody></table>
 <p>The table above shows easily readable strings, but in reality, Atomic Data will almost exclusively consist of links (URLs).
-The standard serialization format for Atomic Data is AD3, which looks like this:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/arnold&quot;,&quot;https://example.com/properties/lastname&quot;,&quot;Peters&quot;]
-[&quot;https://example.com/arnold&quot;,&quot;https://example.com/properties/birthDate&quot;,&quot;1991-01-20&quot;]
-[&quot;https://example.com/arnold&quot;,&quot;https://example.com/properties/bestFriend&quot;,&quot;https://example.com/britta&quot;]
-[&quot;https://example.com/britta&quot;,&quot;https://example.com/properties/lastname&quot;,&quot;Smalls&quot;]
+The standard serialization format for Atomic Data is JSON-AD, which looks like this:</p>
+<pre><code class="language-json">[{
+  &quot;@id&quot;: &quot;https://example.com/arnold&quot;,
+  &quot;https://example.com/properties/lastname&quot;: &quot;Peters&quot;,
+  &quot;https://example.com/properties/birthDate&quot;: &quot;1991-01-20&quot;,
+  &quot;https://example.com/properties/bestFriend&quot;: &quot;https://example.com/britta&quot;,
+},{
+  &quot;@id&quot;: &quot;https://example.com/britta&quot;,
+  &quot;https://example.com/properties/lastname&quot;: &quot;Smalls&quot;,
+}]
 </code></pre>
+<p>The <code>@id</code> field denotes the Subject of each Resource, which is also the URL that should point to where the resource can be downloaded.</p>
 <p>In the Atomic Data above, we have:</p>
 <ul>
-<li>four different <strong>Atoms</strong> (every line is an Atom)</li>
-<li>two different <strong>Subjects</strong>: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
+<li>two different <strong>Resources</strong>, describing two different <strong>Subjects</strong>: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
 <li>three different <strong>Properties</strong> (<code>https://example.com/properties/bornAt</code>, <code>https://example.com/properties/firstName</code>, and <code>https://example.com/properties/bestFriend</code>)</li>
 <li>four different <strong>Values</strong> (<code>1991-01-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
 </ul>
@@ -276,7 +290,7 @@ Their Datatypes are defined in the Properties.</p>
 It is the identifier that the rest of the Atom is providing information about.
 The Subject field is a URL that points to the Resource.
 The creator of the Subject MUST make sure that it resolves.
-In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see <a href="core/querying.html">Atomic Querying</a>.
+In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see <a href="core/querying.html">Querying Atomic Data</a>.
 This also means that the creator of a Resource must make sure that it is available at its URL - probably by hosting the data, or by using some service that hosts it.</p>
 <h2><a class="header" href="#property-field" id="property-field">Property field</a></h2>
 <p>The Property field is the second part of an Atom.
@@ -293,170 +307,52 @@ This includes URLs, strings, integers, dates and more.</p>
 <p>A Graph is a set of Atoms.
 A Graph can describe various subjects, and may or may not be related.
 Graphs can have several characteristics (Schema Complete, Valid, Closed)</p>
-<h2><a class="header" href="#resource" id="resource">Resource</a></h2>
-<p>A Resource is a set of Atoms (a Graph) that share the same Subject URL.
-You can think of a Resource as a single row in a spreadsheet or database.
-In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
-A Resource consists of at least one Atom, so it always has some Property and some Value.
-The most important Property of a Resource is the <code>isa</code> Property, which refers to which <em>Class</em> it belongs (e.g. Person or Blogpost).
-A Class can specify <em>required</em> and <em>recommended</em> properties.
-More on that in the Atomic Schema chapter!</p>
 <h2><a class="header" href="#atomic-web" id="atomic-web">Atomic Web</a></h2>
 <p>The Atomic Web refers to all Atomic Graphs on the web.</p>
+<p>In the next chapter, we'll explore how Atomic Data is serialized.</p>
 <h1><a class="header" href="#serialization-of-atomic-data" id="serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
-However, it's recommended to use <code>ad3</code>, which is specifically designed to be a simple and performant format for Atomic Data.</p>
-<p>Atomic Data is designed to be serializable to idiomatic (clean, nice) <a href="core/../interoperability/json.html">JSON</a>.
+However, it's recommended to use <code>JSON-AD</code>, which is specifically designed to be a simple and performant format for Atomic Data.</p>
+<p>Atomic Data is designed to be serializable to clean, simple <a href="core/../interoperability/json.html">JSON</a>.
 It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and <a href="https://ontola.io/blog/rdf-serialization-formats/">other serialization formats</a>.</p>
-<h2><a class="header" href="#ad3" id="ad3">AD3</a></h2>
-<p>AD3 stands for <em>Atomic Data Triples</em>, and it's the simplest and fastest way to serialize / parse Atomic Data.</p>
-<p>AD3 represents a single Atom as a single line, containing a JSON array of three strings, respectively representing the Subject, Property and Value.</p>
-<p>It looks like this:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/subject&quot;,&quot;https://example.com/property&quot;,&quot;some object&quot;]
-[&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
-</code></pre>
-<p>It uses Newline Delimited JSON (<a href="http://ndjson.org/">NDJSON</a>) for serialization, which is just a large string with newlines between each JSON object.</p>
-<p>NDJSON has some important benefits:</p>
+<h2><a class="header" href="#json-ad" id="json-ad">JSON-AD</a></h2>
+<p><code>JSON-AD</code> is the <em>default</em> serialization format for Atomic Data.
+It is what the current <a href="https://github.com/joepio/atomic">Rust</a> and <a href="https://github.com/joepio/atomic-react">Typescript / React</a> implementation use to communicate.
+It is just JSON with a lot of links in it.</p>
 <ul>
-<li><strong>Streaming parsing</strong>: An NDJSON document can be parsed before it's fully loaded / transmitted. That is not possible with regular JSON.</li>
-<li><strong>High compatibility</strong>: NDJSON parsers can use JSON parsers, and are therefore everywhere.</li>
-<li><strong>Performance</strong>: Modern browsers have highly performant JSON parsing, which means that it's <em>fast</em> in one of the most important contexts: the browser.</li>
+<li>The <code>@id</code> field is special: it defines the Subject of the Resource.</li>
+<li>JSON arrays are mapped to <a href="https://atomicdata.dev/datatypes/resourceArray">Resource Arrays</a></li>
+<li>Numbers can be <a href="https://atomicdata.dev/datatypes/integer">Integers</a>, <a href="https://atomicdata.dev/datatypes/timestamp">Timestamps</a> or <a href="https://atomicdata.dev/datatypes/float">Floats</a>.</li>
+<li>JSON booleans map to Atomic Booleans.</li>
+<li>Strings can be many datatypes, including <a href="https://atomicdata.dev/datatypes/string">String</a>, <a href="https://atomicdata.dev/datatypes/markdown">Markdown</a>, <a href="https://atomicdata.dev/datatypes/date">Date</a> or other.</li>
+<li>Nested Objects are Nested Resources. A Nested Resource can either be an Anonymous Resource (without an <code>@id</code> field) or a regular Resource.</li>
 </ul>
-<p><em>Mime type (not registered yet!): <code>application/ad3-ndjson</code></em></p>
-<p><em>File name extension: <code>.ad3</code></em></p>
-<p>Disclaimer: note that AD3 is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
-<p>You can validate AD3 at <a href="https://atomicdata.dev/validate">atomicdata.dev/validate</a>.</p>
-<p>Atomic Triples is heavily inspired by <a href="https://github.com/ontola/hextuples">HexTuples-NDJSON</a>.</p>
-<p>Example serialization implementation written in Rust, to show you how <em>easy</em> it is to serialize this!</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>pub fn serialize_atoms_to_ad3(atoms: Vec&lt;Atom&gt;) -&gt; AtomicResult&lt;String&gt; {
-    let mut string = String::new();
-    for atom in atoms {
-        // Use an exsting JSON serialization library to take care of the hard work (escaping quotes, etc.)
-        let mut ad3_atom = serde_json::to_string(&amp;vec![&amp;atom.subject, &amp;atom.property, &amp;atom.value])?;
-        ad3_atom.push_str(&quot;\n&quot;);
-        &amp;string.push_str(&amp;*ad3_atom);
-    }
-    return Ok(string);
+<p>Let's look at an example:</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://atomicdata.dev/properties/description&quot;,
+  &quot;https://atomicdata.dev/properties/datatype&quot;: &quot;https://atomicdata.dev/datatypes/markdown&quot;,
+  &quot;https://atomicdata.dev/properties/description&quot;: &quot;A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.&quot;,
+  &quot;https://atomicdata.dev/properties/isA&quot;: [
+    &quot;https://atomicdata.dev/classes/Property&quot;
+  ],
+  &quot;https://atomicdata.dev/properties/shortname&quot;: &quot;description&quot;
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>And an example parser:</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>pub fn parse_ad3&lt;'a, 'b&gt;(string: &amp;'b String) -&gt; AtomicResult&lt;Vec&lt;Atom&gt;&gt; {
-    let mut atoms: Vec&lt;Atom&gt; = Vec::new();
-    for line in string.lines() {
-        match line.chars().next() {
-            // These are comments
-            Some('#') =&gt; {}
-            Some(' ') =&gt; {}
-            // That's an array, let's do this!
-            Some('[') =&gt; {
-                let string_vec: Vec&lt;String&gt; =
-                    parse_json_array(line).expect(&amp;*format!(&quot;Parsing error in {:?}&quot;, line));
-                if string_vec.len() != 3 {
-                    return Err(format!(
-                        &quot;Wrong length of array at line {:?}: wrong length of array, should be 3&quot;,
-                        line
-                    )
-                    .into());
-                }
-                let subject = &amp;string_vec[0];
-                let property = &amp;string_vec[1];
-                let value = &amp;string_vec[2];
-                atoms.push(Atom::new(subject, property, value));
-            }
-            Some(char) =&gt; {
-                return Err(format!(
-                    &quot;AD3 Parsing error at {:?}, cannot start with {}&quot;,
-                    line, char
-                )
-                .into())
-            }
-            None =&gt; {}
-        };
-    }
-    return Ok(atoms);
-}
-<span class="boring">}
-</span></code></pre></pre>
-<h2><a class="header" href="#ad2" id="ad2">AD2</a></h2>
-<p>AD2 (Atomic Data Doubles) is similar to AtomicTriples, with one exception: the Subject is left out.
-For many use-cases, omitting the Subject is a <em>bad idea</em> - you'll most often need AD2!
-having no subject means that you can't describe multiple resources in a single document, and that is useful in many contexts.</p>
-<p>However, omitting the subject can be useful in (at least) three scenarios:</p>
-<ul>
-<li>The <strong>Subject is not yet known when creating the data</strong> (for example, because it still has to be determined by some server or hash function).</li>
-<li>The <strong>Subject is already known by the client</strong>, and leaving it out saves bandwidth. This happens for example during Subject Fetching, where the request itself contains the Subject, because the fetched URL itself is the Subject of all returned triples. Note that in this scenario, the server is unable to include</li>
-<li>The <strong>Atoms are only valid coming from a specific source</strong>. Since</li>
-</ul>
-<pre><code class="language-ndjson">[&quot;https://example.com/property&quot;,&quot;some object&quot;]
-[&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
-<p>Keep in mind that this approach also has some downsides:</p>
-<ul>
-<li>
-<p>It becomes impossible to include other resources in a single serialized document / response.</p>
-</li>
-<li>
-<p><em>Mime type (not registered yet!): <code>application/ad2-ndjson</code></em></p>
-</li>
-<li>
-<p><em>File name extension: <code>.ad2</code></em></p>
-</li>
-</ul>
 <h2><a class="header" href="#rdf-serialization-formats" id="rdf-serialization-formats">RDF serialization formats</a></h2>
 <p>Because of the similarities with RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples or JSON-LD.
 <em>However</em>, keep in mind that RDF users will expect other things from their data.
 Read more about the various existing formats and their respective merits <a href="https://ontola.io/blog/rdf-serialization-formats/">here</a>.
 Read more about serializing Atomic Data to RDF in the <a href="core/../interoperability/rdf.html">RDF interoperability section</a>.</p>
-<h2><a class="header" href="#future-serialization-formats" id="future-serialization-formats">Future serialization formats</a></h2>
-<p>In the future, new serialization formats will be introduced.
-Here's some (vague) ideas that might inspire you to design one:</p>
-<h3><a class="header" href="#atomicdata-fs" id="atomicdata-fs">AtomicData-FS</a></h3>
-<p>Possible extension: <code>.adf</code></p>
-<p>FS stands for FileSystem.
-It should be designed as a format that's easy to manipulate Atomic Data by hand, using plaintext editors and IDE software.
-It fits nicely in our line-based paradigm, where we us IDEs and Github to manage our information.
-It should use Shortnames wherever possible to make life easier for those who modify instances.
-It might use hierarchical path structures to shape URLs.
-It might use hierarchical path structures to shape data, and set constraints (e.g. all items directly in the <code>./person</code> directory should be Person instances).
-Folder structure should reflect the structure inside URLs.</p>
-<p>Note that this format is <em>not</em> useful for sending arbitrary Atomic Data to some client.
-It is useful for managing Atomic Data from a filesystem.</p>
-<p>An example AtomicData-FS dir can be <a href="https://github.com/ontola/atomic-data/tree/master/examples/atomic-fs/people">found in the repo</a>.</p>
-<pre><code># in ./projectDir/people/john.adf
-# serialization uses YAML syntax
-firstName: John
-lastName: McLovin
-# If a Property is not available in the Class, you can the URL of the property
-https://schema.org/birthDate: 1991-01-20
-# Perhaps support relative paths to other local resources
-bestFriend: ./mary
-</code></pre>
-<p>Perhaps YAML isn't the right pick for this, because it's kind of hard to parse.</p>
-<h3><a class="header" href="#atomicdata-binary" id="atomicdata-binary">AtomicData-Binary</a></h3>
-<p>Possible extension: <code>.adb</code></p>
-<p>A binary serialization format, designed to be performant and highly compressed.
-Perhaps it works like this:</p>
-<ul>
-<li>An <code>adb</code> file consists of a large sequence of Maps and Statements</li>
-<li>A <em>Map</em> is a combination of an internal identifiers (the <em>ID</em>, some short binary object) and a URL strings. These make sure that URLs can be used again cheaply, if they are used multiple times.</li>
-<li>A <em>Statement</em> is a set of two IDs and a value, which can be a String, a URL or some binary format.</li>
-<li>Perhaps some extra compression is possible, because many URLs will have a common domain.</li>
-</ul>
+<h2><a class="header" href="#experimental-serialization-formats" id="experimental-serialization-formats">Experimental serialization formats</a></h2>
+<p>Some experimental ideas for Atomic Data serialization are <a href="core/../experimental-serialization.html">written here</a>.</p>
 <h1><a class="header" href="#querying-atomic-data" id="querying-atomic-data">Querying Atomic Data</a></h1>
 <p>There are multiple ways of getting Atomic Data into some system:</p>
 <ul>
 <li><a href="core/paths.html"><strong>Atomic Paths</strong></a> is a simple way to traverse Atomic Graphs and target specific values</li>
 <li><a href="core/querying.html#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
 <li><a href="core/querying.html#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Property and Value.</li>
-<li><a href="core/querying.html#SPARQL"><strong>SRARQL</strong></a> is a powerful Query language for traversing graphs</li>
+<li><a href="core/querying.html#SPARQL"><strong>SRARQL</strong></a> is a powerful Query language for traversing linked data graphs</li>
 </ul>
 <h2><a class="header" href="#atomic-paths" id="atomic-paths">Atomic Paths</a></h2>
 <p>An Atomic Path is a string that consist of one or more URLs, which when traversed point to an item.
@@ -464,19 +360,20 @@ For more information, see <a href="core/paths.html">Atomic Paths</a>.</p>
 <h2><a class="header" href="#subject-fetching-http" id="subject-fetching-http">Subject fetching (HTTP)</a></h2>
 <p>The simplest way of getting Atomic Data when the Subject is an HTTP URL, is by sending a GET request to the subject URL.
 Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/ad3-ndjson</code>.</p>
-<pre><code class="language-HTTP">GET https://example.com/myResource HTTP/1.1
-Content-Type: application/ad3-ndjson
+<pre><code class="language-HTTP">GET https://atomicdata.dev/test HTTP/1.1
+Content-Type: application/ad+json
 </code></pre>
 <p>The server SHOULD respond with all the Atoms of which the requested URL is the subject:</p>
 <pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: application/ad3-ndjson
+Content-Type: application/ad+json
 Connection: Closed
 
-[&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;My awesome resource!&quot;]
+{
+  &quot;@id&quot;: &quot;https://atomicdata.dev/test&quot;,
+  &quot;https://atomicdata.dev/properties/shortname&quot;: &quot;1611489928&quot;
+}
 </code></pre>
 <p>The server MAY also include other resources, if they are deemed relevant.</p>
-<h2><a class="header" href="#subject-fetching-ipfs" id="subject-fetching-ipfs">Subject Fetching (IPFS)</a></h2>
-<p>IPFS is a new protocol for sharing data using content-addressing.</p>
 <h2><a class="header" href="#triple-pattern-fragments" id="triple-pattern-fragments">Triple Pattern Fragments</a></h2>
 <p><a href="https://linkeddatafragments.org/specification/triple-pattern-fragments/">Triple Pattern Fragments</a> (TPF) is an interface for querying RDF.
 It works great for Atomic Data as well.</p>
@@ -484,34 +381,36 @@ It works great for Atomic Data as well.</p>
 <p><code>http://example.org/tpf?subject={subject}&amp;property={property}&amp;value={value}</code></p>
 <p>Make sure to URL encode the <code>subject</code>, <code>property</code>, <code>value</code> strings.</p>
 <p>For example, let's search for all Atoms where the value is <code>test</code>.</p>
-<pre><code class="language-HTTP">GET https://example.com/tpf?value=&quot;test&quot; HTTP/1.1
-Content-Type: application/ad3-ndjson
+<pre><code class="language-HTTP">GET https://atomicdata.dev/tpf?value=0 HTTP/1.1
+Content-Type: text/turtle
 </code></pre>
 <p>This is the HTTP response:</p>
 <pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: application/ad3-ndjson
+Content-Type: text/turtle
 Connection: Closed
 
-[&quot;https://example.com/myResource&quot;,&quot;https://example.com/properties/name&quot;,&quot;test&quot;]
+&lt;https://atomicdata.dev/agents&gt; &lt;https://atomicdata.dev/properties/collection/currentPage&gt; &quot;0&quot;^^&lt;https://atomicdata.dev/datatypes/integer&gt; .
 </code></pre>
-<!--
-## Bulk API
-
-Bulk-API is an (currently still closed) in-development specification for asking for multiple Subjects in one request.
-This is especially useful in browser clients that traverse the graph iteratively, and HTTP/2 is not an option. -->
 <h2><a class="header" href="#sparql" id="sparql">SPARQL</a></h2>
 <p><a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> is a powerful RDF query language.
 Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.</p>
+<ul>
+<li>Convert / serialize Atomic Data to RDF (for example by using the <code>/tpf</code> endpoint and an <code>accept</code> header: <code>curl -i -H &quot;Accept: text/turtle&quot; &quot;https://atomicdata.dev/tpf&quot;</code>)</li>
+<li>Load it into a SPARQL engine (e.g. )</li>
+</ul>
 <h1><a class="header" href="#atomic-paths-1" id="atomic-paths-1">Atomic Paths</a></h1>
 <p>An Atomic Path is a string that consists of at least one URL, followed by one or more URLs or Shortnames.
 Every single value in an Atomic Resource can be targeted through such a Path.
 They can be used as identifiers for specific Values.</p>
 <p>The simplest path, is the URL of a resource, which represents the entire Resource with all its properties.
 If you want to target a specific atom, you can use an Atomic Path with a second URL.
-This second URL can be replaced by a Shortname, if the Resource is an instance of a class which has properties with that shortname (sounds more complicated than it is).</p>
+This second URL can be replaced by a Shortname, if the Resource is an instance of a class which has properties with that Shortname (sounds more complicated than it is).</p>
 <h2><a class="header" href="#example" id="example">Example</a></h2>
-<p>Let's start with this simple graph:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
+<p>Let's start with this simple Resource:</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://example.com/john&quot;,
+  &quot;https://example.com/lastName&quot;: &quot;McLovin&quot;,
+}
 </code></pre>
 <p>Then the following Path targets the <code>McLovin</code> value:</p>
 <p><code>https://example.com/john https://example.com/lastname</code> =&gt; <code>McLovin</code></p>
@@ -519,10 +418,14 @@ This second URL can be replaced by a Shortname, if the Resource is an instance o
 Since John is an instance of a Person, he might have a <code>lastname</code> which maps to <code>https://example.com/latname</code>.</p>
 <p><code>https://example.com/john lastname</code> =&gt; <code>McLovin</code></p>
 <p>We can also traverse relationships:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://atomicdata.dev/properties/isA&quot;, &quot;https://example.com/Person&quot;]
-[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
-[&quot;https://example.com/john&quot;, &quot;https://example.com/employer&quot;, &quot;https://example.com/XCorp&quot;]
-[&quot;https://example.com/XCorp&quot;, &quot;https://example.com/description&quot;, &quot;The greatest company!&quot;]
+<pre><code class="language-json">[{
+  &quot;@id&quot;: &quot;https://example.com/john&quot;,
+  &quot;https://example.com/lastName&quot;: &quot;McLovin&quot;,
+  &quot;https://example.com/employer&quot;: &quot;https://example.com/XCorp&quot;,
+},{
+  &quot;@id&quot;: &quot;https://example.com/XCorp&quot;,
+  &quot;https://example.com/description&quot;: &quot;The greatest company!&quot;,
+}]
 </code></pre>
 <p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
 <p>In the example above, the XCorp subject exists and is the source of the <code>The greatest company!</code> value.
@@ -533,37 +436,38 @@ Unfortunately, creating unique and resolvable URLs can be a bother, and sometime
 If you've worked with RDF, this is what Blank Nodes are used for.
 In Atomic Data, we have something similar: <em>Nested Resources</em>.</p>
 <p>Let's use a Nested Resource in the example from the previous section:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/john&quot;, &quot;https://example.com/lastName&quot;, &quot;McLovin&quot;]
-[&quot;https://example.com/john https://example.com/employer&quot;, &quot;https://example.com/description&quot;, &quot;The greatest company!&quot;]
+<pre><code class="language-json">  {
+  &quot;@id&quot;: &quot;https://example.com/john&quot;,
+  &quot;https://example.com/lastName&quot;: &quot;McLovin&quot;,
+  &quot;https://example.com/employer&quot;: {
+    &quot;https://example.com/description&quot;: &quot;The greatest company!&quot;,
+  },
+}
 </code></pre>
 <p>By combining two Subject URLs into a single string, we've created a nested resource.
-The Subjet of the nested resource is <code>https://example.com/john https://example.com/employer</code>, including the spacebar.</p>
+The Subject of the nested resource is <code>https://example.com/john https://example.com/employer</code>, including the spacebar.</p>
 <p>Note that the path from before still resolves:</p>
 <p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
-<p>Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.</p>
+<p>We can also navigate Arrays using paths</p>
 <p>For example:</p>
 <pre><code class="language-json">{
   &quot;@id&quot;: &quot;https://example.com/john&quot;,
-  &quot;@context&quot;: &quot;https://example.com/person&quot;,
   &quot;hasShoes&quot;: [
     {
-      &quot;name&quot;: &quot;Mr. Boot&quot;,
+      &quot;https://example.com/name&quot;: &quot;Mr. Boot&quot;,
     },
     {
-      &quot;name&quot;: &quot;Sunny Sandals&quot;,
+      &quot;https://example.com/name&quot;: &quot;Sunny Sandals&quot;,
     }
   ]
 }
 </code></pre>
 <p>The Path of <code>Mr. Boot</code> is:</p>
-<pre><code>https://example.com/john hasShoes 1 name
-</code></pre>
-<p>This Path is useful for storing the value in other serialization formats, such as <code>.ad3</code>:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/john https://example.com/hasShoes 0&quot;, &quot;https://example.com/name&quot;, &quot;Mr. Boot&quot;]
-[&quot;https://example.com/john https://example.com/hasShoes 1&quot;, &quot;https://example.com/name&quot;, &quot;Sunny Sandals&quot;]
+<pre><code>https://example.com/john hasShoes 0 name
 </code></pre>
 <p>You can target an item in an array by using a number to indicate its position, starting with 0.</p>
-<p>Notice how the Resource with the <code>name: Mr. Boot</code> does not have an explicit <code>@id</code>, but it <em>does</em> have a Path.</p>
+<p>Notice how the Resource with the <code>name: Mr. Boot</code> does not have an explicit <code>@id</code>, but it <em>does</em> have a Path.
+This means that we still have a unique, globally resolvable identifier - yay!</p>
 <h1><a class="header" href="#atomic-schema" id="atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
 You can compare it to what XSD is for XML.
@@ -820,21 +724,19 @@ We need a specification that is easy to understand for most developers.</p>
 <p>Keeping track of where data comes from is essential to knowing whether you can trust it - whether you consider it to be true.
 When you want to persist data, that quickly becomes bothersome.
 Atomic Data and Atomic Commits aim to make this easier by using cryptography for ensuring data comes from some particular source, and is therefore trustworthy.</p>
-<h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
-<h3><a class="header" href="#is-atomic-commits-a-conflict-free-replicated-data-type-crdt" id="is-atomic-commits-a-conflict-free-replicated-data-type-crdt">Is Atomic Commits a Conflict-free Replicated Data Type (CRDT)?</a></h3>
-<p>Since Atomic Data always has a clear <em>owner</em>, all changes are coming from a single source or truth.
-This prevents a lot of the issues that CRDT aims to solve, such as two people working on the same word at the same time in some text editor.</p>
-<h3><a class="header" href="#how-does-it-compare-to-other-delta-formats" id="how-does-it-compare-to-other-delta-formats">How does it compare to other delta formats?</a></h3>
-<p>See the <a href="commits/compare.html">compare section</a></p>
+<p>If you want to know how Atomic Commits differ from other specs, see the <a href="commits/compare.html">compare section</a></p>
 <h1><a class="header" href="#atomic-commits-concepts" id="atomic-commits-concepts">Atomic Commits: Concepts</a></h1>
 <h2><a class="header" href="#commit" id="commit">Commit</a></h2>
-<p>A Commit describes how a Resource must be updated.
-The <strong>required fields</strong> are:</p>
+<p><em>url: <a href="https://atomicdata.dev/classes/Commit">https://atomicdata.dev/classes/Commit</a></em></p>
+<p>A Commit is a Resource that describes how a Resource must be updated.
+It can be used for auditing, versioning and feeds.
+It is cryptographically signed by an <a href="https://atomicdata.dev/classes/Agent">Agent</a>.</p>
+<p>The <strong>required fields</strong> are:</p>
 <ul>
 <li><code>subject</code> - The thing being changed. A Resource Subject URL that the Commit is providing information about.</li>
-<li><code>author</code> - Who's making the change. The Atomic URL of the Author's profile - which in turn must contain a <code>publicKey</code>.</li>
-<li><code>signature</code> - Cryptographic proof of the change. A hash of the JSON-serialized Commit (without the <code>signature</code> field), signed by the <code>actor</code>'s <code>privateKey</code>. This proves that the author is indeed the one who created this exact commit. The signature of the Commit is also used as the identifier of the commit.</li>
-<li><code>createdAt</code> - When the change was made. A UNIX timestamp number of when the commit was created.</li>
+<li><code>signer</code> - Who's making the change. The Atomic URL of the Author's profile - which in turn must contain a <code>publicKey</code>.</li>
+<li><code>signature</code> - Cryptographic proof of the change. A hash of the JSON-AD serialized Commit (without the <code>signature</code> field), signed by the Agent's <code>private-key</code>. This proves that the author is indeed the one who created this exact commit. The signature of the Commit is also used as the identifier of the commit.</li>
+<li><code>created-at</code> - When the change was made. A UNIX timestamp number of when the commit was created.</li>
 </ul>
 <p>The <strong>optional method fields</strong> describe how the data must be changed:</p>
 <ul>
@@ -850,17 +752,20 @@ There is no need for authentication.</p>
 <p>A commit should be sent (using an HTTPS POST request) to a <code>/commmit</code> endpoint of an Atomic Server.
 The server then checks the signature and the author rights, and responds with a <code>2xx</code> status code if it succeeded, or an <code>5xx</code> error if something went wrong.
 The error will be a JSON object.</p>
-<h3><a class="header" href="#serialization-with-json" id="serialization-with-json">Serialization with JSON</a></h3>
+<h3><a class="header" href="#serialization-with-json-ad" id="serialization-with-json-ad">Serialization with JSON-AD</a></h3>
 <p>Let's look at an example Commit:</p>
 <pre><code class="language-json">{
-  &quot;subject&quot;: &quot;http://examle.com/someResource&quot;,
-  &quot;createdAt&quot;: 1601239744,
-  &quot;author&quot;: &quot;https://example.com/profile&quot;,
-  &quot;set&quot;: {
-    &quot;https://atomicdata.dev/properties/description&quot;: &quot;my new resource description&quot;
+  &quot;@id&quot;: &quot;https://atomicdata.dev/commits/3n+U/3OvymF86Ha6S9MQZtRVIQAAL0rv9ZQpjViht4emjnqKxj4wByiO9RhfL+qwoxTg0FMwKQsNg6d0QU7pAw==&quot;,
+  &quot;https://atomicdata.dev/properties/createdAt&quot;: 1611489929370,
+  &quot;https://atomicdata.dev/properties/isA&quot;: [
+    &quot;https://atomicdata.dev/classes/Commit&quot;
+  ],
+  &quot;https://atomicdata.dev/properties/set&quot;: {
+    &quot;https://atomicdata.dev/properties/shortname&quot;: &quot;1611489928&quot;
   },
-  &quot;remove&quot;: [&quot;https://atomicdata.dev/properties/shortname&quot;],
-  &quot;signature&quot;: &quot;24c7d4b3c1b6b5f924243d67dbfc33fb680b5d3e2a77614cebe03c4a2840d29a&quot;
+  &quot;https://atomicdata.dev/properties/signature&quot;: &quot;3n+U/3OvymF86Ha6S9MQZtRVIQAAL0rv9ZQpjViht4emjnqKxj4wByiO9RhfL+qwoxTg0FMwKQsNg6d0QU7pAw==&quot;,
+  &quot;https://atomicdata.dev/properties/signer&quot;: &quot;https://surfy.ddns.net/agents/9YCs7htDdF4yBAiA4HuHgjsafg+xZIrtZNELz4msCmc=&quot;,
+  &quot;https://atomicdata.dev/properties/subject&quot;: &quot;https://atomicdata.dev/test&quot;
 }
 </code></pre>
 <p>This Commit can be sent to any Atomic Server.
@@ -871,12 +776,12 @@ Calculating the signature is a delicate process that should be followed to the l
 <p>The first step is <strong>serializing the commit deterministically</strong>.
 This means that the process will always end in the exact same string.</p>
 <ul>
-<li>Serialize the Commit as JSON.</li>
+<li>Serialize the Commit as JSON-AD.</li>
 <li>Do not serialize the signature field.</li>
 <li>Do not include empty objects or arrays.</li>
 <li>If <code>destroy</code> is false, do not include it.</li>
 <li>All keys are sorted alphabetically - both in the root object, as in any nested objects.</li>
-<li>The JSON is minified: no newlines, no spaces.</li>
+<li>The JSON-AD is minified: no newlines, no spaces.</li>
 </ul>
 <p><a href="https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81">Here's an example implementation of this process written in Rust</a>.</p>
 <p>This will result in a string.
@@ -1106,23 +1011,25 @@ It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and <a 
 It is the forerunner of Atomic Data, and is therefore highly similar in its model.
 Both heavily rely on using URLs, and both have a fundamentally simple and uniform model for data statements.
 Both view the web as a single, connected graph database.
-Because of that, Atomic Data is also highly compatible with RDF - <strong>all Atomic Data can be converted into valid RDF</strong>.
+Because of that, Atomic Data is also highly compatible with RDF - <strong>all Atomic Data is also valid RDF</strong>.
 Atomic Data can be thought of as a <strong>more constrained, type safe version of RDF</strong>.
 However, it does differ in some fundamental ways.</p>
 <ul>
 <li>Atomic calls the three parts of a Triple <code>subject</code>, <code>property</code> and <code>value</code>, instead of <code>subject</code>, <code>predicate</code>, <code>object</code>.</li>
-<li>Atomic does not support having multiple statements with the same <code>&lt;subject&gt; &lt;predicate&gt;</code>, every combination should be unique.</li>
-<li>Atomic has no difference between <code>literal</code>, <code>named node</code> and <code>blank node</code> objects - these are all <code>values</code>, but with different datatypes.</li>
-<li>Atomic uses <code>paths</code> instead of <code>blank nodes</code></li>
-<li>Atomic requires URL (not URI) values in its <code>subjects</code> and <code>predicates</code> (properties), which means that they should be resolvable.</li>
+<li>Atomic does not support having multiple statements with the same <code>&lt;subject&gt; &lt;predicate&gt;</code>, every combination must be unique.</li>
+<li>Atomic does not have <code>literals</code>, <code>named nodes</code> and <code>blank nodes</code> - these are all <code>values</code>, but with different datatypes.</li>
+<li>Atomic uses <code>nested Resources</code> and <code>paths</code> instead of <code>blank nodes</code></li>
+<li>Atomic requires URL (not URI) values in its <code>subjects</code> and <code>properties</code> (predicates), which means that they should be resolvable. Properties must resolve to an <code>Atomic Property</code>, which describes its datatype.</li>
 <li>Atomic only allows those who control a resource's <code>subject</code> URL endpoint to edit the data. This means that you can't add triples about something that you don't control.</li>
-<li>Atomic has no separate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you follow a <code>predicate</code> value) specify a datatype</li>
+<li>Atomic has no separate <code>datatype</code> field, but it requires that <code>Properties</code> (the resources that are shown when you follow a <code>predicate</code> value) specify a datatype. However, it is allowed to serialize the datatype explicitly, of course.</li>
 <li>Atomic has no separate <code>language</code> field, but it does support <a href="interoperability/../schema/translations.html">Translation Resources</a>.</li>
 <li>Atomic has a native Event (state changes) model (<a href="interoperability/../commits/intro.html">Atomic Commits</a>), which enables communication of state changes</li>
 <li>Atomic has a native Schema model (<a href="interoperability/../schema/intro.html">Atomic Schema</a>), which helps developers to know what data types they can expect (string, integer, link, array)</li>
+<li>Atomic does not support Named Graphs. These should not be needed, because all statements should be retrievable by fetching the Subject of a resource. However, it <em>is</em> allowed to include other resources in a response.</li>
 </ul>
 <h2><a class="header" href="#why-these-changes" id="why-these-changes">Why these changes?</a></h2>
 <p>I love RDF, and have been working with it for quite some time now.
+I started a company that specializes in Linked Data, and we use it extensively in our products and services.
 Using URIs (and more-so URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
 However, some of the characteristics of RDF might have contributed to its relative lack of adoption.</p>
 <h3><a class="header" href="#its-too-hard-to-select-a-specific-value-object-in-rdf" id="its-too-hard-to-select-a-specific-value-object-in-rdf">It's too hard to select a specific value (object) in RDF</a></h3>
@@ -1153,11 +1060,10 @@ That often means writing a lot of conditionals and other client-side logic to ge
 It also means that serializing to a format like JSON becomes complicated - you can't just map predicates to keys - you might get collisions.
 And you can't use key-value stores for storing RDF, at least not in a trivial way.
 Every single <em>selected value</em> should be treated as an array of unknown datatypes, and that makes it really difficult to build software.
-All complexity is the direct result of the lack of <code>subject-predicate</code> uniqueness.</p>
+All this complexity is the direct result of the lack of <code>subject-predicate</code> uniqueness.</p>
 <p>As a developer who uses RDF data, I want to be able to do something like this:</p>
 <pre><code class="language-js">// Fetches the resource
 const joep = get(&quot;https://example.com/person/joep&quot;)
-
 // Returns the value of the birthDate atom
 console.log(joep.birthDate()) // =&gt; Date(1991-01-20)
 // Fetches the employer relation at possibly some other domain, checks that resource for a property with the 'name' shortkey
@@ -1299,17 +1205,21 @@ Atomic Data has some unique constrains (such as subject-predicate uniqueness) wh
 This tooling should help to create URLs, Properties, and host everything on an easy to use server.</p>
 <h2><a class="header" href="#convert-atomic-data-to-rdf" id="convert-atomic-data-to-rdf">Convert Atomic data to RDF</a></h2>
 <p>Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.
-However, contrary to Atomic Data, RDF has optional Language and Datatype elements in every statement.
+This is why <code>atomic</code> can already serialize data to RDF (<a href="https://atomicdata.dev/classes/Property.ttl">example</a>).</p>
+<p>However, contrary to Atomic Data, RDF has optional Language and Datatype elements in every statement.
 It is good practice to use these RDF concepts when serializing Atomic Data into Turtle / RDF/XML, or other <a href="https://ontola.io/blog/rdf-serialization-formats/">RDF serialization formats</a>.</p>
 <ul>
 <li>Convert Atoms with linked <code>TranslationBox</code> Resources to Literals with an <code>xsd:string</code> datatype and the corresponding language in the tag.</li>
 <li>Dereference the Property and Datatype from Atomic Properties, and add the URLs in <code>datatypes</code> in RDF statements.</li>
 </ul>
 <h1><a class="header" href="#how-does-atomic-data-relate-to-json" id="how-does-atomic-data-relate-to-json">How does Atomic Data relate to JSON?</a></h1>
-<p>Because JSON is so popular, Atomic Data is designed to be easily serializable to JSON.</p>
-<p>Atomic Data is a strict subset of RDF, and the most popular serialization of RDF for JSON data is <a href="https://json-ld.org/">JSON-LD</a>.
-All JSON-LD is perfectly valid JSON, but with a couple of handy features.</p>
-<h2><a class="header" href="#from-json-to-atomic-data" id="from-json-to-atomic-data">From JSON to Atomic Data</a></h2>
+<p>Because JSON is so popular, Atomic Data is designed with JSON in mind.</p>
+<ul>
+<li>You can always serialize Atomic Data to simple, clean JSON. The JSON keys are then derived from the <code>shortnames</code> of properties.</li>
+<li>You can also serialize Atomic Data to JSON-LD, which is compatible with RDF. This contains more information about the datatypes and the URLs of properties.</li>
+<li>The default serialization is JSON-AD, which is also JSON based. It uses URLs as keys, which means we can look up more information about properties, but this might be less convenient to use for developers who expect</li>
+</ul>
+<h2><a class="header" href="#from-json-to-json-ad" id="from-json-to-json-ad">From JSON to JSON-AD</a></h2>
 <p>Atomic Data requires a bit more information about pieces of data than JSON tends to contain. Let's take a look at a regular JSON example:</p>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;John&quot;,
@@ -1324,25 +1234,25 @@ The following things are missing:</p>
 </ul>
 <p>We can add this data by adding some <em>@context</em>:</p>
 <pre><code class="language-json">{
-  &quot;@context&quot;: {
-    &quot;name&quot;: &quot;https://example.com/properties/name&quot;,
-    &quot;birthDate&quot;: &quot;https://example.com/properties/birthDate&quot;,
-    &quot;@id&quot;: &quot;https://example.com/people/john&quot;
-  },
-  &quot;name&quot;: &quot;John&quot;,
-  &quot;birthDate&quot;: &quot;1991-01-20&quot;
+  &quot;@id&quot;: &quot;https://example.com/people/john&quot;,
+  &quot;https://example.com/properties/name&quot;: &quot;John&quot;,
+  &quot;https://example.com/properties/birthDate&quot;: &quot;1991-01-20&quot;
 }
 </code></pre>
-<p>The JSON above is called JSON-LD.
-It is still perfectly valid JSON, but it contains more information, and in turn can be converted into RDF formats.</p>
 <h2><a class="header" href="#from-atomic-data-to-json-ld" id="from-atomic-data-to-json-ld">From Atomic Data to JSON-LD</a></h2>
+<p>Atomic Data is a strict subset of RDF, and the most popular serialization of RDF for JSON data is <a href="https://json-ld.org/">JSON-LD</a>.
+All JSON-LD is perfectly valid JSON, but with a couple of handy features.</p>
 <p>Since Atomic Schema requires the presence of a <code>key</code> slug in Properties, converting Atomic Data to JSON results in dev-friendly objects with nice shorthands.</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/properties/lastname&quot;,&quot;Houdini&quot;]
-[&quot;https://example.com/john&quot;,&quot;https://example.com/properties/bestFriend&quot;,&quot;https://example.com/sarah&quot;]
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://example.com/people/John&quot;,
+  &quot;https://example.com/properties/lastname&quot;: &quot;John&quot;,
+  &quot;https://example.com/properties/bestFriend&quot;: &quot;https://example.com/sarah&quot;,
+}
 </code></pre>
 <p>Can be automatically converted to:</p>
 <pre><code class="language-json">{
   &quot;@context&quot;: {
+    &quot;@id&quot;: &quot;https://example.com/people/John&quot;,
     &quot;name&quot;: &quot;https://example.com/properties/lastname&quot;,
     &quot;bestFriend&quot;: &quot;https://example.com/properties/bestFriend&quot;,
   },
@@ -1352,8 +1262,7 @@ It is still perfectly valid JSON, but it contains more information, and in turn 
   },
 }
 </code></pre>
-<p>The <code>@context</code> object provides a <em>mapping</em> to the original URLs.
-The <code>@id</code> key shows that the value should be interpreted as a link (a URI).</p>
+<p>The <code>@context</code> object provides a <em>mapping</em> to the original URLs.</p>
 <h2><a class="header" href="#json-ld-requirements" id="json-ld-requirements">JSON-LD Requirements</a></h2>
 <ul>
 <li>Make sure the URLs used in the <code>@context</code> resolve to Atomic Properties.</li>
@@ -1384,15 +1293,9 @@ This is great for some types of data, but horrible for others.
 If you're describing a time-dependent thing (such as a person's job),
 If you're describing personal, private information, its also a bad idea to use IPFS, because it's designed to be permanent.
 Also, IPFS is not as fast as HTTP - at least for now.</p>
-<h2><a class="header" href="#example-of-atomic-data-on-ipfs" id="example-of-atomic-data-on-ipfs">Example of Atomic Data on IPFS</a></h2>
-<p>Here's an example, serialized to Atomic-NDJSON:</p>
-<p><a href="https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL">https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL</a></p>
-<pre><code class="language-ndjson">[&quot;https://atomicdata.dev/helloworld&quot;,&quot;https://atomicdata.dev/properties/description&quot;,&quot;Hello world!&quot;]
-</code></pre>
 <h2><a class="header" href="#atomic-data-and-ipld" id="atomic-data-and-ipld">Atomic Data and IPLD</a></h2>
 <p>IPLD (not IPFS) stands for InterPlanetary Linked Data, but is not related to RDF.
-The scope seems fundamentally different from RDF, too, but I have to read more about this.
-TODO!</p>
+The scope seems fundamentally different from RDF, too, but I have to read more about this.</p>
 <h1><a class="header" href="#atomic-graph-validations" id="atomic-graph-validations">Atomic Graph Validations</a></h1>
 <p>An Graph is a set of Atoms.
 Since Atomic Data is designed to facilitate decentralized data storage, Graphs will often lack information or contain invalid data.
@@ -1464,37 +1367,7 @@ As long as a graph contains links to HTTP Resources, it is not Frozen, since res
 It also helps to make sure the content can be shared peer to peer</p>
 <p>Note that <strong>Graphs with cyclical relations cannot be frozen</strong>, since every iteration that you'd try to freeze will change its references and therefore also its contents, and therefore also its content hash.</p>
 <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
-<p>Because Atomic Data is very young, <strong>little tooling for Atomic Data exists</strong>.
-Great tooling is required to make this a success.</p>
-<h2><a class="header" href="#existing-tooling" id="existing-tooling">Existing tooling</a></h2>
-<h3><a class="header" href="#atomic-cli" id="atomic-cli"><code>atomic-cli</code></a></h3>
-<p>A tool for generating / querying Atomic Data from the command line.</p>
-<pre><code class="language-sh"># Add a mapping, and store the Atomic Class locally
-atomic map person https://example.com/person
-# Create a new instance with that Class
-atomic new person
-name (required): John McLovin
-age: 31
-Created at: ipfs:Qwhp2fh3o8hfo8w7fhwo77w38ohw3o78fhw3ho78w3o837ho8fwh8o7fh37ho
-# link to an Atomic Server where you can upload your stuff
-# If you don't, your data exists locally and gets published to IPFS
-atomic setup
-# install ontologies and add their shortnames to bookmarks
-atomic install https://atomicdata.dev/ontologies/meetings
-# when no URL is given, use the Ontola repo's ontologies
-atomic install meetings
-</code></pre>
-<p>MIT licensed <a href="https://github.com/joepio/atomic">repo here</a>.</p>
-<h3><a class="header" href="#atomic-lib-rust" id="atomic-lib-rust"><code>atomic-lib</code> (Rust)</a></h3>
-<p>Library that contains:</p>
-<ul>
-<li>An in-memory store</li>
-<li>Parsing (AD3) / Serialization (AD3, JSON, more to come)</li>
-<li>Path traversal</li>
-<li>Basic validation</li>
-</ul>
-<p>MIT licensed <a href="https://github.com/joepio/atomic">repo here</a>.</p>
-<h3><a class="header" href="#atomic-server" id="atomic-server"><code>atomic-server</code></a></h3>
+<h2><a class="header" href="#atomic-server" id="atomic-server"><code>atomic-server</code></a></h2>
 <p>Server for hosting Atomic Data. Uses <code>atomic-lib</code>.</p>
 <ul>
 <li>Responds to requests for created Atomic Resources, makes atomic data available at their URL.</li>
@@ -1502,8 +1375,48 @@ atomic install meetings
 <li>Useful query options (e.g. Triple Pattern Fragments)</li>
 <li>Browser-friendly HTML presentation, JSON serialization, AD3 serialization.</li>
 </ul>
-<p>MIT licensed <a href="https://github.com/joepio/atomic">repo here</a>.</p>
-<h2><a class="header" href="#some-ideas-for-tooling" id="some-ideas-for-tooling">Some ideas for tooling</a></h2>
+<p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
+<h2><a class="header" href="#atomic-react" id="atomic-react"><code>atomic-react</code></a></h2>
+<p>Data browser + react typescript / javascript front-end library.</p>
+<p><a href="https://joepio.github.io/atomic-react/">demo</a>.</p>
+<p><a href="https://github.com/joepio/atomic-react">MIT licensed repository + issue tracker</a>.</p>
+<h2><a class="header" href="#atomic-cli" id="atomic-cli"><code>atomic-cli</code></a></h2>
+<p>A tool for generating / querying Atomic Data from the command line. Install with <code>cargo install atomic-cli</code>.</p>
+<pre><code>atomic 0.20.0
+Joep Meindertsma &lt;joep@ontola.io&gt;
+Create, share, fetch and model linked atomic data!
+
+USAGE:
+    atomic-cli [SUBCOMMAND]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    destroy    Permanently removes a Resource. Uses Commits.
+    edit       Edit a single Atom from a Resource using your text editor. Uses Commits.
+    get        Traverses a Path and prints the resulting Resource or Value.
+    help       Prints this message or the help of the given subcommand(s)
+    list       List all bookmarks
+    new        Create a Resource
+    remove     Remove a single Atom from a Resource. Uses Commits.
+    set        Update an Atom's value. Uses Commits.
+    tpf        Finds Atoms using Triple Pattern Fragments.
+
+Visit https://github.com/joepio/atomic for more info
+</code></pre>
+<p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
+<h2><a class="header" href="#atomic-lib-rust" id="atomic-lib-rust"><code>atomic-lib</code> (Rust)</a></h2>
+<p>Library that contains:</p>
+<ul>
+<li>An in-memory store</li>
+<li>Parsing (JSON-AD, AD3) / Serialization (JSON-AD, AD3, JSON-LD, TTL, N-Triples)</li>
+<li>Path traversal</li>
+<li>Basic validation</li>
+</ul>
+<p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
+<h2><a class="header" href="#want-to-add-to-this-list-some-ideas-for-tooling" id="want-to-add-to-this-list-some-ideas-for-tooling">Want to add to this list? Some ideas for tooling</a></h2>
 <p>This document contains a set of ideas that would help achieve that success.</p>
 <h2><a class="header" href="#atoml--vscode-extension" id="atoml--vscode-extension">ATOML / VSCode Extension</a></h2>
 <p>Extending the TOML format to map it to Atomic Classes.
@@ -1518,66 +1431,6 @@ This will make editing .TOML files awesome by providing on-screen validation, au
 <li>A simple (JS) widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.</li>
 <li>Would be useful for documentation, and as a default view for Atomic Data.</li>
 </ul>
-<h2><a class="header" href="#atomic-js-javascript--typescript" id="atomic-js-javascript--typescript">Atomic-js (Javascript / Typescript)</a></h2>
-<p>A JS compatible library, accessible as an NPM package is the most popular and developer friendly way to start.</p>
-<p>Here's some pseudocode that indicates how it might be used:</p>
-<pre><code class="language-js">import {createStore} from '@atomicdata';
-
-const config = {
-  // A URL to a TPF compatible endpoint where the data can be fetched
-  tpfEndpoint: &quot;https://example.com/tpf&quot;,
-  // A URL to an Atomic Commits endpoint where the client can subscribe to changes
-  commitssEndpoint: &quot;https://example.com/commits&quot;,
-};
-
-const store = createStore(config); // Initializes the store
-
-// The `classInitializer` function takes an Atomic Class URI as its argument
-// fetches the Class, its Properties and the DataTypes
-// and returns a function that let's you create instances of that class
-const personBuilder = await store.classInitializer(&quot;https://example.com/classes/Person&quot;);
-
-// Create an instance of the Person Class
-// An Atomic Suggestion is sent to the
-const alice = await personBuilder({
-  // The Subject field is optional, but recommended if you want to control its URL.
-  // Otherwise, the Server will pick something
-  subject: &quot;https://example.com/alice&quot;,
-  // The IDE is aware of the existing keys and their acceptable values,
-  // because a conversion from Atomic Classes and Properties
-  // to typescript interfaces can be made automatically
-  firstName: &quot;Alice&quot;,
-  lastName: &quot;Anderson&quot;,
-  bestFriend: &quot;https://example.com/Bob&quot;,
-  birthDate: new Date(&quot;1991-01-20&quot;),
-  // Since the URL in the key below can be fetched, and has a Property + Datatype, the IDE + the compiler can determine that 'true' is an acceptable type.
-  &quot;https://example.com/someOtherProperty&quot;: true,
-})
-
-console.log(person.subject) //=&gt; Should return a newly created identifier, https://example.com/alice
-
-// Checks the store for the subject, and returns it.
-// If the subject does not exists locally, it will fetch it first using the `tpfEndpoint`.
-const alice = await store.get(&quot;https://example.com/alice&quot;)
-
-// Because of the keys in Atomic Properties, we can use this dot syntax to traverse the graph and get a value
-console.log(await alice.path(&quot;bestFriend.firstName&quot;)).value(); // =&gt; &quot;Bob&quot;
-// What should happen here?
-console.log(await alice.bestFriend); // =&gt; {...}
-
-// It's also possible to convert a resource to a native JS object.
-// By specifying the depth, nested resources will be fetched as well.
-const aliceJS = await store.get(&quot;https://example.com/alice&quot;).toJS(depth: 2)
-
-console.log(aliceJS.bestFriend) // =&gt; { name: Bob, birthdate: Date(1991-01-20)}
-
-</code></pre>
-<p>I think a Developer Experience similar to the one above is essential for getting people to create linked data.
-It should be incredibly easy, and this is what enables that.
-However, realizing a library + IDE support as shown above is hard at the least, perhaps even impossible.
-Theoretically, the information is accessible - but I'm not sure whether the IDE and the JS context (e.g. the Typescript compiler) can successfully see which shape is being returned by the <code>classInitializer</code> function.</p>
-<h2><a class="header" href="#atomic-browser" id="atomic-browser">Atomic Browser</a></h2>
-<p>A web-browser application that enables viewing, browsing, navigating Atomic Data.</p>
 <h1><a class="header" href="#get-involved" id="get-involved">Get involved</a></h1>
 <p>Atomic Data is an open specification, and that means that you're very welcome to share your thoughts and help make this standard as good as possible.</p>
 <p>Things you can do:</p>

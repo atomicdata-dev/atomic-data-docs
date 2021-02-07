@@ -159,150 +159,39 @@
                         <h1><a class="header" href="#serialization-of-atomic-data" id="serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
-However, it's recommended to use <code>ad3</code>, which is specifically designed to be a simple and performant format for Atomic Data.</p>
-<p>Atomic Data is designed to be serializable to idiomatic (clean, nice) <a href="../interoperability/json.html">JSON</a>.
+However, it's recommended to use <code>JSON-AD</code>, which is specifically designed to be a simple and performant format for Atomic Data.</p>
+<p>Atomic Data is designed to be serializable to clean, simple <a href="../interoperability/json.html">JSON</a>.
 It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and <a href="https://ontola.io/blog/rdf-serialization-formats/">other serialization formats</a>.</p>
-<h2><a class="header" href="#ad3" id="ad3">AD3</a></h2>
-<p>AD3 stands for <em>Atomic Data Triples</em>, and it's the simplest and fastest way to serialize / parse Atomic Data.</p>
-<p>AD3 represents a single Atom as a single line, containing a JSON array of three strings, respectively representing the Subject, Property and Value.</p>
-<p>It looks like this:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/subject&quot;,&quot;https://example.com/property&quot;,&quot;some object&quot;]
-[&quot;https://example.com/subject&quot;,&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
-</code></pre>
-<p>It uses Newline Delimited JSON (<a href="http://ndjson.org/">NDJSON</a>) for serialization, which is just a large string with newlines between each JSON object.</p>
-<p>NDJSON has some important benefits:</p>
+<h2><a class="header" href="#json-ad" id="json-ad">JSON-AD</a></h2>
+<p><code>JSON-AD</code> is the <em>default</em> serialization format for Atomic Data.
+It is what the current <a href="https://github.com/joepio/atomic">Rust</a> and <a href="https://github.com/joepio/atomic-react">Typescript / React</a> implementation use to communicate.
+It is just JSON with a lot of links in it.</p>
 <ul>
-<li><strong>Streaming parsing</strong>: An NDJSON document can be parsed before it's fully loaded / transmitted. That is not possible with regular JSON.</li>
-<li><strong>High compatibility</strong>: NDJSON parsers can use JSON parsers, and are therefore everywhere.</li>
-<li><strong>Performance</strong>: Modern browsers have highly performant JSON parsing, which means that it's <em>fast</em> in one of the most important contexts: the browser.</li>
+<li>The <code>@id</code> field is special: it defines the Subject of the Resource.</li>
+<li>JSON arrays are mapped to <a href="https://atomicdata.dev/datatypes/resourceArray">Resource Arrays</a></li>
+<li>Numbers can be <a href="https://atomicdata.dev/datatypes/integer">Integers</a>, <a href="https://atomicdata.dev/datatypes/timestamp">Timestamps</a> or <a href="https://atomicdata.dev/datatypes/float">Floats</a>.</li>
+<li>JSON booleans map to Atomic Booleans.</li>
+<li>Strings can be many datatypes, including <a href="https://atomicdata.dev/datatypes/string">String</a>, <a href="https://atomicdata.dev/datatypes/markdown">Markdown</a>, <a href="https://atomicdata.dev/datatypes/date">Date</a> or other.</li>
+<li>Nested Objects are Nested Resources. A Nested Resource can either be an Anonymous Resource (without an <code>@id</code> field) or a regular Resource.</li>
 </ul>
-<p><em>Mime type (not registered yet!): <code>application/ad3-ndjson</code></em></p>
-<p><em>File name extension: <code>.ad3</code></em></p>
-<p>Disclaimer: note that AD3 is useful for communicating <em>current state</em>, but not for <em>state changes</em>.</p>
-<p>You can validate AD3 at <a href="https://atomicdata.dev/validate">atomicdata.dev/validate</a>.</p>
-<p>Atomic Triples is heavily inspired by <a href="https://github.com/ontola/hextuples">HexTuples-NDJSON</a>.</p>
-<p>Example serialization implementation written in Rust, to show you how <em>easy</em> it is to serialize this!</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>pub fn serialize_atoms_to_ad3(atoms: Vec&lt;Atom&gt;) -&gt; AtomicResult&lt;String&gt; {
-    let mut string = String::new();
-    for atom in atoms {
-        // Use an exsting JSON serialization library to take care of the hard work (escaping quotes, etc.)
-        let mut ad3_atom = serde_json::to_string(&amp;vec![&amp;atom.subject, &amp;atom.property, &amp;atom.value])?;
-        ad3_atom.push_str(&quot;\n&quot;);
-        &amp;string.push_str(&amp;*ad3_atom);
-    }
-    return Ok(string);
+<p>Let's look at an example:</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://atomicdata.dev/properties/description&quot;,
+  &quot;https://atomicdata.dev/properties/datatype&quot;: &quot;https://atomicdata.dev/datatypes/markdown&quot;,
+  &quot;https://atomicdata.dev/properties/description&quot;: &quot;A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.&quot;,
+  &quot;https://atomicdata.dev/properties/isA&quot;: [
+    &quot;https://atomicdata.dev/classes/Property&quot;
+  ],
+  &quot;https://atomicdata.dev/properties/shortname&quot;: &quot;description&quot;
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>And an example parser:</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>pub fn parse_ad3&lt;'a, 'b&gt;(string: &amp;'b String) -&gt; AtomicResult&lt;Vec&lt;Atom&gt;&gt; {
-    let mut atoms: Vec&lt;Atom&gt; = Vec::new();
-    for line in string.lines() {
-        match line.chars().next() {
-            // These are comments
-            Some('#') =&gt; {}
-            Some(' ') =&gt; {}
-            // That's an array, let's do this!
-            Some('[') =&gt; {
-                let string_vec: Vec&lt;String&gt; =
-                    parse_json_array(line).expect(&amp;*format!(&quot;Parsing error in {:?}&quot;, line));
-                if string_vec.len() != 3 {
-                    return Err(format!(
-                        &quot;Wrong length of array at line {:?}: wrong length of array, should be 3&quot;,
-                        line
-                    )
-                    .into());
-                }
-                let subject = &amp;string_vec[0];
-                let property = &amp;string_vec[1];
-                let value = &amp;string_vec[2];
-                atoms.push(Atom::new(subject, property, value));
-            }
-            Some(char) =&gt; {
-                return Err(format!(
-                    &quot;AD3 Parsing error at {:?}, cannot start with {}&quot;,
-                    line, char
-                )
-                .into())
-            }
-            None =&gt; {}
-        };
-    }
-    return Ok(atoms);
-}
-<span class="boring">}
-</span></code></pre></pre>
-<h2><a class="header" href="#ad2" id="ad2">AD2</a></h2>
-<p>AD2 (Atomic Data Doubles) is similar to AtomicTriples, with one exception: the Subject is left out.
-For many use-cases, omitting the Subject is a <em>bad idea</em> - you'll most often need AD2!
-having no subject means that you can't describe multiple resources in a single document, and that is useful in many contexts.</p>
-<p>However, omitting the subject can be useful in (at least) three scenarios:</p>
-<ul>
-<li>The <strong>Subject is not yet known when creating the data</strong> (for example, because it still has to be determined by some server or hash function).</li>
-<li>The <strong>Subject is already known by the client</strong>, and leaving it out saves bandwidth. This happens for example during Subject Fetching, where the request itself contains the Subject, because the fetched URL itself is the Subject of all returned triples. Note that in this scenario, the server is unable to include</li>
-<li>The <strong>Atoms are only valid coming from a specific source</strong>. Since</li>
-</ul>
-<pre><code class="language-ndjson">[&quot;https://example.com/property&quot;,&quot;some object&quot;]
-[&quot;https://example.com/otherProperty&quot;,&quot;https://example.com/somethingelse&quot;]
 </code></pre>
-<p>Keep in mind that this approach also has some downsides:</p>
-<ul>
-<li>
-<p>It becomes impossible to include other resources in a single serialized document / response.</p>
-</li>
-<li>
-<p><em>Mime type (not registered yet!): <code>application/ad2-ndjson</code></em></p>
-</li>
-<li>
-<p><em>File name extension: <code>.ad2</code></em></p>
-</li>
-</ul>
 <h2><a class="header" href="#rdf-serialization-formats" id="rdf-serialization-formats">RDF serialization formats</a></h2>
 <p>Because of the similarities with RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples or JSON-LD.
 <em>However</em>, keep in mind that RDF users will expect other things from their data.
 Read more about the various existing formats and their respective merits <a href="https://ontola.io/blog/rdf-serialization-formats/">here</a>.
 Read more about serializing Atomic Data to RDF in the <a href="../interoperability/rdf.html">RDF interoperability section</a>.</p>
-<h2><a class="header" href="#future-serialization-formats" id="future-serialization-formats">Future serialization formats</a></h2>
-<p>In the future, new serialization formats will be introduced.
-Here's some (vague) ideas that might inspire you to design one:</p>
-<h3><a class="header" href="#atomicdata-fs" id="atomicdata-fs">AtomicData-FS</a></h3>
-<p>Possible extension: <code>.adf</code></p>
-<p>FS stands for FileSystem.
-It should be designed as a format that's easy to manipulate Atomic Data by hand, using plaintext editors and IDE software.
-It fits nicely in our line-based paradigm, where we us IDEs and Github to manage our information.
-It should use Shortnames wherever possible to make life easier for those who modify instances.
-It might use hierarchical path structures to shape URLs.
-It might use hierarchical path structures to shape data, and set constraints (e.g. all items directly in the <code>./person</code> directory should be Person instances).
-Folder structure should reflect the structure inside URLs.</p>
-<p>Note that this format is <em>not</em> useful for sending arbitrary Atomic Data to some client.
-It is useful for managing Atomic Data from a filesystem.</p>
-<p>An example AtomicData-FS dir can be <a href="https://github.com/ontola/atomic-data/tree/master/examples/atomic-fs/people">found in the repo</a>.</p>
-<pre><code># in ./projectDir/people/john.adf
-# serialization uses YAML syntax
-firstName: John
-lastName: McLovin
-# If a Property is not available in the Class, you can the URL of the property
-https://schema.org/birthDate: 1991-01-20
-# Perhaps support relative paths to other local resources
-bestFriend: ./mary
-</code></pre>
-<p>Perhaps YAML isn't the right pick for this, because it's kind of hard to parse.</p>
-<h3><a class="header" href="#atomicdata-binary" id="atomicdata-binary">AtomicData-Binary</a></h3>
-<p>Possible extension: <code>.adb</code></p>
-<p>A binary serialization format, designed to be performant and highly compressed.
-Perhaps it works like this:</p>
-<ul>
-<li>An <code>adb</code> file consists of a large sequence of Maps and Statements</li>
-<li>A <em>Map</em> is a combination of an internal identifiers (the <em>ID</em>, some short binary object) and a URL strings. These make sure that URLs can be used again cheaply, if they are used multiple times.</li>
-<li>A <em>Statement</em> is a set of two IDs and a value, which can be a String, a URL or some binary format.</li>
-<li>Perhaps some extra compression is possible, because many URLs will have a common domain.</li>
-</ul>
+<h2><a class="header" href="#experimental-serialization-formats" id="experimental-serialization-formats">Experimental serialization formats</a></h2>
+<p>Some experimental ideas for Atomic Data serialization are <a href="../experimental-serialization.html">written here</a>.</p>
 
                     </main>
 

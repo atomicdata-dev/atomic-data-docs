@@ -157,10 +157,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#how-does-atomic-data-relate-to-json" id="how-does-atomic-data-relate-to-json">How does Atomic Data relate to JSON?</a></h1>
-<p>Because JSON is so popular, Atomic Data is designed to be easily serializable to JSON.</p>
-<p>Atomic Data is a strict subset of RDF, and the most popular serialization of RDF for JSON data is <a href="https://json-ld.org/">JSON-LD</a>.
-All JSON-LD is perfectly valid JSON, but with a couple of handy features.</p>
-<h2><a class="header" href="#from-json-to-atomic-data" id="from-json-to-atomic-data">From JSON to Atomic Data</a></h2>
+<p>Because JSON is so popular, Atomic Data is designed with JSON in mind.</p>
+<ul>
+<li>You can always serialize Atomic Data to simple, clean JSON. The JSON keys are then derived from the <code>shortnames</code> of properties.</li>
+<li>You can also serialize Atomic Data to JSON-LD, which is compatible with RDF. This contains more information about the datatypes and the URLs of properties.</li>
+<li>The default serialization is JSON-AD, which is also JSON based. It uses URLs as keys, which means we can look up more information about properties, but this might be less convenient to use for developers who expect</li>
+</ul>
+<h2><a class="header" href="#from-json-to-json-ad" id="from-json-to-json-ad">From JSON to JSON-AD</a></h2>
 <p>Atomic Data requires a bit more information about pieces of data than JSON tends to contain. Let's take a look at a regular JSON example:</p>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;John&quot;,
@@ -175,25 +178,25 @@ The following things are missing:</p>
 </ul>
 <p>We can add this data by adding some <em>@context</em>:</p>
 <pre><code class="language-json">{
-  &quot;@context&quot;: {
-    &quot;name&quot;: &quot;https://example.com/properties/name&quot;,
-    &quot;birthDate&quot;: &quot;https://example.com/properties/birthDate&quot;,
-    &quot;@id&quot;: &quot;https://example.com/people/john&quot;
-  },
-  &quot;name&quot;: &quot;John&quot;,
-  &quot;birthDate&quot;: &quot;1991-01-20&quot;
+  &quot;@id&quot;: &quot;https://example.com/people/john&quot;,
+  &quot;https://example.com/properties/name&quot;: &quot;John&quot;,
+  &quot;https://example.com/properties/birthDate&quot;: &quot;1991-01-20&quot;
 }
 </code></pre>
-<p>The JSON above is called JSON-LD.
-It is still perfectly valid JSON, but it contains more information, and in turn can be converted into RDF formats.</p>
 <h2><a class="header" href="#from-atomic-data-to-json-ld" id="from-atomic-data-to-json-ld">From Atomic Data to JSON-LD</a></h2>
+<p>Atomic Data is a strict subset of RDF, and the most popular serialization of RDF for JSON data is <a href="https://json-ld.org/">JSON-LD</a>.
+All JSON-LD is perfectly valid JSON, but with a couple of handy features.</p>
 <p>Since Atomic Schema requires the presence of a <code>key</code> slug in Properties, converting Atomic Data to JSON results in dev-friendly objects with nice shorthands.</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/properties/lastname&quot;,&quot;Houdini&quot;]
-[&quot;https://example.com/john&quot;,&quot;https://example.com/properties/bestFriend&quot;,&quot;https://example.com/sarah&quot;]
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://example.com/people/John&quot;,
+  &quot;https://example.com/properties/lastname&quot;: &quot;John&quot;,
+  &quot;https://example.com/properties/bestFriend&quot;: &quot;https://example.com/sarah&quot;,
+}
 </code></pre>
 <p>Can be automatically converted to:</p>
 <pre><code class="language-json">{
   &quot;@context&quot;: {
+    &quot;@id&quot;: &quot;https://example.com/people/John&quot;,
     &quot;name&quot;: &quot;https://example.com/properties/lastname&quot;,
     &quot;bestFriend&quot;: &quot;https://example.com/properties/bestFriend&quot;,
   },
@@ -203,8 +206,7 @@ It is still perfectly valid JSON, but it contains more information, and in turn 
   },
 }
 </code></pre>
-<p>The <code>@context</code> object provides a <em>mapping</em> to the original URLs.
-The <code>@id</code> key shows that the value should be interpreted as a link (a URI).</p>
+<p>The <code>@context</code> object provides a <em>mapping</em> to the original URLs.</p>
 <h2><a class="header" href="#json-ld-requirements" id="json-ld-requirements">JSON-LD Requirements</a></h2>
 <ul>
 <li>Make sure the URLs used in the <code>@context</code> resolve to Atomic Properties.</li>

@@ -157,15 +157,24 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-data-core-concepts" id="atomic-data-core-concepts">Atomic Data Core: Concepts</a></h1>
-<p>Understanding the Core concepts of Atomic Data are fundamental for reading the rest of the documentation.</p>
 <h2><a class="header" href="#atomic-data" id="atomic-data">Atomic Data</a></h2>
 <p>Atomic Data is a data model for sharing information on the web.
-It is a directed, labeled graph, similar to RDF.
 It can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
-Contrary to some other (labeled) graph data models, a relationship between two items (Resources) does not have attributes.
-It's designed to be easily serializable to both JSON and linked data formats.</p>
+It's designed to be easily serializable to both JSON and linked data formats.
+It is <em>typed</em> data model, which means that every value should be validated and predictable.</p>
+<p>It is a directed, labeled graph, similar to RDF, so contrary to some other (labeled) graph data models (e.g. NEO4j), a relationship between two items (Resources) does not have attributes.</p>
+<h2><a class="header" href="#resource" id="resource">Resource</a></h2>
+<p>A Resource is a bunch of information about a single things.
+Formally, it is a set of Atoms (a Graph) that share the same Subject URL.
+You can think of a Resource as a single row in a spreadsheet or database.
+In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
+A Resource consists of at least one Atom, so it always has some Property and some Value.
+The most important Property of a Resource is the <a href="https://atomicdata.dev/properties/isA"><code>is-a</code></a> Property, which refers to which <em>Class</em> it belongs (e.g. Person or Blogpost).
+A Class can specify <a href="https://atomicdata.dev/properties/requires"><code>required</code></a> and <a href="https://atomicdata.dev/properties/recommends"><code>recommended</code></a> properties.
+More on that in the Atomic Schema chapter!</p>
 <h2><a class="header" href="#atom-or-atomic-triple" id="atom-or-atomic-triple">Atom (or Atomic Triple)</a></h2>
-<p>The smallest possible piece of <em>meaningful</em> data / information.
+<p>Every Resource is composed of Atoms.
+The Atom is the smallest possible piece of <em>meaningful</em> data / information.
 You can think of an Atom as a single cell in a spreadsheet or database.
 An Atom consists of three fields:</p>
 <ul>
@@ -184,16 +193,21 @@ An Atom is comparable with an RDF Triple / Statement (<a href="../interoperabili
 <tr><td>Britta</td><td>last name</td><td>Smalls</td></tr>
 </tbody></table>
 <p>The table above shows easily readable strings, but in reality, Atomic Data will almost exclusively consist of links (URLs).
-The standard serialization format for Atomic Data is AD3, which looks like this:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/arnold&quot;,&quot;https://example.com/properties/lastname&quot;,&quot;Peters&quot;]
-[&quot;https://example.com/arnold&quot;,&quot;https://example.com/properties/birthDate&quot;,&quot;1991-01-20&quot;]
-[&quot;https://example.com/arnold&quot;,&quot;https://example.com/properties/bestFriend&quot;,&quot;https://example.com/britta&quot;]
-[&quot;https://example.com/britta&quot;,&quot;https://example.com/properties/lastname&quot;,&quot;Smalls&quot;]
+The standard serialization format for Atomic Data is JSON-AD, which looks like this:</p>
+<pre><code class="language-json">[{
+  &quot;@id&quot;: &quot;https://example.com/arnold&quot;,
+  &quot;https://example.com/properties/lastname&quot;: &quot;Peters&quot;,
+  &quot;https://example.com/properties/birthDate&quot;: &quot;1991-01-20&quot;,
+  &quot;https://example.com/properties/bestFriend&quot;: &quot;https://example.com/britta&quot;,
+},{
+  &quot;@id&quot;: &quot;https://example.com/britta&quot;,
+  &quot;https://example.com/properties/lastname&quot;: &quot;Smalls&quot;,
+}]
 </code></pre>
+<p>The <code>@id</code> field denotes the Subject of each Resource, which is also the URL that should point to where the resource can be downloaded.</p>
 <p>In the Atomic Data above, we have:</p>
 <ul>
-<li>four different <strong>Atoms</strong> (every line is an Atom)</li>
-<li>two different <strong>Subjects</strong>: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
+<li>two different <strong>Resources</strong>, describing two different <strong>Subjects</strong>: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
 <li>three different <strong>Properties</strong> (<code>https://example.com/properties/bornAt</code>, <code>https://example.com/properties/firstName</code>, and <code>https://example.com/properties/bestFriend</code>)</li>
 <li>four different <strong>Values</strong> (<code>1991-01-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
 </ul>
@@ -212,7 +226,7 @@ Their Datatypes are defined in the Properties.</p>
 It is the identifier that the rest of the Atom is providing information about.
 The Subject field is a URL that points to the Resource.
 The creator of the Subject MUST make sure that it resolves.
-In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see <a href="querying.html">Atomic Querying</a>.
+In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see <a href="querying.html">Querying Atomic Data</a>.
 This also means that the creator of a Resource must make sure that it is available at its URL - probably by hosting the data, or by using some service that hosts it.</p>
 <h2><a class="header" href="#property-field" id="property-field">Property field</a></h2>
 <p>The Property field is the second part of an Atom.
@@ -229,16 +243,9 @@ This includes URLs, strings, integers, dates and more.</p>
 <p>A Graph is a set of Atoms.
 A Graph can describe various subjects, and may or may not be related.
 Graphs can have several characteristics (Schema Complete, Valid, Closed)</p>
-<h2><a class="header" href="#resource" id="resource">Resource</a></h2>
-<p>A Resource is a set of Atoms (a Graph) that share the same Subject URL.
-You can think of a Resource as a single row in a spreadsheet or database.
-In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
-A Resource consists of at least one Atom, so it always has some Property and some Value.
-The most important Property of a Resource is the <code>isa</code> Property, which refers to which <em>Class</em> it belongs (e.g. Person or Blogpost).
-A Class can specify <em>required</em> and <em>recommended</em> properties.
-More on that in the Atomic Schema chapter!</p>
 <h2><a class="header" href="#atomic-web" id="atomic-web">Atomic Web</a></h2>
 <p>The Atomic Web refers to all Atomic Graphs on the web.</p>
+<p>In the next chapter, we'll explore how Atomic Data is serialized.</p>
 
                     </main>
 
