@@ -21,6 +21,7 @@ cargo install mdbook-linkcheck
 mdbook serve
 ```
 
+Publishing is done with Github actions - simply push the master branch.
 
 ## Contributing
 

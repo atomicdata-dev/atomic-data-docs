@@ -5,7 +5,7 @@ There are multiple ways of getting Atomic Data into some system:
 - [**Atomic Paths**](paths.md) is a simple way to traverse Atomic Graphs and target specific values
 - [**Subject Fetching**](#subject-fetching-http) requests a single subject right from its source
 - [**Triple Pattern Fragments**](#triple-pattern-fragments) allows querying for specific (combinations of) Subject, Property and Value.
-- [**SRARQL**](#SPARQL) is a powerful Query language for traversing graphs
+- [**SRARQL**](#SPARQL) is a powerful Query language for traversing linked data graphs
 
 ## Atomic Paths
 
@@ -18,25 +18,24 @@ The simplest way of getting Atomic Data when the Subject is an HTTP URL, is by s
 Set the `Content-Type` header to an Atomic Data compatible mime type, such as `application/ad3-ndjson`.
 
 ```HTTP
-GET https://example.com/myResource HTTP/1.1
-Content-Type: application/ad3-ndjson
+GET https://atomicdata.dev/test HTTP/1.1
+Content-Type: application/ad+json
 ```
 
 The server SHOULD respond with all the Atoms of which the requested URL is the subject:
 
 ```HTTP
 HTTP/1.1 200 OK
-Content-Type: application/ad3-ndjson
+Content-Type: application/ad+json
 Connection: Closed
 
-["https://example.com/myResource","https://example.com/properties/name","My awesome resource!"]
+{
+  "@id": "https://atomicdata.dev/test",
+  "https://atomicdata.dev/properties/shortname": "1611489928"
+}
 ```
 
 The server MAY also include other resources, if they are deemed relevant.
-
-## Subject Fetching (IPFS)
-
-IPFS is a new protocol for sharing data using content-addressing.
 
 ## Triple Pattern Fragments
 
@@ -52,26 +51,24 @@ Make sure to URL encode the `subject`, `property`, `value` strings.
 For example, let's search for all Atoms where the value is `test`.
 
 ```HTTP
-GET https://example.com/tpf?value="test" HTTP/1.1
-Content-Type: application/ad3-ndjson
+GET https://atomicdata.dev/tpf?value=0 HTTP/1.1
+Content-Type: text/turtle
 ```
 
 This is the HTTP response:
 
 ```HTTP
 HTTP/1.1 200 OK
-Content-Type: application/ad3-ndjson
+Content-Type: text/turtle
 Connection: Closed
 
-["https://example.com/myResource","https://example.com/properties/name","test"]
+<https://atomicdata.dev/agents> <https://atomicdata.dev/properties/collection/currentPage> "0"^^<https://atomicdata.dev/datatypes/integer> .
 ```
-<!--
-## Bulk API
-
-Bulk-API is an (currently still closed) in-development specification for asking for multiple Subjects in one request.
-This is especially useful in browser clients that traverse the graph iteratively, and HTTP/2 is not an option. -->
 
 ## SPARQL
 
 [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) is a powerful RDF query language.
 Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.
+
+- Convert / serialize Atomic Data to RDF (for example by using the `/tpf` endpoint and an `accept` header: `curl -i -H "Accept: text/turtle" "https://atomicdata.dev/tpf"`)
+- Load it into a SPARQL engine (e.g. )

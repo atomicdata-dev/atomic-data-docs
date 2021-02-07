@@ -22,18 +22,7 @@ If you're describing a time-dependent thing (such as a person's job),
 If you're describing personal, private information, its also a bad idea to use IPFS, because it's designed to be permanent.
 Also, IPFS is not as fast as HTTP - at least for now.
 
-## Example of Atomic Data on IPFS
-
-Here's an example, serialized to Atomic-NDJSON:
-
-[https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL](https://ipfs.io/ipfs/QmX6j9DHcPhgBcBtZsuRkfmk2v7G5mzb11vU9ve9i8vDsL)
-
-```ndjson
-["https://atomicdata.dev/helloworld","https://atomicdata.dev/properties/description","Hello world!"]
-```
-
 ## Atomic Data and IPLD
 
 IPLD (not IPFS) stands for InterPlanetary Linked Data, but is not related to RDF.
 The scope seems fundamentally different from RDF, too, but I have to read more about this.
-TODO!

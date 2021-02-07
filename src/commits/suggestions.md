@@ -42,15 +42,3 @@ The actor (person / organization) that is in control of a specific Resource and 
 
 An Inbox represents a resource that contains incoming Suggestions.
 It's similar to an e-mail inbox.
-
-## Protocol
-
-Let's
-
-```http
-POST example.com/sarah HTTP/1.1
-Host: foo.example
-Content-Type: application/ad3-ndjson
-
-["https://example.com/sarah","https://example.com/description",""]
-```

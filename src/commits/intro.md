@@ -46,13 +46,4 @@ Keeping track of where data comes from is essential to knowing whether you can t
 When you want to persist data, that quickly becomes bothersome.
 Atomic Data and Atomic Commits aim to make this easier by using cryptography for ensuring data comes from some particular source, and is therefore trustworthy.
 
-## FAQ
-
-### Is Atomic Commits a Conflict-free Replicated Data Type (CRDT)?
-
-Since Atomic Data always has a clear _owner_, all changes are coming from a single source or truth.
-This prevents a lot of the issues that CRDT aims to solve, such as two people working on the same word at the same time in some text editor.
-
-### How does it compare to other delta formats?
-
-See the [compare section](compare.md)
+If you want to know how Atomic Commits differ from other specs, see the [compare section](compare.md)
