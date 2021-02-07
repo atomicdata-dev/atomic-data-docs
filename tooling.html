@@ -157,6 +157,12 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
+<ul>
+<li>Server: <a href="https://github.com/joepio/atomic">atomic-server</a></li>
+<li>Front-end browser + typescript client library: <a href="https://github.com/joepio/atomic-react">atomic-react</a></li>
+<li>CLI (atomic-cli): <a href="https://github.com/joepio/atomic">atomic-cli</a></li>
+<li>Rust library: <a href="https://github.com/joepio/atomic">atomic-lib</a></li>
+</ul>
 <h2><a class="header" href="#atomic-server" id="atomic-server"><code>atomic-server</code></a></h2>
 <p>Server for hosting Atomic Data. Uses <code>atomic-lib</code>.</p>
 <ul>
@@ -165,10 +171,12 @@
 <li>Useful query options (e.g. Triple Pattern Fragments)</li>
 <li>Browser-friendly HTML presentation, JSON serialization, AD3 serialization.</li>
 </ul>
+<p>One liner: <code>$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code></p>
+<p><a href="https://atomicdata.dev/">demo</a></p>
 <p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
 <h2><a class="header" href="#atomic-react" id="atomic-react"><code>atomic-react</code></a></h2>
 <p>Data browser + react typescript / javascript front-end library.</p>
-<p><a href="https://joepio.github.io/atomic-react/">demo</a>.</p>
+<p><a href="https://joepio.github.io/atomic-react/">demo</a></p>
 <p><a href="https://github.com/joepio/atomic-react">MIT licensed repository + issue tracker</a>.</p>
 <h2><a class="header" href="#atomic-cli" id="atomic-cli"><code>atomic-cli</code></a></h2>
 <p>A tool for generating / querying Atomic Data from the command line. Install with <code>cargo install atomic-cli</code>.</p>
@@ -198,19 +206,19 @@ Visit https://github.com/joepio/atomic for more info
 </code></pre>
 <p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
 <h2><a class="header" href="#atomic-lib-rust" id="atomic-lib-rust"><code>atomic-lib</code> (Rust)</a></h2>
-<p>Library that contains:</p>
+<p>Library that powers <code>atomic-server</code> and <code>atomic-cli</code>. Features:</p>
 <ul>
 <li>An in-memory store</li>
 <li>Parsing (JSON-AD, AD3) / Serialization (JSON-AD, AD3, JSON-LD, TTL, N-Triples)</li>
+<li>Commit validation and processing</li>
+<li>TPF queries</li>
+<li>Constructing Collections</li>
 <li>Path traversal</li>
 <li>Basic validation</li>
 </ul>
 <p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
 <h2><a class="header" href="#want-to-add-to-this-list-some-ideas-for-tooling" id="want-to-add-to-this-list-some-ideas-for-tooling">Want to add to this list? Some ideas for tooling</a></h2>
 <p>This document contains a set of ideas that would help achieve that success.</p>
-<h2><a class="header" href="#atoml--vscode-extension" id="atoml--vscode-extension">ATOML / VSCode Extension</a></h2>
-<p>Extending the TOML format to map it to Atomic Classes.
-This will make editing .TOML files awesome by providing on-screen validation, autocompletion and documentation for fields.</p>
 <h2><a class="header" href="#atomizer-data-importer-and-conversion-kit" id="atomizer-data-importer-and-conversion-kit">Atomizer (data importer and conversion kit)</a></h2>
 <ul>
 <li>Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms</li>
@@ -221,6 +229,8 @@ This will make editing .TOML files awesome by providing on-screen validation, au
 <li>A simple (JS) widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.</li>
 <li>Would be useful for documentation, and as a default view for Atomic Data.</li>
 </ul>
+<h2><a class="header" href="#atomic-dart--flutter" id="atomic-dart--flutter">Atomic-Dart + Flutter</a></h2>
+<p>Library + front-end app for browsing / manipulating Atomic Data on mobile devices.</p>
 
                     </main>
 

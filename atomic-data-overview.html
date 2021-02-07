@@ -157,7 +157,6 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-data-docs---overview" id="atomic-data-docs---overview">Atomic Data Docs - Overview</a></h1>
-<p><em>Status: early draft, <a href="get-involved.html">feedback welcome</a>. Early Rust implementation accessible <a href="https://github.com/joepio/atomic">here</a>.</em></p>
 <p>Atomic Data is a proposed standard for modeling and exchanging data.
 It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.</p>
 <p>Atomic Data is especially suitable for knowledge graphs, distributed datasets, semantic data, p2p applications, decentralized apps, and data that is meant to be highly reusable.
@@ -170,6 +169,15 @@ You can use parts of Atomic Data separately, but the standard is designed as a f
 <li><a href="core/intro.html">Atomic Data Core</a>: the core model for typed, Linked Data</li>
 <li><a href="schema/intro.html">Atomic Schema</a>: defining properties, datatypes and classes</li>
 <li><a href="commits/intro.html">Atomic Commits</a>: sharing state changes, verifying changes and collaboration</li>
+</ul>
+<h2><a class="header" href="#get-started" id="get-started">Get Started</a></h2>
+<p>If you want to read more about how Atomic Data works - read on.
+If you'd rather play and discover for yourself, play with the existing <a href="tooling.html">tooling</a>:</p>
+<ul>
+<li>Server: <a href="https://github.com/joepio/atomic">atomic-server</a> (powers <a href="https://atomicdata.dev">atomicdata.dev</a>, run with <code>docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>)</li>
+<li>Front-end browser + typescript client library: <a href="https://github.com/joepio/atomic-react">atomic-react</a> (<a href="joepio.github.io/atomic-react/">demo</a>)</li>
+<li>CLI (atomic-cli): <a href="https://github.com/joepio/atomic">atomic-cli</a> (<code>cargo install atomic-cli</code>)</li>
+<li>Rust library: <a href="https://github.com/joepio/atomic">atomic-lib</a></li>
 </ul>
 <h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
 <p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
