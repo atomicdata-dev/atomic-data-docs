@@ -16,18 +16,20 @@ Resources are also free to include Properties from other Classes, and their Shor
 
 For example:
 
-```ndjson
-["https://example.com/people/123", "https://example.com/name", "John"]
-["https://example.com/people/123", "https://somepage.example.com/name", "John"]
+```json
+{
+  "@id": "https://example.com/people/123",
+  "https://example.com/name": "John",
+  "https://another.example.com/someOtherName": "Martin"
+}
 ```
 
-Let's assume that `https://somepage.example.com/name` and `https://example.com/name` are Properties that have the Shortname: `name`.
+Let's assume that `https://example.com/name` and `https://another.example.com/someOtherName` are Properties that have the Shortname: `name`.
 
 What if a client tries something such as `people123.name`?
 To consistently return a single value, we need some type of _precedence_:
 
-1. The earlier Class mentioned in the `class` Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collisions in required and recommended properties, which means that they might have. If these exist internally, sort the properties from A-Z.
-<!-- This  -->
+1. The earlier Class mentioned in the [`isA`](https://atomicdata.dev/properties/isA) Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collisions in required and recommended properties, which means that they might have. If these exist internally, sort the properties by how they are ordered in the `isA` array - first item is preferred.
 1. When the Properties are not part of any of the mentioned Classes, use Alphabetical sorting of the Property URL.
 
 When shortname collisions are possible, it's recommended to not use the shortname, but use the URL of the Property:
@@ -36,9 +38,11 @@ When shortname collisions are possible, it's recommended to not use the shortnam
 people123."https://example.com/name"
 ```
 
+It is likely that using the URL for keys is also the most _performant_, since it probably more closely mimics the internal data model.
+
 ## Atomic Data uses a lot of links. How do you deal with links that don't work?
 
-1. Use URIs schemes that use content dressing, such as IPFS URIs.
+1. Use URIs schemes that use content addressing, such as [IPFS](../interoperability/ipfs.md) URIs.
 
 ## What's a URI, and what's a URL?
 

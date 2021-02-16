@@ -30,9 +30,16 @@ Properties of a Property instance:
 - [`datatype`](https://atomicdata.dev/properties/datatype) - (required, AtomicURL, Datatype) a URL to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the
 - [`classtype`](https://atomicdata.dev/properties/classtype) - (optional, AtomicURL, Class) if the `datatype` is an Atomic URL, the `classtype` defines which class(es?) is (are?) acceptable.
 
-```ndjson
-["https://example.com/properties/createdAt","https://atomicdata.dev/property/shortname","createdAt"]
-["https://example.com/properties/createdAt","https://atomicdata.dev/property/datatype","https://atomicdata.dev/datatype/datetime"]
+```json
+{
+  "@id": "https://atomicdata.dev/properties/description",
+  "https://atomicdata.dev/properties/datatype": "https://atomicdata.dev/datatypes/markdown",
+  "https://atomicdata.dev/properties/description": "A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.",
+  "https://atomicdata.dev/properties/isA": [
+    "https://atomicdata.dev/classes/Property"
+  ],
+  "https://atomicdata.dev/properties/shortname": "description"
+}
 ```
 
 ## Datatype
@@ -77,8 +84,21 @@ A resource indicates it is an _instance_ of that class by adding a `https://atom
 
 Example:
 
-```ad3
-["https://example.com/classes/Person","https://atomicdata.dev/properties/isA","https://atomicdata.dev/classes/Class"]
-["https://example.com/classes/Person","https://atomicdata.dev/properties/recommends","https://example.com/classes/Person/recommends"]
-["https://example.com/classes/Person/recommends","https://atomicdata.dev/properties/isA","https://atomicdata.dev/dataTypes/ResourceArray"]
+```json
+{
+  "@id": "https://atomicdata.dev/classes/Class",
+  "https://atomicdata.dev/properties/description": "A Class describes an abstract concept, such as 'Person' or 'Blogpost'. It describes the data shape of data and explains what the thing represents. It is convention to use Uppercase in its URL. Note that in Atomic Data, a Resource can have several Classes - not just a single one.",
+  "https://atomicdata.dev/properties/isA": [
+    "https://atomicdata.dev/classes/Class"
+  ],
+  "https://atomicdata.dev/properties/recommends": [
+    "https://atomicdata.dev/properties/recommends",
+    "https://atomicdata.dev/properties/requires"
+  ],
+  "https://atomicdata.dev/properties/requires": [
+    "https://atomicdata.dev/properties/shortname",
+    "https://atomicdata.dev/properties/description"
+  ],
+  "https://atomicdata.dev/properties/shortname": "class"
+}
 ```

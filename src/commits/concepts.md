@@ -24,6 +24,16 @@ The **optional method fields** describe how the data must be changed:
 These commands are executed in the order above.
 This means that you can set `destroy` to `true` and include `set`, which empties the existing resource and sets new values.
 
+## Agent
+
+_url: [https://atomicdata.dev/classes/Agent](https://atomicdata.dev/classes/Agent)_
+
+The Agent is the user / individual / organization / machine that can make changes to data.
+
+The **required fields** are:
+
+- [`publicKey`](https://atomicdata.dev/properties/publicKey) - The key that cryptographically verifies the authenticity of Commits. Base64 serialized Ed25519 key.
+
 ### Posting commits using HTTP
 
 Since Commits contains cryptographic proof of authorship, they can be accepted at a public endpoint.
@@ -71,8 +81,6 @@ This means that the process will always end in the exact same string.
 - All keys are sorted alphabetically - both in the root object, as in any nested objects.
 - The JSON-AD is minified: no newlines, no spaces.
 
-[Here's an example implementation of this process written in Rust](https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81).
-
 This will result in a string.
 The next step is to sign this string using the Ed25519 private key from the Author.
 This signature is a byte array, which should be encoded in base64 for serialization.
@@ -80,7 +88,9 @@ Make sure that the Author's URL resolves to a Resource that contains the linked 
 
 Congratulations, you've just created a valid Commit!
 
-## Author
+Here are currently working implementations of this process, including serialization and signing (links are permalinks).
 
-An Author is a person, organization, computer or other type of agent that can create and sign Commits.
-The most important property of the Author is the
+- [in Rust (atomic-lib)](https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81).
+- [in Typescript / Javascript (atomic-react)](https://github.com/joepio/atomic-react/blob/fc899bb2cf54bdff593ee6b4debf52e20a85619e/src/atomic-lib/commit.ts#L51).
+
+If you want validate your implementation, check out the tests for these two projects.

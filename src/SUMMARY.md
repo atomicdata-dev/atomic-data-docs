@@ -16,6 +16,7 @@
   * [Compared to](commits/compare.md)
 * [Interoperability](interoperability/intro.md)
   * [Relation to RDF](interoperability/rdf.md)
+  * [Relation to Solid](interoperability/solid.md)
   * [Relation to JSON](interoperability/json.md)
   * [Relation to IPFS](interoperability/ipfs.md)
 * [Types of Graph Validations](core/validations.md)
