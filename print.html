@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="core/paths.html"><strong aria-hidden="true">2.4.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="commits/intro.html"><strong aria-hidden="true">4.</strong> Atomic Commits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="commits/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="commits/compare.html"><strong aria-hidden="true">4.2.</strong> Compared to</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.2.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.3.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li class="chapter-item expanded "><a href="core/intro.html"><strong aria-hidden="true">2.</strong> Atomic Data Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="core/paths.html"><strong aria-hidden="true">2.4.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Atomic Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="commits/intro.html"><strong aria-hidden="true">4.</strong> Atomic Commits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="commits/concepts.html"><strong aria-hidden="true">4.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="commits/compare.html"><strong aria-hidden="true">4.2.</strong> Compared to</a></li></ol></li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">5.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">5.1.</strong> Relation to RDF</a></li><li class="chapter-item expanded "><a href="interoperability/solid.html"><strong aria-hidden="true">5.2.</strong> Relation to Solid</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">5.3.</strong> Relation to JSON</a></li><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">5.4.</strong> Relation to IPFS</a></li></ol></li><li class="chapter-item expanded "><a href="core/validations.html"><strong aria-hidden="true">6.</strong> Types of Graph Validations</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">7.</strong> Tooling</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -530,8 +530,15 @@ You can constrain properties further by using <a href="https://www.w3.org/TR/sha
 <li><a href="https://atomicdata.dev/properties/datatype"><code>datatype</code></a> - (required, AtomicURL, Datatype) a URL to an Atomic Datatype, which defines what the datatype should be of the Value in an Atom where the Property is the</li>
 <li><a href="https://atomicdata.dev/properties/classtype"><code>classtype</code></a> - (optional, AtomicURL, Class) if the <code>datatype</code> is an Atomic URL, the <code>classtype</code> defines which class(es?) is (are?) acceptable.</li>
 </ul>
-<pre><code class="language-ndjson">[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/shortname&quot;,&quot;createdAt&quot;]
-[&quot;https://example.com/properties/createdAt&quot;,&quot;https://atomicdata.dev/property/datatype&quot;,&quot;https://atomicdata.dev/datatype/datetime&quot;]
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://atomicdata.dev/properties/description&quot;,
+  &quot;https://atomicdata.dev/properties/datatype&quot;: &quot;https://atomicdata.dev/datatypes/markdown&quot;,
+  &quot;https://atomicdata.dev/properties/description&quot;: &quot;A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.&quot;,
+  &quot;https://atomicdata.dev/properties/isA&quot;: [
+    &quot;https://atomicdata.dev/classes/Property&quot;
+  ],
+  &quot;https://atomicdata.dev/properties/shortname&quot;: &quot;description&quot;
+}
 </code></pre>
 <h2><a class="header" href="#datatype" id="datatype">Datatype</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/classes/Datatype</code></em></p>
@@ -567,9 +574,22 @@ If you need to set more complex constraints to your Classes (e.g. maximum string
 <!-- - `allowedProperties` - (optional, ResourceArray) a list of Properties that are allowed. If absent, none are required. -->
 <p>A resource indicates it is an <em>instance</em> of that class by adding a <code>https://atomicdata.dev/properties/isA</code> Atom.</p>
 <p>Example:</p>
-<pre><code class="language-ad3">[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;https://atomicdata.dev/classes/Class&quot;]
-[&quot;https://example.com/classes/Person&quot;,&quot;https://atomicdata.dev/properties/recommends&quot;,&quot;https://example.com/classes/Person/recommends&quot;]
-[&quot;https://example.com/classes/Person/recommends&quot;,&quot;https://atomicdata.dev/properties/isA&quot;,&quot;https://atomicdata.dev/dataTypes/ResourceArray&quot;]
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://atomicdata.dev/classes/Class&quot;,
+  &quot;https://atomicdata.dev/properties/description&quot;: &quot;A Class describes an abstract concept, such as 'Person' or 'Blogpost'. It describes the data shape of data and explains what the thing represents. It is convention to use Uppercase in its URL. Note that in Atomic Data, a Resource can have several Classes - not just a single one.&quot;,
+  &quot;https://atomicdata.dev/properties/isA&quot;: [
+    &quot;https://atomicdata.dev/classes/Class&quot;
+  ],
+  &quot;https://atomicdata.dev/properties/recommends&quot;: [
+    &quot;https://atomicdata.dev/properties/recommends&quot;,
+    &quot;https://atomicdata.dev/properties/requires&quot;
+  ],
+  &quot;https://atomicdata.dev/properties/requires&quot;: [
+    &quot;https://atomicdata.dev/properties/shortname&quot;,
+    &quot;https://atomicdata.dev/properties/description&quot;
+  ],
+  &quot;https://atomicdata.dev/properties/shortname&quot;: &quot;class&quot;
+}
 </code></pre>
 <h1><a class="header" href="#atomic-schema-datatypes" id="atomic-schema-datatypes">Atomic Schema: Datatypes</a></h1>
 <p>The Atomic Datatypes consist of some of the most commonly used <a href="schema/classes.html#Datatype">Datatypes</a>.</p>
@@ -666,25 +686,26 @@ These strings SHOULD be unique inside Classes, but these are not guaranteed to b
 Note that Resources can have multiple Classes, and through that, they can have colliding Shortnames.
 Resources are also free to include Properties from other Classes, and their Shortnames, too, might collide.</p>
 <p>For example:</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/people/123&quot;, &quot;https://example.com/name&quot;, &quot;John&quot;]
-[&quot;https://example.com/people/123&quot;, &quot;https://somepage.example.com/name&quot;, &quot;John&quot;]
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://example.com/people/123&quot;,
+  &quot;https://example.com/name&quot;: &quot;John&quot;,
+  &quot;https://another.example.com/someOtherName&quot;: &quot;Martin&quot;
+}
 </code></pre>
-<p>Let's assume that <code>https://somepage.example.com/name</code> and <code>https://example.com/name</code> are Properties that have the Shortname: <code>name</code>.</p>
+<p>Let's assume that <code>https://example.com/name</code> and <code>https://another.example.com/someOtherName</code> are Properties that have the Shortname: <code>name</code>.</p>
 <p>What if a client tries something such as <code>people123.name</code>?
 To consistently return a single value, we need some type of <em>precedence</em>:</p>
 <ol>
-<li>The earlier Class mentioned in the <code>class</code> Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collisions in required and recommended properties, which means that they might have. If these exist internally, sort the properties from A-Z.</li>
-</ol>
-<!-- This  -->
-<ol>
+<li>The earlier Class mentioned in the <a href="https://atomicdata.dev/properties/isA"><code>isA</code></a> Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collisions in required and recommended properties, which means that they might have. If these exist internally, sort the properties by how they are ordered in the <code>isA</code> array - first item is preferred.</li>
 <li>When the Properties are not part of any of the mentioned Classes, use Alphabetical sorting of the Property URL.</li>
 </ol>
 <p>When shortname collisions are possible, it's recommended to not use the shortname, but use the URL of the Property:</p>
 <pre><code>people123.&quot;https://example.com/name&quot;
 </code></pre>
+<p>It is likely that using the URL for keys is also the most <em>performant</em>, since it probably more closely mimics the internal data model.</p>
 <h2><a class="header" href="#atomic-data-uses-a-lot-of-links-how-do-you-deal-with-links-that-dont-work" id="atomic-data-uses-a-lot-of-links-how-do-you-deal-with-links-that-dont-work">Atomic Data uses a lot of links. How do you deal with links that don't work?</a></h2>
 <ol>
-<li>Use URIs schemes that use content dressing, such as IPFS URIs.</li>
+<li>Use URIs schemes that use content addressing, such as <a href="schema/../interoperability/ipfs.html">IPFS</a> URIs.</li>
 </ol>
 <h2><a class="header" href="#whats-a-uri-and-whats-a-url" id="whats-a-uri-and-whats-a-url">What's a URI, and what's a URL?</a></h2>
 <p>URI stands for Unique Resource Identifier</p>
@@ -754,6 +775,13 @@ It is cryptographically signed by an <a href="https://atomicdata.dev/classes/Age
 </ul>
 <p>These commands are executed in the order above.
 This means that you can set <code>destroy</code> to <code>true</code> and include <code>set</code>, which empties the existing resource and sets new values.</p>
+<h2><a class="header" href="#agent" id="agent">Agent</a></h2>
+<p><em>url: <a href="https://atomicdata.dev/classes/Agent">https://atomicdata.dev/classes/Agent</a></em></p>
+<p>The Agent is the user / individual / organization / machine that can make changes to data.</p>
+<p>The <strong>required fields</strong> are:</p>
+<ul>
+<li><a href="https://atomicdata.dev/properties/publicKey"><code>publicKey</code></a> - The key that cryptographically verifies the authenticity of Commits. Base64 serialized Ed25519 key.</li>
+</ul>
 <h3><a class="header" href="#posting-commits-using-http" id="posting-commits-using-http">Posting commits using HTTP</a></h3>
 <p>Since Commits contains cryptographic proof of authorship, they can be accepted at a public endpoint.
 There is no need for authentication.</p>
@@ -791,15 +819,17 @@ This means that the process will always end in the exact same string.</p>
 <li>All keys are sorted alphabetically - both in the root object, as in any nested objects.</li>
 <li>The JSON-AD is minified: no newlines, no spaces.</li>
 </ul>
-<p><a href="https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81">Here's an example implementation of this process written in Rust</a>.</p>
 <p>This will result in a string.
 The next step is to sign this string using the Ed25519 private key from the Author.
 This signature is a byte array, which should be encoded in base64 for serialization.
 Make sure that the Author's URL resolves to a Resource that contains the linked public key.</p>
 <p>Congratulations, you've just created a valid Commit!</p>
-<h2><a class="header" href="#author" id="author">Author</a></h2>
-<p>An Author is a person, organization, computer or other type of agent that can create and sign Commits.
-The most important property of the Author is the</p>
+<p>Here are currently working implementations of this process, including serialization and signing (links are permalinks).</p>
+<ul>
+<li><a href="https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81">in Rust (atomic-lib)</a>.</li>
+<li><a href="https://github.com/joepio/atomic-react/blob/fc899bb2cf54bdff593ee6b4debf52e20a85619e/src/atomic-lib/commit.ts#L51">in Typescript / Javascript (atomic-react)</a>.</li>
+</ul>
+<p>If you want validate your implementation, check out the tests for these two projects.</p>
 <h1><a class="header" href="#atomic-commits-compared-to-other-rdf-delta-models" id="atomic-commits-compared-to-other-rdf-delta-models">Atomic Commits compared to other (RDF) delta models</a></h1>
 <p>Let's compare the <a href="commits/concepts.html">Atomic Commit</a> approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
 First, I'll briefly discuss the existing examples (<a href="https://github.com/ontola/atomic-data/issues">open a PR / issue</a> if we're missing something!).
@@ -1219,6 +1249,51 @@ It is good practice to use these RDF concepts when serializing Atomic Data into 
 <ul>
 <li>Convert Atoms with linked <code>TranslationBox</code> Resources to Literals with an <code>xsd:string</code> datatype and the corresponding language in the tag.</li>
 <li>Dereference the Property and Datatype from Atomic Properties, and add the URLs in <code>datatypes</code> in RDF statements.</li>
+</ul>
+<h1><a class="header" href="#atomic-data-and-solid" id="atomic-data-and-solid">Atomic Data and Solid</a></h1>
+<p>The Solid project is an initiative by the inventor of linked data and the world wide web: sir Tim Berners-Lee.
+In many ways, it has similar goals to Atomic Data:</p>
+<ul>
+<li>Decentralize the web</li>
+<li>Make things more interoperable</li>
+<li>Give people more control over their data</li>
+</ul>
+<p>Technically, both are also similar:</p>
+<ul>
+<li>Usage of linked data</li>
+<li>Usage of person-scoped servers (PODs: Personal Online Datastores)</li>
+</ul>
+<p>One of the design goals of Atomic Data is to be serializable to RDF, which means that all the data that you define in Atomic Data can easily be put on your Solid Pod.
+The other way around is more difficult, as Atomic Data has a far stricter built-in schema.</p>
+<h2><a class="header" href="#atomic-data-has-a-built-in-schema" id="atomic-data-has-a-built-in-schema">Atomic Data has a built-in schema</a></h2>
+<p>Atomic Data is more strict than Solid - which means that it only accepts data that conforms to a specific shape.
+In a Solid Pod, you're free to add any shape of data that you like - it is not <em>validated</em> by some schema.
+Yes, there are some efforts of using SHACL or SHEX to <em>constrain</em> data before putting it in, but as of now it is not part of the spec or any implementation that I know of.
+A lack of schema strictness can useful and quick, especially if you write data by hand, but it also limits how easy it is to build reliable apps with that data.
+Atomic Data aims to be very friendly for developers that re-use data, and that's why we take a different approach: all data <em>must be</em> validated by Atomic Schema before it's stored on a server.</p>
+<p>You can think of Atomic Data more like a (dynamic) SQL database that offers guarantees about its content type, and a Solid Pod more like a document store that takes in all kinds of content.</p>
+<h2><a class="header" href="#atomic-data-uses-event-sourcing" id="atomic-data-uses-event-sourcing">Atomic data uses event sourcing</a></h2>
+<p>Event sourcing means that all changes are stored (persisted) and used to calculate the current state of things.
+In practice, this means that users get a couple of nice features for free:</p>
+<ul>
+<li><strong>Versioning for all items by default</strong>. Storing events means that these events can be <em>replayed</em>, which means you get to traverse time / undo / redo.</li>
+<li><strong>Edit / audit log for everything</strong>. Events contain information about who made which change at which point in time. Can be useful for finding out why things are the way they are.</li>
+<li><strong>Easier to add query options</strong>. Any system can play-back the events, which means that it can be used as an API to add new query options / fill new indexes. This is especially useful if you want to add things like full-text search, or some geolocation index.</li>
+</ul>
+<p>It also means that, compared to Solid, there is a relatively simple and strict API for changing data.
+Atomic Data has a <strong>uniform write API</strong>.
+All changes to data are done by posting Commits to the <code>/commits</code> endpoint of a Server.
+This removes the need to think about differences between all sorts of HTTP methods like POST / PUT / PATCH, and how servers should reply to that.</p>
+<h2><a class="header" href="#solid-is-more-mature" id="solid-is-more-mature">Solid is more mature</a></h2>
+<p>Atomic Data has significant gaps at this moment - not just in the implementations, but also in the spec.
+This makes it not yet usable for most applications.
+Here's a list of things missing in Atomic Data, with links to their open issues and links to their existing Solid counterpart.</p>
+<ul>
+<li>No way to restrict access to reading content. Only for writing content with Commits. <a href="https://github.com/solid/web-access-control-spec">WAC</a> in Solid.</li>
+<li><a href="https://github.com/ontola/atomic-data/issues/18">No hierarchy model</a>. <a href="https://shapetrees.org/TR/specification/index.html#ecosystem">ShapeTrees in Solid</a></li>
+<li>No way to discover content from user ID.</li>
+<li>No <a href="interoperability/">inbox</a> or <a href="https://www.w3.org/TR/ldn/">notifications</a></li>
+<li>No support from a big community, a well-funded business or the inventor of the world wide web.</li>
 </ul>
 <h1><a class="header" href="#how-does-atomic-data-relate-to-json" id="how-does-atomic-data-relate-to-json">How does Atomic Data relate to JSON?</a></h1>
 <p>Because JSON is so popular, Atomic Data is designed with JSON in mind.</p>
