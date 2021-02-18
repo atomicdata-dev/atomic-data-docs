@@ -177,7 +177,7 @@ You can use parts of Atomic Data separately, but the standard is designed as a f
 If you'd rather play and discover for yourself, play with the existing <a href="tooling.html">tooling</a>:</p>
 <ul>
 <li>Server: <a href="https://github.com/joepio/atomic">atomic-server</a> (powers <a href="https://atomicdata.dev">atomicdata.dev</a>, run with <code>docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>)</li>
-<li>Front-end browser + typescript client library: <a href="https://github.com/joepio/atomic-react">atomic-react</a> (<a href="https://joepio.github.io/atomic-react/">demo</a>)</li>
+<li>Browser app <a href="https://github.com/joepio/atomic-data-browser">atomic-data-browser</a> (<a href="https://joepio.github.io/atomic-data-browser/">demo</a>)</li>
 <li>CLI (atomic-cli): <a href="https://github.com/joepio/atomic">atomic-cli</a> (<code>cargo install atomic-cli</code>)</li>
 <li>Rust library: <a href="https://github.com/joepio/atomic">atomic-lib</a></li>
 </ul>
@@ -326,7 +326,7 @@ However, it's recommended to use <code>JSON-AD</code>, which is specifically des
 It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and <a href="https://ontola.io/blog/rdf-serialization-formats/">other serialization formats</a>.</p>
 <h2><a class="header" href="#json-ad" id="json-ad">JSON-AD</a></h2>
 <p><code>JSON-AD</code> is the <em>default</em> serialization format for Atomic Data.
-It is what the current <a href="https://github.com/joepio/atomic">Rust</a> and <a href="https://github.com/joepio/atomic-react">Typescript / React</a> implementation use to communicate.
+It is what the current <a href="https://github.com/joepio/atomic">Rust</a> and <a href="https://github.com/joepio/atomic-data-browser">Typescript / React</a> implementation use to communicate.
 It is just JSON with a lot of links in it.</p>
 <ul>
 <li>The <code>@id</code> field is special: it defines the Subject of the Resource.</li>
@@ -827,7 +827,7 @@ Make sure that the Author's URL resolves to a Resource that contains the linked 
 <p>Here are currently working implementations of this process, including serialization and signing (links are permalinks).</p>
 <ul>
 <li><a href="https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81">in Rust (atomic-lib)</a>.</li>
-<li><a href="https://github.com/joepio/atomic-react/blob/fc899bb2cf54bdff593ee6b4debf52e20a85619e/src/atomic-lib/commit.ts#L51">in Typescript / Javascript (atomic-react)</a>.</li>
+<li><a href="https://github.com/joepio/atomic-data-browser/blob/fc899bb2cf54bdff593ee6b4debf52e20a85619e/src/atomic-lib/commit.ts#L51">in Typescript / Javascript (atomic-data-browser)</a>.</li>
 </ul>
 <p>If you want validate your implementation, check out the tests for these two projects.</p>
 <h1><a class="header" href="#atomic-commits-compared-to-other-rdf-delta-models" id="atomic-commits-compared-to-other-rdf-delta-models">Atomic Commits compared to other (RDF) delta models</a></h1>
@@ -1452,7 +1452,7 @@ It also helps to make sure the content can be shared peer to peer</p>
 <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
 <ul>
 <li>Server: <a href="https://github.com/joepio/atomic">atomic-server</a></li>
-<li>Front-end browser + typescript client library: <a href="https://github.com/joepio/atomic-react">atomic-react</a></li>
+<li>Front-end browser + typescript client library: <a href="https://github.com/joepio/atomic-data-browser">atomic-data-browser</a></li>
 <li>CLI (atomic-cli): <a href="https://github.com/joepio/atomic">atomic-cli</a></li>
 <li>Rust library: <a href="https://github.com/joepio/atomic">atomic-lib</a></li>
 </ul>
@@ -1467,10 +1467,10 @@ It also helps to make sure the content can be shared peer to peer</p>
 <p>One liner: <code>$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code></p>
 <p><a href="https://atomicdata.dev/">demo</a></p>
 <p><a href="https://github.com/joepio/atomic">MIT licensed repository + issue tracker</a>.</p>
-<h2><a class="header" href="#atomic-react" id="atomic-react"><code>atomic-react</code></a></h2>
+<h2><a class="header" href="#atomic-data-browser" id="atomic-data-browser"><code>atomic-data-browser</code></a></h2>
 <p>Data browser + react typescript / javascript front-end library.</p>
-<p><a href="https://joepio.github.io/atomic-react/">demo</a></p>
-<p><a href="https://github.com/joepio/atomic-react">MIT licensed repository + issue tracker</a>.</p>
+<p><a href="https://joepio.github.io/atomic-data-browser/">demo</a></p>
+<p><a href="https://github.com/joepio/atomic-data-browser">MIT licensed repository + issue tracker</a>.</p>
 <h2><a class="header" href="#atomic-cli" id="atomic-cli"><code>atomic-cli</code></a></h2>
 <p>A tool for generating / querying Atomic Data from the command line. Install with <code>cargo install atomic-cli</code>.</p>
 <pre><code>atomic 0.20.0
@@ -1543,8 +1543,9 @@ Visit https://github.com/joepio/atomic for more info
 <li>Thom van Kalkeren (who came up with many great ideas on how to work with RDF, such as <a href="https://github.com/ontola/hextuples">HexTuples</a> and <a href="https://github.com/ontola/linked-delta">linked-delta</a>)</li>
 <li>Tim Berners-Lee (for everything he did for linked data and the web)</li>
 <li>Ruben Verborgh (for doing great work with RDF, such as the TPF spec)</li>
-<li>All the other people who worked on the RDF specification</li>
 <li>Pat McBennett (lots of valuable feedback on initial Atomic Data docs)</li>
+<li>Manu Sporny (for his work on JSON-LD)</li>
+<li>All the other people who contributed to linked data related standards</li>
 </ul>
 
                     </main>
