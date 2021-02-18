@@ -21,7 +21,7 @@ If you want to read more about how Atomic Data works - read on.
 If you'd rather play and discover for yourself, play with the existing [tooling](tooling.md):
 
 - Server: [atomic-server](https://github.com/joepio/atomic) (powers [atomicdata.dev](https://atomicdata.dev), run with `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`)
-- Front-end browser + typescript client library: [atomic-react](https://github.com/joepio/atomic-react) ([demo](https://joepio.github.io/atomic-react/))
+- Browser app [atomic-data-browser](https://github.com/joepio/atomic-data-browser) ([demo](https://joepio.github.io/atomic-data-browser/))
 - CLI (atomic-cli): [atomic-cli](https://github.com/joepio/atomic) (`cargo install atomic-cli`)
 - Rust library: [atomic-lib](https://github.com/joepio/atomic)
 

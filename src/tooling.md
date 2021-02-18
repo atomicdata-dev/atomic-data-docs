@@ -1,7 +1,7 @@
 # Tooling for Atomic Data
 
 - Server: [atomic-server](https://github.com/joepio/atomic)
-- Front-end browser + typescript client library: [atomic-react](https://github.com/joepio/atomic-react)
+- Front-end browser + typescript client library: [atomic-data-browser](https://github.com/joepio/atomic-data-browser)
 - CLI (atomic-cli): [atomic-cli](https://github.com/joepio/atomic)
 - Rust library: [atomic-lib](https://github.com/joepio/atomic)
 
@@ -20,13 +20,13 @@ One liner: `$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage j
 
 [MIT licensed repository + issue tracker](https://github.com/joepio/atomic).
 
-## `atomic-react`
+## `atomic-data-browser`
 
 Data browser + react typescript / javascript front-end library.
 
-[demo](https://joepio.github.io/atomic-react/)
+[demo](https://joepio.github.io/atomic-data-browser/)
 
-[MIT licensed repository + issue tracker](https://github.com/joepio/atomic-react).
+[MIT licensed repository + issue tracker](https://github.com/joepio/atomic-data-browser).
 
 ## `atomic-cli`
 

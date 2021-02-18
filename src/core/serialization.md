@@ -10,7 +10,7 @@ It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and [ot
 ## JSON-AD
 
 `JSON-AD` is the _default_ serialization format for Atomic Data.
-It is what the current [Rust](https://github.com/joepio/atomic) and [Typescript / React](https://github.com/joepio/atomic-react) implementation use to communicate.
+It is what the current [Rust](https://github.com/joepio/atomic) and [Typescript / React](https://github.com/joepio/atomic-data-browser) implementation use to communicate.
 It is just JSON with a lot of links in it.
 
 - The `@id` field is special: it defines the Subject of the Resource.

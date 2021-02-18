@@ -19,5 +19,6 @@ Things you can do:
 - Thom van Kalkeren (who came up with many great ideas on how to work with RDF, such as [HexTuples](https://github.com/ontola/hextuples) and [linked-delta](https://github.com/ontola/linked-delta))
 - Tim Berners-Lee (for everything he did for linked data and the web)
 - Ruben Verborgh (for doing great work with RDF, such as the TPF spec)
-- All the other people who worked on the RDF specification
 - Pat McBennett (lots of valuable feedback on initial Atomic Data docs)
+- Manu Sporny (for his work on JSON-LD)
+- All the other people who contributed to linked data related standards

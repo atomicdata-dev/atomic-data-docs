@@ -91,6 +91,6 @@ Congratulations, you've just created a valid Commit!
 Here are currently working implementations of this process, including serialization and signing (links are permalinks).
 
 - [in Rust (atomic-lib)](https://github.com/joepio/atomic/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81).
-- [in Typescript / Javascript (atomic-react)](https://github.com/joepio/atomic-react/blob/fc899bb2cf54bdff593ee6b4debf52e20a85619e/src/atomic-lib/commit.ts#L51).
+- [in Typescript / Javascript (atomic-data-browser)](https://github.com/joepio/atomic-data-browser/blob/fc899bb2cf54bdff593ee6b4debf52e20a85619e/src/atomic-lib/commit.ts#L51).
 
 If you want validate your implementation, check out the tests for these two projects.
