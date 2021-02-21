@@ -3,7 +3,7 @@
 _A proposed standard for data exchange of decentralized, typed graphs._
 
 View it on [docs.atomicdata.dev](https://docs.atomicdata.dev).
-If you're looking for an (early) implementation of Atomic data, check out [atomic](https://github.com/joepio/atomic) (server + cli + lib).
+If you're looking for an (early) implementation of Atomic data, check out [atomic](https://github.com/joepio/atomic) (server + cli + lib) and [atomic-data-browser](https://github.com/joepio/atomic-data-browser) (react / typescript).
 
 ## About this repo
 
