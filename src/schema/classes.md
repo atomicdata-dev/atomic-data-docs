@@ -42,6 +42,8 @@ Properties of a Property instance:
 }
 ```
 
+Visit https://atomicdata.dev/collections/property for a list of example Properties.
+
 ## Datatype
 
 _URL: `https://atomicdata.dev/classes/Datatype`_
@@ -58,6 +60,8 @@ Properties:
 - `stringExample` - (required, string) an example `stringSerialization` that should be parsed correctly
 - `binarySerialization` - (optional, AtomicURL, TranslationBox) how the datatype should be parsed / serialized as a byte array.
 - `binaryExample` - (optional, string) an example `binarySerialization` that should be parsed correctly. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.
+
+Visit https://atomicdata.dev/collections/datatype for a list of example Datatypes.
 
 ## Class
 
@@ -102,3 +106,5 @@ Example:
   "https://atomicdata.dev/properties/shortname": "class"
 }
 ```
+
+Visit https://atomicdata.dev/collections/class for the a list of example Classes.
