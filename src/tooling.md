@@ -24,7 +24,11 @@ One liner: `$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage j
 
 Data browser + react typescript / javascript front-end library.
 
-[demo](https://joepio.github.io/atomic-data-browser/)
+- View & edit atomic data, using dynamic forms
+- Collections with pagination and sorting
+- Client-side full-text search
+
+[demo](https://atomicdata.dev/) (same as `atomic-server`)
 
 [MIT licensed repository + issue tracker](https://github.com/joepio/atomic-data-browser).
 

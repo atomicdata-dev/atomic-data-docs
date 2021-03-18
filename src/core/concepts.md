@@ -114,3 +114,9 @@ Graphs can have several characteristics (Schema Complete, Valid, Closed)
 The Atomic Web refers to all Atomic Graphs on the web.
 
 In the next chapter, we'll explore how Atomic Data is serialized.
+
+## Nested Resource
+
+A Nested Resource only exists inside of another resource.
+It does not have its own subject.
+However, it _does_ have its own unique [path](./paths.md), which can be used as its identifier.

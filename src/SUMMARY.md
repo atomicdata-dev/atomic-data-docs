@@ -4,6 +4,7 @@
 * [Atomic Data Core](core/intro.md)
   * [Concepts](core/concepts.md)
   * [Serialization](core/serialization.md)
+  * [JSON-AD](core/json-ad.md)
   * [Querying](core/querying.md)
   * [Paths](core/paths.md)
 * [Atomic Schema](schema/intro.md)
