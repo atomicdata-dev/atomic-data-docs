@@ -21,14 +21,13 @@ Let's start with this simple Resource:
 
 Then the following Path targets the `McLovin` value:
 
-`https://example.com/john https://example.com/lastname` => `McLovin`
+`https://example.com/john https://example.com/lastName` => `McLovin`
 
-If the resource is an instance of a Class (an `atomic:isA` property), you can use the Shortnames of the Properties that are referred to by that class.
-Since John is an instance of a Person, he might have a `lastname` which maps to `https://example.com/latname`.
+Instead of using the full URL of the `lastName` Property, we can use its [shortname](https://atomicdata.dev/properties/shortname):
 
 `https://example.com/john lastname` => `McLovin`
 
-We can also traverse relationships:
+We can also traverse relationships between resources:
 
 ```json
 [{
@@ -44,11 +43,13 @@ We can also traverse relationships:
 `https://example.com/john employer description` => `The greatest company!`
 
 In the example above, the XCorp subject exists and is the source of the `The greatest company!` value.
-However, using paths, it's also possible to created nested resources _without creating new URLs for all children_.
+We can use this path as a unique identifier for the description of John's current employer.
+Note that the data for the description of that employer does not have to be in John's control for this path to work - it can live on a totally different server.
+However, in Atomic Data it's also possible to include this description in the resource of John as a _Nested Resource_.
 
 ## Nested Resources
 
-All Atomic Data Resources that we've discussed so far have a URL as a subject.
+All Atomic Data Resources that we've discussed so far have an explicit URL as a subject.
 Unfortunately, creating unique and resolvable URLs can be a bother, and sometimes not necessary.
 If you've worked with RDF, this is what Blank Nodes are used for.
 In Atomic Data, we have something similar: _Nested Resources_.
@@ -56,23 +57,28 @@ In Atomic Data, we have something similar: _Nested Resources_.
 Let's use a Nested Resource in the example from the previous section:
 
 ```json
-  {
+{
   "@id": "https://example.com/john",
   "https://example.com/lastName": "McLovin",
   "https://example.com/employer": {
     "https://example.com/description": "The greatest company!",
-  },
+  }
 }
 ```
 
-By combining two Subject URLs into a single string, we've created a nested resource.
-The Subject of the nested resource is `https://example.com/john https://example.com/employer`, including the spacebar.
+Now the `employer` is simply a nested Object.
+Note that it no longer has its own `@id`.
+However, we can still identify this Nested Resource using its Path.
+
+The Subject of the nested resource is its path: `https://example.com/john https://example.com/employer`, including the spacebar.
 
 Note that the path from before still resolves:
 
 `https://example.com/john employer description` => `The greatest company!`
 
-We can also navigate Arrays using paths
+## Traversing Arrays
+
+We can also navigate Arrays using paths.
 
 For example:
 
@@ -100,3 +106,7 @@ You can target an item in an array by using a number to indicate its position, s
 
 Notice how the Resource with the `name: Mr. Boot` does not have an explicit `@id`, but it _does_ have a Path.
 This means that we still have a unique, globally resolvable identifier - yay!
+
+## Try for yourself
+
+Install the [`atomic-cli`](https://github.com/joepio/atomic/blob/master/cli/README.md) software and run `atomic-cli get https://atomicdata.dev/classes/Class description`.
