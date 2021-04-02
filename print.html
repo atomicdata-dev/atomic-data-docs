@@ -438,11 +438,10 @@ This second URL can be replaced by a Shortname, if the Resource is an instance o
 }
 </code></pre>
 <p>Then the following Path targets the <code>McLovin</code> value:</p>
-<p><code>https://example.com/john https://example.com/lastname</code> =&gt; <code>McLovin</code></p>
-<p>If the resource is an instance of a Class (an <code>atomic:isA</code> property), you can use the Shortnames of the Properties that are referred to by that class.
-Since John is an instance of a Person, he might have a <code>lastname</code> which maps to <code>https://example.com/latname</code>.</p>
+<p><code>https://example.com/john https://example.com/lastName</code> =&gt; <code>McLovin</code></p>
+<p>Instead of using the full URL of the <code>lastName</code> Property, we can use its <a href="https://atomicdata.dev/properties/shortname">shortname</a>:</p>
 <p><code>https://example.com/john lastname</code> =&gt; <code>McLovin</code></p>
-<p>We can also traverse relationships:</p>
+<p>We can also traverse relationships between resources:</p>
 <pre><code class="language-json">[{
   &quot;@id&quot;: &quot;https://example.com/john&quot;,
   &quot;https://example.com/lastName&quot;: &quot;McLovin&quot;,
@@ -454,26 +453,31 @@ Since John is an instance of a Person, he might have a <code>lastname</code> whi
 </code></pre>
 <p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
 <p>In the example above, the XCorp subject exists and is the source of the <code>The greatest company!</code> value.
-However, using paths, it's also possible to created nested resources <em>without creating new URLs for all children</em>.</p>
+We can use this path as a unique identifier for the description of John's current employer.
+Note that the data for the description of that employer does not have to be in John's control for this path to work - it can live on a totally different server.
+However, in Atomic Data it's also possible to include this description in the resource of John as a <em>Nested Resource</em>.</p>
 <h2><a class="header" href="#nested-resources" id="nested-resources">Nested Resources</a></h2>
-<p>All Atomic Data Resources that we've discussed so far have a URL as a subject.
+<p>All Atomic Data Resources that we've discussed so far have an explicit URL as a subject.
 Unfortunately, creating unique and resolvable URLs can be a bother, and sometimes not necessary.
 If you've worked with RDF, this is what Blank Nodes are used for.
 In Atomic Data, we have something similar: <em>Nested Resources</em>.</p>
 <p>Let's use a Nested Resource in the example from the previous section:</p>
-<pre><code class="language-json">  {
+<pre><code class="language-json">{
   &quot;@id&quot;: &quot;https://example.com/john&quot;,
   &quot;https://example.com/lastName&quot;: &quot;McLovin&quot;,
   &quot;https://example.com/employer&quot;: {
     &quot;https://example.com/description&quot;: &quot;The greatest company!&quot;,
-  },
+  }
 }
 </code></pre>
-<p>By combining two Subject URLs into a single string, we've created a nested resource.
-The Subject of the nested resource is <code>https://example.com/john https://example.com/employer</code>, including the spacebar.</p>
+<p>Now the <code>employer</code> is simply a nested Object.
+Note that it no longer has its own <code>@id</code>.
+However, we can still identify this Nested Resource using its Path.</p>
+<p>The Subject of the nested resource is its path: <code>https://example.com/john https://example.com/employer</code>, including the spacebar.</p>
 <p>Note that the path from before still resolves:</p>
 <p><code>https://example.com/john employer description</code> =&gt; <code>The greatest company!</code></p>
-<p>We can also navigate Arrays using paths</p>
+<h2><a class="header" href="#traversing-arrays" id="traversing-arrays">Traversing Arrays</a></h2>
+<p>We can also navigate Arrays using paths.</p>
 <p>For example:</p>
 <pre><code class="language-json">{
   &quot;@id&quot;: &quot;https://example.com/john&quot;,
@@ -493,6 +497,8 @@ The Subject of the nested resource is <code>https://example.com/john https://exa
 <p>You can target an item in an array by using a number to indicate its position, starting with 0.</p>
 <p>Notice how the Resource with the <code>name: Mr. Boot</code> does not have an explicit <code>@id</code>, but it <em>does</em> have a Path.
 This means that we still have a unique, globally resolvable identifier - yay!</p>
+<h2><a class="header" href="#try-for-yourself" id="try-for-yourself">Try for yourself</a></h2>
+<p>Install the <a href="https://github.com/joepio/atomic/blob/master/cli/README.md"><code>atomic-cli</code></a> software and run <code>atomic-cli get https://atomicdata.dev/classes/Class description</code>.</p>
 <h1><a class="header" href="#atomic-schema" id="atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
 You can compare it to what XSD is for XML.
@@ -613,7 +619,7 @@ If you need to set more complex constraints to your Classes (e.g. maximum string
 <p>Visit https://atomicdata.dev/collections/class for the a list of example Classes.</p>
 <h1><a class="header" href="#atomic-schema-datatypes" id="atomic-schema-datatypes">Atomic Schema: Datatypes</a></h1>
 <p>The Atomic Datatypes consist of some of the most commonly used <a href="schema/classes.html#Datatype">Datatypes</a>.</p>
-<p>Please visit https://atomicdata.dev/collections/datatype for the latest list of official Datatypes.</p>
+<p>Please visit <a href="https://atomicdata.dev/collections/datatype">https://atomicdata.dev/collections/datatype</a> for the latest list of official Datatypes.</p>
 <h2><a class="header" href="#slug" id="slug">Slug</a></h2>
 <p><em>URL: <code>https://atomicdata.dev/datatypes/slug</code></em></p>
 <p>A string with a limited set of allowed characters, used in IDE / Text editor context.
