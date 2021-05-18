@@ -1415,11 +1415,12 @@ Atomic Data has some unique constrains (such as subject-predicate uniqueness) wh
 This tooling should help to create URLs, Properties, and host everything on an easy to use server.</p>
 <h2><a class="header" href="#convert-atomic-data-to-rdf" id="convert-atomic-data-to-rdf">Convert Atomic data to RDF</a></h2>
 <p>Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.
-This is why <code>atomic</code> can already serialize data to RDF (<a href="https://atomicdata.dev/classes/Property.ttl">example</a>).</p>
+This is why <a href="https://github.com/joepio/atomic">atomic</a> can serialize Atomic Data to RDF. (For example, try <code>atomic-cli get https://atomicdata.dev/properties/description --as n3</code>)</p>
 <p>However, contrary to Atomic Data, RDF has optional Language and Datatype elements in every statement.
 It is good practice to use these RDF concepts when serializing Atomic Data into Turtle / RDF/XML, or other <a href="https://ontola.io/blog/rdf-serialization-formats/">RDF serialization formats</a>.</p>
 <ul>
 <li>Convert Atoms with linked <code>TranslationBox</code> Resources to Literals with an <code>xsd:string</code> datatype and the corresponding language in the tag.</li>
+<li>Convert Atoms with ResourceArrays to <a href="https://ontola.io/blog/ordered-data-in-rdf/">Collections</a> that are native to that serialization format.</li>
 <li>Dereference the Property and Datatype from Atomic Properties, and add the URLs in <code>datatypes</code> in RDF statements.</li>
 </ul>
 <h1><a class="header" href="#atomic-data-and-solid" id="atomic-data-and-solid">Atomic Data and Solid</a></h1>
@@ -1620,11 +1621,12 @@ In SQL, the one creating the query basically defines the shape of a table that i
 Atomic Data does not offer such functionality.
 So if you need to create custom tables at runtime, you might be better off using SQL, or move your Atomic Data to a query system.</p>
 <h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
-<h3><a class="header" href="#is-atomic-data-nosql" id="is-atomic-data-nosql">Is Atomic Data NOSQL?</a></h3>
-<p>Well, since NOSQL describes all non-SQL databases, yes.
-Like most NOSQL systems, Atomic Data does not limit data entries to a specific table shape, so you can add any property that you like to a resource.
-However, unlike most NOSQL systems, Atomic Data <em>does</em> perform validations on each value.</p>
-<p>So in a way, Atomic Data tries to combine best of both worlds: the extendibility and flexibility of NOSQL, with the type safety of SQL.</p>
+<h3><a class="header" href="#is-atomic-data-nosql-or-sql" id="is-atomic-data-nosql-or-sql">Is Atomic Data NOSQL or SQL?</a></h3>
+<p>Generally, Atomic Data apps do not use SQL - so they are NOSQL.
+Atomic-server, for example, internally uses a key-value store (sled) for persistence.</p>
+<p>Like most NOSQL systems, Atomic Data does not limit data entries to a specific table shape, so you can add any property that you like to a resource.
+However, unlike most NOSQL systems, Atomic Data <em>does</em> perform validations on each value.
+So in a way, Atomic Data tries to combine best of both worlds: the extendibility and flexibility of NOSQL, with the type safety of SQL.</p>
 <h3><a class="header" href="#is-atomic-data-transactional--acid" id="is-atomic-data-transactional--acid">Is Atomic Data transactional / ACID?</a></h3>
 <p>Well, if you use Atomic-Server, then you can only write to the server by using Atomic Commits, which are in fact transactions.
 This means that if part of the transaction fails, it is reverted - transactions are only applied when they are 100% OK.
