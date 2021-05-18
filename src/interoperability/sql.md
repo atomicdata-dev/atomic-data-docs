@@ -29,12 +29,13 @@ So if you need to create custom tables at runtime, you might be better off using
 
 ## FAQ
 
-### Is Atomic Data NOSQL?
+### Is Atomic Data NOSQL or SQL?
 
-Well, since NOSQL describes all non-SQL databases, yes.
+Generally, Atomic Data apps do not use SQL - so they are NOSQL.
+Atomic-server, for example, internally uses a key-value store (sled) for persistence.
+
 Like most NOSQL systems, Atomic Data does not limit data entries to a specific table shape, so you can add any property that you like to a resource.
 However, unlike most NOSQL systems, Atomic Data _does_ perform validations on each value.
-
 So in a way, Atomic Data tries to combine best of both worlds: the extendibility and flexibility of NOSQL, with the type safety of SQL.
 
 ### Is Atomic Data transactional / ACID?

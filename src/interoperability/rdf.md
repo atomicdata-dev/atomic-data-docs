@@ -144,7 +144,6 @@ I don't think even this usecase is appropriate for named graphs. They were actua
 I believe a better solution is to copy the resource (in this case a part of the schema.org ontology), and extend it, and host it somewhere else, and use that URL.
 Or even better: have a system for [sharing your change suggestions](https://github.com/ontola/atomic-data/issues/21) with the source of the data, and allow for easy collaboration on ontologies.
 
-
 ### No more literals / named nodes
 
 In RDF, an `object` can either be a `named node`, `blank node` or `literal`. A `literal` has a `value`, a `datatype` and an optional `language` (if the `literal` is a string).
@@ -263,10 +262,11 @@ This tooling should help to create URLs, Properties, and host everything on an e
 ## Convert Atomic data to RDF
 
 Since all Atomic Data is also valid RDF, it's trivial to convert / serialize Atoms to RDF.
-This is why `atomic` can already serialize data to RDF ([example](https://atomicdata.dev/classes/Property.ttl)).
+This is why [atomic](https://github.com/joepio/atomic) can serialize Atomic Data to RDF. (For example, try `atomic-cli get https://atomicdata.dev/properties/description --as n3`)
 
 However, contrary to Atomic Data, RDF has optional Language and Datatype elements in every statement.
 It is good practice to use these RDF concepts when serializing Atomic Data into Turtle / RDF/XML, or other [RDF serialization formats](https://ontola.io/blog/rdf-serialization-formats/).
 
 - Convert Atoms with linked `TranslationBox` Resources to Literals with an `xsd:string` datatype and the corresponding language in the tag.
+- Convert Atoms with ResourceArrays to [Collections](https://ontola.io/blog/ordered-data-in-rdf/) that are native to that serialization format.
 - Dereference the Property and Datatype from Atomic Properties, and add the URLs in `datatypes` in RDF statements.
