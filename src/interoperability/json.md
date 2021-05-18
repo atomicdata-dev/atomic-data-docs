@@ -9,7 +9,37 @@ That's why you can serialize Atomic Data to simple, clean JSON.
 ## Atomic Data as plain JSON
 
 The JSON keys are then derived from the `shortnames` of properties.
+For example, we could convert this JSON-AD:
+
+```json
+{
+  "@id": "https://atomicdata.dev/properties/description",
+  "https://atomicdata.dev/properties/datatype": "https://atomicdata.dev/datatypes/markdown",
+  "https://atomicdata.dev/properties/description": "A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.",
+  "https://atomicdata.dev/properties/isA": [
+    "https://atomicdata.dev/classes/Property"
+  ],
+  "https://atomicdata.dev/properties/shortname": "description"
+}
+```
+
+... into this plain JSON:
+
+```json
+{
+  "@id": "https://atomicdata.dev/properties/description",
+  "datatype": "https://atomicdata.dev/datatypes/markdown",
+  "description": "A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.",
+  "is-a": [
+    "https://atomicdata.dev/classes/Property"
+  ],
+  "shortname": "description"
+}
+```
+
 Note that when you serialize Atomic Data to plain JSON, some information is lost: the URLs are no longer there.
+This means that it is no longer possible to find out what the datatype of a single value is - we now only know if it's a `string`, but not if it actually represents a markdown string or something else.
+Most Atomic Data systems will therefore _not_ use this plain JSON serialization, but for some clients (e.g. a front-end app), it might be easier to use the plain JSON, as the keys are easier to write than the long URLs that JSON-AD uses.
 
 ## From JSON to JSON-AD
 

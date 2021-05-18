@@ -25,3 +25,12 @@ If you'd rather play and discover for yourself, play with the existing [tooling]
 - Browser app [atomic-data-browser](https://github.com/joepio/atomic-data-browser) ([demo](https://joepio.github.io/atomic-data-browser/))
 - CLI (atomic-cli): [atomic-cli](https://github.com/joepio/atomic) (`cargo install atomic-cli`)
 - Rust library: [atomic-lib](https://github.com/joepio/atomic)
+
+Make sure to [join our Discord](https://discord.gg/a72Rv2P) if you'd like to discuss Atomic Data with others.
+
+## Reading these docs
+
+This is written mostly as a book, so reading it in the order of the Table of Contents will probably give you the best experience.
+That being said, feel free to jump around - links are often used to refer to earlier discussed concepts.
+If you encounter any issues while reading, please leave an [issue on Github](https://github.com/ontola/atomic-data/issues).
+Use the arrows on the side / bottom to go to the next page.

@@ -119,4 +119,19 @@ In the next chapter, we'll explore how Atomic Data is serialized.
 
 A Nested Resource only exists inside of another resource.
 It does not have its own subject.
-However, it _does_ have its own unique [path](./paths.md), which can be used as its identifier.
+
+In the following example, the address is a nested resource:
+
+```json
+{
+  "@id": "https://example.com/arnold",
+  "https://example.com/properties/address": {
+    "https://example.com/properties/firstLine": "Longstreet 22",
+    "https://example.com/properties/city": "Watertown",
+    "https://example.com/properties/country": "the Netherlands",
+  }
+}
+```
+
+It does not have its own subject (`@id`), but it _does_ have its own unique [path](./paths.md), which can be used as its identifier.
+In this case, the path of the address is `https://example.com/arnold address` or `https://example.com/arnold https://example.com/properties/address` (both are valid).

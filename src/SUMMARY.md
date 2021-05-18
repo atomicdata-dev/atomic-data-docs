@@ -1,8 +1,8 @@
 # Table of contents
 
 * [Atomic Data Overview](atomic-data-overview.md)
-* [Motivation](motivation.md)
-* [When (not) to use it](when-to-use.md)
+  * [Motivation](motivation.md)
+  * [When (not) to use it](when-to-use.md)
 * [Atomic Data Core](core/intro.md)
   * [Concepts](core/concepts.md)
   * [Serialization](core/serialization.md)
@@ -15,6 +15,7 @@
   * [Translations](schema/translations.md)
   * [Collections](schema/collections.md)
   * [FAQ](schema/faq.md)
+  * [Types of Graph Validations](core/validations.md)
 * [Atomic Commits](commits/intro.md)
   * [Concepts](commits/concepts.md)
   * [Compared to](commits/compare.md)
@@ -25,7 +26,6 @@
   * [Relation to IPFS](interoperability/ipfs.md)
   * [Relation to SQL](interoperability/sql.md)
   * [Your existing project](interoperability/upgrade.md)
-* [Types of Graph Validations](core/validations.md)
 * [Tooling](tooling.md)
 
 -----------

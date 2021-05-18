@@ -82,16 +82,16 @@ Library that powers `atomic-server` and `atomic-cli`. Features:
 
 This document contains a set of ideas that would help achieve that success.
 
-## Atomizer (data importer and conversion kit)
+### Atomizer (data importer and conversion kit)
 
 - Import data from some data source (CSV / SQL / JSON / RDF), fill in the gaps (mapping / IRI creation / datatypes) an create new Atoms
 - Perhaps a CLI, library, GUI or a combination of all of these
 
-## Atomic Preview
+### Atomic Preview
 
 - A simple (JS) widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.
 - Would be useful for documentation, and as a default view for Atomic Data.
 
-## Atomic-Dart + Flutter
+### Atomic-Dart + Flutter
 
 Library + front-end app for browsing / manipulating Atomic Data on mobile devices.

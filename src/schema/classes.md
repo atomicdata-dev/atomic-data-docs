@@ -21,7 +21,6 @@ The Property class.
 The thing that the Property field should link to.
 A Property is an abstract type of Resource that describes the relation between a Subject and a Value.
 A Property provides some semantic information about the relationship (in its `description`), it provides a shorthand (the `shortname`) and it links to a Datatype.
-You can constrain properties further by using [SHACL Properties](https://www.w3.org/TR/shacl/#property-shapes).
 
 Properties of a Property instance:
 
@@ -78,7 +77,7 @@ Properties:
 - `description` - (required, AtomicURL, TranslationBox) human readable explanation of what the Class represents.
 - `requires` - (optional, ResourceArray, Property) a list of Properties that are required. If absent, none are required. These SHOULD have unique shortnames.
 - `recommends` - (optional, ResourceArray, Property) a list of Properties that are recommended. These SHOULD have unique shortnames.
-- `deprecatedProperties` - (optional, ResourceArray, Property) - a list of Properties that should no longer be used.
+<!-- - `deprecatedProperties` - (optional, ResourceArray, Property) - a list of Properties that should no longer be used. -->
 <!-- Maybe remove this next one? -->
 <!-- - `disallowedProperties` - (optional, ResourceArray) a list of Properties that are not allowed.  If absent, all are allowed. -->
 <!-- What are the consequences of this? How to deal with this field if there are more classes in aSSubject? -->
