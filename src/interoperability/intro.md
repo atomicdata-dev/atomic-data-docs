@@ -1,7 +1,6 @@
 # Interoperability: Relation to other technology
 
-Atomic data is designed to be highly interoperable.
-It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and [other serialization formats](https://ontola.io/blog/rdf-serialization-formats/).
+Atomic data is designed to be easy to use in existing projects, and be interoperable with existing formats.
 
 ## Data formats
 
@@ -11,3 +10,11 @@ It's also serializable to RDF, which includes Turtle, N-triples, RDF/XML and [ot
 ## Protocols
 
 * [IPFS](ipfs.md): Content-based addressing to prevent 404s and centralization
+
+## Database paradigms
+
+* [SQL](sql.md): How Atomic Data differs from and could interact with SQL databases
+
+## Upgrade guide
+
+* [Upgrade](upgrade.md): How to make your existing server-side application compatible with Atomic Data

@@ -2,19 +2,19 @@
 
 Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
 You can compare it to what XSD is for XML.
+Atomic Schema deals with validating and constraining the shape of data - it checks if all required properties are present, and whether the values conform to the datatype requirements (e.g. `datetime`, or `URL`).
 
 This section will define various Classes, Properties and Datatypes (discussed in [Atomic Core: Concepts](../core/concepts.md)).
 
 ## Design Goals
 
-- **Typed**: Every Atom of data has a clear datatype.
-- **IDE-friendly**: You should not have to type full URLs - the schema sets shortnames.
-- **Self-documenting**: When seeing a piece of data, simply following links will explain you how the model is to be understood. This removes the need for (most of) existing API documentation.
-- **Performant**: Datatypes can have a binary representation for optimal storage, communication, serialization and parsing efficiency.
+- **Decentralized**: Classes and Properties can be defined in external systems, and are resolved using web protocols such as HTTP.
+- **Typed**: Every Atom of data has a clear datatype. Validated data should be highly predictable.
+- **IDE-friendly**: Although Atomic Schema uses many URLs, users / developers should not have to type full URLs. The schema uses shortnames as aliases.
+- **Self-documenting**: When seeing a piece of data, simply following links will explain you how the data model is to be understood. This removes the need for (most of) existing API documentation.
 - **Extensible**: Anybody can create their own Datatypes, Properties and Classes.
 - **Accessible**: Support for languages, easily translatable. Useful for humans and machines.
-- **Atomic**: All the design goals of Atomic Data itself also apply here.
-- **Self-describing**: Atomic Schema is to be described as Atomic Data using Atomic Schema.
+- **Atomic**: All the design goals of Atomic Data itself also apply here. Atomic Schema is defined using Atomic Data.
 
 ## In short
 

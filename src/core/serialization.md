@@ -20,4 +20,4 @@ Read more about serializing Atomic Data to RDF in the [RDF interoperability sect
 
 ## Experimental serialization formats
 
-Some experimental ideas for Atomic Data serialization are [written here](../experimental-serialization.md).
+Some experimental ideas for Atomic Data serialization are [written here](https://github.com/ontola/atomic-data/blob/master/src/experimental-serialization.md).

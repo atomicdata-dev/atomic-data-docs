@@ -1,10 +1,28 @@
 # Atomic Commits compared to other (RDF) delta models
 
-Let's compare the [Atomic Commit](concepts.md) approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data or JSON.
+Let's compare the [Atomic Commit](concepts.md) approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data, JSON and text files.
 First, I'll briefly discuss the existing examples ([open a PR / issue](https://github.com/ontola/atomic-data/issues) if we're missing something!).
 After that, we'll discuss how Atomic Data differs from the existing ones.
 
-## RDF-Delta
+## Git
+
+This might be an odd one in this list, but it is an interesting one nonetheless.
+Git is an incredibly popular version control system that is used by most software developers to manage their code.
+It's a decentralized concept which allows multiple computers to share a log of _commits_, which together represent a folder with its files and its history.
+It uses hashing to represent (parts of) data (which keeps the `.git` folder compact through deduplication), and uses cryptographic keys to sign commits and verify authorship.
+It is designed to work in the paradigm of text files, newlines and folders.
+Since most data _can_ be represented as text files in a folder, Git is very flexible.
+This is partly because people are familiar with Git, but also because it has a great ecosystem - platforms such as Github provide a clean UI, cloud storage, issue tracking, authorization, authentication and more _for free_, as long as you use Git to manage your versions.
+
+However, Git doesn't work great for structured data - especially when it changes a lot.
+Git, on its own, does not perform any validations on integrity of data.
+Git also does not adhere to some standardized serialization format for storing commits, which makes sense, because it was designed as a tool to solve a problem, and not as some standard that is to be used in various other systems.
+Also, git is kind of a heavyweight abstraction for many applications.
+It is designed for collaborating on open source projects, which means dealing with decentralized data storage and merge conflicts - things that might not be required in other kinds of scenarios.
+
+## RDF mutation systems
+
+### RDF-Delta
 
 [https://afs.github.io/rdf-delta/]()
 
@@ -23,14 +41,14 @@ TC .
 
 Similar to Atomic Commits, these Delta's should have identifiers (URLs), which are denoted in a header.
 
-## Delta-LD
+### Delta-LD
 
 [http://www.tara.tcd.ie/handle/2262/91407]()
 
 Spec for classifying and representing state changes between two RDF resources.
 I wasn't able to find a serialization or an implementation for this.
 
-## PatchR
+### PatchR
 
 [https://www.igi-global.com/article/patchr/135561]()
 
@@ -65,7 +83,7 @@ prefix :      <http://example.org/> .
   prov:performedAt "..."^^xsd:dateTime ] .
 ```
 
-## LD-Patch
+### LD-Patch
 
 [https://www.w3.org/TR/ldpatch/]()
 
@@ -112,14 +130,14 @@ Add {
 } .
 ```
 
-## Linked-Delta
+### Linked-Delta
 
 [https://github.com/ontola/linked-delta]()
 
 An N-Quads serialized delta format.
 Methods are URLs, which means they are extensible.
 Does not specify how to bundle lines.
-Used in production of a web app that we're working on.
+Used in production of a web app that we're working on ([Argu.co](https://argu.co)).
 Designed with simplicity (no new serialization format, simple to parse) and performance in mind.
 
 ```
@@ -135,6 +153,63 @@ New state:
 
 <http://example.org/resource> <http://example.org/predicate> "New value 🐵" .
 ```
+
+
+## JSON-LD-PATCH
+
+[https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH]()
+
+A JSON denoted patch notation for RDF.
+Seems similar to the [RDF/JSON](https://www.w3.org/TR/rdf-json/) serialization format.
+Uses string literals as operators / methods.
+Conceptually perhaps most similar to linked-delta.
+
+Has a [JS implementation](https://developer.aliyun.com/mirror/npm/package/jsonld-patch).
+
+```
+[
+  {
+    "op": "add",
+    "s": "http://example.org/my/resource",
+    "p": "http://example.org/ontology#title",
+    "o": {
+      "value": "New Title",
+      "type": "http://www.w3.org/2001/XMLSchema#string"
+    }
+  }
+]
+```
+
+### SPARQL UPDATE
+
+[https://www.w3.org/TR/sparql11-update/]()
+
+SPARQL queries that change data.
+
+```sparql
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+INSERT DATA
+{
+  <http://example/book1> dc:title "A new book" ;
+                         dc:creator "A.N.Other" .
+}
+```
+
+Allows for very powerful queries, combined with updates.
+E.g. rename all persons named `Bill` to `William`:
+
+```
+PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
+
+WITH <http://example/addresses>
+DELETE { ?person foaf:givenName 'Bill' }
+INSERT { ?person foaf:givenName 'William' }
+WHERE
+  { ?person foaf:givenName 'Bill'
+  }
+```
+
+SPARQL Update is the most powerful of the formats, but also perhaps the most difficult to implement and understand.
 
 ## JSON-PATCH
 
@@ -168,62 +243,6 @@ The result
 
 It uses the [JSON-Pointer spec](http://tools.ietf.org/html/rfc6901) for denoting `path`s.
 It has quite a bunch of implementations, in various languages.
-
-## JSON-LD-PATCH
-
-[https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH]()
-
-A JSON denoted patch notation for RDF.
-Seems similar to the [RDF/JSON](https://www.w3.org/TR/rdf-json/) serialization format.
-Uses string literals as operators / methods.
-Conceptually perhaps most similar to linked-delta.
-
-Has a [JS implementation](https://developer.aliyun.com/mirror/npm/package/jsonld-patch).
-
-```
-[
-  {
-    "op": "add",
-    "s": "http://example.org/my/resource",
-    "p": "http://example.org/ontology#title",
-    "o": {
-      "value": "New Title",
-      "type": "http://www.w3.org/2001/XMLSchema#string"
-    }
-  }
-]
-```
-
-## SPARQL UPDATE
-
-[https://www.w3.org/TR/sparql11-update/]()
-
-SPARQL queries that change data.
-
-```sparql
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-INSERT DATA
-{
-  <http://example/book1> dc:title "A new book" ;
-                         dc:creator "A.N.Other" .
-}
-```
-
-Allows for very powerful queries, combined with updates.
-E.g. rename all persons named `Bill` to `William`:
-
-```
-PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
-
-WITH <http://example/addresses>
-DELETE { ?person foaf:givenName 'Bill' }
-INSERT { ?person foaf:givenName 'William' }
-WHERE
-  { ?person foaf:givenName 'Bill'
-  }
-```
-
-SPARQL Update is the most powerful of the formats, but also perhaps the most difficult to implement and understand.
 
 ## Atomic Commits
 

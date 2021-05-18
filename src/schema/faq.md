@@ -44,13 +44,10 @@ It is likely that using the URL for keys is also the most _performant_, since it
 
 1. Use URIs schemes that use content addressing, such as [IPFS](../interoperability/ipfs.md) URIs.
 
-## What's a URI, and what's a URL?
+## How does Atomic Schema relate to RDF / SHACL / SheX / OWL / RDFS?
 
-URI stands for Unique Resource Identifier
+Atomic Schema is _the_ schema language for atomic data, whereas RDF has a couple of competing ones, which all vary greatly.
+In short, OWL is not designed for schema validation, but SHACL and SheX can maybe be compared to Atomic Schema.
+An important difference is that SHACL and SheX have to deal with all the complexities of RDF, whereas Atomic Data is more constrained.
 
-## How does Atomic Schema relate to SHACL / SheX / OWL / RDFS?
-
-These RDF ontologies are extremely powerful, well-documented and versatile.
-
-Atomic Schema does _not_ aim to be an formal ontological semantic framework - it is way too simple for that.
-It's just a simple modeling tool.
+For more information, see [RDF interoperability](../interoperability/rdf.md).
