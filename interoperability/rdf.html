@@ -266,8 +266,12 @@ When triples are created about a resource in a place other than where the subjec
 As a consequence, all systems that use these triples should keep track of another field for every atom.
 To make things worse, it makes <code>subject-predicate</code> <em>impossible</em> to guarantee.
 That's a high price to pay.</p>
-<p>I've asked two colleagues working on RDF about this constraint, and both were critical.
-The reason</p>
+<p>I've asked two RDF developers (who did not know each other) working on RDF about limiting subject usage, and both were critical.
+Interestingly, they provided the same usecase for using named graphs that would conflict with the limiting subject usage constraint.
+They both wanted to extend the schema.org ontology by adding properties to these items in a local graph.
+I don't think even this usecase is appropriate for named graphs. They were actually using an external resource that did not provide them with the things they needed. The things that they would add (the translations) are not re-usable, so in the end they will just keep spreading a URL that doesn't provide people with the things that they will come to expect. The schema.org URL still won't provide the translations that they wrote!
+I believe a better solution is to copy the resource (in this case a part of the schema.org ontology), and extend it, and host it somewhere else, and use that URL.
+Or even better: have a system for <a href="https://github.com/ontola/atomic-data/issues/21">sharing your change suggestions</a> with the source of the data, and allow for easy collaboration on ontologies.</p>
 <h3><a class="header" href="#no-more-literals--named-nodes" id="no-more-literals--named-nodes">No more literals / named nodes</a></h3>
 <p>In RDF, an <code>object</code> can either be a <code>named node</code>, <code>blank node</code> or <code>literal</code>. A <code>literal</code> has a <code>value</code>, a <code>datatype</code> and an optional <code>language</code> (if the <code>literal</code> is a string).
 Although RDF statements are often called <code>triples</code>, a single statement can consist of five fields: <code>subject</code>, <code>predicate</code>, <code>object</code>, <code>language</code>, <code>datatype</code>.
@@ -284,21 +288,21 @@ With Atomic Data, the data producer MUST offer the triples at the URL of the sub
 This is a challenge - especially with the current (lack of) tooling.</p>
 <p>However - making sure that links <em>actually work</em> offer tremendous benefits for data consumers, and that advantage is often worth the extra trouble.</p>
 <h3><a class="header" href="#replace-blank-nodes-with-paths" id="replace-blank-nodes-with-paths">Replace blank nodes with paths</a></h3>
-<p><code>blank nodes</code> are resources with identifiers that exist only locally.
-They make life easier for data producers, who can easily create nested resources without having to mint all the URLs.
-In most data models, blank nodes are the default.
+<p>Blank (or anonymous) nodes are RDF resources with identifiers that exist only locally.
+In other words, their identifiers are not URLs.
+They are sometimes also called <code>anonymous nodes</code>.
+They make life easier for data producers, who can easily create (nested) resources without having to mint all the URLs.
+In most non-RDF data models, blank nodes are the default.
 For example, we nest JSON object without thinking twice.</p>
 <p>Unfortunately, blank nodes tend to make things harder for clients.
 These clients will now need to keep track of where these blank nodes came from, and they need to create internal identifiers that will not collide.
 Cache invalidation with blank nodes also becomes a challenge.
 To make this a bit easier, Atomic Data introduces a new way of dealing with names of things that you have not given a URL yet: <a href="../core/paths.html">Atomic Paths</a>.</p>
-<p>Since Atomic Data has <code>subject-predicate</code> uniqueness, we can use the <em>path</em> of triples as a unique identifier:</p>
+<p>Since Atomic Data has <code>subject-predicate</code> uniqueness (like JSON does, too), we can use the <em>path</em> of triples as a unique identifier:</p>
 <pre><code>https://example.com/john https://schema.org/employer
 </code></pre>
-<p>So the way an Atomic Data store should store <code>blank nodes</code>, is simply as an atom with a Path as its URL.
-This prevents collisions and still makes it easy to point to a specific value.</p>
-<p>Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.</p>
-<p>You can read more about Atomic Paths <a href="../core/paths.html">here</a>.</p>
+<p>This prevents collisions and still makes it easy to point to a specific value.</p>
+<p>Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats, such as in JSON-AD.</p>
 <h3><a class="header" href="#combining-datatype-and-predicate" id="combining-datatype-and-predicate">Combining datatype and predicate</a></h3>
 <p>Having both a <code>datatype</code> and a <code>predicate</code> value can lead to confusing situations.
 For example, the <a href="https://schema.org/dateCreated"><code>schema:dateCreated</code></a> Property requires an ISO DateTime string (according to the schema.org definition), but using a value <code>true</code> with an <code>xsd:boolean</code> datatype results in perfectly valid RDF.

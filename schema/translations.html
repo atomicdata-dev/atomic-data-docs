@@ -157,18 +157,23 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#atomic-translations" id="atomic-translations">Atomic Translations</a></h1>
+<p><em>Status: design / concept stage</em></p>
 <p>Dealing with translations can be hard.
 (<a href="https://github.com/ontola/atomic-data/issues/6">See discussion on this subject here.</a>)</p>
 <h2><a class="header" href="#translationbox" id="translationbox">TranslationBox</a></h2>
-<p><em>URL: <code>https://atomicdata.dev/classes/TranslationBox</code></em></p>
+<p><em>URL: <code>https://atomicdata.dev/classes/TranslationBox</code> (does not resolve yet)</em></p>
 <p>A TranslationBox is a collection of translated strings, uses to provide multiple translations.
 It has a long list of optional properties, each corresponding to some language.
 Each possible language Property uses the following URL template: <code>https://atomicdata.dev/languages/{langguageTag}</code>.
 Use a <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag, e.g. <code>nl</code> or <code>en-US</code>.</p>
 <p>For example:</p>
-<pre><code class="language-ndjson">[&quot;https://example.com/john&quot;,&quot;https://example.com/lifestory&quot;,&quot;https://example.com/johns/lifestory&quot;]
-[&quot;https://example.com/johns/lifestory&quot;,&quot;https://atomicdata.dev/langs/en-US&quot;,&quot;Well, John was born and later he died.&quot;]
-[&quot;https://example.com/johns/lifestory&quot;,&quot;https://atomicdata.dev/langs/nl&quot;,&quot;Tsja, John werd geboren en stierf later.&quot;]
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://example.com/john&quot;,
+  &quot;https://example.com/properties/lifestory&quot;: {
+    &quot;https://atomicdata.dev/languages/en&quot;: &quot;Well, John was born and later he died.&quot;,
+    &quot;https://atomicdata.dev/languages/nl&quot;: &quot;Tsja, John werd geboren en stierf later.&quot;
+  },
+}
 </code></pre>
 <p>Every single property used for Translation strings are instances of the Translation class.</p>
 <p>A translation string uses the <a href="https://atomicdata.dev/datatypes/markdown">MDString</a> datatype, which means it allows Markdown syntax.</p>
