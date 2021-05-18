@@ -137,8 +137,13 @@ As a consequence, all systems that use these triples should keep track of anothe
 To make things worse, it makes `subject-predicate` _impossible_ to guarantee.
 That's a high price to pay.
 
-I've asked two colleagues working on RDF about this constraint, and both were critical.
-The reason
+I've asked two RDF developers (who did not know each other) working on RDF about limiting subject usage, and both were critical.
+Interestingly, they provided the same usecase for using named graphs that would conflict with the limiting subject usage constraint.
+They both wanted to extend the schema.org ontology by adding properties to these items in a local graph.
+I don't think even this usecase is appropriate for named graphs. They were actually using an external resource that did not provide them with the things they needed. The things that they would add (the translations) are not re-usable, so in the end they will just keep spreading a URL that doesn't provide people with the things that they will come to expect. The schema.org URL still won't provide the translations that they wrote!
+I believe a better solution is to copy the resource (in this case a part of the schema.org ontology), and extend it, and host it somewhere else, and use that URL.
+Or even better: have a system for [sharing your change suggestions](https://github.com/ontola/atomic-data/issues/21) with the source of the data, and allow for easy collaboration on ontologies.
+
 
 ### No more literals / named nodes
 
@@ -164,9 +169,11 @@ However - making sure that links _actually work_ offer tremendous benefits for d
 
 ### Replace blank nodes with paths
 
-`blank nodes` are resources with identifiers that exist only locally.
-They make life easier for data producers, who can easily create nested resources without having to mint all the URLs.
-In most data models, blank nodes are the default.
+Blank (or anonymous) nodes are RDF resources with identifiers that exist only locally.
+In other words, their identifiers are not URLs.
+They are sometimes also called `anonymous nodes`.
+They make life easier for data producers, who can easily create (nested) resources without having to mint all the URLs.
+In most non-RDF data models, blank nodes are the default.
 For example, we nest JSON object without thinking twice.
 
 Unfortunately, blank nodes tend to make things harder for clients.
@@ -174,18 +181,15 @@ These clients will now need to keep track of where these blank nodes came from, 
 Cache invalidation with blank nodes also becomes a challenge.
 To make this a bit easier, Atomic Data introduces a new way of dealing with names of things that you have not given a URL yet: [Atomic Paths](../core/paths.md).
 
-Since Atomic Data has `subject-predicate` uniqueness, we can use the _path_ of triples as a unique identifier:
+Since Atomic Data has `subject-predicate` uniqueness (like JSON does, too), we can use the _path_ of triples as a unique identifier:
 
 ```
 https://example.com/john https://schema.org/employer
 ```
 
-So the way an Atomic Data store should store `blank nodes`, is simply as an atom with a Path as its URL.
 This prevents collisions and still makes it easy to point to a specific value.
 
-Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats.
-
-You can read more about Atomic Paths [here](../core/paths.md).
+Serialization formats are free to use nesting to denote paths - which means that it is not necessary to include these path strings explicitly in most serialization formats, such as in JSON-AD.
 
 ### Combining datatype and predicate
 
