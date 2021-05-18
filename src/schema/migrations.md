@@ -1,5 +1,7 @@
 # Migrations and API versioning in Atomic Data
 
+_Status: design / concept stage_
+
 Models are rarely static.
 As new insights and business requirements influence our internal understanding of some domain, we often make changes to a model.
 That's why Atomic Classes have the optional `deprecatedProperties` Property, which helps to communicate if properties are changed in some newer version.
