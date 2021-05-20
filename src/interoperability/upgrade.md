@@ -9,3 +9,5 @@ In short, this is what you'll have to do:
 - Make sure that when the user requests some URL, that you return that resource as a JSON-AD object (at the very least if the user requests it using an HTTP `Accept` header).
 
 Don't feel obliged to implement all parts of the Atomic Data spec, such as Collections and Commits.
+
+If you need any help, get in touch in our [Discord](https://discord.gg/a72Rv2P)

@@ -9,12 +9,15 @@ It is designed to be highly extensible, easy to use, and to make the process of 
 
 Atomic Data is [Linked Data](https://ontola.io/what-is-linked-data/), as it is a more strict subset of RDF.
 It is typed (you know if something is a `string`, `number`, `date`, `URL`, etc.) and extensible through [Atomic Schema](schema/intro.md), which means that you can define your own Classes, Properties and Datatypes.
-Atomic Data has a standard for synchronizing data by communicating state changes, called [Atomic Commits](commits/intro.md).
-You can use parts of Atomic Data separately, but the standard is designed as a full, integrated data management package that makes it easier to create, share and use structured data on the web.
 
-- [Atomic Data Core](core/intro.md): the core model for typed, Linked Data
-- [Atomic Schema](schema/intro.md): defining properties, datatypes and classes
-- [Atomic Commits](commits/intro.md): sharing state changes, verifying changes and collaboration
+The default serialization format for Atomic Data is [JSON-AD](core/json-ad.md), which is simply JSON where each key is a URL of an Atomic Property.
+These Properties are responsible for setting the datatype (to ensures type-safety) and setting `shortnames` (which help to keep names short) and descriptions (which provide semantic explanations of what a property should be used for).
+
+Atomic Data has a standard for communicating state changes called [Commits](commits/intro.md).
+These Commits are signed using cryptographic keys, which ensures that every change can be audited.
+Commits are also used to construct a history of versions.
+
+Atomic Data can be traversed using [Paths](core/paths.md), or queried using [Collections](schema/collections.md).
 
 ## Get Started
 

@@ -1,6 +1,7 @@
 # Interoperability: Relation to other technology
 
 Atomic data is designed to be easy to use in existing projects, and be interoperable with existing formats.
+This section will discuss how Atomic Data differs from or is similar to various data formats and paradigms, and how it can interoperate.
 
 ## Data formats
 

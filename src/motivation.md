@@ -7,7 +7,7 @@ The Solid Project by Tim Berners-Lee is a great example of why linked data can h
 
 At [Ontola](https://ontola.io/), we've been working with linked data quite intensely for the last couple of years.
 We went all-in on RDF, and challenged ourselves to create software that communicates exclusively using it.
-That has been an inspiring, but also sometimes a frustrating journey.
+That has been an inspiring, but at times also a frustrating journey.
 While building various production grade apps (e.g. our e-democracy platform [Argu.co](https://argu.co/), which is used by various governments), we had to [solve many problems](https://ontola.io/blog/full-stack-linked-data/).
 How to properly model data in RDF? How to deal with sequences? How to communicate state changes? Converting RDF to HTML? Typing? CORS?
 We tackled some of these problems by having a tight grip on the data that we create (e.g. we know the type of data, because we control the resources), and another part is creating new protocols, formats, tools, and libraries.

@@ -1,7 +1,7 @@
 # Atomic Data and Solid
 
 The [Solid project](https://solidproject.org/) is an initiative by the inventor of linked data and the world wide web: sir Tim Berners-Lee.
-In many ways, it has similar goals to Atomic Data:
+In many ways, it has **similar goals** to Atomic Data:
 
 - Decentralize the web
 - Make things more interoperable
@@ -12,7 +12,7 @@ Technically, both are also similar:
 - Usage of personal servers, or PODs (Personal Online Datastores). Both Atomic Data and Solid aim to provide users with a highly personal server where all sorts of data can be stored.
 - Usage of **linked data**. All Atomic Data is valid RDF, which means that **all Atomic Data is compatible with Solid**. However, the other way around is more difficult. In other words, if you choose to use Atomic Data, you can always put it in your Solid Pod.
 
-But there are some important differences, too:
+But there are some important **differences**, too, which will be explained in more detail below.
 
 - Atomic Data uses a strict built-in schema to ensure type safety.
 - Atomic Data standardizes state changes (which also provides version control / history, audit trails)
