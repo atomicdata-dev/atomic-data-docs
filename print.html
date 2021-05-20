@@ -164,14 +164,13 @@
 <p>Atomic Data is especially suitable for knowledge graphs, distributed datasets, semantic data, p2p applications, decentralized apps and linked open data.
 It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.</p>
 <p>Atomic Data is <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, as it is a more strict subset of RDF.
-It is typed (you know if something is a <code>string</code>, <code>number</code>, <code>date</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.
-Atomic Data has a standard for synchronizing data by communicating state changes, called <a href="commits/intro.html">Atomic Commits</a>.
-You can use parts of Atomic Data separately, but the standard is designed as a full, integrated data management package that makes it easier to create, share and use structured data on the web.</p>
-<ul>
-<li><a href="core/intro.html">Atomic Data Core</a>: the core model for typed, Linked Data</li>
-<li><a href="schema/intro.html">Atomic Schema</a>: defining properties, datatypes and classes</li>
-<li><a href="commits/intro.html">Atomic Commits</a>: sharing state changes, verifying changes and collaboration</li>
-</ul>
+It is typed (you know if something is a <code>string</code>, <code>number</code>, <code>date</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.</p>
+<p>The default serialization format for Atomic Data is <a href="core/json-ad.html">JSON-AD</a>, which is simply JSON where each key is a URL of an Atomic Property.
+These Properties are responsible for setting the datatype (to ensures type-safety) and setting <code>shortnames</code> (which help to keep names short) and descriptions (which provide semantic explanations of what a property should be used for).</p>
+<p>Atomic Data has a standard for communicating state changes called <a href="commits/intro.html">Commits</a>.
+These Commits are signed using cryptographic keys, which ensures that every change can be audited.
+Commits are also used to construct a history of versions.</p>
+<p>Atomic Data can be traversed using <a href="core/paths.html">Paths</a>, or queried using <a href="schema/collections.html">Collections</a>.</p>
 <h2><a class="header" href="#get-started" id="get-started">Get Started</a></h2>
 <p>If you want to read more about how Atomic Data works - read on.
 If you'd rather play and discover for yourself, play with the existing <a href="tooling.html">tooling</a>:</p>
@@ -194,7 +193,7 @@ Linked Data could help to democratize the web by decentralizing information stor
 The Solid Project by Tim Berners-Lee is a great example of why linked data can help to create a more decentralized web.</p>
 <p>At <a href="https://ontola.io/">Ontola</a>, we've been working with linked data quite intensely for the last couple of years.
 We went all-in on RDF, and challenged ourselves to create software that communicates exclusively using it.
-That has been an inspiring, but also sometimes a frustrating journey.
+That has been an inspiring, but at times also a frustrating journey.
 While building various production grade apps (e.g. our e-democracy platform <a href="https://argu.co/">Argu.co</a>, which is used by various governments), we had to <a href="https://ontola.io/blog/full-stack-linked-data/">solve many problems</a>.
 How to properly model data in RDF? How to deal with sequences? How to communicate state changes? Converting RDF to HTML? Typing? CORS?
 We tackled some of these problems by having a tight grip on the data that we create (e.g. we know the type of data, because we control the resources), and another part is creating new protocols, formats, tools, and libraries.
@@ -1194,7 +1193,8 @@ This means that it will feel familiar for most developers, and will be supported
 This concept is borrowed from git commits, which also uses signatures to prove authorship.
 As is the case with git, this also allows for verifiable P2P sharing of changes.</p>
 <h1><a class="header" href="#interoperability-relation-to-other-technology" id="interoperability-relation-to-other-technology">Interoperability: Relation to other technology</a></h1>
-<p>Atomic data is designed to be easy to use in existing projects, and be interoperable with existing formats.</p>
+<p>Atomic data is designed to be easy to use in existing projects, and be interoperable with existing formats.
+This section will discuss how Atomic Data differs from or is similar to various data formats and paradigms, and how it can interoperate.</p>
 <h2><a class="header" href="#data-formats" id="data-formats">Data formats</a></h2>
 <ul>
 <li><a href="interoperability/json.html">JSON</a>: Atomic Data is designed to be easily serializable to clean, idiomatic JSON. However, if you want to turn JSON into Atomic Data, you'll have to make sure that all keys in the JSON object are URLs that link to Atomic Properties, and the data itself also has to be available at its Subject URL.</li>
@@ -1425,7 +1425,7 @@ It is good practice to use these RDF concepts when serializing Atomic Data into 
 </ul>
 <h1><a class="header" href="#atomic-data-and-solid" id="atomic-data-and-solid">Atomic Data and Solid</a></h1>
 <p>The <a href="https://solidproject.org/">Solid project</a> is an initiative by the inventor of linked data and the world wide web: sir Tim Berners-Lee.
-In many ways, it has similar goals to Atomic Data:</p>
+In many ways, it has <strong>similar goals</strong> to Atomic Data:</p>
 <ul>
 <li>Decentralize the web</li>
 <li>Make things more interoperable</li>
@@ -1436,7 +1436,7 @@ In many ways, it has similar goals to Atomic Data:</p>
 <li>Usage of personal servers, or PODs (Personal Online Datastores). Both Atomic Data and Solid aim to provide users with a highly personal server where all sorts of data can be stored.</li>
 <li>Usage of <strong>linked data</strong>. All Atomic Data is valid RDF, which means that <strong>all Atomic Data is compatible with Solid</strong>. However, the other way around is more difficult. In other words, if you choose to use Atomic Data, you can always put it in your Solid Pod.</li>
 </ul>
-<p>But there are some important differences, too:</p>
+<p>But there are some important <strong>differences</strong>, too, which will be explained in more detail below.</p>
 <ul>
 <li>Atomic Data uses a strict built-in schema to ensure type safety.</li>
 <li>Atomic Data standardizes state changes (which also provides version control / history, audit trails)</li>
@@ -1646,6 +1646,7 @@ In short, this is what you'll have to do:</p>
 <li>Make sure that when the user requests some URL, that you return that resource as a JSON-AD object (at the very least if the user requests it using an HTTP <code>Accept</code> header).</li>
 </ul>
 <p>Don't feel obliged to implement all parts of the Atomic Data spec, such as Collections and Commits.</p>
+<p>If you need any help, get in touch in our <a href="https://discord.gg/a72Rv2P">Discord</a></p>
 <h1><a class="header" href="#tooling-for-atomic-data" id="tooling-for-atomic-data">Tooling for Atomic Data</a></h1>
 <ul>
 <li>Server: <a href="https://github.com/joepio/atomic">atomic-server</a></li>
