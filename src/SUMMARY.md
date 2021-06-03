@@ -14,6 +14,7 @@
   * [Datatypes](schema/datatypes.md)
   * [Translations](schema/translations.md)
   * [Collections](schema/collections.md)
+  * [Hierarchy](hierarchy.md)
   * [FAQ](schema/faq.md)
   * [Types of Graph Validations](core/validations.md)
 * [Atomic Commits](commits/intro.md)

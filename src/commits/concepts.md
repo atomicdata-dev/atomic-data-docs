@@ -94,3 +94,11 @@ Here are currently working implementations of this process, including serializat
 - [in Typescript / Javascript (atomic-data-browser)](https://github.com/joepio/atomic-data-browser/blob/fc899bb2cf54bdff593ee6b4debf52e20a85619e/src/atomic-lib/commit.ts#L51).
 
 If you want validate your implementation, check out the tests for these two projects.
+
+## Limitations
+
+- Commits adjust only one Resource at a time, which means that you cannot change multiple in one commit.
+- The one creating the Commit will need to sign it, which may make clients that write data more complicated than you'd like.
+- Commits require signatures, which means key management. Doing this securely is no trivial matter.
+- The signatures require JSON-AD serialization
+- If your implementation stores all Commits, this means
