@@ -9,7 +9,7 @@ In order to make this process of inviting others as simple as possible, we've co
 
 - **Edit without registration**. Be able to edit or view things without being required to complete a registration process.
 - **Share with a single URL**. A single URL should contain all the information needed.
-- **Option to limit URL usage**. A URL might be re-usable, or maybe not.
+- **(Un)limited URL usage**. A URL might be re-usable, or maybe not.
 
 ## Flow
 
