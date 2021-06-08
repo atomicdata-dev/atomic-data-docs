@@ -37,3 +37,7 @@ This is written mostly as a book, so reading it in the order of the Table of Con
 That being said, feel free to jump around - links are often used to refer to earlier discussed concepts.
 If you encounter any issues while reading, please leave an [issue on Github](https://github.com/ontola/atomic-data/issues).
 Use the arrows on the side / bottom to go to the next page.
+
+## Status
+
+Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.
