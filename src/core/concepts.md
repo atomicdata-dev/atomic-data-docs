@@ -11,14 +11,12 @@ It is a directed, labeled graph, similar to RDF, so contrary to some other (labe
 
 ## Resource
 
-A Resource is a bunch of information about a single things.
-Formally, it is a set of Atoms (a Graph) that share the same Subject URL.
+A Resource is a bunch of information about a thing, referenced by a single link (the Subject).
+Formally, it is a set of Atoms (i.e. a Graph) that share a Subject URL.
 You can think of a Resource as a single row in a spreadsheet or database.
 In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
 A Resource consists of at least one Atom, so it always has some Property and some Value.
-The most important Property of a Resource is the [`is-a`](https://atomicdata.dev/properties/isA) Property, which refers to which _Class_ it belongs (e.g. Person or Blogpost).
-A Class can specify [`required`](https://atomicdata.dev/properties/requires) and [`recommended`](https://atomicdata.dev/properties/recommends) properties.
-More on that in the Atomic Schema chapter!
+A Property can only occur once in every Resource.
 
 ## Atom (or Atomic Triple)
 
@@ -45,7 +43,18 @@ Arnold | birthdate | 1991-01-20
 Arnold | best friend | Britta
 Britta | last name | Smalls
 
-The table above shows easily readable strings, but in reality, Atomic Data will almost exclusively consist of links (URLs).
+The table above shows human readable strings, but in Atomic Data, we use links (URLs) wherever we can.
+That's because links are awesome.
+Links **remove ambiguity** (we know exactly which person or property we mean), they are **resolvable** (we can click on them), and they are **machine readable** (machines can fetch links to do useful things with them).
+So the table from above, will more closely resemble this one:
+
+Subject | Property | Value
+--- | --- | ---
+https://example.com/arnold | https://example.com/properties/lastname | Peters
+https://example.com/arnold | https://example.com/properties/birthDate | 1991-01-20
+https://example.com/arnold | https://example.com/properties/bestFriend | https://example.com/britta
+https://example.com/britta | https://example.com/properties/lastname | Smalls
+
 The standard serialization format for Atomic Data is JSON-AD, which looks like this:
 
 ```json
@@ -60,21 +69,22 @@ The standard serialization format for Atomic Data is JSON-AD, which looks like t
 }]
 ```
 
-The `@id` field denotes the Subject of each Resource, which is also the URL that should point to where the resource can be downloaded.
+The `@id` field denotes the Subject of each Resource, which is also the URL that should point to where the resource can be found.
 
-In the Atomic Data above, we have:
+In the JSON-AD example above, we have:
 
-- two different **Resources**, describing two different **Subjects**: `https://example.com/arnold` and `https://example.com/britta`.
+- two **Resources**, describing two different **Subjects**: `https://example.com/arnold` and `https://example.com/britta`.
 - three different **Properties** (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
-- four different **Values** (`1991-01-20`, `Arnold`, `https://example.com/britta` and `Britta`)
+- four **Values** (`1991-01-20`, `Arnold`, `https://example.com/britta` and `Britta`)
+- four **Atoms**
 
 All Subjects and Properties are Atomic URLs: they are links that point to more Atomic Data.
 One of the Values is a URL, too, but we also have values like `Arnold` and `1991-01-20`.
-These Values have different _Datatypes_
+Values can have different _Datatypes_
 In most other data formats, the datatypes are limited and are visually distinct.
 JSON, for example, has `array`, `object`, `string`, `number` and `boolean`.
 In Atomic Data, however, datatypes are defined somewhere else, and are extendible.
-To find the Datatype of an Atom, you fetch the Property, and that one has a Datatype.
+To find the Datatype of an Atom, you fetch the Property, and that Property will have a Datatype.
 For example, the `https://example.com/properties/bornAt` Property requires an ISO Date string, and the `https://example.com/properties/firstName` Property requires a regular string.
 This might seem a little tedious and weird at first, but is has some nice advantages!
 Their Datatypes are defined in the Properties.
@@ -87,6 +97,7 @@ The Subject field is a URL that points to the Resource.
 The creator of the Subject MUST make sure that it resolves.
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see [Querying Atomic Data](querying.md).
 This also means that the creator of a Resource must make sure that it is available at its URL - probably by hosting the data, or by using some service that hosts it.
+In JSON-AD, the Subject is denoted by `@id`.
 
 ## Property field
 
@@ -105,22 +116,16 @@ This includes URLs, strings, integers, dates and more.
 
 ## Graph
 
-A Graph is a set of Atoms.
+A Graph is a collection of Atoms.
 A Graph can describe various subjects, and may or may not be related.
 Graphs can have several characteristics (Schema Complete, Valid, Closed)
-
-## Atomic Web
-
-The Atomic Web refers to all Atomic Graphs on the web.
-
-In the next chapter, we'll explore how Atomic Data is serialized.
 
 ## Nested Resource
 
 A Nested Resource only exists inside of another resource.
 It does not have its own subject.
 
-In the following example, the address is a nested resource:
+In the following JSON-AD example, the `address` is a nested resource:
 
 ```json
 {
@@ -133,5 +138,6 @@ In the following example, the address is a nested resource:
 }
 ```
 
-It does not have its own subject (`@id`), but it _does_ have its own unique [path](./paths.md), which can be used as its identifier.
-In this case, the path of the address is `https://example.com/arnold address` or `https://example.com/arnold https://example.com/properties/address` (both are valid).
+A Nested Resource often does not have its own subject (`@id`), but it _does_ have its own unique [path](./paths.md), which can be used as its identifier.
+
+In the next chapter, we'll explore how Atomic Data is serialized.
