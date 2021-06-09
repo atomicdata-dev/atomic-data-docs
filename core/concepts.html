@@ -164,14 +164,12 @@ It's designed to be easily serializable to both JSON and linked data formats.
 It is <em>typed</em> data model, which means that every value should be validated and predictable.</p>
 <p>It is a directed, labeled graph, similar to RDF, so contrary to some other (labeled) graph data models (e.g. NEO4j), a relationship between two items (Resources) does not have attributes.</p>
 <h2><a class="header" href="#resource" id="resource">Resource</a></h2>
-<p>A Resource is a bunch of information about a single things.
-Formally, it is a set of Atoms (a Graph) that share the same Subject URL.
+<p>A Resource is a bunch of information about a thing, referenced by a single link (the Subject).
+Formally, it is a set of Atoms (i.e. a Graph) that share a Subject URL.
 You can think of a Resource as a single row in a spreadsheet or database.
 In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
 A Resource consists of at least one Atom, so it always has some Property and some Value.
-The most important Property of a Resource is the <a href="https://atomicdata.dev/properties/isA"><code>is-a</code></a> Property, which refers to which <em>Class</em> it belongs (e.g. Person or Blogpost).
-A Class can specify <a href="https://atomicdata.dev/properties/requires"><code>required</code></a> and <a href="https://atomicdata.dev/properties/recommends"><code>recommended</code></a> properties.
-More on that in the Atomic Schema chapter!</p>
+A Property can only occur once in every Resource.</p>
 <h2><a class="header" href="#atom-or-atomic-triple" id="atom-or-atomic-triple">Atom (or Atomic Triple)</a></h2>
 <p>Every Resource is composed of Atoms.
 The Atom is the smallest possible piece of <em>meaningful</em> data / information.
@@ -192,8 +190,17 @@ An Atom is comparable with an RDF Triple / Statement (<a href="../interoperabili
 <tr><td>Arnold</td><td>best friend</td><td>Britta</td></tr>
 <tr><td>Britta</td><td>last name</td><td>Smalls</td></tr>
 </tbody></table>
-<p>The table above shows easily readable strings, but in reality, Atomic Data will almost exclusively consist of links (URLs).
-The standard serialization format for Atomic Data is JSON-AD, which looks like this:</p>
+<p>The table above shows human readable strings, but in Atomic Data, we use links (URLs) wherever we can.
+That's because links are awesome.
+Links <strong>remove ambiguity</strong> (we know exactly which person or property we mean), they are <strong>resolvable</strong> (we can click on them), and they are <strong>machine readable</strong> (machines can fetch links to do useful things with them).
+So the table from above, will more closely resemble this one:</p>
+<table><thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead><tbody>
+<tr><td>https://example.com/arnold</td><td>https://example.com/properties/lastname</td><td>Peters</td></tr>
+<tr><td>https://example.com/arnold</td><td>https://example.com/properties/birthDate</td><td>1991-01-20</td></tr>
+<tr><td>https://example.com/arnold</td><td>https://example.com/properties/bestFriend</td><td>https://example.com/britta</td></tr>
+<tr><td>https://example.com/britta</td><td>https://example.com/properties/lastname</td><td>Smalls</td></tr>
+</tbody></table>
+<p>The standard serialization format for Atomic Data is JSON-AD, which looks like this:</p>
 <pre><code class="language-json">[{
   &quot;@id&quot;: &quot;https://example.com/arnold&quot;,
   &quot;https://example.com/properties/lastname&quot;: &quot;Peters&quot;,
@@ -204,20 +211,21 @@ The standard serialization format for Atomic Data is JSON-AD, which looks like t
   &quot;https://example.com/properties/lastname&quot;: &quot;Smalls&quot;,
 }]
 </code></pre>
-<p>The <code>@id</code> field denotes the Subject of each Resource, which is also the URL that should point to where the resource can be downloaded.</p>
-<p>In the Atomic Data above, we have:</p>
+<p>The <code>@id</code> field denotes the Subject of each Resource, which is also the URL that should point to where the resource can be found.</p>
+<p>In the JSON-AD example above, we have:</p>
 <ul>
-<li>two different <strong>Resources</strong>, describing two different <strong>Subjects</strong>: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
+<li>two <strong>Resources</strong>, describing two different <strong>Subjects</strong>: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
 <li>three different <strong>Properties</strong> (<code>https://example.com/properties/bornAt</code>, <code>https://example.com/properties/firstName</code>, and <code>https://example.com/properties/bestFriend</code>)</li>
-<li>four different <strong>Values</strong> (<code>1991-01-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
+<li>four <strong>Values</strong> (<code>1991-01-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
+<li>four <strong>Atoms</strong></li>
 </ul>
 <p>All Subjects and Properties are Atomic URLs: they are links that point to more Atomic Data.
 One of the Values is a URL, too, but we also have values like <code>Arnold</code> and <code>1991-01-20</code>.
-These Values have different <em>Datatypes</em>
+Values can have different <em>Datatypes</em>
 In most other data formats, the datatypes are limited and are visually distinct.
 JSON, for example, has <code>array</code>, <code>object</code>, <code>string</code>, <code>number</code> and <code>boolean</code>.
 In Atomic Data, however, datatypes are defined somewhere else, and are extendible.
-To find the Datatype of an Atom, you fetch the Property, and that one has a Datatype.
+To find the Datatype of an Atom, you fetch the Property, and that Property will have a Datatype.
 For example, the <code>https://example.com/properties/bornAt</code> Property requires an ISO Date string, and the <code>https://example.com/properties/firstName</code> Property requires a regular string.
 This might seem a little tedious and weird at first, but is has some nice advantages!
 Their Datatypes are defined in the Properties.</p>
@@ -227,7 +235,8 @@ It is the identifier that the rest of the Atom is providing information about.
 The Subject field is a URL that points to the Resource.
 The creator of the Subject MUST make sure that it resolves.
 In other words: following / downloading the Subject link will provide you with all the Atoms about the Subject (see <a href="querying.html">Querying Atomic Data</a>.
-This also means that the creator of a Resource must make sure that it is available at its URL - probably by hosting the data, or by using some service that hosts it.</p>
+This also means that the creator of a Resource must make sure that it is available at its URL - probably by hosting the data, or by using some service that hosts it.
+In JSON-AD, the Subject is denoted by <code>@id</code>.</p>
 <h2><a class="header" href="#property-field" id="property-field">Property field</a></h2>
 <p>The Property field is the second part of an Atom.
 It is a URL that points to an Atomic <a href="../schema/classes.html#Property">Property</a>.
@@ -240,16 +249,13 @@ In RDF, this is called an <code>object</code>.
 Contrary to the Subject and Property values, the Value can be of any datatype.
 This includes URLs, strings, integers, dates and more.</p>
 <h2><a class="header" href="#graph" id="graph">Graph</a></h2>
-<p>A Graph is a set of Atoms.
+<p>A Graph is a collection of Atoms.
 A Graph can describe various subjects, and may or may not be related.
 Graphs can have several characteristics (Schema Complete, Valid, Closed)</p>
-<h2><a class="header" href="#atomic-web" id="atomic-web">Atomic Web</a></h2>
-<p>The Atomic Web refers to all Atomic Graphs on the web.</p>
-<p>In the next chapter, we'll explore how Atomic Data is serialized.</p>
 <h2><a class="header" href="#nested-resource" id="nested-resource">Nested Resource</a></h2>
 <p>A Nested Resource only exists inside of another resource.
 It does not have its own subject.</p>
-<p>In the following example, the address is a nested resource:</p>
+<p>In the following JSON-AD example, the <code>address</code> is a nested resource:</p>
 <pre><code class="language-json">{
   &quot;@id&quot;: &quot;https://example.com/arnold&quot;,
   &quot;https://example.com/properties/address&quot;: {
@@ -259,8 +265,8 @@ It does not have its own subject.</p>
   }
 }
 </code></pre>
-<p>It does not have its own subject (<code>@id</code>), but it <em>does</em> have its own unique <a href="./paths.html">path</a>, which can be used as its identifier.
-In this case, the path of the address is <code>https://example.com/arnold address</code> or <code>https://example.com/arnold https://example.com/properties/address</code> (both are valid).</p>
+<p>A Nested Resource often does not have its own subject (<code>@id</code>), but it <em>does</em> have its own unique <a href="./paths.html">path</a>, which can be used as its identifier.</p>
+<p>In the next chapter, we'll explore how Atomic Data is serialized.</p>
 
                     </main>
 
