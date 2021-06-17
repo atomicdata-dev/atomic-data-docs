@@ -6,7 +6,7 @@ Atomic Data is often (by default) serialized to [JSON-AD](../core/json-ad.md), w
 JSON-AD uses URLs as keys, which is what gives Atomic Data many of its perks, but using these long strings as keys is not very easy to use in many contexts.
 That's why you can serialize Atomic Data to simple, clean JSON.
 
-## Atomic Data as plain JSON
+## From Atomic Data to plain JSON
 
 The JSON keys are then derived from the `shortnames` of properties.
 For example, we could convert this JSON-AD:
@@ -58,6 +58,10 @@ The following things are missing:
 * What is the **Subject** URL of the resource being described?
 * What is the **Property** URL of the keys being used? (`name` and `birthDate`), and consequentially, how should the values be parsed? What are their DataTypes?
 
+In order to make this conversion work, we need to link to three URLs that _resolve to atomic data resources_.
+The `@id` subject should resolve to the Resource itself, returning the JSON-AD from below.
+The Property keys (e.g. "https://example.com/properties/name") need to resolve to Atomic Properties.
+
 ```json
 {
   "@id": "https://example.com/people/john",
@@ -65,6 +69,8 @@ The following things are missing:
   "https://example.com/properties/birthDate": "1991-01-20"
 }
 ```
+
+In practice, the easiest approach to make this conversion, is to create the data and host it using software like [Atomic Server](https://github.com/joepio/atomic/blob/master/server/README.md).
 
 ## From Atomic Data to JSON-LD
 

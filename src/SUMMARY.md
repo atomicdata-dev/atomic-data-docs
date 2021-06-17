@@ -27,6 +27,9 @@
   * [Relation to IPFS](interoperability/ipfs.md)
   * [Relation to SQL](interoperability/sql.md)
   * [Your existing project](interoperability/upgrade.md)
+* [Possible use cases](usecases/intro.md)
+  * [Personal Data Store](usecases/personal-data-store.md)
+  * [Surveys](usecases/surveys.md)
 * [Tooling](tooling.md)
 
 -----------

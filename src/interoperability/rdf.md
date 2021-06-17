@@ -218,7 +218,7 @@ There is no integrated standard for communicating state changes.
 Although [linked-delta](https://github.com/ontola/linked-delta) and [rdf-delta](https://afs.github.io/rdf-delta/) do exist, they aren't referred to by the RDF spec.
 I think developers need guidance when learning a new system such as RDF, and that's why [Atomic Commits](../commits/intro.md) is included in this book.
 
-### Adding a schema language
+### Adding a schema language and type safety
 
 A schema language is necessary to constrain and validate instances of data.
 This is very useful when creating domain-specific standards, which can in turn be used to generate forms or language-specific types / interfaces.

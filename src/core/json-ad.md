@@ -9,9 +9,9 @@ It is a [JSON](https://www.ecma-international.org/publications-and-standards/sta
 - The `@id` field is special: it defines the Subject of the Resource.
 - JSON arrays are mapped to [Resource Arrays](https://atomicdata.dev/datatypes/resourceArray)
 - Numbers can be [Integers](https://atomicdata.dev/datatypes/integer), [Timestamps](https://atomicdata.dev/datatypes/timestamp) or [Floats](https://atomicdata.dev/datatypes/float).
-- JSON booleans map to Atomic Booleans.
-- Strings can be many datatypes, including [String](https://atomicdata.dev/datatypes/string), [Markdown](https://atomicdata.dev/datatypes/markdown), [Date](https://atomicdata.dev/datatypes/date) or other.
-- Nested Objects are Nested Resources. A Nested Resource can either be an Anonymous Resource (without an `@id` field) or a regular Resource.
+- JSON booleans map to [Booleans](https://atomicdata.dev/datatypes/boolean).
+- JSON strings can be many datatypes, including [String](https://atomicdata.dev/datatypes/string), [Markdown](https://atomicdata.dev/datatypes/markdown), [Date](https://atomicdata.dev/datatypes/date) or other.
+- Nested JSON Objects are Nested Resources. A Nested Resource can either be anonymous (without an `@id` subject) or a regular Nested Resource with an `@id` subject.
 - When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.
 
 Let's look at an example JSON-AD Resource:
@@ -27,6 +27,11 @@ Let's look at an example JSON-AD Resource:
   "https://atomicdata.dev/properties/shortname": "description"
 }
 ```
+
+## JSON-AD Parsers, serializers and other libraries
+
+- **Typescript / Javacript**: [atomic-data-browser](https://github.com/joepio/atomic-data-browser/blob/6105dca3826c2d9a6c965433eff0e75b5615b88d/src/atomic-lib/parse.ts#L6) JSON-AD parser.
+- **Rust**: [atomic-lib](https://crates.io/crates/atomic_lib) has a JSON-AD parser / serializer (and does a lot more).
 
 ## Canonicalized JSON-AD
 

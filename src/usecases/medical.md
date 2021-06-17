@@ -1,4 +1,4 @@
-# Atomic Data for peronalized health data storage
+# Atomic Data for personalized health data storage
 
 - Store personal health data on your atomic server
 - Improve interoperability between medical measurement devices (e.g. blood sugar monitors, fitness tracking data, heart rate, weight) by standardizing these concepts using Atomic Schema.

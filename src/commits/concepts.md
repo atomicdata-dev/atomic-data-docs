@@ -32,7 +32,7 @@ The Agent is the user / individual / organization / machine that can make change
 
 The **required fields** are:
 
-- [`publicKey`](https://atomicdata.dev/properties/publicKey) - The key that cryptographically verifies the authenticity of Commits. Base64 serialized Ed25519 key.
+- [`publicKey`](https://atomicdata.dev/properties/publicKey) - The key that cryptographically verifies the authenticity of Commits. Base64 serialized Ed25519 key. It's counterpart is the [`privateKey`](https://atomicdata.dev/properties/privateKey), which should _not_ be stored in the Agent resource itself: it should be kept secret.
 
 ### Posting commits using HTTP
 
