@@ -1,11 +1,20 @@
-# Tooling for Atomic Data
+# Software and libraries
+
+Open source (MIT licenced) software for Atomic Data:
 
 - Server: [atomic-server](https://github.com/joepio/atomic)
-- Front-end browser + typescript client library: [atomic-data-browser](https://github.com/joepio/atomic-data-browser)
+- Front-end browser: [atomic-data-browser](https://github.com/joepio/atomic-data-browser)
 - CLI (atomic-cli): [atomic-cli](https://github.com/joepio/atomic)
-- Rust library: [atomic-lib](https://github.com/joepio/atomic)
 
-## `atomic-server`
+Libraries (MIT licenced) to build apps with:
+
+- Typescript / javascript library: [@tomic/lib (npm)](https://www.npmjs.com/package/@tomic/lib)
+- React library: [@tomic/react (npm)](https://www.npmjs.com/package/@tomic/react)
+- Rust library: [atomic-lib (crates.io)](https://crates.io/crates/atomic-lib)
+
+## Applications
+
+### `atomic-server`
 
 Server for hosting Atomic Data. Uses `atomic-lib`.
 
@@ -18,11 +27,11 @@ One liner: `$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage j
 
 [demo](https://atomicdata.dev/)
 
-[MIT licensed repository + issue tracker](https://github.com/joepio/atomic).
+[repository + issue tracker](https://github.com/joepio/atomic).
 
-## `atomic-data-browser`
+### `atomic-data-browser`
 
-Data browser + react typescript / javascript front-end library.
+Data browser, powered by `@tomic/lib` and `@tomic/react`.
 
 - View & edit atomic data, using dynamic forms
 - Collections with pagination and sorting
@@ -30,9 +39,9 @@ Data browser + react typescript / javascript front-end library.
 
 [demo](https://atomicdata.dev/) (same as `atomic-server`)
 
-[MIT licensed repository + issue tracker](https://github.com/joepio/atomic-data-browser).
+[repository + issue tracker](https://github.com/joepio/atomic-data-browser).
 
-## `atomic-cli`
+### `atomic-cli`
 
 A tool for generating / querying Atomic Data from the command line. Install with `cargo install atomic-cli`.
 
@@ -62,9 +71,17 @@ SUBCOMMANDS:
 Visit https://github.com/joepio/atomic for more info
 ```
 
-[MIT licensed repository + issue tracker](https://github.com/joepio/atomic).
+[repository + issue tracker](https://github.com/joepio/atomic).
 
-## `atomic-lib` (Rust)
+## Libraries
+
+### `@tomic/lib` and `@tomic/react`
+
+Javascript / typescript libraries, especially useful for creating front-end apps.
+
+Fork the [atomic-data-react-template](https://codesandbox.io/s/atomic-data-react-template-4y9qu?file=/src/MyResource.tsx) on codesandbox to get started directly!
+
+### `atomic-lib` (Rust)
 
 Library that powers `atomic-server` and `atomic-cli`. Features:
 
@@ -76,11 +93,12 @@ Library that powers `atomic-server` and `atomic-cli`. Features:
 - Path traversal
 - Basic validation
 
-[MIT licensed repository + issue tracker](https://github.com/joepio/atomic).
+[repository + issue tracker](https://github.com/joepio/atomic).
 
 ## Want to add to this list? Some ideas for tooling
 
 This document contains a set of ideas that would help achieve that success.
+Open a PR and [edit this file](https://github.com/ontola/atomic-data-docs/edit/master/src/tooling.md) to add your project!
 
 ### Atomizer (data importer and conversion kit)
 
@@ -91,6 +109,7 @@ This document contains a set of ideas that would help achieve that success.
 
 - A simple (JS) widget that can be embedded anywhere, which converts an Atomic Graph into an HTML view.
 - Would be useful for documentation, and as a default view for Atomic Data.
+- Use `@tomic/react` and `@tomic/lib` to get started
 
 ### Atomic-Dart + Flutter
 

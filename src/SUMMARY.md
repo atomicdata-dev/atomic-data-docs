@@ -30,7 +30,7 @@
 * [Possible use cases](usecases/intro.md)
   * [Personal Data Store](usecases/personal-data-store.md)
   * [Surveys](usecases/surveys.md)
-* [Tooling](tooling.md)
+* [Software & libraries](tooling.md)
 
 -----------
 
