@@ -24,10 +24,11 @@ Atomic Data can be traversed using [Paths](core/paths.md), or queried using [Col
 If you want to read more about how Atomic Data works - read on.
 If you'd rather play and discover for yourself, play with the existing [tooling](tooling.md):
 
-- Server: [atomic-server](https://github.com/joepio/atomic) (powers [atomicdata.dev](https://atomicdata.dev), run with `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`)
-- Browser app [atomic-data-browser](https://github.com/joepio/atomic-data-browser) ([demo](https://joepio.github.io/atomic-data-browser/))
-- CLI (atomic-cli): [atomic-cli](https://github.com/joepio/atomic) (`cargo install atomic-cli`)
-- Rust library: [atomic-lib](https://github.com/joepio/atomic)
+- Browser app [atomic-data-browser](https://github.com/joepio/atomic-data-browser) ([demo on atomicdata.dev](https://atomicdata.dev))
+- Build a react app using [typescript & react libraries](https://github.com/joepio/atomic-data-ts). Start with the [react template on codesandbox](https://codesandbox.io/s/atomic-data-react-template-4y9qu?file=/src/MyResource.tsx)
+- Host your own [atomic-server](https://github.com/joepio/atomic) (powers [atomicdata.dev](https://atomicdata.dev), run with `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`)
+- Discover the command line tool: [atomic-cli](https://github.com/joepio/atomic) (`cargo install atomic-cli`)
+- Use the Rust library: [atomic-lib](https://github.com/joepio/atomic)
 
 Make sure to [join our Discord](https://discord.gg/a72Rv2P) if you'd like to discuss Atomic Data with others.
 
