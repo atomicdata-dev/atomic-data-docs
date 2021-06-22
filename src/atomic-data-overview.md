@@ -17,7 +17,12 @@ Atomic Data has a standard for communicating state changes called [Commits](comm
 These Commits are signed using cryptographic keys, which ensures that every change can be audited.
 Commits are also used to construct a history of versions.
 
+[Agents](agents.md) are Users that enable authentication.
 Atomic Data can be traversed using [Paths](core/paths.md), or queried using [Collections](schema/collections.md).
+[Hierarchies](hierarchy.md) are used for authorization and keeping data organized.
+[Invites](invites.md) can be used to easily create new users and provide them with rights.
+
+Note that Atomic Data is a highly _layered_ specification, which means that you are free to take whatever you like, although some
 
 ## Get Started
 
