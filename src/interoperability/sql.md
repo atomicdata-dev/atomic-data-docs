@@ -44,8 +44,6 @@ Well, if you use Atomic-Server, then you can only write to the server by using A
 This means that if part of the transaction fails, it is reverted - transactions are only applied when they are 100% OK.
 This prevents inconsistent DB states.
 
-ACID refers to Atomicity,
-
 ### Can I use a SQL database with Atomic Data?
 
 Yes, if you want to make your existing project serve Atomic Data, you can keep your existing SQL database, see [the upgrade guide](upgrade.md).
