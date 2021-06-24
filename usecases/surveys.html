@@ -161,10 +161,35 @@
 However, Atomic Data has a couple of unique characteristics that would make it especially suitable for surveys.
 It could help make surveys easier to <strong>fill in</strong>, easier to <strong>analyze</strong>, easier to <strong>create</strong>, and more <strong>privacy friendly</strong>.</p>
 <ul>
-<li><strong>Pre-filled form fields</strong>. which can save the respondent a lot of time.</li>
-<li><strong>Privacy friendly, yet highly personalized invites</strong> as a researcher, send profile descriptions to servers, and let the servers tell if the question is relevant.</li>
+<li><strong>Re-useable survey responses</strong> which enable <strong>pre-filled form fields</strong> which can save the respondent a lot of time. They also make it possible for users to use their own responses to <strong>gather insights</strong>, for example into their own health.</li>
 <li><strong>Question standardization</strong> which helps researchers to re-use (validated) questions, which saves time for the researcher</li>
+<li><strong>Privacy friendly, yet highly personalized invites</strong> as a researcher, send profile descriptions to servers, and let the servers tell if the question is relevant.</li>
 </ul>
+<h2><a class="header" href="#re-useable-survey-responses" id="re-useable-survey-responses">Re-useable survey responses</a></h2>
+<p>Since many surveys describe personal information, it makes sense, as a respondent, to have a way of storing the information you filled in in a place that you control.
+Making this possible enables a few nice use cases.</p>
+<ol>
+<li><strong>Auto-fill forms</strong>. Previously entered response data could be usable while filling in new surveys. This could result in a UX similar to auto-filling forms, but far more powerful and rich than browsers currently support.</li>
+<li><strong>Analyze your own personal data</strong>. Standardized survey responses could also be used to gather insights into your own personal information. For example, filling in a survey about how your shortness of breath linked to air pollution has been today could be used in a different app to make a graph that visualizes how your shortness of breath has progressed over the months for personal insight.</li>
+</ol>
+<p>Achieving something like this requires a high degree of standardization in both the surveys and the responses. The survey and its questions should provide information about:</p>
+<ul>
+<li>The <strong>question</strong>. This is required in all survey questions, of course.</li>
+<li>The <strong>required datatype</strong> of the response, such as 'string', or 'datetime' or some 'enumeration'.</li>
+<li>A (link to a) <strong>semantic definition</strong> of the property being described. This is a bit more obscure: all pieces of linked data use links, instead of keys, to describe the relation between some resource and its property. For example, a normal resource might have a 'birthdate', while in linked data, we'd use '<a href="https://schema.org/birthDate">https://schema.org/birthDate</a>'. This semantic definition makes things easier to share, because it prevents misinterpretation. Links remove ambiguity.</li>
+<li><strong>A query description</strong>. This is even more obscure, but perhaps the most interesting. A query description means describing how a piece of information can be retrieved. Perhaps a question in a survey will want to know what your payment pointer is. If a piece of software wants to auto-fill this field, it needs to know where it can find your payment pointer.</li>
+</ul>
+<h2><a class="header" href="#question-standardization" id="question-standardization">Question Standardization</a></h2>
+<p>We can think of Questions as Resources that have a URL, and can be shared.
+Sharing questions like that can make it easier to use the same questions across surveys, which in turn can make it easier to interpret data.
+Some fields (e.g. medical) have highly standardized questions, which have been validated by studies.
+These Question resources should contain information about:</p>
+<ul>
+<li>The <strong>question</strong> itself and its translations</li>
+<li>The <strong>datatype</strong> of the response (e.g. <code>date</code>, <code>string</code>, <code>enum</code>), denoted by the <a href="https://atomicdata.dev/classes/Property">Property</a> of the response.</li>
+<li>The <strong>path of the data</strong>, relative to the user. For example, a user's <code>birthdate</code> can be found by going to <code>/ profile birthdate</code></li>
+</ul>
+<p><a href="../schema/intro.html">Atomic Schema</a> and <a href="../core/paths.html">Atomic Paths</a> can be of value here.</p>
 <h2><a class="header" href="#privacy-friendly-invites-with-client-side-filtering" id="privacy-friendly-invites-with-client-side-filtering">Privacy friendly invites with client-side filtering</a></h2>
 <p>Currently, a researcher needs to either build their own panel, or use a service that has a lot of respondents.
 Sometimes, researchers will need a very specific target audience, like a specific age group, nationality, gender, or owners of specific types of devices.
@@ -178,31 +203,6 @@ The user only sees invitations that are highly relevant, without sharing <em>any
 <a href="../core/paths.html">Paths</a> are used to describe the queries that researchers make.
 <a href="https://github.com/joepio/atomic/blob/master/server/README.md">Atomic Server</a> can be used as the personal online data store.</p>
 <p>However, we still need to specify the process of sending a request to an individual (probably by introducing an <a href="https://github.com/ontola/atomic-data/issues/28">inbox</a>)</p>
-<h2><a class="header" href="#question-standardization" id="question-standardization">Question Standardization</a></h2>
-<p>We can think of Questions as Resources that have a URL, and can be shared.
-Sharing questions like that can make it easier to use the same questions across surveys, which in turn can make it easier to interpret data.
-Some fields (e.g. medical) have highly standardized questions, which have been validated by studies.
-These Question resources should contain information about:</p>
-<ul>
-<li>The <strong>question</strong> itself and its translations</li>
-<li>The <strong>datatype</strong> of the response (e.g. <code>date</code>, <code>string</code>, <code>enum</code>), denoted by the <a href="https://atomicdata.dev/classes/Property">Property</a> of the response.</li>
-<li>The <strong>path of the data</strong>, relative to the user. For example, a user's <code>birthdate</code> can be found by going to <code>/ profile birthdate</code></li>
-</ul>
-<p><a href="../schema/intro.html">Atomic Schema</a> and <a href="../core/paths.html">Atomic Paths</a> can be of value here.</p>
-<h2><a class="header" href="#re-useable-survey-responses" id="re-useable-survey-responses">Re-useable survey responses</a></h2>
-<p>Since many surveys describe personal information, it makes sense, as a respondent, to have a way of storing the information you filled in in a place that you control.
-Making this possible enables a few nice use cases.</p>
-<ol>
-<li><strong>Auto-fill forms</strong>. Previously entered response data could be usable while filling in new surveys. This could result in a UX similar to auto-filling forms, but far more powerful and rich than browsers currently support.</li>
-<li><strong>Analyze your own personal data</strong>. Standardized survey responses could also be used to gather insights into your own personal information. For example, filling in a survey about how your shortness of breath linked to air pollution has been today could be used in a different app to make a graph that visualises how your shortness of breath has progressed over the months for personal insight.</li>
-</ol>
-<p>Achieving something like this requires a high degree of standardization in both the surveys and the responses. The survey and its questions should provide information about:</p>
-<ul>
-<li>The <strong>question</strong>. This is required in all survey questions, of course.</li>
-<li>The <strong>required datatype</strong> of the response, such as 'string', or 'datetime' or some 'enumeration'.</li>
-<li>A (link to a) <strong>semantic definition</strong> of the property being described. This is a bit more obscure: all pieces of linked data use links, instead of keys, to describe the relation between some resource and its property. For example, a normal resource might have a 'birthdate', while in linked data, we'd use '<a href="https://schema.org/birthDate">https://schema.org/birthDate</a>'. This semantic definition makes things easier to share, because it prevents misinterpretation. Links remove ambiguity.</li>
-<li><strong>A query description</strong>. This is even more obscure, but perhaps the most interesting. A query description means describing how a piece of information can be retrieved. Perhaps a question in a survey will want to know what your payment pointer is. If a piece of software wants to auto-fill this field, it needs to know where it can find your payment pointer.</li>
-</ul>
 
                     </main>
 
