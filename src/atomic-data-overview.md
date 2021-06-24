@@ -18,7 +18,7 @@ These Commits are signed using cryptographic keys, which ensures that every chan
 Commits are also used to construct a history of versions.
 
 [Agents](agents.md) are Users that enable authentication.
-Atomic Data can be traversed using [Paths](core/paths.md), or queried using [Collections](schema/collections.md).
+Atomic Data can be traversed using [Paths](core/path.md), or queried using [Collections](schema/collections.md).
 [Hierarchies](hierarchy.md) are used for authorization and keeping data organized.
 [Invites](invitations.md) can be used to easily create new users and provide them with rights.
 
