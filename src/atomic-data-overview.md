@@ -1,6 +1,6 @@
 ![# Atomic Data Docs - Overview](assets/atomic_data_logo.svg)
 
-Atomic Data is a specification for sharing, modifying and modeling data.
+Atomic Data is a specification for sharing, modifying and modeling graph data.
 
 It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.
 
@@ -20,7 +20,7 @@ Commits are also used to construct a history of versions.
 [Agents](agents.md) are Users that enable authentication.
 Atomic Data can be traversed using [Paths](core/paths.md), or queried using [Collections](schema/collections.md).
 [Hierarchies](hierarchy.md) are used for authorization and keeping data organized.
-[Invites](invites.md) can be used to easily create new users and provide them with rights.
+[Invites](invitations.md) can be used to easily create new users and provide them with rights.
 
 ## Get Started
 

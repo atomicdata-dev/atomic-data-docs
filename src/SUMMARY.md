@@ -18,7 +18,7 @@
 * [Agents and authentication](agents.md)
 * [Invitations and sharing](invitations.md)
 * [Commits (writing data)](commits/intro.md)
-  * [Concepts](commits/concepts.  md)
+  * [Concepts](commits/concepts.md)
   * [Compared to](commits/compare.md)
 * [Hierarchy and authorization](hierarchy.md)
 * [Endpoints](endpoints.md)

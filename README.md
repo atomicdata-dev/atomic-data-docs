@@ -1,6 +1,8 @@
-# Atomic Data Docs
+![Atomic Data](src/assets/atomic_data_logo.svg)
 
-_A proposed standard for data exchange of decentralized, typed graphs._
+# `atomic-data-docs`
+
+_Atomic Data is a specification for sharing, modifying and modeling graph data._
 
 View it on [docs.atomicdata.dev](https://docs.atomicdata.dev).
 If you're looking for an (early) implementation of Atomic data, check out [atomic](https://github.com/joepio/atomic) (server + cli + lib) and [atomic-data-browser](https://github.com/joepio/atomic-data-browser) (react / typescript).
