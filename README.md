@@ -1,4 +1,4 @@
-![Atomic Data](src/assets/atomic_data_logo_padded.svg)
+![Atomic Data](src/assets/atomic_data_logo_stroke.svg)
 
 # `atomic-data-docs`
 
