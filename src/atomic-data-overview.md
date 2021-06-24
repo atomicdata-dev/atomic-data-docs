@@ -1,4 +1,4 @@
-![# Atomic Data Docs - Overview](assets/atomic_data_logo.svg)
+![# Atomic Data Docs - Overview](assets/atomic_data_logo_padded.svg)
 
 Atomic Data is a specification for sharing, modifying and modeling graph data.
 
