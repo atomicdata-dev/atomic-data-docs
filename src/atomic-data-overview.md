@@ -1,4 +1,4 @@
-# Atomic Data Docs - Overview
+![# Atomic Data Docs - Overview](assets/atomic_data_logo.svg)
 
 Atomic Data is a specification for sharing, modifying and modeling data.
 
@@ -22,12 +22,10 @@ Atomic Data can be traversed using [Paths](core/paths.md), or queried using [Col
 [Hierarchies](hierarchy.md) are used for authorization and keeping data organized.
 [Invites](invites.md) can be used to easily create new users and provide them with rights.
 
-Note that Atomic Data is a highly _layered_ specification, which means that you are free to take whatever you like, although some
-
 ## Get Started
 
 If you want to read more about how Atomic Data works - read on.
-If you'd rather play and discover for yourself, play with the existing [tooling](tooling.md):
+If you'd rather play and discover for yourself, play with the existing open source [tooling](tooling.md):
 
 - Browser app [atomic-data-browser](https://github.com/joepio/atomic-data-browser) ([demo on atomicdata.dev](https://atomicdata.dev))
 - Build a react app using [typescript & react libraries](https://github.com/joepio/atomic-data-ts). Start with the [react template on codesandbox](https://codesandbox.io/s/atomic-data-react-template-4y9qu?file=/src/MyResource.tsx)
@@ -37,13 +35,13 @@ If you'd rather play and discover for yourself, play with the existing [tooling]
 
 Make sure to [join our Discord](https://discord.gg/a72Rv2P) if you'd like to discuss Atomic Data with others.
 
+## Status
+
+Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.
+
 ## Reading these docs
 
 This is written mostly as a book, so reading it in the order of the Table of Contents will probably give you the best experience.
 That being said, feel free to jump around - links are often used to refer to earlier discussed concepts.
 If you encounter any issues while reading, please leave an [issue on Github](https://github.com/ontola/atomic-data/issues).
 Use the arrows on the side / bottom to go to the next page.
-
-## Status
-
-Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.
