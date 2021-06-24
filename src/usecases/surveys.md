@@ -8,16 +8,16 @@ It could help make surveys easier to **fill in**, easier to **analyze**, easier 
 - **Privacy friendly, yet highly personalized invites** as a researcher, send profile descriptions to servers, and let the servers tell if the question is relevant.
 - **Question standardization** which helps researchers to re-use (validated) questions, which saves time for the researcher
 
-## Privacy friendly invites
+## Privacy friendly invites with client-side filtering
 
 Currently, a researcher needs to either build their own panel, or use a service that has a lot of respondents.
 Sometimes, researchers will need a very specific target audience, like a specific age group, nationality, gender, or owners of specific types of devices.
 Targeting these individuals is generally done by having a large database of personal information from many individuals.
-But there is another way of doing this.
+But there is another way of doing this: **client-side filtering**
 Instead of asking for the users data, and storing it centralized, we could send queries to decentralized personal data stores.
 There queries basically contain the targeting information and an invitation.
-The query is executed on the personal data store, and if the result is interesting to the user, it is shown in a feed / a notification is sent to the user.
-The user simply opens their application, and only sees invitations that are highly relevant, without sharing _any_ information with the researcher.
+The query is executed on the personal data store, and if the user characteristics align with the desired participants profile, the user receives an invite.
+The user only sees invitations that are highly relevant, without sharing _any_ information with the researcher.
 
 The Atomic Data specification solves at least part of this problem.
 [Paths](../core/paths.md) are used to describe the queries that researchers make.
@@ -38,6 +38,17 @@ These Question resources should contain information about:
 
 [Atomic Schema](../schema/intro.md) and [Atomic Paths](../core/paths.md) can be of value here.
 
-## Pre-filled form fields
+## Re-useable survey responses
 
-If a user
+Since many surveys describe personal information, it makes sense, as a respondent, to have a way of storing the information you filled in in a place that you control.
+Making this possible enables a few nice use cases.
+
+1.  **Auto-fill forms**. Previously entered response data could be usable while filling in new surveys. This could result in a UX similar to auto-filling forms, but far more powerful and rich than browsers currently support.
+2.  **Analyze your own personal data**. Standardized survey responses could also be used to gather insights into your own personal information. For example, filling in a survey about how your shortness of breath linked to air pollution has been today could be used in a different app to make a graph that visualises how your shortness of breath has progressed over the months for personal insight.
+
+Achieving something like this requires a high degree of standardization in both the surveys and the responses. The survey and its questions should provide information about:
+
+- The **question**. This is required in all survey questions, of course.
+- The **required datatype** of the response, such as 'string', or 'datetime' or some 'enumeration'.
+- A (link to a) **semantic definition** of the property being described. This is a bit more obscure: all pieces of linked data use links, instead of keys, to describe the relation between some resource and its property. For example, a normal resource might have a 'birthdate', while in linked data, we'd use '<https://schema.org/birthDate>'. This semantic definition makes things easier to share, because it prevents misinterpretation. Links remove ambiguity.
+- **A query description**. This is even more obscure, but perhaps the most interesting. A query description means describing how a piece of information can be retrieved. Perhaps a question in a survey will want to know what your payment pointer is. If a piece of software wants to auto-fill this field, it needs to know where it can find your payment pointer.
