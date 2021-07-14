@@ -13,7 +13,6 @@
   * [Classes](schema/classes.md)
   * [Datatypes](schema/datatypes.md)
   * [Translations](schema/translations.md)
-  * [Compared to](schema/compare.md)
   * [FAQ](schema/faq.md)
 * [Collections, filtering, sorting](schema/collections.md)
 * [Agents and authentication](agents.md)
