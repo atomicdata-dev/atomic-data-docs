@@ -11,3 +11,10 @@ This means that it's possible to render Endpoints as forms.
 The most important property in an Endpoint is [`parameters`](https://atomicdata.dev/properties/endpoint/parameters), which is the list of Properties that can be filled in.
 
 You can find a list of Endpoints supported by Atomic-Server on [atomicdata.dev/endpoints](https://atomicdata.dev/endpoints).
+
+## Design Goals
+
+- **Familiar API**: should look like something that most developers already know
+- **Auto-generate forms**: a front-end app should present Endpoints as forms that non-developers can interact with
+
+[Discussion in issue tracker](https://github.com/ontola/atomic-data-docs/issues/15).

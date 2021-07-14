@@ -11,7 +11,7 @@ Atomic Data is [Linked Data](https://ontola.io/what-is-linked-data/), as it is a
 It is typed (you know if something is a `string`, `number`, `date`, `URL`, etc.) and extensible through [Atomic Schema](schema/intro.md), which means that you can define your own Classes, Properties and Datatypes.
 
 The default serialization format for Atomic Data is [JSON-AD](core/json-ad.md), which is simply JSON where each key is a URL of an Atomic Property.
-These Properties are responsible for setting the datatype (to ensures type-safety) and setting `shortnames` (which help to keep names short) and descriptions (which provide semantic explanations of what a property should be used for).
+These Properties are responsible for setting the `datatype` (to ensure type-safety) and setting `shortnames` (which help to keep names short, for example in JSON serialization) and `descriptions` (which provide semantic explanations of what a property should be used for).
 
 Atomic Data has a standard for communicating state changes called [Commits](commits/intro.md).
 These Commits are signed using cryptographic keys, which ensures that every change can be audited.

@@ -16,7 +16,7 @@ For more information, see [Atomic Paths](paths.md).
 ## Subject fetching (HTTP)
 
 The simplest way of getting Atomic Data when the Subject is an HTTP URL, is by sending a GET request to the subject URL.
-Set the `Content-Type` header to an Atomic Data compatible mime type, such as `application/ad3-ndjson`.
+Set the `Content-Type` header to an Atomic Data compatible mime type, such as `application/ad+json`.
 
 ```HTTP
 GET https://atomicdata.dev/test HTTP/1.1
