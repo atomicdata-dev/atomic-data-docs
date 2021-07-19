@@ -21,5 +21,6 @@ Things you can do:
 - **Ruben Verborgh** (for doing great work with RDF, such as the TPF spec)
 - **Pat McBennett** (for lots of valuable feedback on initial Atomic Data docs)
 - **Manu Sporny** (for his work on JSON-LD, which was an important inspiration for JSON-AD)
-- **Jonas Smedegaard** (for the various intersting talks we had and the feedback he provided)
+- **Jonas Smedegaard** (for the various interesting talks we had and the feedback he provided)
+- **Arthur Dingemans** (for sharing his thoughts, providing feedback and his valuable suggestions)
 - All the other people who contributed to linked data related standards
