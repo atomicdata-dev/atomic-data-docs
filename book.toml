@@ -1,5 +1,5 @@
 [book]
-title = "Atomic Data"
+title = "Atomic Data Docs"
 authors = ["Joep Meindertsma"]
 description = "Documentation for the Atomic Data standard."
 language = "en"
@@ -9,5 +9,4 @@ google-analytics = "UA-121994595-2"
 git-repository-url = "https://github.com/ontola/atomic-data"
 git-repository-icon = "fa-github"
 
-# Results in an extra folder in ./book, which breaks the website, since github serves from root.
-# [output.linkcheck]
+[output.linkcheck]

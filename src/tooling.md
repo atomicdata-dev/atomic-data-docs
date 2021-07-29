@@ -19,9 +19,9 @@ Libraries (MIT licenced) to build apps with:
 Server for hosting Atomic Data. Uses `atomic-lib`.
 
 - Responds to requests for created Atomic Resources, makes atomic data available at their URL.
-- Manages data on disk.
-- Useful query options (e.g. Triple Pattern Fragments)
-- Browser-friendly HTML presentation, JSON serialization, AD3 serialization.
+- Embedded database
+- Authorization, authentication, versioning, collections, pagination
+- Browser-friendly HTML presentation, JSON serialization, RDF serialization.
 
 One liner: `$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`
 
@@ -86,7 +86,7 @@ Fork the [atomic-data-react-template](https://codesandbox.io/s/atomic-data-react
 Library that powers `atomic-server` and `atomic-cli`. Features:
 
 - An in-memory store
-- Parsing (JSON-AD, AD3) / Serialization (JSON-AD, AD3, JSON-LD, TTL, N-Triples)
+- Parsing (JSON-AD) / Serialization (JSON-AD, JSON-LD, TTL, N-Triples)
 - Commit validation and processing
 - TPF queries
 - Constructing Collections
@@ -99,6 +99,14 @@ Library that powers `atomic-server` and `atomic-cli`. Features:
 
 This document contains a set of ideas that would help achieve that success.
 Open a PR and [edit this file](https://github.com/ontola/atomic-data-docs/edit/master/src/tooling.md) to add your project!
+
+### Atomic Companion
+
+A mobile app for granting permissions to your data and signing things. See [github issue](https://github.com/ontola/atomic-data-docs/issues/45).
+
+- Show a notification when you try to log in somewhere with your agent
+- Notifications for mentions and other social items
+- Check uptime of your server
 
 ### Atomizer (data importer and conversion kit)
 

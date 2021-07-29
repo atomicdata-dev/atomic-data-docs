@@ -1,6 +1,6 @@
-# Atomic Data Docs - Overview
+![# Atomic Data Docs - Overview](assets/atomic_data_logo_stroke.svg)
 
-Atomic Data is a specification for sharing, modifying and modeling data.
+Atomic Data is a specification for sharing, modifying and modeling graph data.
 
 It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.
 
@@ -11,25 +11,33 @@ Atomic Data is [Linked Data](https://ontola.io/what-is-linked-data/), as it is a
 It is typed (you know if something is a `string`, `number`, `date`, `URL`, etc.) and extensible through [Atomic Schema](schema/intro.md), which means that you can define your own Classes, Properties and Datatypes.
 
 The default serialization format for Atomic Data is [JSON-AD](core/json-ad.md), which is simply JSON where each key is a URL of an Atomic Property.
-These Properties are responsible for setting the datatype (to ensures type-safety) and setting `shortnames` (which help to keep names short) and descriptions (which provide semantic explanations of what a property should be used for).
+These Properties are responsible for setting the `datatype` (to ensure type-safety) and setting `shortnames` (which help to keep names short, for example in JSON serialization) and `descriptions` (which provide semantic explanations of what a property should be used for).
 
 Atomic Data has a standard for communicating state changes called [Commits](commits/intro.md).
 These Commits are signed using cryptographic keys, which ensures that every change can be audited.
 Commits are also used to construct a history of versions.
 
+[Agents](agents.md) are Users that enable authentication.
 Atomic Data can be traversed using [Paths](core/paths.md), or queried using [Collections](schema/collections.md).
+[Hierarchies](hierarchy.md) are used for authorization and keeping data organized.
+[Invites](invitations.md) can be used to easily create new users and provide them with rights.
 
 ## Get Started
 
 If you want to read more about how Atomic Data works - read on.
-If you'd rather play and discover for yourself, play with the existing [tooling](tooling.md):
+If you'd rather play and discover for yourself, play with the existing open source [tooling](tooling.md):
 
-- Server: [atomic-server](https://github.com/joepio/atomic) (powers [atomicdata.dev](https://atomicdata.dev), run with `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`)
-- Browser app [atomic-data-browser](https://github.com/joepio/atomic-data-browser) ([demo](https://joepio.github.io/atomic-data-browser/))
-- CLI (atomic-cli): [atomic-cli](https://github.com/joepio/atomic) (`cargo install atomic-cli`)
-- Rust library: [atomic-lib](https://github.com/joepio/atomic)
+- Browser app [atomic-data-browser](https://github.com/joepio/atomic-data-browser) ([demo on atomicdata.dev](https://atomicdata.dev))
+- Build a react app using [typescript & react libraries](https://github.com/joepio/atomic-data-ts). Start with the [react template on codesandbox](https://codesandbox.io/s/atomic-data-react-template-4y9qu?file=/src/MyResource.tsx)
+- Host your own [atomic-server](https://github.com/joepio/atomic) (powers [atomicdata.dev](https://atomicdata.dev), run with `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`)
+- Discover the command line tool: [atomic-cli](https://github.com/joepio/atomic) (`cargo install atomic-cli`)
+- Use the Rust library: [atomic-lib](https://github.com/joepio/atomic)
 
 Make sure to [join our Discord](https://discord.gg/a72Rv2P) if you'd like to discuss Atomic Data with others.
+Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.
+
+## Status
+
 Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.
 
 ## Reading these docs

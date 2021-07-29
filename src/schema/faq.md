@@ -42,7 +42,14 @@ It is likely that using the URL for keys is also the most _performant_, since it
 
 ## Atomic Data uses a lot of links. How do you deal with links that don't work?
 
-1. Use URIs schemes that use content addressing, such as [IPFS](../interoperability/ipfs.md) URIs.
+Many features in Atomic Data apps depend on the availability of Resources on their subject URL.
+If that server is offline, or the URL has changed, the existing links will break.
+This is a fundamental problem to HTTP, and not unique to Atomic Data.
+Like with websites, hosts should make sure that their server stays available, and that URLs remain static.
+
+One possible solution to this problem, is using Content Addressing, such as the [IPFS](../interoperability/ipfs.md) protocol enables, which is why we're planning for using that in the near future.
+
+Another approach, is using [foreign keys (see issue)](https://github.com/ontola/atomic-data-docs/issues/43).
 
 ## How does Atomic Schema relate to RDF / SHACL / SheX / OWL / RDFS?
 

@@ -24,16 +24,6 @@ The **optional method fields** describe how the data must be changed:
 These commands are executed in the order above.
 This means that you can set `destroy` to `true` and include `set`, which empties the existing resource and sets new values.
 
-## Agent
-
-_url: [https://atomicdata.dev/classes/Agent](https://atomicdata.dev/classes/Agent)_
-
-The Agent is the user / individual / organization / machine that can make changes to data.
-
-The **required fields** are:
-
-- [`publicKey`](https://atomicdata.dev/properties/publicKey) - The key that cryptographically verifies the authenticity of Commits. Base64 serialized Ed25519 key. It's counterpart is the [`privateKey`](https://atomicdata.dev/properties/privateKey), which should _not_ be stored in the Agent resource itself: it should be kept secret.
-
 ### Posting commits using HTTP
 
 Since Commits contains cryptographic proof of authorship, they can be accepted at a public endpoint.

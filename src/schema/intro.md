@@ -33,3 +33,23 @@ This Property does three things:
 Classes can _recommend_ or _require_ a set of Properties.
 They behave as Models, similar to `struts` in C or `interfaces` in Typescript.
 A Resource _could_ have one or more classes, which _could_ provide information about which Properties are expected or required.
+
+**example:**
+
+```json
+{
+  "@id": "https://atomicdata.dev/classes/Agent",
+  "https://atomicdata.dev/properties/description": "An Agent is a user that can create or modify data. It has two keys: a private and a public one. The private key should be kept secret. The public key is used to verify signatures (on [Commits](https://atomicdata.dev/classes/Commit)) set by the of the Agent.",
+  "https://atomicdata.dev/properties/isA": [
+    "https://atomicdata.dev/classes/Class"
+  ],
+  "https://atomicdata.dev/properties/recommends": [
+    "https://atomicdata.dev/properties/name",
+    "https://atomicdata.dev/properties/description"
+  ],
+  "https://atomicdata.dev/properties/requires": [
+    "https://atomicdata.dev/properties/publicKey"
+  ],
+  "https://atomicdata.dev/properties/shortname": "agent"
+}
+```
