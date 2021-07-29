@@ -184,7 +184,8 @@ If you'd rather play and discover for yourself, play with the existing open sour
 <li>Discover the command line tool: <a href="https://github.com/joepio/atomic">atomic-cli</a> (<code>cargo install atomic-cli</code>)</li>
 <li>Use the Rust library: <a href="https://github.com/joepio/atomic">atomic-lib</a></li>
 </ul>
-<p>Make sure to <a href="https://discord.gg/a72Rv2P">join our Discord</a> if you'd like to discuss Atomic Data with others.</p>
+<p>Make sure to <a href="https://discord.gg/a72Rv2P">join our Discord</a> if you'd like to discuss Atomic Data with others.
+Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.</p>
 <h2><a class="header" href="#status" id="status">Status</a></h2>
 <p>Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.</p>
 <h2><a class="header" href="#reading-these-docs" id="reading-these-docs">Reading these docs</a></h2>
@@ -192,6 +193,63 @@ If you'd rather play and discover for yourself, play with the existing open sour
 That being said, feel free to jump around - links are often used to refer to earlier discussed concepts.
 If you encounter any issues while reading, please leave an <a href="https://github.com/ontola/atomic-data/issues">issue on Github</a>.
 Use the arrows on the side / bottom to go to the next page.</p>
+<h2><a class="header" href="#table-of-contents" id="table-of-contents">Table of contents</a></h2>
+<ul>
+<li><a href="atomic-data-overview.html">Atomic Data Overview</a>
+<ul>
+<li><a href="motivation.html">Motivation</a></li>
+<li><a href="when-to-use.html">When (not) to use it</a></li>
+</ul>
+</li>
+<li><a href="core/intro.html">Core</a>
+<ul>
+<li><a href="core/concepts.html">Concepts</a></li>
+<li><a href="core/serialization.html">Serialization</a></li>
+<li><a href="core/json-ad.html">JSON-AD</a></li>
+<li><a href="core/querying.html">Querying</a></li>
+<li><a href="core/paths.html">Paths</a></li>
+</ul>
+</li>
+<li><a href="schema/intro.html">Schema</a>
+<ul>
+<li><a href="schema/classes.html">Classes</a></li>
+<li><a href="schema/datatypes.html">Datatypes</a></li>
+<li><a href="schema/translations.html">Translations</a></li>
+<li><a href="schema/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="schema/collections.html">Collections, filtering, sorting</a></li>
+<li><a href="agents.html">Agents and authentication</a></li>
+<li><a href="invitations.html">Invitations and sharing</a></li>
+<li><a href="commits/intro.html">Commits (writing data)</a>
+<ul>
+<li><a href="commits/concepts.html">Concepts</a></li>
+<li><a href="commits/compare.html">Compared to</a></li>
+</ul>
+</li>
+<li><a href="hierarchy.html">Hierarchy and authorization</a></li>
+<li><a href="endpoints.html">Endpoints</a></li>
+<li><a href="interoperability/intro.html">Interoperability</a>
+<ul>
+<li><a href="interoperability/rdf.html">RDF</a></li>
+<li><a href="interoperability/solid.html">Solid</a></li>
+<li><a href="interoperability/json.html">JSON</a></li>
+<li><a href="interoperability/ipfs.html">IPFS</a></li>
+<li><a href="interoperability/sql.html">SQL</a></li>
+<li><a href="interoperability/graph-database.html">Graph Databases</a></li>
+<li><a href="interoperability/upgrade.html">Your existing project</a></li>
+</ul>
+</li>
+<li><a href="usecases/intro.html">Possible use cases</a>
+<ul>
+<li><a href="usecases/personal-data-store.html">Personal Data Store</a></li>
+<li><a href="usecases/surveys.html">Surveys</a></li>
+</ul>
+</li>
+<li><a href="tooling.html">Software and libraries</a></li>
+</ul>
+<hr />
+<p><a href="get-involved.html">Get involved</a></p>
 <h1><a class="header" href="#motivation-why-atomic-data" id="motivation-why-atomic-data">Motivation: Why Atomic Data?</a></h1>
 <p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
 Using links everywhere in data has amazing merits: links remove ambiguity, they enable exploration, they enable connected datasets.
@@ -392,8 +450,8 @@ It is a <a href="https://www.ecma-international.org/publications-and-standards/s
 </code></pre>
 <h2><a class="header" href="#json-ad-parsers-serializers-and-other-libraries" id="json-ad-parsers-serializers-and-other-libraries">JSON-AD Parsers, serializers and other libraries</a></h2>
 <ul>
-<li><strong>Typescript / Javacript</strong>: <a href="https://github.com/joepio/atomic-data-browser/blob/6105dca3826c2d9a6c965433eff0e75b5615b88d/src/atomic-lib/parse.ts#L6">atomic-data-browser</a> JSON-AD parser.</li>
-<li><strong>Rust</strong>: <a href="https://crates.io/crates/atomic_lib">atomic-lib</a> has a JSON-AD parser / serializer (and does a lot more).</li>
+<li><strong>Typescript / Javacript</strong>: <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/lib</a> JSON-AD parser + in-memory store. Works with <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/react</a> for rendering Atomic Data in React.</li>
+<li><strong>Rust</strong>: <a href="https://crates.io/crates/atomic_lib">atomic_lib</a> has a JSON-AD parser / serializer (and does a lot more).</li>
 </ul>
 <h2><a class="header" href="#canonicalized-json-ad" id="canonicalized-json-ad">Canonicalized JSON-AD</a></h2>
 <p>When you need deterministic serialization of Atomic Data (e.g. when calculating a cryptographic hash or signature, used in Atomic Commits), you can use the following procedure:</p>
