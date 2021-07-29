@@ -28,6 +28,7 @@
   * [IPFS](interoperability/ipfs.md)
   * [SQL](interoperability/sql.md)
   * [Graph Databases](interoperability/graph-database.md)
+  * [Verifiable Credentials](interoperability/verifiable-credentials.md)
   * [Your existing project](interoperability/upgrade.md)
 * [Potential use cases](usecases/intro.md)
   * [Personal Data Store](usecases/personal-data-store.md)
