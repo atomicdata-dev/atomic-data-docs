@@ -30,6 +30,7 @@ If you'd rather play and discover for yourself, play with the existing [tooling]
 - Rust library: [atomic-lib](https://github.com/joepio/atomic)
 
 Make sure to [join our Discord](https://discord.gg/a72Rv2P) if you'd like to discuss Atomic Data with others.
+Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.
 
 ## Reading these docs
 
@@ -38,6 +39,4 @@ That being said, feel free to jump around - links are often used to refer to ear
 If you encounter any issues while reading, please leave an [issue on Github](https://github.com/ontola/atomic-data/issues).
 Use the arrows on the side / bottom to go to the next page.
 
-## Status
-
-Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.
+{{#include SUMMARY.md}}

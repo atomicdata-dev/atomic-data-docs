@@ -1,4 +1,4 @@
-# Table of contents
+## Table of contents
 
 * [Atomic Data Overview](atomic-data-overview.md)
   * [Motivation](motivation.md)
