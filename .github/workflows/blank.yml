@@ -14,8 +14,12 @@ jobs:
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
-          mdbook-version: '0.3.7'
-          # mdbook-version: 'latest'
+          mdbook-version: '0.4.11'
+
+      - name: Install mdbook-linkcheck
+        run: |
+          curl -LSfs https://japaric.github.io/trust/install.sh | \
+            sh -s -- --git Michael-F-Bryan/mdbook-linkcheck
 
       - run: mdbook build
 
