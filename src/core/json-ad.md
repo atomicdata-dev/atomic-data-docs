@@ -30,8 +30,8 @@ Let's look at an example JSON-AD Resource:
 
 ## JSON-AD Parsers, serializers and other libraries
 
-- **Typescript / Javacript**: [atomic-data-browser](https://github.com/joepio/atomic-data-browser/blob/6105dca3826c2d9a6c965433eff0e75b5615b88d/src/atomic-lib/parse.ts#L6) JSON-AD parser.
-- **Rust**: [atomic-lib](https://crates.io/crates/atomic_lib) has a JSON-AD parser / serializer (and does a lot more).
+- **Typescript / Javacript**: [@tomic/lib](https://www.npmjs.com/package/@tomic/lib) JSON-AD parser + in-memory store. Works with [@tomic/react](https://www.npmjs.com/package/@tomic/lib) for rendering Atomic Data in React.
+- **Rust**: [atomic_lib](https://crates.io/crates/atomic_lib) has a JSON-AD parser / serializer (and does a lot more).
 
 ## Canonicalized JSON-AD
 
