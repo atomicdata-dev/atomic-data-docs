@@ -33,6 +33,7 @@
 * [Possible use cases](usecases/intro.md)
   * [Personal Data Store](usecases/personal-data-store.md)
   * [Surveys](usecases/surveys.md)
+  * [Verifiable Credentials](usecases/verifiable-credentials.md)
 * [Software and libraries](tooling.md)
 
 -----------
