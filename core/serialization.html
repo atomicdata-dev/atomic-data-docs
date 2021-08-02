@@ -4,9 +4,7 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Serialization - Atomic Data Docs</title>
-        
-        
-
+                
 
         <!-- Custom HTML head -->
         
@@ -25,8 +23,8 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
         
-
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
         <link rel="stylesheet" href="../tomorrow-night.css">
@@ -34,14 +32,12 @@
 
         <!-- Custom theme stylesheets -->
         
-
-        
-    </head>
+            </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -86,8 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../motivation.html"><strong aria-hidden="true">1.1.</strong> Motivation</a></li><li class="chapter-item expanded "><a href="../when-to-use.html"><strong aria-hidden="true">1.2.</strong> When (not) to use it</a></li></ol></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html" class="active"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/json-ad.html"><strong aria-hidden="true">2.3.</strong> JSON-AD</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.4.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/paths.html"><strong aria-hidden="true">2.5.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/collections.html"><strong aria-hidden="true">4.</strong> Collections, filtering, sorting</a></li><li class="chapter-item expanded "><a href="../agents.html"><strong aria-hidden="true">5.</strong> Agents and authentication</a></li><li class="chapter-item expanded "><a href="../invitations.html"><strong aria-hidden="true">6.</strong> Invitations and sharing</a></li><li class="chapter-item expanded "><a href="../commits/intro.html"><strong aria-hidden="true">7.</strong> Commits (writing data)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../commits/concepts.html"><strong aria-hidden="true">7.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../commits/compare.html"><strong aria-hidden="true">7.2.</strong> Compared to</a></li></ol></li><li class="chapter-item expanded "><a href="../hierarchy.html"><strong aria-hidden="true">8.</strong> Hierarchy and authorization</a></li><li class="chapter-item expanded "><a href="../endpoints.html"><strong aria-hidden="true">9.</strong> Endpoints</a></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">10.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">10.1.</strong> RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/solid.html"><strong aria-hidden="true">10.2.</strong> Solid</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">10.3.</strong> JSON</a></li><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">10.4.</strong> IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/sql.html"><strong aria-hidden="true">10.5.</strong> SQL</a></li><li class="chapter-item expanded "><a href="../interoperability/graph-database.html"><strong aria-hidden="true">10.6.</strong> Graph Databases</a></li><li class="chapter-item expanded "><a href="../interoperability/upgrade.html"><strong aria-hidden="true">10.7.</strong> Your existing project</a></li></ol></li><li class="chapter-item expanded "><a href="../usecases/intro.html"><strong aria-hidden="true">11.</strong> Possible use cases</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usecases/personal-data-store.html"><strong aria-hidden="true">11.1.</strong> Personal Data Store</a></li><li class="chapter-item expanded "><a href="../usecases/surveys.html"><strong aria-hidden="true">11.2.</strong> Surveys</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">12.</strong> Software and libraries</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>
-            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../motivation.html"><strong aria-hidden="true">1.1.</strong> Motivation</a></li><li class="chapter-item expanded "><a href="../when-to-use.html"><strong aria-hidden="true">1.2.</strong> When (not) to use it</a></li></ol></li><li class="chapter-item expanded "><a href="../core/intro.html"><strong aria-hidden="true">2.</strong> Core</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../core/concepts.html"><strong aria-hidden="true">2.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../core/serialization.html" class="active"><strong aria-hidden="true">2.2.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="../core/json-ad.html"><strong aria-hidden="true">2.3.</strong> JSON-AD</a></li><li class="chapter-item expanded "><a href="../core/querying.html"><strong aria-hidden="true">2.4.</strong> Querying</a></li><li class="chapter-item expanded "><a href="../core/paths.html"><strong aria-hidden="true">2.5.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/intro.html"><strong aria-hidden="true">3.</strong> Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="../schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="../schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../schema/collections.html"><strong aria-hidden="true">4.</strong> Collections, filtering, sorting</a></li><li class="chapter-item expanded "><a href="../agents.html"><strong aria-hidden="true">5.</strong> Agents and authentication</a></li><li class="chapter-item expanded "><a href="../invitations.html"><strong aria-hidden="true">6.</strong> Invitations and sharing</a></li><li class="chapter-item expanded "><a href="../commits/intro.html"><strong aria-hidden="true">7.</strong> Commits (writing data)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../commits/concepts.html"><strong aria-hidden="true">7.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../commits/compare.html"><strong aria-hidden="true">7.2.</strong> Compared to</a></li></ol></li><li class="chapter-item expanded "><a href="../hierarchy.html"><strong aria-hidden="true">8.</strong> Hierarchy and authorization</a></li><li class="chapter-item expanded "><a href="../endpoints.html"><strong aria-hidden="true">9.</strong> Endpoints</a></li><li class="chapter-item expanded "><a href="../interoperability/intro.html"><strong aria-hidden="true">10.</strong> Interoperability</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interoperability/rdf.html"><strong aria-hidden="true">10.1.</strong> RDF</a></li><li class="chapter-item expanded "><a href="../interoperability/solid.html"><strong aria-hidden="true">10.2.</strong> Solid</a></li><li class="chapter-item expanded "><a href="../interoperability/json.html"><strong aria-hidden="true">10.3.</strong> JSON</a></li><li class="chapter-item expanded "><a href="../interoperability/ipfs.html"><strong aria-hidden="true">10.4.</strong> IPFS</a></li><li class="chapter-item expanded "><a href="../interoperability/sql.html"><strong aria-hidden="true">10.5.</strong> SQL</a></li><li class="chapter-item expanded "><a href="../interoperability/graph-database.html"><strong aria-hidden="true">10.6.</strong> Graph Databases</a></li><li class="chapter-item expanded "><a href="../interoperability/upgrade.html"><strong aria-hidden="true">10.7.</strong> Your existing project</a></li></ol></li><li class="chapter-item expanded "><a href="../usecases/intro.html"><strong aria-hidden="true">11.</strong> Possible use cases</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usecases/personal-data-store.html"><strong aria-hidden="true">11.1.</strong> Personal Data Store</a></li><li class="chapter-item expanded "><a href="../usecases/surveys.html"><strong aria-hidden="true">11.2.</strong> Surveys</a></li><li class="chapter-item expanded "><a href="../usecases/verifiable-credentials.html"><strong aria-hidden="true">11.3.</strong> Verifiable Credentials</a></li></ol></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">12.</strong> Software and libraries</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../get-involved.html">Get involved</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -111,12 +106,10 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
-                    </div>
+                                            </div>
 
                     <h1 class="menu-title">Atomic Data Docs</h1>
 
@@ -124,16 +117,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        <a href="https://github.com/ontola/atomic-data" title="Git repository" aria-label="Git repository">
+                                                <a href="https://github.com/ontola/atomic-data" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
-                    </div>
+                                            </div>
                 </div>
 
-                
-                <div id="search-wrapper" class="hidden">
+                                <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
@@ -144,7 +134,6 @@
                     </div>
                 </div>
                 
-
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -156,62 +145,52 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#serialization-of-atomic-data" id="serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
+                        <h1 id="serialization-of-atomic-data"><a class="header" href="#serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
 <p>Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.</p>
-<h2><a class="header" href="#json-ad" id="json-ad">JSON-AD</a></h2>
+<h2 id="json-ad"><a class="header" href="#json-ad">JSON-AD</a></h2>
 <p>However, it's recommended to use <a href="json-ad.html"><code>JSON-AD</code></a> (more about that on the next page), which is specifically designed to be a simple, complete and performant format for Atomic Data.</p>
-<h2><a class="header" href="#json-simple" id="json-simple">JSON (simple)</a></h2>
+<h2 id="json-simple"><a class="header" href="#json-simple">JSON (simple)</a></h2>
 <p>Atomic Data is designed to be serializable to clean, simple <a href="../interoperability/json.html">JSON</a>, for usage in (client) apps that don't need to know the full URLs of properties.</p>
-<h2><a class="header" href="#rdf-serialization-formats" id="rdf-serialization-formats">RDF serialization formats</a></h2>
+<h2 id="rdf-serialization-formats"><a class="header" href="#rdf-serialization-formats">RDF serialization formats</a></h2>
 <p>Since Atomic Data is a strict subset of RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples, JSON-LD and <a href="https://ontola.io/blog/rdf-serialization-formats/">other RDF serialization formats</a>.
 However, not all valid RDF is valid Atomic Data.
 Atomic Data is more strict.
 Read more about serializing Atomic Data to RDF in the <a href="../interoperability/rdf.html">RDF interoperability section</a>.</p>
-<h2><a class="header" href="#experimental-serialization-formats" id="experimental-serialization-formats">Experimental serialization formats</a></h2>
+<h2 id="experimental-serialization-formats"><a class="header" href="#experimental-serialization-formats">Experimental serialization formats</a></h2>
 <p>Some experimental ideas for Atomic Data serialization are <a href="https://github.com/ontola/atomic-data/blob/master/src/experimental-serialization.md">written here</a>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
-                            <a rel="prev" href="../core/concepts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../core/concepts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-
-                        
-                            <a rel="next" href="../core/json-ad.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="../core/json-ad.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                    <a rel="prev" href="../core/concepts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../core/concepts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-
-                
-                    <a rel="next" href="../core/json-ad.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="../core/json-ad.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
-            </nav>
+                            </nav>
 
         </div>
 
         
-
-        
-        <!-- Google Analytics Tag -->
+                <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
 
@@ -228,27 +207,22 @@ Read more about serializing Atomic Data to RDF in the <a href="../interoperabili
             }
         </script>
         
-
         
-
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
         
-
         
-
-        
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
-
         
-
     </body>
 </html>
