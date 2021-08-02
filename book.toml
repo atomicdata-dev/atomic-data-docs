@@ -10,3 +10,4 @@ git-repository-url = "https://github.com/ontola/atomic-data"
 git-repository-icon = "fa-github"
 
 [output.linkcheck]
+optional = true
