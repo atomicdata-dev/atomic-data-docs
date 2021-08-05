@@ -240,21 +240,54 @@ Use the arrows on the side / bottom to go to the next page.</p>
 <hr />
 <p><a href="get-involved.html">Get involved</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="motivation-why-atomic-data"><a class="header" href="#motivation-why-atomic-data">Motivation: Why Atomic Data?</a></h1>
-<p>Linked data (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
+<h2 id="give-people-more-control-over-their-data"><a class="header" href="#give-people-more-control-over-their-data">Give people more control over their data</a></h2>
+<p>The world wide web was designed by Tim Berners-Lee to be a decentralized network of servers that help people share information.
+As I'm writing this, it is exactly 30 years ago that the first website has launched.
+Unfortunately, the web today is not the decentralized network it was supposed to be.
+A handful of large tech companies are in control of how the internet is evolving, and where and how our data is being stored.
+The various services that companies like Google and Microsoft offer (often for free) integrate really well with their other services, but are mostly designed to <em>lock you in</em>.
+Vendor lock-in means that it is often difficult to take your information from one app to another.
+This limits innovation, and limits users to decide how they want to interact with their data.
+Companies often have incentives that are not fully aligned with what users want.
+For example, Facebook sorts your newsfeed not to make you satisfied, but to make you spend as much time looking at ads.
+They don't want you to be able to control your own newsfeed.
+Even companies like Apple, that don't have an ad-revenue model, still have a reason to (and very much do) lock you in.
+To make things even worse, even open-source projects made by volunteers often to don't work well together.
+That's not because of bad intentions, that's because it is <em>hard</em> to make things interoperable.</p>
+<p>If we want to change this, we need open tech that works really well together.
+And if we want that, we need to <em>standardize</em>.
+The existing standards are well-suited for documents and webpages, but not for structured personal data.
+If we want to have that, we need to standardize the <em>read-write web</em>, which includes standardizing how items are changed, how their types are checked, how we query lists, and more.
+I want all people to have a (virtual) private server that contains their own data, that they control.
+This <a href="usecases/personal-data-store.html">Personal Data Store</a> could very well be an old smartphone with a broken screen that is always on, running next to your router.</p>
+<p>Atomic Data is designed to be a standard that achieves this.
+But we need more than a standard to get adoption - we need implementations.
+That's why I've been working on a server, various libraries, a GUI and <a href="tooling.html">more</a> - all MIT licensed.
+If Atomic Data will be successful, there will likely be other, better implementations.</p>
+<h2 id="linked-data-is-awesome-but-it-is-too-difficult-for-developers-in-its-current-form"><a class="header" href="#linked-data-is-awesome-but-it-is-too-difficult-for-developers-in-its-current-form">Linked data is awesome, but it is too difficult for developers in its current form</a></h2>
+<p><a href="https://ontola.io/what-is-linked-data/">Linked data</a> (RDF / the semantic web) enables us to use the web as a large, decentralized graph database.
 Using links everywhere in data has amazing merits: links remove ambiguity, they enable exploration, they enable connected datasets.
-Linked Data could help to democratize the web by decentralizing information storage, and giving people more control.
-The Solid Project by Tim Berners-Lee is a great example of why linked data can help to create a more decentralized web.</p>
-<p>At <a href="https://ontola.io/">Ontola</a>, we've been working with linked data quite intensely for the last couple of years.
+But the existing specs are too difficult to use, and that is harming adoption.</p>
+<p>At my company <a href="https://ontola.io/">Ontola</a>, we've been working with linked data quite intensely for the last couple of years.
 We went all-in on RDF, and challenged ourselves to create software that communicates exclusively using it.
 That has been an inspiring, but at times also a frustrating journey.
-While building various production grade apps (e.g. our e-democracy platform <a href="https://argu.co/">Argu.co</a>, which is used by various governments), we had to <a href="https://ontola.io/blog/full-stack-linked-data/">solve many problems</a>.
-How to properly model data in RDF? How to deal with sequences? How to communicate state changes? Converting RDF to HTML? Typing? CORS?
+While building our e-democracy platform <a href="https://argu.co/">Argu.co</a>, we had to <a href="https://ontola.io/blog/full-stack-linked-data/">solve many RDF related problems</a>.
+How to properly model data in RDF? How to deal with <a href="https://ontola.io/blog/ordered-data-in-rdf/">sequences</a>? How to communicate state changes? Which <a href="https://ontola.io/blog/rdf-serialization-formats/">serialization format</a> to use? How to convert <a href="https://ontola.io/blog/rdf-solid-react-tutorial-link/">RDF to HTML, and build a front-end</a>?
 We tackled some of these problems by having a tight grip on the data that we create (e.g. we know the type of data, because we control the resources), and another part is creating new protocols, formats, tools, and libraries.
 But it took a long time, and it was hard.
 It's been almost 15 years since the <a href="https://www.w3.org/DesignIssues/LinkedData.html">introduction of linked data</a>, and its adoption has been slow.
 We know that some of its merits are undeniable, and we truly want the semantic web to succeed.
-We believe the lack of growth partially has to do with a lack of tooling, but also with <a href="interoperability/rdf.html#why-these-changes">some problems that lie in the RDF data model</a>.</p>
-<p>Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.</p>
+I believe the lack of growth partially has to do with a lack of tooling, but also with some problems that lie in the RDF data model.</p>
+<p>Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.
+Read more about <a href="interoperability/rdf.html">how Atomic Data relates to RDF, and why these changes have been made</a>.</p>
+<h2 id="make-it-easier-for-developers-to-build-really-good-interoperable-apps"><a class="header" href="#make-it-easier-for-developers-to-build-really-good-interoperable-apps">Make it easier for developers to build really good, interoperable apps</a></h2>
+<p>Every time a developer builds an application, they have to figure a lot of things out.
+How to design the API, how to implement forms, how to deal with authentication, authorization, versioning, search...
+By having a more complete, strict standard, Atomic Data aims to decrease this burden.
+<a href="schema/intro.html">Atomic Schema</a> enables developers to easily share their datamodels, and re-use those from others.
+<a href="commits/intro.html">Atomic Commits</a> helps developers to deal with versioning, history, undo and audit logs.
+<a href="hierarchy.html">Atomic Hierarchies</a> provides an intuitive model for authorization and access control.
+And finally, the <a href="tooling.html">existing</a> open source libraries, server, GUI and templates help developers to have these features without writing them.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="when-not-to-use-atomic-data"><a class="header" href="#when-not-to-use-atomic-data">When (not) to use Atomic Data</a></h1>
 <h2 id="when-should-you-use-atomic-data"><a class="header" href="#when-should-you-use-atomic-data">When should you use Atomic Data</a></h2>
 <ul>
