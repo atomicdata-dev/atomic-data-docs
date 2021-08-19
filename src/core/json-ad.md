@@ -1,12 +1,14 @@
 # JSON-AD: The Atomic Data serialization format
 
-`JSON-AD` is the _default_ serialization format for Atomic Data.
-It is what the current [Rust](https://github.com/joepio/atomic) and [Typescript / React](https://github.com/joepio/atomic-data-browser) implementation use to communicate.
-It is a [JSON](https://www.ecma-international.org/publications-and-standards/standards/ecma-404/) with a lot of links in it and the following rules:
+Although you an use various serialization formats for Atomic Data, `JSON-AD` is the _default_ serialization format.
+It is what the current [Rust](https://github.com/joepio/atomic) and [Typescript / React](https://github.com/joepio/atomic-data-browser) implementations use to communicate.
+It is designed to feel familiar to developers an to be easy and performant to parse and serialize.
 
-- Every Object is a Resource.
-- Every Key is a Property URL.
-- The `@id` field is special: it defines the Subject of the Resource.
+It uses [JSON](https://www.ecma-international.org/publications-and-standards/standards/ecma-404/), but has some additional constraints:
+
+- Every Object is a `Resource`.
+- Every Key is a [`Property`](https://atomicdata.dev/classes/Property) URL.
+- The `@id` field is special: it defines the `Subject` of the `Resource`.
 - JSON arrays are mapped to [Resource Arrays](https://atomicdata.dev/datatypes/resourceArray)
 - Numbers can be [Integers](https://atomicdata.dev/datatypes/integer), [Timestamps](https://atomicdata.dev/datatypes/timestamp) or [Floats](https://atomicdata.dev/datatypes/float).
 - JSON booleans map to [Booleans](https://atomicdata.dev/datatypes/boolean).
