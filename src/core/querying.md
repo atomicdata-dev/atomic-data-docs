@@ -2,7 +2,7 @@
 
 There are multiple ways of getting Atomic Data into some system:
 
-- [**Atomic Collections**](../schema/collections.md) is a simple way to traverse Atomic Graphs and target specific values
+- [**Atomic Collections**](../schema/collections.md) can filter, sort and paginate resources
 - [**Atomic Paths**](paths.md) is a simple way to traverse Atomic Graphs and target specific values
 - [**Subject Fetching**](#subject-fetching-http) requests a single subject right from its source
 - [**Triple Pattern Fragments**](#triple-pattern-fragments) allows querying for specific (combinations of) Subject, Property and Value.

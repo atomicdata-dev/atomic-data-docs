@@ -14,4 +14,4 @@
 
 - **Internal use only**. If you're not sharing structured data, Atomic Data will probably only make things harder for you.
 - **Big Data**. If you're dealing with TeraBytes of data, you probably don't want to use Atomic Data. The added cost of schema validation and the lack of distributed / large scale persistence tooling makes it not the right choice.
-- **Video / Audio / 3D**. These should have unique, optimized binary representations and have very strict, static schemas. The advantages of linke data do little to improve this, unless it's just for metadata.
+- **Video / Audio / 3D**. These should have unique, optimized binary representations and have very strict, static schemas. The advantages of atomic / linked data do little to improve this, unless it's just for metadata.
