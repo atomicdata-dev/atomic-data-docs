@@ -307,7 +307,7 @@ And finally, the <a href="tooling.html">existing</a> open source libraries, serv
 <ul>
 <li><strong>Internal use only</strong>. If you're not sharing structured data, Atomic Data will probably only make things harder for you.</li>
 <li><strong>Big Data</strong>. If you're dealing with TeraBytes of data, you probably don't want to use Atomic Data. The added cost of schema validation and the lack of distributed / large scale persistence tooling makes it not the right choice.</li>
-<li><strong>Video / Audio / 3D</strong>. These should have unique, optimized binary representations and have very strict, static schemas. The advantages of linke data do little to improve this, unless it's just for metadata.</li>
+<li><strong>Video / Audio / 3D</strong>. These should have unique, optimized binary representations and have very strict, static schemas. The advantages of atomic / linked data do little to improve this, unless it's just for metadata.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-atomic-data"><a class="header" href="#what-is-atomic-data">What is Atomic Data?</a></h1>
 <h2 id="atomic-data"><a class="header" href="#atomic-data">Atomic Data</a></h2>
@@ -494,7 +494,7 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="querying-atomic-data"><a class="header" href="#querying-atomic-data">Querying Atomic Data</a></h1>
 <p>There are multiple ways of getting Atomic Data into some system:</p>
 <ul>
-<li><a href="core/../schema/collections.html"><strong>Atomic Collections</strong></a> is a simple way to traverse Atomic Graphs and target specific values</li>
+<li><a href="core/../schema/collections.html"><strong>Atomic Collections</strong></a> can filter, sort and paginate resources</li>
 <li><a href="core/paths.html"><strong>Atomic Paths</strong></a> is a simple way to traverse Atomic Graphs and target specific values</li>
 <li><a href="core/querying.html#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
 <li><a href="core/querying.html#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Property and Value.</li>
