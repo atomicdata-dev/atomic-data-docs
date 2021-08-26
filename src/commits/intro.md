@@ -2,7 +2,7 @@
 
 _Disclaimer: Work in progress, prone to change._
 
-Atomic Commits is a proposed standard for communicating state changes (events / transactions / patches / deltas / mutations) of [Atomic Data](../core/intro.md).
+Atomic Commits is a proposed standard for communicating state changes (events / transactions / patches / deltas / mutations) of [Atomic Data](../core/concepts.md).
 It is the part of Atomic Data that is concerned with writing, editing, removing and updating information.
 
 ## Design goals

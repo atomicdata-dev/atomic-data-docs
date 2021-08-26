@@ -3,18 +3,19 @@
 Although you an use various serialization formats for Atomic Data, `JSON-AD` is the _default_ serialization format.
 It is what the current [Rust](https://github.com/joepio/atomic) and [Typescript / React](https://github.com/joepio/atomic-data-browser) implementations use to communicate.
 It is designed to feel familiar to developers an to be easy and performant to parse and serialize.
+It is inspired by [JSON-LD](https://json-ld.org/).
 
 It uses [JSON](https://www.ecma-international.org/publications-and-standards/standards/ecma-404/), but has some additional constraints:
 
-- Every Object is a `Resource`.
-- Every Key is a [`Property`](https://atomicdata.dev/classes/Property) URL.
+- Every single Object is a `Resource`.
+- Every Key is a [`Property`](https://atomicdata.dev/classes/Property) URL. Other keys are invalid. Each Property URL must resolve to an online Atomic Data Property.
 - The `@id` field is special: it defines the `Subject` of the `Resource`.
 - JSON arrays are mapped to [Resource Arrays](https://atomicdata.dev/datatypes/resourceArray)
 - Numbers can be [Integers](https://atomicdata.dev/datatypes/integer), [Timestamps](https://atomicdata.dev/datatypes/timestamp) or [Floats](https://atomicdata.dev/datatypes/float).
 - JSON booleans map to [Booleans](https://atomicdata.dev/datatypes/boolean).
 - JSON strings can be many datatypes, including [String](https://atomicdata.dev/datatypes/string), [Markdown](https://atomicdata.dev/datatypes/markdown), [Date](https://atomicdata.dev/datatypes/date) or other.
 - Nested JSON Objects are Nested Resources. A Nested Resource can either be anonymous (without an `@id` subject) or a regular Nested Resource with an `@id` subject.
-- When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.
+- The root data structure must either be a regular Resource, or an Array. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.
 
 Let's look at an example JSON-AD Resource:
 
@@ -29,6 +30,8 @@ Let's look at an example JSON-AD Resource:
   "https://atomicdata.dev/properties/shortname": "description"
 }
 ```
+
+The mime type (for HTTP content negotiation) is `application/ad+json` ([registration ongoing](https://github.com/ontola/atomic-data-docs/issues/60)).
 
 ## JSON-AD Parsers, serializers and other libraries
 
@@ -45,3 +48,7 @@ When you need deterministic serialization of Atomic Data (e.g. when calculating 
 1. The JSON-AD is minified: no newlines, no spaces.
 
 The last two steps of this process is more formally defined by the JSON Canonicalization Scheme (JCS, [rfc8785](https://tools.ietf.org/html/rfc8785)).
+
+## Interoperability with JSON and JSON-LD
+
+[Read more about this subject](../interoperability/json).

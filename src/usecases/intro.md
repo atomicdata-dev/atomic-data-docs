@@ -5,7 +5,7 @@ In this section, we'll present concrete examples of things that can be built wit
 Although you could use Atomic Data for pretty much any type of application, it is especially valuable where **data re-use**, **standardization**, and **data ownership** are important.
 
 <!-- This should align with SUMMARY.md -->
-* [Personal Data Store](usecases/personal-data-store.md)
-* [E-commerce & marketplaces](usecases/e-commerce.md)
-* [Surveys](usecases/surveys.md)
-* [Verifiable Credentials](usecases/verifiable-credentials.md)
+* [Personal Data Store](./personal-data-store.md)
+* [E-commerce & marketplaces](./e-commerce.md)
+* [Surveys](./surveys.md)
+* [Verifiable Credentials](./verifiable-credentials.md)

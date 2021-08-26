@@ -1,5 +1,9 @@
 # Motivation: Why Atomic Data?
 
+<!-- ## Ending the mapping problem
+
+Every time a developer builds an app, they have to define their data model.
+Almost every new app has a `User` with a `name` and an `e-mail` field, and so on. -->
 ## Give people more control over their data
 
 The world wide web was designed by Tim Berners-Lee to be a decentralized network of servers that help people share information.
