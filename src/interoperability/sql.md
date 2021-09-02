@@ -6,14 +6,26 @@ Atomic Data has some characteristics that make it similar and different from SQL
 - Atomic Data separates _reading_ and _writing_, whereas SQL has one language for both.
 - Atomic Data has a standardized way of storing changes ([Commits](../commits/intro.md))
 
-## Dynamic vs static schema
+## Tables and Rows vs. Classes and Properties
 
 At its core, SQL is a query language based around _tables_ and _rows_.
-The _tables_ in SQL are similar to _classes_ in Atomic Data: they both define a set of _properties_ which an item could have.
+The _tables_ in SQL are similar to `Classes` in Atomic Data: they both define a set of `properties` which an item could have.
+Every single item in a table is called a _row_ in SQL, and a `Resource` in Atomic Data.
+
+## Identifiers: numbers vs. URLs
+
+In SQL, rows have numbers as identifiers, whereas in Atomic Data, every resource has a resolvable HTTP URL as an identifier.
+This allows Atomic Data records to be easily re-used by other systems, as there is a guarantee that identifiers will be globally unique.
+
+## Dynamic vs static schema
+
 In SQL, the schema of the database defines which shape the data can have, which properties are required, what datatypes they have.
 In Atomic Data, the schema exists as a Resource on the web, which means that they can be retrieved using HTTP.
-SQL is a centralized, closed system.
-Atomic Data is a decentralized, open system.
+An Atomic Database (such as [Atomic-Server](https://crates.io/crates/atomic-server)) uses a _dynamic schema_,
+which means that any Resource can have different properties, and the properties themselves can be validated, even when the server is not aware of these properties beforehand.
+In SQL, you'd have to manually adjust the schema of your database to add a new property.
+Atomic Data is a decentralized, open system, which can read new schema data from other sources.
+SQL is a centralized, closed system, which relies on the DB manager to define the schema.
 
 ## Querying
 
@@ -40,7 +52,7 @@ So in a way, Atomic Data tries to combine best of both worlds: the extendibility
 
 ### Is Atomic Data transactional / ACID?
 
-Well, if you use Atomic-Server, then you can only write to the server by using Atomic Commits, which are in fact transactions.
+Yes, if you use Atomic-Server, then you can only write to the server by using Atomic Commits, which are in fact transactions.
 This means that if part of the transaction fails, it is reverted - transactions are only applied when they are 100% OK.
 This prevents inconsistent DB states.
 

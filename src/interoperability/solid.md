@@ -17,10 +17,11 @@ But there are some important **differences**, too, which will be explained in mo
 - Atomic Data uses a strict built-in schema to ensure type safety.
 - Atomic Data standardizes state changes (which also provides version control / history, audit trails)
 - Atomic Data is more easily serializable to other formats (like JSON)
-- Atomic Data is less mature, and currently lacks things like authentication and hierarchy
+- Atomic Data has a different model for Authorzation and Hierarchies
+- Atomic Data is less mature, and currently lacks things like authentication for read Access
 
-Disclaimer: I've been quite involved in the development of Solid, and have a lot of respect for all the people who are working on it.
-The following is not meant as a critique on Solid, let alone the individuals working on it.
+_Disclaimer: I've been quite involved in the development of Solid, and have a lot of respect for all the people who are working on it.
+The following is not meant as a critique on Solid, let alone the individuals working on it._
 
 ## Atomic Data is type-safe, because of its built-in schema
 
@@ -63,13 +64,18 @@ Atomic Data uses `shortnames` to map properties to short, human-readable strings
 
 For more information about these differences, see the previous [RDF chapter](./rdf.md).
 
+## Hierarchy model and authorization
+
+Atomic Data uses `parent-child` hierarchies to model data and performan authorization checks.
+This closely resembles how filesystems work, and is therefore familiar to most users.
+Solid uses
+
 ## Solid is more mature
 
 Atomic Data has significant gaps at this moment - not just in the implementations, but also in the spec.
 This makes it not yet usable for most applications.
 Here's a list of things missing in Atomic Data, with links to their open issues and links to their existing Solid counterpart.
 
-- No way to restrict access to reading content. Only for writing content with Commits. [WAC](https://github.com/solid/web-access-control-spec) in Solid. Also, [No hierarchy model](https://github.com/ontola/atomic-data/issues/18). [ShapeTrees in Solid](https://shapetrees.org/TR/specification/index.html#ecosystem). (We're working on an implementation of a hierarchy with authorization, see [issue](https://github.com/ontola/atomic-data/issues/18))
+- No way yet to restrict access to reading content. Only for writing content with Commits. [WAC](https://github.com/solid/web-access-control-spec) in Solid.
 - No inbox or [notifications](https://www.w3.org/TR/ldn/) ([issue](https://github.com/ontola/atomic-data/issues/28))
-- No way to discover content from user ID.
 - No support from a big community, a well-funded business or the inventor of the world wide web.
