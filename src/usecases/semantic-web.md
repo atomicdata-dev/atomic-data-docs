@@ -2,18 +2,23 @@
 
 The term 'Semantic Web' was popularized in [a paper of the same name](https://www-sop.inria.fr/acacia/cours/essi2006/Scientific%20American_%20Feature%20Article_%20The%20Semantic%20Web_%20May%202001.pdf) published in 2001 by three people, including the inventor of the World Wide Web: Tim Berners-Lee.
 In this paper, a vision was shared for how a higher degree of standardization on the internet could lead to a bunch of interesting innovations.
-For example, it describes how an appointment for a hairdresser is scheduled automatically, by using information about the preferences and location of the individual.
+For example, it describes how an appointment for a doctor is scheduled automatically by a "semantic agent", by checking the location of the person, comparing that to doctors in the area, getting reviews and checking the availability in the calendar.
 By making the web machine-readable, we could get far more interoperability and therefore new applications that make our lives easier.
 All of this would have been made possible by using linked data.
 
-It has been 20 years since this paper, and it is indeed easier then ever to make an appointment with a hairdresser.
-However, this problem and many similar ones have not been solved by the semantic web: they have been solved by big companies that know everything about us, and have monopolized so much of the data on the internet.
-Tech giants like Google and Microsoft have created ecosystems that integrate many types of (free) services, have huge databases containing all kinds of related stuff, and as a result, provide us with nice experiences.
+It has been 20 years since this paper, and it is indeed easier then ever to make an appointment with a professional.
+If can yell "hairdresser" at my phone, and I instantly see the nearest one with a high rating with a 'book now' button that checks our calendars.
+So... we made it?
+Unfortunately, this problem and many similar ones have not been solved by the semantic web: they have been solved by big companies that know everything about us, and have monopolized so much of the data on the internet.
+Tech giants like Google and Microsoft have created ecosystems that integrate many types of (free) services, have huge databases containing all kinds of related stuff, and as a result, provide us with nice user experiences.
 A high degree of _centralization_, instead of _standardization_, turned out to be a sufficient solution, too.
 But of course, this centralized approach comes at a serious cost.
-First problem is we get _vendor lock-in_, which means that it becomes harder to switch from service to service.
+The first problem is we get _vendor lock-in_, which means that it becomes harder to switch from service to service.
 We can't take our data from Whatsapp and take it to Telegram, for example, or our Twitter feed to Mastadon.
-The second problem is that
+The second problem is that our usage goals do not align with the tech giants.
+We might want to see a list of recent activity from our friends when we open facebook, but facebook's investors might want us to simply look at as much ads as possible.
+
+But of course, the internet isn't just tech giants - there are a lot of enthousiasts that really want to see the decentralized, semantic web succeed.
 
 The Semantic Web wasn't just an idea and a paper - there were a lot of standards involved, all of which were properly defined and managed by the W3C, the organization that standardizes so much of our web.
 But the adoption of most of these standards is pretty low, unfortunately.
@@ -32,6 +37,8 @@ You can read more about this journey in [full-stack linked data](https://ontola.
 The Semantic Web community actually built
 
 ### A lack of proper RDF tools
+
+A lack
 
 ### No business incentive to make data highly accessible
 

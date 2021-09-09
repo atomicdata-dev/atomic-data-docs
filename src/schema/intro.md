@@ -1,8 +1,9 @@
 # Atomic Schema
 
 Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
-You can compare it to what XSD is for XML.
-Atomic Schema deals with validating and constraining the shape of data - it checks if all required properties are present, and whether the values conform to the datatype requirements (e.g. `datetime`, or `URL`).
+You can compare it to UML diagrams, or what XSD is for XML.
+Atomic Schema deals with validating and constraining the shape of data.
+It is designed for checking if all the required properties are present, and whether the values conform to the datatype requirements (e.g. `datetime`, or `URL`).
 
 This section will define various Classes, Properties and Datatypes (discussed in [Atomic Core: Concepts](../core/concepts.md)).
 
@@ -20,12 +21,13 @@ This section will define various Classes, Properties and Datatypes (discussed in
 
 In short, Atomic Schema works like this:
 
-The Property _field_ in an Atom links to a **Property _Resource_**. It is important that the URL to the Property Resource resolves.
+The Property _field_ in an Atom, or the _key_ in a JSON-AD object, links to a **Property _Resource_**.
+It is important that the URL to the Property Resource resolves, as others can re-use it and check its datatype.
 This Property does three things:
 
-1. it tells something about its semantic meaning, and links to a Datatype.
-1. it links to a Datatype or Class, which indicates which Value is acceptable.
-1. it provides a Shortname, which is used for ORM.
+1. it links to a **Datatype** which indicates which Value is acceptable.
+1. it has a **description** which tells you what the property means, what the relationship between the Subject and the Value means.
+1. it provides a **Shortname**, which is sometimes used as an alternative to the full URL of the Property.
 
 **DataTypes** define the shape of the Value, e.g. a Number (`124`) or Boolean (`true`).
 

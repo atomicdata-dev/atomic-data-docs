@@ -1,9 +1,12 @@
 # What is Atomic Data?
 
-## Atomic Data
+## Atomic Data Core
 
-Atomic Data is a data model for sharing information on the web.
-It can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
+Atomic Data is a modular specification for sharing information on the web.
+Since Atomic Data is a _modular_ specification, you can mostly take what you want to use, and ignore the rest.
+The _Core_ part, however,is the only _required_ part of the specification, as all others depend on it.
+
+Atomic Data Core can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
 It's designed to be easily serializable to both JSON and linked data formats.
 It is _typed_ data model, which means that every value should be validated and predictable.
 
@@ -15,15 +18,15 @@ It is a directed, labeled graph, similar to RDF, so contrary to some other (labe
 * **Semantic**: Every data Atom and relation has a clear semantic meaning.
 * **Interoperable**: Plays nice with other data formats (e.g. JSON, XML, and all RDF formats).
 * **Open**: Free to use, open source, no strings attached.
-* **Clear Ownership**: The data shows who is in control of the data, so new versions of the data can easily be retrieved.
+* **Clear Ownership**: The data shows who (or which domain) is in control of the data, so new versions of the data can easily be retrieved.
 * **Mergeable**: Any two sets of Atoms can be merged into a single graph without any merge conflicts / name collisions.
 * **Extensible**: Anyone can define their own data types and create Atoms with it.
-* **ORM-friendly**: Navigate a _decentralized_ graph by using dot.syntax, similar to how you navigate a JSON object in javascript.
-* **Typed**: All valid Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming language models, such as `structs` or `interfaces` in Typescript / Rust / Go.
+* **ORM-friendly**: Navigate a _decentralized_ graph by using `dot.syntax`, similar to how you navigate a JSON object in javascript.
+* **Type-safe**: All valid Atomic data has an unambiguous, static datatype.
 
 ## Resource
 
-A Resource is a bunch of information about a thing, referenced by a single link (the Subject).
+A _Resource_ is a bunch of information about a thing, referenced by a single link (the Subject).
 Formally, it is a set of Atoms (i.e. a Graph) that share a Subject URL.
 You can think of a Resource as a single row in a spreadsheet or database.
 In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
@@ -32,7 +35,7 @@ A Property can only occur once in every Resource.
 
 ## Atom (or Atomic Triple)
 
-Every Resource is composed of Atoms.
+Every Resource is composed of _Atoms_.
 The Atom is the smallest possible piece of _meaningful_ data / information (hence the name).
 You can think of an Atom as a single cell in a spreadsheet or database.
 An Atom consists of three fields:
