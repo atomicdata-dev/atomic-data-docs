@@ -147,12 +147,12 @@
                 <div id="content" class="content">
                     <main>
                         <p><img src="assets/atomic_data_logo_stroke.svg" alt="# Atomic Data Docs - Overview" /></p>
-<p>Atomic Data is a specification for sharing, modifying and modeling graph data.</p>
+<p>Atomic Data is a modular specification for sharing, modifying and modeling graph data.</p>
 <p>It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.</p>
 <p>Atomic Data is especially suitable for knowledge graphs, distributed datasets, semantic data, p2p applications, decentralized apps and linked open data.
 It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.</p>
 <p>Atomic Data is <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, as it is a <a href="interoperability/rdf.html">strict subset of RDF</a>.
-It is typed (you know if something is a <code>string</code>, <code>number</code>, <code>date</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.</p>
+It is type-safe (you know if something is a <code>string</code>, <code>number</code>, <code>date</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.</p>
 <p>The default serialization format for Atomic Data is <a href="core/json-ad.html">JSON-AD</a>, which is simply JSON where each key is a URL of an Atomic Property.
 These Properties are responsible for setting the <code>datatype</code> (to ensure type-safety) and setting <code>shortnames</code> (which help to keep names short, for example in JSON serialization) and <code>descriptions</code> (which provide semantic explanations of what a property should be used for).</p>
 <p>Atomic Data has a standard for communicating state changes called <a href="commits/intro.html">Commits</a>.
@@ -311,9 +311,11 @@ And finally, the <a href="tooling.html">existing</a> open source libraries, serv
 <li><strong>Video / Audio / 3D</strong>. These should have unique, optimized binary representations and have very strict, static schemas. The advantages of atomic / linked data do little to improve this, unless it's just for metadata.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-atomic-data"><a class="header" href="#what-is-atomic-data">What is Atomic Data?</a></h1>
-<h2 id="atomic-data"><a class="header" href="#atomic-data">Atomic Data</a></h2>
-<p>Atomic Data is a data model for sharing information on the web.
-It can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
+<h2 id="atomic-data-core"><a class="header" href="#atomic-data-core">Atomic Data Core</a></h2>
+<p>Atomic Data is a modular specification for sharing information on the web.
+Since Atomic Data is a <em>modular</em> specification, you can mostly take what you want to use, and ignore the rest.
+The <em>Core</em> part, however,is the only <em>required</em> part of the specification, as all others depend on it.</p>
+<p>Atomic Data Core can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
 It's designed to be easily serializable to both JSON and linked data formats.
 It is <em>typed</em> data model, which means that every value should be validated and predictable.</p>
 <p>It is a directed, labeled graph, similar to RDF, so contrary to some other (labeled) graph data models (e.g. NEO4j), a relationship between two items (Resources) does not have attributes.</p>
@@ -323,21 +325,21 @@ It is <em>typed</em> data model, which means that every value should be validate
 <li><strong>Semantic</strong>: Every data Atom and relation has a clear semantic meaning.</li>
 <li><strong>Interoperable</strong>: Plays nice with other data formats (e.g. JSON, XML, and all RDF formats).</li>
 <li><strong>Open</strong>: Free to use, open source, no strings attached.</li>
-<li><strong>Clear Ownership</strong>: The data shows who is in control of the data, so new versions of the data can easily be retrieved.</li>
+<li><strong>Clear Ownership</strong>: The data shows who (or which domain) is in control of the data, so new versions of the data can easily be retrieved.</li>
 <li><strong>Mergeable</strong>: Any two sets of Atoms can be merged into a single graph without any merge conflicts / name collisions.</li>
 <li><strong>Extensible</strong>: Anyone can define their own data types and create Atoms with it.</li>
-<li><strong>ORM-friendly</strong>: Navigate a <em>decentralized</em> graph by using dot.syntax, similar to how you navigate a JSON object in javascript.</li>
-<li><strong>Typed</strong>: All valid Atomic data has an unambiguous, static datatype. Models expressed in Atomic Data can be mapped to programming language models, such as <code>structs</code> or <code>interfaces</code> in Typescript / Rust / Go.</li>
+<li><strong>ORM-friendly</strong>: Navigate a <em>decentralized</em> graph by using <code>dot.syntax</code>, similar to how you navigate a JSON object in javascript.</li>
+<li><strong>Type-safe</strong>: All valid Atomic data has an unambiguous, static datatype.</li>
 </ul>
 <h2 id="resource"><a class="header" href="#resource">Resource</a></h2>
-<p>A Resource is a bunch of information about a thing, referenced by a single link (the Subject).
+<p>A <em>Resource</em> is a bunch of information about a thing, referenced by a single link (the Subject).
 Formally, it is a set of Atoms (i.e. a Graph) that share a Subject URL.
 You can think of a Resource as a single row in a spreadsheet or database.
 In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
 A Resource consists of at least one Atom, so it always has some Property and some Value.
 A Property can only occur once in every Resource.</p>
 <h2 id="atom-or-atomic-triple"><a class="header" href="#atom-or-atomic-triple">Atom (or Atomic Triple)</a></h2>
-<p>Every Resource is composed of Atoms.
+<p>Every Resource is composed of <em>Atoms</em>.
 The Atom is the smallest possible piece of <em>meaningful</em> data / information (hence the name).
 You can think of an Atom as a single cell in a spreadsheet or database.
 An Atom consists of three fields:</p>
@@ -623,8 +625,9 @@ This means that we still have a unique, globally resolvable identifier - yay!</p
 <p>Install the <a href="https://github.com/joepio/atomic/blob/master/cli/README.md"><code>atomic-cli</code></a> software and run <code>atomic-cli get https://atomicdata.dev/classes/Class description</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-schema"><a class="header" href="#atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
-You can compare it to what XSD is for XML.
-Atomic Schema deals with validating and constraining the shape of data - it checks if all required properties are present, and whether the values conform to the datatype requirements (e.g. <code>datetime</code>, or <code>URL</code>).</p>
+You can compare it to UML diagrams, or what XSD is for XML.
+Atomic Schema deals with validating and constraining the shape of data.
+It is designed for checking if all the required properties are present, and whether the values conform to the datatype requirements (e.g. <code>datetime</code>, or <code>URL</code>).</p>
 <p>This section will define various Classes, Properties and Datatypes (discussed in <a href="schema/../core/concepts.html">Atomic Core: Concepts</a>).</p>
 <h2 id="design-goals-1"><a class="header" href="#design-goals-1">Design Goals</a></h2>
 <ul>
@@ -638,12 +641,13 @@ Atomic Schema deals with validating and constraining the shape of data - it chec
 </ul>
 <h2 id="in-short"><a class="header" href="#in-short">In short</a></h2>
 <p>In short, Atomic Schema works like this:</p>
-<p>The Property <em>field</em> in an Atom links to a <strong>Property <em>Resource</em></strong>. It is important that the URL to the Property Resource resolves.
+<p>The Property <em>field</em> in an Atom, or the <em>key</em> in a JSON-AD object, links to a <strong>Property <em>Resource</em></strong>.
+It is important that the URL to the Property Resource resolves, as others can re-use it and check its datatype.
 This Property does three things:</p>
 <ol>
-<li>it tells something about its semantic meaning, and links to a Datatype.</li>
-<li>it links to a Datatype or Class, which indicates which Value is acceptable.</li>
-<li>it provides a Shortname, which is used for ORM.</li>
+<li>it links to a <strong>Datatype</strong> which indicates which Value is acceptable.</li>
+<li>it has a <strong>description</strong> which tells you what the property means, what the relationship between the Subject and the Value means.</li>
+<li>it provides a <strong>Shortname</strong>, which is sometimes used as an alternative to the full URL of the Property.</li>
 </ol>
 <p><strong>DataTypes</strong> define the shape of the Value, e.g. a Number (<code>124</code>) or Boolean (<code>true</code>).</p>
 <p><strong>Classes</strong> are a special kind of Resource that describe an abstract class of things (such as &quot;Person&quot; or &quot;Blog&quot;).

@@ -147,8 +147,9 @@
                     <main>
                         <h1 id="atomic-schema"><a class="header" href="#atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
-You can compare it to what XSD is for XML.
-Atomic Schema deals with validating and constraining the shape of data - it checks if all required properties are present, and whether the values conform to the datatype requirements (e.g. <code>datetime</code>, or <code>URL</code>).</p>
+You can compare it to UML diagrams, or what XSD is for XML.
+Atomic Schema deals with validating and constraining the shape of data.
+It is designed for checking if all the required properties are present, and whether the values conform to the datatype requirements (e.g. <code>datetime</code>, or <code>URL</code>).</p>
 <p>This section will define various Classes, Properties and Datatypes (discussed in <a href="../core/concepts.html">Atomic Core: Concepts</a>).</p>
 <h2 id="design-goals"><a class="header" href="#design-goals">Design Goals</a></h2>
 <ul>
@@ -162,12 +163,13 @@ Atomic Schema deals with validating and constraining the shape of data - it chec
 </ul>
 <h2 id="in-short"><a class="header" href="#in-short">In short</a></h2>
 <p>In short, Atomic Schema works like this:</p>
-<p>The Property <em>field</em> in an Atom links to a <strong>Property <em>Resource</em></strong>. It is important that the URL to the Property Resource resolves.
+<p>The Property <em>field</em> in an Atom, or the <em>key</em> in a JSON-AD object, links to a <strong>Property <em>Resource</em></strong>.
+It is important that the URL to the Property Resource resolves, as others can re-use it and check its datatype.
 This Property does three things:</p>
 <ol>
-<li>it tells something about its semantic meaning, and links to a Datatype.</li>
-<li>it links to a Datatype or Class, which indicates which Value is acceptable.</li>
-<li>it provides a Shortname, which is used for ORM.</li>
+<li>it links to a <strong>Datatype</strong> which indicates which Value is acceptable.</li>
+<li>it has a <strong>description</strong> which tells you what the property means, what the relationship between the Subject and the Value means.</li>
+<li>it provides a <strong>Shortname</strong>, which is sometimes used as an alternative to the full URL of the Property.</li>
 </ol>
 <p><strong>DataTypes</strong> define the shape of the Value, e.g. a Number (<code>124</code>) or Boolean (<code>true</code>).</p>
 <p><strong>Classes</strong> are a special kind of Resource that describe an abstract class of things (such as &quot;Person&quot; or &quot;Blog&quot;).

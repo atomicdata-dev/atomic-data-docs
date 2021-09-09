@@ -146,12 +146,12 @@
                 <div id="content" class="content">
                     <main>
                         <p><img src="assets/atomic_data_logo_stroke.svg" alt="# Atomic Data Docs - Overview" /></p>
-<p>Atomic Data is a specification for sharing, modifying and modeling graph data.</p>
+<p>Atomic Data is a modular specification for sharing, modifying and modeling graph data.</p>
 <p>It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.</p>
 <p>Atomic Data is especially suitable for knowledge graphs, distributed datasets, semantic data, p2p applications, decentralized apps and linked open data.
 It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.</p>
 <p>Atomic Data is <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, as it is a <a href="interoperability/rdf.html">strict subset of RDF</a>.
-It is typed (you know if something is a <code>string</code>, <code>number</code>, <code>date</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.</p>
+It is type-safe (you know if something is a <code>string</code>, <code>number</code>, <code>date</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.</p>
 <p>The default serialization format for Atomic Data is <a href="core/json-ad.html">JSON-AD</a>, which is simply JSON where each key is a URL of an Atomic Property.
 These Properties are responsible for setting the <code>datatype</code> (to ensure type-safety) and setting <code>shortnames</code> (which help to keep names short, for example in JSON serialization) and <code>descriptions</code> (which provide semantic explanations of what a property should be used for).</p>
 <p>Atomic Data has a standard for communicating state changes called <a href="commits/intro.html">Commits</a>.
