@@ -243,6 +243,11 @@ The result
 
 It uses the [JSON-Pointer spec](http://tools.ietf.org/html/rfc6901) for denoting `path`s.
 It has quite a bunch of implementations, in various languages.
+<!--
+## m-ld
+
+[m-ld](https://m-ld.org/doc/) is a specification that uses JSON-LD to enable real-time collaboration.
+It is fundamentally decentralized -->
 
 ## Atomic Commits
 

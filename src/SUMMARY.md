@@ -39,4 +39,5 @@
 
 -----------
 
+[Newsletter](newsletter.md)
 [Get involved](get-involved.md)

@@ -51,4 +51,4 @@ The last two steps of this process is more formally defined by the JSON Canonica
 
 ## Interoperability with JSON and JSON-LD
 
-[Read more about this subject](../interoperability/json).
+[Read more about this subject](../interoperability/json.md).
