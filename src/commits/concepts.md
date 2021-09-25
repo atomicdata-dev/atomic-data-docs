@@ -10,7 +10,7 @@ It is cryptographically signed by an [Agent](https://atomicdata.dev/classes/Agen
 
 The **required fields** are:
 
-- `subject` - The thing being changed. A Resource Subject URL that the Commit is providing information about.
+- `subject` - The thing being changed. A Resource Subject URL (HTTP identifier) that the Commit is changing about. A Commit Subject must not contain query parameters, as these are reserved for dynamic resources.
 - `signer` - Who's making the change. The Atomic URL of the Author's profile - which in turn must contain a `publicKey`.
 - `signature` - Cryptographic proof of the change. A hash of the JSON-AD serialized Commit (without the `signature` field), signed by the Agent's `private-key`. This proves that the author is indeed the one who created this exact commit. The signature of the Commit is also used as the identifier of the commit.
 - `created-at` - When the change was made. A UNIX timestamp number of when the commit was created.
