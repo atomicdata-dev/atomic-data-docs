@@ -1012,7 +1012,7 @@ It can be used for auditing, versioning and feeds.
 It is cryptographically signed by an <a href="https://atomicdata.dev/classes/Agent">Agent</a>.</p>
 <p>The <strong>required fields</strong> are:</p>
 <ul>
-<li><code>subject</code> - The thing being changed. A Resource Subject URL that the Commit is providing information about.</li>
+<li><code>subject</code> - The thing being changed. A Resource Subject URL (HTTP identifier) that the Commit is changing about. A Commit Subject must not contain query parameters, as these are reserved for dynamic resources.</li>
 <li><code>signer</code> - Who's making the change. The Atomic URL of the Author's profile - which in turn must contain a <code>publicKey</code>.</li>
 <li><code>signature</code> - Cryptographic proof of the change. A hash of the JSON-AD serialized Commit (without the <code>signature</code> field), signed by the Agent's <code>private-key</code>. This proves that the author is indeed the one who created this exact commit. The signature of the Commit is also used as the identifier of the commit.</li>
 <li><code>created-at</code> - When the change was made. A UNIX timestamp number of when the commit was created.</li>
