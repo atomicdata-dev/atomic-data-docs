@@ -433,7 +433,8 @@ It does not have its own subject.</p>
   }
 }
 </code></pre>
-<p>A Nested Resource often does not have its own subject (<code>@id</code>), but it <em>does</em> have its own unique <a href="core/./paths.html">path</a>, which can be used as its identifier.</p>
+<p>Nested Resources can be <em>named</em> or <em>anonymous</em>. An <em>Anonymous Nested Resource</em> does not have it's own <code>@id</code> field.
+It <em>does</em> have its own unique <a href="core/./paths.html">path</a>, which can be used as its identifier.</p>
 <p>In the next chapter, we'll explore how Atomic Data is serialized.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="serialization-of-atomic-data"><a class="header" href="#serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
 <p>Atomic Data is not necessarily bound to a single serialization format.
@@ -463,8 +464,8 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 <li>Numbers can be <a href="https://atomicdata.dev/datatypes/integer">Integers</a>, <a href="https://atomicdata.dev/datatypes/timestamp">Timestamps</a> or <a href="https://atomicdata.dev/datatypes/float">Floats</a>.</li>
 <li>JSON booleans map to <a href="https://atomicdata.dev/datatypes/boolean">Booleans</a>.</li>
 <li>JSON strings can be many datatypes, including <a href="https://atomicdata.dev/datatypes/string">String</a>, <a href="https://atomicdata.dev/datatypes/markdown">Markdown</a>, <a href="https://atomicdata.dev/datatypes/date">Date</a> or other.</li>
-<li>Nested JSON Objects are Nested Resources. A Nested Resource can either be anonymous (without an <code>@id</code> subject) or a regular Nested Resource with an <code>@id</code> subject.</li>
-<li>The root data structure must either be a regular Resource, or an Array. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.</li>
+<li>Nested JSON Objects are Nested Resources. A Nested Resource can either be <em>Anonymous</em> (without an <code>@id</code> subject) or a Named Nested Resource with an <code>@id</code> subject. Everywhere a Subject URL can be used as a value (i.e. all properties with the datatype <a href="https://atomicdata.dev/datatypes/atomicURL">atomicURL</a>), a Nested Resource can be used instead. This also means that an item in an <code>ResourceArray</code> can be a Nested Resource.</li>
+<li>The root data structure must either be a Named Resource (with an <code>@id</code>), or an Array containing Named Resources. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.</li>
 </ul>
 <p>Let's look at an example JSON-AD Resource:</p>
 <pre><code class="language-json">{
@@ -478,6 +479,14 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 }
 </code></pre>
 <p>The mime type (for HTTP content negotiation) is <code>application/ad+json</code> (<a href="https://github.com/ontola/atomic-data-docs/issues/60">registration ongoing</a>).</p>
+<h2 id="nested-anonymous-and-named-resources"><a class="header" href="#nested-anonymous-and-named-resources">Nested, Anonymous and Named resources</a></h2>
+<p>In JSON-AD, a Resource can be respresented in multiple ways:</p>
+<ul>
+<li><strong>Subject</strong>: A URL string, such as <code>https://atomicdata.dev/classes/Class</code>.</li>
+<li><strong>Named Resource</strong>: A JSON Object with an <code>@id</code> field containing the Subject.</li>
+<li><strong>Anonymous Nested Resource</strong> A JSON Object without an <code>@id</code> field. This is only possible if it is a Nested Resource, which means that it has a parent Resource.</li>
+</ul>
+<p>Note that this is also valid for <code>ResourceArrays</code>, which usually only contain Subjects, but are allowed to contain Nested Resources.</p>
 <h2 id="json-ad-parsers-serializers-and-other-libraries"><a class="header" href="#json-ad-parsers-serializers-and-other-libraries">JSON-AD Parsers, serializers and other libraries</a></h2>
 <ul>
 <li><strong>Typescript / Javacript</strong>: <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/lib</a> JSON-AD parser + in-memory store. Works with <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/react</a> for rendering Atomic Data in React.</li>
@@ -896,6 +905,7 @@ These lists often need to be paginated, sorted, and filtered.
 For dealing with these problems, we have Atomic Collections.</p>
 <p>An Atomic Collection is a Resource that links to a set of resources.
 Note that Collections are designed to be <em>dynamic resources</em>, often (partially) generated at runtime.
+Collections are <a href="schema/../endpoints.html">Endpoints</a>, which means that part of their properties are calculated server-side.
 Collections have various filters (<code>subject</code>, <code>property</code>, <code>value</code>) that can help to build a useful query.</p>
 <ul>
 <li><code>members</code>: How many items (members) are visible per page.</li>
@@ -1342,6 +1352,11 @@ Because Endpoints are resources, they can be defined and read programmatically.
 This means that it's possible to render Endpoints as forms.</p>
 <p>The most important property in an Endpoint is <a href="https://atomicdata.dev/properties/endpoint/parameters"><code>parameters</code></a>, which is the list of Properties that can be filled in.</p>
 <p>You can find a list of Endpoints supported by Atomic-Server on <a href="https://atomicdata.dev/endpoints">atomicdata.dev/endpoints</a>.</p>
+<p>Endpoint Resources are <em>dynamic</em>, because their properties could be calculated server-side.
+When a Property tends to be calculated server-side, they will have a <a href="https://atomicdata.dev/properties/isDynamic"><code>isDynamic</code> property</a> set to <code>true</code>, which tells the client that it's probably useless to try to overwrite it.</p>
+<p>A Server can also send a partial Resource for an Endpoint to the client, which means that some properties may be missing.
+When this is the case, the Resource will have an <a href="https://atomicdata.dev/properties/incomplete"><code>incomplete</code></a> property set to <code>true</code>.
+This tells the client that it has to individually fetch the resource from the server to get the full body.</p>
 <h2 id="design-goals-6"><a class="header" href="#design-goals-6">Design Goals</a></h2>
 <ul>
 <li><strong>Familiar API</strong>: should look like something that most developers already know</li>

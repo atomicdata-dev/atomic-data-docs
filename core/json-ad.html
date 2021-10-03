@@ -159,8 +159,8 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 <li>Numbers can be <a href="https://atomicdata.dev/datatypes/integer">Integers</a>, <a href="https://atomicdata.dev/datatypes/timestamp">Timestamps</a> or <a href="https://atomicdata.dev/datatypes/float">Floats</a>.</li>
 <li>JSON booleans map to <a href="https://atomicdata.dev/datatypes/boolean">Booleans</a>.</li>
 <li>JSON strings can be many datatypes, including <a href="https://atomicdata.dev/datatypes/string">String</a>, <a href="https://atomicdata.dev/datatypes/markdown">Markdown</a>, <a href="https://atomicdata.dev/datatypes/date">Date</a> or other.</li>
-<li>Nested JSON Objects are Nested Resources. A Nested Resource can either be anonymous (without an <code>@id</code> subject) or a regular Nested Resource with an <code>@id</code> subject.</li>
-<li>The root data structure must either be a regular Resource, or an Array. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.</li>
+<li>Nested JSON Objects are Nested Resources. A Nested Resource can either be <em>Anonymous</em> (without an <code>@id</code> subject) or a Named Nested Resource with an <code>@id</code> subject. Everywhere a Subject URL can be used as a value (i.e. all properties with the datatype <a href="https://atomicdata.dev/datatypes/atomicURL">atomicURL</a>), a Nested Resource can be used instead. This also means that an item in an <code>ResourceArray</code> can be a Nested Resource.</li>
+<li>The root data structure must either be a Named Resource (with an <code>@id</code>), or an Array containing Named Resources. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.</li>
 </ul>
 <p>Let's look at an example JSON-AD Resource:</p>
 <pre><code class="language-json">{
@@ -174,6 +174,14 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 }
 </code></pre>
 <p>The mime type (for HTTP content negotiation) is <code>application/ad+json</code> (<a href="https://github.com/ontola/atomic-data-docs/issues/60">registration ongoing</a>).</p>
+<h2 id="nested-anonymous-and-named-resources"><a class="header" href="#nested-anonymous-and-named-resources">Nested, Anonymous and Named resources</a></h2>
+<p>In JSON-AD, a Resource can be respresented in multiple ways:</p>
+<ul>
+<li><strong>Subject</strong>: A URL string, such as <code>https://atomicdata.dev/classes/Class</code>.</li>
+<li><strong>Named Resource</strong>: A JSON Object with an <code>@id</code> field containing the Subject.</li>
+<li><strong>Anonymous Nested Resource</strong> A JSON Object without an <code>@id</code> field. This is only possible if it is a Nested Resource, which means that it has a parent Resource.</li>
+</ul>
+<p>Note that this is also valid for <code>ResourceArrays</code>, which usually only contain Subjects, but are allowed to contain Nested Resources.</p>
 <h2 id="json-ad-parsers-serializers-and-other-libraries"><a class="header" href="#json-ad-parsers-serializers-and-other-libraries">JSON-AD Parsers, serializers and other libraries</a></h2>
 <ul>
 <li><strong>Typescript / Javacript</strong>: <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/lib</a> JSON-AD parser + in-memory store. Works with <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/react</a> for rendering Atomic Data in React.</li>
