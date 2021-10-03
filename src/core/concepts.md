@@ -153,6 +153,7 @@ In the following JSON-AD example, the `address` is a nested resource:
 }
 ```
 
-A Nested Resource often does not have its own subject (`@id`), but it _does_ have its own unique [path](./paths.md), which can be used as its identifier.
+Nested Resources can be _named_ or _anonymous_. An _Anonymous Nested Resource_ does not have it's own `@id` field.
+It _does_ have its own unique [path](./paths.md), which can be used as its identifier.
 
 In the next chapter, we'll explore how Atomic Data is serialized.

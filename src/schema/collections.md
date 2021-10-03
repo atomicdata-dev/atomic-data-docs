@@ -9,6 +9,7 @@ For dealing with these problems, we have Atomic Collections.
 
 An Atomic Collection is a Resource that links to a set of resources.
 Note that Collections are designed to be _dynamic resources_, often (partially) generated at runtime.
+Collections are [Endpoints](../endpoints.md), which means that part of their properties are calculated server-side.
 Collections have various filters (`subject`, `property`, `value`) that can help to build a useful query.
 
 - `members`: How many items (members) are visible per page.

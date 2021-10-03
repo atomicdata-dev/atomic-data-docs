@@ -14,8 +14,8 @@ It uses [JSON](https://www.ecma-international.org/publications-and-standards/sta
 - Numbers can be [Integers](https://atomicdata.dev/datatypes/integer), [Timestamps](https://atomicdata.dev/datatypes/timestamp) or [Floats](https://atomicdata.dev/datatypes/float).
 - JSON booleans map to [Booleans](https://atomicdata.dev/datatypes/boolean).
 - JSON strings can be many datatypes, including [String](https://atomicdata.dev/datatypes/string), [Markdown](https://atomicdata.dev/datatypes/markdown), [Date](https://atomicdata.dev/datatypes/date) or other.
-- Nested JSON Objects are Nested Resources. A Nested Resource can either be anonymous (without an `@id` subject) or a regular Nested Resource with an `@id` subject.
-- The root data structure must either be a regular Resource, or an Array. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.
+- Nested JSON Objects are Nested Resources. A Nested Resource can either be _Anonymous_ (without an `@id` subject) or a Named Nested Resource with an `@id` subject. Everywhere a Subject URL can be used as a value (i.e. all properties with the datatype [atomicURL](https://atomicdata.dev/datatypes/atomicURL)), a Nested Resource can be used instead. This also means that an item in an `ResourceArray` can be a Nested Resource.
+- The root data structure must either be a Named Resource (with an `@id`), or an Array containing Named Resources. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.
 
 Let's look at an example JSON-AD Resource:
 
@@ -32,6 +32,16 @@ Let's look at an example JSON-AD Resource:
 ```
 
 The mime type (for HTTP content negotiation) is `application/ad+json` ([registration ongoing](https://github.com/ontola/atomic-data-docs/issues/60)).
+
+## Nested, Anonymous and Named resources
+
+In JSON-AD, a Resource can be respresented in multiple ways:
+
+- **Subject**: A URL string, such as `https://atomicdata.dev/classes/Class`.
+- **Named Resource**: A JSON Object with an `@id` field containing the Subject.
+- **Anonymous Nested Resource** A JSON Object without an `@id` field. This is only possible if it is a Nested Resource, which means that it has a parent Resource.
+
+Note that this is also valid for `ResourceArrays`, which usually only contain Subjects, but are allowed to contain Nested Resources.
 
 ## JSON-AD Parsers, serializers and other libraries
 
