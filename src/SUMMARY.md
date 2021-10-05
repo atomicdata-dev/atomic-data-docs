@@ -21,6 +21,7 @@
   * [Compared to](commits/compare.md)
 * [Hierarchy and authorization](hierarchy.md)
 * [Endpoints](endpoints.md)
+* [WebSockets](websockets.md)
 * [Interoperability](interoperability/intro.md)
   * [RDF](interoperability/rdf.md)
   * [Solid](interoperability/solid.md)
