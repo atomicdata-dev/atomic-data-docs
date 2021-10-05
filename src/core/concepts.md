@@ -4,7 +4,7 @@
 
 Atomic Data is a modular specification for sharing information on the web.
 Since Atomic Data is a _modular_ specification, you can mostly take what you want to use, and ignore the rest.
-The _Core_ part, however,is the only _required_ part of the specification, as all others depend on it.
+The _Core_ part, however, is the _only required_ part of the specification, as all others depend on it.
 
 Atomic Data Core can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
 It's designed to be easily serializable to both JSON and linked data formats.
