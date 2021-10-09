@@ -10,6 +10,12 @@ If you're looking for **implementations of Atomic Data**, check out [atomic-data
 ## About this repo
 
 This repository holds the markdown book for the Atomic Data standard.
+It serves two purposes:
+
+- A central hub for all Atomic Data documentation, tutorials, guides and other written content
+- A place to discuss the **specification** - that should happen in this issue tracker. 
+
+## Running locally
 
 You can run it locally using [mdBook](https://github.com/rust-lang/mdBook)
 
