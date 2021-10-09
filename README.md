@@ -12,8 +12,8 @@ If you're looking for **implementations of Atomic Data**, check out [atomic-data
 This repository holds the markdown book for the Atomic Data standard.
 It serves two purposes:
 
-- A central hub for all Atomic Data documentation, tutorials, guides and other written content
-- A place to discuss the **specification** - that should happen in this issue tracker. 
+- A central hub for **written content** such as documentation, the specification, tutorials and guides.
+- A place to **discuss the specification** - that should happen in this issue tracker. 
 
 ## Running locally
 
