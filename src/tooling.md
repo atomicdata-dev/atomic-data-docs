@@ -1,11 +1,13 @@
 {{#title Software and libraries for Atomic Data}}
 # Software and libraries for Atomic Data
 
+Although Atomic Data is a specification, it also has reference implementations:
+
 Open source (MIT licenced) software for Atomic Data:
 
-- Server: [atomic-server](https://github.com/joepio/atomic)
-- Front-end browser: [atomic-data-browser](https://github.com/joepio/atomic-data-browser)
-- CLI (atomic-cli): [atomic-cli](https://github.com/joepio/atomic)
+- **Server + Database**: [atomic-server](https://github.com/joepio/atomic)
+- **GUI**: [atomic-data-browser](https://github.com/joepio/atomic-data-browser)
+- **CLI**: [atomic-cli](https://github.com/joepio/atomic)
 
 Libraries (MIT licenced) to build apps with:
 

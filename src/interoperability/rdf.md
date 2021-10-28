@@ -23,10 +23,10 @@ However, it does differ in some fundamental ways.
 
 ## Why these changes?
 
-I love RDF, and have been working with it for quite some time now.
-I started a company that specializes in Linked Data, and we use it extensively in our products and services.
+I have been working with RDF for quite some time now, and absolutely believe in some of the core premises of RDF.
+I started a company that specializes in Linked Data ([Ontola](https://ontola.io)), and we use it extensively in our products and services.
 Using URIs (and more-so URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
-However, some of the characteristics of RDF might have contributed to its relative lack of adoption.
+However, some of the characteristics of RDF make it hard to use, and have probably contributed to its relative lack of adoption.
 
 ### It's too hard to select a specific value (object) in RDF
 
@@ -101,12 +101,19 @@ This more closely resembles common CS terminology. ([discussion](https://github.
 
 ### Subject + Predicate uniqueness
 
-In RDF, it's very much possible for a graph to contain multiple statements that share both a `subject` and a `predicate`.
-One of the reasons this is possible, is because RDF graphs should always be mergeable.
-However, this introduces some extra complexity for data users.
-Whereas most languages and datatypes have `key-value` uniqueness that allow for unambiguous value selection, RDF clients have to deal with the possibility that multiple triples with the same `subject-predicate` combination might exist.
+As discussed above, in RDF, it's very much possible for a graph to contain multiple statements that share both a `subject` and a `predicate`.
+This is probably because of two reasons:
 
-Atomic Data requires `subject-property` uniqueness, which means that this is no longer an issue for clients.
+1. RDF graphs must always be **mergeable** (just like Atomic Data).
+1. Anyone can make **any statement** about **any subject** (_unlike_ Atomic Data, see next section).
+
+However, this introduces a lot extra complexity for data users (see above), which makes it not very attractive to use RDF in any client.
+Whereas most languages and datatypes have `key-value` uniqueness that allow for unambiguous value selection, RDF clients have to deal with the possibility that multiple triples with the same `subject-predicate` combination might exist.
+It also introduces a different problem: How should you interpret a set of `subject-predicate` combinations?
+Does this represent a non-ordered collection, or did something to wrong with setting values?\
+In the RDF world, I've seen many occurences of both.
+
+Atomic Data requires `subject-property` uniqueness, which means that these issues are no more.
 However, in order to guarantee this, and still retain _graph merge-ability_ we also need to limit who creates statements about a subject:
 
 ### Limiting subject usage
@@ -159,13 +166,18 @@ When a value is a URL, we don't call it a named node, but we simply use a URL da
 
 ### Requiring URLs
 
-RDF allows any type of URIs for `subject` and `predicate` value, which means they can be URLs, but don't have to be. This means they don't always resolve, or even function as locators. The links don't work, and that restricts how useful the links are. Atomic Data takes a different approach: these links MUST Resolve. Requiring Properties to resolve is part of what enables the type system of Atomic Schema - they provide the `shortname` and `datatype`.
+A URL (Uniform Resource _Locator_) is a specific and cooler version of a URI (Uniform Resource _Identifier_), because a URL tells you where you can find more information about this thing (hence _Locator_).
 
-Requiring URLs makes things easier for data users, at the cost of the data producer.
-With Atomic Data, the data producer MUST offer the triples at the URL of the subject.
-This is a challenge - especially with the current (lack of) tooling.
+RDF allows any type of URIs for `subject` and `predicate` value, which means they can be URLs, but don't have to be.
+This means they don't always resolve, or even function as locators.
+The links don't work, and that restricts how useful the links are.
+Atomic Data takes a different approach: these links MUST Resolve. Requiring [Properties](https://atomicdata.dev/classes/Property) to resolve is part of what enables the type system of Atomic Schema - they provide the `shortname` and `datatype`.
 
-However - making sure that links _actually work_ offer tremendous benefits for data consumers, and that advantage is often worth the extra trouble.
+Requiring URLs makes things easier for data users, but makes things a bit more difficult for the data producer.
+With Atomic Data, the data producer MUST offer the data at the URL of the subject.
+This is a challenge that requires tooling, which is why I've built [Atomic-Server](https://crates.io/crates/atomic-server): an easy to use, performant, open source data management sytem.
+
+Making sure that links _actually work_ offer tremendous benefits for data consumers, and that advantage is often worth the extra trouble.
 
 ### Replace blank nodes with paths
 
