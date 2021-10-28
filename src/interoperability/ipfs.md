@@ -1,3 +1,4 @@
+{{#title How does Atomic Data relate to IPFS?}}
 # Atomic Data and IPFS
 
 ## What is IPFS

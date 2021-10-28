@@ -1,3 +1,4 @@
+{{#title Atomic Data Paths}}
 # Atomic Paths
 
 An Atomic Path is a string that consists of at least one URL, followed by one or more URLs or Shortnames.

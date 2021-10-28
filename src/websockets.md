@@ -1,3 +1,4 @@
+{{#title Atomic Data Websockets - live synchronization}}
 # WebSockets in Atomic Data
 
 WebSockets are a very fast and efficient way to have a client and server communicate in an asynchronous fashion.

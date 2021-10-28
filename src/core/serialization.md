@@ -1,3 +1,4 @@
+{{#title Serialization of Atomic Data}}
 # Serialization of Atomic Data
 
 Atomic Data is not necessarily bound to a single serialization format.

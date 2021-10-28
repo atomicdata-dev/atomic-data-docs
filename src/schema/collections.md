@@ -1,3 +1,4 @@
+{{#title Atomic Data Collections - Filtering, Sorting & Querying}}
 # Atomic Collections
 
 _URL: [https://atomicdata.dev/classes/Collection](https://atomicdata.dev/classes/Collection)_

@@ -1,3 +1,4 @@
+{{#title How does Atomic Data relate to Solid?}}
 # Atomic Data and Solid
 
 The [Solid project](https://solidproject.org/) is an initiative by the inventor of linked data and the world wide web: sir Tim Berners-Lee.

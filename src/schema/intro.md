@@ -1,3 +1,4 @@
+{{#title Atomic Data Schema - modelling Atomic Data}}
 # Atomic Schema
 
 Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.

@@ -1,3 +1,4 @@
+{{#title Atomic Schema FAQ}}
 # Atomic Schema FAQ
 
 ## How do I create a Property that supports multiple Datatypes?

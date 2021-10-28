@@ -1,3 +1,4 @@
+{{#title How does Atomic Data relate to JSON?}}
 # How does Atomic Data relate to JSON?
 
 Because JSON is so popular, Atomic Data is designed with JSON in mind.

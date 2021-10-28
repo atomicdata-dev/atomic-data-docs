@@ -1,3 +1,4 @@
+{{#title When (not) to use Atomic Data}}
 # When (not) to use Atomic Data
 
 ## When should you use Atomic Data

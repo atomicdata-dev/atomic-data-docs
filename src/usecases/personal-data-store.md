@@ -1,3 +1,4 @@
+{{#title Atomic Data for personal data stores}}
 # Atomic Data for personal data stores
 
 A Personal Data Store (or personal data service) is a place where you store all sorts of personal information.

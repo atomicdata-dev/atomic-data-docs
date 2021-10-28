@@ -1,3 +1,4 @@
+{{#title Atomic Commits - Event standard for Atomic Data}}
 # Atomic Commits
 
 _Disclaimer: Work in progress, prone to change._

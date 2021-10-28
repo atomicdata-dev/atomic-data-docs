@@ -1,3 +1,4 @@
+{{#title How does Atomic Data relate to RDF?}}
 # How does Atomic Data relate to RDF?
 
 RDF (the [Resource Description Framework](https://www.w3.org/TR/rdf-primer/)) is a W3C specification from 1999 that describes the original data model for linked data.

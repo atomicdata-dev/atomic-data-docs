@@ -1,3 +1,4 @@
+{{#title Atomic Data Invitations - Sharing using Tokens }}
 # Invitations & Tokens
 
 _Discussion: https://github.com/ontola/atomic-data/issues/23_

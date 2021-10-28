@@ -1,3 +1,4 @@
+{{#title Official Atomic Data newsletter}}
 # Subscribe to the Atomic Data newsletter
 
 We'll send you an update (max once per month) when there's something relevant to share, such as

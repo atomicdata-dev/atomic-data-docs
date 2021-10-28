@@ -1,4 +1,5 @@
-# Software and libraries
+{{#title Software and libraries for Atomic Data}}
+# Software and libraries for Atomic Data
 
 Open source (MIT licenced) software for Atomic Data:
 

@@ -1,3 +1,4 @@
+{{#title How does Atomic Data relate to Graph Databases?}}
 # Atomic Data and Graph Databases
 
 Atomic Data fundamentally is a _graph data model_.

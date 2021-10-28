@@ -1,3 +1,4 @@
+{{#title Atomic Data Hierarchy, rights and authorization }}
 # Hierarchy, rights and authorization
 
 Hierarchies help make information easier to find and understand.

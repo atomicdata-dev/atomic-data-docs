@@ -1,3 +1,4 @@
+{{#title How does Atomic Data relate to SQL?}}
 # Atomic Data and SQL
 
 Atomic Data has some characteristics that make it similar and different from SQL.

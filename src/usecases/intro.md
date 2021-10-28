@@ -1,4 +1,5 @@
-# Potential Atomic Data Use Cases
+{{#title Various Use Cases for Atomic Data}}
+# Various Use Cases for Atomic Data
 
 Most of this book is either abstract or technical, but this section aims to be different.
 In this section, we'll present concrete examples of things that can be built with Atomic Data.

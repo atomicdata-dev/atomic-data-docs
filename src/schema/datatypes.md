@@ -1,3 +1,4 @@
+{{#title Atomic Data: Datatypes}}
 # Atomic Schema: Datatypes
 
 The Atomic Datatypes consist of some of the most commonly used [Datatypes](classes.md#Datatype).

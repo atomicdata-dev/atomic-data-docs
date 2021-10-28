@@ -1,3 +1,4 @@
+{{#title Atomic Data - Get Involved}}
 # Get involved
 
 Atomic Data is an open specification, and that means that you're very welcome to share your thoughts and help make this standard as good as possible.

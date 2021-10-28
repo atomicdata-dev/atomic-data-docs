@@ -1,3 +1,4 @@
+{{#title Atomic Data Classes}}
 # Atomic Schema: Classes
 
 ## How to read classes

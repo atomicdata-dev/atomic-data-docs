@@ -1,3 +1,4 @@
+{{#title JSON-AD: The Atomic Data serialization format}}
 # JSON-AD: The Atomic Data serialization format
 
 Although you an use various serialization formats for Atomic Data, `JSON-AD` is the _default_ serialization format.

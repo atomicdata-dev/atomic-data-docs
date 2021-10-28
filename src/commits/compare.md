@@ -1,3 +1,4 @@
+{{#title Atomic Commits compared to other (RDF) delta models}}
 # Atomic Commits compared to other (RDF) delta models
 
 Let's compare the [Atomic Commit](concepts.md) approach with some existing protocols for communicating state changes / patches / mutations / deltas in linked data, JSON and text files.

@@ -1,3 +1,4 @@
+{{#title Querying Atomic Data}}
 # Querying Atomic Data
 
 There are multiple ways of getting Atomic Data into some system:

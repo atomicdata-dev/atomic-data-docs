@@ -1,3 +1,4 @@
+{{#title Atomic Data Agents - Users and identities }}
 # Atomic Agents
 
 Atomic Agents are used for _authentication_: to set an identity and prove who an actor actually is.

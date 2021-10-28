@@ -1,3 +1,4 @@
+{{#title Atomic Data for e-commerce & marketplaces}}
 # Atomic Data for e-commerce & marketplaces
 
 Buying good and services on the internet is currently responsible for about 15% of all commerce, and is steadily climbing.

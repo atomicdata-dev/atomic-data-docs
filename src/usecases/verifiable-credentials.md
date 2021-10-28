@@ -1,3 +1,4 @@
+{{#title Atomic Data and Verifiable Credentials / SSI}}
 # Atomic Data and Verifiable Credentials / SSI
 
 ## What are Verifiable Credentials / Self-Sovereign Identity

@@ -1,3 +1,4 @@
+{{#title Upgrade your existing application to Atomic Data}}
 # Upgrade your existing application to Atomic Data
 
 If you want to make your existing project compatible with Atomic Data, you probably don't have to get rid of your existing storage / DB implementation.

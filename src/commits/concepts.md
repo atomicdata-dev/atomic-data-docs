@@ -1,3 +1,4 @@
+{{#title Atomic Commits: Concepts}}
 # Atomic Commits: Concepts
 
 ## Commit
