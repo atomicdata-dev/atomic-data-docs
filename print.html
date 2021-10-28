@@ -140,8 +140,9 @@
                 <div id="content" class="content">
                     <main>
                         <p><img src="assets/atomic_data_logo_stroke.svg" alt="# Atomic Data Docs - Overview" /></p>
-<p>Atomic Data is a modular specification for sharing, modifying and modeling graph data.</p>
-<p>It uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.</p>
+<p>Atomic Data is a modular specification for sharing, modifying and modeling graph data. It combines the ease of use of JSON, the connectivity of RDF (linked data) and the reliability of type-safety.</p>
+<p><img src="assets/venn.svg" alt="Venn diagram showing Atomic Data is the combination of JSON, RDF and Type-Safety" /></p>
+<p>Atomic Data uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.</p>
 <p>Atomic Data is especially suitable for knowledge graphs, distributed datasets, semantic data, p2p applications, decentralized apps and linked open data.
 It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.</p>
 <p>Atomic Data is <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, as it is a <a href="interoperability/rdf.html">strict subset of RDF</a>.
@@ -1414,10 +1415,10 @@ However, it does differ in some fundamental ways.</p>
 <li>Atomic does not support Named Graphs. These should not be needed, because all statements should be retrievable by fetching the Subject of a resource. However, it <em>is</em> allowed to include other resources in a response.</li>
 </ul>
 <h2 id="why-these-changes"><a class="header" href="#why-these-changes">Why these changes?</a></h2>
-<p>I love RDF, and have been working with it for quite some time now.
-I started a company that specializes in Linked Data, and we use it extensively in our products and services.
+<p>I have been working with RDF for quite some time now, and absolutely believe in some of the core premises of RDF.
+I started a company that specializes in Linked Data (<a href="https://ontola.io">Ontola</a>), and we use it extensively in our products and services.
 Using URIs (and more-so URLs, which are URIs that can be fetched) for everything is a great idea, since it helps with interoperability and enables truly decentralized knowledge graphs.
-However, some of the characteristics of RDF might have contributed to its relative lack of adoption.</p>
+However, some of the characteristics of RDF make it hard to use, and have probably contributed to its relative lack of adoption.</p>
 <h3 id="its-too-hard-to-select-a-specific-value-object-in-rdf"><a class="header" href="#its-too-hard-to-select-a-specific-value-object-in-rdf">It's too hard to select a specific value (object) in RDF</a></h3>
 <p>For example, let's say I want to render someone's birthday:</p>
 <pre><code class="language-ttl">&lt;example:joep&gt; &lt;schema:birthDate&gt; &quot;1991-01-20&quot;^^xsd:date
@@ -1474,11 +1475,18 @@ Atomic Data chooses a more constrained approach, which makes it easier to use th
 <p>RDF's <code>subject</code>, <code>predicate</code> and <code>object</code> terminology can be confusing to newcomers, so Atomic Data uses <code>subject</code>, <code>property</code>, <code>value</code>.
 This more closely resembles common CS terminology. (<a href="https://github.com/ontola/atomic-data/issues/3">discussion</a>)</p>
 <h3 id="subject--predicate-uniqueness"><a class="header" href="#subject--predicate-uniqueness">Subject + Predicate uniqueness</a></h3>
-<p>In RDF, it's very much possible for a graph to contain multiple statements that share both a <code>subject</code> and a <code>predicate</code>.
-One of the reasons this is possible, is because RDF graphs should always be mergeable.
-However, this introduces some extra complexity for data users.
-Whereas most languages and datatypes have <code>key-value</code> uniqueness that allow for unambiguous value selection, RDF clients have to deal with the possibility that multiple triples with the same <code>subject-predicate</code> combination might exist.</p>
-<p>Atomic Data requires <code>subject-property</code> uniqueness, which means that this is no longer an issue for clients.
+<p>As discussed above, in RDF, it's very much possible for a graph to contain multiple statements that share both a <code>subject</code> and a <code>predicate</code>.
+This is probably because of two reasons:</p>
+<ol>
+<li>RDF graphs must always be <strong>mergeable</strong> (just like Atomic Data).</li>
+<li>Anyone can make <strong>any statement</strong> about <strong>any subject</strong> (<em>unlike</em> Atomic Data, see next section).</li>
+</ol>
+<p>However, this introduces a lot extra complexity for data users (see above), which makes it not very attractive to use RDF in any client.
+Whereas most languages and datatypes have <code>key-value</code> uniqueness that allow for unambiguous value selection, RDF clients have to deal with the possibility that multiple triples with the same <code>subject-predicate</code> combination might exist.
+It also introduces a different problem: How should you interpret a set of <code>subject-predicate</code> combinations?
+Does this represent a non-ordered collection, or did something to wrong with setting values?<br />
+In the RDF world, I've seen many occurences of both.</p>
+<p>Atomic Data requires <code>subject-property</code> uniqueness, which means that these issues are no more.
 However, in order to guarantee this, and still retain <em>graph merge-ability</em> we also need to limit who creates statements about a subject:</p>
 <h3 id="limiting-subject-usage"><a class="header" href="#limiting-subject-usage">Limiting subject usage</a></h3>
 <p>RDF allows that <code>anne.com</code> creates and hosts statements about the subject <code>john.com</code>.
@@ -1518,11 +1526,15 @@ In practice, clients have to run a lot of checks before they can use the data - 
 We just have <code>values</code>, and they are interpreted by looking at the <code>datatype</code>, which is defined in the <code>property</code>.
 When a value is a URL, we don't call it a named node, but we simply use a URL datatype.</p>
 <h3 id="requiring-urls"><a class="header" href="#requiring-urls">Requiring URLs</a></h3>
-<p>RDF allows any type of URIs for <code>subject</code> and <code>predicate</code> value, which means they can be URLs, but don't have to be. This means they don't always resolve, or even function as locators. The links don't work, and that restricts how useful the links are. Atomic Data takes a different approach: these links MUST Resolve. Requiring Properties to resolve is part of what enables the type system of Atomic Schema - they provide the <code>shortname</code> and <code>datatype</code>.</p>
-<p>Requiring URLs makes things easier for data users, at the cost of the data producer.
-With Atomic Data, the data producer MUST offer the triples at the URL of the subject.
-This is a challenge - especially with the current (lack of) tooling.</p>
-<p>However - making sure that links <em>actually work</em> offer tremendous benefits for data consumers, and that advantage is often worth the extra trouble.</p>
+<p>A URL (Uniform Resource <em>Locator</em>) is a specific and cooler version of a URI (Uniform Resource <em>Identifier</em>), because a URL tells you where you can find more information about this thing (hence <em>Locator</em>).</p>
+<p>RDF allows any type of URIs for <code>subject</code> and <code>predicate</code> value, which means they can be URLs, but don't have to be.
+This means they don't always resolve, or even function as locators.
+The links don't work, and that restricts how useful the links are.
+Atomic Data takes a different approach: these links MUST Resolve. Requiring <a href="https://atomicdata.dev/classes/Property">Properties</a> to resolve is part of what enables the type system of Atomic Schema - they provide the <code>shortname</code> and <code>datatype</code>.</p>
+<p>Requiring URLs makes things easier for data users, but makes things a bit more difficult for the data producer.
+With Atomic Data, the data producer MUST offer the data at the URL of the subject.
+This is a challenge that requires tooling, which is why I've built <a href="https://crates.io/crates/atomic-server">Atomic-Server</a>: an easy to use, performant, open source data management sytem.</p>
+<p>Making sure that links <em>actually work</em> offer tremendous benefits for data consumers, and that advantage is often worth the extra trouble.</p>
 <h3 id="replace-blank-nodes-with-paths"><a class="header" href="#replace-blank-nodes-with-paths">Replace blank nodes with paths</a></h3>
 <p>Blank (or anonymous) nodes are RDF resources with identifiers that exist only locally.
 In other words, their identifiers are not URLs.
@@ -2057,11 +2069,12 @@ How could revocation work?</p>
 <a href="usecases/../schema/intro.html">Atomic Schema</a> makes it possible to express which <em>properties</em> are <a href="https://atomicdata.dev/properties/requires">required</a> in a certain <a href="https://atomicdata.dev/classes/Class">Class</a>, and it also makes it possible to describe which <a href="https://atomicdata.dev/classes/Datatype">datatype</a> is linked to a specific <a href="https://atomicdata.dev/classes/Property">Property</a>.
 Combined, they allow for fine-grained descriptions of models / classes / schemas.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="software-and-libraries-for-atomic-data"><a class="header" href="#software-and-libraries-for-atomic-data">Software and libraries for Atomic Data</a></h1>
+<p>Although Atomic Data is a specification, it also has reference implementations:</p>
 <p>Open source (MIT licenced) software for Atomic Data:</p>
 <ul>
-<li>Server: <a href="https://github.com/joepio/atomic">atomic-server</a></li>
-<li>Front-end browser: <a href="https://github.com/joepio/atomic-data-browser">atomic-data-browser</a></li>
-<li>CLI (atomic-cli): <a href="https://github.com/joepio/atomic">atomic-cli</a></li>
+<li><strong>Server + Database</strong>: <a href="https://github.com/joepio/atomic">atomic-server</a></li>
+<li><strong>GUI</strong>: <a href="https://github.com/joepio/atomic-data-browser">atomic-data-browser</a></li>
+<li><strong>CLI</strong>: <a href="https://github.com/joepio/atomic">atomic-cli</a></li>
 </ul>
 <p>Libraries (MIT licenced) to build apps with:</p>
 <ul>
