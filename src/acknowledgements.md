@@ -13,4 +13,5 @@
 - **Manu Sporny** (for his work on JSON-LD, which was an important inspiration for JSON-AD)
 - **Jonas Smedegaard** (for the various interesting talks we had and the feedback he provided)
 - **Arthur Dingemans** (for sharing his thoughts, providing feedback and his valuable suggestions)
+- **Anja Koopman** (for all her support, even when this project ate away days and nights of our time together)
 - All the other people who contributed to linked data related standards
