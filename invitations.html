@@ -150,7 +150,7 @@ In order to make this process of inviting others as simple as possible, we've co
 </ul>
 <h2 id="flow"><a class="header" href="#flow">Flow</a></h2>
 <ol>
-<li>The Owner or a resource creates an <a href="https://atomicdata.dev/classes/Invite">Invite</a>. This Invite points to a <code>target</code> Resource, provides read writes by default but can additionally add <code>write</code> rights, contains a bunch of <code>usagesLeft</code>.</li>
+<li>The Owner or a resource creates an <a href="https://atomicdata.dev/classes/Invite">Invite</a>. This Invite points to a <code>target</code> Resource, provides <code>read</code> rights by default but can additionally add <code>write</code> rights, contains a bunch of <code>usagesLeft</code>.</li>
 <li>The Guest opens the Invite URL. This returns the Invite resource, which provides the client with the information needed to do the next request which adds the actual rights.</li>
 <li>The browser client app might generate a set of keys, or use an existing one. It sends the Agent URL to the Invite in a query param.</li>
 <li>The server will respond with a Redirect resource, which links to the newly granted <code>target</code> resource.</li>
