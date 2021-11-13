@@ -14,7 +14,7 @@ In order to make this process of inviting others as simple as possible, we've co
 
 ## Flow
 
-1. The Owner or a resource creates an [Invite](https://atomicdata.dev/classes/Invite). This Invite points to a `target` Resource, provides read writes by default but can additionally add `write` rights, contains a bunch of `usagesLeft`.
+1. The Owner or a resource creates an [Invite](https://atomicdata.dev/classes/Invite). This Invite points to a `target` Resource, provides `read` rights by default but can additionally add `write` rights, contains a bunch of `usagesLeft`.
 1. The Guest opens the Invite URL. This returns the Invite resource, which provides the client with the information needed to do the next request which adds the actual rights.
 1. The browser client app might generate a set of keys, or use an existing one. It sends the Agent URL to the Invite in a query param.
 1. The server will respond with a Redirect resource, which links to the newly granted `target` resource.
