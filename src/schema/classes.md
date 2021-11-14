@@ -1,18 +1,9 @@
 {{#title Atomic Data Classes}}
 # Atomic Schema: Classes
 
-## How to read classes
+The following Classes are some of the most fundamental concepts in Atomic Data, as they make data validation possible.
 
-Example:
-
-- `description` - (required, AtomicURL, TranslationBox) human readable explanation of what the Class represents.
-
-Means:
-
-This class has a _required_ property with shortname `description`.
-This Property has a Datatype of `AtomicURL`, and these should point to `TranslationBox` instances.
-
-_Note: the URLs for properties are missing and will be added at a later time._
+Click the URLs of the classes to read the most actual data, and discover their properties!
 
 ## Property
 
@@ -46,7 +37,7 @@ Visit https://atomicdata.dev/collections/property for a list of example Properti
 
 ## Datatype
 
-_URL: `https://atomicdata.dev/classes/Datatype`_
+_URL: [`https://atomicdata.dev/classes/Datatype`](https://atomicdata.dev/classes/Datatype)_
 
 A Datatype specifies how a `Value` value should be interpreted.
 Datatypes are concepts such as `boolean`, `string`, `integer`.
@@ -65,7 +56,7 @@ Visit https://atomicdata.dev/collections/datatype for a list of example Datatype
 
 ## Class
 
-_URL: `https://atomicdata.dev/classes/Class`_
+_URL: [`https://atomicdata.dev/classes/Class`](https://atomicdata.dev/classes/Class)_
 
 A Class is an abstract type of Resource, such as `Person`.
 It is convention to use an Uppercase in its URI.

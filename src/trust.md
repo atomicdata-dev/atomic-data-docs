@@ -5,7 +5,7 @@ _status: just an idea_
 Not all information on the web can be trusted.
 Instead of relying on some centralized authority to say which content is to be trusted, we can leverage our existing trust networks to determine what we can trust or not.
 
-Atomic Trust is a proposed standard to share which actors, domains and resources we trust on the web.
+Atomic Trust is a specification to share which actors, domains and resources we trust on the web.
 It's a decentralized model defined with Atomic Schema to create explicit trust networks.
 It can be used to calculate a score about a resource (such as a webpage).
 
