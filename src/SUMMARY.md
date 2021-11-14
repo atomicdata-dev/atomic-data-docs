@@ -19,7 +19,6 @@
 
 # Specification (extended)
 
-* [Collections, filtering, sorting](schema/collections.md)
 * [Agents](agents.md)
 * [Hierarchy and authorization](hierarchy.md)
 * [Authentication](authentication.md)
@@ -27,8 +26,9 @@
 * [Commits (writing data)](commits/intro.md)
   * [Concepts](commits/concepts.md)
   * [Compared to](commits/compare.md)
-* [Endpoints](endpoints.md)
 * [WebSockets](websockets.md)
+* [Endpoints](endpoints.md)
+* [Collections, filtering, sorting](schema/collections.md)
 
 # Using Atomic Data
 
@@ -45,7 +45,7 @@
   * [E-commerce & marketplaces](usecases/e-commerce.md)
   * [Surveys](usecases/surveys.md)
   * [Verifiable Credentials](usecases/verifiable-credentials.md)
-* [Software and libraries](tooling.md)
+* [**Software and libraries**](tooling.md)
 
 -----------
 

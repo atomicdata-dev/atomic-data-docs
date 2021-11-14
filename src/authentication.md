@@ -4,6 +4,16 @@ Atomic Data uses [Hierarchies](hierarchy.md) to describe who gets to access some
 When an Agent wants to _edit_ a resource, they have to send a signed [Commit](commits/intro.md).
 But how do we deal with _reading_ data, how do we know who is trying to get access?
 
+## Design goals
+
+- **Secure**: Because, what's the point of authentication if it's not?
+- **Ease of use**: Setting up an identity should not require _any_ effort, and proving identity should be minimal effort.
+- **Anonimity allowed**: Users should be able to have multiple identities, some of which are fully anonymous.
+- **Self-sovereign**: No dependency on servers that user's don't control. Or at least, minimise this.
+- **Dummy-proof**: We need a mechanism for dealing with forgetting passwords / client devices losing data.
+- **Compatible with Commits**: Atomic Commits require clients to sign things. Ideally, this functionality / strategy would also fit with the new model.
+- **Fast**: Of course, authentication will slow things down. But let's keep that to a minimum.
+
 Authentication is done by signing individual (HTTP) requests with the Agent's private key.
 
 ## Sending a request
@@ -41,3 +51,7 @@ headers.set('x-atomic-agent', agent?.subject);
 ## Authentication for [websockets](websockets.md)
 
 - Since there's only a single HTTP request, we don't have a subject to fetch. Use `ws` as a subject, so sign a string like `ws 12940791247`.
+
+## Limitations / considerations
+
+- Since we need the Private Key to sign Commits and requests, the client should have this available. This means the client software as well as the user should deal with key management.
