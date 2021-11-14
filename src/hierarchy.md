@@ -25,10 +25,15 @@ Although you are free to use Atomic Data with your own custom authorization syst
 - Rights are _additive_, which means that the rights add up. If a Resource itself has no `write` Atom containing your Agent, but it's `parent` _does_ have one, you will still get the `write` right.
 - Rights cannot be removed by children or parents - they can only be added.
 
-## Limitations of the current Authorization model
+## Authentication
+
+See [authentication](./authentication.md).
+
+## Current limitations of the current Authorization model
+
+The specification is growing (and please contribute in the [docs repo](https://github.com/ontola/atomic-data-docs/issues)), but the current specification lacks some features:
 
 - Rights can only be added, but not removed in a higher item of a hierarchy. This means that you cannot have a secret folder inside a public folder.
 - No model for representing groups of Agents, or other runtime checks for authorization.
-- No way to limit access to reading / writing specific properties
-- No way to limit delete access
+- No way to limit delete access seperately from write rights
 - No way to request a set of rights for a Resource

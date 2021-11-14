@@ -8,12 +8,15 @@ These have been implemented in `atomic-server` and `atomic-data-browser` (powere
 ## Initializing a WebSocket connection
 
 Send an HTTP `GET` request to the `/ws` endpoint of an `atomic-server`. The Server should update that request to a secure WebSocket (`wss`) connection.
+Use `x-atomic` [authentication headers (read more here)](./authentication.md) and use `ws` as a subject when signing.
 
 ## Client to server messages
 
 - `SUBSCRIBE ${subject}` tells the Server that you'd like to receive Commits about this Subject.
 - `UNSUBSCRIBE ${subject}` tells the Server that you'd like to stop receiving Commits about this Subject.
+- `GET ${subject}` fetch an individual resource.
 
 ## Server to client messages
 
 - `COMMIT ${CommitBody}` an entire Commit for a resource that you're subscribed to
+- `RESOURCE ${CommitBody}` a resource as a response to a GET request.

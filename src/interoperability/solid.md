@@ -65,11 +65,16 @@ Atomic Data uses `shortnames` to map properties to short, human-readable strings
 
 For more information about these differences, see the previous [RDF chapter](./rdf.md).
 
-## Hierarchy model and authorization
+## Hierarchy model, authorization, authentication
 
-Atomic Data uses `parent-child` hierarchies to model data and performan authorization checks.
+Atomic Data identities (Agents) are a combination of HTTP based, and cryptography (public / private key) based.
+In Atomic, all actions (from GET requests to Commits) are signed using the private key of the Agent.
+This makes Atomic Data a bit more unconventional, but also makes its auth mechanism very decentralized and lightweight.
+
+Solid uses HTTP based WebID identifiers combined with an OIDC flow.
+
+Atomic Data uses `parent-child` [hierarchies](../hierarchy.md) to model data and performan authorization checks.
 This closely resembles how filesystems work, and is therefore familiar to most users.
-Solid uses
 
 ## Solid is more mature
 
@@ -77,6 +82,5 @@ Atomic Data has significant gaps at this moment - not just in the implementation
 This makes it not yet usable for most applications.
 Here's a list of things missing in Atomic Data, with links to their open issues and links to their existing Solid counterpart.
 
-- No way yet to restrict access to reading content. Only for writing content with Commits. [WAC](https://github.com/solid/web-access-control-spec) in Solid.
 - No inbox or [notifications](https://www.w3.org/TR/ldn/) ([issue](https://github.com/ontola/atomic-data/issues/28))
 - No support from a big community, a well-funded business or the inventor of the world wide web.

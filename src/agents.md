@@ -1,10 +1,10 @@
 {{#title Atomic Data Agents - Users and identities }}
 # Atomic Agents
 
-Atomic Agents are used for _authentication_: to set an identity and prove who an actor actually is.
+Atomic Agents are used for [authentication](./authentication.md): to set an identity and prove who an actor actually is.
 Agents can represent both actual individuals, or machines that interact with data.
 Agents are the entities that can get write / read rights.
-Agents are used to sign [Commits](commits/intro.md) and to accept [Invites](invitations.md).
+Agents are used to sign Requests and [Commits](commits/intro.md) and to accept [Invites](invitations.md).
 
 ## Design goals
 
@@ -12,6 +12,7 @@ Agents are used to sign [Commits](commits/intro.md) and to accept [Invites](invi
 - **Easy**: It should be easy to work with, code with, and use
 - **Privacy-friendly**: Agents should allow for privacy friendly workflows
 - **Verifiable**: Others should be able to verify who did what
+- **Secure**: Resistant to attacks by malicious others
 
 ## The Agent model
 

@@ -7,6 +7,11 @@ A property only has one single Datatype.
 However, feel free to create a new kind of Datatype that, in turn, refers to other Datatypes.
 Perhaps Generics, or Option like types should be part of the Atomic Base Datatypes.
 
+## Do you have an `enum` datatype?
+
+In Atomic Data, `enum` is not a datatype, but it's a constraint that can be added to properties that have
+You can set [`allows-only`](https://atomicdata.dev/properties/allowsOnly) on a Property, and use that to limit which values are allowed.
+
 ## How should a client deal with Shortname collisions?
 
 Atomic Data guarantees Subject-Property uniqueness, which means that Valid Resources are guaranteed to have only one of each Property.

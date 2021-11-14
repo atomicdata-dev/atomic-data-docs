@@ -3,6 +3,9 @@
 * [Atomic Data Overview](atomic-data-overview.md)
   * [Motivation](motivation.md)
   * [When (not) to use it](when-to-use.md)
+
+# Specification (core)
+
 * [What is Atomic Data?](core/concepts.md)
   * [Serialization](core/serialization.md)
   * [JSON-AD](core/json-ad.md)
@@ -13,15 +16,22 @@
   * [Datatypes](schema/datatypes.md)
   * [Translations](schema/translations.md)
   * [FAQ](schema/faq.md)
+
+# Specification (extended)
+
 * [Collections, filtering, sorting](schema/collections.md)
-* [Agents and authentication](agents.md)
+* [Agents](agents.md)
+* [Hierarchy and authorization](hierarchy.md)
+* [Authentication](authentication.md)
 * [Invitations and sharing](invitations.md)
 * [Commits (writing data)](commits/intro.md)
   * [Concepts](commits/concepts.md)
   * [Compared to](commits/compare.md)
-* [Hierarchy and authorization](hierarchy.md)
 * [Endpoints](endpoints.md)
 * [WebSockets](websockets.md)
+
+# Using Atomic Data
+
 * [Interoperability](interoperability/intro.md)
   * [RDF](interoperability/rdf.md)
   * [Solid](interoperability/solid.md)
