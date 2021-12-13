@@ -45,6 +45,7 @@
   * [E-commerce & marketplaces](usecases/e-commerce.md)
   * [Surveys](usecases/surveys.md)
   * [Verifiable Credentials](usecases/verifiable-credentials.md)
+  * [Food labels](usecases/food-labels.md)
 * [**Software and libraries**](tooling.md)
 
 -----------
