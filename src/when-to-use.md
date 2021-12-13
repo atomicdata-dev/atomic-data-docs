@@ -8,7 +8,7 @@
 - **High interoperability requirements**. When multiple groups of people have to use the same schema, Atomic Data provides easy ways to constrain and validate the data and ensure type safety.
 - **Multi-class / multi-model**. Contrary to (SQL) tables, Atomic Data allows a single thing to have multiple classes, each with their own properties.
 - **Connected / decentralized data**. With Atomic Data, you use URLs to point to things on other computers. This makes it possible to connect datasets very explicitly, without creating copies. Very useful for decentralized social networks, for example.
-- **Audibility & Versioning**. Using Atomic Commits, we can store all changes to data as transactions that can be replayed. This creates a complete audit log and history.
+- **Auditability & Versioning**. Using Atomic Commits, we can store all changes to data as transactions that can be replayed. This creates a complete audit log and history.
 - **JSON or RDF as Output**. Atomic Data serializes to idiomatic, clean JSON as well as various RDF formats (Turtle / JSON-LD / n-triples / RDF/XML).
 
 ## When not to use Atomic Data
