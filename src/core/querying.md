@@ -7,7 +7,7 @@ There are multiple ways of getting Atomic Data into some system:
 - [**Atomic Paths**](paths.md) is a simple way to traverse Atomic Graphs and target specific values
 - [**Subject Fetching**](#subject-fetching-http) requests a single subject right from its source
 - [**Triple Pattern Fragments**](#triple-pattern-fragments) allows querying for specific (combinations of) Subject, Property and Value.
-- [**SRARQL**](#SPARQL) is a powerful Query language for traversing linked data graphs
+- [**SPARQL**](#SPARQL) is a powerful Query language for traversing linked data graphs
 
 ## Atomic Paths
 
