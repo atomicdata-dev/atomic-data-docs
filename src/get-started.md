@@ -21,7 +21,7 @@ There's a couple of levels at which you can start working with Atomic Data (from
 
 ## Host your own Atomic-Sesrver (locally)
 
-- If you have docker running, you can use this one-liner: `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`
+- If you have docker running, you can use this one-liner: `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server` (or use `cargo install atomic-server`, or the [binaries](https://github.com/joepio/atomic-data-rust/releases/))
 - Now, visit `localhost` in your browser to access your server.
 - It's now only available locally. If you want to get it on the _internet_, you need to set up a domain name, and make sure its traffic is routed to your computer (search `port forwarding`).
 
