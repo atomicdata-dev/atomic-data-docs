@@ -55,3 +55,4 @@ headers.set('x-atomic-agent', agent?.subject);
 ## Limitations / considerations
 
 - Since we need the Private Key to sign Commits and requests, the client should have this available. This means the client software as well as the user should deal with key management.
+- When using the Agent's subject to authenticate somwehere, the authorizer must be able to check what the public key of the agent is. This means the agent must be publicly resolvable. This is one of the reasons we should work towards a server-independent identifier, probably as base64 string that contains the public key (and, optionally, also the https identifier). See the [github issue on DIDs](https://github.com/ontola/atomic-data-docs/issues/59).
