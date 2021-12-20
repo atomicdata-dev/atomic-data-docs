@@ -26,3 +26,10 @@ When a plugin is installed, the Server needs to be aware of when the functionali
 - Periodically (if so, when?)
 - On a certain endpoint (which endpoint? One or multiple?)
 - As a middleware when (specific) resources are created / read / updated.
+
+## Hooks
+
+### BeforeCommit
+
+Is run before a Commit is applied.
+Useful for performing authorization or data shape checks.
