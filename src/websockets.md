@@ -20,3 +20,8 @@ Use `x-atomic` [authentication headers (read more here)](./authentication.md) an
 
 - `COMMIT ${CommitBody}` an entire Commit for a resource that you're subscribed to
 - `RESOURCE ${CommitBody}` a resource as a response to a GET request.
+
+## Example implementations
+
+- [Example client implementation in Typescript (@tomic/lib).](https://github.com/joepio/atomic-data-browser/blob/main/lib/src/websockets.ts)
+- [Example server implementation in Rust using Actix-Web](https://github.com/joepio/atomic-data-rust/blob/master/server/src/handlers/web_sockets.rs)
