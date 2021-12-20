@@ -29,6 +29,7 @@
 * [WebSockets](websockets.md)
 * [Endpoints](endpoints.md)
 * [Collections, filtering, sorting](schema/collections.md)
+* [Uploading and downloading files](files.md)
 
 # Using Atomic Data
 
