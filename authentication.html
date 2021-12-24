@@ -153,24 +153,33 @@ But how do we deal with <em>reading</em> data, how do we know who is trying to g
 <li><strong>Fast</strong>: Of course, authentication will slow things down. But let's keep that to a minimum.</li>
 </ul>
 <p>Authentication is done by signing individual (HTTP) requests with the Agent's private key.</p>
+<h2 id="http-headers"><a class="header" href="#http-headers">HTTP Headers</a></h2>
+<p>All of the following headers are required, if you need authentication.</p>
+<ul>
+<li><code>x-atomic-public-key</code>: The base64 public key (Ed25519) of the Agent sending the request</li>
+<li><code>x-atomic-signature</code>: A base64 signature of the following string: <code>{subject} {timestamp}</code></li>
+<li><code>x-atomic-timestamp</code>: The current time (when sending the request) as milliseconds since unix epoch</li>
+<li><code>x-atomic-agent</code>: The subject URL of the Agent sending the request.</li>
+</ul>
 <h2 id="sending-a-request"><a class="header" href="#sending-a-request">Sending a request</a></h2>
 <p>Here's an example (js) client side implementation with comments:</p>
 <pre><code class="language-ts">// The Private Key of the agent is used for signing
-// https://atomicdata.dev/properties/publicKey
+// https://atomicdata.dev/properties/privateKey
 const privateKey = &quot;someBase64Key&quot;;
-// The current time as milliseconds since unix epoch
 const timestamp = Math.round(new Date().getTime());;
 // This is what you will need to sign.
 // The timestmap is to limit the harm of a man-in-the-middle attack.
 // The `subject` is the full HTTP url that is to be fetched.
 const message = `${subject} ${timestamp}`;
-// Sign using Ed25519
+// Sign using Ed25519, see example implementation here: https://github.com/joepio/atomic-data-browser/blob/30b2f8af59d25084de966301cb6bd1ed90c0eb78/lib/src/commit.ts#L176
 const signed = await signToBase64(message, privateKey);
 // Set all of these headers
+const headers = new Headers;
 headers.set('x-atomic-public-key', await agent.getPublicKey());
 headers.set('x-atomic-signature', signed);
 headers.set('x-atomic-timestamp', timestamp.toString());
 headers.set('x-atomic-agent', agent?.subject);
+const response = await fetch(subject, {headers});
 </code></pre>
 <h2 id="handling-a-request"><a class="header" href="#handling-a-request">Handling a request</a></h2>
 <ul>
