@@ -1,6 +1,6 @@
 ![# Atomic Data Docs - Overview](assets/atomic_data_logo_stroke.svg)
 
-Atomic Data is a modular specification for sharing, modifying and modeling graph data. It combines the ease of use of JSON, the connectivity of RDF (linked data) and the reliability of type-safety.
+**Atomic Data is a modular specification for sharing, modifying and modeling graph data. It combines the ease of use of JSON, the connectivity of RDF (linked data) and the reliability of type-safety.**queried using [Collections](schema/collections.md).
 
 ![Venn diagram showing Atomic Data is the combination of JSON, RDF and Type-Safety](assets/venn.svg)
 
@@ -15,14 +15,18 @@ It is type-safe (you know if something is a `string`, `number`, `date`, `URL`, e
 The default serialization format for Atomic Data is [JSON-AD](core/json-ad.md), which is simply JSON where each key is a URL of an Atomic Property.
 These Properties are responsible for setting the `datatype` (to ensure type-safety) and setting `shortnames` (which help to keep names short, for example in JSON serialization) and `descriptions` (which provide semantic explanations of what a property should be used for).
 
-Atomic Data has a standard for communicating state changes called [Commits](commits/intro.md).
-These Commits are signed using cryptographic keys, which ensures that every change can be audited.
-Commits are also used to construct a history of versions.
+## Atomic Data Extended
 
-[Agents](agents.md) are Users that enable [authentication](authentication.md).
-Atomic Data can be traversed using [Paths](core/paths.md), or queried using [Collections](schema/collections.md).
-[Hierarchies](hierarchy.md) are used for authorization and keeping data organized.
-[Invites](invitations.md) can be used to easily create new users and provide them with rights.
+Atomic Data Extended is a set of extra modules (on top of Atomic Data Core) that deal with data that changes over time, authentication, and authorization.
+
+- [Commits](commits/intro.md) communicate state changes. These Commits are signed using cryptographic keys, which ensures that every change can be audited. Commits are also used to construct a history of versions.
+- [Agents](agents.md) are Users that enable [authentication](authentication.md).
+- [Collections](schema/collections.md) add query options, filetering, sorting and pagination.
+- [Paths](core/paths.md) allow you to traverse graphs.
+- [Hierarchies](hierarchy.md) are used for authorization and keeping data organized.
+- [Invites](invitations.md) can be used to easily create new users and provide them with rights.
+- [WebSockets](websockets.md) allow for real-time updates.
+- [Endpoints](endpoints.md) provide machine-readable descriptions of web services.
 
 ## Get Started
 

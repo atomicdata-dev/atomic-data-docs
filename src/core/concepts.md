@@ -24,6 +24,8 @@ It is a directed, labeled graph, similar to RDF, so contrary to some other (labe
 * **ORM-friendly**: Navigate a _decentralized_ graph by using `dot.syntax`, similar to how you navigate a JSON object in javascript.
 * **Type-safe**: All valid Atomic data has an unambiguous, static datatype.
 
+# Concepts
+
 ## Resource
 
 A _Resource_ is a bunch of information about a thing, referenced by a single link (the Subject).

@@ -9,14 +9,14 @@ Perhaps Generics, or Option like types should be part of the Atomic Base Datatyp
 
 ## Do you have an `enum` datatype?
 
-In Atomic Data, `enum` is not a datatype, but it's a constraint that can be added to properties that have
+In Atomic Data, `enum` is not a datatype, but it's a constraint that can be added to properties that have.
 You can set [`allows-only`](https://atomicdata.dev/properties/allowsOnly) on a Property, and use that to limit which values are allowed.
 
 ## How should a client deal with Shortname collisions?
 
 Atomic Data guarantees Subject-Property uniqueness, which means that Valid Resources are guaranteed to have only one of each Property.
 Properties offer Shortnames, which are short strings.
-These strings SHOULD be unique inside Classes, but these are not guaranteed to be unique inside all Resources.
+These strings should be unique inside Classes, but these are not guaranteed to be unique inside all Resources.
 Note that Resources can have multiple Classes, and through that, they can have colliding Shortnames.
 Resources are also free to include Properties from other Classes, and their Shortnames, too, might collide.
 
@@ -35,7 +35,7 @@ Let's assume that `https://example.com/name` and `https://another.example.com/so
 What if a client tries something such as `people123.name`?
 To consistently return a single value, we need some type of _precedence_:
 
-1. The earlier Class mentioned in the [`isA`](https://atomicdata.dev/properties/isA) Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally SHOULD have no key collisions in required and recommended properties, which means that they might have. If these exist internally, sort the properties by how they are ordered in the `isA` array - first item is preferred.
+1. The earlier Class mentioned in the [`isA`](https://atomicdata.dev/properties/isA) Property of the resource. Resources can have multiple classes, but they appear in an ordered ResourceArray. Classes, internally should have no key collisions in required and recommended properties, which means that they might have. If these exist internally, sort the properties by how they are ordered in the `isA` array - first item is preferred.
 1. When the Properties are not part of any of the mentioned Classes, use Alphabetical sorting of the Property URL.
 
 When shortname collisions are possible, it's recommended to not use the shortname, but use the URL of the Property:
@@ -59,7 +59,7 @@ Another approach, is using [foreign keys (see issue)](https://github.com/ontola/
 
 ## How does Atomic Schema relate to RDF / SHACL / SheX / OWL / RDFS?
 
-Atomic Schema is _the_ schema language for atomic data, whereas RDF has a couple of competing ones, which all vary greatly.
+Atomic Schema is _the_ schema language for Atomic Data, whereas RDF has a couple of competing ones, which all vary greatly.
 In short, OWL is not designed for schema validation, but SHACL and SheX can maybe be compared to Atomic Schema.
 An important difference is that SHACL and SheX have to deal with all the complexities of RDF, whereas Atomic Data is more constrained.
 

@@ -4,9 +4,8 @@
 ## When should you use Atomic Data
 
 - **Flexible schemas**. When dealing with structured wikis or semantic data, various instances of things will have different attributes. Atomic Data allows _any_ kind of property on _any_ resource.
-- **High-value open data**. Atomic Data is a bit harder to create than plain JSON, for example, but it is easier to re-use and understand. It's use of URLs for properties makes data self-documenting.
+- **Open data**. Atomic Data is a bit harder to create than plain JSON, for example, but it is easier to re-use and understand. It's use of URLs for properties makes data self-documenting.
 - **High interoperability requirements**. When multiple groups of people have to use the same schema, Atomic Data provides easy ways to constrain and validate the data and ensure type safety.
-- **Multi-class / multi-model**. Contrary to (SQL) tables, Atomic Data allows a single thing to have multiple classes, each with their own properties.
 - **Connected / decentralized data**. With Atomic Data, you use URLs to point to things on other computers. This makes it possible to connect datasets very explicitly, without creating copies. Very useful for decentralized social networks, for example.
 - **Auditability & Versioning**. Using Atomic Commits, we can store all changes to data as transactions that can be replayed. This creates a complete audit log and history.
 - **JSON or RDF as Output**. Atomic Data serializes to idiomatic, clean JSON as well as various RDF formats (Turtle / JSON-LD / n-triples / RDF/XML).

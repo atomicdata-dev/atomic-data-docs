@@ -3,7 +3,7 @@
 
 The Atomic Datatypes consist of some of the most commonly used [Datatypes](classes.md#Datatype).
 
-Please visit <https://atomicdata.dev/collections/datatype> for the latest list of official Datatypes.
+_Note: Please visit <https://atomicdata.dev/datatypes> for the latest list of official Datatypes._
 
 ## Slug
 

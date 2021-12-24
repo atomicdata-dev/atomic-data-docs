@@ -19,6 +19,7 @@
 
 # Specification (extended)
 
+* [Atomic Data Extended](extended.md)
 * [Agents](agents.md)
 * [Hierarchy and authorization](hierarchy.md)
 * [Authentication](authentication.md)

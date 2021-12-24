@@ -4,7 +4,7 @@
 The Atomic Data model (Atomic Schema) is great for describing structured data, but for many types of existing data, we already have a different way to represent them: files.
 In Atomic Data, files have two URLs.
 One _describes_ the file and its metadata, and the other is a URL that downloads the file.
-This allows us to present a better view when a user wants to take a look at some file, and lear about its context before downloading it.
+This allows us to present a better view when a user wants to take a look at some file, and learn about its context before downloading it.
 
 ## The File class
 
