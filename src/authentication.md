@@ -16,27 +16,37 @@ But how do we deal with _reading_ data, how do we know who is trying to get acce
 
 Authentication is done by signing individual (HTTP) requests with the Agent's private key.
 
+## HTTP Headers
+
+All of the following headers are required, if you need authentication.
+
+- `x-atomic-public-key`: The base64 public key (Ed25519) of the Agent sending the request
+- `x-atomic-signature`: A base64 signature of the following string: `{subject} {timestamp}`
+- `x-atomic-timestamp`: The current time (when sending the request) as milliseconds since unix epoch
+- `x-atomic-agent`: The subject URL of the Agent sending the request.
+
 ## Sending a request
 
 Here's an example (js) client side implementation with comments:
 
 ```ts
 // The Private Key of the agent is used for signing
-// https://atomicdata.dev/properties/publicKey
+// https://atomicdata.dev/properties/privateKey
 const privateKey = "someBase64Key";
-// The current time as milliseconds since unix epoch
 const timestamp = Math.round(new Date().getTime());;
 // This is what you will need to sign.
 // The timestmap is to limit the harm of a man-in-the-middle attack.
 // The `subject` is the full HTTP url that is to be fetched.
 const message = `${subject} ${timestamp}`;
-// Sign using Ed25519
+// Sign using Ed25519, see example implementation here: https://github.com/joepio/atomic-data-browser/blob/30b2f8af59d25084de966301cb6bd1ed90c0eb78/lib/src/commit.ts#L176
 const signed = await signToBase64(message, privateKey);
 // Set all of these headers
+const headers = new Headers;
 headers.set('x-atomic-public-key', await agent.getPublicKey());
 headers.set('x-atomic-signature', signed);
 headers.set('x-atomic-timestamp', timestamp.toString());
 headers.set('x-atomic-agent', agent?.subject);
+const response = await fetch(subject, {headers});
 ```
 
 ## Handling a request
