@@ -14,4 +14,6 @@
 - **Jonas Smedegaard** (for the various interesting talks we had and the feedback he provided)
 - **Arthur Dingemans** (for sharing his thoughts, providing feedback and his valuable suggestions)
 - **Anja Koopman** (for all her support, even when this project ate away days and nights of our time together)
+- **Alex Mikhalev** (for sharing many inspiring project and ideas)
+- **Daniel Lutrha** (for inspiring me to be more ambitious and for providing lots of technical ideas)
 - All the other people who contributed to linked data related standards
