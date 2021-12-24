@@ -141,15 +141,12 @@
                         <h1 id="querying-atomic-data"><a class="header" href="#querying-atomic-data">Querying Atomic Data</a></h1>
 <p>There are multiple ways of getting Atomic Data into some system:</p>
 <ul>
+<li><a href="#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
 <li><a href="../schema/collections.html"><strong>Atomic Collections</strong></a> can filter, sort and paginate resources</li>
 <li><a href="paths.html"><strong>Atomic Paths</strong></a> is a simple way to traverse Atomic Graphs and target specific values</li>
-<li><a href="#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
 <li><a href="#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Property and Value.</li>
 <li><a href="#SPARQL"><strong>SPARQL</strong></a> is a powerful Query language for traversing linked data graphs</li>
 </ul>
-<h2 id="atomic-paths"><a class="header" href="#atomic-paths">Atomic Paths</a></h2>
-<p>An Atomic Path is a string that consist of one or more URLs, which when traversed point to an item.
-For more information, see <a href="paths.html">Atomic Paths</a>.</p>
 <h2 id="subject-fetching-http"><a class="header" href="#subject-fetching-http">Subject fetching (HTTP)</a></h2>
 <p>The simplest way of getting Atomic Data when the Subject is an HTTP URL, is by sending a GET request to the subject URL.
 Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/ad+json</code>.</p>
@@ -167,6 +164,15 @@ Connection: Closed
 }
 </code></pre>
 <p>The server MAY also include other resources, if they are deemed relevant.</p>
+<h2 id="atomic-collections"><a class="header" href="#atomic-collections">Atomic Collections</a></h2>
+<p>Collections are Resources that provide simple query options, such as filtering by Property or Value, and sorting.
+They also paginate resources.
+Under the hood, Collections are powered by Triple Pattern Fragments.
+Use query parameters to traverse pages, filter, or sort.</p>
+<p><a href="../schema/collections.html">Read more about Collections</a></p>
+<h2 id="atomic-paths"><a class="header" href="#atomic-paths">Atomic Paths</a></h2>
+<p>An Atomic Path is a string that consist of one or more URLs, which when traversed point to an item.</p>
+<p><a href="paths.html">Read more about Atomic Paths</a></p>
 <h2 id="triple-pattern-fragments"><a class="header" href="#triple-pattern-fragments">Triple Pattern Fragments</a></h2>
 <p><a href="https://linkeddatafragments.org/specification/triple-pattern-fragments/">Triple Pattern Fragments</a> (TPF) is an interface for querying RDF.
 It works great for Atomic Data as well.</p>
@@ -186,10 +192,11 @@ Connection: Closed
 </code></pre>
 <h2 id="sparql"><a class="header" href="#sparql">SPARQL</a></h2>
 <p><a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> is a powerful RDF query language.
-Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.</p>
+Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.
+None of the exsisting implementations support a SPARQL endpoint, though.</p>
 <ul>
 <li>Convert / serialize Atomic Data to RDF (for example by using the <code>/tpf</code> endpoint and an <code>accept</code> header: <code>curl -i -H &quot;Accept: text/turtle&quot; &quot;https://atomicdata.dev/tpf&quot;</code>)</li>
-<li>Load it into a SPARQL engine (e.g. )</li>
+<li>Load it into a SPARQL engine of your choice</li>
 </ul>
 
                     </main>

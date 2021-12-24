@@ -448,15 +448,72 @@ It <em>does</em> have its own unique <a href="core/./paths.html">path</a>, which
 It's fundamentally a data model, and that's an important distinction to make.</p>
 <h2 id="json-ad"><a class="header" href="#json-ad">JSON-AD</a></h2>
 <p>However, it's recommended to use <a href="core/json-ad.html"><code>JSON-AD</code></a> (more about that on the next page), which is specifically designed to be a simple, complete and performant format for Atomic Data.</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://atomicdata.dev/properties/description&quot;,
+  &quot;https://atomicdata.dev/properties/datatype&quot;: &quot;https://atomicdata.dev/datatypes/markdown&quot;,
+  &quot;https://atomicdata.dev/properties/description&quot;: &quot;A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.&quot;,
+  &quot;https://atomicdata.dev/properties/isA&quot;: [
+    &quot;https://atomicdata.dev/classes/Property&quot;
+  ],
+  &quot;https://atomicdata.dev/properties/parent&quot;: &quot;https://atomicdata.dev/properties&quot;,
+  &quot;https://atomicdata.dev/properties/shortname&quot;: &quot;description&quot;
+}
+</code></pre>
+<p><a href="core/json-ad.html">Read more about JSON-AD</a></p>
 <h2 id="json-simple"><a class="header" href="#json-simple">JSON (simple)</a></h2>
 <p>Atomic Data is designed to be serializable to clean, simple <a href="core/../interoperability/json.html">JSON</a>, for usage in (client) apps that don't need to know the full URLs of properties.</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://atomicdata.dev/properties/description&quot;,
+  &quot;datatype&quot;: &quot;https://atomicdata.dev/datatypes/markdown&quot;,
+  &quot;description&quot;: &quot;A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.&quot;,
+  &quot;is-a&quot;: [
+    &quot;https://atomicdata.dev/classes/Property&quot;
+  ],
+  &quot;parent&quot;: &quot;https://atomicdata.dev/properties&quot;,
+  &quot;shortname&quot;: &quot;description&quot;
+}
+</code></pre>
+<p><a href="core/json-ad.html">Read more about JSON and Atomic Data</a></p>
 <h2 id="rdf-serialization-formats"><a class="header" href="#rdf-serialization-formats">RDF serialization formats</a></h2>
 <p>Since Atomic Data is a strict subset of RDF, RDF serialization formats can be used to communicate and store Atomic Data, such as N-Triples, Turtle, HexTuples, JSON-LD and <a href="https://ontola.io/blog/rdf-serialization-formats/">other RDF serialization formats</a>.
 However, not all valid RDF is valid Atomic Data.
 Atomic Data is more strict.
 Read more about serializing Atomic Data to RDF in the <a href="core/../interoperability/rdf.html">RDF interoperability section</a>.</p>
-<h2 id="experimental-serialization-formats"><a class="header" href="#experimental-serialization-formats">Experimental serialization formats</a></h2>
-<p>Some experimental ideas for Atomic Data serialization are <a href="https://github.com/ontola/atomic-data/blob/master/src/experimental-serialization.md">written here</a>.</p>
+<p>JSON-LD:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    &quot;datatype&quot;: {
+      &quot;@id&quot;: &quot;https://atomicdata.dev/properties/datatype&quot;,
+      &quot;@type&quot;: &quot;@id&quot;
+    },
+    &quot;description&quot;: &quot;https://atomicdata.dev/properties/description&quot;,
+    &quot;is-a&quot;: {
+      &quot;@container&quot;: &quot;@list&quot;,
+      &quot;@id&quot;: &quot;https://atomicdata.dev/properties/isA&quot;
+    },
+    &quot;parent&quot;: {
+      &quot;@id&quot;: &quot;https://atomicdata.dev/properties/parent&quot;,
+      &quot;@type&quot;: &quot;@id&quot;
+    },
+    &quot;shortname&quot;: &quot;https://atomicdata.dev/properties/shortname&quot;
+  },
+  &quot;@id&quot;: &quot;https://atomicdata.dev/properties/description&quot;,
+  &quot;datatype&quot;: &quot;https://atomicdata.dev/datatypes/markdown&quot;,
+  &quot;description&quot;: &quot;A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.&quot;,
+  &quot;is-a&quot;: [
+    &quot;https://atomicdata.dev/classes/Property&quot;
+  ],
+  &quot;parent&quot;: &quot;https://atomicdata.dev/properties&quot;,
+  &quot;shortname&quot;: &quot;description&quot;
+}
+</code></pre>
+<p>Turtle / N-Triples:</p>
+<pre><code class="language-turtle">&lt;https://atomicdata.dev/properties/description&gt; &lt;https://atomicdata.dev/properties/datatype&gt; &lt;https://atomicdata.dev/datatypes/markdown&gt; .
+&lt;https://atomicdata.dev/properties/description&gt; &lt;https://atomicdata.dev/properties/parent&gt; &lt;https://atomicdata.dev/properties&gt; .
+&lt;https://atomicdata.dev/properties/description&gt; &lt;https://atomicdata.dev/properties/shortname&gt; &quot;description&quot;^^&lt;https://atomicdata.dev/datatypes/slug&gt; .
+&lt;https://atomicdata.dev/properties/description&gt; &lt;https://atomicdata.dev/properties/isA&gt; &quot;https://atomicdata.dev/classes/Property&quot;^^&lt;https://atomicdata.dev/datatypes/resourceArray&gt; .
+&lt;https://atomicdata.dev/properties/description&gt; &lt;https://atomicdata.dev/properties/description&gt; &quot;A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.&quot;^^&lt;https://atomicdata.dev/datatypes/markdown&gt; .
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="json-ad-the-atomic-data-serialization-format"><a class="header" href="#json-ad-the-atomic-data-serialization-format">JSON-AD: The Atomic Data serialization format</a></h1>
 <p>Although you an use various serialization formats for Atomic Data, <code>JSON-AD</code> is the <em>default</em> serialization format.
 It is what the current <a href="https://github.com/joepio/atomic">Rust</a> and <a href="https://github.com/joepio/atomic-data-browser">Typescript / React</a> implementations use to communicate.
@@ -513,15 +570,12 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="querying-atomic-data"><a class="header" href="#querying-atomic-data">Querying Atomic Data</a></h1>
 <p>There are multiple ways of getting Atomic Data into some system:</p>
 <ul>
+<li><a href="core/querying.html#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
 <li><a href="core/../schema/collections.html"><strong>Atomic Collections</strong></a> can filter, sort and paginate resources</li>
 <li><a href="core/paths.html"><strong>Atomic Paths</strong></a> is a simple way to traverse Atomic Graphs and target specific values</li>
-<li><a href="core/querying.html#subject-fetching-http"><strong>Subject Fetching</strong></a> requests a single subject right from its source</li>
 <li><a href="core/querying.html#triple-pattern-fragments"><strong>Triple Pattern Fragments</strong></a> allows querying for specific (combinations of) Subject, Property and Value.</li>
 <li><a href="core/querying.html#SPARQL"><strong>SPARQL</strong></a> is a powerful Query language for traversing linked data graphs</li>
 </ul>
-<h2 id="atomic-paths"><a class="header" href="#atomic-paths">Atomic Paths</a></h2>
-<p>An Atomic Path is a string that consist of one or more URLs, which when traversed point to an item.
-For more information, see <a href="core/paths.html">Atomic Paths</a>.</p>
 <h2 id="subject-fetching-http"><a class="header" href="#subject-fetching-http">Subject fetching (HTTP)</a></h2>
 <p>The simplest way of getting Atomic Data when the Subject is an HTTP URL, is by sending a GET request to the subject URL.
 Set the <code>Content-Type</code> header to an Atomic Data compatible mime type, such as <code>application/ad+json</code>.</p>
@@ -539,6 +593,15 @@ Connection: Closed
 }
 </code></pre>
 <p>The server MAY also include other resources, if they are deemed relevant.</p>
+<h2 id="atomic-collections"><a class="header" href="#atomic-collections">Atomic Collections</a></h2>
+<p>Collections are Resources that provide simple query options, such as filtering by Property or Value, and sorting.
+They also paginate resources.
+Under the hood, Collections are powered by Triple Pattern Fragments.
+Use query parameters to traverse pages, filter, or sort.</p>
+<p><a href="core/../schema/collections.html">Read more about Collections</a></p>
+<h2 id="atomic-paths"><a class="header" href="#atomic-paths">Atomic Paths</a></h2>
+<p>An Atomic Path is a string that consist of one or more URLs, which when traversed point to an item.</p>
+<p><a href="core/paths.html">Read more about Atomic Paths</a></p>
 <h2 id="triple-pattern-fragments"><a class="header" href="#triple-pattern-fragments">Triple Pattern Fragments</a></h2>
 <p><a href="https://linkeddatafragments.org/specification/triple-pattern-fragments/">Triple Pattern Fragments</a> (TPF) is an interface for querying RDF.
 It works great for Atomic Data as well.</p>
@@ -558,10 +621,11 @@ Connection: Closed
 </code></pre>
 <h2 id="sparql"><a class="header" href="#sparql">SPARQL</a></h2>
 <p><a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> is a powerful RDF query language.
-Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.</p>
+Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.
+None of the exsisting implementations support a SPARQL endpoint, though.</p>
 <ul>
 <li>Convert / serialize Atomic Data to RDF (for example by using the <code>/tpf</code> endpoint and an <code>accept</code> header: <code>curl -i -H &quot;Accept: text/turtle&quot; &quot;https://atomicdata.dev/tpf&quot;</code>)</li>
-<li>Load it into a SPARQL engine (e.g. )</li>
+<li>Load it into a SPARQL engine of your choice</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-paths-1"><a class="header" href="#atomic-paths-1">Atomic Paths</a></h1>
 <p>An Atomic Path is a string that consists of at least one URL, followed by one or more URLs or Shortnames.
@@ -1413,7 +1477,7 @@ This tells the client that it has to individually fetch the resource from the se
 <li><strong>Auto-generate forms</strong>: a front-end app should present Endpoints as forms that non-developers can interact with</li>
 </ul>
 <p><a href="https://github.com/ontola/atomic-data-docs/issues/15">Discussion in issue tracker</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-collections"><a class="header" href="#atomic-collections">Atomic Collections</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-collections-1"><a class="header" href="#atomic-collections-1">Atomic Collections</a></h1>
 <p><em>URL: <a href="https://atomicdata.dev/classes/Collection">https://atomicdata.dev/classes/Collection</a></em></p>
 <p>Sooner or later, developers will have to deal with (long) lists of items.
 For example, a set of blog posts, activities or users.
@@ -2315,6 +2379,8 @@ Open a PR and <a href="https://github.com/ontola/atomic-data-docs/edit/master/sr
 <li><strong>Jonas Smedegaard</strong> (for the various interesting talks we had and the feedback he provided)</li>
 <li><strong>Arthur Dingemans</strong> (for sharing his thoughts, providing feedback and his valuable suggestions)</li>
 <li><strong>Anja Koopman</strong> (for all her support, even when this project ate away days and nights of our time together)</li>
+<li><strong>Alex Mikhalev</strong> (for sharing many inspiring project and ideas)</li>
+<li><strong>Daniel Lutrha</strong> (for inspiring me to be more ambitious and for providing lots of technical ideas)</li>
 <li>All the other people who contributed to linked data related standards</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="subscribe-to-the-atomic-data-newsletter"><a class="header" href="#subscribe-to-the-atomic-data-newsletter">Subscribe to the Atomic Data newsletter</a></h1>
