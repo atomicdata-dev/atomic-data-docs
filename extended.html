@@ -142,16 +142,17 @@
 <p>Atomic Data is a <em>modular</em> specification, which means that you can choose to implement parts of it.
 All parts of Extended are <em>optional</em> to implement.
 The <em>Core</em> of the specification (described in the previous chapter) is required for all of the Extended spec to work, but not the other way around.</p>
-<p>However, many of the parts of Extended do rely on <em>eachother</em>.</p>
+<p>However, many of the parts of Extended do depend on <em>eachother</em>.</p>
 <ul>
 <li><a href="commits/intro.html">Commits</a> communicate state changes. These Commits are signed using cryptographic keys, which ensures that every change can be audited. Commits are also used to construct a history of versions.</li>
-<li><a href="agents.html">Agents</a> are Users that enable <a href="authentication.html">authentication</a>.</li>
-<li><a href="schema/collections.html">Collections</a> add query options, filetering, sorting and pagination.</li>
-<li><a href="core/paths.html">Paths</a> allow you to traverse graphs.</li>
-<li><a href="hierarchy.html">Hierarchies</a> are used for authorization and keeping data organized.</li>
-<li><a href="invitations.html">Invites</a> can be used to easily create new users and provide them with rights.</li>
-<li><a href="websockets.html">WebSockets</a> allow for real-time updates.</li>
-<li><a href="endpoints.html">Endpoints</a> provide machine-readable descriptions of web services.</li>
+<li><a href="agents.html">Agents</a> are Users that enable <a href="authentication.html">authentication</a>. They are Resources with their own Public and Private keys, which they use to identify themselves.</li>
+<li><a href="schema/collections.html">Collections</a>: querying, filetering, sorting and pagination.</li>
+<li><a href="core/paths.html">Paths</a>: traverse graphs.</li>
+<li><a href="hierarchy.html">Hierarchies</a> used for authorization and keeping data organized. Similar to folder structures on filesystems.</li>
+<li><a href="invitations.html">Invites</a>: create new users and provide them with rights.</li>
+<li><a href="websockets.html">WebSockets</a>: real-time updates.</li>
+<li><a href="endpoints.html">Endpoints</a>: provide machine-readable descriptions of web services.</li>
+<li><a href="files.html">Files</a>: upload, download and metadata for files.</li>
 </ul>
 
                     </main>

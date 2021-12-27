@@ -153,13 +153,14 @@ These Properties are responsible for setting the <code>datatype</code> (to ensur
 <p>Atomic Data Extended is a set of extra modules (on top of Atomic Data Core) that deal with data that changes over time, authentication, and authorization.</p>
 <ul>
 <li><a href="commits/intro.html">Commits</a> communicate state changes. These Commits are signed using cryptographic keys, which ensures that every change can be audited. Commits are also used to construct a history of versions.</li>
-<li><a href="agents.html">Agents</a> are Users that enable <a href="authentication.html">authentication</a>.</li>
-<li><a href="schema/collections.html">Collections</a> add query options, filetering, sorting and pagination.</li>
-<li><a href="core/paths.html">Paths</a> allow you to traverse graphs.</li>
-<li><a href="hierarchy.html">Hierarchies</a> are used for authorization and keeping data organized.</li>
-<li><a href="invitations.html">Invites</a> can be used to easily create new users and provide them with rights.</li>
-<li><a href="websockets.html">WebSockets</a> allow for real-time updates.</li>
-<li><a href="endpoints.html">Endpoints</a> provide machine-readable descriptions of web services.</li>
+<li><a href="agents.html">Agents</a> are Users that enable <a href="authentication.html">authentication</a>. They are Resources with their own Public and Private keys, which they use to identify themselves.</li>
+<li><a href="schema/collections.html">Collections</a>: querying, filetering, sorting and pagination.</li>
+<li><a href="core/paths.html">Paths</a>: traverse graphs.</li>
+<li><a href="hierarchy.html">Hierarchies</a> used for authorization and keeping data organized. Similar to folder structures on filesystems.</li>
+<li><a href="invitations.html">Invites</a>: create new users and provide them with rights.</li>
+<li><a href="websockets.html">WebSockets</a>: real-time updates.</li>
+<li><a href="endpoints.html">Endpoints</a>: provide machine-readable descriptions of web services.</li>
+<li><a href="files.html">Files</a>: upload, download and metadata for files.</li>
 </ul>
 <h2 id="get-started"><a class="header" href="#get-started">Get Started</a></h2>
 <p>If you want to read more about how Atomic Data works - read on.
@@ -974,16 +975,17 @@ An important difference is that SHACL and SheX have to deal with all the complex
 <p>Atomic Data is a <em>modular</em> specification, which means that you can choose to implement parts of it.
 All parts of Extended are <em>optional</em> to implement.
 The <em>Core</em> of the specification (described in the previous chapter) is required for all of the Extended spec to work, but not the other way around.</p>
-<p>However, many of the parts of Extended do rely on <em>eachother</em>.</p>
+<p>However, many of the parts of Extended do depend on <em>eachother</em>.</p>
 <ul>
 <li><a href="commits/intro.html">Commits</a> communicate state changes. These Commits are signed using cryptographic keys, which ensures that every change can be audited. Commits are also used to construct a history of versions.</li>
-<li><a href="agents.html">Agents</a> are Users that enable <a href="authentication.html">authentication</a>.</li>
-<li><a href="schema/collections.html">Collections</a> add query options, filetering, sorting and pagination.</li>
-<li><a href="core/paths.html">Paths</a> allow you to traverse graphs.</li>
-<li><a href="hierarchy.html">Hierarchies</a> are used for authorization and keeping data organized.</li>
-<li><a href="invitations.html">Invites</a> can be used to easily create new users and provide them with rights.</li>
-<li><a href="websockets.html">WebSockets</a> allow for real-time updates.</li>
-<li><a href="endpoints.html">Endpoints</a> provide machine-readable descriptions of web services.</li>
+<li><a href="agents.html">Agents</a> are Users that enable <a href="authentication.html">authentication</a>. They are Resources with their own Public and Private keys, which they use to identify themselves.</li>
+<li><a href="schema/collections.html">Collections</a>: querying, filetering, sorting and pagination.</li>
+<li><a href="core/paths.html">Paths</a>: traverse graphs.</li>
+<li><a href="hierarchy.html">Hierarchies</a> used for authorization and keeping data organized. Similar to folder structures on filesystems.</li>
+<li><a href="invitations.html">Invites</a>: create new users and provide them with rights.</li>
+<li><a href="websockets.html">WebSockets</a>: real-time updates.</li>
+<li><a href="endpoints.html">Endpoints</a>: provide machine-readable descriptions of web services.</li>
+<li><a href="files.html">Files</a>: upload, download and metadata for files.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-agents"><a class="header" href="#atomic-agents">Atomic Agents</a></h1>
 <p>Atomic Agents are used for <a href="./authentication.html">authentication</a>: to set an identity and prove who an actor actually is.
@@ -2428,9 +2430,9 @@ Open a PR and <a href="https://github.com/ontola/atomic-data-docs/edit/master/sr
 <p>Things you can do:</p>
 <ul>
 <li>Join the <a href="https://discord.gg/a72Rv2P">Discord server</a> for voice / text chat</li>
-<li>Start playing with / contributing to the <a href="https://github.com/joepio/atomic"><code>atomic-server / atomic-cli</code></a> implementation written in Rust.</li>
-<li>Clone the <a href="https://github.com/ontola/atomic-data/">Book Repo</a> and read some of the inline comments, which might help start some discussions</li>
-<li>Drop an <a href="https://github.com/ontola/atomic-data/issues">issue on Github</a> to share your suggestions or criticism</li>
+<li>Start playing with / contributing to <a href="tooling.html">the implementations</a></li>
+<li>Drop an <a href="https://github.com/ontola/atomic-data-docs/issues">issue on Github</a> to share your suggestions or criticism of this book / spec</li>
+<li>Subscribe to the <a href="newsletter.html">newsletter</a></li>
 <li>Join our <a href="https://www.w3.org/community/atomic-data/">W3C Community Group</a></li>
 </ul>
 
