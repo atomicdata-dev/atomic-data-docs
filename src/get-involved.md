@@ -6,7 +6,7 @@ Atomic Data is an open specification, and that means that you're very welcome to
 Things you can do:
 
 - Join the [Discord server](https://discord.gg/a72Rv2P) for voice / text chat
-- Start playing with / contributing to the [`atomic-server / atomic-cli`](https://github.com/joepio/atomic) implementation written in Rust.
-- Clone the [Book Repo](https://github.com/ontola/atomic-data/) and read some of the inline comments, which might help start some discussions
-- Drop an [issue on Github](https://github.com/ontola/atomic-data/issues) to share your suggestions or criticism
+- Start playing with / contributing to [the implementations](tooling.md)
+- Drop an [issue on Github](https://github.com/ontola/atomic-data-docs/issues) to share your suggestions or criticism of this book / spec
+- Subscribe to the [newsletter](newsletter.md)
 - Join our [W3C Community Group](https://www.w3.org/community/atomic-data/)
