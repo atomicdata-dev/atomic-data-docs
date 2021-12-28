@@ -16,9 +16,14 @@ You can find a list of Endpoints supported by Atomic-Server on [atomicdata.dev/e
 Endpoint Resources are _dynamic_, because their properties could be calculated server-side.
 When a Property tends to be calculated server-side, they will have a [`isDynamic` property](https://atomicdata.dev/properties/isDynamic) set to `true`, which tells the client that it's probably useless to try to overwrite it.
 
-A Server can also send a partial Resource for an Endpoint to the client, which means that some properties may be missing.
+## Incomplete resources
+
+A Server can also send one or more partial Resources for an Endpoint to the client, which means that some properties may be missing.
 When this is the case, the Resource will have an [`incomplete`](https://atomicdata.dev/properties/incomplete) property set to `true`.
 This tells the client that it has to individually fetch the resource from the server to get the full body.
+
+One scenario where this happens, is when fetching Collections that have other Collections as members.
+If we would not have incomplete resources, the server would have to perform expensive computations even if the data is not needed by the client.
 
 ## Design Goals
 
