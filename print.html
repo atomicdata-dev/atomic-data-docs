@@ -1500,9 +1500,12 @@ This means that it's possible to render Endpoints as forms.</p>
 <p>You can find a list of Endpoints supported by Atomic-Server on <a href="https://atomicdata.dev/endpoints">atomicdata.dev/endpoints</a>.</p>
 <p>Endpoint Resources are <em>dynamic</em>, because their properties could be calculated server-side.
 When a Property tends to be calculated server-side, they will have a <a href="https://atomicdata.dev/properties/isDynamic"><code>isDynamic</code> property</a> set to <code>true</code>, which tells the client that it's probably useless to try to overwrite it.</p>
-<p>A Server can also send a partial Resource for an Endpoint to the client, which means that some properties may be missing.
+<h2 id="incomplete-resources"><a class="header" href="#incomplete-resources">Incomplete resources</a></h2>
+<p>A Server can also send one or more partial Resources for an Endpoint to the client, which means that some properties may be missing.
 When this is the case, the Resource will have an <a href="https://atomicdata.dev/properties/incomplete"><code>incomplete</code></a> property set to <code>true</code>.
 This tells the client that it has to individually fetch the resource from the server to get the full body.</p>
+<p>One scenario where this happens, is when fetching Collections that have other Collections as members.
+If we would not have incomplete resources, the server would have to perform expensive computations even if the data is not needed by the client.</p>
 <h2 id="design-goals-7"><a class="header" href="#design-goals-7">Design Goals</a></h2>
 <ul>
 <li><strong>Familiar API</strong>: should look like something that most developers already know</li>
