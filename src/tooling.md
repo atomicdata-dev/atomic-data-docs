@@ -76,6 +76,11 @@ Visit https://github.com/joepio/atomic for more info
 
 [repository + issue tracker](https://github.com/joepio/atomic).
 
+
+### Raycast extension: Full-text search from your desktop
+
+[Install here](https://www.raycast.com/joepio/atomic).
+
 ## Libraries
 
 ### `@tomic/lib` and `@tomic/react`
