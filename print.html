@@ -1033,7 +1033,10 @@ For example, sharing a specific folder with a team, but a different folder could
 <li>Any Resource can be a <code>parent</code> of some other Resource, as long as both Resources exists on the same Atomic Server.</li>
 <li>Inversely, every Resource could have <code>children</code>.</li>
 <li>Only <a href="https://atomicdata.dev/classes/Drive"><code>Drive</code></a>s (Resources with the class <code>Drive</code>) are allowed to be a top-level parent.</li>
-<li>Any Resource might have <code>read</code> and <code>write</code> Atoms. These both contain a list of Agents. These Agents will be granted the rights to edit (using Commits) or read / use the Resources.</li>
+</ul>
+<h2 id="authorization"><a class="header" href="#authorization">Authorization</a></h2>
+<ul>
+<li>Any Resource might have <a href="https://atomicdata.dev/properties/read"><code>read</code></a> and <a href="https://atomicdata.dev/properties/write"><code>write</code></a> Atoms. These both contain a list of Agents. These Agents will be granted the rights to edit (using Commits) or read / use the Resources.</li>
 <li>Rights are <em>additive</em>, which means that the rights add up. If a Resource itself has no <code>write</code> Atom containing your Agent, but it's <code>parent</code> <em>does</em> have one, you will still get the <code>write</code> right.</li>
 <li>Rights cannot be removed by children or parents - they can only be added.</li>
 </ul>
@@ -2106,10 +2109,11 @@ In this section, we'll present concrete examples of things that can be built wit
 Although you could use Atomic Data for pretty much any type of application, it is especially valuable where <strong>data re-use</strong>, <strong>standardization</strong>, and <strong>data ownership</strong> are important.</p>
 <!-- This should align with SUMMARY.md -->
 <ul>
-<li><a href="usecases/./personal-data-store.html">Personal Data Store</a></li>
-<li><a href="usecases/./e-commerce.html">E-commerce &amp; marketplaces</a></li>
-<li><a href="usecases/./surveys.html">Surveys</a></li>
-<li><a href="usecases/./verifiable-credentials.html">Verifiable Credentials</a></li>
+<li><a href="usecases/personal-data-store.html">Personal Data Store</a></li>
+<li><a href="usecases/e-commerce.html">E-commerce &amp; marketplaces</a></li>
+<li><a href="usecases/surveys.html">Surveys</a></li>
+<li><a href="usecases/verifiable-credentials.html">Verifiable Credentials</a></li>
+<li><a href="usecases/food-labels.html">Food labels</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-data-for-personal-data-stores"><a class="header" href="#atomic-data-for-personal-data-stores">Atomic Data for personal data stores</a></h1>
 <p>A Personal Data Store (or personal data service) is a place where you store all sorts of personal information.
@@ -2360,6 +2364,8 @@ SUBCOMMANDS:
 Visit https://github.com/joepio/atomic for more info
 </code></pre>
 <p><a href="https://github.com/joepio/atomic">repository + issue tracker</a>.</p>
+<h3 id="raycast-extension-full-text-search-from-your-desktop"><a class="header" href="#raycast-extension-full-text-search-from-your-desktop">Raycast extension: Full-text search from your desktop</a></h3>
+<p><a href="https://www.raycast.com/joepio/atomic">Install here</a>.</p>
 <h2 id="libraries"><a class="header" href="#libraries">Libraries</a></h2>
 <h3 id="tomiclib-and-tomicreact"><a class="header" href="#tomiclib-and-tomicreact"><code>@tomic/lib</code> and <code>@tomic/react</code></a></h3>
 <p>Javascript / typescript libraries, especially useful for creating front-end apps.</p>

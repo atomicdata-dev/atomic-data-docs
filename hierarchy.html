@@ -157,7 +157,10 @@ For example, sharing a specific folder with a team, but a different folder could
 <li>Any Resource can be a <code>parent</code> of some other Resource, as long as both Resources exists on the same Atomic Server.</li>
 <li>Inversely, every Resource could have <code>children</code>.</li>
 <li>Only <a href="https://atomicdata.dev/classes/Drive"><code>Drive</code></a>s (Resources with the class <code>Drive</code>) are allowed to be a top-level parent.</li>
-<li>Any Resource might have <code>read</code> and <code>write</code> Atoms. These both contain a list of Agents. These Agents will be granted the rights to edit (using Commits) or read / use the Resources.</li>
+</ul>
+<h2 id="authorization"><a class="header" href="#authorization">Authorization</a></h2>
+<ul>
+<li>Any Resource might have <a href="https://atomicdata.dev/properties/read"><code>read</code></a> and <a href="https://atomicdata.dev/properties/write"><code>write</code></a> Atoms. These both contain a list of Agents. These Agents will be granted the rights to edit (using Commits) or read / use the Resources.</li>
 <li>Rights are <em>additive</em>, which means that the rights add up. If a Resource itself has no <code>write</code> Atom containing your Agent, but it's <code>parent</code> <em>does</em> have one, you will still get the <code>write</code> right.</li>
 <li>Rights cannot be removed by children or parents - they can only be added.</li>
 </ul>
