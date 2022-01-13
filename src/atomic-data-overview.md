@@ -10,7 +10,7 @@ Atomic Data is especially suitable for knowledge graphs, distributed datasets, s
 It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.
 
 Atomic Data is [Linked Data](https://ontola.io/what-is-linked-data/), as it is a [strict subset of RDF](interoperability/rdf.md).
-It is type-safe (you know if something is a `string`, `number`, `date`, `URL`, etc.) and extensible through [Atomic Schema](schema/intro.md), which means that you can define your own Classes, Properties and Datatypes.
+It is type-safe (you know if something is a `string`, `number`, `date`, `URL`, etc.) and extensible through [Atomic Schema](schema/intro.md), which means that you can re-use or define your own Classes, Properties and Datatypes.
 
 The default serialization format for Atomic Data is [JSON-AD](core/json-ad.md), which is simply JSON where each key is a URL of an Atomic Property.
 These Properties are responsible for setting the `datatype` (to ensure type-safety) and setting `shortnames` (which help to keep names short, for example in JSON serialization) and `descriptions` (which provide semantic explanations of what a property should be used for).

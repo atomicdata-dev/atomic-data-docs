@@ -1,18 +1,21 @@
 # Authentication in Atomic Data
 
-Atomic Data uses [Hierarchies](hierarchy.md) to describe who gets to access some resource, and who can edit it.
-When an Agent wants to _edit_ a resource, they have to send a signed [Commit](commits/intro.md).
+Authentication means knowing _who_ is doing something, either getting access or creating some new data.
+When an Agent wants to _edit_ a resource, they have to send a signed [Commit](commits/intro.md), and the signatures are checked in order to authorize a Commit.
+
 But how do we deal with _reading_ data, how do we know who is trying to get access?
+That's what this page will explain.
+The short answer is: **By signing the HTTP request**.
 
 ## Design goals
 
 - **Secure**: Because, what's the point of authentication if it's not?
-- **Ease of use**: Setting up an identity should not require _any_ effort, and proving identity should be minimal effort.
+- **Easy to use**: Setting up an identity should not require _any_ effort, and proving identity should be minimal effort.
 - **Anonimity allowed**: Users should be able to have multiple identities, some of which are fully anonymous.
 - **Self-sovereign**: No dependency on servers that user's don't control. Or at least, minimise this.
 - **Dummy-proof**: We need a mechanism for dealing with forgetting passwords / client devices losing data.
 - **Compatible with Commits**: Atomic Commits require clients to sign things. Ideally, this functionality / strategy would also fit with the new model.
-- **Fast**: Of course, authentication will slow things down. But let's keep that to a minimum.
+- **Fast**: Of course, authentication will always slow things down. But let's keep that to a minimum.
 
 Authentication is done by signing individual (HTTP) requests with the Agent's private key.
 
@@ -62,7 +65,13 @@ const response = await fetch(subject, {headers});
 
 - Since there's only a single HTTP request, we don't have a subject to fetch. Use `ws` as a subject, so sign a string like `ws 12940791247`.
 
+## Hierarchies for authorization
+
+Atomic Data uses [Hierarchies](hierarchy.md) to describe who gets to access some resource, and who can edit it.
+
 ## Limitations / considerations
 
-- Since we need the Private Key to sign Commits and requests, the client should have this available. This means the client software as well as the user should deal with key management.
-- When using the Agent's subject to authenticate somwehere, the authorizer must be able to check what the public key of the agent is. This means the agent must be publicly resolvable. This is one of the reasons we should work towards a server-independent identifier, probably as base64 string that contains the public key (and, optionally, also the https identifier). See the [github issue on DIDs](https://github.com/ontola/atomic-data-docs/issues/59).
+- Since we need the Private Key to sign Commits and requests, the client should have this available. This means the client software as well as the user should deal with key management, and that can be a security risk in some contexts (such as a web browser). [See issue #49](https://github.com/ontola/atomic-data-docs/issues/49).
+- When using the Agent's subject to authenticate somwehere, the authorizer must be able to check what the public key of the agent is. This means the agent must be publicly resolvable. This is one of the reasons we should work towards a server-independent identifier, probably as base64 string that contains the public key (and, optionally, also the https identifier). See [issue #59 on DIDs](https://github.com/ontola/atomic-data-docs/issues/59).
+- Signing every single request takes a bit of time. We picked a fast algorithm (Ed25519) to minimize this cost.
+- We'll probably introduce some form of token-based-authentication in the future. [See #87](https://github.com/ontola/atomic-data-docs/issues/87)
