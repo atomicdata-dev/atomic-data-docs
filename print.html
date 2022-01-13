@@ -146,7 +146,7 @@
 <p>Atomic Data is especially suitable for knowledge graphs, distributed datasets, semantic data, p2p applications, decentralized apps and linked open data.
 It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.</p>
 <p>Atomic Data is <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, as it is a <a href="interoperability/rdf.html">strict subset of RDF</a>.
-It is type-safe (you know if something is a <code>string</code>, <code>number</code>, <code>date</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can define your own Classes, Properties and Datatypes.</p>
+It is type-safe (you know if something is a <code>string</code>, <code>number</code>, <code>date</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can re-use or define your own Classes, Properties and Datatypes.</p>
 <p>The default serialization format for Atomic Data is <a href="core/json-ad.html">JSON-AD</a>, which is simply JSON where each key is a URL of an Atomic Property.
 These Properties are responsible for setting the <code>datatype</code> (to ensure type-safety) and setting <code>shortnames</code> (which help to keep names short, for example in JSON serialization) and <code>descriptions</code> (which provide semantic explanations of what a property should be used for).</p>
 <h2 id="atomic-data-extended"><a class="header" href="#atomic-data-extended">Atomic Data Extended</a></h2>
@@ -1051,18 +1051,20 @@ For example, sharing a specific folder with a team, but a different folder could
 <li>No way to request a set of rights for a Resource</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="authentication-in-atomic-data"><a class="header" href="#authentication-in-atomic-data">Authentication in Atomic Data</a></h1>
-<p>Atomic Data uses <a href="hierarchy.html">Hierarchies</a> to describe who gets to access some resource, and who can edit it.
-When an Agent wants to <em>edit</em> a resource, they have to send a signed <a href="commits/intro.html">Commit</a>.
-But how do we deal with <em>reading</em> data, how do we know who is trying to get access?</p>
+<p>Authentication means knowing <em>who</em> is doing something, either getting access or creating some new data.
+When an Agent wants to <em>edit</em> a resource, they have to send a signed <a href="commits/intro.html">Commit</a>, and the signatures are checked in order to authorize a Commit.</p>
+<p>But how do we deal with <em>reading</em> data, how do we know who is trying to get access?
+That's what this page will explain.
+The short answer is: <strong>By signing the HTTP request</strong>.</p>
 <h2 id="design-goals-4"><a class="header" href="#design-goals-4">Design goals</a></h2>
 <ul>
 <li><strong>Secure</strong>: Because, what's the point of authentication if it's not?</li>
-<li><strong>Ease of use</strong>: Setting up an identity should not require <em>any</em> effort, and proving identity should be minimal effort.</li>
+<li><strong>Easy to use</strong>: Setting up an identity should not require <em>any</em> effort, and proving identity should be minimal effort.</li>
 <li><strong>Anonimity allowed</strong>: Users should be able to have multiple identities, some of which are fully anonymous.</li>
 <li><strong>Self-sovereign</strong>: No dependency on servers that user's don't control. Or at least, minimise this.</li>
 <li><strong>Dummy-proof</strong>: We need a mechanism for dealing with forgetting passwords / client devices losing data.</li>
 <li><strong>Compatible with Commits</strong>: Atomic Commits require clients to sign things. Ideally, this functionality / strategy would also fit with the new model.</li>
-<li><strong>Fast</strong>: Of course, authentication will slow things down. But let's keep that to a minimum.</li>
+<li><strong>Fast</strong>: Of course, authentication will always slow things down. But let's keep that to a minimum.</li>
 </ul>
 <p>Authentication is done by signing individual (HTTP) requests with the Agent's private key.</p>
 <h2 id="http-headers"><a class="header" href="#http-headers">HTTP Headers</a></h2>
@@ -1106,10 +1108,14 @@ const response = await fetch(subject, {headers});
 <ul>
 <li>Since there's only a single HTTP request, we don't have a subject to fetch. Use <code>ws</code> as a subject, so sign a string like <code>ws 12940791247</code>.</li>
 </ul>
+<h2 id="hierarchies-for-authorization"><a class="header" href="#hierarchies-for-authorization">Hierarchies for authorization</a></h2>
+<p>Atomic Data uses <a href="hierarchy.html">Hierarchies</a> to describe who gets to access some resource, and who can edit it.</p>
 <h2 id="limitations--considerations"><a class="header" href="#limitations--considerations">Limitations / considerations</a></h2>
 <ul>
-<li>Since we need the Private Key to sign Commits and requests, the client should have this available. This means the client software as well as the user should deal with key management.</li>
-<li>When using the Agent's subject to authenticate somwehere, the authorizer must be able to check what the public key of the agent is. This means the agent must be publicly resolvable. This is one of the reasons we should work towards a server-independent identifier, probably as base64 string that contains the public key (and, optionally, also the https identifier). See the <a href="https://github.com/ontola/atomic-data-docs/issues/59">github issue on DIDs</a>.</li>
+<li>Since we need the Private Key to sign Commits and requests, the client should have this available. This means the client software as well as the user should deal with key management, and that can be a security risk in some contexts (such as a web browser). <a href="https://github.com/ontola/atomic-data-docs/issues/49">See issue #49</a>.</li>
+<li>When using the Agent's subject to authenticate somwehere, the authorizer must be able to check what the public key of the agent is. This means the agent must be publicly resolvable. This is one of the reasons we should work towards a server-independent identifier, probably as base64 string that contains the public key (and, optionally, also the https identifier). See <a href="https://github.com/ontola/atomic-data-docs/issues/59">issue #59 on DIDs</a>.</li>
+<li>Signing every single request takes a bit of time. We picked a fast algorithm (Ed25519) to minimize this cost.</li>
+<li>We'll probably introduce some form of token-based-authentication in the future. <a href="https://github.com/ontola/atomic-data-docs/issues/87">See #87</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="invitations--tokens"><a class="header" href="#invitations--tokens">Invitations &amp; Tokens</a></h1>
 <p><em>Discussion: https://github.com/ontola/atomic-data/issues/23</em></p>
