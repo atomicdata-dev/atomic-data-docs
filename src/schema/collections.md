@@ -13,16 +13,15 @@ Note that Collections are designed to be _dynamic resources_, often (partially) 
 Collections are [Endpoints](../endpoints.md), which means that part of their properties are calculated server-side.
 Collections have various filters (`subject`, `property`, `value`) that can help to build a useful query.
 
-- `members`: How many items (members) are visible per page.
-- `subject`: Filter results by a property URL.
-- `property`: Filter results by a property URL.
-- `value`: Filter results by a Value.
-- `sort_by`: A property URL by which to sort.
-- `sort_desc`: Sort descending, instead of ascending. Defaults to `false`.
-- `current_page`: The number of the current page.
-- `page_size`: How many items (members) are visible per page.
-- `total_pages`: How many pages there are for the current collection.
-- `total_items`: How many items (members) are visible per page.
+- [`members`](https://atomicdata.dev/properties/collection/members): How many items (members) are visible per page.
+- [`property`](https://atomicdata.dev/properties/collection/property): Filter results by a property URL.
+- [`value`](https://atomicdata.dev/properties/collection/value): Filter results by a Value. Combined with `property`, you can create powerful queries.
+- [`sort_by`](https://atomicdata.dev/properties/collection/sortBy): A property URL by which to sort. Defaults to the `subject`.
+- [`sort_desc`](https://atomicdata.dev/properties/collection/sortDesc): Sort descending, instead of ascending. Defaults to `false`.
+- [`current_page`](https://atomicdata.dev/properties/collection/currentPage): The number of the current page.
+- [`page_size`](https://atomicdata.dev/properties/collection/pageSize): How many items (members) are visible per page.
+- [`total_pages`](https://atomicdata.dev/properties/collection/totalPages): How many pages there are for the current collection.
+- [`total_members`](https://atomicdata.dev/properties/collection/totalMembers): How many items (members) are visible per page.
 <!-- - `scope`: The parent resource in which to limit the query (see Atomic Hierarchy) -->
 
 ## Persisting Properties vs Query Parameters
