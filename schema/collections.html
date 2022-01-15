@@ -149,16 +149,15 @@ Note that Collections are designed to be <em>dynamic resources</em>, often (part
 Collections are <a href="../endpoints.html">Endpoints</a>, which means that part of their properties are calculated server-side.
 Collections have various filters (<code>subject</code>, <code>property</code>, <code>value</code>) that can help to build a useful query.</p>
 <ul>
-<li><code>members</code>: How many items (members) are visible per page.</li>
-<li><code>subject</code>: Filter results by a property URL.</li>
-<li><code>property</code>: Filter results by a property URL.</li>
-<li><code>value</code>: Filter results by a Value.</li>
-<li><code>sort_by</code>: A property URL by which to sort.</li>
-<li><code>sort_desc</code>: Sort descending, instead of ascending. Defaults to <code>false</code>.</li>
-<li><code>current_page</code>: The number of the current page.</li>
-<li><code>page_size</code>: How many items (members) are visible per page.</li>
-<li><code>total_pages</code>: How many pages there are for the current collection.</li>
-<li><code>total_items</code>: How many items (members) are visible per page.</li>
+<li><a href="https://atomicdata.dev/properties/collection/members"><code>members</code></a>: How many items (members) are visible per page.</li>
+<li><a href="https://atomicdata.dev/properties/collection/property"><code>property</code></a>: Filter results by a property URL.</li>
+<li><a href="https://atomicdata.dev/properties/collection/value"><code>value</code></a>: Filter results by a Value. Combined with <code>property</code>, you can create powerful queries.</li>
+<li><a href="https://atomicdata.dev/properties/collection/sortBy"><code>sort_by</code></a>: A property URL by which to sort. Defaults to the <code>subject</code>.</li>
+<li><a href="https://atomicdata.dev/properties/collection/sortDesc"><code>sort_desc</code></a>: Sort descending, instead of ascending. Defaults to <code>false</code>.</li>
+<li><a href="https://atomicdata.dev/properties/collection/currentPage"><code>current_page</code></a>: The number of the current page.</li>
+<li><a href="https://atomicdata.dev/properties/collection/pageSize"><code>page_size</code></a>: How many items (members) are visible per page.</li>
+<li><a href="https://atomicdata.dev/properties/collection/totalPages"><code>total_pages</code></a>: How many pages there are for the current collection.</li>
+<li><a href="https://atomicdata.dev/properties/collection/totalMembers"><code>total_members</code></a>: How many items (members) are visible per page.</li>
 </ul>
 <!-- - `scope`: The parent resource in which to limit the query (see Atomic Hierarchy) -->
 <h2 id="persisting-properties-vs-query-parameters"><a class="header" href="#persisting-properties-vs-query-parameters">Persisting Properties vs Query Parameters</a></h2>
