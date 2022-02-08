@@ -175,6 +175,19 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 <li><strong>Anonymous Nested Resource</strong> A JSON Object without an <code>@id</code> field. This is only possible if it is a Nested Resource, which means that it has a parent Resource.</li>
 </ul>
 <p>Note that this is also valid for <code>ResourceArrays</code>, which usually only contain Subjects, but are allowed to contain Nested Resources.</p>
+<p>In the following JSON-AD example, the <code>address</code> is a nested resource:</p>
+<pre><code class="language-json">{
+  &quot;@id&quot;: &quot;https://example.com/arnold&quot;,
+  &quot;https://example.com/properties/address&quot;: {
+    &quot;https://example.com/properties/firstLine&quot;: &quot;Longstreet 22&quot;,
+    &quot;https://example.com/properties/city&quot;: &quot;Watertown&quot;,
+    &quot;https://example.com/properties/country&quot;: &quot;the Netherlands&quot;,
+  }
+}
+</code></pre>
+<p>Nested Resources can be <em>named</em> or <em>anonymous</em>. An <em>Anonymous Nested Resource</em> does not have it's own <code>@id</code> field.
+It <em>does</em> have its own unique <a href="./paths.html">path</a>, which can be used as its identifier.
+The <code>path</code> of the example above is <code>https://example.com/arnold https://example.com/properties/address</code>.</p>
 <h2 id="json-ad-parsers-serializers-and-other-libraries"><a class="header" href="#json-ad-parsers-serializers-and-other-libraries">JSON-AD Parsers, serializers and other libraries</a></h2>
 <ul>
 <li><strong>Typescript / Javacript</strong>: <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/lib</a> JSON-AD parser + in-memory store. Works with <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/react</a> for rendering Atomic Data in React.</li>

@@ -145,8 +145,7 @@ Since Atomic Data is a <em>modular</em> specification, you can mostly take what 
 The <em>Core</em> part, however, is the <em>only required</em> part of the specification, as all others depend on it.</p>
 <p>Atomic Data Core can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
 It's designed to be easily serializable to both JSON and linked data formats.
-It is <em>typed</em> data model, which means that every value should be validated and predictable.</p>
-<p>It is a directed, labeled graph, similar to RDF, so contrary to some other (labeled) graph data models (e.g. NEO4j), a relationship between two items (Resources) does not have attributes.</p>
+It is a <em>typed</em> data model, which means that every value must be validated by their datatype.</p>
 <h2 id="design-goals"><a class="header" href="#design-goals">Design goals</a></h2>
 <ul>
 <li><strong>Browsable</strong>: Data should explicitly link to other pieces of data, and these links should be followable.</li>
@@ -249,21 +248,12 @@ This includes URLs, strings, integers, dates and more.</p>
 <p>A Graph is a collection of Atoms.
 A Graph can describe various subjects, and may or may not be related.
 Graphs can have several characteristics (Schema Complete, Valid, Closed)</p>
+<p>In mathematial graph terminology, a graph consists of <em>nodes</em> and <em>edges</em>.
+The Atomic Data model is a so called <em>directed graph</em>, which means that relationships are by default one-way.
+In Atomic Data, every node is a <code>Resource</code>, and every edge is a <code>Property</code>.</p>
 <h2 id="nested-resource"><a class="header" href="#nested-resource">Nested Resource</a></h2>
 <p>A Nested Resource only exists inside of another resource.
 It does not have its own subject.</p>
-<p>In the following JSON-AD example, the <code>address</code> is a nested resource:</p>
-<pre><code class="language-json">{
-  &quot;@id&quot;: &quot;https://example.com/arnold&quot;,
-  &quot;https://example.com/properties/address&quot;: {
-    &quot;https://example.com/properties/firstLine&quot;: &quot;Longstreet 22&quot;,
-    &quot;https://example.com/properties/city&quot;: &quot;Watertown&quot;,
-    &quot;https://example.com/properties/country&quot;: &quot;the Netherlands&quot;,
-  }
-}
-</code></pre>
-<p>Nested Resources can be <em>named</em> or <em>anonymous</em>. An <em>Anonymous Nested Resource</em> does not have it's own <code>@id</code> field.
-It <em>does</em> have its own unique <a href="./paths.html">path</a>, which can be used as its identifier.</p>
 <p>In the next chapter, we'll explore how Atomic Data is serialized.</p>
 
                     </main>
