@@ -8,9 +8,7 @@ The _Core_ part, however, is the _only required_ part of the specification, as a
 
 Atomic Data Core can be used to express any type of information, including personal data, vocabularies, metadata, documents, files and more.
 It's designed to be easily serializable to both JSON and linked data formats.
-It is _typed_ data model, which means that every value should be validated and predictable.
-
-It is a directed, labeled graph, similar to RDF, so contrary to some other (labeled) graph data models (e.g. NEO4j), a relationship between two items (Resources) does not have attributes.
+It is a _typed_ data model, which means that every value must be validated by their datatype.
 
 ## Design goals
 
@@ -137,25 +135,13 @@ A Graph is a collection of Atoms.
 A Graph can describe various subjects, and may or may not be related.
 Graphs can have several characteristics (Schema Complete, Valid, Closed)
 
+In mathematial graph terminology, a graph consists of _nodes_ and _edges_.
+The Atomic Data model is a so called _directed graph_, which means that relationships are by default one-way.
+In Atomic Data, every node is a `Resource`, and every edge is a `Property`.
+
 ## Nested Resource
 
 A Nested Resource only exists inside of another resource.
 It does not have its own subject.
-
-In the following JSON-AD example, the `address` is a nested resource:
-
-```json
-{
-  "@id": "https://example.com/arnold",
-  "https://example.com/properties/address": {
-    "https://example.com/properties/firstLine": "Longstreet 22",
-    "https://example.com/properties/city": "Watertown",
-    "https://example.com/properties/country": "the Netherlands",
-  }
-}
-```
-
-Nested Resources can be _named_ or _anonymous_. An _Anonymous Nested Resource_ does not have it's own `@id` field.
-It _does_ have its own unique [path](./paths.md), which can be used as its identifier.
 
 In the next chapter, we'll explore how Atomic Data is serialized.

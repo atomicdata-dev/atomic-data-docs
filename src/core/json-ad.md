@@ -44,6 +44,23 @@ In JSON-AD, a Resource can be respresented in multiple ways:
 
 Note that this is also valid for `ResourceArrays`, which usually only contain Subjects, but are allowed to contain Nested Resources.
 
+In the following JSON-AD example, the `address` is a nested resource:
+
+```json
+{
+  "@id": "https://example.com/arnold",
+  "https://example.com/properties/address": {
+    "https://example.com/properties/firstLine": "Longstreet 22",
+    "https://example.com/properties/city": "Watertown",
+    "https://example.com/properties/country": "the Netherlands",
+  }
+}
+```
+
+Nested Resources can be _named_ or _anonymous_. An _Anonymous Nested Resource_ does not have it's own `@id` field.
+It _does_ have its own unique [path](./paths.md), which can be used as its identifier.
+The `path` of the example above is `https://example.com/arnold https://example.com/properties/address`.
+
 ## JSON-AD Parsers, serializers and other libraries
 
 - **Typescript / Javacript**: [@tomic/lib](https://www.npmjs.com/package/@tomic/lib) JSON-AD parser + in-memory store. Works with [@tomic/react](https://www.npmjs.com/package/@tomic/lib) for rendering Atomic Data in React.
