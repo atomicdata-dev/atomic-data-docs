@@ -18,7 +18,7 @@ Companies often have incentives that are not fully aligned with what users want.
 For example, Facebook sorts your newsfeed not to make you satisfied, but to make you spend as much time looking at ads.
 They don't want you to be able to control your own newsfeed.
 Even companies like Apple, that don't have an ad-revenue model, still have a reason to (and very much do) lock you in.
-To make things even worse, even open-source projects made by volunteers often to don't work well together.
+To make things even worse, even open-source projects made by volunteers often don't work well together.
 That's not because of bad intentions, that's because it is _hard_ to make things interoperable.
 
 If we want to change this, we need open tech that works really well together.
