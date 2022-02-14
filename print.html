@@ -1898,7 +1898,7 @@ This makes Atomic Data a bit more unconventional, but also makes its auth mechan
 This closely resembles how filesystems work, and is therefore familiar to most users.</p>
 <h2 id="atomic-data-and-solid-implementations"><a class="header" href="#atomic-data-and-solid-implementations">Atomic Data and Solid implementations</a></h2>
 <p>Both Atomic Data and Solid are specifications that have different implementations.</p>
-<p><a href="https://github.com/joepio/atomic-data-rust/">Atomic-Server</a> is a database + server that can be considered a serious alternative to Solid Pods.
+<p><a href="https://github.com/joepio/atomic-data-rust/">Atomic-Server</a> is a database + server written in the Rust programming language, that can be considered an alternative to Solid Pod implementations.
 It was definitely built to be one, at least.
 I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations.</p>
 <ul>
@@ -1907,7 +1907,7 @@ I believe that as of today (february 2022), Atomic-Server has quite a few advant
 <li><strong>Lightweight</strong> (15MB binary, no runtime dependencies)</li>
 <li><strong>HTTPS + HTTP2 support</strong> with Built-in LetsEncrypt handshake.</li>
 <li><strong>Browser GUI included</strong> powered by <a href="https://github.com/joepio/atomic-data-browser">atomic-data-browser</a>. Features dynamic forms, tables, authentication, theming and more. Easy to use!</li>
-<li>↩<strong>Event-sourced versioning</strong> / history powered by <a href="https://docs.atomicdata.dev/commits/intro.html">Atomic Commits</a></li>
+<li><strong>Event-sourced versioning</strong> / history powered by <a href="https://docs.atomicdata.dev/commits/intro.html">Atomic Commits</a></li>
 <li><strong>Many serialization options</strong>: to JSON, <a href="https://docs.atomicdata.dev/core/serialization.html#json-ad">JSON-AD</a>, and various Linked Data / RDF formats (RDF/XML, N-Triples / Turtle / JSON-LD).</li>
 <li><strong>Full-text search</strong> with fuzzy search and various operators, often &lt;3ms responses.</li>
 <li><strong>Pagination, sorting and filtering</strong> using <a href="https://docs.atomicdata.dev/schema/collections.html">Atomic Collections</a></li>
