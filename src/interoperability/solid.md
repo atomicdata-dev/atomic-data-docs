@@ -87,7 +87,7 @@ Both Atomic Data and Solid are specifications that have different implementation
 It was definitely built to be one, at least.
 I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations.
 
-- **Dynamic schema validation** / type checking using [Atomic Schema](https://docs.atomicdata.dev/schema/intro.html). Combines safety of structured data with the
+- **Dynamic schema validation** / type checking using [Atomic Schema](https://docs.atomicdata.dev/schema/intro.html), combining the best of RDF, JSON and type safety.
 - **Fast** (1ms responses on my laptop)
 - **Lightweight** (15MB binary, no runtime dependencies)
 - **HTTPS + HTTP2 support** with Built-in LetsEncrypt handshake.
