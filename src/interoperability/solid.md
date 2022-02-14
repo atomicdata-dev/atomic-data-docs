@@ -53,6 +53,8 @@ Atomic Data has a **uniform write API**.
 All changes to data are done by posting Commits to the `/commits` endpoint of a Server.
 This removes the need to think about differences between all sorts of HTTP methods like POST / PUT / PATCH, and how servers should reply to that.
 
+_EDIT: as of december 2021, Solid has introduced `.n3 patch` for standardizing state changes. Although this adds a uniform way of describing changes, it still lacks the power of Atomic Commits. It does not specify signatures, mention versioning, or deals with persisting changesets. On top of that, it is quite difficult to read or parse, being `.n3`._
+
 ## Atomic Data is more easily serializable to other formats (like JSON)
 
 Atomic Data is designed with the modern developer in mind.
@@ -76,11 +78,37 @@ Solid uses HTTP based WebID identifiers combined with an OIDC flow.
 Atomic Data uses `parent-child` [hierarchies](../hierarchy.md) to model data and performan authorization checks.
 This closely resembles how filesystems work, and is therefore familiar to most users.
 
-## Solid is more mature
+## Atomic Data and Solid implementations
 
-Atomic Data has significant gaps at this moment - not just in the implementations, but also in the spec.
-This makes it not yet usable for most applications.
+Both Atomic Data and Solid are specifications that have different implementations.
+
+[Atomic-Server](https://github.com/joepio/atomic-data-rust/) is a database + server that can be considered a serious alternative to Solid Pods.
+It was definitely built to be one, at least.
+I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations.
+
+It has some advantages over existing Solid implementations:
+
+- **Dynamic schema validation** / type checking using [Atomic Schema](https://docs.atomicdata.dev/schema/intro.html). Combines safety of structured data with the
+- **Fast** (1ms responses on my laptop)
+- **Lightweight** (15MB binary, no runtime dependencies)
+- **Runs everywhere** (linux, windows, mac, arm)
+- **HTTPS + HTTP2 support** with Built-in LetsEncrypt handshake.
+- **Browser GUI included** powered by [atomic-data-browser](https://github.com/joepio/atomic-data-browser). Features dynamic forms, tables, authentication, theming and more. Easy to use!
+- ↩**Event-sourced versioning** / history powered by [Atomic Commits](https://docs.atomicdata.dev/commits/intro.html)
+- **Many serialization options**: to JSON, [JSON-AD](https://docs.atomicdata.dev/core/serialization.html#json-ad), and various Linked Data / RDF formats (RDF/XML, N-Triples / Turtle / JSON-LD).
+- **Full-text search** with fuzzy search and various operators, often <3ms responses.
+- **Pagination, sorting and filtering** using [Atomic Collections](https://docs.atomicdata.dev/schema/collections.html)
+- **Authorization** (read / write permissions) and Hierarchical structures powered by [Atomic Hierarchy](https://docs.atomicdata.dev/hierarchy.html)
+- **Invite and sharing system** with [Atomic Invites](https://docs.atomicdata.dev/invitations.html)
+- **File management** Upload, download and preview attachments.
+- **Desktop app** Easy desktop installation, with status bar icon, powered by [tauri](https://github.com/tauri-apps/tauri/).
+- **MIT licensed** So fully open-source and free forever!
+
+## Things that Atomic Data misses, but Solid has
+
+Atomic Data is not even two years old, and although progress has been fast, it does lack some specifications.
 Here's a list of things missing in Atomic Data, with links to their open issues and links to their existing Solid counterpart.
 
-- No inbox or [notifications](https://www.w3.org/TR/ldn/) ([issue](https://github.com/ontola/atomic-data/issues/28))
+- No inbox or [notifications](https://www.w3.org/TR/ldn/) yet ([issue](https://github.com/ontola/atomic-data/issues/28))
+- No OIDC support yet. ([issue](https://github.com/joepio/atomic-data-rust/issues/277))
 - No support from a big community, a well-funded business or the inventor of the world wide web.
