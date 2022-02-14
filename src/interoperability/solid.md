@@ -22,6 +22,7 @@ But there are some important **differences**, too, which will be explained in mo
 - Atomic Data is less mature, and currently lacks things like authentication for read Access
 
 _Disclaimer: I've been quite involved in the development of Solid, and have a lot of respect for all the people who are working on it.
+Solid and RDF have been important inspirations for the design of Atomic Data.
 The following is not meant as a critique on Solid, let alone the individuals working on it._
 
 ## Atomic Data is type-safe, because of its built-in schema
@@ -86,21 +87,16 @@ Both Atomic Data and Solid are specifications that have different implementation
 It was definitely built to be one, at least.
 I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations.
 
-It has some advantages over existing Solid implementations:
-
 - **Dynamic schema validation** / type checking using [Atomic Schema](https://docs.atomicdata.dev/schema/intro.html). Combines safety of structured data with the
 - **Fast** (1ms responses on my laptop)
 - **Lightweight** (15MB binary, no runtime dependencies)
-- **Runs everywhere** (linux, windows, mac, arm)
 - **HTTPS + HTTP2 support** with Built-in LetsEncrypt handshake.
 - **Browser GUI included** powered by [atomic-data-browser](https://github.com/joepio/atomic-data-browser). Features dynamic forms, tables, authentication, theming and more. Easy to use!
 - ↩**Event-sourced versioning** / history powered by [Atomic Commits](https://docs.atomicdata.dev/commits/intro.html)
 - **Many serialization options**: to JSON, [JSON-AD](https://docs.atomicdata.dev/core/serialization.html#json-ad), and various Linked Data / RDF formats (RDF/XML, N-Triples / Turtle / JSON-LD).
 - **Full-text search** with fuzzy search and various operators, often <3ms responses.
 - **Pagination, sorting and filtering** using [Atomic Collections](https://docs.atomicdata.dev/schema/collections.html)
-- **Authorization** (read / write permissions) and Hierarchical structures powered by [Atomic Hierarchy](https://docs.atomicdata.dev/hierarchy.html)
 - **Invite and sharing system** with [Atomic Invites](https://docs.atomicdata.dev/invitations.html)
-- **File management** Upload, download and preview attachments.
 - **Desktop app** Easy desktop installation, with status bar icon, powered by [tauri](https://github.com/tauri-apps/tauri/).
 - **MIT licensed** So fully open-source and free forever!
 
