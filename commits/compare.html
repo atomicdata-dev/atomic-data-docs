@@ -156,8 +156,19 @@ Git also does not adhere to some standardized serialization format for storing c
 Also, git is kind of a heavyweight abstraction for many applications.
 It is designed for collaborating on open source projects, which means dealing with decentralized data storage and merge conflicts - things that might not be required in other kinds of scenarios.</p>
 <h2 id="rdf-mutation-systems"><a class="header" href="#rdf-mutation-systems">RDF mutation systems</a></h2>
+<p>Let's move on to specifications that mutate RDF specifically:</p>
+<h3 id="n3-patch"><a class="header" href="#n3-patch">.n3 Patch</a></h3>
+<p>N3 Patch is <a href="https://solidproject.org/TR/protocol#writing-resources">part of the Solid spec</a>, since december 2021.</p>
+<p>It uses the N3 serialization format to describe changes to RDF documents.</p>
+<pre><code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;
+
+&lt;&gt; solid:patches &lt;https://tim.localhost:7777/read-write.ttl&gt;;
+   solid:where   { ?a &lt;y&gt; &lt;z&gt;. };
+   solid:inserts { ?a &lt;y&gt; &lt;z&gt;. };
+   solid:deletes { ?a &lt;b&gt; &lt;c&gt;. }.
+</code></pre>
 <h3 id="rdf-delta"><a class="header" href="#rdf-delta">RDF-Delta</a></h3>
-<p><a href="">https://afs.github.io/rdf-delta/</a></p>
+<p><a href="https://afs.github.io/rdf-delta/">https://afs.github.io/rdf-delta/</a></p>
 <p>Describes changes (RDF Patches) in a specialized turtle-like serialization format.</p>
 <pre><code>TX .
 PA &quot;rdf&quot; &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; .
@@ -251,7 +262,7 @@ Add {
 Methods are URLs, which means they are extensible.
 Does not specify how to bundle lines.
 Used in production of a web app that we're working on (<a href="https://argu.co">Argu.co</a>).
-Designed with simplicity (no new serialization format, simple to parse) and performance in mind.</p>
+Designed with simplicity (no new serialization format, simple to parse) and performance in mind by my colleague Thom van Kalkeren.</p>
 <pre><code>Initial state:
 
 &lt;http://example.org/resource&gt; &lt;http://example.org/predicate&gt; &quot;Old value 🙈&quot; .
@@ -264,7 +275,7 @@ New state:
 
 &lt;http://example.org/resource&gt; &lt;http://example.org/predicate&gt; &quot;New value 🐵&quot; .
 </code></pre>
-<h2 id="json-ld-patch"><a class="header" href="#json-ld-patch">JSON-LD-PATCH</a></h2>
+<h3 id="json-ld-patch"><a class="header" href="#json-ld-patch">JSON-LD-PATCH</a></h3>
 <p><a href="">https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH</a></p>
 <p>A JSON denoted patch notation for RDF.
 Seems similar to the <a href="https://www.w3.org/TR/rdf-json/">RDF/JSON</a> serialization format.
@@ -337,7 +348,7 @@ It has quite a bunch of implementations, in various languages.</p>
 
 [m-ld](https://m-ld.org/doc/) is a specification that uses JSON-LD to enable real-time collaboration.
 It is fundamentally decentralized -->
-<h2 id="atomic-commits"><a class="header" href="#atomic-commits">Atomic Commits</a></h2>
+<h2 id="atomic-commits---how-its-different-and-why-it-exists"><a class="header" href="#atomic-commits---how-its-different-and-why-it-exists">Atomic Commits - how it's different and why it exists</a></h2>
 <p>Let's talk about the differences between the concepts above and Atomic Commits.</p>
 <p>For starters, Atomic Commits can only work with a <em>specific subset</em> of RDF, namely Atomic Data.
 RDF allows for blank nodes, does not have subject-predicate uniqueness and offers named graphs - which all make it hard to unambiguously select a single value.
