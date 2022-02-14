@@ -23,9 +23,26 @@ It is designed for collaborating on open source projects, which means dealing wi
 
 ## RDF mutation systems
 
+Let's move on to specifications that mutate RDF specifically:
+
+### .n3 Patch
+
+N3 Patch is [part of the Solid spec](https://solidproject.org/TR/protocol#writing-resources), since december 2021.
+
+It uses the N3 serialization format to describe changes to RDF documents.
+
+```
+@prefix solid: <http://www.w3.org/ns/solid/terms#>
+
+<> solid:patches <https://tim.localhost:7777/read-write.ttl>;
+   solid:where   { ?a <y> <z>. };
+   solid:inserts { ?a <y> <z>. };
+   solid:deletes { ?a <b> <c>. }.
+```
+
 ### RDF-Delta
 
-[https://afs.github.io/rdf-delta/]()
+[https://afs.github.io/rdf-delta/](https://afs.github.io/rdf-delta/)
 
 Describes changes (RDF Patches) in a specialized turtle-like serialization format.
 
@@ -139,7 +156,7 @@ An N-Quads serialized delta format.
 Methods are URLs, which means they are extensible.
 Does not specify how to bundle lines.
 Used in production of a web app that we're working on ([Argu.co](https://argu.co)).
-Designed with simplicity (no new serialization format, simple to parse) and performance in mind.
+Designed with simplicity (no new serialization format, simple to parse) and performance in mind by my colleague Thom van Kalkeren.
 
 ```
 Initial state:
@@ -156,7 +173,7 @@ New state:
 ```
 
 
-## JSON-LD-PATCH
+### JSON-LD-PATCH
 
 [https://github.com/digibib/ls.ext/wiki/JSON-LD-PATCH]()
 
@@ -250,7 +267,7 @@ It has quite a bunch of implementations, in various languages.
 [m-ld](https://m-ld.org/doc/) is a specification that uses JSON-LD to enable real-time collaboration.
 It is fundamentally decentralized -->
 
-## Atomic Commits
+## Atomic Commits - how it's different and why it exists
 
 Let's talk about the differences between the concepts above and Atomic Commits.
 
