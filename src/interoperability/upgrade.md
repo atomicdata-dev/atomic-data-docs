@@ -7,7 +7,7 @@ As the Atomic Data spec is modular, you can start out simply and conform to more
 
 1. Map your JSON keys to new or existing Atomic Data properties
 2. Add `@id` fields to your resources, make sure these URLs resolve using HTTP
-3. Implement parts of the Extended spec
+3. Implement parts of the [Extended spec](../extended.md)
 
 There's a couple of levels you can go to, when adhering to the Atomic Data spec.
 
@@ -25,23 +25,25 @@ This means: take your JSON objects, and change things like `name` to `https://at
 
 That's it, you've done the most important step!
 
+Now your data is already more interoperable:
+
 - Every field has a clear **semantic meaning** and **datatype**
 - Your data can now be **easily imported** by Atomic Data systems
 
 ## Medium: add `@id` URLs that properly resolve
 
-Make sure that when the user requests some URL, that you return that resource as a JSON-AD object (at the very least if the user requests it using an HTTP `Accept: application/ad+json` header).
+Make sure that when the user requests some URL, that you return that resource as a [JSON-AD](../core/json-ad.md) object (at the very least if the user requests it using an HTTP `Accept: application/ad+json` header).
 
 - Your data can now be **linked to** by external data sources, it can become part of a **web of data**!
 
 ## Hard: implement Atomic Data Extended protocols
 
-You can go all out, and implement Commits, Hierarchies, Authentication, Collections and more.
-I'd suggest starting with Commits.
+You can go all out, and implement Commits, Hierarchies, Authentication, Collections and [more](https://docs.atomicdata.dev/extended.html).
+I'd suggest starting with [Commits](../commits.md), as these allow users to modify data whilst maintaining versioning and auditability.
 Check out the [Atomic-Server source code](https://github.com/joepio/atomic-data-rust/tree/master/server) to get inspired on how to do this.
 
 ## Reach out for help
 
-If you need any help, get in touch in our [Discord](https://discord.gg/a72Rv2P).
+If you need any help, join our [Discord](https://discord.gg/a72Rv2P).
 
-Also, share thoughts on making this process easier in [this issue on github](https://github.com/ontola/atomic-data-docs/issues/95).
+Also, share your thoughts on creating Atomic Data in [this issue on github](https://github.com/ontola/atomic-data-docs/issues/95).
