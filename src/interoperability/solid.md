@@ -15,10 +15,10 @@ Technically, both are also similar:
 
 But there are some important **differences**, too, which will be explained in more detail below.
 
-- Atomic Data uses a strict built-in schema to ensure type safety.
+- Atomic Data uses a strict built-in schema to ensure type safety
 - Atomic Data standardizes state changes (which also provides version control / history, audit trails)
 - Atomic Data is more easily serializable to other formats (like JSON)
-- Atomic Data has a different model for Authorzation and Hierarchies
+- Atomic Data has different models for authentication, authorzation and hierarchies
 - Atomic Data does not depend on existing semantic web specifications
 - Atomic Data is a smaller and younger project, and as of now a one-man show
 
@@ -69,16 +69,28 @@ Atomic Data uses `shortnames` to map properties to short, human-readable strings
 
 For more information about these differences, see the previous [RDF chapter](./rdf.md).
 
-## Hierarchy model, authorization, authentication
 
+## Authentication
+
+Both Solid an Atomic Data use URLs to refer to individuals / users / Agents.
+
+Solid's identity system is called WebID.
+There are multiple supported authentication protocols, the most common being [WebID-OIDC](https://github.com/solid/webid-oidc-spec).
+
+Atomic Data's [authentication model](../authentication.md) is more similar to how SSH works.
 Atomic Data identities (Agents) are a combination of HTTP based, and cryptography (public / private key) based.
 In Atomic, all actions (from GET requests to Commits) are signed using the private key of the Agent.
 This makes Atomic Data a bit more unconventional, but also makes its auth mechanism very decentralized and lightweight.
 
-Solid uses HTTP based WebID identifiers combined with an OIDC flow.
+## Hierarchy and authorization
 
-Atomic Data uses `parent-child` [hierarchies](../hierarchy.md) to model data and performan authorization checks.
-This closely resembles how filesystems work, and is therefore familiar to most users.
+Atomic Data uses `parent-child` [hierarchies](../hierarchy.md) to model data structures and perform authorization checks.
+This closely resembles how filesystems work (including things like Google Drive).
+Per resource, `write` and `read` rights can be defined, which both contain lists of Agents.
+
+Solid is working on the [Shape Trees](https://shapetrees.org/TR/specification/) spec, which also describes hierarchies.
+It uses SHEX to perform shape validation, similar to how Atomic Schema does.
+
 
 ## No dependency on existing semantic web specifications
 

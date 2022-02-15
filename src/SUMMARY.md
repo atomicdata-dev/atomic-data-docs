@@ -34,14 +34,14 @@
 
 # Using Atomic Data
 
-* [Interoperability](interoperability/intro.md)
+* [Interoperability and comparisons](interoperability/intro.md)
+  * [Making your existing project compatible](interoperability/upgrade.md)
   * [RDF](interoperability/rdf.md)
   * [Solid](interoperability/solid.md)
   * [JSON](interoperability/json.md)
   * [IPFS](interoperability/ipfs.md)
   * [SQL](interoperability/sql.md)
   * [Graph Databases](interoperability/graph-database.md)
-  * [Your existing project](interoperability/upgrade.md)
 * [Potential use cases](usecases/intro.md)
   * [Personal Data Store](usecases/personal-data-store.md)
   * [E-commerce & marketplaces](usecases/e-commerce.md)

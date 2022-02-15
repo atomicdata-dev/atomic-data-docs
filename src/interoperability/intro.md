@@ -1,8 +1,12 @@
-{{#title Atomic Data Interoperability - Relation to other technology}}
+{{#title Atomic Data Interoperability - Relationship and comparison to other technology}}
 # Interoperability: Relation to other technology
 
 Atomic data is designed to be easy to use in existing projects, and be interoperable with existing formats.
 This section will discuss how Atomic Data differs from or is similar to various data formats and paradigms, and how it can interoperate.
+
+## Upgrade guide
+
+* [Upgrade](upgrade.md): How to make your existing (server-side) application serve Atomic Data. From easy, to hard.
 
 ## Data formats
 
@@ -11,12 +15,10 @@ This section will discuss how Atomic Data differs from or is similar to various 
 
 ## Protocols
 
+* [Solid](solid.md): A set of specifications that has many similarities with Atomic Data
 * [IPFS](ipfs.md): Content-based addressing to prevent 404s and centralization
 
 ## Database paradigms
 
 * [SQL](sql.md): How Atomic Data differs from and could interact with SQL databases
-
-## Upgrade guide
-
-* [Upgrade](upgrade.md): How to make your existing server-side application compatible with Atomic Data
+* [Graph](graph-database.md): How it differs from some labeled property graphs, such as Neo4j
