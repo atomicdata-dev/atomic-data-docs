@@ -144,7 +144,7 @@
 <ol>
 <li>Map your JSON keys to new or existing Atomic Data properties</li>
 <li>Add <code>@id</code> fields to your resources, make sure these URLs resolve using HTTP</li>
-<li>Implement parts of the Extended spec</li>
+<li>Implement parts of the <a href="../extended.html">Extended spec</a></li>
 </ol>
 <p>There's a couple of levels you can go to, when adhering to the Atomic Data spec.</p>
 <h2 id="easy-map-your-json-keys-to-atomic-data-properties"><a class="header" href="#easy-map-your-json-keys-to-atomic-data-properties">Easy: map your JSON keys to Atomic Data Properties</a></h2>
@@ -156,22 +156,23 @@ You can keep your existing software and logic, but simply change the last little
 Either use <a href="https://atomicdata.dev/properties">existing ones</a>, or <a href="https://atomicdata.dev/app/new?classSubject=https%3A%2F%2Fatomicdata.dev%2Fclasses%2FProperty&amp;parent=https%3A%2F%2Fatomicdata.dev%2Fagents%2F8S2U%2FviqkaAQVzUisaolrpX6hx%2FG%2FL3e2MTjWA83Rxk%3D&amp;newSubject=https%3A%2F%2Fatomicdata.dev%2Fproperty%2Fsu98ox6tvkh">create new ones</a>.
 This means: take your JSON objects, and change things like <code>name</code> to <code>https://atomicdata.dev/properties/name</code>.</p>
 <p>That's it, you've done the most important step!</p>
+<p>Now your data is already more interoperable:</p>
 <ul>
 <li>Every field has a clear <strong>semantic meaning</strong> and <strong>datatype</strong></li>
 <li>Your data can now be <strong>easily imported</strong> by Atomic Data systems</li>
 </ul>
 <h2 id="medium-add-id-urls-that-properly-resolve"><a class="header" href="#medium-add-id-urls-that-properly-resolve">Medium: add <code>@id</code> URLs that properly resolve</a></h2>
-<p>Make sure that when the user requests some URL, that you return that resource as a JSON-AD object (at the very least if the user requests it using an HTTP <code>Accept: application/ad+json</code> header).</p>
+<p>Make sure that when the user requests some URL, that you return that resource as a <a href="../core/json-ad.html">JSON-AD</a> object (at the very least if the user requests it using an HTTP <code>Accept: application/ad+json</code> header).</p>
 <ul>
 <li>Your data can now be <strong>linked to</strong> by external data sources, it can become part of a <strong>web of data</strong>!</li>
 </ul>
 <h2 id="hard-implement-atomic-data-extended-protocols"><a class="header" href="#hard-implement-atomic-data-extended-protocols">Hard: implement Atomic Data Extended protocols</a></h2>
-<p>You can go all out, and implement Commits, Hierarchies, Authentication, Collections and more.
-I'd suggest starting with Commits.
+<p>You can go all out, and implement Commits, Hierarchies, Authentication, Collections and <a href="https://docs.atomicdata.dev/extended.html">more</a>.
+I'd suggest starting with <a href="../commits.html">Commits</a>, as these allow users to modify data whilst maintaining versioning and auditability.
 Check out the <a href="https://github.com/joepio/atomic-data-rust/tree/master/server">Atomic-Server source code</a> to get inspired on how to do this.</p>
 <h2 id="reach-out-for-help"><a class="header" href="#reach-out-for-help">Reach out for help</a></h2>
-<p>If you need any help, get in touch in our <a href="https://discord.gg/a72Rv2P">Discord</a>.</p>
-<p>Also, share thoughts on making this process easier in <a href="https://github.com/ontola/atomic-data-docs/issues/95">this issue on github</a>.</p>
+<p>If you need any help, join our <a href="https://discord.gg/a72Rv2P">Discord</a>.</p>
+<p>Also, share your thoughts on creating Atomic Data in <a href="https://github.com/ontola/atomic-data-docs/issues/95">this issue on github</a>.</p>
 
                     </main>
 
