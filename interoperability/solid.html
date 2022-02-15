@@ -148,7 +148,7 @@ In many ways, it has <strong>similar goals</strong> to Atomic Data:</p>
 </ul>
 <p>Technically, both are also similar:</p>
 <ul>
-<li>Usage of personal servers, or PODs (Personal Online Datastores). Both Atomic Data and Solid aim to provide users with a highly personal server where all sorts of data can be stored.</li>
+<li>Usage of <strong>personal servers</strong>, or PODs (Personal Online Datastores). Both Atomic Data and Solid aim to provide users with a highly personal server where all sorts of data can be stored.</li>
 <li>Usage of <strong>linked data</strong>. All Atomic Data is valid RDF, which means that <strong>all Atomic Data is compatible with Solid</strong>. However, the other way around is more difficult. In other words, if you choose to use Atomic Data, you can always put it in your Solid Pod.</li>
 </ul>
 <p>But there are some important <strong>differences</strong>, too, which will be explained in more detail below.</p>
@@ -157,7 +157,8 @@ In many ways, it has <strong>similar goals</strong> to Atomic Data:</p>
 <li>Atomic Data standardizes state changes (which also provides version control / history, audit trails)</li>
 <li>Atomic Data is more easily serializable to other formats (like JSON)</li>
 <li>Atomic Data has a different model for Authorzation and Hierarchies</li>
-<li>Atomic Data is less mature, and currently lacks things like authentication for read Access</li>
+<li>Atomic Data does not depend on existing semantic web specifications</li>
+<li>Atomic Data is a smaller and younger project, and as of now a one-man show</li>
 </ul>
 <p><em>Disclaimer: I've been quite involved in the development of Solid, and have a lot of respect for all the people who are working on it.
 Solid and RDF have been important inspirations for the design of Atomic Data.
@@ -187,7 +188,7 @@ All changes to data are done by posting Commits to the <code>/commits</code> end
 This removes the need to think about differences between all sorts of HTTP methods like POST / PUT / PATCH, and how servers should reply to that.</p>
 <p><em>EDIT: as of december 2021, Solid has introduced <code>.n3 patch</code> for standardizing state changes. Although this adds a uniform way of describing changes, it still lacks the power of Atomic Commits. It does not specify signatures, mention versioning, or deals with persisting changesets. On top of that, it is quite difficult to read or parse, being <code>.n3</code>.</em></p>
 <h2 id="atomic-data-is-more-easily-serializable-to-other-formats-like-json"><a class="header" href="#atomic-data-is-more-easily-serializable-to-other-formats-like-json">Atomic Data is more easily serializable to other formats (like JSON)</a></h2>
-<p>Atomic Data is designed with the modern developer in mind.
+<p>Atomic Data is designed with the modern (web)developer in mind.
 One of the things that developers expect, is to be able to traverse (JSON) objects easily.
 Doing this with RDF is not easily possible, because doing this requires <em>subject-predicate uniqueness</em>.
 Atomic Data does not have this problem (properties <em>must</em> be unique), which means that traversing objects becomes easy.</p>
@@ -201,11 +202,32 @@ This makes Atomic Data a bit more unconventional, but also makes its auth mechan
 <p>Solid uses HTTP based WebID identifiers combined with an OIDC flow.</p>
 <p>Atomic Data uses <code>parent-child</code> <a href="../hierarchy.html">hierarchies</a> to model data and performan authorization checks.
 This closely resembles how filesystems work, and is therefore familiar to most users.</p>
-<h2 id="atomic-data-and-solid-implementations"><a class="header" href="#atomic-data-and-solid-implementations">Atomic Data and Solid implementations</a></h2>
-<p>Both Atomic Data and Solid are specifications that have different implementations.</p>
+<h2 id="no-dependency-on-existing-semantic-web-specifications"><a class="header" href="#no-dependency-on-existing-semantic-web-specifications">No dependency on existing semantic web specifications</a></h2>
+<p>The Solid specification (although still in draft) builds on a 20+ year legacy of committee meetings on semantic web standards such as RDF, SPARQL, OWL and XML.
+I think the process of designing specifications in <a href="https://en.wikipedia.org/wiki/Design_by_committee">various (fragmented) committees</a> has led to a set of specifications that lack simplicity and consistency.
+Many of these specifications have been written long before there were actual implementations.
+Much of the effort was spent on creating highly formal and abstract descriptions of common concepts, but too little was spent on making specs that are easy to use and solve actual problems for developers.</p>
+<p>Aaron Scharz (co-founder or reddit, inventor of RSS and Markdown) wrote this in his <a href="https://ieeexplore.ieee.org/document/6814657">unfinished book 'A Programmable Web'</a>:</p>
+<blockquote>
+<p>Instead of the “let’s just build something that works” attitude that made the Web (and the Internet) such a roaring success, they brought the formalizing mindset of mathematicians and the institutional structures of academics and defense
+contractors.
+They formed committees to form working groups to write drafts of ontologies that carefully listed (in 100-page Word documents) all possible things in the universe and the various properties they could have, and they spent hours in Talmudic debates over whether a washing machine was a kitchen appliance or a household cleaning device.</p>
+</blockquote>
+<p>(The book is a great read on this topic, by the way!)</p>
+<p>So, in a nutshell, I think this legacy makes Solid unnecessarily hard to use for developers, for the following reasons:</p>
+<ul>
+<li><strong>RDF Quirks</strong>: Solid has to deal with all the <a href="./rdf.html">complexities of the RDF data model</a>, such as blank nodes, named graphs, subject-predicate duplication.</li>
+<li><strong>Multiple (uncommon) serialization formats</strong> need to be understood, such as <code>n3</code>, <code>shex</code> and potentially all the various RDF serialization formats. These will feel foreign to most (even very experienced) developers and can have a high degree of complexity.</li>
+<li><strong>A heritage of broken URLs</strong>. Although a lot if RDF data exists, only a small part of it is actually resolvable as machine-readable RDF. The large majority won't give you the data when sending a HTTP GET request with the correct <code>Accept</code> headers to the subject's URL. Much of it is stored in documents on a different URL (<code>named graphs</code>), or behind some SPARQL endpoint that you will first need to find. Solid builds on a lot of standards that have these problems.</li>
+<li><strong>Confusing specifications</strong>. Reading up on RDF, Solid, and the Semantic Web can be a daunting (yet adventurous) task. I've seen many people traverse a similar path as I did: read the RDF specs, dive into OWL, install protege, create ontologies, try doing things that OWL doesn't do (validate data), read more complicated specs that don't help to clear things, become frustrated... It's a bit of a rabbit hole, and I'd like to prevent people from falling into it. There's a lot of interesting ideas there, but it is not a pragmatic framework to develop interoperable apps with.</li>
+</ul>
+<h2 id="atomic-data-and-solid-server-implementations"><a class="header" href="#atomic-data-and-solid-server-implementations">Atomic Data and Solid server implementations</a></h2>
+<p>Both Atomic Data and Solid are specifications that have different implementations.
+Some open source Solid implementations are the <a href="https://github.com/solid/node-solid-server">Node Solid Server</a>, the <a href="https://github.com/solid/community-server">Community Solid Server</a> (also nodejs based) and the <a href="https://gitlab.com/ontola/dexpod">DexPod</a> (Ruby on Rails based).</p>
 <p><a href="https://github.com/joepio/atomic-data-rust/">Atomic-Server</a> is a database + server written in the Rust programming language, that can be considered an alternative to Solid Pod implementations.
 It was definitely built to be one, at least.
-I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations.</p>
+It implements every part of the Atomic Data specification.
+I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations:</p>
 <ul>
 <li><strong>Dynamic schema validation</strong> / type checking using <a href="https://docs.atomicdata.dev/schema/intro.html">Atomic Schema</a>, combining the best of RDF, JSON and type safety.</li>
 <li><strong>Fast</strong> (1ms responses on my laptop)</li>
