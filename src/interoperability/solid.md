@@ -10,7 +10,7 @@ In many ways, it has **similar goals** to Atomic Data:
 
 Technically, both are also similar:
 
-- Usage of personal servers, or PODs (Personal Online Datastores). Both Atomic Data and Solid aim to provide users with a highly personal server where all sorts of data can be stored.
+- Usage of **personal servers**, or PODs (Personal Online Datastores). Both Atomic Data and Solid aim to provide users with a highly personal server where all sorts of data can be stored.
 - Usage of **linked data**. All Atomic Data is valid RDF, which means that **all Atomic Data is compatible with Solid**. However, the other way around is more difficult. In other words, if you choose to use Atomic Data, you can always put it in your Solid Pod.
 
 But there are some important **differences**, too, which will be explained in more detail below.
@@ -19,7 +19,8 @@ But there are some important **differences**, too, which will be explained in mo
 - Atomic Data standardizes state changes (which also provides version control / history, audit trails)
 - Atomic Data is more easily serializable to other formats (like JSON)
 - Atomic Data has a different model for Authorzation and Hierarchies
-- Atomic Data is less mature, and currently lacks things like authentication for read Access
+- Atomic Data does not depend on existing semantic web specifications
+- Atomic Data is a smaller and younger project, and as of now a one-man show
 
 _Disclaimer: I've been quite involved in the development of Solid, and have a lot of respect for all the people who are working on it.
 Solid and RDF have been important inspirations for the design of Atomic Data.
@@ -58,7 +59,7 @@ _EDIT: as of december 2021, Solid has introduced `.n3 patch` for standardizing s
 
 ## Atomic Data is more easily serializable to other formats (like JSON)
 
-Atomic Data is designed with the modern developer in mind.
+Atomic Data is designed with the modern (web)developer in mind.
 One of the things that developers expect, is to be able to traverse (JSON) objects easily.
 Doing this with RDF is not easily possible, because doing this requires _subject-predicate uniqueness_.
 Atomic Data does not have this problem (properties _must_ be unique), which means that traversing objects becomes easy.
@@ -79,13 +80,37 @@ Solid uses HTTP based WebID identifiers combined with an OIDC flow.
 Atomic Data uses `parent-child` [hierarchies](../hierarchy.md) to model data and performan authorization checks.
 This closely resembles how filesystems work, and is therefore familiar to most users.
 
-## Atomic Data and Solid implementations
+## No dependency on existing semantic web specifications
+
+The Solid specification (although still in draft) builds on a 20+ year legacy of committee meetings on semantic web standards such as RDF, SPARQL, OWL and XML.
+I think the process of designing specifications in [various (fragmented) committees](https://en.wikipedia.org/wiki/Design_by_committee) has led to a set of specifications that lack simplicity and consistency.
+Many of these specifications have been written long before there were actual implementations.
+Much of the effort was spent on creating highly formal and abstract descriptions of common concepts, but too little was spent on making specs that are easy to use and solve actual problems for developers.
+
+Aaron Scharz (co-founder or reddit, inventor of RSS and Markdown) wrote this in his [unfinished book 'A Programmable Web'](https://ieeexplore.ieee.org/document/6814657):
+
+> Instead of the “let’s just build something that works” attitude that made the Web (and the Internet) such a roaring success, they brought the formalizing mindset of mathematicians and the institutional structures of academics and defense
+contractors.
+> They formed committees to form working groups to write drafts of ontologies that carefully listed (in 100-page Word documents) all possible things in the universe and the various properties they could have, and they spent hours in Talmudic debates over whether a washing machine was a kitchen appliance or a household cleaning device.
+
+(The book is a great read on this topic, by the way!)
+
+So, in a nutshell, I think this legacy makes Solid unnecessarily hard to use for developers, for the following reasons:
+
+- **RDF Quirks**: Solid has to deal with all the [complexities of the RDF data model](./rdf.md), such as blank nodes, named graphs, subject-predicate duplication.
+- **Multiple (uncommon) serialization formats** need to be understood, such as `n3`, `shex` and potentially all the various RDF serialization formats. These will feel foreign to most (even very experienced) developers and can have a high degree of complexity.
+- **A heritage of broken URLs**. Although a lot if RDF data exists, only a small part of it is actually resolvable as machine-readable RDF. The large majority won't give you the data when sending a HTTP GET request with the correct `Accept` headers to the subject's URL. Much of it is stored in documents on a different URL (`named graphs`), or behind some SPARQL endpoint that you will first need to find. Solid builds on a lot of standards that have these problems.
+- **Confusing specifications**. Reading up on RDF, Solid, and the Semantic Web can be a daunting (yet adventurous) task. I've seen many people traverse a similar path as I did: read the RDF specs, dive into OWL, install protege, create ontologies, try doing things that OWL doesn't do (validate data), read more complicated specs that don't help to clear things, become frustrated... It's a bit of a rabbit hole, and I'd like to prevent people from falling into it. There's a lot of interesting ideas there, but it is not a pragmatic framework to develop interoperable apps with.
+
+## Atomic Data and Solid server implementations
 
 Both Atomic Data and Solid are specifications that have different implementations.
+Some open source Solid implementations are the [Node Solid Server](https://github.com/solid/node-solid-server), the [Community Solid Server](https://github.com/solid/community-server) (also nodejs based) and the [DexPod](https://gitlab.com/ontola/dexpod) (Ruby on Rails based).
 
 [Atomic-Server](https://github.com/joepio/atomic-data-rust/) is a database + server written in the Rust programming language, that can be considered an alternative to Solid Pod implementations.
 It was definitely built to be one, at least.
-I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations.
+It implements every part of the Atomic Data specification.
+I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations:
 
 - **Dynamic schema validation** / type checking using [Atomic Schema](https://docs.atomicdata.dev/schema/intro.html), combining the best of RDF, JSON and type safety.
 - **Fast** (1ms responses on my laptop)
