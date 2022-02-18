@@ -27,6 +27,7 @@ Although you are free to use Atomic Data with your own custom authorization syst
 - Any Resource might have [`read`](https://atomicdata.dev/properties/read) and [`write`](https://atomicdata.dev/properties/write) Atoms. These both contain a list of Agents. These Agents will be granted the rights to edit (using Commits) or read / use the Resources.
 - Rights are _additive_, which means that the rights add up. If a Resource itself has no `write` Atom containing your Agent, but it's `parent` _does_ have one, you will still get the `write` right.
 - Rights cannot be removed by children or parents - they can only be added.
+- `Commits` can not be edited. They can be `read` if the Agent has rights to read the [`subject`](https://atomicdata.dev/properties/subject) of the `Commit`.
 
 ## Authentication
 
