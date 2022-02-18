@@ -163,6 +163,7 @@ For example, sharing a specific folder with a team, but a different folder could
 <li>Any Resource might have <a href="https://atomicdata.dev/properties/read"><code>read</code></a> and <a href="https://atomicdata.dev/properties/write"><code>write</code></a> Atoms. These both contain a list of Agents. These Agents will be granted the rights to edit (using Commits) or read / use the Resources.</li>
 <li>Rights are <em>additive</em>, which means that the rights add up. If a Resource itself has no <code>write</code> Atom containing your Agent, but it's <code>parent</code> <em>does</em> have one, you will still get the <code>write</code> right.</li>
 <li>Rights cannot be removed by children or parents - they can only be added.</li>
+<li><code>Commits</code> can not be edited. They can be <code>read</code> if the Agent has rights to read the <a href="https://atomicdata.dev/properties/subject"><code>subject</code></a> of the <code>Commit</code>.</li>
 </ul>
 <h2 id="authentication"><a class="header" href="#authentication">Authentication</a></h2>
 <p>See <a href="./authentication.html">authentication</a>.</p>
