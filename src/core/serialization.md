@@ -3,10 +3,11 @@
 
 Atomic Data is not necessarily bound to a single serialization format.
 It's fundamentally a data model, and that's an important distinction to make.
+It can be serialized in different ways, but there is only one required: `JSON-AD`.
 
 ## JSON-AD
 
-However, it's recommended to use [`JSON-AD`](json-ad.md) (more about that on the next page), which is specifically designed to be a simple, complete and performant format for Atomic Data.
+[`JSON-AD`](json-ad.md) (more about that on the next page) is specifically designed to be a simple, complete and performant format for Atomic Data.
 
 ```json
 {
