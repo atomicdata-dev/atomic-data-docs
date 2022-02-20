@@ -37,3 +37,7 @@ Luckily for Atomic Data, this is often the case, as we know the HTTP url of the 
 
 IPLD (not IPFS) stands for InterPlanetary Linked Data, but is not related to RDF.
 The scope seems fundamentally different from RDF, too, but I have to read more about this.
+
+## Share your thoughts
+
+Discuss on [this issue](https://github.com/ontola/atomic-data-docs/issues/42).
