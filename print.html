@@ -974,6 +974,17 @@ Like with websites, hosts should make sure that their server stays available, an
 In short, OWL is not designed for schema validation, but SHACL and SheX can maybe be compared to Atomic Schema.
 An important difference is that SHACL and SheX have to deal with all the complexities of RDF, whereas Atomic Data is more constrained.</p>
 <p>For more information, see <a href="schema/../interoperability/rdf.html">RDF interoperability</a>.</p>
+<h2 id="what-are-the-risks-of-using-schema-data-hosted-somewhere-else"><a class="header" href="#what-are-the-risks-of-using-schema-data-hosted-somewhere-else">What are the risks of using Schema data hosted somewhere else?</a></h2>
+<p>Every time you use an external URL in your data, you kind of create a dependency.
+This is fundamental to linked data.
+In Atomic Data, not having access to the Property in some JSON-AD resource will lead to now knowing how to interpret the data itself.
+You will no longer know what the Datatype was (other than the native JSON datatype, of course), or what the semantic meaning was of the relationship.</p>
+<p>There are multiple ways we can deal with this:</p>
+<ul>
+<li><strong>Cache dependencies</strong>: Atomic Server already stores a copy of every class and property that it uses by default. The <code>/path</code> endpoint then allows clients to fetch these from servers that have cached it. If the source goes offline, the validations can still be performed by the server. However, it might be a good idea to migrate the data to a hosted ontology, e.g. by cloning the cached ontology.</li>
+<li><strong>Content-addressing</strong>: using non-HTTP identifiers, such as with <a href="schema/../interoperability/ipfs.html">IPFS</a>.</li>
+</ul>
+<p><a href="https://github.com/ontola/atomic-data-docs/issues/99">See discussion</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-data-extended-1"><a class="header" href="#atomic-data-extended-1">Atomic Data Extended</a></h1>
 <p>Atomic Data is a <em>modular</em> specification, which means that you can choose to implement parts of it.
 All parts of Extended are <em>optional</em> to implement.
@@ -2113,6 +2124,8 @@ Luckily for Atomic Data, this is often the case, as we know the HTTP url of the 
 <h2 id="atomic-data-and-ipld"><a class="header" href="#atomic-data-and-ipld">Atomic Data and IPLD</a></h2>
 <p>IPLD (not IPFS) stands for InterPlanetary Linked Data, but is not related to RDF.
 The scope seems fundamentally different from RDF, too, but I have to read more about this.</p>
+<h2 id="share-your-thoughts"><a class="header" href="#share-your-thoughts">Share your thoughts</a></h2>
+<p>Discuss on <a href="https://github.com/ontola/atomic-data-docs/issues/42">this issue</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-data-and-sql"><a class="header" href="#atomic-data-and-sql">Atomic Data and SQL</a></h1>
 <p>Atomic Data has some characteristics that make it similar and different from SQL.</p>
 <ul>
