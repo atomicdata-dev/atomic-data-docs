@@ -442,9 +442,10 @@ It does not have its own subject.</p>
 <p>In the next chapter, we'll explore how Atomic Data is serialized.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="serialization-of-atomic-data"><a class="header" href="#serialization-of-atomic-data">Serialization of Atomic Data</a></h1>
 <p>Atomic Data is not necessarily bound to a single serialization format.
-It's fundamentally a data model, and that's an important distinction to make.</p>
+It's fundamentally a data model, and that's an important distinction to make.
+It can be serialized in different ways, but there is only one required: <code>JSON-AD</code>.</p>
 <h2 id="json-ad"><a class="header" href="#json-ad">JSON-AD</a></h2>
-<p>However, it's recommended to use <a href="core/json-ad.html"><code>JSON-AD</code></a> (more about that on the next page), which is specifically designed to be a simple, complete and performant format for Atomic Data.</p>
+<p><a href="core/json-ad.html"><code>JSON-AD</code></a> (more about that on the next page) is specifically designed to be a simple, complete and performant format for Atomic Data.</p>
 <pre><code class="language-json">{
   &quot;@id&quot;: &quot;https://atomicdata.dev/properties/description&quot;,
   &quot;https://atomicdata.dev/properties/datatype&quot;: &quot;https://atomicdata.dev/datatypes/markdown&quot;,
@@ -512,7 +513,7 @@ Read more about serializing Atomic Data to RDF in the <a href="core/../interoper
 &lt;https://atomicdata.dev/properties/description&gt; &lt;https://atomicdata.dev/properties/description&gt; &quot;A textual description of something. When making a description, make sure that the first few words tell the most important part. Give examples. Since the text supports markdown, you're free to use links and more.&quot;^^&lt;https://atomicdata.dev/datatypes/markdown&gt; .
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="json-ad-the-atomic-data-serialization-format"><a class="header" href="#json-ad-the-atomic-data-serialization-format">JSON-AD: The Atomic Data serialization format</a></h1>
-<p>Although you can use various serialization formats for Atomic Data, <code>JSON-AD</code> is the <em>default</em> serialization format.
+<p>Although you can use various serialization formats for Atomic Data, <code>JSON-AD</code> is the <em>default</em> and <em>only required</em> serialization format.
 It is what the current <a href="https://github.com/joepio/atomic">Rust</a> and <a href="https://github.com/joepio/atomic-data-browser">Typescript / React</a> implementations use to communicate.
 It is designed to feel familiar to developers and to be easy and performant to parse and serialize.
 It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
