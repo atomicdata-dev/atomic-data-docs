@@ -10,12 +10,12 @@ It uses [JSON](https://www.ecma-international.org/publications-and-standards/sta
 
 - Every single Object is a `Resource`.
 - Every Key is a [`Property`](https://atomicdata.dev/classes/Property) URL. Other keys are invalid. Each Property URL must resolve to an online Atomic Data Property.
-- The `@id` field is special: it defines the `Subject` of the `Resource`.
+- The `@id` field is special: it defines the `Subject` of the `Resource`. If you send an HTTP GET request there with an `content-type: application/ad+json` header, you should get the full JSON-AD resource.
 - JSON arrays are mapped to [Resource Arrays](https://atomicdata.dev/datatypes/resourceArray)
 - Numbers can be [Integers](https://atomicdata.dev/datatypes/integer), [Timestamps](https://atomicdata.dev/datatypes/timestamp) or [Floats](https://atomicdata.dev/datatypes/float).
 - JSON booleans map to [Booleans](https://atomicdata.dev/datatypes/boolean).
 - JSON strings can be many datatypes, including [String](https://atomicdata.dev/datatypes/string), [Markdown](https://atomicdata.dev/datatypes/markdown), [Date](https://atomicdata.dev/datatypes/date) or other.
-- Nested JSON Objects are Nested Resources. A Nested Resource can either be _Anonymous_ (without an `@id` subject) or a Named Nested Resource with an `@id` subject. Everywhere a Subject URL can be used as a value (i.e. all properties with the datatype [atomicURL](https://atomicdata.dev/datatypes/atomicURL)), a Nested Resource can be used instead. This also means that an item in an `ResourceArray` can be a Nested Resource.
+- Nested JSON Objects are Nested Resources. A Nested Resource can either be _Anonymous_ (without an `@id` subject) or a Named Nested Resource (with an `@id` subject). Everywhere a Subject URL can be used as a value (i.e. all properties with the datatype [atomicURL](https://atomicdata.dev/datatypes/atomicURL)), a Nested Resource can be used instead. This also means that an item in an `ResourceArray` can be a Nested Resource.
 - The root data structure must either be a Named Resource (with an `@id`), or an Array containing Named Resources. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.
 
 Let's look at an example JSON-AD Resource:
@@ -59,7 +59,7 @@ In the following JSON-AD example, the `address` is a nested resource:
 
 Nested Resources can be _named_ or _anonymous_. An _Anonymous Nested Resource_ does not have it's own `@id` field.
 It _does_ have its own unique [path](./paths.md), which can be used as its identifier.
-The `path` of the example above is `https://example.com/arnold https://example.com/properties/address`.
+The `path` of the anonymous resource in the example above is `https://example.com/arnold https://example.com/properties/address`.
 
 ## JSON-AD Parsers, serializers and other libraries
 
