@@ -50,6 +50,7 @@ Let's look at an example Commit:
   },
   "https://atomicdata.dev/properties/signature": "3n+U/3OvymF86Ha6S9MQZtRVIQAAL0rv9ZQpjViht4emjnqKxj4wByiO9RhfL+qwoxTg0FMwKQsNg6d0QU7pAw==",
   "https://atomicdata.dev/properties/signer": "https://surfy.ddns.net/agents/9YCs7htDdF4yBAiA4HuHgjsafg+xZIrtZNELz4msCmc=",
+  "https://atomicdata.dev/properties/previousCommit": "https://surfy.ddns.net/commits/9YCs7htDdF4yBAiA4HuHgjsafg+xZIrtZNELz4msCmc=",
   "https://atomicdata.dev/properties/subject": "https://atomicdata.dev/test"
 }
 ```
@@ -86,10 +87,30 @@ Here are currently working implementations of this process, including serializat
 
 If you want validate your implementation, check out the tests for these two projects.
 
+### Applying the Commit
+
+If you're on the receiving end of a Commit (e.g. if you're writing a server or a client who has to parse Commits), you will _apply_ the Commit to your Store.
+If you have to _persist_ the Commit, you must perform all of the checks.
+If you're writing a client, and you trust the source of the Commit, you can probably skip the validation steps.
+
+Here's how you apply a Commit:
+
+1. Check if the Subject URL is valid
+2. Validate the signature. This means serialize the Commit deterministically (see above), check the Agent's publickey (you might need to fetch this one), verify if the signature matches.
+3. Check if the timestamp matches is OK. I think an acceptable window is 10 seconds.
+4. If the Commit is for an existing resource, get it.
+5. Validate the Rights of the one making the Commit.
+6. Check if the `previousCommit` of the Commit matches with the `previousCommit` of the Resource.
+7. Iterate over the `set` fields. Overwrite existing, or add the new Values. Make sure the Datatypes match with the respective Properties.
+8. Iterate over the `remove` fields. Remove existing properties.
+9. If the Resource has one or more classes, check if the required Properties are there.
+10. You might want to perform some custom validations now (e.g. if you accept an Invite, you should make sure that the one creating the Invite has the correct rights to actually make it!)
+11. Store the created Commit as a Resource, and store the modified Resource!
+
 ## Limitations
 
-- Commits adjust only one Resource at a time, which means that you cannot change multiple in one commit.
-- The one creating the Commit will need to sign it, which may make clients that write data more complicated than you'd like.
-- Commits require signatures, which means key management. Doing this securely is no trivial matter.
-- The signatures require JSON-AD serialization
-- If your implementation stores all Commits, this means
+- Commits adjust **only one Resource at a time**, which means that you cannot change multiple in one commit.
+- The one creating the Commit will **need to sign it**, which may make clients that write data more complicated than you'd like. You can also let Servers write Commits, but this makes them less verifiable / decentralized.
+- Commits require signatures, which means **key management**. Doing this securely is no trivial matter.
+- The signatures **require JSON-AD** serialization
+- If your implementation persists all Commits, you might need to **store a lot of data**.
