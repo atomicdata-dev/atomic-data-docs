@@ -147,12 +147,12 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 <ul>
 <li>Every single Object is a <code>Resource</code>.</li>
 <li>Every Key is a <a href="https://atomicdata.dev/classes/Property"><code>Property</code></a> URL. Other keys are invalid. Each Property URL must resolve to an online Atomic Data Property.</li>
-<li>The <code>@id</code> field is special: it defines the <code>Subject</code> of the <code>Resource</code>.</li>
+<li>The <code>@id</code> field is special: it defines the <code>Subject</code> of the <code>Resource</code>. If you send an HTTP GET request there with an <code>content-type: application/ad+json</code> header, you should get the full JSON-AD resource.</li>
 <li>JSON arrays are mapped to <a href="https://atomicdata.dev/datatypes/resourceArray">Resource Arrays</a></li>
 <li>Numbers can be <a href="https://atomicdata.dev/datatypes/integer">Integers</a>, <a href="https://atomicdata.dev/datatypes/timestamp">Timestamps</a> or <a href="https://atomicdata.dev/datatypes/float">Floats</a>.</li>
 <li>JSON booleans map to <a href="https://atomicdata.dev/datatypes/boolean">Booleans</a>.</li>
 <li>JSON strings can be many datatypes, including <a href="https://atomicdata.dev/datatypes/string">String</a>, <a href="https://atomicdata.dev/datatypes/markdown">Markdown</a>, <a href="https://atomicdata.dev/datatypes/date">Date</a> or other.</li>
-<li>Nested JSON Objects are Nested Resources. A Nested Resource can either be <em>Anonymous</em> (without an <code>@id</code> subject) or a Named Nested Resource with an <code>@id</code> subject. Everywhere a Subject URL can be used as a value (i.e. all properties with the datatype <a href="https://atomicdata.dev/datatypes/atomicURL">atomicURL</a>), a Nested Resource can be used instead. This also means that an item in an <code>ResourceArray</code> can be a Nested Resource.</li>
+<li>Nested JSON Objects are Nested Resources. A Nested Resource can either be <em>Anonymous</em> (without an <code>@id</code> subject) or a Named Nested Resource (with an <code>@id</code> subject). Everywhere a Subject URL can be used as a value (i.e. all properties with the datatype <a href="https://atomicdata.dev/datatypes/atomicURL">atomicURL</a>), a Nested Resource can be used instead. This also means that an item in an <code>ResourceArray</code> can be a Nested Resource.</li>
 <li>The root data structure must either be a Named Resource (with an <code>@id</code>), or an Array containing Named Resources. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.</li>
 </ul>
 <p>Let's look at an example JSON-AD Resource:</p>
@@ -187,7 +187,7 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 </code></pre>
 <p>Nested Resources can be <em>named</em> or <em>anonymous</em>. An <em>Anonymous Nested Resource</em> does not have it's own <code>@id</code> field.
 It <em>does</em> have its own unique <a href="./paths.html">path</a>, which can be used as its identifier.
-The <code>path</code> of the example above is <code>https://example.com/arnold https://example.com/properties/address</code>.</p>
+The <code>path</code> of the anonymous resource in the example above is <code>https://example.com/arnold https://example.com/properties/address</code>.</p>
 <h2 id="json-ad-parsers-serializers-and-other-libraries"><a class="header" href="#json-ad-parsers-serializers-and-other-libraries">JSON-AD Parsers, serializers and other libraries</a></h2>
 <ul>
 <li><strong>Typescript / Javacript</strong>: <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/lib</a> JSON-AD parser + in-memory store. Works with <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/react</a> for rendering Atomic Data in React.</li>

@@ -396,8 +396,8 @@ So the table from above, will more closely resemble this one:</p>
 <p>In the JSON-AD example above, we have:</p>
 <ul>
 <li>two <strong>Resources</strong>, describing two different <strong>Subjects</strong>: <code>https://example.com/arnold</code> and <code>https://example.com/britta</code>.</li>
-<li>three different <strong>Properties</strong> (<code>https://example.com/properties/bornAt</code>, <code>https://example.com/properties/firstName</code>, and <code>https://example.com/properties/bestFriend</code>)</li>
-<li>four <strong>Values</strong> (<code>1991-01-20</code>, <code>Arnold</code>, <code>https://example.com/britta</code> and <code>Britta</code>)</li>
+<li>three different <strong>Properties</strong> (<code>https://example.com/properties/lastname</code>, <code>https://example.com/properties/birthDate</code>, and <code>https://example.com/properties/bestFriend</code>)</li>
+<li>four <strong>Values</strong> (<code>Peters</code>, <code>1991-01-20</code>, <code>https://example.com/britta</code> and <code>Smalls</code>)</li>
 <li>four <strong>Atoms</strong> - every row is one Atom.</li>
 </ul>
 <p>All Subjects and Properties are Atomic URLs: they are links that point to more Atomic Data.
@@ -521,12 +521,12 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 <ul>
 <li>Every single Object is a <code>Resource</code>.</li>
 <li>Every Key is a <a href="https://atomicdata.dev/classes/Property"><code>Property</code></a> URL. Other keys are invalid. Each Property URL must resolve to an online Atomic Data Property.</li>
-<li>The <code>@id</code> field is special: it defines the <code>Subject</code> of the <code>Resource</code>.</li>
+<li>The <code>@id</code> field is special: it defines the <code>Subject</code> of the <code>Resource</code>. If you send an HTTP GET request there with an <code>content-type: application/ad+json</code> header, you should get the full JSON-AD resource.</li>
 <li>JSON arrays are mapped to <a href="https://atomicdata.dev/datatypes/resourceArray">Resource Arrays</a></li>
 <li>Numbers can be <a href="https://atomicdata.dev/datatypes/integer">Integers</a>, <a href="https://atomicdata.dev/datatypes/timestamp">Timestamps</a> or <a href="https://atomicdata.dev/datatypes/float">Floats</a>.</li>
 <li>JSON booleans map to <a href="https://atomicdata.dev/datatypes/boolean">Booleans</a>.</li>
 <li>JSON strings can be many datatypes, including <a href="https://atomicdata.dev/datatypes/string">String</a>, <a href="https://atomicdata.dev/datatypes/markdown">Markdown</a>, <a href="https://atomicdata.dev/datatypes/date">Date</a> or other.</li>
-<li>Nested JSON Objects are Nested Resources. A Nested Resource can either be <em>Anonymous</em> (without an <code>@id</code> subject) or a Named Nested Resource with an <code>@id</code> subject. Everywhere a Subject URL can be used as a value (i.e. all properties with the datatype <a href="https://atomicdata.dev/datatypes/atomicURL">atomicURL</a>), a Nested Resource can be used instead. This also means that an item in an <code>ResourceArray</code> can be a Nested Resource.</li>
+<li>Nested JSON Objects are Nested Resources. A Nested Resource can either be <em>Anonymous</em> (without an <code>@id</code> subject) or a Named Nested Resource (with an <code>@id</code> subject). Everywhere a Subject URL can be used as a value (i.e. all properties with the datatype <a href="https://atomicdata.dev/datatypes/atomicURL">atomicURL</a>), a Nested Resource can be used instead. This also means that an item in an <code>ResourceArray</code> can be a Nested Resource.</li>
 <li>The root data structure must either be a Named Resource (with an <code>@id</code>), or an Array containing Named Resources. When you want to describe multiple Resources in one JSON-AD document, use an array as the root item.</li>
 </ul>
 <p>Let's look at an example JSON-AD Resource:</p>
@@ -561,7 +561,7 @@ It is inspired by <a href="https://json-ld.org/">JSON-LD</a>.</p>
 </code></pre>
 <p>Nested Resources can be <em>named</em> or <em>anonymous</em>. An <em>Anonymous Nested Resource</em> does not have it's own <code>@id</code> field.
 It <em>does</em> have its own unique <a href="core/./paths.html">path</a>, which can be used as its identifier.
-The <code>path</code> of the example above is <code>https://example.com/arnold https://example.com/properties/address</code>.</p>
+The <code>path</code> of the anonymous resource in the example above is <code>https://example.com/arnold https://example.com/properties/address</code>.</p>
 <h2 id="json-ad-parsers-serializers-and-other-libraries"><a class="header" href="#json-ad-parsers-serializers-and-other-libraries">JSON-AD Parsers, serializers and other libraries</a></h2>
 <ul>
 <li><strong>Typescript / Javacript</strong>: <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/lib</a> JSON-AD parser + in-memory store. Works with <a href="https://www.npmjs.com/package/@tomic/lib">@tomic/react</a> for rendering Atomic Data in React.</li>
@@ -2130,17 +2130,16 @@ The scope seems fundamentally different from RDF, too, but I have to read more a
 <div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-data-and-sql"><a class="header" href="#atomic-data-and-sql">Atomic Data and SQL</a></h1>
 <p>Atomic Data has some characteristics that make it similar and different from SQL.</p>
 <ul>
-<li>Atomic Data has a <em>dynamic</em> schema. Any Resource could have different properties. However, the properties themselves are validated (contrary to most NOSQL solutions)</li>
+<li>Atomic Data has a <em>dynamic</em> schema. Any Resource could have different properties, so you can <strong>add new properties</strong> to your data without performing any migrations. However, the properties themselves are still validated (contrary to most NoSQL solutions)</li>
+<li>Atomic Data uses <strong>HTTP URLs</strong> in its data, which means it's easy to <strong>share and reuse</strong>.</li>
 <li>Atomic Data separates <em>reading</em> and <em>writing</em>, whereas SQL has one language for both.</li>
-<li>Atomic Data has a standardized way of storing changes (<a href="interoperability/../commits/intro.html">Commits</a>)</li>
+<li>Atomic Data has a standardized way of <strong>storing changes</strong> (<a href="interoperability/../commits/intro.html">Commits</a>)</li>
 </ul>
 <h2 id="tables-and-rows-vs-classes-and-properties"><a class="header" href="#tables-and-rows-vs-classes-and-properties">Tables and Rows vs. Classes and Properties</a></h2>
 <p>At its core, SQL is a query language based around <em>tables</em> and <em>rows</em>.
 The <em>tables</em> in SQL are similar to <code>Classes</code> in Atomic Data: they both define a set of <code>properties</code> which an item could have.
-Every single item in a table is called a <em>row</em> in SQL, and a <code>Resource</code> in Atomic Data.</p>
-<h2 id="identifiers-numbers-vs-urls"><a class="header" href="#identifiers-numbers-vs-urls">Identifiers: numbers vs. URLs</a></h2>
-<p>In SQL, rows have numbers as identifiers, whereas in Atomic Data, every resource has a resolvable HTTP URL as an identifier.
-This allows Atomic Data records to be easily re-used by other systems, as there is a guarantee that identifiers will be globally unique.</p>
+Every single item in a table is called a <em>row</em> in SQL, and a <code>Resource</code> in Atomic Data.
+One difference is that in Atomic Data, you can add new properties to resources, without making changes to any tables (migrations).</p>
 <h2 id="dynamic-vs-static-schema"><a class="header" href="#dynamic-vs-static-schema">Dynamic vs static schema</a></h2>
 <p>In SQL, the schema of the database defines which shape the data can have, which properties are required, what datatypes they have.
 In Atomic Data, the schema exists as a Resource on the web, which means that they can be retrieved using HTTP.
@@ -2149,6 +2148,14 @@ which means that any Resource can have different properties, and the properties 
 In SQL, you'd have to manually adjust the schema of your database to add a new property.
 Atomic Data is a decentralized, open system, which can read new schema data from other sources.
 SQL is a centralized, closed system, which relies on the DB manager to define the schema.</p>
+<h2 id="identifiers-numbers-vs-urls"><a class="header" href="#identifiers-numbers-vs-urls">Identifiers: numbers vs. URLs</a></h2>
+<p>In SQL, rows have numbers as identifiers, whereas in Atomic Data, every resource has a resolvable HTTP URL as an identifier.
+URLs are great identifiers, because you can open them and get more information about something.
+This means that with Atomic Data, other systems can re-use your data by referencing to it, and you can re-use data from other systems, too.
+With Atomic Data, you're making your data part of a bigger <em>web of data</em>, which opens up a lot of possibilities.</p>
+<h2 id="atomic-server-combines-server-and-database"><a class="header" href="#atomic-server-combines-server-and-database">Atomic Server combines server and database</a></h2>
+<p>If you're building an App with SQL, you will always need some server that connects to your database.
+If you're building an App with Atomic Server, the database can function as your server, too. It deals with authentication, authorization, and more.</p>
 <h2 id="querying"><a class="header" href="#querying">Querying</a></h2>
 <p>The SQL query language is for both <em>reading</em> and <em>writing</em> data.
 In Atomic Data a distinction is made between Query and Command - getting and setting (Command Query Responsibility Segregation, <a href="https://martinfowler.com/bliki/CQRS.html">CQRS</a>).
@@ -2158,6 +2165,17 @@ The Command side is typically done using <a href="interoperability/../commits/in
 In SQL, the one creating the query basically defines the shape of a table that is requested, and the database returns that shape.
 Atomic Data does not offer such functionality.
 So if you need to create custom tables at runtime, you might be better off using SQL, or move your Atomic Data to a query system.</p>
+<h2 id="convert-an-sql-database-to-atomic-data"><a class="header" href="#convert-an-sql-database-to-atomic-data">Convert an SQL database to Atomic Data</a></h2>
+<p>If you want to make your existing SQL project serve Atomic Data, you can keep your existing SQL database, see <a href="interoperability/upgrade.html">the upgrade guide</a>.
+It basically boils down to mapping the rows (properties) in your SQL tables to Atomic Data <a href="https://atomicdata.dev/classes/Property">Properties</a>.</p>
+<p>When you want to <em>import arbitrary Atomic Data</em>, though, it might be easier to use <code>atomic-server</code>.
+If you want to store arbitrary Atomic Data in a SQL database, you might be best off by creating a <code>Resources</code> table with a <code>subject</code> and a <code>propertyValues</code> column, or create both a <code>properties</code> table and a <code>resources</code> one.</p>
+<h2 id="limitations-of-atomic-data"><a class="header" href="#limitations-of-atomic-data">Limitations of Atomic Data</a></h2>
+<ul>
+<li>SQL is far more common, many people will know how to use it.</li>
+<li>SQL databases are battle-tested and has been powering countless of products for tens of years, whereas Atomic Server is at this moment in beta.</li>
+<li>SQL databases have a more powerful and expressive query language, where you can define tables in your query and combine resources.</li>
+</ul>
 <h2 id="faq"><a class="header" href="#faq">FAQ</a></h2>
 <h3 id="is-atomic-data-nosql-or-sql"><a class="header" href="#is-atomic-data-nosql-or-sql">Is Atomic Data NOSQL or SQL?</a></h3>
 <p>Generally, Atomic Data apps do not use SQL - so they are NOSQL.
@@ -2169,10 +2187,9 @@ So in a way, Atomic Data tries to combine best of both worlds: the extendibility
 <p>Yes, if you use Atomic-Server, then you can only write to the server by using Atomic Commits, which are in fact transactions.
 This means that if part of the transaction fails, it is reverted - transactions are only applied when they are 100% OK.
 This prevents inconsistent DB states.</p>
-<h3 id="can-i-use-a-sql-database-with-atomic-data"><a class="header" href="#can-i-use-a-sql-database-with-atomic-data">Can I use a SQL database with Atomic Data?</a></h3>
-<p>Yes, if you want to make your existing project serve Atomic Data, you can keep your existing SQL database, see <a href="interoperability/upgrade.html">the upgrade guide</a>.
-When you want to <em>import arbitrary Atomic Data</em>, it might be easier to use <code>atomic-server</code>.
-If you want to store arbitrary Atomic Data in a SQL database, you might be best off by creating a <code>Resources</code> table with a <code>subject</code> and a <code>propertyValues</code> column, or create both a <code>properties</code> table and a <code>resources</code> one.</p>
+<h3 id="how-does-atomic-server-build-indexes-for-its-resources-if-the-schema-is-not-known-in-advance"><a class="header" href="#how-does-atomic-server-build-indexes-for-its-resources-if-the-schema-is-not-known-in-advance">How does Atomic Server build indexes for its resources if the schema is not known in advance</a></h3>
+<p>It creates indexed collections when users perform queries.
+This means that the first time your perform some type of query (that sorts and filters by some properties), it will be slow, but the next time you perform a similar query, it will be fast.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-data-and-graph-databases"><a class="header" href="#atomic-data-and-graph-databases">Atomic Data and Graph Databases</a></h1>
 <p>Atomic Data fundamentally is a <em>graph data model</em>.
 We can think of Atomic Resources as <em>nodes</em>, and links to other resources through <em>properties</em> as <em>edges</em>.</p>
