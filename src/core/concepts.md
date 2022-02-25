@@ -89,8 +89,8 @@ The `@id` field denotes the Subject of each Resource, which is also the URL that
 In the JSON-AD example above, we have:
 
 - two **Resources**, describing two different **Subjects**: `https://example.com/arnold` and `https://example.com/britta`.
-- three different **Properties** (`https://example.com/properties/bornAt`, `https://example.com/properties/firstName`, and `https://example.com/properties/bestFriend`)
-- four **Values** (`1991-01-20`, `Arnold`, `https://example.com/britta` and `Britta`)
+- three different **Properties** (`https://example.com/properties/lastname`, `https://example.com/properties/birthDate`, and `https://example.com/properties/bestFriend`)
+- four **Values** (`Peters`, `1991-01-20`, `https://example.com/britta` and `Smalls`)
 - four **Atoms** - every row is one Atom.
 
 All Subjects and Properties are Atomic URLs: they are links that point to more Atomic Data.
