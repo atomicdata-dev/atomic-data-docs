@@ -132,7 +132,7 @@ This includes URLs, strings, integers, dates and more.
 ## Graph
 
 A Graph is a collection of Atoms.
-A Graph can describe various subjects, and may or may not be related.
+A Graph can describe various subjects, which may or may not be related.
 Graphs can have several characteristics (Schema Complete, Valid, Closed)
 
 In mathematial graph terminology, a graph consists of _nodes_ and _edges_.
