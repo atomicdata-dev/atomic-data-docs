@@ -34,8 +34,11 @@
 
 # Using Atomic Data
 
+* [Atomizing Data: Creating Atomic Data](atomizing.md)
+  * [Using Atomic-Server](atomic-server.md)
+  * [Creating a JSON-AD file](publish-json-ad.md)
+  * [Upgrade your existing project](interoperability/upgrade.md)
 * [Interoperability and comparisons](interoperability/intro.md)
-  * [Making your existing project compatible](interoperability/upgrade.md)
   * [RDF](interoperability/rdf.md)
   * [Solid](interoperability/solid.md)
   * [JSON](interoperability/json.md)
