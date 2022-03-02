@@ -39,7 +39,7 @@ Make sure that when the user requests some URL, that you return that resource as
 ## Hard: implement Atomic Data Extended protocols
 
 You can go all out, and implement Commits, Hierarchies, Authentication, Collections and [more](https://docs.atomicdata.dev/extended.html).
-I'd suggest starting with [Commits](../commits.md), as these allow users to modify data whilst maintaining versioning and auditability.
+I'd suggest starting with [Commits](../commits/intro.md), as these allow users to modify data whilst maintaining versioning and auditability.
 Check out the [Atomic-Server source code](https://github.com/joepio/atomic-data-rust/tree/master/server) to get inspired on how to do this.
 
 ## Reach out for help
