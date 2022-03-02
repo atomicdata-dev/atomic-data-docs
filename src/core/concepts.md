@@ -1,3 +1,4 @@
+{{#title What is Atomic Data?}}
 # What is Atomic Data?
 
 ## Atomic Data Core
@@ -118,9 +119,11 @@ In JSON-AD, the Subject is denoted by `@id`.
 
 The Property field is the second part of an Atom.
 It is a URL that points to an Atomic [Property](../schema/classes.md#Property).
-For example `https://example.com/createdAt` or `https://example.com/firstName`.
+Examples can be found at https://atomicdata.dev/properties.
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
-The Property field MUST be a URL, and that URL MUST resolve to an Atomic Property, which contains information about the Datatype.
+The Property field MUST be a URL, and that URL MUST resolve (it must be publicly available) to an Atomic Property.
+The Property is perhaps the most important concept in Atomic Data, as it is what enables the type safety (thanks to [`datatype`](https://atomicdata.dev/properties/datatype)) and the JSON compatibility (thanks to [`shortname`](https://atomicdata.dev/properties/shortname)).
+We also use Properties for rendering fields in a form, because the Datatype, shortname and description helps us to create an intuitive, easy to understand input for users.
 
 ## Value field
 
