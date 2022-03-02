@@ -143,12 +143,26 @@
 <p><strong>Atomic Data is a modular specification for sharing, modifying and modeling graph data. It combines the ease of use of JSON, the connectivity of RDF (linked data) and the reliability of type-safety.</strong></p>
 <p><img src="assets/venn.svg" alt="Venn diagram showing Atomic Data is the combination of JSON, RDF and Type-Safety" /></p>
 <p>Atomic Data uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.</p>
-<p>Atomic Data is especially suitable for knowledge graphs, distributed datasets, semantic data, p2p applications, decentralized apps and linked open data.
-It is designed to be highly extensible, easy to use, and to make the process of domain specific standardization as simple as possible.</p>
+<p>Atomic Data has been designed with <a href="motivation.html">three goals in mind</a>:</p>
+<ul>
+<li>Give people more control over their data</li>
+<li>Make linked data easier to use</li>
+<li>Make it easier for developers to build highly interoperable apps</li>
+<li>Make standardization easier and cheaper</li>
+</ul>
 <p>Atomic Data is <a href="https://ontola.io/what-is-linked-data/">Linked Data</a>, as it is a <a href="interoperability/rdf.html">strict subset of RDF</a>.
 It is type-safe (you know if something is a <code>string</code>, <code>number</code>, <code>date</code>, <code>URL</code>, etc.) and extensible through <a href="schema/intro.html">Atomic Schema</a>, which means that you can re-use or define your own Classes, Properties and Datatypes.</p>
 <p>The default serialization format for Atomic Data is <a href="core/json-ad.html">JSON-AD</a>, which is simply JSON where each key is a URL of an Atomic Property.
 These Properties are responsible for setting the <code>datatype</code> (to ensure type-safety) and setting <code>shortnames</code> (which help to keep names short, for example in JSON serialization) and <code>descriptions</code> (which provide semantic explanations of what a property should be used for).</p>
+<p><a href="core/concepts.html">Read more about Atomic Data Core</a></p>
+<h2 id="atomizing-how-to-create-convert-and-host-atomic-data"><a class="header" href="#atomizing-how-to-create-convert-and-host-atomic-data">Atomizing: how to create, convert and host Atomic Data</a></h2>
+<p>Atomic Data has been designed to be very easy to create and host.
+In the Atomizing section, we'll show you how you can create Atomic Data in three ways:</p>
+<ul>
+<li>Using Atomic Server, from your browser</li>
+<li>By creating JSON-AD (and optionally importing it)</li>
+<li>By including it in your own app</li>
+</ul>
 <h2 id="atomic-data-extended"><a class="header" href="#atomic-data-extended">Atomic Data Extended</a></h2>
 <p>Atomic Data Extended is a set of extra modules (on top of Atomic Data Core) that deal with data that changes over time, authentication, and authorization.</p>
 <ul>
@@ -299,14 +313,27 @@ We know that some of its merits are undeniable, and we truly want the semantic w
 I believe the lack of growth partially has to do with a lack of tooling, but also with some problems that lie in the RDF data model.</p>
 <p>Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.
 Read more about <a href="interoperability/rdf.html">how Atomic Data relates to RDF, and why these changes have been made</a>.</p>
-<h2 id="make-it-easier-for-developers-to-build-really-good-interoperable-apps"><a class="header" href="#make-it-easier-for-developers-to-build-really-good-interoperable-apps">Make it easier for developers to build really good, interoperable apps</a></h2>
+<h2 id="make-standardization-easier-and-cheaper"><a class="header" href="#make-standardization-easier-and-cheaper">Make standardization easier and cheaper</a></h2>
+<p>Standards for data sharing are great, but creating one can be very costly endeavor.
+Committees with stakeholders write endless documents describing the intricacies of domain models, which fields are allowed and which are required, and how data is serialized.
+In virtually all cases, these documents are only written for humans - and not for computers.
+Machine readable ways to describe data models like UML diagrams and OpenAPI specifications (also known as Swagger) help to have machine-readable descriptions, but these are still not <em>really</em> used by machines - they are mostly only used to generate <em>visualizations for humans</em>.
+This ultimately means that implementations of a standard have to be <em>manually checked</em> for compliance, which often results in small (yet important) differences that severely limit interoperability.
+These implementations will also often want to <em>extend</em> the original definitions, but they are almost always unable to describe <em>what</em> they have extended.</p>
+<p>Standardizing with Atomic Data solves these issues.
+Atomic Data takes the semantic value of ontologies, and merges it with a machine-readable <a href="schema/intro.html">schemas</a>.
+This makes standards created using Atomic Data easy to read for humans, and easy to validate for computers (which guarantees interoperability).
+Atomic Data has a highly standardized protocol for fetching data, which means that Atomic Schemas can link to each other, and <em>re-use existing Properties</em>.
+For developers (the people who need to actually implement and use the data that has been standardized), this means their job becomes easier.
+Because Properties have URLs, it becomes trivial to <em>add new Properties</em> that were initially not in the main specification, without sacrificing type safety and validation abilities.</p>
+<h2 id="make-it-easier-for-developers-to-build-feature-rich-interoperable-apps"><a class="header" href="#make-it-easier-for-developers-to-build-feature-rich-interoperable-apps">Make it easier for developers to build feature-rich, interoperable apps</a></h2>
 <p>Every time a developer builds an application, they have to figure a lot of things out.
 How to design the API, how to implement forms, how to deal with authentication, authorization, versioning, search...
 By having a more complete, strict standard, Atomic Data aims to decrease this burden.
 <a href="schema/intro.html">Atomic Schema</a> enables developers to easily share their datamodels, and re-use those from others.
 <a href="commits/intro.html">Atomic Commits</a> helps developers to deal with versioning, history, undo and audit logs.
 <a href="hierarchy.html">Atomic Hierarchies</a> provides an intuitive model for authorization and access control.
-And finally, the <a href="tooling.html">existing</a> open source libraries, server, GUI and templates help developers to have these features without writing them.</p>
+And finally, the <a href="tooling.html">existing open source Atomic Data software</a> (such as a server + database, a browser GUI, various libraries and React templates) help developers to have these features without having to do the heavy lifting themselves.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="when-not-to-use-atomic-data"><a class="header" href="#when-not-to-use-atomic-data">When (not) to use Atomic Data</a></h1>
 <h2 id="when-should-you-use-atomic-data"><a class="header" href="#when-should-you-use-atomic-data">When should you use Atomic Data</a></h2>
 <ul>
@@ -421,9 +448,11 @@ In JSON-AD, the Subject is denoted by <code>@id</code>.</p>
 <h2 id="property-field"><a class="header" href="#property-field">Property field</a></h2>
 <p>The Property field is the second part of an Atom.
 It is a URL that points to an Atomic <a href="core/../schema/classes.html#Property">Property</a>.
-For example <code>https://example.com/createdAt</code> or <code>https://example.com/firstName</code>.</p>
+Examples can be found at https://atomicdata.dev/properties.</p>
 <!-- Making this a requirement is what makes Atomic Data typed and semantic -->
-<p>The Property field MUST be a URL, and that URL MUST resolve to an Atomic Property, which contains information about the Datatype.</p>
+<p>The Property field MUST be a URL, and that URL MUST resolve (it must be publicly available) to an Atomic Property.
+The Property is perhaps the most important concept in Atomic Data, as it is what enables the type safety (thanks to <a href="https://atomicdata.dev/properties/datatype"><code>datatype</code></a>) and the JSON compatibility (thanks to <a href="https://atomicdata.dev/properties/shortname"><code>shortname</code></a>).
+We also use Properties for rendering fields in a form, because the Datatype, shortname and description helps us to create an intuitive, easy to understand input for users.</p>
 <h2 id="value-field"><a class="header" href="#value-field">Value field</a></h2>
 <p>The Value field is the third part of an Atom.
 In RDF, this is called an <code>object</code>.

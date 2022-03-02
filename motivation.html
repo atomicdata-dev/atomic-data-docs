@@ -183,14 +183,27 @@ We know that some of its merits are undeniable, and we truly want the semantic w
 I believe the lack of growth partially has to do with a lack of tooling, but also with some problems that lie in the RDF data model.</p>
 <p>Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.
 Read more about <a href="interoperability/rdf.html">how Atomic Data relates to RDF, and why these changes have been made</a>.</p>
-<h2 id="make-it-easier-for-developers-to-build-really-good-interoperable-apps"><a class="header" href="#make-it-easier-for-developers-to-build-really-good-interoperable-apps">Make it easier for developers to build really good, interoperable apps</a></h2>
+<h2 id="make-standardization-easier-and-cheaper"><a class="header" href="#make-standardization-easier-and-cheaper">Make standardization easier and cheaper</a></h2>
+<p>Standards for data sharing are great, but creating one can be very costly endeavor.
+Committees with stakeholders write endless documents describing the intricacies of domain models, which fields are allowed and which are required, and how data is serialized.
+In virtually all cases, these documents are only written for humans - and not for computers.
+Machine readable ways to describe data models like UML diagrams and OpenAPI specifications (also known as Swagger) help to have machine-readable descriptions, but these are still not <em>really</em> used by machines - they are mostly only used to generate <em>visualizations for humans</em>.
+This ultimately means that implementations of a standard have to be <em>manually checked</em> for compliance, which often results in small (yet important) differences that severely limit interoperability.
+These implementations will also often want to <em>extend</em> the original definitions, but they are almost always unable to describe <em>what</em> they have extended.</p>
+<p>Standardizing with Atomic Data solves these issues.
+Atomic Data takes the semantic value of ontologies, and merges it with a machine-readable <a href="schema/intro.html">schemas</a>.
+This makes standards created using Atomic Data easy to read for humans, and easy to validate for computers (which guarantees interoperability).
+Atomic Data has a highly standardized protocol for fetching data, which means that Atomic Schemas can link to each other, and <em>re-use existing Properties</em>.
+For developers (the people who need to actually implement and use the data that has been standardized), this means their job becomes easier.
+Because Properties have URLs, it becomes trivial to <em>add new Properties</em> that were initially not in the main specification, without sacrificing type safety and validation abilities.</p>
+<h2 id="make-it-easier-for-developers-to-build-feature-rich-interoperable-apps"><a class="header" href="#make-it-easier-for-developers-to-build-feature-rich-interoperable-apps">Make it easier for developers to build feature-rich, interoperable apps</a></h2>
 <p>Every time a developer builds an application, they have to figure a lot of things out.
 How to design the API, how to implement forms, how to deal with authentication, authorization, versioning, search...
 By having a more complete, strict standard, Atomic Data aims to decrease this burden.
 <a href="schema/intro.html">Atomic Schema</a> enables developers to easily share their datamodels, and re-use those from others.
 <a href="commits/intro.html">Atomic Commits</a> helps developers to deal with versioning, history, undo and audit logs.
 <a href="hierarchy.html">Atomic Hierarchies</a> provides an intuitive model for authorization and access control.
-And finally, the <a href="tooling.html">existing</a> open source libraries, server, GUI and templates help developers to have these features without writing them.</p>
+And finally, the <a href="tooling.html">existing open source Atomic Data software</a> (such as a server + database, a browser GUI, various libraries and React templates) help developers to have these features without having to do the heavy lifting themselves.</p>
 
                     </main>
 
