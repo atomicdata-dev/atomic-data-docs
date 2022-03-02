@@ -1,4 +1,5 @@
-# Atomic data and Git
+{{#title Atomic Data and Git}}
+# Atomic Data and Git
 
 ## How to manage Atomic Data using GIT
 

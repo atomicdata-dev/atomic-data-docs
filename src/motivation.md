@@ -5,6 +5,7 @@
 
 Every time a developer builds an app, they have to define their data model.
 Almost every new app has a `User` with a `name` and an `e-mail` field, and so on. -->
+
 ## Give people more control over their data
 
 The world wide web was designed by Tim Berners-Lee to be a decentralized network of servers that help people share information.
@@ -53,7 +54,23 @@ I believe the lack of growth partially has to do with a lack of tooling, but als
 Atomic Data aims to take the best parts from RDF, and learn from the past to make a more developer-friendly, performant and reliable data model to achieve a truly linked web.
 Read more about [how Atomic Data relates to RDF, and why these changes have been made](interoperability/rdf.md).
 
-## Make it easier for developers to build really good, interoperable apps
+## Make standardization easier and cheaper
+
+Standards for data sharing are great, but creating one can be very costly endeavor.
+Committees with stakeholders write endless documents describing the intricacies of domain models, which fields are allowed and which are required, and how data is serialized.
+In virtually all cases, these documents are only written for humans - and not for computers.
+Machine readable ways to describe data models like UML diagrams and OpenAPI specifications (also known as Swagger) help to have machine-readable descriptions, but these are still not _really_ used by machines - they are mostly only used to generate _visualizations for humans_.
+This ultimately means that implementations of a standard have to be _manually checked_ for compliance, which often results in small (yet important) differences that severely limit interoperability.
+These implementations will also often want to _extend_ the original definitions, but they are almost always unable to describe _what_ they have extended.
+
+Standardizing with Atomic Data solves these issues.
+Atomic Data takes the semantic value of ontologies, and merges it with a machine-readable [schemas](schema/intro.md).
+This makes standards created using Atomic Data easy to read for humans, and easy to validate for computers (which guarantees interoperability).
+Atomic Data has a highly standardized protocol for fetching data, which means that Atomic Schemas can link to each other, and _re-use existing Properties_.
+For developers (the people who need to actually implement and use the data that has been standardized), this means their job becomes easier.
+Because Properties have URLs, it becomes trivial to _add new Properties_ that were initially not in the main specification, without sacrificing type safety and validation abilities.
+
+## Make it easier for developers to build feature-rich, interoperable apps
 
 Every time a developer builds an application, they have to figure a lot of things out.
 How to design the API, how to implement forms, how to deal with authentication, authorization, versioning, search...
@@ -61,4 +78,4 @@ By having a more complete, strict standard, Atomic Data aims to decrease this bu
 [Atomic Schema](schema/intro.md) enables developers to easily share their datamodels, and re-use those from others.
 [Atomic Commits](commits/intro.md) helps developers to deal with versioning, history, undo and audit logs.
 [Atomic Hierarchies](hierarchy.md) provides an intuitive model for authorization and access control.
-And finally, the [existing](tooling.md) open source libraries, server, GUI and templates help developers to have these features without writing them.
+And finally, the [existing open source Atomic Data software](tooling.md) (such as a server + database, a browser GUI, various libraries and React templates) help developers to have these features without having to do the heavy lifting themselves.
