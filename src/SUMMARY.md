@@ -17,6 +17,13 @@
   * [Translations](schema/translations.md)
   * [FAQ](schema/faq.md)
 
+# Create Atomic Data
+
+* [Atomizing](atomizing.md)
+  <!-- * [Using Atomic-Server](atomic-server.md) -->
+  * [Creating a JSON-AD file](create-json-ad.md)
+  * [Upgrade your existing project](interoperability/upgrade.md)
+
 # Specification (extended)
 
 * [Atomic Data Extended](extended.md)
@@ -34,10 +41,6 @@
 
 # Using Atomic Data
 
-* [Atomizing Data: Creating Atomic Data](atomizing.md)
-  * [Using Atomic-Server](atomic-server.md)
-  * [Creating a JSON-AD file](publish-json-ad.md)
-  * [Upgrade your existing project](interoperability/upgrade.md)
 * [Interoperability and comparisons](interoperability/intro.md)
   * [RDF](interoperability/rdf.md)
   * [Solid](interoperability/solid.md)
