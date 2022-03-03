@@ -1,10 +1,17 @@
 # 5 Levels of data reusability
 
 Not all data are created equal.
-There are notable differences in how much you can do with data, how flexible it is.
+There are notable differences in how much you can do with data and how much effort it takes.
 The more reusable data is, the easier it will be to use it as a developer, researcher or other type of data user.
 
 _This list is inspired by Tim Berners-Lee's [5-star open data](https://5stardata.info/en/)_.
+
+## Level 0: proprietary data
+
+If you don't give others the _rights_ to read, use or modify your data, it's reusability is zero.
+That's why it's important to have licences that allow others to use data.
+It's also important to use _open formats_, intead of _proprietary formats_.
+Creative Commons licenses are a great way to clearly communicate that your data is meant to be re-used.
 
 ## Level 1: unstructured data
 
@@ -53,7 +60,9 @@ However, when the data _leaves the system_, a lot of type related data is lost.
 Even if this schema related information is described, the schema itself is often not machine-readable.
 The best way to have type-safe data, is to describe the schema in a machine-readable format.
 
-In Atomic Data, the Properties themselves (the links in the keys in JSON-AD) describe the datatypes, which helps developers when re-using data.
+In SQL, we can use a DB schema. In JSON, we can add a JSON Schema file. For XML, we have XSD.
+
+In Atomic Data, the Properties themselves (the links in the keys in JSON-AD) describe the required datatypes, which helps developers when re-using data understand what they can expect from a value.
 
 ```json
 {
@@ -74,6 +83,7 @@ This is what allows decentralized applications, true data ownership, and a new s
 
 ```json
 {
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Agent"],
   "https://atomicdata.dev/properties/name": "Joep",
   "https://atomicdata.dev/properties/birthYear": 1991,
   "https://atomicdata.dev/properties/worksOn": "https://atomicdata.dev",
