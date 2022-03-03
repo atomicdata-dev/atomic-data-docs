@@ -9,9 +9,13 @@ _This list is inspired by Tim Berners-Lee's [5-star open data](https://5stardata
 ## Level 0: proprietary data
 
 If you don't give others the _rights_ to read, use or modify your data, it's reusability is zero.
-That's why it's important to have licences that allow others to use data.
+
+That's why it's important to have a _licence_ that allow others to use your data.
+A good choice for a permissive option is the [Open Database License](https://opendatacommons.org/licenses/odbl/summary/).
+Creative Commons licenses are also good options to clearly communicate _if_, and if so then _how_, your data is permitted to be re-used.
+
 It's also important to use _open formats_ (such as `CSV`, `JSON` or `PNG`), intead of _proprietary formats_ (tied to specific vendors, such as `PSD` or `RAR`).
-Creative Commons licenses are great to clearly communicate _if_, and if so then _how_, your data is permitted to be re-used.
+
 
 ## Level 1: unstructured data
 
@@ -99,6 +103,7 @@ They can use cryptography to validate signatures, which proves that one person o
 
 ```json
 {
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Agent"],
   "https://atomicdata.dev/properties/name": "Joep",
   "https://atomicdata.dev/properties/birthYear": 1991,
   "https://atomicdata.dev/properties/worksOn": "https://atomicdata.dev",
