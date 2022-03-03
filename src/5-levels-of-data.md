@@ -3,6 +3,7 @@
 Not all data are created equal.
 There are notable differences in how much you can do with data and how much effort it takes.
 The more reusable data is, the easier it will be to use it as a developer, researcher or other type of data user.
+Re-useability is about being able to transform, sort, query, serialize,  modify, render and audit data without requiring too much work.
 
 _This list is inspired by Tim Berners-Lee's [5-star open data](https://5stardata.info/en/)_.
 
@@ -10,11 +11,11 @@ _This list is inspired by Tim Berners-Lee's [5-star open data](https://5stardata
 
 If you don't give others the _rights_ to read, use or modify your data, it's reusability is zero.
 
-That's why it's important to have a _licence_ that allow others to use your data.
+That's why it's important to have a _license_ that allow others to use your data.
 A good choice for a permissive option is the [Open Database License](https://opendatacommons.org/licenses/odbl/summary/).
 Creative Commons licenses are also good options to clearly communicate _if_, and if so then _how_, your data is permitted to be re-used.
 
-It's also important to use _open formats_ (such as `CSV`, `JSON` or `PNG`), intead of _proprietary formats_ (tied to specific vendors, such as `PSD` or `RAR`).
+It's also important to use _open formats_ (such as `CSV`, `JSON` or `PNG`), instead of _proprietary formats_ (tied to specific vendors, such as `PSD` or `RAR`).
 
 
 ## Level 1: unstructured data
@@ -51,7 +52,7 @@ If we want predictability, we need to make it _type-safe_.
 
 ## Level 3: type-safe data
 
-_Examples: SQL + DB SCHEMA, JSON + JSON schema, XSD + XML, RDF + SHACL, In-memory data in type-safe programming langauges_
+_Examples: SQL + DB SCHEMA, JSON + JSON schema, XSD + XML, RDF + SHACL, In-memory data in type-safe programming languages_
 
 Type-safe data means that every value of the data has an explicit datatype.
 It is _strongly typed_ and has a clear _schema_ that describes which properties you can expect in a Resource.
@@ -59,7 +60,7 @@ This means that someone re-using type-safe data can know for certain that it con
 The shape of the data is _predictable_.
 This predictability means that developers can safely re-use it in their system without worrying about missing fields or datatype errors.
 
-Lots of software has _internal_ type safety, especially if you use type-safe programming langauges like Typescript, Kotlin or Rust.
+Lots of software has _internal_ type safety, especially if you use type-safe programming languages like Typescript, Kotlin or Rust.
 However, when the data _leaves the system_, a lot of type related data is lost.
 Even if this schema related information is described, the schema itself is often not machine-readable.
 The best way to have type-safe data, is to describe the schema in a machine-readable format.
@@ -79,7 +80,7 @@ In Atomic Data, the Properties themselves (the links in the keys in JSON-AD) des
 
 ## Level 4: browsable data
 
-_Examples: Atomic Data, propertly hosted RDF_
+_Examples: Atomic Data, properly hosted RDF_
 
 If your data is _connected_ to other pieces of machine-readable dat, is becomes browsable, similar to how websites link to each other.
 This effectively creates a _web of data_, and allows for a whole new way to think about the internet.
