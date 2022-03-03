@@ -10,8 +10,8 @@ _This list is inspired by Tim Berners-Lee's [5-star open data](https://5stardata
 
 If you don't give others the _rights_ to read, use or modify your data, it's reusability is zero.
 That's why it's important to have licences that allow others to use data.
-It's also important to use _open formats_, intead of _proprietary formats_.
-Creative Commons licenses are a great way to clearly communicate that your data is meant to be re-used.
+It's also important to use _open formats_ (such as `CSV`, `JSON` or `PNG`), intead of _proprietary formats_ (tied to specific vendors, such as `PSD` or `RAR`).
+Creative Commons licenses are great to clearly communicate _if_, and if so then _how_, your data is permitted to be re-used.
 
 ## Level 1: unstructured data
 
@@ -75,7 +75,7 @@ In Atomic Data, the Properties themselves (the links in the keys in JSON-AD) des
 
 ## Level 4: browsable data
 
-_Examples: Atomic Data_
+_Examples: Atomic Data, propertly hosted RDF_
 
 If your data is _connected_ to other pieces of machine-readable dat, is becomes browsable, similar to how websites link to each other.
 This effectively creates a _web of data_, and allows for a whole new way to think about the internet.
