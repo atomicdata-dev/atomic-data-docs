@@ -57,6 +57,7 @@ In Atomic Data, the Properties themselves (the links in the keys in JSON-AD) des
 
 ```json
 {
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Agent"],
   "https://atomicdata.dev/properties/name": "Joep",
   "https://atomicdata.dev/properties/birthYear": 1991,
   "https://atomicdata.dev/properties/worksOn": "Atomic Data",
