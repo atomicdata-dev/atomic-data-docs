@@ -27,13 +27,6 @@ We know the fields that we need: a `name` and some `body`.
 But we can't use these keys in Atomic Data, we should use URLs that point to Properties.
 We can either create new Properties (see the Atomic-Server tutorial), or we can use existing ones, for example by searching on [AtomicData.dev/properties](https://atomicdata.dev/properties).
 
-## Using Ontologies, Classes and Ontologies
-
-Ontologies are groups of concepts that describe some domain.
-For example, we could have an Ontology for BlogPosts or .
-
-At this moment, there are few models created in Atomic Data.
-
 ## Setting the first values
 
 ```json
@@ -43,6 +36,34 @@ At this moment, there are few models created in Atomic Data.
 }
 ```
 
+## Adding a Class
+
+Classes help others understanding what a Resource's type is, such as BlogPost or Person.
+In Atomic Data, Resources can have multiple classes, so we should use an Array, like so:
+
+```json
+{
+  "https://atomicdata.dev/properties/name": "Writing my first blogpost",
+  "https://atomicdata.dev/properties/description": "Hi! I'm a blogpost. I'm also machine readable!",
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+}
+```
+
+Adding a Class helps people to understand the data, and it can provide guarantees to the data users about the _shape_ of the data: they now know which fields are _required_ or _recommended_.
+We can also use Classes to render Forms, which can be useful when the data should be edited later.
+For example, the BlogPost item
+
+## Using exsisting Ontologies, Classes and Ontologies
+
+Ontologies are groups of concepts that describe some domain.
+For example, we could have an Ontology for Blogs that links to a bunch of related _Classes_, such as BlogPost and Person.
+Or we could have a Recipy Ontology that describes Ingredients, Steps and more.
+
+At this moment, there are relatively few Classes created in Atomic Data.
+You can find most on https://atomicdata.dev/classes.
+
+So possibly the best way forward for you, is to define a Class using the Atomic Data Browser's tools for making resources.
+
 ## Multiple items
 
 If we want to have _multiple_ items, we can simply use a JSON Array at the root, like so:
@@ -51,9 +72,11 @@ If we want to have _multiple_ items, we can simply use a JSON Array at the root,
 [{
   "https://atomicdata.dev/properties/name": "Writing my first blogpost",
   "https://atomicdata.dev/properties/description": "Hi! I'm a blogpost. I'm also machine readable!",
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
 },{
   "https://atomicdata.dev/properties/name": "Another blogpost",
   "https://atomicdata.dev/properties/description": "I'm writing so much my hands hurt.",
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
 }]
 ```
 
@@ -73,7 +96,8 @@ Let's use a unique _slug_, a short name that is often used in URLs.
 {
   "https://atomicdata.dev/properties/name": "Writing my first blogpost",
   "https://atomicdata.dev/properties/description": "Hi! I'm a blogpost. I'm also machine readable!",
-  "https://atomicdata.dev/properties/localId": "my-first-blogpost"
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+  "https://atomicdata.dev/properties/localId": "my-first-blogpost",
 }
 ```
 
@@ -92,11 +116,22 @@ We can simply refer to the `localId`, instead of some URL that does not exist ye
 [{
   "https://atomicdata.dev/properties/name": "Writing my first blogpost",
   "https://atomicdata.dev/properties/description": "Hi! I'm a blogpost. I'm also machine readable!",
+  "https://atomicdata.dev/properties/author": "jon",
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+  "https://atomicdata.dev/properties/localId": "my-first-blogpost",
 },{
   "https://atomicdata.dev/properties/name": "Another blogpost",
   "https://atomicdata.dev/properties/description": "I'm writing so much my hands hurt.",
+  "https://atomicdata.dev/properties/author": "jon",
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+  "https://atomicdata.dev/properties/localId": "another-blogpost",
 },{
-  "https://atomicdata.dev/properties/firstName": "Johny Author",
-  "https://atomicdata.dev/properties/description": "I'm writing so much my hands hurt.",
+  "https://atomicdata.dev/properties/name": "Jon Author",
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Person"],
+  "https://atomicdata.dev/properties/localId": "jon",
 }]
 ```
+
+## Publications
+
+_to be continued_
