@@ -11,9 +11,8 @@ _This list is inspired by Tim Berners-Lee's [5-star open data](https://5stardata
 
 If you don't give others the _rights_ to read, use or modify your data, it's reusability is zero.
 
-That's why it's important to have a _license_ that allow others to use your data.
-A good choice for a permissive option is the [Open Database License](https://opendatacommons.org/licenses/odbl/summary/).
-Creative Commons licenses are also good options to clearly communicate _if_, and if so then _how_, your data is permitted to be re-used.
+That's why it's important to have a _license_ that allow others to use your data, like the [Open Database License](https://opendatacommons.org/licenses/odbl/summary/).
+or one of the Creative Commons licenses.
 
 It's also important to use _open formats_ (such as `CSV`, `JSON` or `PNG`), instead of _proprietary formats_ (tied to specific vendors, such as `PSD` or `RAR`).
 
