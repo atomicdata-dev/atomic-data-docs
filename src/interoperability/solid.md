@@ -18,7 +18,7 @@ But there are some important **differences**, too, which will be explained in mo
 - Atomic Data uses a strict built-in schema to ensure type safety
 - Atomic Data standardizes state changes (which also provides version control / history, audit trails)
 - Atomic Data is more easily serializable to other formats (like JSON)
-- Atomic Data has different models for authentication, authorzation and hierarchies
+- Atomic Data has different models for authentication, authorization and hierarchies
 - Atomic Data does not depend on existing semantic web specifications
 - Atomic Data is a smaller and younger project, and as of now a one-man show
 
