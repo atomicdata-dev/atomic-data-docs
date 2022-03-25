@@ -10,12 +10,12 @@ Let's summarize what the advantages are:
 - It can now **link to other data**, an become part of a bigger web of data
 - It becomes **strictly typed**, so developers can easily and safely re-use it in their software
 - It becomes **easier to understand**, because people can look at the Properties and see what they mean
-- It can be **converted** into many formats (JSON, Turtle, CSV, XML, more...)
+- It can be **easily converted** into many formats (JSON, Turtle, CSV, XML, more...)
 
 ## Three ways to Atomize data
 
 In general, there are three ways to create Atomic Data:
 
-- Using the **Atomic-Server** app + GUI (easy, only for direct user input)
-- Create an **importable JSON-AD file** (medium, useful if you want to convert existing data)
-- Make your existing service / app **host and serialize Atomic Data** (hard, if you want to make your entire app be part of the Atomic Web!)
+- [Using the **Atomic-Server** app + GUI](./atomic-server.md) (easy, only for direct user input)
+- [Create an **importable JSON-AD file**](./create-json-ad.md) (medium, useful if you want to convert existing data)
+- [Make your existing service / app **host and serialize Atomic Data**](./interoperability/upgrade.md) (hard, if you want to make your entire app be part of the Atomic Web!)

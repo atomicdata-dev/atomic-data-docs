@@ -20,7 +20,7 @@
 # Create Atomic Data
 
 * [Atomizing](atomizing.md)
-  <!-- * [Using Atomic-Server](atomic-server.md) -->
+  * [Using Atomic-Server](atomic-server.md)
   * [Creating a JSON-AD file](create-json-ad.md)
   * [Upgrade your existing project](interoperability/upgrade.md)
 
