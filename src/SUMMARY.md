@@ -32,10 +32,16 @@
 * [Collections, filtering, sorting](schema/collections.md)
 * [Uploading and downloading files](files.md)
 
-# Using Atomic Data
+# Create Atomic Data
+
+* [Atomizing](atomizing.md)
+  * [Using Atomic-Server](atomic-server.md)
+  * [Creating a JSON-AD file](create-json-ad.md)
+  * [Upgrade your existing project](interoperability/upgrade.md)
+
+# Use Atomic Data
 
 * [Interoperability and comparisons](interoperability/intro.md)
-  * [Making your existing project compatible](interoperability/upgrade.md)
   * [RDF](interoperability/rdf.md)
   * [Solid](interoperability/solid.md)
   * [JSON](interoperability/json.md)

@@ -7,7 +7,7 @@
 
 Atomic Data uses links to connect pieces of data, and therefore makes it easier to connect datasets to each other - even when these datasets exist on separate machines.
 
-Atomic Data has been designed with [three goals in mind](motivation.md):
+Atomic Data has been designed with [the following goals in mind](motivation.md):
 
 - Give people more control over their data
 - Make linked data easier to use
@@ -22,31 +22,30 @@ These Properties are responsible for setting the `datatype` (to ensure type-safe
 
 [Read more about Atomic Data Core](core/concepts.md)
 
-## Atomizing: how to create, convert and host Atomic Data
-
-Atomic Data has been designed to be very easy to create and host.
-In the Atomizing section, we'll show you how you can create Atomic Data in three ways:
-
-- Using Atomic Server, from your browser
-- By creating JSON-AD (and optionally importing it)
-- By including it in your own app
-
 ## Atomic Data Extended
 
 Atomic Data Extended is a set of extra modules (on top of Atomic Data Core) that deal with data that changes over time, authentication, and authorization.
 
 {{#include extended-table.md}}
 
-## Get Started
+## Atomizing: how to create, convert and host Atomic Data
 
-If you want to read more about how Atomic Data works - read on.
-If you'd rather play and discover for yourself, play with the existing open source [tooling](tooling.md):
+Atomic Data has been designed to be very easy to create and host.
+In the Atomizing section, we'll show you how you can create Atomic Data in three ways:
+
+- [Using Atomic Server, from your browser](atomic-server.md)
+- [By creating JSON-AD (and optionally importing it)](create-json-ad.md)
+- [By upgrading your existing application](interoperability/upgrade.md)
+
+## Tools & libraries
 
 - Browser app [atomic-data-browser](https://github.com/joepio/atomic-data-browser) ([demo on atomicdata.dev](https://atomicdata.dev))
 - Build a react app using [typescript & react libraries](https://github.com/joepio/atomic-data-ts). Start with the [react template on codesandbox](https://codesandbox.io/s/atomic-data-react-template-4y9qu?file=/src/MyResource.tsx)
 - Host your own [atomic-server](https://github.com/joepio/atomic) (powers [atomicdata.dev](https://atomicdata.dev), run with `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`)
 - Discover the command line tool: [atomic-cli](https://github.com/joepio/atomic) (`cargo install atomic-cli`)
 - Use the Rust library: [atomic-lib](https://github.com/joepio/atomic)
+
+## Get involved
 
 Make sure to [join our Discord](https://discord.gg/a72Rv2P) if you'd like to discuss Atomic Data with others.
 
