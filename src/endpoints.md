@@ -1,4 +1,4 @@
-{{#title Atomic Data Endpoitns - specity how HTTP endpoints behave}}
+{{#title Atomic Data Endpoints - describe how RESTful HTTP APIs behave}}
 # Atomic Endpoints
 
 _URL: https://atomicdata.dev/classes/Endpoint_

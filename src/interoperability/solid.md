@@ -126,7 +126,7 @@ I believe that as of today (february 2022), Atomic-Server has quite a few advant
 
 - **Dynamic schema validation** / type checking using [Atomic Schema](https://docs.atomicdata.dev/schema/intro.html), combining the best of RDF, JSON and type safety.
 - **Fast** (1ms responses on my laptop)
-- **Lightweight** (15MB binary, no runtime dependencies)
+- **Lightweight** (8MB download, no runtime dependencies)
 - **HTTPS + HTTP2 support** with Built-in LetsEncrypt handshake.
 - **Browser GUI included** powered by [atomic-data-browser](https://github.com/joepio/atomic-data-browser). Features dynamic forms, tables, authentication, theming and more. Easy to use!
 - **Event-sourced versioning** / history powered by [Atomic Commits](https://docs.atomicdata.dev/commits/intro.html)
