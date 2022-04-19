@@ -22,15 +22,6 @@ These Properties are responsible for setting the `datatype` (to ensure type-safe
 
 [Read more about Atomic Data Core](core/concepts.md)
 
-## Atomizing: how to create, convert and host Atomic Data
-
-Atomic Data has been designed to be very easy to create and host.
-In the Atomizing section, we'll show you how you can create Atomic Data in three ways:
-
-- Using Atomic Server, from your browser
-- By creating JSON-AD (and optionally importing it)
-- By including it in your own app
-
 ## Atomic Data Extended
 
 Atomic Data Extended is a set of extra modules (on top of Atomic Data Core) that deal with data that changes over time, authentication, and authorization.

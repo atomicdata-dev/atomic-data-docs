@@ -2,7 +2,8 @@
 
 [`Atomic-Server`](https://github.com/joepio/atomic-data-rust/blob/master/server/README.md) is the _reference implementation_ of the Atomic Data Core + Extended specification.
 It was developed parallel to this specification, and it served as a testing ground for various ideas (some of which didn't work, and some of which ended up in the spec).
-It's a graph database server for storing and sharing typed linked data.
+
+Atomic-Server is a graph database server for storing and sharing typed linked data.
 It's free, open source (MIT license), and has a ton of features:
 
 - ⚛️  **Dynamic schema validation** / type checking using [Atomic Schema](https://docs.atomicdata.dev/schema/intro.html). Combines safety of structured data with the
@@ -62,18 +63,26 @@ Again, check out the [README](https://github.com/joepio/atomic-data-rust/blob/ma
 
 Now, let's create some data.
 
+## Creating an Agent
+
+Before you can create new things on AtomicData.dev, you'll need an _Agent_.
+This is your virtual User, which can create, sign and own things.
+
+Simply open the [demo invite](https://atomicdata.dev/invites/1) and press accept.
+And you're done!
+
+
 ## Creating your first Atomic Data
 
-Let's create a _Class_!
+Now let's create a [_Class_](https://atomicdata.dev/classes/Class).
 A Class represents an abstract concept, such as a `BlogPost` (which we'll do here).
 We can do this in a couple of ways:
 
 - Press the `new resource` button on the left menu, and selecting Class
 - Opening [Class](https://atomicdata.dev/classes/Class) and pressing `new class`
-- Going to the [Classes Collection])(https://atomicdata.dev/classes/) and pressing the plus icon
+- Going to the [Classes Collection](https://atomicdata.dev/classes/) and pressing the plus icon
 
 The result is the same: we end up with a form in which we can fill in some details.
-
 
 Let's add a shortname, and then a description.
 
@@ -85,4 +94,21 @@ A `name`, and a `description`, probably.
 
 So let's search for these Properties, and add them.
 
-Now, we can skip the `recommended` properties, and get right to saving our resource.
+Now, we can skip the `recommended` properties, and get right to saving our newly created `BlogPost` class.
+So, press save, and now look at what you created.
+
+Notice a couple of things:
+
+- Your Class has its own URL.
+- It has a `parent`, shown in the top of the screen. This has impact on the visibility and rights of your Resource. We'll get to that [later in the documentation](./hierarchy.md).
+
+Now, use the context menu to open the `Data View`.
+This gives you some more insight into your newly created data, and various ways in which you van serialize it.
+
+## There's more!
+
+This was just a very brief introduction to Atomic Server, and its features.
+There's quite a bit that we didn't dive in to, such as versioning, file uploads, the collaborative document editor and more...
+But by clicking around you're likely to discover these features for yourself.
+
+In the next page, we'll dive into how you can create an publish JSON-AD files.

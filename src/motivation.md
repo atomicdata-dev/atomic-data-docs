@@ -1,10 +1,18 @@
 {{#title Motivation for creating Atomic Data}}
 # Motivation: Why Atomic Data?
 
-<!-- ## Ending the mapping problem
+<!--
+
+## Ending the mapping problem
 
 Every time a developer builds an app, they have to define their data model.
-Almost every new app has a `User` with a `name` and an `e-mail` field, and so on. -->
+Almost every new app has a `User` with a `name` and an `e-mail` field, and so on.
+
+## Waste less time
+
+-
+
+-->
 
 ## Give people more control over their data
 

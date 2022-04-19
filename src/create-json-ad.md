@@ -132,6 +132,6 @@ We can simply refer to the `localId`, instead of some URL that does not exist ye
 }]
 ```
 
-## Publications
+## Importing data using Atomic Sever
 
-_to be continued_
+_currently under development_
