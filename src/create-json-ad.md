@@ -60,7 +60,7 @@ For example, we could have an Ontology for Blogs that links to a bunch of relate
 Or we could have a Recipy Ontology that describes Ingredients, Steps and more.
 
 At this moment, there are relatively few Classes created in Atomic Data.
-You can find most on https://atomicdata.dev/classes.
+You can find most on [atomicdata.dev/classes](https://atomicdata.dev/classes).
 
 So possibly the best way forward for you, is to define a Class using the Atomic Data Browser's tools for making resources.
 

@@ -28,16 +28,24 @@ Atomic Data Extended is a set of extra modules (on top of Atomic Data Core) that
 
 {{#include extended-table.md}}
 
-## Get Started
+## Atomizing: how to create, convert and host Atomic Data
 
-If you want to read more about how Atomic Data works - read on.
-If you'd rather play and discover for yourself, play with the existing open source [tooling](tooling.md):
+Atomic Data has been designed to be very easy to create and host.
+In the Atomizing section, we'll show you how you can create Atomic Data in three ways:
+
+- [Using Atomic Server, from your browser](atomic-server.md)
+- [By creating JSON-AD (and optionally importing it)](create-json-ad.md)
+- [By upgrading your existing application](interoperability/upgrade.md)
+
+## Tools & libraries
 
 - Browser app [atomic-data-browser](https://github.com/joepio/atomic-data-browser) ([demo on atomicdata.dev](https://atomicdata.dev))
 - Build a react app using [typescript & react libraries](https://github.com/joepio/atomic-data-ts). Start with the [react template on codesandbox](https://codesandbox.io/s/atomic-data-react-template-4y9qu?file=/src/MyResource.tsx)
 - Host your own [atomic-server](https://github.com/joepio/atomic) (powers [atomicdata.dev](https://atomicdata.dev), run with `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`)
 - Discover the command line tool: [atomic-cli](https://github.com/joepio/atomic) (`cargo install atomic-cli`)
 - Use the Rust library: [atomic-lib](https://github.com/joepio/atomic)
+
+## Get involved
 
 Make sure to [join our Discord](https://discord.gg/a72Rv2P) if you'd like to discuss Atomic Data with others.
 
