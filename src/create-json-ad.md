@@ -80,13 +80,13 @@ If we want to have _multiple_ items, we can simply use a JSON Array at the root,
 }]
 ```
 
-## Preventing deduplication with `localId`
+## Preventing duplication with `localId`
 
 When we want to _publish_ Atomic Data, we also want someone else to be able to _import_ it.
 An important thing to prevent, is _data duplication_.
 If you're importing a list of Blog posts, for example, you'd want to only import every article _once_.
 
-The way to prevent this, is by adding a `localId`.
+The way to preventing duplication, is by adding a `localId`.
 This `localId` is used by the importer to find out if it has already imported it before.
 So we, as data producers, need to make sure that our `localId` is _unique_ and _does not change_!
 We can use any type of string that we like, as long as it conforms to these requirements.
