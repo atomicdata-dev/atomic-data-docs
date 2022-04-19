@@ -21,6 +21,7 @@ The **optional method fields** describe how the data must be changed:
 - `destroy` - If true, the existing Resource will be removed.
 - `remove` - an array of Properties that need to be removed (including their values).
 - `set` - a Nested Resource which contains all the new or edited fields.
+- `push` - a Nested Resource which contains all the fields that are _appended_ to. This means adding items to a new or existing ResourceArray.
 
 These commands are executed in the order above.
 This means that you can set `destroy` to `true` and include `set`, which empties the existing resource and sets new values.
