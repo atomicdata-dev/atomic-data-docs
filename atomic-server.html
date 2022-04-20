@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Using Atomic-Server - Atomic Data Docs</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation for the Atomic Data standard.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="atomic-data-overview.html"><strong aria-hidden="true">1.</strong> Atomic Data Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="motivation.html"><strong aria-hidden="true">1.1.</strong> Motivation</a></li><li class="chapter-item expanded "><a href="when-to-use.html"><strong aria-hidden="true">1.2.</strong> When (not) to use it</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Specification (core)</li><li class="chapter-item expanded "><a href="core/concepts.html"><strong aria-hidden="true">2.</strong> What is Atomic Data?</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="core/serialization.html"><strong aria-hidden="true">2.1.</strong> Serialization</a></li><li class="chapter-item expanded "><a href="core/json-ad.html"><strong aria-hidden="true">2.2.</strong> JSON-AD</a></li><li class="chapter-item expanded "><a href="core/querying.html"><strong aria-hidden="true">2.3.</strong> Querying</a></li><li class="chapter-item expanded "><a href="core/paths.html"><strong aria-hidden="true">2.4.</strong> Paths</a></li></ol></li><li class="chapter-item expanded "><a href="schema/intro.html"><strong aria-hidden="true">3.</strong> Schema</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="schema/classes.html"><strong aria-hidden="true">3.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="schema/datatypes.html"><strong aria-hidden="true">3.2.</strong> Datatypes</a></li><li class="chapter-item expanded "><a href="schema/translations.html"><strong aria-hidden="true">3.3.</strong> Translations</a></li><li class="chapter-item expanded "><a href="schema/faq.html"><strong aria-hidden="true">3.4.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Specification (extended)</li><li class="chapter-item expanded "><a href="extended.html"><strong aria-hidden="true">4.</strong> Atomic Data Extended</a></li><li class="chapter-item expanded "><a href="agents.html"><strong aria-hidden="true">5.</strong> Agents</a></li><li class="chapter-item expanded "><a href="hierarchy.html"><strong aria-hidden="true">6.</strong> Hierarchy and authorization</a></li><li class="chapter-item expanded "><a href="authentication.html"><strong aria-hidden="true">7.</strong> Authentication</a></li><li class="chapter-item expanded "><a href="invitations.html"><strong aria-hidden="true">8.</strong> Invitations and sharing</a></li><li class="chapter-item expanded "><a href="commits/intro.html"><strong aria-hidden="true">9.</strong> Commits (writing data)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="commits/concepts.html"><strong aria-hidden="true">9.1.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="commits/compare.html"><strong aria-hidden="true">9.2.</strong> Compared to</a></li></ol></li><li class="chapter-item expanded "><a href="websockets.html"><strong aria-hidden="true">10.</strong> WebSockets</a></li><li class="chapter-item expanded "><a href="endpoints.html"><strong aria-hidden="true">11.</strong> Endpoints</a></li><li class="chapter-item expanded "><a href="schema/collections.html"><strong aria-hidden="true">12.</strong> Collections, filtering, sorting</a></li><li class="chapter-item expanded "><a href="files.html"><strong aria-hidden="true">13.</strong> Uploading and downloading files</a></li><li class="chapter-item expanded affix "><li class="part-title">Create Atomic Data</li><li class="chapter-item expanded "><a href="atomizing.html"><strong aria-hidden="true">14.</strong> Atomizing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="atomic-server.html" class="active"><strong aria-hidden="true">14.1.</strong> Using Atomic-Server</a></li><li class="chapter-item expanded "><a href="create-json-ad.html"><strong aria-hidden="true">14.2.</strong> Creating a JSON-AD file</a></li><li class="chapter-item expanded "><a href="interoperability/upgrade.html"><strong aria-hidden="true">14.3.</strong> Upgrade your existing project</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Use Atomic Data</li><li class="chapter-item expanded "><a href="interoperability/intro.html"><strong aria-hidden="true">15.</strong> Interoperability and comparisons</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interoperability/rdf.html"><strong aria-hidden="true">15.1.</strong> RDF</a></li><li class="chapter-item expanded "><a href="interoperability/solid.html"><strong aria-hidden="true">15.2.</strong> Solid</a></li><li class="chapter-item expanded "><a href="interoperability/json.html"><strong aria-hidden="true">15.3.</strong> JSON</a></li><li class="chapter-item expanded "><a href="interoperability/ipfs.html"><strong aria-hidden="true">15.4.</strong> IPFS</a></li><li class="chapter-item expanded "><a href="interoperability/sql.html"><strong aria-hidden="true">15.5.</strong> SQL</a></li><li class="chapter-item expanded "><a href="interoperability/graph-database.html"><strong aria-hidden="true">15.6.</strong> Graph Databases</a></li></ol></li><li class="chapter-item expanded "><a href="usecases/intro.html"><strong aria-hidden="true">16.</strong> Potential use cases</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="usecases/personal-data-store.html"><strong aria-hidden="true">16.1.</strong> Personal Data Store</a></li><li class="chapter-item expanded "><a href="usecases/e-commerce.html"><strong aria-hidden="true">16.2.</strong> E-commerce & marketplaces</a></li><li class="chapter-item expanded "><a href="usecases/surveys.html"><strong aria-hidden="true">16.3.</strong> Surveys</a></li><li class="chapter-item expanded "><a href="usecases/verifiable-credentials.html"><strong aria-hidden="true">16.4.</strong> Verifiable Credentials</a></li><li class="chapter-item expanded "><a href="usecases/food-labels.html"><strong aria-hidden="true">16.5.</strong> Food labels</a></li></ol></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">17.</strong> Software and libraries</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="acknowledgements.html">Acknowledgements</a></li><li class="chapter-item expanded affix "><a href="newsletter.html">Newsletter</a></li><li class="chapter-item expanded affix "><a href="get-involved.html">Get involved</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Atomic Data Docs</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ontola/atomic-data" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="creating-atomic-data-using-atomic-server"><a class="header" href="#creating-atomic-data-using-atomic-server">Creating Atomic Data using Atomic-Server</a></h1>
+<p><a href="https://github.com/joepio/atomic-data-rust/blob/master/server/README.md"><code>Atomic-Server</code></a> is the <em>reference implementation</em> of the Atomic Data Core + Extended specification.
+It was developed parallel to this specification, and it served as a testing ground for various ideas (some of which didn't work, and some of which ended up in the spec).</p>
+<p>Atomic-Server is a graph database server for storing and sharing typed linked data.
+It's free, open source (MIT license), and has a ton of features:</p>
+<ul>
+<li>⚛️  <strong>Dynamic schema validation</strong> / type checking using <a href="https://docs.atomicdata.dev/schema/intro.html">Atomic Schema</a>. Combines safety of structured data with the</li>
+<li>🚀  <strong>Fast</strong> (1ms responses on my laptop)</li>
+<li>🪶  <strong>Lightweight</strong> (15MB binary, no runtime dependencies)</li>
+<li>💻  <strong>Runs everywhere</strong> (linux, windows, mac, arm)</li>
+<li>🌐  <strong>Embedded server</strong> with support for HTTP / HTTPS / HTTP2.0 and Built-in LetsEncrypt handshake.</li>
+<li>🎛️  <strong>Browser GUI included</strong> powered by <a href="https://github.com/joepio/atomic-data-browser">atomic-data-browser</a>. Features dynamic forms, tables, authentication, theming and more.</li>
+<li>💾  <strong>Event-sourced versioning</strong> / history powered by <a href="https://docs.atomicdata.dev/commits/intro.html">Atomic Commits</a></li>
+<li>🔄  <strong>Synchronization using websockets</strong>: communicates state changes with a client. Send a <code>wss</code> request to <code>/ws</code> to open a webscocket.</li>
+<li>🧰  <strong>Many serialization options</strong>: to JSON, <a href="https://docs.atomicdata.dev/core/json-ad.html">JSON-AD</a>, and various Linked Data / RDF formats (RDF/XML, N-Triples / Turtle / JSON-LD).</li>
+<li>🔎  <strong>Full-text search</strong> with fuzzy search and various operators, often &lt;3ms responses.</li>
+<li>📖  <strong>Pagination, sorting and filtering</strong> using <a href="https://docs.atomicdata.dev/schema/collections.html">Atomic Collections</a></li>
+<li>🔐  <strong>Authorization</strong> (read / write permissions) and Hierarchical structures powered by <a href="https://docs.atomicdata.dev/hierarchy.html">Atomic Hierarchy</a></li>
+<li>📲  <strong>Invite and sharing system</strong> with <a href="https://docs.atomicdata.dev/invitations.html">Atomic Invites</a></li>
+<li>📂  <strong>File management</strong>: Upload, download and preview attachments.</li>
+<li>🖥️  <strong>Desktop app</strong>: Easy desktop installation, with status bar icon, powered by <a href="https://github.com/tauri-apps/tauri/">tauri</a>.</li>
+</ul>
+<h2 id="running-atomic-server-locally-optional"><a class="header" href="#running-atomic-server-locally-optional">Running Atomic-Server locally (optional)</a></h2>
+<p>In this guide, we'll can simply use <code>atomicdata.dev</code> in our browser without installing anything.
+So you can skip this step and go to <em>Creating your first Atomic Data</em>.
+But if you want to, you can run Atomic-Server on your machine in a couple of ways:</p>
+<ul>
+<li><strong>Using a desktop installer</strong>: download a desktop release from the <a href="https://github.com/joepio/atomic-data-rust/releases"><code>releases</code></a> page and install it using your desktop GUI.</li>
+<li><strong>Using a binary</strong>: download a binary release from the <a href="https://github.com/joepio/atomic-data-rust/releases"><code>releases</code></a> page and open it using a terminal.</li>
+<li><strong>Using Docker</strong> is probably the quickest: <code>docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>.</li>
+<li><strong>Using Cargo</strong>: <code>cargo install atomic-server</code> and then run <code>atomic-server</code> to start.</li>
+</ul>
+<p><em><a href="https://github.com/joepio/atomic-data-rust/blob/master/server/README.md">Atomic-Server's README</a> contains more (and up-to-date) information about how to use it!</em></p>
+<p>Open your server in your browser.
+By default, that's <a href="http://localhost:9883"><code>http://localhost:9883</code></a>.
+Fun fact: <code>&amp;#9883;</code> is HTML entity code for the Atom icon: ⚛.</p>
+<p>The first screen should show you your <a href="https://atomicdata.dev/classes/Drive"><em>Drive</em></a>.
+You can think of this as your root folder.
+It is the resource hosted at the root URL, effectively being the home page of your server.</p>
+<p>There's an instruction on the screen about the <code>/setup</code> page.
+Click this, and you'll get a screen showing an <a href="https://atomicdata.dev/classes/Invite"><em>Invite</em></a>.
+Normally, you could <code>Accept as new user</code>, but since you're running on <code>localhost</code>, you won't be able to use the newly created Agent on non-local Atomic-Servers.
+Therefore, it may be best to create an Agent on some <em>other</em> running server, such as the <a href="https://atomicdata.dev/invites/1">demo Invite on AtomicData.dev</a>.
+And after that, copy the Secret from the <code>User settings</code> panel from AtomicData.dev, go back to your <code>localhost</code> version, and press <code>sign in</code>.
+Paste the Secret, and voila! You're signed in.</p>
+<p>Now, again go to <code>/setup</code>. This time, you can <code>Accept as {user}</code>.
+After clicking, your Agent has gotten <code>write</code> rights for the Drive!
+You can verify this by hovering over the description field, clicking the edit icon, and making a few changes.
+You can also press the menu button (three dots, top left) and press <code>Data view</code> to see your agent after the <code>write</code> field.
+Note that you can now edit every field.
+You can also fetch your data now as various formats.</p>
+<p>Try checking out the other features in the menu bar, and check out the <code>collections</code>.</p>
+<p>Again, check out the <a href="https://github.com/joepio/atomic-data-rust/blob/master/server/README.md">README</a> for more information and guides!</p>
+<p>Now, let's create some data.</p>
+<h2 id="creating-an-agent"><a class="header" href="#creating-an-agent">Creating an Agent</a></h2>
+<p>Before you can create new things on AtomicData.dev, you'll need an <em>Agent</em>.
+This is your virtual User, which can create, sign and own things.</p>
+<p>Simply open the <a href="https://atomicdata.dev/invites/1">demo invite</a> and press accept.
+And you're done!</p>
+<h2 id="creating-your-first-atomic-data"><a class="header" href="#creating-your-first-atomic-data">Creating your first Atomic Data</a></h2>
+<p>Now let's create a <a href="https://atomicdata.dev/classes/Class"><em>Class</em></a>.
+A Class represents an abstract concept, such as a <code>BlogPost</code> (which we'll do here).
+We can do this in a couple of ways:</p>
+<ul>
+<li>Press the <code>new resource</code> button on the left menu, and selecting Class</li>
+<li>Opening <a href="https://atomicdata.dev/classes/Class">Class</a> and pressing <code>new class</code></li>
+<li>Going to the <a href="https://atomicdata.dev/classes/">Classes Collection</a> and pressing the plus icon</li>
+</ul>
+<p>The result is the same: we end up with a form in which we can fill in some details.</p>
+<p>Let's add a shortname, and then a description.</p>
+<p>After that, we'll add the <code>required</code> properties.
+This form you're looking at is constructed by using the <code>required</code> and <code>recommended</code> Properties defined in <code>Class</code>.
+We can use these same fields to generate our BlogPost resource!
+Which fields would be required in a <code>BlogPost</code>?
+A <code>name</code>, and a <code>description</code>, probably.</p>
+<p>So let's search for these Properties, and add them.</p>
+<p>Now, we can skip the <code>recommended</code> properties, and get right to saving our newly created <code>BlogPost</code> class.
+So, press save, and now look at what you created.</p>
+<p>Notice a couple of things:</p>
+<ul>
+<li>Your Class has its own URL.</li>
+<li>It has a <code>parent</code>, shown in the top of the screen. This has impact on the visibility and rights of your Resource. We'll get to that <a href="./hierarchy.html">later in the documentation</a>.</li>
+</ul>
+<p>Now, use the context menu to open the <code>Data View</code>.
+This gives you some more insight into your newly created data, and various ways in which you van serialize it.</p>
+<h2 id="theres-more"><a class="header" href="#theres-more">There's more!</a></h2>
+<p>This was just a very brief introduction to Atomic Server, and its features.
+There's quite a bit that we didn't dive in to, such as versioning, file uploads, the collaborative document editor and more...
+But by clicking around you're likely to discover these features for yourself.</p>
+<p>In the next page, we'll dive into how you can create an publish JSON-AD files.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="atomizing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="create-json-ad.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="atomizing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="create-json-ad.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-121994595-2', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3" async defer>
+        new Crate({
+            server: '723588174747533393',
+            channel: '723588175351513152',
+        })
+        </script>
+
+    </body>
+</html>
