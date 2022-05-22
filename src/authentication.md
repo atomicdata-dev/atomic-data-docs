@@ -41,7 +41,7 @@ const timestamp = Math.round(new Date().getTime());;
 // The timestmap is to limit the harm of a man-in-the-middle attack.
 // The `subject` is the full HTTP url that is to be fetched.
 const message = `${subject} ${timestamp}`;
-// Sign using Ed25519, see example implementation here: https://github.com/joepio/atomic-data-browser/blob/30b2f8af59d25084de966301cb6bd1ed90c0eb78/lib/src/commit.ts#L176
+// Sign using Ed25519, see example implementation here: https://github.com/atomicdata-dev/atomic-data-browser/blob/30b2f8af59d25084de966301cb6bd1ed90c0eb78/lib/src/commit.ts#L176
 const signed = await signToBase64(message, privateKey);
 // Set all of these headers
 const headers = new Headers;

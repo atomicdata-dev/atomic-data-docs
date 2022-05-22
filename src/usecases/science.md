@@ -9,4 +9,4 @@
 - Scientific publications are a slow moving field
 - Publications tend to favor PDF, which is hard to make machine readable
 - Extending a syntax like LaTeX might provide a short path to referring to atomic data in publications
-- Getting scientists to host the atomic data is going to be one of the most difficult aspects
+- Getting scientists to host the atomic data is going to be one of the most difficult aspect

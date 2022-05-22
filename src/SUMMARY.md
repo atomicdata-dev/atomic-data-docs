@@ -49,6 +49,8 @@
   * [SQL](interoperability/sql.md)
   * [Graph Databases](interoperability/graph-database.md)
 * [Potential use cases](usecases/intro.md)
+  * [As a Headless CMS](usecases/headless-cms.md)
+  * [In a React project](usecases/react.md)
   * [Personal Data Store](usecases/personal-data-store.md)
   * [E-commerce & marketplaces](usecases/e-commerce.md)
   * [Surveys](usecases/surveys.md)

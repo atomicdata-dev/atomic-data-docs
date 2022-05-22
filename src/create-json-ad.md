@@ -134,4 +134,4 @@ We can simply refer to the `localId`, instead of some URL that does not exist ye
 
 ## Importing data using Atomic Sever
 
-_currently [under development](https://github.com/joepio/atomic-data-rust/issues/390)_
+_currently [under development](https://github.com/atomicdata-dev/atomic-data-rust-data-rust/issues/390)_

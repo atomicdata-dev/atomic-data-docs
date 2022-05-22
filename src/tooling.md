@@ -5,9 +5,9 @@ Although Atomic Data is a specification, it also has reference implementations:
 
 Open source (MIT licenced) software for Atomic Data:
 
-- **Server + Database**: [atomic-server](https://github.com/joepio/atomic)
-- **GUI**: [atomic-data-browser](https://github.com/joepio/atomic-data-browser)
-- **CLI**: [atomic-cli](https://github.com/joepio/atomic)
+- **Server + Database**: [atomic-server](https://github.com/atomicdata-dev/atomic-data-rust)
+- **GUI**: [atomic-data-browser](https://github.com/atomicdata-dev/atomic-data-browser)
+- **CLI**: [atomic-cli](https://github.com/atomicdata-dev/atomic-data-rust)
 
 Libraries (MIT licenced) to build apps with:
 
@@ -30,7 +30,7 @@ One liner: `$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage j
 
 [demo](https://atomicdata.dev/)
 
-[repository + issue tracker](https://github.com/joepio/atomic).
+[repository + issue tracker](https://github.com/atomicdata-dev/atomic-data-browser).
 
 ### `atomic-data-browser`
 
@@ -42,7 +42,7 @@ Data browser, powered by `@tomic/lib` and `@tomic/react`.
 
 [demo](https://atomicdata.dev/) (same as `atomic-server`)
 
-[repository + issue tracker](https://github.com/joepio/atomic-data-browser).
+[repository + issue tracker](https://github.com/atomicdata-dev/atomic-data-browser).
 
 ### `atomic-cli`
 
@@ -71,15 +71,15 @@ SUBCOMMANDS:
     set        Update an Atom's value. Uses Commits.
     tpf        Finds Atoms using Triple Pattern Fragments.
 
-Visit https://github.com/joepio/atomic for more info
+Visit https://github.com/atomicdata-dev/atomic-data-browser for more info
 ```
 
-[repository + issue tracker](https://github.com/joepio/atomic).
+[repository + issue tracker](https://github.com/atomicdata-dev/atomic-data-browser).
 
 
 ### Raycast extension: Full-text search from your desktop
 
-[Install here](https://www.raycast.com/joepio/atomic).
+[Install here](https://www.raycast.com/atomicdata-dev/atomic-data-browser).
 
 ## Libraries
 
@@ -101,7 +101,7 @@ Library that powers `atomic-server` and `atomic-cli`. Features:
 - Path traversal
 - Basic validation
 
-[repository + issue tracker](https://github.com/joepio/atomic).
+[repository + issue tracker](https://github.com/atomicdata-dev/atomic-data-browser).
 
 ## Want to add to this list? Some ideas for tooling
 

@@ -23,5 +23,5 @@ Use `x-atomic` [authentication headers (read more here)](./authentication.md) an
 
 ## Example implementations
 
-- [Example client implementation in Typescript (@tomic/lib).](https://github.com/joepio/atomic-data-browser/blob/main/lib/src/websockets.ts)
+- [Example client implementation in Typescript (@tomic/lib).](https://github.com/atomicdata-dev/atomic-data-browser/blob/main/lib/src/websockets.ts)
 - [Example server implementation in Rust using Actix-Web](https://github.com/joepio/atomic-data-rust/blob/master/server/src/handlers/web_sockets.rs)
