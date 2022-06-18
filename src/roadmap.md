@@ -50,5 +50,6 @@ That's why we're now working on the JSON-AD and Atomizer projects (see below).
 - **Improved modelling tools** (2022-Q4). Makes it even easier to create Classes and define Properties.
 - **Video(s) about Atomic Data** (2022-Q4). Explain what Atomic Data is, why we're doing this, and how to get started.
 - **[Atomic-server plugins](https://github.com/atomicdata-dev/atomic-data-rust/issues/73)** (2023). Let developers design new features without having to make PRs in Atomic-Server, and let users install apps without re-compiling (or even restarting) anything.
+- **Use case: headless CMS** (2023). Use Atomic-Server to host and edit data that is being read by a front-end JAMSTACK type of tool, such as NextJS or SvelteKit.
 - **Atomic-browser plugins** (2023). Create new views for Classes.
 - **1.0 release** (2024). Mark the specification, the server [(tracking issue)](https://github.com/atomicdata-dev/atomic-data-rust/milestone/5) and the browser as _stable_. It is possible that the Spec will become 1.0 before any implementation is stable.
