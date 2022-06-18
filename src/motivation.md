@@ -82,6 +82,8 @@ Because Properties have URLs, it becomes trivial to _add new Properties_ that we
 
 Every time a developer builds an application, they have to figure a lot of things out.
 How to design the API, how to implement forms, how to deal with authentication, authorization, versioning, search...
+A lot of time is essentially wasted on solving these issues time and time again.
+
 By having a more complete, strict standard, Atomic Data aims to decrease this burden.
 [Atomic Schema](schema/intro.md) enables developers to easily share their datamodels, and re-use those from others.
 [Atomic Commits](commits/intro.md) helps developers to deal with versioning, history, undo and audit logs.

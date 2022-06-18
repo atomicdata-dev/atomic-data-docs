@@ -2,6 +2,7 @@
 
 * [Atomic Data Overview](atomic-data-overview.md)
   * [Motivation](motivation.md)
+  * [Strategy, history and roadmap](roadmap.md)
   * [When (not) to use it](when-to-use.md)
 
 # Specification (core)
