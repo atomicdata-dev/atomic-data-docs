@@ -1,8 +1,10 @@
-# Mission, history and roadmap for Atomic Data
+# Strategy, history and roadmap for Atomic Data
 
 We have the ambition ro make the internet more interoperable.
-In order to do this, we need people to have a good understanding of how we get there.
+We want Atomic Data to be a commonly used specification, enabling a vast amount of applications to work together and share information.
+This means we need a lot of people to understand and contribute to Atomic Data.
 In this document, discuss the strategic principles we use, the steps we took, and the path forward.
+This should help you understand how and where you may be able to contribute.
 
 ## Strategy for adoption
 
