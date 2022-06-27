@@ -55,3 +55,4 @@ That's why we're now working on the JSON-AD and Atomizer projects (see below).
 - **Use case: headless CMS** (2023). Use Atomic-Server to host and edit data that is being read by a front-end JAMSTACK type of tool, such as NextJS or SvelteKit.
 - **Atomic-browser plugins** (2023). Create new views for Classes.
 - **1.0 release** (2024). Mark the specification, the server [(tracking issue)](https://github.com/atomicdata-dev/atomic-data-rust/milestone/5) and the browser as _stable_. It is possible that the Spec will become 1.0 before any implementation is stable.
+- **Model Marketplace** (2024). A place where user can easily find, compare and use Classes, Properties and Ontologies.
