@@ -18,17 +18,22 @@ But good knowledge management systems are not just static: they have lives of th
 Knowledge changes over time.
 People add documents, make changes, move things.
 
+## Why use Atomic-Server as a knowledge management system
 
-## The entire web as one knowledge graph
+### The entire web as one knowledge graph
 
 Atomic Data uses URLs to identify resources.
 This means that it
 
-## Type-safe, decentralized data structures
+### Type-safe, decentralized data structures
 
 Contrary to many other types of graph systems, Atomic Data ensures type-safety by having a built-in schema language ([Atomic Schema](../schema/intro.md)).
 This means that it is very easy to share and re-use data models, which helps you standardize the classes and properties that you use.
 
+## Non-goals of Atomic-Server
+
+- Deep, specific query requirements
+- Time-series data / data visualization
 
 ## Alternatives
 
