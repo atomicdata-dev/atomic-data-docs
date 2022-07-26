@@ -180,6 +180,7 @@ The error will be a JSON object.</p>
   },
   &quot;https://atomicdata.dev/properties/signature&quot;: &quot;3n+U/3OvymF86Ha6S9MQZtRVIQAAL0rv9ZQpjViht4emjnqKxj4wByiO9RhfL+qwoxTg0FMwKQsNg6d0QU7pAw==&quot;,
   &quot;https://atomicdata.dev/properties/signer&quot;: &quot;https://surfy.ddns.net/agents/9YCs7htDdF4yBAiA4HuHgjsafg+xZIrtZNELz4msCmc=&quot;,
+  &quot;https://atomicdata.dev/properties/previousCommit&quot;: &quot;https://surfy.ddns.net/commits/9YCs7htDdF4yBAiA4HuHgjsafg+xZIrtZNELz4msCmc=&quot;,
   &quot;https://atomicdata.dev/properties/subject&quot;: &quot;https://atomicdata.dev/test&quot;
 }
 </code></pre>
@@ -209,15 +210,33 @@ Make sure that the Author's URL resolves to a Resource that contains the linked 
 <li><a href="https://github.com/atomicdata-dev/atomic-data-browser/blob/fc899bb2cf54bdff593ee6b4debf52e20a85619e/src/atomic-lib/commit.ts#L51">in Typescript / Javascript (atomic-data-browser)</a>.</li>
 </ul>
 <p>If you want validate your implementation, check out the tests for these two projects.</p>
+<h3 id="applying-the-commit"><a class="header" href="#applying-the-commit">Applying the Commit</a></h3>
+<p>If you're on the receiving end of a Commit (e.g. if you're writing a server or a client who has to parse Commits), you will <em>apply</em> the Commit to your Store.
+If you have to <em>persist</em> the Commit, you must perform all of the checks.
+If you're writing a client, and you trust the source of the Commit, you can probably skip the validation steps.</p>
+<p>Here's how you apply a Commit:</p>
+<ol>
+<li>Check if the Subject URL is valid</li>
+<li>Validate the signature. This means serialize the Commit deterministically (see above), check the Agent's publickey (you might need to fetch this one), verify if the signature matches.</li>
+<li>Check if the timestamp matches is OK. I think an acceptable window is 10 seconds.</li>
+<li>If the Commit is for an existing resource, get it.</li>
+<li>Validate the Rights of the one making the Commit.</li>
+<li>Check if the <code>previousCommit</code> of the Commit matches with the <code>previousCommit</code> of the Resource.</li>
+<li>Iterate over the <code>set</code> fields. Overwrite existing, or add the new Values. Make sure the Datatypes match with the respective Properties.</li>
+<li>Iterate over the <code>remove</code> fields. Remove existing properties.</li>
+<li>If the Resource has one or more classes, check if the required Properties are there.</li>
+<li>You might want to perform some custom validations now (e.g. if you accept an Invite, you should make sure that the one creating the Invite has the correct rights to actually make it!)</li>
+<li>Store the created Commit as a Resource, and store the modified Resource!</li>
+</ol>
 <h2 id="limitations"><a class="header" href="#limitations">Limitations</a></h2>
 <ul>
-<li>Commits adjust only one Resource at a time, which means that you cannot change multiple in one commit.</li>
-<li>The one creating the Commit will need to sign it, which may make clients that write data more complicated than you'd like.</li>
-<li>Commits require signatures, which means key management. Doing this securely is no trivial matter.</li>
-<li>The signatures require JSON-AD serialization</li>
-<li>If your implementation stores all Commits, this means</li>
+<li>Commits adjust <strong>only one Resource at a time</strong>, which means that you cannot change multiple in one commit.</li>
+<li>The one creating the Commit will <strong>need to sign it</strong>, which may make clients that write data more complicated than you'd like. You can also let Servers write Commits, but this makes them less verifiable / decentralized.</li>
+<li>Commits require signatures, which means <strong>key management</strong>. Doing this securely is no trivial matter.</li>
+<li>The signatures <strong>require JSON-AD</strong> serialization</li>
+<li>If your implementation persists all Commits, you might need to <strong>store a lot of data</strong>.</li>
 </ul>
-<footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/commits/concepts.md">Edit this file on GitHub.</a></footer>
+<footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/commits/concepts.md">Edit this page on GitHub.</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

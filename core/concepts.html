@@ -181,22 +181,24 @@ An Atom consists of three fields:</p>
 An Atom is comparable with an RDF Triple / Statement (<a href="../interoperability/rdf.html">although there are important differences</a>).</p>
 <p>Let's turn this sentence into Atoms:</p>
 <p><code>Arnold Peters, who's born on the 20th of Januari 1991, has a best friend named Britta Smalls.</code></p>
-<table><thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead><tbody>
 <tr><td>Arnold</td><td>last name</td><td>Peters</td></tr>
 <tr><td>Arnold</td><td>birthdate</td><td>1991-01-20</td></tr>
 <tr><td>Arnold</td><td>best friend</td><td>Britta</td></tr>
 <tr><td>Britta</td><td>last name</td><td>Smalls</td></tr>
 </tbody></table>
+</div>
 <p>The table above shows human readable strings, but in Atomic Data, we use links (URLs) wherever we can.
 That's because links are awesome.
 Links <strong>remove ambiguity</strong> (we know exactly which person or property we mean), they are <strong>resolvable</strong> (we can click on them), and they are <strong>machine readable</strong> (machines can fetch links to do useful things with them).
 So the table from above, will more closely resemble this one:</p>
-<table><thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead><tbody>
 <tr><td>https://example.com/arnold</td><td>https://example.com/properties/lastname</td><td>Peters</td></tr>
 <tr><td>https://example.com/arnold</td><td>https://example.com/properties/birthDate</td><td>1991-01-20</td></tr>
 <tr><td>https://example.com/arnold</td><td>https://example.com/properties/bestFriend</td><td>https://example.com/britta</td></tr>
 <tr><td>https://example.com/britta</td><td>https://example.com/properties/lastname</td><td>Smalls</td></tr>
 </tbody></table>
+</div>
 <p>The standard serialization format for Atomic Data is JSON-AD, which looks like this:</p>
 <pre><code class="language-json">[{
   &quot;@id&quot;: &quot;https://example.com/arnold&quot;,
@@ -258,7 +260,7 @@ In Atomic Data, every node is a <code>Resource</code>, and every edge is a <code
 <p>A Nested Resource only exists inside of another resource.
 It does not have its own subject.</p>
 <p>In the next chapter, we'll explore how Atomic Data is serialized.</p>
-<footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/core/concepts.md">Edit this file on GitHub.</a></footer>
+<footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/core/concepts.md">Edit this page on GitHub.</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
