@@ -27,7 +27,7 @@ It is a _typed_ data model, which means that every value must be validated by th
 
 ## Resource
 
-A _Resource_ is a bunch of information about a thing, referenced by a single link (the Subject).
+A _Resource_ is a bunch of information about a thing, referenced by a single link (the _Subject_).
 Formally, it is a set of Atoms (i.e. a Graph) that share a Subject URL.
 You can think of a Resource as a single row in a spreadsheet or database.
 In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
@@ -41,8 +41,8 @@ The Atom is the smallest possible piece of _meaningful_ data / information (henc
 You can think of an Atom as a single cell in a spreadsheet or database.
 An Atom consists of three fields:
 
-* **[Subject](#subject-field)**: the Thing that the atom is providing information about.
-* **[Property](#property-field)**: the property of the Thing that the atom is about (will always be a URL to a [Property](../schema/classes.md#property)).
+* **[Subject](#subject-field)**: the thing that the atom is providing information about. This is typically also the URL where we can find more information about it.
+* **[Property](#property-field)**: the property of the thing that the atom is about (will always be a URL to a [Property](../schema/classes.md#property)).
 * **[Value](#value-field)**: the new piece of information about the Atom.
 
 If you're familiar with RDF, you'll notice similarities.

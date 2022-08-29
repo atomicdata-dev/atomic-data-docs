@@ -12,7 +12,7 @@ This should help you understand how and where you may be able to contribute.
 - **Create libraries whenever possible.** Enable other developers to re-use the technology in their own stacks. Keep the code as modular as possible.
 - **Document everything**. Not just your APIs - also your ideas, considerations and decisions.
 - **Do everything public**. All code is open source, all issues are publicly visible. Allow outsiders to learn everything and start contributing.
-- **Make apps that stand on their own**. Atomic Data may be an abstract, technical story, but we still need end-user friendly applications that solve actual problems if we want to get as much adoption as possible.
+- **Make an all-in-one workspace app that stand on its own**. Atomic Data may be an abstract, technical story, but we still need end-user friendly applications that solve actual problems if we want to get as much adoption as possible.
 - **Let realistic use cases guide API design**. Don't fall victim to spending too much time for extremely rare edge-cases, while ignoring more common issues and wishes.
 - **Familiarity first**. Make tools and specs that feel familiar, build libraries for popular frameworks, and stick to conventions whenever possible.
 
@@ -36,6 +36,7 @@ This should help you understand how and where you may be able to contribute.
 - **File management** (2021-12). Upload, download and view Files.
 - **Indexed queries** (2022-01). Huge performance increase for queries. Allows for far bigger datasets.
 - **Use case: ChatRoom** (2022-04). Group chat application. To make this possible, we had to extend the Commit model with a `push` action, and allow Plugins to create new Commits.
+- **[JSON-AD Publishing and Importing](create-json-ad.md)** (2022-08). Creating and consuming Atomic Data becomes a whole lot easier.
 
 ## Where we're at
 
@@ -47,7 +48,6 @@ That's why we're now working on the JSON-AD and Atomizer projects (see below).
 
 ## Roadmap
 
-- **[JSON-AD Importer](https://github.com/atomicdata-dev/atomic-data-rust/issues/390)** (2022-Q3). Publishing and consuming Atomic Data becomes a whole lot easier.
 - **[Atomizer](https://github.com/atomicdata-dev/atomic-data-rust/issues/434)** (2022-Q4). Import files and automatically turn these into Atomic Data.
 - **Improved modelling tools** (2022-Q4). Makes it even easier to create Classes and define Properties.
 - **Video(s) about Atomic Data** (2022-Q4). Explain what Atomic Data is, why we're doing this, and how to get started.

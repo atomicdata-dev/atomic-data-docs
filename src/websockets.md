@@ -4,6 +4,7 @@
 WebSockets are a very fast and efficient way to have a client and server communicate in an asynchronous fashion.
 They are used in Atomic Data to allow real-time updates, which makes it possible to create things like collaborative applications and multiplayer games.
 These have been implemented in `atomic-server` and `atomic-data-browser` (powered by `@tomic/lib`).
+All messages use `JSON-AD`.
 
 ## Initializing a WebSocket connection
 
@@ -15,11 +16,13 @@ Use `x-atomic` [authentication headers (read more here)](./authentication.md) an
 - `SUBSCRIBE ${subject}` tells the Server that you'd like to receive Commits about this Subject.
 - `UNSUBSCRIBE ${subject}` tells the Server that you'd like to stop receiving Commits about this Subject.
 - `GET ${subject}` fetch an individual resource.
+- `AUTHENTICATE ${authenticationResource}` to set a user session for this websocket and allow authorized requests. The `authenticationResource` is a JSON-AD resource containing the signature and more, see [Authentication](../src/authentication.md). No response is given if the request is valid, an error is returned if something is wrong.
 
 ## Server to client messages
 
-- `COMMIT ${CommitBody}` an entire Commit for a resource that you're subscribed to
-- `RESOURCE ${CommitBody}` a resource as a response to a GET request.
+- `COMMIT ${CommitBody}` an entire [Commit](../src/commits/concepts.md) for a resource that you're subscribed to.
+- `RESOURCE ${Resource}` a resource as a response to a GET request.
+- `ERROR ${ErrorBody}` an Error resource is sent whenever something goes wrong.
 
 ## Example implementations
 

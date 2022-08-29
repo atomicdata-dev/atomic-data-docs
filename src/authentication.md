@@ -61,9 +61,24 @@ const response = await fetch(subject, {headers});
 - The server must check if the signature is valid.
 - The server must check if the request resource can be shared
 
-## Authentication for [websockets](websockets.md)
+## Authentication Resources (used in [websockets](websockets.md))
 
-- Since there's only a single HTTP request, we don't have a subject to fetch. Use `ws` as a subject, so sign a string like `ws 12940791247`.
+An _Authentication Resource_ is a JSON-AD object containing all the information a Server needs to make sure a valid Agent requests a session at some point in time.
+It's fields are very similar to the headers shown above.
+The signature still is a base64 signature of the following string: `{requestedSubject} {timestamp}`.
+In Websocket connections, we use the `wss` address as the `requestedSubject`.
+
+```json
+{
+  "https://atomicdata.dev/properties/auth/agent": "http://example.com/agents/N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=",
+  "https://atomicdata.dev/properties/auth/requestedSubject": "wss://example.com/ws",
+  "https://atomicdata.dev/properties/auth/publicKey": "N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=",
+  "https://atomicdata.dev/properties/auth/timestamp": 1661757470002,
+  "https://atomicdata.dev/properties/auth/signature": "19Ce38zFu0E37kXWn8xGEAaeRyeP6EK0S2bt03s36gRrWxLiBbuyxX3LU9qg68pvZTzY3/P3Pgxr6VrOEvYAAQ=="
+}
+```
+
+The Authentication Resource is sent after the websocket is opened, like so: `AUTHENTICATE {authenticationResource}`.
 
 ## Hierarchies for authorization
 
