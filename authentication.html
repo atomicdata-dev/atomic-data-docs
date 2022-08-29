@@ -193,10 +193,20 @@ const response = await fetch(subject, {headers});
 <li>The server must check if the signature is valid.</li>
 <li>The server must check if the request resource can be shared</li>
 </ul>
-<h2 id="authentication-for-websockets"><a class="header" href="#authentication-for-websockets">Authentication for <a href="websockets.html">websockets</a></a></h2>
-<ul>
-<li>Since there's only a single HTTP request, we don't have a subject to fetch. Use <code>ws</code> as a subject, so sign a string like <code>ws 12940791247</code>.</li>
-</ul>
+<h2 id="authentication-resources-used-in-websockets"><a class="header" href="#authentication-resources-used-in-websockets">Authentication Resources (used in <a href="websockets.html">websockets</a>)</a></h2>
+<p>An <em>Authentication Resource</em> is a JSON-AD object containing all the information a Server needs to make sure a valid Agent requests a session at some point in time.
+It's fields are very similar to the headers shown above.
+The signature still is a base64 signature of the following string: <code>{requestedSubject} {timestamp}</code>.
+In Websocket connections, we use the <code>wss</code> address as the <code>requestedSubject</code>.</p>
+<pre><code class="language-json">{
+  &quot;https://atomicdata.dev/properties/auth/agent&quot;: &quot;http://example.com/agents/N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=&quot;,
+  &quot;https://atomicdata.dev/properties/auth/requestedSubject&quot;: &quot;wss://example.com/ws&quot;,
+  &quot;https://atomicdata.dev/properties/auth/publicKey&quot;: &quot;N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=&quot;,
+  &quot;https://atomicdata.dev/properties/auth/timestamp&quot;: 1661757470002,
+  &quot;https://atomicdata.dev/properties/auth/signature&quot;: &quot;19Ce38zFu0E37kXWn8xGEAaeRyeP6EK0S2bt03s36gRrWxLiBbuyxX3LU9qg68pvZTzY3/P3Pgxr6VrOEvYAAQ==&quot;
+}
+</code></pre>
+<p>The Authentication Resource is sent after the websocket is opened, like so: <code>AUTHENTICATE {authenticationResource}</code>.</p>
 <h2 id="hierarchies-for-authorization"><a class="header" href="#hierarchies-for-authorization">Hierarchies for authorization</a></h2>
 <p>Atomic Data uses <a href="hierarchy.html">Hierarchies</a> to describe who gets to access some resource, and who can edit it.</p>
 <h2 id="limitations--considerations"><a class="header" href="#limitations--considerations">Limitations / considerations</a></h2>

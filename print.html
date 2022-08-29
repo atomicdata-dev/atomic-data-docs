@@ -367,7 +367,7 @@ This should help you understand how and where you may be able to contribute.</p>
 <li><strong>Create libraries whenever possible.</strong> Enable other developers to re-use the technology in their own stacks. Keep the code as modular as possible.</li>
 <li><strong>Document everything</strong>. Not just your APIs - also your ideas, considerations and decisions.</li>
 <li><strong>Do everything public</strong>. All code is open source, all issues are publicly visible. Allow outsiders to learn everything and start contributing.</li>
-<li><strong>Make apps that stand on their own</strong>. Atomic Data may be an abstract, technical story, but we still need end-user friendly applications that solve actual problems if we want to get as much adoption as possible.</li>
+<li><strong>Make an all-in-one workspace app that stand on its own</strong>. Atomic Data may be an abstract, technical story, but we still need end-user friendly applications that solve actual problems if we want to get as much adoption as possible.</li>
 <li><strong>Let realistic use cases guide API design</strong>. Don't fall victim to spending too much time for extremely rare edge-cases, while ignoring more common issues and wishes.</li>
 <li><strong>Familiarity first</strong>. Make tools and specs that feel familiar, build libraries for popular frameworks, and stick to conventions whenever possible.</li>
 </ul>
@@ -391,6 +391,7 @@ This should help you understand how and where you may be able to contribute.</p>
 <li><strong>File management</strong> (2021-12). Upload, download and view Files.</li>
 <li><strong>Indexed queries</strong> (2022-01). Huge performance increase for queries. Allows for far bigger datasets.</li>
 <li><strong>Use case: ChatRoom</strong> (2022-04). Group chat application. To make this possible, we had to extend the Commit model with a <code>push</code> action, and allow Plugins to create new Commits.</li>
+<li><strong><a href="create-json-ad.html">JSON-AD Publishing and Importing</a></strong> (2022-08). Creating and consuming Atomic Data becomes a whole lot easier.</li>
 </ul>
 <h2 id="where-were-at"><a class="header" href="#where-were-at">Where we're at</a></h2>
 <p>Most of the specification seems to become pretty stable.
@@ -400,7 +401,6 @@ That means not only make it easy to install the tools, but also allow people to 
 That's why we're now working on the JSON-AD and Atomizer projects (see below).</p>
 <h2 id="roadmap"><a class="header" href="#roadmap">Roadmap</a></h2>
 <ul>
-<li><strong><a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/390">JSON-AD Importer</a></strong> (2022-Q3). Publishing and consuming Atomic Data becomes a whole lot easier.</li>
 <li><strong><a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/434">Atomizer</a></strong> (2022-Q4). Import files and automatically turn these into Atomic Data.</li>
 <li><strong>Improved modelling tools</strong> (2022-Q4). Makes it even easier to create Classes and define Properties.</li>
 <li><strong>Video(s) about Atomic Data</strong> (2022-Q4). Explain what Atomic Data is, why we're doing this, and how to get started.</li>
@@ -448,7 +448,7 @@ It is a <em>typed</em> data model, which means that every value must be validate
 </ul>
 <h1 id="concepts"><a class="header" href="#concepts">Concepts</a></h1>
 <h2 id="resource"><a class="header" href="#resource">Resource</a></h2>
-<p>A <em>Resource</em> is a bunch of information about a thing, referenced by a single link (the Subject).
+<p>A <em>Resource</em> is a bunch of information about a thing, referenced by a single link (the <em>Subject</em>).
 Formally, it is a set of Atoms (i.e. a Graph) that share a Subject URL.
 You can think of a Resource as a single row in a spreadsheet or database.
 In practice, Resources can be anything - a Person, a Blogpost, a Todo item.
@@ -460,8 +460,8 @@ The Atom is the smallest possible piece of <em>meaningful</em> data / informatio
 You can think of an Atom as a single cell in a spreadsheet or database.
 An Atom consists of three fields:</p>
 <ul>
-<li><strong><a href="core/concepts.html#subject-field">Subject</a></strong>: the Thing that the atom is providing information about.</li>
-<li><strong><a href="core/concepts.html#property-field">Property</a></strong>: the property of the Thing that the atom is about (will always be a URL to a <a href="core/../schema/classes.html#property">Property</a>).</li>
+<li><strong><a href="core/concepts.html#subject-field">Subject</a></strong>: the thing that the atom is providing information about. This is typically also the URL where we can find more information about it.</li>
+<li><strong><a href="core/concepts.html#property-field">Property</a></strong>: the property of the thing that the atom is about (will always be a URL to a <a href="core/../schema/classes.html#property">Property</a>).</li>
 <li><strong><a href="core/concepts.html#value-field">Value</a></strong>: the new piece of information about the Atom.</li>
 </ul>
 <p>If you're familiar with RDF, you'll notice similarities.
@@ -1227,10 +1227,20 @@ const response = await fetch(subject, {headers});
 <li>The server must check if the signature is valid.</li>
 <li>The server must check if the request resource can be shared</li>
 </ul>
-<h2 id="authentication-for-websockets"><a class="header" href="#authentication-for-websockets">Authentication for <a href="websockets.html">websockets</a></a></h2>
-<ul>
-<li>Since there's only a single HTTP request, we don't have a subject to fetch. Use <code>ws</code> as a subject, so sign a string like <code>ws 12940791247</code>.</li>
-</ul>
+<h2 id="authentication-resources-used-in-websockets"><a class="header" href="#authentication-resources-used-in-websockets">Authentication Resources (used in <a href="websockets.html">websockets</a>)</a></h2>
+<p>An <em>Authentication Resource</em> is a JSON-AD object containing all the information a Server needs to make sure a valid Agent requests a session at some point in time.
+It's fields are very similar to the headers shown above.
+The signature still is a base64 signature of the following string: <code>{requestedSubject} {timestamp}</code>.
+In Websocket connections, we use the <code>wss</code> address as the <code>requestedSubject</code>.</p>
+<pre><code class="language-json">{
+  &quot;https://atomicdata.dev/properties/auth/agent&quot;: &quot;http://example.com/agents/N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=&quot;,
+  &quot;https://atomicdata.dev/properties/auth/requestedSubject&quot;: &quot;wss://example.com/ws&quot;,
+  &quot;https://atomicdata.dev/properties/auth/publicKey&quot;: &quot;N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=&quot;,
+  &quot;https://atomicdata.dev/properties/auth/timestamp&quot;: 1661757470002,
+  &quot;https://atomicdata.dev/properties/auth/signature&quot;: &quot;19Ce38zFu0E37kXWn8xGEAaeRyeP6EK0S2bt03s36gRrWxLiBbuyxX3LU9qg68pvZTzY3/P3Pgxr6VrOEvYAAQ==&quot;
+}
+</code></pre>
+<p>The Authentication Resource is sent after the websocket is opened, like so: <code>AUTHENTICATE {authenticationResource}</code>.</p>
 <h2 id="hierarchies-for-authorization"><a class="header" href="#hierarchies-for-authorization">Hierarchies for authorization</a></h2>
 <p>Atomic Data uses <a href="hierarchy.html">Hierarchies</a> to describe who gets to access some resource, and who can edit it.</p>
 <h2 id="limitations--considerations"><a class="header" href="#limitations--considerations">Limitations / considerations</a></h2>
@@ -1632,7 +1642,8 @@ As is the case with git, this also allows for verifiable P2P sharing of changes.
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/commits/compare.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="websockets-in-atomic-data"><a class="header" href="#websockets-in-atomic-data">WebSockets in Atomic Data</a></h1>
 <p>WebSockets are a very fast and efficient way to have a client and server communicate in an asynchronous fashion.
 They are used in Atomic Data to allow real-time updates, which makes it possible to create things like collaborative applications and multiplayer games.
-These have been implemented in <code>atomic-server</code> and <code>atomic-data-browser</code> (powered by <code>@tomic/lib</code>).</p>
+These have been implemented in <code>atomic-server</code> and <code>atomic-data-browser</code> (powered by <code>@tomic/lib</code>).
+All messages use <code>JSON-AD</code>.</p>
 <h2 id="initializing-a-websocket-connection"><a class="header" href="#initializing-a-websocket-connection">Initializing a WebSocket connection</a></h2>
 <p>Send an HTTP <code>GET</code> request to the <code>/ws</code> endpoint of an <code>atomic-server</code>. The Server should update that request to a secure WebSocket (<code>wss</code>) connection.
 Use <code>x-atomic</code> <a href="./authentication.html">authentication headers (read more here)</a> and use <code>ws</code> as a subject when signing.</p>
@@ -1641,11 +1652,13 @@ Use <code>x-atomic</code> <a href="./authentication.html">authentication headers
 <li><code>SUBSCRIBE ${subject}</code> tells the Server that you'd like to receive Commits about this Subject.</li>
 <li><code>UNSUBSCRIBE ${subject}</code> tells the Server that you'd like to stop receiving Commits about this Subject.</li>
 <li><code>GET ${subject}</code> fetch an individual resource.</li>
+<li><code>AUTHENTICATE ${authenticationResource}</code> to set a user session for this websocket and allow authorized requests. The <code>authenticationResource</code> is a JSON-AD resource containing the signature and more, see <a href="../src/authentication.html">Authentication</a>. No response is given if the request is valid, an error is returned if something is wrong.</li>
 </ul>
 <h2 id="server-to-client-messages"><a class="header" href="#server-to-client-messages">Server to client messages</a></h2>
 <ul>
-<li><code>COMMIT ${CommitBody}</code> an entire Commit for a resource that you're subscribed to</li>
-<li><code>RESOURCE ${CommitBody}</code> a resource as a response to a GET request.</li>
+<li><code>COMMIT ${CommitBody}</code> an entire <a href="../src/commits/concepts.html">Commit</a> for a resource that you're subscribed to.</li>
+<li><code>RESOURCE ${Resource}</code> a resource as a response to a GET request.</li>
+<li><code>ERROR ${ErrorBody}</code> an Error resource is sent whenever something goes wrong.</li>
 </ul>
 <h2 id="example-implementations"><a class="header" href="#example-implementations">Example implementations</a></h2>
 <ul>

@@ -142,7 +142,8 @@
                         <h1 id="websockets-in-atomic-data"><a class="header" href="#websockets-in-atomic-data">WebSockets in Atomic Data</a></h1>
 <p>WebSockets are a very fast and efficient way to have a client and server communicate in an asynchronous fashion.
 They are used in Atomic Data to allow real-time updates, which makes it possible to create things like collaborative applications and multiplayer games.
-These have been implemented in <code>atomic-server</code> and <code>atomic-data-browser</code> (powered by <code>@tomic/lib</code>).</p>
+These have been implemented in <code>atomic-server</code> and <code>atomic-data-browser</code> (powered by <code>@tomic/lib</code>).
+All messages use <code>JSON-AD</code>.</p>
 <h2 id="initializing-a-websocket-connection"><a class="header" href="#initializing-a-websocket-connection">Initializing a WebSocket connection</a></h2>
 <p>Send an HTTP <code>GET</code> request to the <code>/ws</code> endpoint of an <code>atomic-server</code>. The Server should update that request to a secure WebSocket (<code>wss</code>) connection.
 Use <code>x-atomic</code> <a href="./authentication.html">authentication headers (read more here)</a> and use <code>ws</code> as a subject when signing.</p>
@@ -151,11 +152,13 @@ Use <code>x-atomic</code> <a href="./authentication.html">authentication headers
 <li><code>SUBSCRIBE ${subject}</code> tells the Server that you'd like to receive Commits about this Subject.</li>
 <li><code>UNSUBSCRIBE ${subject}</code> tells the Server that you'd like to stop receiving Commits about this Subject.</li>
 <li><code>GET ${subject}</code> fetch an individual resource.</li>
+<li><code>AUTHENTICATE ${authenticationResource}</code> to set a user session for this websocket and allow authorized requests. The <code>authenticationResource</code> is a JSON-AD resource containing the signature and more, see <a href="../src/authentication.html">Authentication</a>. No response is given if the request is valid, an error is returned if something is wrong.</li>
 </ul>
 <h2 id="server-to-client-messages"><a class="header" href="#server-to-client-messages">Server to client messages</a></h2>
 <ul>
-<li><code>COMMIT ${CommitBody}</code> an entire Commit for a resource that you're subscribed to</li>
-<li><code>RESOURCE ${CommitBody}</code> a resource as a response to a GET request.</li>
+<li><code>COMMIT ${CommitBody}</code> an entire <a href="../src/commits/concepts.html">Commit</a> for a resource that you're subscribed to.</li>
+<li><code>RESOURCE ${Resource}</code> a resource as a response to a GET request.</li>
+<li><code>ERROR ${ErrorBody}</code> an Error resource is sent whenever something goes wrong.</li>
 </ul>
 <h2 id="example-implementations"><a class="header" href="#example-implementations">Example implementations</a></h2>
 <ul>
