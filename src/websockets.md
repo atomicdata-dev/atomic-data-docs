@@ -4,12 +4,12 @@
 WebSockets are a very fast and efficient way to have a client and server communicate in an asynchronous fashion.
 They are used in Atomic Data to allow real-time updates, which makes it possible to create things like collaborative applications and multiplayer games.
 These have been implemented in `atomic-server` and `atomic-data-browser` (powered by `@tomic/lib`).
-All messages use `JSON-AD`.
 
 ## Initializing a WebSocket connection
 
 Send an HTTP `GET` request to the `/ws` endpoint of an `atomic-server`. The Server should update that request to a secure WebSocket (`wss`) connection.
 Use `x-atomic` [authentication headers (read more here)](./authentication.md) and use `ws` as a subject when signing.
+The `WebSocket-Protocol` is `AtomicData`.
 
 ## Client to server messages
 
@@ -21,8 +21,8 @@ Use `x-atomic` [authentication headers (read more here)](./authentication.md) an
 ## Server to client messages
 
 - `COMMIT ${CommitBody}` an entire [Commit](../src/commits/concepts.md) for a resource that you're subscribed to.
-- `RESOURCE ${Resource}` a resource as a response to a GET request.
-- `ERROR ${ErrorBody}` an Error resource is sent whenever something goes wrong.
+- `RESOURCE ${Resource}` a JSON-AD Resource as a response to a GET request. If there is something wrong with this request (e.g. 404), return a `Error` Resource with the requested subject, similar to how the HTTP protocol server does this.`
+- `ERROR ${ErrorBody}` an Error resource is sent whenever something goes wrong. The `ErrorBody` is a plaintext, typically English description of what went wrong.
 
 ## Example implementations
 
