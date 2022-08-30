@@ -15,7 +15,6 @@
 * [Schema](schema/intro.md)
   * [Classes](schema/classes.md)
   * [Datatypes](schema/datatypes.md)
-  * [Translations](schema/translations.md)
   * [FAQ](schema/faq.md)
 
 # Specification (extended)
