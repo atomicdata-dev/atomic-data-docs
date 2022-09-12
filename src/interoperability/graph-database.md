@@ -1,10 +1,23 @@
 {{#title How does Atomic Data relate to Graph Databases?}}
 # Atomic Data and Graph Databases
 
-Atomic Data fundamentally is a _graph data model_.
+Atomic Data is fundamentally a _graph data model_.
 We can think of Atomic Resources as _nodes_, and links to other resources through _properties_ as _edges_.
 
-In this section, we'll explore how Atomic Data relates to some graph technologies.
+In the first section, we'll take a look at Atomic-Server as a Graph Database.
+After that, we'll explore how Atomic Data relates to some graph technologies.
+
+## Atomic-Server as a database
+
+- **Built-in REST**. Everything is done over HTTP, there's no new query language or serialization to learn. It's all JSON.
+- **All resources have HTTP URLs**. This means that every single thing is identified by where it can be be found. Makes it easy to share data, if you want to!
+- **Sharable and re-usable data models**. Atomic Schema helps you share and re-use data models by simply pointing to URLs.
+- **Authorization built-in**. Managing rights in a hierarchy (similar to how tools like Google Drive or filesystems work) enable you to have a high degree of control over read / write rights.
+- **Built-in easy to use GUI**. Managing content on Atomic-Server can be done by anyone, as its GUI is extremely easy to use and has a ton of features.
+- **Dynamic indexing**. Indexes are created by performing Queries, resulting in great performance - without needing to manually configure indexing.
+- **Synchronization over WebSockets**. All changes (called [Commits](../commits/intro.md)) can be synchronized over WebSockets, allowing you to build realtime collaborative tools.
+- **Event-sourced**. All changes are stored and reversible, giving you a full versioned history.
+- **Open source**. All code is MIT-licensed.
 
 ## Comparing Atomic Data to Neo4j
 
@@ -45,7 +58,7 @@ This means that with Atomic Data, we get _versioning + audit trails_ for all dat
 ### Schema language and type safety
 
 In Neo4j, constraints can be added to the database by
-Atomic Data uses Atomic Schema for validating datatypes and required properties in resources.
+Atomic Data uses [Atomic Schema](../schema/intro.md) for validating datatypes and required properties in [Classes](../schema/classes.md).
 
 ### Other differences
 
