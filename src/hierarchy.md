@@ -7,7 +7,7 @@ Your computer probably has a bunch of _drives_ and deeply nested _folders_ that 
 We generally use these hierarchical elements to keep data organized, and to keep a tighter grip on rights management.
 For example, sharing a specific folder with a team, but a different folder could be private.
 
-Although you are free to use Atomic Data with your own custom authorization system, we have a standardized model that is currently being used by some of the tools that we've built.
+Although you are free to use Atomic Data with your own custom authorization system, we have a standardized model that is currently being used by Atomic-Server.
 
 ## Design goals
 
@@ -17,10 +17,10 @@ Although you are free to use Atomic Data with your own custom authorization syst
 
 ## Atomic Hierarchy Model
 
-- Every Resource SHOULD have a [`parent`](https://atomicdata.dev/properties/parent).
+- Every Resource SHOULD have a [`parent`](https://atomicdata.dev/properties/parent). There are some exceptions to this, which are discussed below.
 - Any Resource can be a `parent` of some other Resource, as long as both Resources exists on the same Atomic Server.
-- Inversely, every Resource could have `children`.
-- Only [`Drive`](https://atomicdata.dev/classes/Drive)s (Resources with the class `Drive`) are allowed to be a top-level parent.
+- Grants / rights given in a `parent` also apply to all children, and their children.
+- There are few Classes that do not require `parent`s:
 
 ## Authorization
 
@@ -29,15 +29,23 @@ Although you are free to use Atomic Data with your own custom authorization syst
 - Rights cannot be removed by children or parents - they can only be added.
 - `Commits` can not be edited. They can be `read` if the Agent has rights to read the [`subject`](https://atomicdata.dev/properties/subject) of the `Commit`.
 
+## Top-level resources
+
+Some resources are special, as they do not require a `parent`:
+
+- [`Drive`](https://atomicdata.dev/classes/Drive)s are top-level items in the hierarchy: they do not have a `parent`.
+- [`Agent`](https://atomicdata.dev/classes/Agent)s are top-level items because they are not `owned` by anything. They can always `read` and `write` themselves.
+- [`Commit`](https://atomicdata.dev/classes/Commit)s are immutable, so they should never be edited by anyone. That's why they don't have a place in the hierarchy. Their `read` rights are determined by their subject.
+
 ## Authentication
 
-See [authentication](./authentication.md).
+Authentication is about proving _who you are_, which is often the first step for authorization. See [authentication](./authentication.md).
 
-## Current limitations of the current Authorization model
+## Current limitations of the Authorization model
 
-The specification is growing (and please contribute in the [docs repo](https://github.com/ontola/atomic-data-docs/issues)), but the current specification lacks some features:
+The specification is growing (and please contribute in the [docs repo](https://github.com/atomicdata-dev/atomic-data-docs/issues)), but the current specification lacks some features:
 
 - Rights can only be added, but not removed in a higher item of a hierarchy. This means that you cannot have a secret folder inside a public folder.
 - No model for representing groups of Agents, or other runtime checks for authorization.
-- No way to limit delete access seperately from write rights
+- No way to limit delete access or invite rights separately from write rights
 - No way to request a set of rights for a Resource

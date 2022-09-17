@@ -30,4 +30,4 @@ If we would not have incomplete resources, the server would have to perform expe
 - **Familiar API**: should look like something that most developers already know
 - **Auto-generate forms**: a front-end app should present Endpoints as forms that non-developers can interact with
 
-[Discussion in issue tracker](https://github.com/ontola/atomic-data-docs/issues/15).
+[Discussion in issue tracker](https://github.com/atomicdata-dev/atomic-data-docs/issues/15).
