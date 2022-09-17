@@ -98,4 +98,4 @@ Example:
 }
 ```
 
-Visit https://atomicdata.dev/collections/class for the a list of example Classes.
+Check out a [list of example Classes](https://atomicdata.dev/classes/).
