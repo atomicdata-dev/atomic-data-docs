@@ -1119,7 +1119,7 @@ For example, most websites use breadcrumbs to show you where you are.
 Your computer probably has a bunch of <em>drives</em> and deeply nested <em>folders</em> that contain <em>files</em>.
 We generally use these hierarchical elements to keep data organized, and to keep a tighter grip on rights management.
 For example, sharing a specific folder with a team, but a different folder could be private.</p>
-<p>Although you are free to use Atomic Data with your own custom authorization system, we have a standardized model that is currently being used by some of the tools that we've built.</p>
+<p>Although you are free to use Atomic Data with your own custom authorization system, we have a standardized model that is currently being used by Atomic-Server.</p>
 <h2 id="design-goals-3"><a class="header" href="#design-goals-3">Design goals</a></h2>
 <ul>
 <li><strong>Fast</strong>. Authorization can sometimes be costly, but in this model we'll be considering performance.</li>
@@ -1128,10 +1128,10 @@ For example, sharing a specific folder with a team, but a different folder could
 </ul>
 <h2 id="atomic-hierarchy-model"><a class="header" href="#atomic-hierarchy-model">Atomic Hierarchy Model</a></h2>
 <ul>
-<li>Every Resource SHOULD have a <a href="https://atomicdata.dev/properties/parent"><code>parent</code></a>.</li>
+<li>Every Resource SHOULD have a <a href="https://atomicdata.dev/properties/parent"><code>parent</code></a>. There are some exceptions to this, which are discussed below.</li>
 <li>Any Resource can be a <code>parent</code> of some other Resource, as long as both Resources exists on the same Atomic Server.</li>
-<li>Inversely, every Resource could have <code>children</code>.</li>
-<li>Only <a href="https://atomicdata.dev/classes/Drive"><code>Drive</code></a>s (Resources with the class <code>Drive</code>) are allowed to be a top-level parent.</li>
+<li>Grants / rights given in a <code>parent</code> also apply to all children, and their children.</li>
+<li>There are few Classes that do not require <code>parent</code>s:</li>
 </ul>
 <h2 id="authorization"><a class="header" href="#authorization">Authorization</a></h2>
 <ul>
@@ -1140,14 +1140,21 @@ For example, sharing a specific folder with a team, but a different folder could
 <li>Rights cannot be removed by children or parents - they can only be added.</li>
 <li><code>Commits</code> can not be edited. They can be <code>read</code> if the Agent has rights to read the <a href="https://atomicdata.dev/properties/subject"><code>subject</code></a> of the <code>Commit</code>.</li>
 </ul>
+<h2 id="top-level-resources"><a class="header" href="#top-level-resources">Top-level resources</a></h2>
+<p>Some resources are special, as they do not require a <code>parent</code>:</p>
+<ul>
+<li><a href="https://atomicdata.dev/classes/Drive"><code>Drive</code></a>s are top-level items in the hierarchy: they do not have a <code>parent</code>.</li>
+<li><a href="https://atomicdata.dev/classes/Agent"><code>Agent</code></a>s are top-level items because they are not <code>owned</code> by anything. They can always <code>read</code> and <code>write</code> themselves.</li>
+<li><a href="https://atomicdata.dev/classes/Commit"><code>Commit</code></a>s are immutable, so they should never be edited by anyone. That's why they don't have a place in the hierarchy. Their <code>read</code> rights are determined by their subject.</li>
+</ul>
 <h2 id="authentication"><a class="header" href="#authentication">Authentication</a></h2>
-<p>See <a href="./authentication.html">authentication</a>.</p>
-<h2 id="current-limitations-of-the-current-authorization-model"><a class="header" href="#current-limitations-of-the-current-authorization-model">Current limitations of the current Authorization model</a></h2>
-<p>The specification is growing (and please contribute in the <a href="https://github.com/ontola/atomic-data-docs/issues">docs repo</a>), but the current specification lacks some features:</p>
+<p>Authentication is about proving <em>who you are</em>, which is often the first step for authorization. See <a href="./authentication.html">authentication</a>.</p>
+<h2 id="current-limitations-of-the-authorization-model"><a class="header" href="#current-limitations-of-the-authorization-model">Current limitations of the Authorization model</a></h2>
+<p>The specification is growing (and please contribute in the <a href="https://github.com/atomicdata-dev/atomic-data-docs/issues">docs repo</a>), but the current specification lacks some features:</p>
 <ul>
 <li>Rights can only be added, but not removed in a higher item of a hierarchy. This means that you cannot have a secret folder inside a public folder.</li>
 <li>No model for representing groups of Agents, or other runtime checks for authorization.</li>
-<li>No way to limit delete access seperately from write rights</li>
+<li>No way to limit delete access or invite rights separately from write rights</li>
 <li>No way to request a set of rights for a Resource</li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/hierarchy.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="authentication-in-atomic-data"><a class="header" href="#authentication-in-atomic-data">Authentication in Atomic Data</a></h1>
@@ -1664,7 +1671,7 @@ If we would not have incomplete resources, the server would have to perform expe
 <li><strong>Familiar API</strong>: should look like something that most developers already know</li>
 <li><strong>Auto-generate forms</strong>: a front-end app should present Endpoints as forms that non-developers can interact with</li>
 </ul>
-<p><a href="https://github.com/ontola/atomic-data-docs/issues/15">Discussion in issue tracker</a>.</p>
+<p><a href="https://github.com/atomicdata-dev/atomic-data-docs/issues/15">Discussion in issue tracker</a>.</p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/endpoints.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-collections-1"><a class="header" href="#atomic-collections-1">Atomic Collections</a></h1>
 <p><em>URL: <a href="https://atomicdata.dev/classes/Collection">https://atomicdata.dev/classes/Collection</a></em></p>
 <p>Sooner or later, developers will have to deal with (long) lists of items.
