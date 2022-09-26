@@ -50,6 +50,6 @@ The user only sees invitations that are highly relevant, without sharing _any_ i
 
 The Atomic Data specification solves at least part of this problem.
 [Paths](../core/paths.md) are used to describe the queries that researchers make.
-[Atomic Server](https://github.com/joepio/atomic/blob/master/server/README.md) can be used as the personal online data store.
+[Atomic Server](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md) can be used as the personal online data store.
 
 However, we still need to specify the process of sending a request to an individual (probably by introducing an [inbox](https://github.com/ontola/atomic-data/issues/28))

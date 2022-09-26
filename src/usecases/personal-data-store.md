@@ -11,7 +11,7 @@ Many services don't even provide export functionality, and even if they do, the 
 
 Atomic Data could help to re-introduce data ownership.
 Because the specification helps to standardize information, it becomes easier to make data interoperable.
-And even more important: Apps don't need their own back-end - they can use the same personal data store: an Atomic Server (such as [this one](https://github.com/joepio/atomic/blob/master/server/README.md)).
+And even more important: Apps don't need their own back-end - they can use the same personal data store: an Atomic Server (such as [this one](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md)).
 
 Realizing this goal requires quite a bit of work, though.
 This specification needs to mature, and we need reliable implementations.

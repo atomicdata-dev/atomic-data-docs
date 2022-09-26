@@ -71,7 +71,7 @@ The Property keys (e.g. "https://example.com/properties/name") need to resolve t
 }
 ```
 
-In practice, the easiest approach to make this conversion, is to create the data and host it using software like [Atomic Server](https://github.com/joepio/atomic/blob/master/server/README.md).
+In practice, the easiest approach to make this conversion, is to create the data and host it using software like [Atomic Server](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md).
 
 ## From Atomic Data to JSON-LD
 

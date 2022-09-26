@@ -27,4 +27,4 @@ The `WebSocket-Protocol` is `AtomicData`.
 ## Example implementations
 
 - [Example client implementation in Typescript (@tomic/lib).](https://github.com/atomicdata-dev/atomic-data-browser/blob/main/lib/src/websockets.ts)
-- [Example server implementation in Rust using Actix-Web](https://github.com/joepio/atomic-data-rust/blob/master/server/src/handlers/web_sockets.rs)
+- [Example server implementation in Rust using Actix-Web](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/src/handlers/web_sockets.rs)
