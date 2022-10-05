@@ -16,13 +16,17 @@ The `WebSocket-Protocol` is `AtomicData`.
 - `SUBSCRIBE ${subject}` tells the Server that you'd like to receive Commits about this Subject.
 - `UNSUBSCRIBE ${subject}` tells the Server that you'd like to stop receiving Commits about this Subject.
 - `GET ${subject}` fetch an individual resource.
-- `AUTHENTICATE ${authenticationResource}` to set a user session for this websocket and allow authorized requests. The `authenticationResource` is a JSON-AD resource containing the signature and more, see [Authentication](../src/authentication.md). No response is given if the request is valid, an error is returned if something is wrong.
+- `AUTHENTICATE ${authenticationResource}` to set a user session for this websocket and allow authorized messages. The `authenticationResource` is a JSON-AD resource containing the signature and more, see [Authentication](../src/authentication.md).
 
 ## Server to client messages
 
 - `COMMIT ${CommitBody}` an entire [Commit](../src/commits/concepts.md) for a resource that you're subscribed to.
-- `RESOURCE ${Resource}` a JSON-AD Resource as a response to a GET request. If there is something wrong with this request (e.g. 404), return a `Error` Resource with the requested subject, similar to how the HTTP protocol server does this.`
+- `RESOURCE ${Resource}` a JSON-AD Resource as a response to a `GET` message. If there is something wrong with this request (e.g. 404), return a `Error` Resource with the requested subject, similar to how the HTTP protocol server does this.`
 - `ERROR ${ErrorBody}` an Error resource is sent whenever something goes wrong. The `ErrorBody` is a plaintext, typically English description of what went wrong.
+
+## Considerations
+
+- For many messages, there is no response to give if things are processed correctly. If a message is unknown or there is a different problem, return an `ERROR`.
 
 ## Example implementations
 
