@@ -62,7 +62,6 @@ This Authentication Resource is stored as a cookie, and passed along in every HT
    1. It needs to be
    2. The expiration date of the cookie should be set, and should match the expiration date of the Authentication Resource.
    3. Set the `Secure` attribute to prevent Man-in-the-middle attacks over HTTP
-   4. Set the `HttpOnly` attribute - this prevents acces to the token from the JS context.
 
 ## Authenticating Websockets
 
