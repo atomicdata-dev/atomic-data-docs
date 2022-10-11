@@ -143,8 +143,12 @@
 <p>Authentication means knowing <em>who</em> is doing something, either getting access or creating some new data.
 When an Agent wants to <em>edit</em> a resource, they have to send a signed <a href="commits/intro.html">Commit</a>, and the signatures are checked in order to authorize a Commit.</p>
 <p>But how do we deal with <em>reading</em> data, how do we know who is trying to get access?
-That's what this page will explain.
-The short answer is: <strong>By signing the HTTP request</strong>.</p>
+There are two ways users can authenticate themselves:</p>
+<ul>
+<li>Signing an <code>Authentication Resource</code> and using that as a cookie</li>
+<li>Opening a WebSocket, and passing an <code>Authentication Resource</code>.</li>
+<li>Signing every single HTTP request (more secure, less flexible)</li>
+</ul>
 <h2 id="design-goals"><a class="header" href="#design-goals">Design goals</a></h2>
 <ul>
 <li><strong>Secure</strong>: Because, what's the point of authentication if it's not?</li>
@@ -155,8 +159,58 @@ The short answer is: <strong>By signing the HTTP request</strong>.</p>
 <li><strong>Compatible with Commits</strong>: Atomic Commits require clients to sign things. Ideally, this functionality / strategy would also fit with the new model.</li>
 <li><strong>Fast</strong>: Of course, authentication will always slow things down. But let's keep that to a minimum.</li>
 </ul>
-<p>Authentication is done by signing individual (HTTP) requests with the Agent's private key.</p>
-<h2 id="http-headers"><a class="header" href="#http-headers">HTTP Headers</a></h2>
+<h2 id="authentication-resources"><a class="header" href="#authentication-resources">Authentication Resources</a></h2>
+<p>An <em>Authentication Resource</em> is a JSON-AD object containing all the information a Server needs to make sure a valid Agent requests a session at some point in time.
+These are used both in Cookie-based auth, as well as in <a href="websockets.html">WebSockets</a></p>
+<p>We use the following fields (be sure to use the full URLs in the resource, see the example below):</p>
+<ul>
+<li><code>requestedSubject</code>: The URL of the requested resource.
+<ul>
+<li>If we're authenticating a <em>WebSocket</em>, we use the <code>wss</code> address as the <code>requestedSubject</code>. (e.g. <code>wss://example.com/ws</code>)</li>
+<li>If we're authenticating a <em>Cookie</em>, we use the origin of the server (e.g. <code>https://example.com</code>)</li>
+<li>If we're authentication a <em>single HTTP request</em>, use the same URL as the <code>GET</code> address (e.g. <code>https://example.com/myResource</code>)</li>
+</ul>
+</li>
+<li><code>agent</code>: The URL of the Agent requesting the subject and signing this Authentication Resource.</li>
+<li><code>publicKey</code>: base64 serialized ED25519 public key of the agent.</li>
+<li><code>signature</code>: base64 serialized ED25519 signature of the following string: <code>{requestedSubject} {timestamp}</code> (without the brackets), signed by the private key of the Agent.</li>
+<li><code>timestamp</code>: Unix timestamp of when the Authentication was signed</li>
+<li><code>validUntil</code> (optional): Unix timestamp of when the Authentication should be no longer valid. If not provided, the server will default to 30 seconds from the <code>timestamp</code>.</li>
+</ul>
+<p>Here's what a JSON-AD Authentication Resource looks like for a WebSocket:</p>
+<pre><code class="language-json">{
+  &quot;https://atomicdata.dev/properties/auth/agent&quot;: &quot;http://example.com/agents/N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=&quot;,
+  &quot;https://atomicdata.dev/properties/auth/requestedSubject&quot;: &quot;wss://example.com/ws&quot;,
+  &quot;https://atomicdata.dev/properties/auth/publicKey&quot;: &quot;N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=&quot;,
+  &quot;https://atomicdata.dev/properties/auth/timestamp&quot;: 1661757470002,
+  &quot;https://atomicdata.dev/properties/auth/signature&quot;: &quot;19Ce38zFu0E37kXWn8xGEAaeRyeP6EK0S2bt03s36gRrWxLiBbuyxX3LU9qg68pvZTzY3/P3Pgxr6VrOEvYAAQ==&quot;
+}
+</code></pre>
+<h2 id="atomic-cookies-authentication"><a class="header" href="#atomic-cookies-authentication">Atomic Cookies Authentication</a></h2>
+<p>In this approach, the client creates and signs a Resource that proves that an Agent wants to access a certain server for some amount of time.
+This Authentication Resource is stored as a cookie, and passed along in every HTTP request to the server.</p>
+<h3 id="setting-the-cookie"><a class="header" href="#setting-the-cookie">Setting the cookie</a></h3>
+<ol>
+<li>Create a signed Authentication object, as described above.</li>
+<li>Serialize it as JSON-AD, then as a base64 string.</li>
+<li>Store it in a Cookie
+<ol>
+<li>It needs to be</li>
+<li>The expiration date of the cookie should be set, and should match the expiration date of the Authentication Resource.</li>
+<li>Set the <code>Secure</code> attribute to prevent Man-in-the-middle attacks over HTTP</li>
+</ol>
+</li>
+</ol>
+<h2 id="authenticating-websockets"><a class="header" href="#authenticating-websockets">Authenticating Websockets</a></h2>
+<p>After <a href="websockets.html">opening a WebSocket connection</a>, create an Authentication Resource.
+Send a message like so: <code>AUTHENTICATE {authenticationResource}</code>.
+The server will only respond if there is something wrong.</p>
+<h2 id="per-request-signing"><a class="header" href="#per-request-signing">Per-Request Signing</a></h2>
+<p>Atomic Data allows <strong>signing every HTTP request</strong>.
+This method is most secure, since a MITM attack would only give access to the specific resource requested, and only for a short amount of time.
+Note that signing every single request takes a bit of time.
+We picked a fast algorithm (Ed25519) to minimize this cost.</p>
+<h3 id="http-headers"><a class="header" href="#http-headers">HTTP Headers</a></h3>
 <p>All of the following headers are required, if you need authentication.</p>
 <ul>
 <li><code>x-atomic-public-key</code>: The base64 public key (Ed25519) of the Agent sending the request</li>
@@ -164,7 +218,7 @@ The short answer is: <strong>By signing the HTTP request</strong>.</p>
 <li><code>x-atomic-timestamp</code>: The current time (when sending the request) as milliseconds since unix epoch</li>
 <li><code>x-atomic-agent</code>: The subject URL of the Agent sending the request.</li>
 </ul>
-<h2 id="sending-a-request"><a class="header" href="#sending-a-request">Sending a request</a></h2>
+<h3 id="sending-a-request"><a class="header" href="#sending-a-request">Sending a request</a></h3>
 <p>Here's an example (js) client side implementation with comments:</p>
 <pre><code class="language-ts">// The Private Key of the agent is used for signing
 // https://atomicdata.dev/properties/privateKey
@@ -184,37 +238,22 @@ headers.set('x-atomic-timestamp', timestamp.toString());
 headers.set('x-atomic-agent', agent?.subject);
 const response = await fetch(subject, {headers});
 </code></pre>
-<h2 id="handling-a-request"><a class="header" href="#handling-a-request">Handling a request</a></h2>
+<h2 id="verifying-an-authentication"><a class="header" href="#verifying-an-authentication">Verifying an Authentication</a></h2>
 <ul>
 <li>If none of the <code>x-atomic</code> HTTP headers are present, the server assigns the <a href="https://atomicdata.dev/agents/publicAgent">PublicAgent</a> to the request. This Agent represents any guest who is not signed in.</li>
 <li>If some (but not all) of the <code>x-atomic</code> headers are present, the server will return with a <code>500</code>.</li>
-<li>The server must check the timestamp (max 10 seconds difference).</li>
+<li>The server must check if the <code>validUntil</code> has not yet passed.</li>
 <li>The server must check whether the public key matches the one from the Agent.</li>
 <li>The server must check if the signature is valid.</li>
-<li>The server must check if the request resource can be shared</li>
+<li>The server should check if the request resource can be accessed by the Agent using <a href="hierarchy.html">hierarchy</a> (e.g. check <code>read</code> right in the resource or its parents).</li>
 </ul>
-<h2 id="authentication-resources-used-in-websockets"><a class="header" href="#authentication-resources-used-in-websockets">Authentication Resources (used in <a href="websockets.html">websockets</a>)</a></h2>
-<p>An <em>Authentication Resource</em> is a JSON-AD object containing all the information a Server needs to make sure a valid Agent requests a session at some point in time.
-It's fields are very similar to the headers shown above.
-The signature still is a base64 signature of the following string: <code>{requestedSubject} {timestamp}</code>.
-In Websocket connections, we use the <code>wss</code> address as the <code>requestedSubject</code>.</p>
-<pre><code class="language-json">{
-  &quot;https://atomicdata.dev/properties/auth/agent&quot;: &quot;http://example.com/agents/N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=&quot;,
-  &quot;https://atomicdata.dev/properties/auth/requestedSubject&quot;: &quot;wss://example.com/ws&quot;,
-  &quot;https://atomicdata.dev/properties/auth/publicKey&quot;: &quot;N32zQnZHoj1LbTaWI5CkA4eT2AaJNBPhWcNriBgy6CE=&quot;,
-  &quot;https://atomicdata.dev/properties/auth/timestamp&quot;: 1661757470002,
-  &quot;https://atomicdata.dev/properties/auth/signature&quot;: &quot;19Ce38zFu0E37kXWn8xGEAaeRyeP6EK0S2bt03s36gRrWxLiBbuyxX3LU9qg68pvZTzY3/P3Pgxr6VrOEvYAAQ==&quot;
-}
-</code></pre>
-<p>The Authentication Resource is sent after the websocket is opened, like so: <code>AUTHENTICATE {authenticationResource}</code>.</p>
 <h2 id="hierarchies-for-authorization"><a class="header" href="#hierarchies-for-authorization">Hierarchies for authorization</a></h2>
 <p>Atomic Data uses <a href="hierarchy.html">Hierarchies</a> to describe who gets to access some resource, and who can edit it.</p>
 <h2 id="limitations--considerations"><a class="header" href="#limitations--considerations">Limitations / considerations</a></h2>
 <ul>
 <li>Since we need the Private Key to sign Commits and requests, the client should have this available. This means the client software as well as the user should deal with key management, and that can be a security risk in some contexts (such as a web browser). <a href="https://github.com/ontola/atomic-data-docs/issues/49">See issue #49</a>.</li>
-<li>When using the Agent's subject to authenticate somwehere, the authorizer must be able to check what the public key of the agent is. This means the agent must be publicly resolvable. This is one of the reasons we should work towards a server-independent identifier, probably as base64 string that contains the public key (and, optionally, also the https identifier). See <a href="https://github.com/ontola/atomic-data-docs/issues/59">issue #59 on DIDs</a>.</li>
-<li>Signing every single request takes a bit of time. We picked a fast algorithm (Ed25519) to minimize this cost.</li>
-<li>We'll probably introduce some form of token-based-authentication in the future. <a href="https://github.com/ontola/atomic-data-docs/issues/87">See #87</a></li>
+<li>When using the Agent's subject to authenticate somewehere, the authorizer must be able to check what the public key of the agent is. This means the agent must be publicly resolvable. This is one of the reasons we should work towards a server-independent identifier, probably as base64 string that contains the public key (and, optionally, also the https identifier). See <a href="https://github.com/ontola/atomic-data-docs/issues/59">issue #59 on DIDs</a>.</li>
+<li>We'll probably also introduce some form of token-based-authentication created server side in the future. <a href="https://github.com/ontola/atomic-data-docs/issues/87">See #87</a></li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/authentication.md">Edit this page on GitHub.</a></footer>
                     </main>

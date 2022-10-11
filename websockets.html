@@ -152,13 +152,17 @@ The <code>WebSocket-Protocol</code> is <code>AtomicData</code>.</p>
 <li><code>SUBSCRIBE ${subject}</code> tells the Server that you'd like to receive Commits about this Subject.</li>
 <li><code>UNSUBSCRIBE ${subject}</code> tells the Server that you'd like to stop receiving Commits about this Subject.</li>
 <li><code>GET ${subject}</code> fetch an individual resource.</li>
-<li><code>AUTHENTICATE ${authenticationResource}</code> to set a user session for this websocket and allow authorized requests. The <code>authenticationResource</code> is a JSON-AD resource containing the signature and more, see <a href="../src/authentication.html">Authentication</a>. No response is given if the request is valid, an error is returned if something is wrong.</li>
+<li><code>AUTHENTICATE ${authenticationResource}</code> to set a user session for this websocket and allow authorized messages. The <code>authenticationResource</code> is a JSON-AD resource containing the signature and more, see <a href="../src/authentication.html">Authentication</a>.</li>
 </ul>
 <h2 id="server-to-client-messages"><a class="header" href="#server-to-client-messages">Server to client messages</a></h2>
 <ul>
 <li><code>COMMIT ${CommitBody}</code> an entire <a href="../src/commits/concepts.html">Commit</a> for a resource that you're subscribed to.</li>
-<li><code>RESOURCE ${Resource}</code> a JSON-AD Resource as a response to a GET request. If there is something wrong with this request (e.g. 404), return a <code>Error</code> Resource with the requested subject, similar to how the HTTP protocol server does this.`</li>
+<li><code>RESOURCE ${Resource}</code> a JSON-AD Resource as a response to a <code>GET</code> message. If there is something wrong with this request (e.g. 404), return a <code>Error</code> Resource with the requested subject, similar to how the HTTP protocol server does this.`</li>
 <li><code>ERROR ${ErrorBody}</code> an Error resource is sent whenever something goes wrong. The <code>ErrorBody</code> is a plaintext, typically English description of what went wrong.</li>
+</ul>
+<h2 id="considerations"><a class="header" href="#considerations">Considerations</a></h2>
+<ul>
+<li>For many messages, there is no response to give if things are processed correctly. If a message is unknown or there is a different problem, return an <code>ERROR</code>.</li>
 </ul>
 <h2 id="example-implementations"><a class="header" href="#example-implementations">Example implementations</a></h2>
 <ul>
