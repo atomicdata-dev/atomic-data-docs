@@ -1214,9 +1214,9 @@ This Authentication Resource is stored as a cookie, and passed along in every HT
 <ol>
 <li>Create a signed Authentication object, as described above.</li>
 <li>Serialize it as JSON-AD, then as a base64 string.</li>
-<li>Store it in a Cookie
+<li>Store it in a Cookie:
 <ol>
-<li>It needs to be</li>
+<li>Name the cookie <code>atomic_session</code></li>
 <li>The expiration date of the cookie should be set, and should match the expiration date of the Authentication Resource.</li>
 <li>Set the <code>Secure</code> attribute to prevent Man-in-the-middle attacks over HTTP</li>
 </ol>
