@@ -58,8 +58,8 @@ This Authentication Resource is stored as a cookie, and passed along in every HT
 
 1. Create a signed Authentication object, as described above.
 2. Serialize it as JSON-AD, then as a base64 string.
-3. Store it in a Cookie
-   1. It needs to be
+3. Store it in a Cookie:
+   1. Name the cookie `atomic_session`
    2. The expiration date of the cookie should be set, and should match the expiration date of the Authentication Resource.
    3. Set the `Secure` attribute to prevent Man-in-the-middle attacks over HTTP
 
