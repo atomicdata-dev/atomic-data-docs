@@ -30,6 +30,7 @@ The [Atomic-Server](https://github.com/atomicdata-dev/atomic-data-rust/blob/mast
 ## Limitations
 
 - No support for image resizing, [as of now](https://github.com/atomicdata-dev/atomic-data-rust/issues/257)
+- No GraphQL support [(see issue)](https://github.com/atomicdata-dev/atomic-data-rust/issues/251)
 
 ## Setting up the server
 
