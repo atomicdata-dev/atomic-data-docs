@@ -45,7 +45,7 @@ Authentication is about proving _who you are_, which is often the first step for
 
 The specification is growing (and please contribute in the [docs repo](https://github.com/atomicdata-dev/atomic-data-docs/issues)), but the current specification lacks some features:
 
-- Rights can only be added, but not removed in a higher item of a hierarchy. This means that you cannot have a secret folder inside a public folder.
-- No model for representing groups of Agents, or other runtime checks for authorization.
-- No way to limit delete access or invite rights separately from write rights
+- Rights can only be added, but not removed in the hierarchy. This means that you cannot have a secret folder inside a public folder.
+- No model for representing groups of Agents, or other runtime checks for authorization. ([issue](https://github.com/atomicdata-dev/atomic-data-docs/issues/73))
+- No way to limit delete access or invite rights separately from write rights ([issue](https://github.com/atomicdata-dev/atomic-data-docs/issues/82))
 - No way to request a set of rights for a Resource

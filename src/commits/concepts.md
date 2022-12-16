@@ -110,7 +110,7 @@ Here's how you apply a Commit:
 
 ## Limitations
 
-- Commits adjust **only one Resource at a time**, which means that you cannot change multiple in one commit.
+- Commits adjust **only one Resource at a time**, which means that you cannot change multiple in one commit. ([issue](https://github.com/atomicdata-dev/atomic-data-docs/issues/130))
 - The one creating the Commit will **need to sign it**, which may make clients that write data more complicated than you'd like. You can also let Servers write Commits, but this makes them less verifiable / decentralized.
 - Commits require signatures, which means **key management**. Doing this securely is no trivial matter.
 - The signatures **require JSON-AD** serialization

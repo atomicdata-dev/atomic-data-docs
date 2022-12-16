@@ -52,6 +52,7 @@
   * [As a Headless CMS](usecases/headless-cms.md)
   * [In a React project](usecases/react.md)
   * [Personal Data Store](usecases/personal-data-store.md)
+  * [Artificial Intelligence](usecases/ai.md)
   * [E-commerce & marketplaces](usecases/e-commerce.md)
   * [Surveys](usecases/surveys.md)
   * [Verifiable Credentials](usecases/verifiable-credentials.md)
