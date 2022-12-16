@@ -18,7 +18,7 @@ jobs:
         with:
           mdbook-version: 'latest'
 
-      - run: cargo install mdbook-open-on-gh --version 2.2.0
+      - run: cargo install mdbook-open-on-gh --version 2.1.0
 
       - run: mdbook build
 
