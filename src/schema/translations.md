@@ -28,6 +28,6 @@ For example:
 }
 ```
 
-Every single property used for Translation strings are instances of the Translation class.
+Every single value used for Translation strings is an instance of the Translation class.
 
 A translation string uses the [MDString](https://atomicdata.dev/datatypes/markdown) datatype, which means it allows Markdown syntax.
