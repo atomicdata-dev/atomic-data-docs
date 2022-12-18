@@ -142,7 +142,7 @@ When triples are created about a resource, in a place other than where the subje
 
 The way RDF projects deal with this, is by using _named graphs_.
 As a consequence, all systems that use these triples should keep track of another field for every atom.
-To make things worse, it makes `subject-predicate` _impossible_ to guarantee.
+To make things worse, it makes `subject-predicate` uniqueness _impossible_ to guarantee.
 That's a high price to pay.
 
 I've asked two RDF developers (who did not know each other) working on RDF about limiting subject usage, and both were critical.
@@ -158,7 +158,7 @@ In RDF, an `object` can either be a `named node`, `blank node` or `literal`. A `
 Although RDF statements are often called `triples`, a single statement can consist of five fields: `subject`, `predicate`, `object`, `language`, `datatype`.
 Having five fields is way more than most information systems. Usually we have just `key` and `value`.
 This difference leads to compatibility issues when using RDF in applications.
-In practice, clients have to run a lot of checks before they can use the data - which makes RDF in most contexts harder to use than something such as JSON.
+In practice, clients have to run a lot of checks before they can use the data - which makes RDF in most contexts harder to use than something like JSON.
 
 Atomic Data drops the `named node` / `literal` distinction.
 We just have `values`, and they are interpreted by looking at the `datatype`, which is defined in the `property`.
