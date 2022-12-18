@@ -1,7 +1,7 @@
 {{#title Atomic Data Invitations - Sharing using Tokens }}
 # Invitations & Tokens
 
-_Discussion: https://github.com/ontola/atomic-data/issues/23_
+([Discussion](https://github.com/ontola/atomic-data/issues/23))
 
 At some point on working on something in a web application, you're pretty likely to share that, often not with the entire world.
 In order to make this process of inviting others as simple as possible, we've come up with an Invitation standard.

@@ -4,7 +4,8 @@
 _Status: design / concept stage_
 
 Dealing with translations can be hard.
-([See discussion on this subject here.](https://github.com/ontola/atomic-data/issues/6))
+
+([Discussion](https://github.com/ontola/atomic-data/issues/6))
 
 ## TranslationBox
 

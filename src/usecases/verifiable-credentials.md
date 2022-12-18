@@ -33,7 +33,7 @@ How could revocation work?
 - **Get the signer** (see above)
 - **Find the `/isRevoked` Endpoint of that signer**, send a Request there to make sure the linked Commit is still valid and not revoked.
 
-Visit the [issue on github](https://github.com/ontola/atomic-data-docs/issues/22) to join the discussion about this subject.
+([Discussion](https://github.com/ontola/atomic-data-docs/issues/22))
 
 ## Use Atomic Schema for standardizing Credentials
 
