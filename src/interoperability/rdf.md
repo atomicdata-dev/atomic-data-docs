@@ -110,7 +110,7 @@ This is probably because of two reasons:
 However, this introduces a lot extra complexity for data users (see above), which makes it not very attractive to use RDF in any client.
 Whereas most languages and datatypes have `key-value` uniqueness that allow for unambiguous value selection, RDF clients have to deal with the possibility that multiple triples with the same `subject-predicate` combination might exist.
 It also introduces a different problem: How should you interpret a set of `subject-predicate` combinations?
-Does this represent a non-ordered collection, or did something to wrong with setting values?\
+Does this represent a non-ordered collection, or did something go wrong while setting values?\
 In the RDF world, I've seen many occurences of both.
 
 Atomic Data requires `subject-property` uniqueness, which means that these issues are no more.
