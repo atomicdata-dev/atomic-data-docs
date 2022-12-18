@@ -88,7 +88,7 @@ Use a single bit one boolean.
 ## Date
 
 ISO date _without time_.
-YYYY-MM-DD.
+`YYYY-MM-DD`.
 
 e.g. `1991-01-20`
 
