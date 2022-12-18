@@ -77,4 +77,4 @@ There are multiple ways we can deal with this:
 - **Cache dependencies**: Atomic Server already stores a copy of every class and property that it uses by default. The `/path` endpoint then allows clients to fetch these from servers that have cached it. If the source goes offline, the validations can still be performed by the server. However, it might be a good idea to migrate the data to a hosted ontology, e.g. by cloning the cached ontology.
 - **Content-addressing**: using non-HTTP identifiers, such as with [IPFS](../interoperability/ipfs.md).
 
-[See discussion](https://github.com/ontola/atomic-data-docs/issues/99).
+([Discussion](https://github.com/ontola/atomic-data-docs/issues/99))
