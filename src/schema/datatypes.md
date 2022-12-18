@@ -97,7 +97,7 @@ e.g. `1991-01-20`
 _URL: `https://atomicdata.dev/datatypes/timestamp`_
 
 Similar to [Unix Timestamp](https://www.unixtimestamp.com/).
-Milliseconds since midnight UTC 1970 jan 01 (aka the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time)).
+Milliseconds since midnight UTC 1970 Jan 01 (aka the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time)).
 Use this for most DateTime fields.
 Signed 64 bit integer (instead of 32 bit in Unix systems).
 

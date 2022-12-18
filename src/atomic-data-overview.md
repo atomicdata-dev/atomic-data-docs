@@ -51,7 +51,7 @@ Make sure to [join our Discord](https://discord.gg/a72Rv2P) if you'd like to dis
 
 ## Status
 
-Keep in mind that none of the Atomic Data project has reached a v1, which means that breaking changes can happen.
+Keep in mind that none of the Atomic Data projects has reached a v1, which means that breaking changes can happen.
 
 ## Reading these docs
 
