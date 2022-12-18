@@ -114,7 +114,7 @@ Does this represent a non-ordered collection, or did something go wrong while se
 In the RDF world, I've seen many occurences of both.
 
 Atomic Data requires `subject-property` uniqueness, which means that these issues are no more.
-However, in order to guarantee this, and still retain _graph merge-ability_ we also need to limit who creates statements about a subject:
+However, in order to guarantee this, and still retain _graph merge-ability_, we also need to limit who creates statements about a subject:
 
 ### Limiting subject usage
 
@@ -138,7 +138,7 @@ This means that someone using RDF data about domain B cannot know that domain B 
 Knowing _where data comes from_ is one of the great things about URIs, but RDF does not require that you can think of subjects as the source of data.
 Many subjects in RDF don't actually resolve to all the known triples of the statement.
 It would make the conceptual model way simpler if statements about a subject could only be made from the source of the domain owner of the subject.
-When triples are created about a resource in a place other than where the subject is hosted, these triples are hard to share.
+When triples are created about a resource, in a place other than where the subject is hosted, these triples are hard to share.
 
 The way RDF projects deal with this, is by using _named graphs_.
 As a consequence, all systems that use these triples should keep track of another field for every atom.
