@@ -18,8 +18,7 @@ jobs:
         with:
           mdbook-version: 'latest'
 
-      # https://github.com/atomicdata-dev/atomic-data-docs/issues/143
-      # - run: cargo install mdbook-open-on-gh
+      - run: cargo install mdbook-open-on-gh
 
       - run: mdbook build
 

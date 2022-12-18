@@ -12,9 +12,8 @@ additional-css = ["open-in.css"]
 [output.linkcheck]
 optional = true
 
-# Temp disable, see https://github.com/atomicdata-dev/atomic-data-docs/issues/143
-# [preprocessor.open-on-gh]
-# command = "mdbook-open-on-gh"
-# renderer = ["html"]
-# text = "mdbook-open-on-gh"
-# open-on-text = "[Suggest edits for this page on GitHub.]"
+[preprocessor.open-on-gh]
+command = "mdbook-open-on-gh"
+renderer = ["html"]
+text = "mdbook-open-on-gh"
+open-on-text = "[Suggest edits for this page on GitHub.]"
