@@ -61,6 +61,6 @@
 
 -----------
 
-[Acknowledgements](acknowledgements.md)
-[Newsletter](newsletter.md)
+[Acknowledgements](acknowledgements.md) |
+[Newsletter](newsletter.md) |
 [Get involved](get-involved.md)
