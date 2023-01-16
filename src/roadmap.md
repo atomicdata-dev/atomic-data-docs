@@ -37,6 +37,7 @@ This should help you understand how and where you may be able to contribute.
 - **Indexed queries** (2022-01). Huge performance increase for queries. Allows for far bigger datasets.
 - **Use case: ChatRoom** (2022-04). Group chat application. To make this possible, we had to extend the Commit model with a `push` action, and allow Plugins to create new Commits.
 - **[JSON-AD Publishing and Importing](create-json-ad.md)** (2022-08). Creating and consuming Atomic Data becomes a whole lot easier.
+- **[@tomic/svelte](https://github.com/atomicdata-dev/atomic-svelte)** (2022-12). Library for integrating Atomic Data with Svelte(Kit).
 
 ## Where we're at
 
@@ -48,11 +49,12 @@ That's why we're now working on the JSON-AD and Atomizer projects (see below).
 
 ## Roadmap
 
-- **[Atomizer](https://github.com/atomicdata-dev/atomic-data-rust/issues/434)** (2022-Q4). Import files and automatically turn these into Atomic Data.
-- **Improved modelling tools** (2022-Q4). Makes it even easier to create Classes and define Properties.
-- **Video(s) about Atomic Data** (2022-Q4). Explain what Atomic Data is, why we're doing this, and how to get started.
-- **[Atomic-server plugins](https://github.com/atomicdata-dev/atomic-data-rust/issues/73)** (2023). Let developers design new features without having to make PRs in Atomic-Server, and let users install apps without re-compiling (or even restarting) anything.
-- **Use case: headless CMS** (2023). Use Atomic-Server to host and edit data that is being read by a front-end JAMSTACK type of tool, such as NextJS or SvelteKit.
-- **Atomic-browser plugins** (2023). Create new views for Classes.
-- **1.0 release** (2024). Mark the specification, the server [(tracking issue)](https://github.com/atomicdata-dev/atomic-data-rust/milestone/5) and the browser as _stable_. It is possible that the Spec will become 1.0 before any implementation is stable.
+- **Video(s) about Atomic Data** (2023 Q1). Explain what Atomic Data is, why we're doing this, and how to get started.
+- **[Atomic Tables](https://github.com/atomicdata-dev/atomic-data-browser/issues/25)** (2023 Q2). A powerful table editor with keyboard / copy / paste / sort support that makes it easier to model and edit data.
+- **[E-mail registration]()** (2023 Q1). This makes it easier for users to get started, and de-emphasizes the importance of private key management, as user can register new Private Keys using their e-mail address.
+- **Headless CMS tooling** (2023). Use Atomic-Server to host and edit data that is being read by a front-end JAMSTACK type of tool, such as NextJS or SvelteKit.
+- **[Atomizer](https://github.com/atomicdata-dev/atomic-data-rust/issues/434)** (2023). Import files and automatically turn these into Atomic Data.
+- **[Atomic-server plugins](https://github.com/atomicdata-dev/atomic-data-rust/issues/73)** (2024). Let developers design new features without having to make PRs in Atomic-Server, and let users install apps without re-compiling (or even restarting) anything.
+- **Atomic-browser plugins** (2024). Create new views for Classes.
+- **1.0 release** (2024). Mark the specification, the server [(tracking issue)](https://github.com/atomicdata-dev/atomic-data-rust/milestone/5) and the browser as _stable_. It is possible that the Spec will become 1.0 before any implementation is stable. Read the [STATUS.md](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/STATUS.md) document for an up-to-date list of features that are already stable.
 - **Model Marketplace** (2024). A place where user can easily find, compare and use Classes, Properties and Ontologies.
