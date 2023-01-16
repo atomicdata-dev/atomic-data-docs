@@ -51,10 +51,10 @@ That's why we're now working on the JSON-AD and Atomizer projects (see below).
 
 - **Video(s) about Atomic Data** (2023 Q1). Explain what Atomic Data is, why we're doing this, and how to get started.
 - **[Atomic Tables](https://github.com/atomicdata-dev/atomic-data-browser/issues/25)** (2023 Q2). A powerful table editor with keyboard / copy / paste / sort support that makes it easier to model and edit data.
-- **[E-mail registration]()** (2023 Q1). This makes it easier for users to get started, and de-emphasizes the importance of private key management, as user can register new Private Keys using their e-mail address.
+- **[E-mail registration](https://github.com/atomicdata-dev/atomic-data-rust/issues/276)** (2023 Q1). This makes it easier for users to get started, and de-emphasizes the importance of private key management, as user can register new Private Keys using their e-mail address.
 - **Headless CMS tooling** (2023). Use Atomic-Server to host and edit data that is being read by a front-end JAMSTACK type of tool, such as NextJS or SvelteKit.
 - **[Atomizer](https://github.com/atomicdata-dev/atomic-data-rust/issues/434)** (2023). Import files and automatically turn these into Atomic Data.
+- **Model Marketplace** (2023 Q4). A place where user can easily find, compare and use Classes, Properties and Ontologies.
 - **[Atomic-server plugins](https://github.com/atomicdata-dev/atomic-data-rust/issues/73)** (2024). Let developers design new features without having to make PRs in Atomic-Server, and let users install apps without re-compiling (or even restarting) anything.
 - **Atomic-browser plugins** (2024). Create new views for Classes.
 - **1.0 release** (2024). Mark the specification, the server [(tracking issue)](https://github.com/atomicdata-dev/atomic-data-rust/milestone/5) and the browser as _stable_. It is possible that the Spec will become 1.0 before any implementation is stable. Read the [STATUS.md](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/STATUS.md) document for an up-to-date list of features that are already stable.
-- **Model Marketplace** (2024). A place where user can easily find, compare and use Classes, Properties and Ontologies.
