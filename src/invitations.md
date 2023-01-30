@@ -21,3 +21,8 @@ In order to make this process of inviting others as simple as possible, we've co
 1. The Guest will now be able to access the Resource.
 
 Try it on [https://atomicdata.dev/invites/1](https://atomicdata.dev/invites/1)
+
+## Limitations and gotcha's
+
+- The one creating the Invite has to take security in consideration. Some URLs can be easily guessed! When implementing Invitations, make sure to use a good amount of randomness when creating the Subject.
+- Make sure that the invite is not publicly discoverable (e.g. through a Collection), this can happen if you set the `parent` of the invite to a public resource.
