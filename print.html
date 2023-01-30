@@ -1304,6 +1304,11 @@ In order to make this process of inviting others as simple as possible, we've co
 <li>The Guest will now be able to access the Resource.</li>
 </ol>
 <p>Try it on <a href="https://atomicdata.dev/invites/1">https://atomicdata.dev/invites/1</a></p>
+<h2 id="limitations-and-gotchas"><a class="header" href="#limitations-and-gotchas">Limitations and gotcha's</a></h2>
+<ul>
+<li>The one creating the Invite has to take security in consideration. Some URLs can be easily guessed! When implementing Invitations, make sure to use a good amount of randomness when creating the Subject.</li>
+<li>Make sure that the invite is not publicly discoverable (e.g. through a Collection), this can happen if you set the <code>parent</code> of the invite to a public resource.</li>
+</ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/invitations.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-commits"><a class="header" href="#atomic-commits">Atomic Commits</a></h1>
 <p><em>Disclaimer: Work in progress, prone to change.</em></p>
 <p>Atomic Commits is a specification for communicating <em>state changes</em> (events / transactions / patches / deltas / mutations) of <a href="commits/../core/concepts.html">Atomic Data</a>.
