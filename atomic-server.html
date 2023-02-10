@@ -146,6 +146,15 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="creating-atomic-data-using-atomic-server"><a class="header" href="#creating-atomic-data-using-atomic-server">Creating Atomic Data using Atomic-Server</a></h1>
+<p>Here is everything you need to get started:</p>
+<ul>
+<li><a href="#atomic-server-and-its-features">Atomic-Server and its features</a></li>
+<li><a href="#running-atomic-server-locally-optional">Running Atomic-Server locally (optional)</a></li>
+<li><a href="#creating-an-agent">Creating an Agent</a></li>
+<li><a href="#creating-your-first-atomic-data">Creating your first Atomic Data</a></li>
+<li><a href="#theres-more">Next steps</a></li>
+</ul>
+<h2 id="atomic-server-and-its-features"><a class="header" href="#atomic-server-and-its-features">Atomic-Server and its features</a></h2>
 <p><a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md"><code>Atomic-Server</code></a> is the <em>reference implementation</em> of the Atomic Data Core + Extended specification.
 It was developed parallel to this specification, and it served as a testing ground for various ideas (some of which didn't work, and some of which ended up in the spec).</p>
 <p>Atomic-Server is a graph database server for storing and sharing typed linked data.
@@ -209,18 +218,18 @@ And you're done!</p>
 A Class represents an abstract concept, such as a <code>BlogPost</code> (which we'll do here).
 We can do this in a couple of ways:</p>
 <ul>
-<li>Press the <code>new resource</code> button on the left menu, and selecting Class</li>
+<li>Press the <code>+ icon</code> button on the left menu (only visible when logged in), and selecting Class</li>
 <li>Opening <a href="https://atomicdata.dev/classes/Class">Class</a> and pressing <code>new class</code></li>
 <li>Going to the <a href="https://atomicdata.dev/classes/">Classes Collection</a> and pressing the plus icon</li>
 </ul>
 <p>The result is the same: we end up with a form in which we can fill in some details.</p>
-<p>Let's add a shortname, and then a description.</p>
+<p>Let's add a shortname (singular), and then a description.</p>
 <p>After that, we'll add the <code>required</code> properties.
 This form you're looking at is constructed by using the <code>required</code> and <code>recommended</code> Properties defined in <code>Class</code>.
 We can use these same fields to generate our BlogPost resource!
 Which fields would be required in a <code>BlogPost</code>?
 A <code>name</code>, and a <code>description</code>, probably.</p>
-<p>So let's search for these Properties, and add them.</p>
+<p>So click on the <code>+ icon</code> under <code>requires</code> and search for these Properties to add them.</p>
 <p>Now, we can skip the <code>recommended</code> properties, and get right to saving our newly created <code>BlogPost</code> class.
 So, press save, and now look at what you created.</p>
 <p>Notice a couple of things:</p>
@@ -228,8 +237,8 @@ So, press save, and now look at what you created.</p>
 <li>Your Class has its own URL.</li>
 <li>It has a <code>parent</code>, shown in the top of the screen. This has impact on the visibility and rights of your Resource. We'll get to that <a href="./hierarchy.html">later in the documentation</a>.</li>
 </ul>
-<p>Now, use the context menu to open the <code>Data View</code>.
-This gives you some more insight into your newly created data, and various ways in which you van serialize it.</p>
+<p>Now, go to the navigation bar, which is by default at the bottom of the window. Use its context menu to open the <code>Data View</code>.
+This view gives you some more insight into your newly created data, and various ways in which you can serialize it.</p>
 <h2 id="theres-more"><a class="header" href="#theres-more">There's more!</a></h2>
 <p>This was just a very brief introduction to Atomic Server, and its features.
 There's quite a bit that we didn't dive in to, such as versioning, file uploads, the collaborative document editor and more...
