@@ -36,6 +36,7 @@
 
 * [Atomizing](atomizing.md)
   * [Using Atomic-Server](atomic-server.md)
+  * [Using Atomic-Browser](atomic-browser.md)
   * [Creating a JSON-AD file](create-json-ad.md)
   * [Upgrade your existing project](interoperability/upgrade.md)
 
