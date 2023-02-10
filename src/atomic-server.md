@@ -1,5 +1,15 @@
 # Creating Atomic Data using Atomic-Server
 
+Here is everything you need to get started:
+
+ - [Atomic-Server and its features](#atomic-server-and-its-features)
+ - [Running Atomic-Server locally (optional)](#running-atomic-server-locally-optional)
+ - [Creating an Agent](#creating-an-agent)
+ - [Creating your first Atomic Data](#creating-your-first-atomic-data)
+ - [Next steps](#theres-more)
+
+## Atomic-Server and its features
+
 [`Atomic-Server`](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md) is the _reference implementation_ of the Atomic Data Core + Extended specification.
 It was developed parallel to this specification, and it served as a testing ground for various ideas (some of which didn't work, and some of which ended up in the spec).
 
@@ -78,13 +88,13 @@ Now let's create a [_Class_](https://atomicdata.dev/classes/Class).
 A Class represents an abstract concept, such as a `BlogPost` (which we'll do here).
 We can do this in a couple of ways:
 
-- Press the `new resource` button on the left menu, and selecting Class
+- Press the `+ icon` button on the left menu (only visible when logged in), and selecting Class
 - Opening [Class](https://atomicdata.dev/classes/Class) and pressing `new class`
 - Going to the [Classes Collection](https://atomicdata.dev/classes/) and pressing the plus icon
 
 The result is the same: we end up with a form in which we can fill in some details.
 
-Let's add a shortname, and then a description.
+Let's add a shortname (singular), and then a description.
 
 After that, we'll add the `required` properties.
 This form you're looking at is constructed by using the `required` and `recommended` Properties defined in `Class`.
@@ -92,7 +102,7 @@ We can use these same fields to generate our BlogPost resource!
 Which fields would be required in a `BlogPost`?
 A `name`, and a `description`, probably.
 
-So let's search for these Properties, and add them.
+So click on the `+ icon` under `requires` and search for these Properties to add them.
 
 Now, we can skip the `recommended` properties, and get right to saving our newly created `BlogPost` class.
 So, press save, and now look at what you created.
@@ -102,8 +112,8 @@ Notice a couple of things:
 - Your Class has its own URL.
 - It has a `parent`, shown in the top of the screen. This has impact on the visibility and rights of your Resource. We'll get to that [later in the documentation](./hierarchy.md).
 
-Now, use the context menu to open the `Data View`.
-This gives you some more insight into your newly created data, and various ways in which you van serialize it.
+Now, go to the navigation bar, which is by default at the bottom of the window. Use its context menu to open the `Data View`.
+This view gives you some more insight into your newly created data, and various ways in which you can serialize it.
 
 ## There's more!
 
