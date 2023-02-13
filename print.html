@@ -2814,20 +2814,28 @@ Shoes have a shoe size, televisions have a screen size in diagonal inches, brigh
 Describing this in a machine-readable and predictable format as data is the next logical step.
 This is, of course, where Atomic Schema could help.
 Atomic-server could be the connected, open source database that suppliers use to describe their products as data.</p>
-<!--
-## Product specific updates after purchase
-
-Imagine buying an external battery pack with a production error.
+<p>Then we'll also need to build a search interface that performs federated queries, and product-dependent filter options.</p>
+<h2 id="product-lifecycle--supply-chain-insights"><a class="header" href="#product-lifecycle--supply-chain-insights">Product lifecycle &amp; supply chain insights</a></h2>
+<p>Imagine buying a product, and being able to see where each part came from.
+The car that you buy might contain a list of all the maintenance moments, and every replaced part.
+The raw materials used could be traced back to their origins.</p>
+<p>This requires a high degree of coordination from each step in the supply chain.
+This is exactly where Atomic Data shines, though, as it provides a highly standardized way of structuring, querying, authenticating an authorizing data.</p>
+<p>Before we get to this point, we'll need to:</p>
+<ul>
+<li>Describe domain-specific product Classes using Atomic Schema, and their Properties.</li>
+</ul>
+<h2 id="product-specific-updates-after-purchase"><a class="header" href="#product-specific-updates-after-purchase">Product specific updates after purchase</a></h2>
+<p>Imagine buying an external battery pack with a production error.
 All units with a serial number between 1561168 and 1561468 have a serious error, where overcharging could lead to spontaneous combustion.
 This is something that you'd like to know.
-But how would the _manufacturer_ of that resource know where to find you?
-Well, if your Atomic Server would have a list of all the things that you've bought, it could _automatically_ subscribe to safety updates from all manufacturers.
-When any of these manufacturers would publish a safety warning about a product that you possess, you'll get an alert.
-
-## Product lifecycle insights
-
-Imagine buying a product, and being able to see where each part came from.
-The car that you buy might contain a list of all the maintenance moments, and every replaced part. -->
+But how would the <em>manufacturer</em> of that resource know where to find you?
+Well, if your Atomic Server would have a list of all the things that you've bought, it could <em>automatically</em> subscribe to safety updates from all manufacturers.
+When any of these manufacturers would publish a safety warning about a product that you possess, you'll get an alert.</p>
+<p>Before we have this, well need to:</p>
+<ul>
+<li>Build notifications support (see <a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/77">issue</a>)</li>
+</ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/usecases/e-commerce.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-data-for-surveys"><a class="header" href="#atomic-data-for-surveys">Atomic Data for Surveys</a></h1>
 <p>Surveys and Questionnaires haven't been evolving that much over the past few years.
 However, Atomic Data has a couple of unique characteristics that would make it especially suitable for surveys.
