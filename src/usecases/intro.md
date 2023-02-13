@@ -11,6 +11,7 @@ Although you could use Atomic Data for pretty much any type of application, it i
 * [Personal Data Store](personal-data-store.md)
 * [Artificial Intelligence](ai.md)
 * [E-commerce & marketplaces](e-commerce.md)
+* [Data Catalog](data-catalog.md)
 * [Surveys](surveys.md)
 * [Verifiable Credentials](verifiable-credentials.md)
 * [Food labels](food-labels.md)

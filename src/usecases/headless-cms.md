@@ -42,3 +42,8 @@ The [Atomic-Server](https://github.com/atomicdata-dev/atomic-data-rust/blob/mast
 The `@tomic/lib` and `@tomic/react` typescript NPM libraries can be used in any JS project.
 
 In the next section, we'll discuss how to use Atomic-Server in your React project.
+
+## Compared to alternative open source headless CMS software
+
+- **Strapi**: Atomic-Server doesn't need an external database, is easier to setup, has live synchronization support and is way faster. However, Strapi has a plugin system, is more polished, and has GraphQL support.
+- **
