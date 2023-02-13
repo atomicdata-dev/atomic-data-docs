@@ -57,6 +57,7 @@
   * [Surveys](usecases/surveys.md)
   * [Verifiable Credentials](usecases/verifiable-credentials.md)
   * [Data Catalog](usecases/data-catalog.md)
+  * [Education](usecases/education.md)
   * [Food labels](usecases/food-labels.md)
 * [**Software and libraries**](tooling.md)
 
