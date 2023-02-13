@@ -58,7 +58,21 @@ Describing this in a machine-readable and predictable format as data is the next
 This is, of course, where Atomic Schema could help.
 Atomic-server could be the connected, open source database that suppliers use to describe their products as data.
 
-<!--
+Then we'll also need to build a search interface that performs federated queries, and product-dependent filter options.
+
+## Product lifecycle & supply chain insights
+
+Imagine buying a product, and being able to see where each part came from.
+The car that you buy might contain a list of all the maintenance moments, and every replaced part.
+The raw materials used could be traced back to their origins.
+
+This requires a high degree of coordination from each step in the supply chain.
+This is exactly where Atomic Data shines, though, as it provides a highly standardized way of structuring, querying, authenticating an authorizing data.
+
+Before we get to this point, we'll need to:
+
+- Describe domain-specific product Classes using Atomic Schema, and their Properties.
+
 ## Product specific updates after purchase
 
 Imagine buying an external battery pack with a production error.
@@ -68,7 +82,6 @@ But how would the _manufacturer_ of that resource know where to find you?
 Well, if your Atomic Server would have a list of all the things that you've bought, it could _automatically_ subscribe to safety updates from all manufacturers.
 When any of these manufacturers would publish a safety warning about a product that you possess, you'll get an alert.
 
-## Product lifecycle insights
+Before we have this, well need to:
 
-Imagine buying a product, and being able to see where each part came from.
-The car that you buy might contain a list of all the maintenance moments, and every replaced part. -->
+- Build notifications support (see [issue](https://github.com/atomicdata-dev/atomic-data-rust/issues/77))
