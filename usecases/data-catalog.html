@@ -155,20 +155,29 @@ They are inventories of datasets.</p>
 <li><strong>Manage compliance with privacy laws</strong>. If you have datasets that contain GDPR-relevant data (personal data), you're legally required to maintain a list of where that data is stored, what you need it for and what you're doing with it.</li>
 </ul>
 <h2 id="why-atomic-server-could-be-great-for-data-catalogs"><a class="header" href="#why-atomic-server-could-be-great-for-data-catalogs">Why Atomic Server could be great for Data Catalogs</a></h2>
+<p><a href="https://docs.atomicdata.dev/atomic-server.html">Atomic-Server</a> is a powerful Database that can be used as a modern, powerful data catalog. It has a few advantages over others:</p>
 <ul>
 <li>Free &amp; <strong>open source</strong>. MIT licensed!</li>
-<li>Many built-in <strong>features</strong>, like full-text search, versioning, live synchronization, rights management,</li>
+<li>Many built-in features, like <strong>full-text search</strong>, <strong>history</strong>, <strong>live synchronization</strong> and <strong>rights management</strong>.</li>
 <li>Great <strong>performance</strong>. Requests take nanoseconds to milliseconds.</li>
 <li>Very <strong>easy to setup</strong>. One single binary, no weird runtime dependencies.</li>
-<li>Everything is linked data. Not just datasets (which you might), but also everything around them (users, comments, implementations)</li>
-<li><a href="../schema/intro.html">Atomic Schema</a> can be used to describe the shape of your datasets: the properties you use, which fields are required - things like that. Because Atomic Schema uses URLs, we can easily re-use properties and class definitions. This helps to make your datasets highly interoperable.</li>
+<li>Everything is linked data. Not just datasets (which you might), but also everything around them (users, comments, implementations).</li>
+<li>Powerful <strong>CMS capabilities</strong>. With built in support for Tables and Documents, you can easily create webpages with articles or other types of resources using Atomic Server.</li>
+<li><a href="../schema/intro.html">Atomic Schema</a> can be used to describe the <strong>shape of your datasets</strong>: the properties you use, which fields are required - things like that. Because Atomic Schema uses URLs, we can easily re-use properties and class definitions. This helps to make your datasets highly interoperable.</li>
+</ul>
+<h2 id="when-atomic-server-is-used-for-hosting-the-data-too"><a class="header" href="#when-atomic-server-is-used-for-hosting-the-data-too">When Atomic-Server is used for hosting the data, too</a></h2>
+<p>Most datacatalogs only have metadata. However, if you convert your existing CSV / JSON / XML / ... datasets to <em>Atomic Data</em>, you can host them on Atomic-Server as well. This has a few advantages:</p>
+<ul>
+<li><strong>Data previews</strong> in the browser, users can navigate through the data without leaving the catalog. Data itself becomes browseable, too, which means you can traverse a graph by clicking on link values.</li>
+<li><strong>Standardized Querying</strong> means you can easily, from the data catalog, can filter and sort the data.</li>
+<li><strong>Cross-dataset search</strong>. Search queries can be performed over multiple Atomic Data servers at once, enabling searching over multiple datasets. This is also called <em>federated search</em>.</li>
 </ul>
 <h2 id="atomic-server-compared-to-ckan"><a class="header" href="#atomic-server-compared-to-ckan">Atomic Server compared to CKAN</a></h2>
 <ul>
 <li>Atomic-Server is MIT licensed - which is more permissive than CKAN's AGPL license.</li>
 <li>Whereas CKAN needs an external database, a python runtime, solrd and a HTTPS server, Atomic-Server has all of these built-in!</li>
 <li>CKAN uses plain RDF, which has some <a href="../interoperability/rdf.html">very important drawbacks</a>.</li>
-<li>But... Atomic-Server still misses a few essentials:</li>
+<li>But... Atomic-Server still misses a few essentials right now:</li>
 </ul>
 <h2 id="what-we-should-add-to-atomic-server-before-its-a-decent-data-catalog"><a class="header" href="#what-we-should-add-to-atomic-server-before-its-a-decent-data-catalog">What we should add to Atomic-Server before it's a decent Data Catalog</a></h2>
 <ul>
