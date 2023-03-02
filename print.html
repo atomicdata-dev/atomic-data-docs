@@ -187,7 +187,7 @@ In the Atomizing section, we'll show you how you can create Atomic Data in three
 <ul>
 <li>Browser app <a href="https://github.com/atomicdata-dev/atomic-data-browser">atomic-data-browser</a> (<a href="https://atomicdata.dev">demo on atomicdata.dev</a>)</li>
 <li>Build a react app using <a href="https://github.com/atomicdata-dev/atomic-data-browser">typescript &amp; react libraries</a>. Start with the <a href="https://codesandbox.io/s/atomic-data-react-template-4y9qu?file=/src/MyResource.tsx">react template on codesandbox</a></li>
-<li>Host your own <a href="https://github.com/atomicdata-dev/atomic-data-rust">atomic-server</a> (powers <a href="https://atomicdata.dev">atomicdata.dev</a>, run with <code>docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>)</li>
+<li>Host your own <a href="https://github.com/atomicdata-dev/atomic-data-rust">atomic-server</a> (powers <a href="https://atomicdata.dev">atomicdata.dev</a>, run with <code>docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>)</li>
 <li>Discover the command line tool: <a href="https://github.com/atomicdata-dev/atomic-data-rust">atomic-cli</a> (<code>cargo install atomic-cli</code>)</li>
 <li>Use the Rust library: <a href="https://github.com/atomicdata-dev/atomic-data-rust">atomic-lib</a></li>
 </ul>
@@ -1817,7 +1817,7 @@ Let's summarize what the advantages are:</p>
 <li><a href="atomic-server.html#running-atomic-server-locally-optional">Running Atomic-Server locally (optional)</a></li>
 <li><a href="atomic-server.html#creating-an-agent">Creating an Agent</a></li>
 <li><a href="atomic-server.html#creating-your-first-atomic-data">Creating your first Atomic Data</a></li>
-<li><a href="atomic-server.html#theres-more">Next steps</a></li>
+<li><a href="atomic-server.html#theres-more">There's more!</a></li>
 </ul>
 <h2 id="atomic-server-and-its-features"><a class="header" href="#atomic-server-and-its-features">Atomic-Server and its features</a></h2>
 <p><a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md"><code>Atomic-Server</code></a> is the <em>reference implementation</em> of the Atomic Data Core + Extended specification.
@@ -1848,7 +1848,7 @@ But if you want to, you can run Atomic-Server on your machine in a couple of way
 <ul>
 <li><strong>Using a desktop installer</strong>: download a desktop release from the <a href="https://github.com/atomicdata-dev/atomic-data-rust/releases"><code>releases</code></a> page and install it using your desktop GUI.</li>
 <li><strong>Using a binary</strong>: download a binary release from the <a href="https://github.com/atomicdata-dev/atomic-data-rust/releases"><code>releases</code></a> page and open it using a terminal.</li>
-<li><strong>Using Docker</strong> is probably the quickest: <code>docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>.</li>
+<li><strong>Using Docker</strong> is probably the quickest: <code>docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>.</li>
 <li><strong>Using Cargo</strong>: <code>cargo install atomic-server</code> and then run <code>atomic-server</code> to start.</li>
 </ul>
 <p><em><a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">Atomic-Server's README</a> contains more (and up-to-date) information about how to use it!</em></p>
@@ -2387,6 +2387,7 @@ Some open source Solid implementations are the <a href="https://github.com/solid
 It was definitely built to be one, at least.
 It implements every part of the Atomic Data specification.
 I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations:</p>
+<!-- List copied from https://github.com/atomicdata-dev/atomic-data-rust/blob/master/README.md -->
 <ul>
 <li><strong>Dynamic schema validation</strong> / type checking using <a href="https://docs.atomicdata.dev/schema/intro.html">Atomic Schema</a>, combining the best of RDF, JSON and type safety.</li>
 <li><strong>Fast</strong> (1ms responses on my laptop)</li>
@@ -2657,16 +2658,16 @@ In this section, we'll present concrete examples of things that can be built wit
 Although you could use Atomic Data for pretty much any type of application, it is especially valuable where <strong>data re-use</strong>, <strong>standardization</strong>, and <strong>data ownership</strong> are important.</p>
 <!-- This should align with SUMMARY.md -->
 <ul>
-<li><a href="usecases/usecases/headless-cms.html">As a Headless CMS</a></li>
-<li><a href="usecases/usecases/react.html">In a React project</a></li>
-<li><a href="usecases/usecases/personal-data-store.html">Personal Data Store</a></li>
-<li><a href="usecases/usecases/ai.html">Artificial Intelligence</a></li>
-<li><a href="usecases/usecases/e-commerce.html">E-commerce &amp; marketplaces</a></li>
-<li><a href="usecases/usecases/surveys.html">Surveys</a></li>
-<li><a href="usecases/usecases/verifiable-credentials.html">Verifiable Credentials</a></li>
-<li><a href="usecases/usecases/data-catalog.html">Data Catalog</a></li>
-<li><a href="usecases/usecases/education.html">Education</a></li>
-<li><a href="usecases/usecases/food-labels.html">Food labels</a></li>
+<li><a href="usecases/headless-cms.html">As a Headless CMS</a></li>
+<li><a href="usecases/react.html">In a React project</a></li>
+<li><a href="usecases/personal-data-store.html">Personal Data Store</a></li>
+<li><a href="usecases/ai.html">Artificial Intelligence</a></li>
+<li><a href="usecases/e-commerce.html">E-commerce &amp; marketplaces</a></li>
+<li><a href="usecases/surveys.html">Surveys</a></li>
+<li><a href="usecases/verifiable-credentials.html">Verifiable Credentials</a></li>
+<li><a href="usecases/data-catalog.html">Data Catalog</a></li>
+<li><a href="usecases/education.html">Education</a></li>
+<li><a href="usecases/food-labels.html">Food labels</a></li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/usecases/intro.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="using-atomic-server-as-an-open-source-headless-cms"><a class="header" href="#using-atomic-server-as-an-open-source-headless-cms">Using Atomic-Server as an open source headless CMS</a></h1>
 <h2 id="why-people-are-switching-to-headless-cms"><a class="header" href="#why-people-are-switching-to-headless-cms">Why people are switching to Headless CMS</a></h2>
@@ -2679,6 +2680,7 @@ This approach has some issues regarding performance and flexibility that headles
 </ul>
 <h2 id="atomic-server"><a class="header" href="#atomic-server">Atomic Server</a></h2>
 <p>The <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">Atomic-Server</a> project may be the right choice for you if you're looking for a Headless CMS:</p>
+<!-- List copied from https://github.com/atomicdata-dev/atomic-data-rust/blob/master/README.md -->
 <ul>
 <li><strong>Free and open source</strong>. MIT licensed, no strings attached.</li>
 <li><strong>Easy to use API</strong>. Atomic-Server is built using the <a href="usecases/../atomic-data-overview.html">Atomic Data specification</a>. It is well-documented, and uses conventions that most web developers are already familiar with.</li>
@@ -2701,7 +2703,7 @@ This approach has some issues regarding performance and flexibility that headles
 </ul>
 <h2 id="setting-up-the-server"><a class="header" href="#setting-up-the-server">Setting up the server</a></h2>
 <ul>
-<li>One-liners: <code>cargo install atomic-server</code> or <code>docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code></li>
+<li>One-liners: <code>cargo install atomic-server</code> or <code>docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code></li>
 <li>Check out the <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">readme!</a></li>
 </ul>
 <h2 id="using-the-data-in-your-react--nextjs-app"><a class="header" href="#using-the-data-in-your-react--nextjs-app">Using the data in your (React / NextJS) app</a></h2>
@@ -2938,7 +2940,8 @@ They are inventories of datasets.</p>
 <h2 id="when-atomic-server-is-used-for-hosting-the-data-too"><a class="header" href="#when-atomic-server-is-used-for-hosting-the-data-too">When Atomic-Server is used for hosting the data, too</a></h2>
 <p>Most datacatalogs only have metadata. However, if you convert your existing CSV / JSON / XML / ... datasets to <em>Atomic Data</em>, you can host them on Atomic-Server as well. This has a few advantages:</p>
 <ul>
-<li><strong>Data previews</strong> in the browser, users can navigate through the data without leaving the catalog. Data itself becomes browseable, too, which means you can traverse a graph by clicking on link values.</li>
+<li><strong>Data previews</strong> in the browser, users can navigate through the data without leaving the catalog.</li>
+<li>Data itself becomes <strong>browseable</strong>, too, which means you can traverse a graph by clicking on link values.</li>
 <li><strong>Standardized Querying</strong> means you can easily, from the data catalog, can filter and sort the data.</li>
 <li><strong>Cross-dataset search</strong>. Search queries can be performed over multiple Atomic Data servers at once, enabling searching over multiple datasets. This is also called <em>federated search</em>.</li>
 </ul>
@@ -3042,7 +3045,7 @@ This can be done, because the groceries app can easily check detailed informatio
 <li>Authorization, authentication, versioning, collections, pagination</li>
 <li>Browser-friendly HTML presentation, JSON serialization, RDF serialization.</li>
 </ul>
-<p>One liner: <code>$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code></p>
+<p>One liner: <code>$ docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code></p>
 <p><a href="https://atomicdata.dev/">demo</a></p>
 <p><a href="https://github.com/atomicdata-dev/atomic-data-browser">repository + issue tracker</a>.</p>
 <h3 id="atomic-data-browser"><a class="header" href="#atomic-data-browser"><code>atomic-data-browser</code></a></h3>
