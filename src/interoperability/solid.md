@@ -124,6 +124,7 @@ It was definitely built to be one, at least.
 It implements every part of the Atomic Data specification.
 I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations:
 
+<!-- List copied from https://github.com/atomicdata-dev/atomic-data-rust/blob/master/README.md -->
 - **Dynamic schema validation** / type checking using [Atomic Schema](https://docs.atomicdata.dev/schema/intro.html), combining the best of RDF, JSON and type safety.
 - **Fast** (1ms responses on my laptop)
 - **Lightweight** (8MB download, no runtime dependencies)

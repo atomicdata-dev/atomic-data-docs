@@ -26,7 +26,7 @@ Server for hosting Atomic Data. Uses `atomic-lib`.
 - Authorization, authentication, versioning, collections, pagination
 - Browser-friendly HTML presentation, JSON serialization, RDF serialization.
 
-One liner: `$ docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`
+One liner: `$ docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`
 
 [demo](https://atomicdata.dev/)
 

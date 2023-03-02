@@ -2,11 +2,11 @@
 
 Here is everything you need to get started:
 
- - [Atomic-Server and its features](#atomic-server-and-its-features)
- - [Running Atomic-Server locally (optional)](#running-atomic-server-locally-optional)
- - [Creating an Agent](#creating-an-agent)
- - [Creating your first Atomic Data](#creating-your-first-atomic-data)
- - [Next steps](#theres-more)
+- [Atomic-Server and its features](#atomic-server-and-its-features)
+- [Running Atomic-Server locally (optional)](#running-atomic-server-locally-optional)
+- [Creating an Agent](#creating-an-agent)
+- [Creating your first Atomic Data](#creating-your-first-atomic-data)
+- [There's more!](#theres-more)
 
 ## Atomic-Server and its features
 
@@ -40,7 +40,7 @@ But if you want to, you can run Atomic-Server on your machine in a couple of way
 
 - **Using a desktop installer**: download a desktop release from the [`releases`](https://github.com/atomicdata-dev/atomic-data-rust/releases) page and install it using your desktop GUI.
 - **Using a binary**: download a binary release from the [`releases`](https://github.com/atomicdata-dev/atomic-data-rust/releases) page and open it using a terminal.
-- **Using Docker** is probably the quickest: `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`.
+- **Using Docker** is probably the quickest: `docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`.
 - **Using Cargo**: `cargo install atomic-server` and then run `atomic-server` to start.
 
 _[Atomic-Server's README](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md) contains more (and up-to-date) information about how to use it!_

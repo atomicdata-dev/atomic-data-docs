@@ -26,7 +26,8 @@ They are often used to:
 
 Most datacatalogs only have metadata. However, if you convert your existing CSV / JSON / XML / ... datasets to _Atomic Data_, you can host them on Atomic-Server as well. This has a few advantages:
 
-- **Data previews** in the browser, users can navigate through the data without leaving the catalog. Data itself becomes browseable, too, which means you can traverse a graph by clicking on link values.
+- **Data previews** in the browser, users can navigate through the data without leaving the catalog.
+- Data itself becomes **browseable**, too, which means you can traverse a graph by clicking on link values.
 - **Standardized Querying** means you can easily, from the data catalog, can filter and sort the data.
 - **Cross-dataset search**. Search queries can be performed over multiple Atomic Data servers at once, enabling searching over multiple datasets. This is also called _federated search_.
 

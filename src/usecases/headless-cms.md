@@ -13,6 +13,7 @@ This approach has some issues regarding performance and flexibility that headles
 
 The [Atomic-Server](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md) project may be the right choice for you if you're looking for a Headless CMS:
 
+<!-- List copied from https://github.com/atomicdata-dev/atomic-data-rust/blob/master/README.md -->
 - **Free and open source**. MIT licensed, no strings attached.
 - **Easy to use API**. Atomic-Server is built using the [Atomic Data specification](../atomic-data-overview.md). It is well-documented, and uses conventions that most web developers are already familiar with.
 - **Typescript & React libraries**. Use the existing react hooks to make your own fully editable, live-reloaded web application.
@@ -34,7 +35,7 @@ The [Atomic-Server](https://github.com/atomicdata-dev/atomic-data-rust/blob/mast
 
 ## Setting up the server
 
-- One-liners: `cargo install atomic-server` or `docker run -p 80:80 -p 443:443 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`
+- One-liners: `cargo install atomic-server` or `docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`
 - Check out the [readme!](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md)
 
 ## Using the data in your (React / NextJS) app
