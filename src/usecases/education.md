@@ -1,4 +1,4 @@
-# Atomic Data for Eduction - standardized, modular e-learling
+# Atomic Data for Education - standardized, modular e-learning
 
 The Atomic Data specification can help make online educational content more **modular**. This has two direct benefits:
 
