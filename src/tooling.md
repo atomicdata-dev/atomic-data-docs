@@ -96,7 +96,6 @@ Library that powers `atomic-server` and `atomic-cli`. Features:
 - An in-memory store
 - Parsing (JSON-AD) / Serialization (JSON-AD, JSON-LD, TTL, N-Triples)
 - Commit validation and processing
-- TPF queries
 - Constructing Collections
 - Path traversal
 - Basic validation

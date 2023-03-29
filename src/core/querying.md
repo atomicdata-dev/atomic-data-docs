@@ -49,39 +49,11 @@ An Atomic Path is a string that consist of one or more URLs, which when traverse
 
 [Read more about Atomic Paths](paths.md)
 
-## Triple Pattern Fragments
-
-[Triple Pattern Fragments](https://linkeddatafragments.org/specification/triple-pattern-fragments/) (TPF) is an interface for querying RDF.
-It works great for Atomic Data as well.
-
-An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:
-
-`http://example.org/tpf?subject={subject}&property={property}&value={value}`
-
-Make sure to URL encode the `subject`, `property`, `value` strings.
-
-For example, let's search for all Atoms where the value is `test`.
-
-```HTTP
-GET https://atomicdata.dev/tpf?value=0 HTTP/1.1
-Content-Type: text/turtle
-```
-
-This is the HTTP response:
-
-```HTTP
-HTTP/1.1 200 OK
-Content-Type: text/turtle
-Connection: Closed
-
-<https://atomicdata.dev/agents> <https://atomicdata.dev/properties/collection/currentPage> "0"^^<https://atomicdata.dev/datatypes/integer> .
-```
-
 ## SPARQL
 
 [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) is a powerful RDF query language.
 Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.
 None of the exsisting implementations support a SPARQL endpoint, though.
 
-- Convert / serialize Atomic Data to RDF (for example by using the `/tpf` endpoint and an `accept` header: `curl -i -H "Accept: text/turtle" "https://atomicdata.dev/tpf"`)
+- Convert / serialize Atomic Data to RDF (for example by using an `accept` header: `curl -i -H "Accept: text/turtle" "https://atomicdata.dev"`)
 - Load it into a SPARQL engine of your choice

@@ -78,3 +78,9 @@ There are multiple ways we can deal with this:
 - **Content-addressing**: using non-HTTP identifiers, such as with [IPFS](../interoperability/ipfs.md).
 
 ([Discussion](https://github.com/ontola/atomic-data-docs/issues/99))
+
+## How do I deal with subclasses / inheritance?
+
+Atomic Data does not have a concept of inheritance.
+However, you can use the `isA` property to link to _multiple Classes_ from a single resource.
+This effectively
