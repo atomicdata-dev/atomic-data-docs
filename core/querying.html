@@ -180,29 +180,12 @@ Use query parameters to traverse pages, filter, or sort.</p>
 <h2 id="atomic-paths"><a class="header" href="#atomic-paths">Atomic Paths</a></h2>
 <p>An Atomic Path is a string that consist of one or more URLs, which when traversed point to an item.</p>
 <p><a href="paths.html">Read more about Atomic Paths</a></p>
-<h2 id="triple-pattern-fragments"><a class="header" href="#triple-pattern-fragments">Triple Pattern Fragments</a></h2>
-<p><a href="https://linkeddatafragments.org/specification/triple-pattern-fragments/">Triple Pattern Fragments</a> (TPF) is an interface for querying RDF.
-It works great for Atomic Data as well.</p>
-<p>An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:</p>
-<p><code>http://example.org/tpf?subject={subject}&amp;property={property}&amp;value={value}</code></p>
-<p>Make sure to URL encode the <code>subject</code>, <code>property</code>, <code>value</code> strings.</p>
-<p>For example, let's search for all Atoms where the value is <code>test</code>.</p>
-<pre><code class="language-HTTP">GET https://atomicdata.dev/tpf?value=0 HTTP/1.1
-Content-Type: text/turtle
-</code></pre>
-<p>This is the HTTP response:</p>
-<pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: text/turtle
-Connection: Closed
-
-&lt;https://atomicdata.dev/agents&gt; &lt;https://atomicdata.dev/properties/collection/currentPage&gt; &quot;0&quot;^^&lt;https://atomicdata.dev/datatypes/integer&gt; .
-</code></pre>
 <h2 id="sparql"><a class="header" href="#sparql">SPARQL</a></h2>
 <p><a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> is a powerful RDF query language.
 Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.
 None of the exsisting implementations support a SPARQL endpoint, though.</p>
 <ul>
-<li>Convert / serialize Atomic Data to RDF (for example by using the <code>/tpf</code> endpoint and an <code>accept</code> header: <code>curl -i -H &quot;Accept: text/turtle&quot; &quot;https://atomicdata.dev/tpf&quot;</code>)</li>
+<li>Convert / serialize Atomic Data to RDF (for example by using an <code>accept</code> header: <code>curl -i -H &quot;Accept: text/turtle&quot; &quot;https://atomicdata.dev&quot;</code>)</li>
 <li>Load it into a SPARQL engine of your choice</li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/core/querying.md">Edit this page on GitHub.</a></footer>

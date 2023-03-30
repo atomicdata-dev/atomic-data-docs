@@ -733,29 +733,12 @@ Use query parameters to traverse pages, filter, or sort.</p>
 <h2 id="atomic-paths"><a class="header" href="#atomic-paths">Atomic Paths</a></h2>
 <p>An Atomic Path is a string that consist of one or more URLs, which when traversed point to an item.</p>
 <p><a href="core/paths.html">Read more about Atomic Paths</a></p>
-<h2 id="triple-pattern-fragments"><a class="header" href="#triple-pattern-fragments">Triple Pattern Fragments</a></h2>
-<p><a href="https://linkeddatafragments.org/specification/triple-pattern-fragments/">Triple Pattern Fragments</a> (TPF) is an interface for querying RDF.
-It works great for Atomic Data as well.</p>
-<p>An HTTP implementation of a TPF endpoint might accept a GET request to a URL such as this:</p>
-<p><code>http://example.org/tpf?subject={subject}&amp;property={property}&amp;value={value}</code></p>
-<p>Make sure to URL encode the <code>subject</code>, <code>property</code>, <code>value</code> strings.</p>
-<p>For example, let's search for all Atoms where the value is <code>test</code>.</p>
-<pre><code class="language-HTTP">GET https://atomicdata.dev/tpf?value=0 HTTP/1.1
-Content-Type: text/turtle
-</code></pre>
-<p>This is the HTTP response:</p>
-<pre><code class="language-HTTP">HTTP/1.1 200 OK
-Content-Type: text/turtle
-Connection: Closed
-
-&lt;https://atomicdata.dev/agents&gt; &lt;https://atomicdata.dev/properties/collection/currentPage&gt; &quot;0&quot;^^&lt;https://atomicdata.dev/datatypes/integer&gt; .
-</code></pre>
 <h2 id="sparql"><a class="header" href="#sparql">SPARQL</a></h2>
 <p><a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> is a powerful RDF query language.
 Since all Atomic Data is also valid RDF, it should be possible to query Atomic Data using SPARQL.
 None of the exsisting implementations support a SPARQL endpoint, though.</p>
 <ul>
-<li>Convert / serialize Atomic Data to RDF (for example by using the <code>/tpf</code> endpoint and an <code>accept</code> header: <code>curl -i -H &quot;Accept: text/turtle&quot; &quot;https://atomicdata.dev/tpf&quot;</code>)</li>
+<li>Convert / serialize Atomic Data to RDF (for example by using an <code>accept</code> header: <code>curl -i -H &quot;Accept: text/turtle&quot; &quot;https://atomicdata.dev&quot;</code>)</li>
 <li>Load it into a SPARQL engine of your choice</li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/core/querying.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-paths-1"><a class="header" href="#atomic-paths-1">Atomic Paths</a></h1>
@@ -1084,6 +1067,10 @@ You will no longer know what the Datatype was (other than the native JSON dataty
 <li><strong>Content-addressing</strong>: using non-HTTP identifiers, such as with <a href="schema/../interoperability/ipfs.html">IPFS</a>.</li>
 </ul>
 <p>(<a href="https://github.com/ontola/atomic-data-docs/issues/99">Discussion</a>)</p>
+<h2 id="how-do-i-deal-with-subclasses--inheritance"><a class="header" href="#how-do-i-deal-with-subclasses--inheritance">How do I deal with subclasses / inheritance?</a></h2>
+<p>Atomic Data does not have a concept of inheritance.
+However, you can use the <code>isA</code> property to link to <em>multiple Classes</em> from a single resource.
+This effectively</p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/schema/faq.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-data-extended-1"><a class="header" href="#atomic-data-extended-1">Atomic Data Extended</a></h1>
 <p>Atomic Data is a <em>modular</em> specification, which means that you can choose to implement parts of it.
 All parts of Extended are <em>optional</em> to implement.
@@ -3096,7 +3083,6 @@ Visit https://github.com/atomicdata-dev/atomic-data-browser for more info
 <li>An in-memory store</li>
 <li>Parsing (JSON-AD) / Serialization (JSON-AD, JSON-LD, TTL, N-Triples)</li>
 <li>Commit validation and processing</li>
-<li>TPF queries</li>
 <li>Constructing Collections</li>
 <li>Path traversal</li>
 <li>Basic validation</li>
