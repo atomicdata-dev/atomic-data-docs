@@ -29,5 +29,5 @@ In `atomic-server`, a `/upload` endpoint exists for uploading a file.
 Simply send an HTTP GET request to the File's [`download-url`](https://atomicdata.dev/properties/downloadURL) (make sure to authenticate this request).
 
 - [Discussion on specification](https://github.com/ontola/atomic-data-docs/issues/57)
-- [Discussion on Rust server implementation](https://github.com/atomicdata-dev/atomic-data-rust/issues/72)
+- [Discussion on Rust server implementation](https://github.com/atomicdata-dev/atomic-server/issues/72)
 - [Discussion on Typescript client implementation](https://github.com/atomicdata-dev/atomic-data-browser/issues/121)

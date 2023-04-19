@@ -119,12 +119,12 @@ So, in a nutshell, I think this legacy makes Solid unnecessarily hard to use for
 Both Atomic Data and Solid are specifications that have different implementations.
 Some open source Solid implementations are the [Node Solid Server](https://github.com/solid/node-solid-server), the [Community Solid Server](https://github.com/solid/community-server) (also nodejs based) and the [DexPod](https://gitlab.com/ontola/dexpod) (Ruby on Rails based).
 
-[Atomic-Server](https://github.com/atomicdata-dev/atomic-data-rust/) is a database + server written in the Rust programming language, that can be considered an alternative to Solid Pod implementations.
+[Atomic-Server](https://github.com/atomicdata-dev/atomic-server/) is a database + server written in the Rust programming language, that can be considered an alternative to Solid Pod implementations.
 It was definitely built to be one, at least.
 It implements every part of the Atomic Data specification.
 I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations:
 
-<!-- List copied from https://github.com/atomicdata-dev/atomic-data-rust/blob/master/README.md -->
+<!-- List copied from https://github.com/atomicdata-dev/atomic-server/blob/master/README.md -->
 - **Dynamic schema validation** / type checking using [Atomic Schema](https://docs.atomicdata.dev/schema/intro.html), combining the best of RDF, JSON and type safety.
 - **Fast** (1ms responses on my laptop)
 - **Lightweight** (8MB download, no runtime dependencies)
@@ -144,5 +144,5 @@ Atomic Data is not even two years old, and although progress has been fast, it d
 Here's a list of things missing in Atomic Data, with links to their open issues and links to their existing Solid counterpart.
 
 - No inbox or [notifications](https://www.w3.org/TR/ldn/) yet ([issue](https://github.com/ontola/atomic-data/issues/28))
-- No OIDC support yet. ([issue](https://github.com/atomicdata-dev/atomic-data-rust/issues/277))
+- No OIDC support yet. ([issue](https://github.com/atomicdata-dev/atomic-server/issues/277))
 - No support from a big community, a well-funded business or the inventor of the world wide web.

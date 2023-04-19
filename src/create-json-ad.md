@@ -45,7 +45,7 @@ In Atomic Data, Resources can have multiple classes, so we should use an Array, 
 {
   "https://atomicdata.dev/properties/name": "Writing my first blogpost",
   "https://atomicdata.dev/properties/description": "Hi! I'm a blogpost. I'm also machine readable!",
-  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Article"],
 }
 ```
 
@@ -72,11 +72,11 @@ If we want to have _multiple_ items, we can simply use a JSON Array at the root,
 [{
   "https://atomicdata.dev/properties/name": "Writing my first blogpost",
   "https://atomicdata.dev/properties/description": "Hi! I'm a blogpost. I'm also machine readable!",
-  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Article"],
 },{
   "https://atomicdata.dev/properties/name": "Another blogpost",
   "https://atomicdata.dev/properties/description": "I'm writing so much my hands hurt.",
-  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Article"],
 }]
 ```
 
@@ -96,7 +96,7 @@ Let's use a unique _slug_, a short name that is often used in URLs.
 {
   "https://atomicdata.dev/properties/name": "Writing my first blogpost",
   "https://atomicdata.dev/properties/description": "Hi! I'm a blogpost. I'm also machine readable!",
-  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Article"],
   "https://atomicdata.dev/properties/localId": "my-first-blogpost",
 }
 ```
@@ -117,13 +117,13 @@ We can simply refer to the `localId`, instead of some URL that does not exist ye
   "https://atomicdata.dev/properties/name": "Writing my first blogpost",
   "https://atomicdata.dev/properties/description": "Hi! I'm a blogpost. I'm also machine readable!",
   "https://atomicdata.dev/properties/author": "jon",
-  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Article"],
   "https://atomicdata.dev/properties/localId": "my-first-blogpost",
 },{
   "https://atomicdata.dev/properties/name": "Another blogpost",
   "https://atomicdata.dev/properties/description": "I'm writing so much my hands hurt.",
   "https://atomicdata.dev/properties/author": "jon",
-  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Blogpost"],
+  "https://atomicdata.dev/properties/isA": ["https://atomicdata.dev/classes/Article"],
   "https://atomicdata.dev/properties/localId": "another-blogpost",
 },{
   "https://atomicdata.dev/properties/name": "Jon Author",
@@ -134,4 +134,4 @@ We can simply refer to the `localId`, instead of some URL that does not exist ye
 
 ## Importing data using Atomic Sever
 
-_currently [under development](https://github.com/atomicdata-dev/atomic-data-rust-data-rust/issues/390)_
+_currently [under development](https://github.com/atomicdata-dev/atomic-server/issues/390)_

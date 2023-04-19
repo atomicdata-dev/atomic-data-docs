@@ -5,9 +5,9 @@ Although Atomic Data is a specification, it also has reference implementations:
 
 Open source (MIT licenced) software for Atomic Data:
 
-- **Server + Database**: [atomic-server](https://github.com/atomicdata-dev/atomic-data-rust)
+- **Server + Database**: [atomic-server](https://github.com/atomicdata-dev/atomic-server)
 - **GUI**: [atomic-data-browser](https://github.com/atomicdata-dev/atomic-data-browser)
-- **CLI**: [atomic-cli](https://github.com/atomicdata-dev/atomic-data-rust)
+- **CLI**: [atomic-cli](https://github.com/atomicdata-dev/atomic-server)
 
 Libraries (MIT licenced) to build apps with:
 

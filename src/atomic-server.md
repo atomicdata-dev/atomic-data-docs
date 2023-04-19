@@ -10,7 +10,7 @@ Here is everything you need to get started:
 
 ## Atomic-Server and its features
 
-[`Atomic-Server`](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md) is the _reference implementation_ of the Atomic Data Core + Extended specification.
+[`Atomic-Server`](https://github.com/atomicdata-dev/atomic-server/blob/master/server/README.md) is the _reference implementation_ of the Atomic Data Core + Extended specification.
 It was developed parallel to this specification, and it served as a testing ground for various ideas (some of which didn't work, and some of which ended up in the spec).
 
 Atomic-Server is a graph database server for storing and sharing typed linked data.
@@ -38,12 +38,12 @@ In this guide, we'll can simply use `atomicdata.dev` in our browser without inst
 So you can skip this step and go to _Creating your first Atomic Data_.
 But if you want to, you can run Atomic-Server on your machine in a couple of ways:
 
-- **Using a desktop installer**: download a desktop release from the [`releases`](https://github.com/atomicdata-dev/atomic-data-rust/releases) page and install it using your desktop GUI.
-- **Using a binary**: download a binary release from the [`releases`](https://github.com/atomicdata-dev/atomic-data-rust/releases) page and open it using a terminal.
+- **Using a desktop installer**: download a desktop release from the [`releases`](https://github.com/atomicdata-dev/atomic-server/releases) page and install it using your desktop GUI.
+- **Using a binary**: download a binary release from the [`releases`](https://github.com/atomicdata-dev/atomic-server/releases) page and open it using a terminal.
 - **Using Docker** is probably the quickest: `docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server`.
 - **Using Cargo**: `cargo install atomic-server` and then run `atomic-server` to start.
 
-_[Atomic-Server's README](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md) contains more (and up-to-date) information about how to use it!_
+_[Atomic-Server's README](https://github.com/atomicdata-dev/atomic-server) contains more (and up-to-date) information about how to use it!_
 
 Open your server in your browser.
 By default, that's [`http://localhost:9883`](http://localhost:9883).
@@ -69,7 +69,7 @@ You can also fetch your data now as various formats.
 
 Try checking out the other features in the menu bar, and check out the `collections`.
 
-Again, check out the [README](https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md) for more information and guides!
+Again, check out the [README](https://github.com/atomicdata-dev/atomic-server) for more information and guides!
 
 Now, let's create some data.
 
