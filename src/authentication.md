@@ -29,7 +29,7 @@ We use the following fields (be sure to use the full URLs in the resource, see t
 
 - `requestedSubject`: The URL of the requested resource.
   - If we're authenticating a *WebSocket*, we use the `wss` address as the `requestedSubject`. (e.g. `wss://example.com/ws`)
-  - If we're authenticating a *Cookie*, we use the origin of the server (e.g. `https://example.com`)
+  - If we're authenticating a *Cookie* of *Bearer token*, we use the origin of the server (e.g. `https://example.com`)
   - If we're authentication a *single HTTP request*, use the same URL as the `GET` address (e.g. `https://example.com/myResource`)
 - `agent`: The URL of the Agent requesting the subject and signing this Authentication Resource.
 - `publicKey`: base64 serialized ED25519 public key of the agent.
@@ -62,6 +62,17 @@ This Authentication Resource is stored as a cookie, and passed along in every HT
    1. Name the cookie `atomic_session`
    2. The expiration date of the cookie should be set, and should match the expiration date of the Authentication Resource.
    3. Set the `Secure` attribute to prevent Man-in-the-middle attacks over HTTP
+
+## Bearer Token Authentication
+
+Similar to creating the Cookie, except that we pass the base64 serialized Authentication Resource as a Bearer token in the `Authorization` header.
+
+```http
+GET /myResource HTTP/1.1
+Authorization: Bearer {base64 serialized Authentication Resource}
+```
+
+In Data Browser, you can find the `token` tab in `/app/token` to create a token.
 
 ## Authenticating Websockets
 
