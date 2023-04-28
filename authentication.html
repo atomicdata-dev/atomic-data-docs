@@ -173,7 +173,7 @@ These are used both in Cookie-based auth, as well as in <a href="websockets.html
 <li><code>requestedSubject</code>: The URL of the requested resource.
 <ul>
 <li>If we're authenticating a <em>WebSocket</em>, we use the <code>wss</code> address as the <code>requestedSubject</code>. (e.g. <code>wss://example.com/ws</code>)</li>
-<li>If we're authenticating a <em>Cookie</em>, we use the origin of the server (e.g. <code>https://example.com</code>)</li>
+<li>If we're authenticating a <em>Cookie</em> of <em>Bearer token</em>, we use the origin of the server (e.g. <code>https://example.com</code>)</li>
 <li>If we're authentication a <em>single HTTP request</em>, use the same URL as the <code>GET</code> address (e.g. <code>https://example.com/myResource</code>)</li>
 </ul>
 </li>
@@ -207,6 +207,12 @@ This Authentication Resource is stored as a cookie, and passed along in every HT
 </ol>
 </li>
 </ol>
+<h2 id="bearer-token-authentication"><a class="header" href="#bearer-token-authentication">Bearer Token Authentication</a></h2>
+<p>Similar to creating the Cookie, except that we pass the base64 serialized Authentication Resource as a Bearer token in the <code>Authorization</code> header.</p>
+<pre><code class="language-http">GET /myResource HTTP/1.1
+Authorization: Bearer {base64 serialized Authentication Resource}
+</code></pre>
+<p>In Data Browser, you can find the <code>token</code> tab in <code>/app/token</code> to create a token.</p>
 <h2 id="authenticating-websockets"><a class="header" href="#authenticating-websockets">Authenticating Websockets</a></h2>
 <p>After <a href="websockets.html">opening a WebSocket connection</a>, create an Authentication Resource.
 Send a message like so: <code>AUTHENTICATE {authenticationResource}</code>.

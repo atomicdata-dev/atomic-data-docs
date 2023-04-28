@@ -155,7 +155,7 @@
 <li><a href="#theres-more">There's more!</a></li>
 </ul>
 <h2 id="atomic-server-and-its-features"><a class="header" href="#atomic-server-and-its-features">Atomic-Server and its features</a></h2>
-<p><a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md"><code>Atomic-Server</code></a> is the <em>reference implementation</em> of the Atomic Data Core + Extended specification.
+<p><a href="https://github.com/atomicdata-dev/atomic-server/blob/master/server/README.md"><code>Atomic-Server</code></a> is the <em>reference implementation</em> of the Atomic Data Core + Extended specification.
 It was developed parallel to this specification, and it served as a testing ground for various ideas (some of which didn't work, and some of which ended up in the spec).</p>
 <p>Atomic-Server is a graph database server for storing and sharing typed linked data.
 It's free, open source (MIT license), and has a ton of features:</p>
@@ -181,12 +181,12 @@ It's free, open source (MIT license), and has a ton of features:</p>
 So you can skip this step and go to <em>Creating your first Atomic Data</em>.
 But if you want to, you can run Atomic-Server on your machine in a couple of ways:</p>
 <ul>
-<li><strong>Using a desktop installer</strong>: download a desktop release from the <a href="https://github.com/atomicdata-dev/atomic-data-rust/releases"><code>releases</code></a> page and install it using your desktop GUI.</li>
-<li><strong>Using a binary</strong>: download a binary release from the <a href="https://github.com/atomicdata-dev/atomic-data-rust/releases"><code>releases</code></a> page and open it using a terminal.</li>
+<li><strong>Using a desktop installer</strong>: download a desktop release from the <a href="https://github.com/atomicdata-dev/atomic-server/releases"><code>releases</code></a> page and install it using your desktop GUI.</li>
+<li><strong>Using a binary</strong>: download a binary release from the <a href="https://github.com/atomicdata-dev/atomic-server/releases"><code>releases</code></a> page and open it using a terminal.</li>
 <li><strong>Using Docker</strong> is probably the quickest: <code>docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>.</li>
 <li><strong>Using Cargo</strong>: <code>cargo install atomic-server</code> and then run <code>atomic-server</code> to start.</li>
 </ul>
-<p><em><a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">Atomic-Server's README</a> contains more (and up-to-date) information about how to use it!</em></p>
+<p><em><a href="https://github.com/atomicdata-dev/atomic-server">Atomic-Server's README</a> contains more (and up-to-date) information about how to use it!</em></p>
 <p>Open your server in your browser.
 By default, that's <a href="http://localhost:9883"><code>http://localhost:9883</code></a>.
 Fun fact: <code>&amp;#9883;</code> is HTML entity code for the Atom icon: ⚛.</p>
@@ -206,7 +206,7 @@ You can also press the menu button (three dots, top left) and press <code>Data v
 Note that you can now edit every field.
 You can also fetch your data now as various formats.</p>
 <p>Try checking out the other features in the menu bar, and check out the <code>collections</code>.</p>
-<p>Again, check out the <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">README</a> for more information and guides!</p>
+<p>Again, check out the <a href="https://github.com/atomicdata-dev/atomic-server">README</a> for more information and guides!</p>
 <p>Now, let's create some data.</p>
 <h2 id="creating-an-agent"><a class="header" href="#creating-an-agent">Creating an Agent</a></h2>
 <p>Before you can create new things on AtomicData.dev, you'll need an <em>Agent</em>.

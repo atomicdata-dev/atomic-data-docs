@@ -178,7 +178,7 @@ In Atomic Data, Resources can have multiple classes, so we should use an Array, 
 <pre><code class="language-json">{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Writing my first blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;Hi! I'm a blogpost. I'm also machine readable!&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
 }
 </code></pre>
 <p>Adding a Class helps people to understand the data, and it can provide guarantees to the data users about the <em>shape</em> of the data: they now know which fields are <em>required</em> or <em>recommended</em>.
@@ -196,11 +196,11 @@ You can find most on <a href="https://atomicdata.dev/classes">atomicdata.dev/cla
 <pre><code class="language-json">[{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Writing my first blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;Hi! I'm a blogpost. I'm also machine readable!&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
 },{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Another blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;I'm writing so much my hands hurt.&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
 }]
 </code></pre>
 <h2 id="preventing-duplication-with-localid"><a class="header" href="#preventing-duplication-with-localid">Preventing duplication with <code>localId</code></a></h2>
@@ -215,7 +215,7 @@ Let's use a unique <em>slug</em>, a short name that is often used in URLs.</p>
 <pre><code class="language-json">{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Writing my first blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;Hi! I'm a blogpost. I'm also machine readable!&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
   &quot;https://atomicdata.dev/properties/localId&quot;: &quot;my-first-blogpost&quot;,
 }
 </code></pre>
@@ -231,13 +231,13 @@ We can simply refer to the <code>localId</code>, instead of some URL that does n
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Writing my first blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;Hi! I'm a blogpost. I'm also machine readable!&quot;,
   &quot;https://atomicdata.dev/properties/author&quot;: &quot;jon&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
   &quot;https://atomicdata.dev/properties/localId&quot;: &quot;my-first-blogpost&quot;,
 },{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Another blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;I'm writing so much my hands hurt.&quot;,
   &quot;https://atomicdata.dev/properties/author&quot;: &quot;jon&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
   &quot;https://atomicdata.dev/properties/localId&quot;: &quot;another-blogpost&quot;,
 },{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Jon Author&quot;,
@@ -246,7 +246,7 @@ We can simply refer to the <code>localId</code>, instead of some URL that does n
 }]
 </code></pre>
 <h2 id="importing-data-using-atomic-sever"><a class="header" href="#importing-data-using-atomic-sever">Importing data using Atomic Sever</a></h2>
-<p><em>currently <a href="https://github.com/atomicdata-dev/atomic-data-rust-data-rust/issues/390">under development</a></em></p>
+<p><em>currently <a href="https://github.com/atomicdata-dev/atomic-server/issues/390">under development</a></em></p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/create-json-ad.md">Edit this page on GitHub.</a></footer>
                     </main>
 

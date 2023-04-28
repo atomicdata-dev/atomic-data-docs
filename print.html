@@ -187,9 +187,9 @@ In the Atomizing section, we'll show you how you can create Atomic Data in three
 <ul>
 <li>Browser app <a href="https://github.com/atomicdata-dev/atomic-data-browser">atomic-data-browser</a> (<a href="https://atomicdata.dev">demo on atomicdata.dev</a>)</li>
 <li>Build a react app using <a href="https://github.com/atomicdata-dev/atomic-data-browser">typescript &amp; react libraries</a>. Start with the <a href="https://codesandbox.io/s/atomic-data-react-template-4y9qu?file=/src/MyResource.tsx">react template on codesandbox</a></li>
-<li>Host your own <a href="https://github.com/atomicdata-dev/atomic-data-rust">atomic-server</a> (powers <a href="https://atomicdata.dev">atomicdata.dev</a>, run with <code>docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>)</li>
-<li>Discover the command line tool: <a href="https://github.com/atomicdata-dev/atomic-data-rust">atomic-cli</a> (<code>cargo install atomic-cli</code>)</li>
-<li>Use the Rust library: <a href="https://github.com/atomicdata-dev/atomic-data-rust">atomic-lib</a></li>
+<li>Host your own <a href="https://github.com/atomicdata-dev/atomic-server">atomic-server</a> (powers <a href="https://atomicdata.dev">atomicdata.dev</a>, run with <code>docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>)</li>
+<li>Discover the command line tool: <a href="https://github.com/atomicdata-dev/atomic-server">atomic-cli</a> (<code>cargo install atomic-cli</code>)</li>
+<li>Use the Rust library: <a href="https://github.com/atomicdata-dev/atomic-server">atomic-lib</a></li>
 </ul>
 <h2 id="get-involved"><a class="header" href="#get-involved">Get involved</a></h2>
 <p>Make sure to <a href="https://discord.gg/a72Rv2P">join our Discord</a> if you'd like to discuss Atomic Data with others.</p>
@@ -386,7 +386,7 @@ This should help you understand how and where you may be able to contribute.</p>
 <ul>
 <li><strong>First draft of specification</strong> (2020-06). Atomic Data started as an unnamed bundle of ideas and best practices to improve how we work with linked data, but quickly turned into a single (draft) specification. The idea was to start with a cohesive and easy to understand documentation, and use that as a stepping stone for writing the first code. After this, the code and specification should both be worked on simultaneously to make sure ideas are both easily explainable and properly implementable. Many of the earliest ideas were changed to make implementation easier.</li>
 <li><strong><a href="https://crates.io/crates/atomic-cli">atomic-cli</a> + <a href="https://docs.rs/atomic_lib/0.32.1/atomic_lib/">atomic-lib</a></strong> (2020-07). The CLI functioned as the first platform to explore some of the most core ideas of Atomic Data, such as Properties and fetching. <code>atomic_lib</code> is the place where most logic resides. Written in Rust.</li>
-<li><strong><a href="https://github.com/atomicdata-dev/atomic-data-rust/">Atomic-Server</a></strong> (2020-08). The server (using the same <code>atomic_lib</code> as the CLI) should be a fast, lightweight server that must be easy to set-up. Functions as a graph database with no dependencies.</li>
+<li><strong><a href="https://github.com/atomicdata-dev/atomic-server/">AtomicServer</a></strong> (2020-08). The server (using the same <code>atomic_lib</code> as the CLI) should be a fast, lightweight server that must be easy to set-up. Functions as a graph database with no dependencies.</li>
 <li><strong><a href="schema/collections.html">Collections</a></strong> (2020-10). Allows users to perform basic queries, filtering, sorting and pagination.</li>
 <li><strong><a href="commits/intro.html">Commits</a></strong> (2020-11). Allow keeping track of an event-sourced log of all activities that mutate resources, which in turn allows for versioning and adding new types of indexes later on.</li>
 <li><strong><a href="core/json-ad.html">JSON-AD</a></strong> (2021-02). Instead of the earlier proposed serialization format <code>.ad3</code>, we moved to the more familiar <code>json-ad</code>.</li>
@@ -415,13 +415,13 @@ That's why we're now working on the JSON-AD and Atomizer projects (see below).</
 <ul>
 <li><strong>Video(s) about Atomic Data</strong> (2023 Q1). Explain what Atomic Data is, why we're doing this, and how to get started.</li>
 <li><strong><a href="https://github.com/atomicdata-dev/atomic-data-browser/issues/25">Atomic Tables</a></strong> (2023 Q2). A powerful table editor with keyboard / copy / paste / sort support that makes it easier to model and edit data.</li>
-<li><strong><a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/276">E-mail registration</a></strong> (2023 Q1). This makes it easier for users to get started, and de-emphasizes the importance of private key management, as user can register new Private Keys using their e-mail address.</li>
+<li><strong><a href="https://github.com/atomicdata-dev/atomic-server/issues/276">E-mail registration</a></strong> (2023 Q1). This makes it easier for users to get started, and de-emphasizes the importance of private key management, as user can register new Private Keys using their e-mail address.</li>
 <li><strong>Headless CMS tooling</strong> (2023). Use Atomic-Server to host and edit data that is being read by a front-end JAMSTACK type of tool, such as NextJS or SvelteKit.</li>
-<li><strong><a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/434">Atomizer</a></strong> (2023). Import files and automatically turn these into Atomic Data.</li>
+<li><strong><a href="https://github.com/atomicdata-dev/atomic-server/issues/434">Atomizer</a></strong> (2023). Import files and automatically turn these into Atomic Data.</li>
 <li><strong>Model Marketplace</strong> (2023 Q4). A place where user can easily find, compare and use Classes, Properties and Ontologies.</li>
-<li><strong><a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/73">Atomic-server plugins</a></strong> (2024). Let developers design new features without having to make PRs in Atomic-Server, and let users install apps without re-compiling (or even restarting) anything.</li>
+<li><strong><a href="https://github.com/atomicdata-dev/atomic-server/issues/73">Atomic-server plugins</a></strong> (2024). Let developers design new features without having to make PRs in Atomic-Server, and let users install apps without re-compiling (or even restarting) anything.</li>
 <li><strong>Atomic-browser plugins</strong> (2024). Create new views for Classes.</li>
-<li><strong>1.0 release</strong> (2024). Mark the specification, the server <a href="https://github.com/atomicdata-dev/atomic-data-rust/milestone/5">(tracking issue)</a> and the browser as <em>stable</em>. It is possible that the Spec will become 1.0 before any implementation is stable. Read the <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/STATUS.md">STATUS.md</a> document for an up-to-date list of features that are already stable.</li>
+<li><strong>1.0 release</strong> (2024). Mark the specification, the server <a href="https://github.com/atomicdata-dev/atomic-server/milestone/5">(tracking issue)</a> and the browser as <em>stable</em>. It is possible that the Spec will become 1.0 before any implementation is stable. Read the <a href="https://github.com/atomicdata-dev/atomic-server/blob/master/server/STATUS.md">STATUS.md</a> document for an up-to-date list of features that are already stable.</li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/roadmap.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="when-not-to-use-atomic-data"><a class="header" href="#when-not-to-use-atomic-data">When (not) to use Atomic Data</a></h1>
 <h2 id="when-should-you-use-atomic-data"><a class="header" href="#when-should-you-use-atomic-data">When should you use Atomic Data</a></h2>
@@ -816,7 +816,7 @@ However, we can still identify this Nested Resource using its Path.</p>
 <p>Notice how the Resource with the <code>name: Mr. Boot</code> does not have an explicit <code>@id</code>, but it <em>does</em> have a Path.
 This means that we still have a unique, globally resolvable identifier - yay!</p>
 <h2 id="try-for-yourself"><a class="header" href="#try-for-yourself">Try for yourself</a></h2>
-<p>Install the <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/cli/README.md"><code>atomic-cli</code></a> software and run <code>atomic-cli get https://atomicdata.dev/classes/Class description</code>.</p>
+<p>Install the <a href="https://github.com/atomicdata-dev/atomic-server/blob/master/cli/README.md"><code>atomic-cli</code></a> software and run <code>atomic-cli get https://atomicdata.dev/classes/Class description</code>.</p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/core/paths.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-schema"><a class="header" href="#atomic-schema">Atomic Schema</a></h1>
 <p>Atomic Schema is the proposed standard for specifying classes, properties and datatypes in Atomic Data.
 You can compare it to UML diagrams, or what XSD is for XML.
@@ -1186,7 +1186,7 @@ These are used both in Cookie-based auth, as well as in <a href="websockets.html
 <li><code>requestedSubject</code>: The URL of the requested resource.
 <ul>
 <li>If we're authenticating a <em>WebSocket</em>, we use the <code>wss</code> address as the <code>requestedSubject</code>. (e.g. <code>wss://example.com/ws</code>)</li>
-<li>If we're authenticating a <em>Cookie</em>, we use the origin of the server (e.g. <code>https://example.com</code>)</li>
+<li>If we're authenticating a <em>Cookie</em> of <em>Bearer token</em>, we use the origin of the server (e.g. <code>https://example.com</code>)</li>
 <li>If we're authentication a <em>single HTTP request</em>, use the same URL as the <code>GET</code> address (e.g. <code>https://example.com/myResource</code>)</li>
 </ul>
 </li>
@@ -1220,6 +1220,12 @@ This Authentication Resource is stored as a cookie, and passed along in every HT
 </ol>
 </li>
 </ol>
+<h2 id="bearer-token-authentication"><a class="header" href="#bearer-token-authentication">Bearer Token Authentication</a></h2>
+<p>Similar to creating the Cookie, except that we pass the base64 serialized Authentication Resource as a Bearer token in the <code>Authorization</code> header.</p>
+<pre><code class="language-http">GET /myResource HTTP/1.1
+Authorization: Bearer {base64 serialized Authentication Resource}
+</code></pre>
+<p>In Data Browser, you can find the <code>token</code> tab in <code>/app/token</code> to create a token.</p>
 <h2 id="authenticating-websockets"><a class="header" href="#authenticating-websockets">Authenticating Websockets</a></h2>
 <p>After <a href="websockets.html">opening a WebSocket connection</a>, create an Authentication Resource.
 Send a message like so: <code>AUTHENTICATE {authenticationResource}</code>.
@@ -1406,7 +1412,7 @@ Make sure that the Author's URL resolves to a Resource that contains the linked 
 <p>Congratulations, you've just created a valid Commit!</p>
 <p>Here are currently working implementations of this process, including serialization and signing (links are permalinks).</p>
 <ul>
-<li><a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81">in Rust (atomic-lib)</a>.</li>
+<li><a href="https://github.com/atomicdata-dev/atomic-server/blob/ceb88c1ae58811f2a9e6bacb7eaa39a2a7aa1513/lib/src/commit.rs#L81">in Rust (atomic-lib)</a>.</li>
 <li><a href="https://github.com/atomicdata-dev/atomic-data-browser/blob/fc899bb2cf54bdff593ee6b4debf52e20a85619e/src/atomic-lib/commit.ts#L51">in Typescript / Javascript (atomic-data-browser)</a>.</li>
 </ul>
 <p>If you want validate your implementation, check out the tests for these two projects.</p>
@@ -1696,7 +1702,7 @@ The <code>WebSocket-Protocol</code> is <code>AtomicData</code>.</p>
 <h2 id="example-implementations"><a class="header" href="#example-implementations">Example implementations</a></h2>
 <ul>
 <li><a href="https://github.com/atomicdata-dev/atomic-data-browser/blob/main/lib/src/websockets.ts">Example client implementation in Typescript (@tomic/lib).</a></li>
-<li><a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/src/handlers/web_sockets.rs">Example server implementation in Rust using Actix-Web</a></li>
+<li><a href="https://github.com/atomicdata-dev/atomic-server/blob/master/server/src/handlers/web_sockets.rs">Example server implementation in Rust using Actix-Web</a></li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/websockets.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-endpoints"><a class="header" href="#atomic-endpoints">Atomic Endpoints</a></h1>
 <p><em>URL: https://atomicdata.dev/classes/Endpoint</em></p>
@@ -1774,7 +1780,7 @@ They also often have a <a href="https://atomicdata.dev/properties/parent"><code>
 <p>Simply send an HTTP GET request to the File's <a href="https://atomicdata.dev/properties/downloadURL"><code>download-url</code></a> (make sure to authenticate this request).</p>
 <ul>
 <li><a href="https://github.com/ontola/atomic-data-docs/issues/57">Discussion on specification</a></li>
-<li><a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/72">Discussion on Rust server implementation</a></li>
+<li><a href="https://github.com/atomicdata-dev/atomic-server/issues/72">Discussion on Rust server implementation</a></li>
 <li><a href="https://github.com/atomicdata-dev/atomic-data-browser/issues/121">Discussion on Typescript client implementation</a></li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/files.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomizing-how-to-create-and-publish-atomic-data"><a class="header" href="#atomizing-how-to-create-and-publish-atomic-data">Atomizing: How to create and publish Atomic Data</a></h1>
@@ -1807,7 +1813,7 @@ Let's summarize what the advantages are:</p>
 <li><a href="atomic-server.html#theres-more">There's more!</a></li>
 </ul>
 <h2 id="atomic-server-and-its-features"><a class="header" href="#atomic-server-and-its-features">Atomic-Server and its features</a></h2>
-<p><a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md"><code>Atomic-Server</code></a> is the <em>reference implementation</em> of the Atomic Data Core + Extended specification.
+<p><a href="https://github.com/atomicdata-dev/atomic-server/blob/master/server/README.md"><code>Atomic-Server</code></a> is the <em>reference implementation</em> of the Atomic Data Core + Extended specification.
 It was developed parallel to this specification, and it served as a testing ground for various ideas (some of which didn't work, and some of which ended up in the spec).</p>
 <p>Atomic-Server is a graph database server for storing and sharing typed linked data.
 It's free, open source (MIT license), and has a ton of features:</p>
@@ -1833,12 +1839,12 @@ It's free, open source (MIT license), and has a ton of features:</p>
 So you can skip this step and go to <em>Creating your first Atomic Data</em>.
 But if you want to, you can run Atomic-Server on your machine in a couple of ways:</p>
 <ul>
-<li><strong>Using a desktop installer</strong>: download a desktop release from the <a href="https://github.com/atomicdata-dev/atomic-data-rust/releases"><code>releases</code></a> page and install it using your desktop GUI.</li>
-<li><strong>Using a binary</strong>: download a binary release from the <a href="https://github.com/atomicdata-dev/atomic-data-rust/releases"><code>releases</code></a> page and open it using a terminal.</li>
+<li><strong>Using a desktop installer</strong>: download a desktop release from the <a href="https://github.com/atomicdata-dev/atomic-server/releases"><code>releases</code></a> page and install it using your desktop GUI.</li>
+<li><strong>Using a binary</strong>: download a binary release from the <a href="https://github.com/atomicdata-dev/atomic-server/releases"><code>releases</code></a> page and open it using a terminal.</li>
 <li><strong>Using Docker</strong> is probably the quickest: <code>docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code>.</li>
 <li><strong>Using Cargo</strong>: <code>cargo install atomic-server</code> and then run <code>atomic-server</code> to start.</li>
 </ul>
-<p><em><a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">Atomic-Server's README</a> contains more (and up-to-date) information about how to use it!</em></p>
+<p><em><a href="https://github.com/atomicdata-dev/atomic-server">Atomic-Server's README</a> contains more (and up-to-date) information about how to use it!</em></p>
 <p>Open your server in your browser.
 By default, that's <a href="http://localhost:9883"><code>http://localhost:9883</code></a>.
 Fun fact: <code>&amp;#9883;</code> is HTML entity code for the Atom icon: ⚛.</p>
@@ -1858,7 +1864,7 @@ You can also press the menu button (three dots, top left) and press <code>Data v
 Note that you can now edit every field.
 You can also fetch your data now as various formats.</p>
 <p>Try checking out the other features in the menu bar, and check out the <code>collections</code>.</p>
-<p>Again, check out the <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">README</a> for more information and guides!</p>
+<p>Again, check out the <a href="https://github.com/atomicdata-dev/atomic-server">README</a> for more information and guides!</p>
 <p>Now, let's create some data.</p>
 <h2 id="creating-an-agent-1"><a class="header" href="#creating-an-agent-1">Creating an Agent</a></h2>
 <p>Before you can create new things on AtomicData.dev, you'll need an <em>Agent</em>.
@@ -1929,7 +1935,7 @@ In Atomic Data, Resources can have multiple classes, so we should use an Array, 
 <pre><code class="language-json">{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Writing my first blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;Hi! I'm a blogpost. I'm also machine readable!&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
 }
 </code></pre>
 <p>Adding a Class helps people to understand the data, and it can provide guarantees to the data users about the <em>shape</em> of the data: they now know which fields are <em>required</em> or <em>recommended</em>.
@@ -1947,11 +1953,11 @@ You can find most on <a href="https://atomicdata.dev/classes">atomicdata.dev/cla
 <pre><code class="language-json">[{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Writing my first blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;Hi! I'm a blogpost. I'm also machine readable!&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
 },{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Another blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;I'm writing so much my hands hurt.&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
 }]
 </code></pre>
 <h2 id="preventing-duplication-with-localid"><a class="header" href="#preventing-duplication-with-localid">Preventing duplication with <code>localId</code></a></h2>
@@ -1966,7 +1972,7 @@ Let's use a unique <em>slug</em>, a short name that is often used in URLs.</p>
 <pre><code class="language-json">{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Writing my first blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;Hi! I'm a blogpost. I'm also machine readable!&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
   &quot;https://atomicdata.dev/properties/localId&quot;: &quot;my-first-blogpost&quot;,
 }
 </code></pre>
@@ -1982,13 +1988,13 @@ We can simply refer to the <code>localId</code>, instead of some URL that does n
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Writing my first blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;Hi! I'm a blogpost. I'm also machine readable!&quot;,
   &quot;https://atomicdata.dev/properties/author&quot;: &quot;jon&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
   &quot;https://atomicdata.dev/properties/localId&quot;: &quot;my-first-blogpost&quot;,
 },{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Another blogpost&quot;,
   &quot;https://atomicdata.dev/properties/description&quot;: &quot;I'm writing so much my hands hurt.&quot;,
   &quot;https://atomicdata.dev/properties/author&quot;: &quot;jon&quot;,
-  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Blogpost&quot;],
+  &quot;https://atomicdata.dev/properties/isA&quot;: [&quot;https://atomicdata.dev/classes/Article&quot;],
   &quot;https://atomicdata.dev/properties/localId&quot;: &quot;another-blogpost&quot;,
 },{
   &quot;https://atomicdata.dev/properties/name&quot;: &quot;Jon Author&quot;,
@@ -1997,7 +2003,7 @@ We can simply refer to the <code>localId</code>, instead of some URL that does n
 }]
 </code></pre>
 <h2 id="importing-data-using-atomic-sever"><a class="header" href="#importing-data-using-atomic-sever">Importing data using Atomic Sever</a></h2>
-<p><em>currently <a href="https://github.com/atomicdata-dev/atomic-data-rust-data-rust/issues/390">under development</a></em></p>
+<p><em>currently <a href="https://github.com/atomicdata-dev/atomic-server/issues/390">under development</a></em></p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/create-json-ad.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="upgrade-your-existing-application-to-serve-atomic-data"><a class="header" href="#upgrade-your-existing-application-to-serve-atomic-data">Upgrade your existing application to serve Atomic Data</a></h1>
 <p>You don't have to use <a href="https://crates.io/crates/atomic-server">Atomic-Server</a> and ditch your existing projects or apps, if you want to adhere to Atomic Data specs.</p>
 <p>As the Atomic Data spec is modular, you can start out simply and conform to more specs as needed:</p>
@@ -2029,7 +2035,7 @@ This means: take your JSON objects, and change things like <code>name</code> to 
 <h2 id="hard-implement-atomic-data-extended-protocols"><a class="header" href="#hard-implement-atomic-data-extended-protocols">Hard: implement Atomic Data Extended protocols</a></h2>
 <p>You can go all out, and implement Commits, Hierarchies, Authentication, Collections and <a href="https://docs.atomicdata.dev/extended.html">more</a>.
 I'd suggest starting with <a href="interoperability/../commits/intro.html">Commits</a>, as these allow users to modify data whilst maintaining versioning and auditability.
-Check out the <a href="https://github.com/atomicdata-dev/atomic-data-rust/tree/master/server">Atomic-Server source code</a> to get inspired on how to do this.</p>
+Check out the <a href="https://github.com/atomicdata-dev/atomic-server/tree/master/server">Atomic-Server source code</a> to get inspired on how to do this.</p>
 <h2 id="reach-out-for-help"><a class="header" href="#reach-out-for-help">Reach out for help</a></h2>
 <p>If you need any help, join our <a href="https://discord.gg/a72Rv2P">Discord</a>.</p>
 <p>Also, share your thoughts on creating Atomic Data in <a href="https://github.com/ontola/atomic-data-docs/issues/95">this issue on github</a>.</p>
@@ -2370,11 +2376,11 @@ They formed committees to form working groups to write drafts of ontologies that
 <h2 id="atomic-data-and-solid-server-implementations"><a class="header" href="#atomic-data-and-solid-server-implementations">Atomic Data and Solid server implementations</a></h2>
 <p>Both Atomic Data and Solid are specifications that have different implementations.
 Some open source Solid implementations are the <a href="https://github.com/solid/node-solid-server">Node Solid Server</a>, the <a href="https://github.com/solid/community-server">Community Solid Server</a> (also nodejs based) and the <a href="https://gitlab.com/ontola/dexpod">DexPod</a> (Ruby on Rails based).</p>
-<p><a href="https://github.com/atomicdata-dev/atomic-data-rust/">Atomic-Server</a> is a database + server written in the Rust programming language, that can be considered an alternative to Solid Pod implementations.
+<p><a href="https://github.com/atomicdata-dev/atomic-server/">Atomic-Server</a> is a database + server written in the Rust programming language, that can be considered an alternative to Solid Pod implementations.
 It was definitely built to be one, at least.
 It implements every part of the Atomic Data specification.
 I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations:</p>
-<!-- List copied from https://github.com/atomicdata-dev/atomic-data-rust/blob/master/README.md -->
+<!-- List copied from https://github.com/atomicdata-dev/atomic-server/blob/master/README.md -->
 <ul>
 <li><strong>Dynamic schema validation</strong> / type checking using <a href="https://docs.atomicdata.dev/schema/intro.html">Atomic Schema</a>, combining the best of RDF, JSON and type safety.</li>
 <li><strong>Fast</strong> (1ms responses on my laptop)</li>
@@ -2394,7 +2400,7 @@ I believe that as of today (february 2022), Atomic-Server has quite a few advant
 Here's a list of things missing in Atomic Data, with links to their open issues and links to their existing Solid counterpart.</p>
 <ul>
 <li>No inbox or <a href="https://www.w3.org/TR/ldn/">notifications</a> yet (<a href="https://github.com/ontola/atomic-data/issues/28">issue</a>)</li>
-<li>No OIDC support yet. (<a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/277">issue</a>)</li>
+<li>No OIDC support yet. (<a href="https://github.com/atomicdata-dev/atomic-server/issues/277">issue</a>)</li>
 <li>No support from a big community, a well-funded business or the inventor of the world wide web.</li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/interoperability/solid.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="how-does-atomic-data-relate-to-json"><a class="header" href="#how-does-atomic-data-relate-to-json">How does Atomic Data relate to JSON?</a></h1>
@@ -2451,7 +2457,7 @@ The Property keys (e.g. &quot;https://example.com/properties/name&quot;) need to
   &quot;https://example.com/properties/birthDate&quot;: &quot;1991-01-20&quot;
 }
 </code></pre>
-<p>In practice, the easiest approach to make this conversion, is to create the data and host it using software like <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">Atomic Server</a>.</p>
+<p>In practice, the easiest approach to make this conversion, is to create the data and host it using software like <a href="https://github.com/atomicdata-dev/atomic-server/blob/master/server/README.md">Atomic Server</a>.</p>
 <h2 id="from-atomic-data-to-json-ld"><a class="header" href="#from-atomic-data-to-json-ld">From Atomic Data to JSON-LD</a></h2>
 <p>Atomic Data is a strict subset of RDF, and the most popular serialization of RDF for JSON data is <a href="https://json-ld.org/">JSON-LD</a>.</p>
 <p>Since Atomic Schema requires the presence of a <code>key</code> slug in Properties, converting Atomic Data to JSON results in dev-friendly objects with nice shorthands.</p>
@@ -2570,7 +2576,7 @@ If you want to store arbitrary Atomic Data in a SQL database, you might be best 
 <li>SQL is far more common, many people will know how to use it.</li>
 <li>SQL databases are battle-tested and has been powering countless of products for tens of years, whereas Atomic Server is at this moment in beta.</li>
 <li>SQL databases have a more powerful and expressive query language, where you can define tables in your query and combine resources.</li>
-<li>Atomic Data doesn't have a <a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/213">mutli-node / distributed option</a></li>
+<li>Atomic Data doesn't have a <a href="https://github.com/atomicdata-dev/atomic-server/issues/213">mutli-node / distributed option</a></li>
 </ul>
 <h2 id="faq"><a class="header" href="#faq">FAQ</a></h2>
 <h3 id="is-atomic-data-nosql-or-sql"><a class="header" href="#is-atomic-data-nosql-or-sql">Is Atomic Data NOSQL or SQL?</a></h3>
@@ -2666,8 +2672,8 @@ This approach has some issues regarding performance and flexibility that headles
 <li><strong>Easier content management</strong>. Not every CMS is as fun and easy to use, as an admin, as others. Headless CMS tools focus on the admin side of things, so the front-end devs don't have to work on the back-end as well.</li>
 </ul>
 <h2 id="atomic-server"><a class="header" href="#atomic-server">Atomic Server</a></h2>
-<p>The <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">Atomic-Server</a> project may be the right choice for you if you're looking for a Headless CMS:</p>
-<!-- List copied from https://github.com/atomicdata-dev/atomic-data-rust/blob/master/README.md -->
+<p>The <a href="https://github.com/atomicdata-dev/atomic-server/blob/master/server/README.md">Atomic-Server</a> project may be the right choice for you if you're looking for a Headless CMS:</p>
+<!-- List copied from https://github.com/atomicdata-dev/atomic-server/blob/master/README.md -->
 <ul>
 <li><strong>Free and open source</strong>. MIT licensed, no strings attached.</li>
 <li><strong>Easy to use API</strong>. Atomic-Server is built using the <a href="usecases/../atomic-data-overview.html">Atomic Data specification</a>. It is well-documented, and uses conventions that most web developers are already familiar with.</li>
@@ -2685,13 +2691,13 @@ This approach has some issues regarding performance and flexibility that headles
 </ul>
 <h2 id="limitations-1"><a class="header" href="#limitations-1">Limitations</a></h2>
 <ul>
-<li>No support for image resizing, <a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/257">as of now</a></li>
-<li>No GraphQL support <a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/251">(see issue)</a></li>
+<li>No support for image resizing, <a href="https://github.com/atomicdata-dev/atomic-server/issues/257">as of now</a></li>
+<li>No GraphQL support <a href="https://github.com/atomicdata-dev/atomic-server/issues/251">(see issue)</a></li>
 </ul>
 <h2 id="setting-up-the-server"><a class="header" href="#setting-up-the-server">Setting up the server</a></h2>
 <ul>
 <li>One-liners: <code>cargo install atomic-server</code> or <code>docker run -p 80:80 -v atomic-storage:/atomic-storage joepmeneer/atomic-server</code></li>
-<li>Check out the <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">readme!</a></li>
+<li>Check out the <a href="https://github.com/atomicdata-dev/atomic-server">readme!</a></li>
 </ul>
 <h2 id="using-the-data-in-your-react--nextjs-app"><a class="header" href="#using-the-data-in-your-react--nextjs-app">Using the data in your (React / NextJS) app</a></h2>
 <p>The <code>@tomic/lib</code> and <code>@tomic/react</code> typescript NPM libraries can be used in any JS project.</p>
@@ -2726,7 +2732,7 @@ And as cloud consumers, we often don't have the luxury of moving our personal da
 Many services don't even provide export functionality, and even if they do, the exports often lack information or are not interoperable with other apps.</p>
 <p>Atomic Data could help to re-introduce data ownership.
 Because the specification helps to standardize information, it becomes easier to make data interoperable.
-And even more important: Apps don't need their own back-end - they can use the same personal data store: an Atomic Server (such as <a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">this one</a>).</p>
+And even more important: Apps don't need their own back-end - they can use the same personal data store: an Atomic Server (such as <a href="https://github.com/atomicdata-dev/atomic-serverob/master/server/README.md">this one</a>).</p>
 <p>Realizing this goal requires quite a bit of work, though.
 This specification needs to mature, and we need reliable implementations.
 We also need proper tutorials, libraries and tools that convince developers to use atomic data to power their applications.</p>
@@ -2823,7 +2829,7 @@ Well, if your Atomic Server would have a list of all the things that you've boug
 When any of these manufacturers would publish a safety warning about a product that you possess, you'll get an alert.</p>
 <p>Before we have this, well need to:</p>
 <ul>
-<li>Build notifications support (see <a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/77">issue</a>)</li>
+<li>Build notifications support (see <a href="https://github.com/atomicdata-dev/atomic-server/issues/77">issue</a>)</li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/usecases/e-commerce.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-data-for-surveys"><a class="header" href="#atomic-data-for-surveys">Atomic Data for Surveys</a></h1>
 <p>Surveys and Questionnaires haven't been evolving that much over the past few years.
@@ -2870,7 +2876,7 @@ The query is executed on the personal data store, and if the user characteristic
 The user only sees invitations that are highly relevant, without sharing <em>any</em> information with the researcher.</p>
 <p>The Atomic Data specification solves at least part of this problem.
 <a href="usecases/../core/paths.html">Paths</a> are used to describe the queries that researchers make.
-<a href="https://github.com/atomicdata-dev/atomic-data-rust/blob/master/server/README.md">Atomic Server</a> can be used as the personal online data store.</p>
+<a href="https://github.com/atomicdata-dev/atomic--rust/blob/master/server/README.md">AtomicServer</a> can be used as the personal online data store.</p>
 <p>However, we still need to specify the process of sending a request to an individual (probably by introducing an <a href="https://github.com/ontola/atomic-data/issues/28">inbox</a>)</p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/usecases/surveys.md">Edit this page on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="atomic-data-and-verifiable-credentials--ssi"><a class="header" href="#atomic-data-and-verifiable-credentials--ssi">Atomic Data and Verifiable Credentials / SSI</a></h1>
 <h2 id="what-are-verifiable-credentials--self-sovereign-identity"><a class="header" href="#what-are-verifiable-credentials--self-sovereign-identity">What are Verifiable Credentials / Self-Sovereign Identity</a></h2>
@@ -3003,7 +3009,7 @@ The shopping cart suggest adding egg, dairy or soy to your diet.
 This can be done, because the groceries app can easily check detailed information about the food in your shopping cart, and reason about your dietary intake.</p>
 <h2 id="how-to-achieve-all-this"><a class="header" href="#how-to-achieve-all-this">How to achieve all this</a></h2>
 <ol>
-<li>The governing body (e.g. the European Commision) should set up an <a href="https://github.com/atomicdata-dev/atomic-data-rust/">Atomic Server</a> and host it on some recognizable domain.</li>
+<li>The governing body (e.g. the European Commision) should set up an <a href="https://github.com/atomicdata-dev/atomic-server/">Atomic Server</a> and host it on some recognizable domain.</li>
 <li>Create the <a href="https://atomicdata.dev/classes/Class">Class</a> for a food product, containing the same (or more) information that is shown on food packages.</li>
 <li>Create the Class for Ingredient.</li>
 <li>Create instances for various Ingredients. Start with the E-numbers, work your way up to all kinds of used ingredients. Add Translations.</li>
@@ -3013,9 +3019,9 @@ This can be done, because the groceries app can easily check detailed informatio
 <p>Although Atomic Data is a specification, it also has reference implementations:</p>
 <p>Open source (MIT licenced) software for Atomic Data:</p>
 <ul>
-<li><strong>Server + Database</strong>: <a href="https://github.com/atomicdata-dev/atomic-data-rust">atomic-server</a></li>
+<li><strong>Server + Database</strong>: <a href="https://github.com/atomicdata-dev/atomic-server">atomic-server</a></li>
 <li><strong>GUI</strong>: <a href="https://github.com/atomicdata-dev/atomic-data-browser">atomic-data-browser</a></li>
-<li><strong>CLI</strong>: <a href="https://github.com/atomicdata-dev/atomic-data-rust">atomic-cli</a></li>
+<li><strong>CLI</strong>: <a href="https://github.com/atomicdata-dev/atomic-server">atomic-cli</a></li>
 </ul>
 <p>Libraries (MIT licenced) to build apps with:</p>
 <ul>

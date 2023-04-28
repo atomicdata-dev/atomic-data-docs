@@ -238,11 +238,11 @@ They formed committees to form working groups to write drafts of ontologies that
 <h2 id="atomic-data-and-solid-server-implementations"><a class="header" href="#atomic-data-and-solid-server-implementations">Atomic Data and Solid server implementations</a></h2>
 <p>Both Atomic Data and Solid are specifications that have different implementations.
 Some open source Solid implementations are the <a href="https://github.com/solid/node-solid-server">Node Solid Server</a>, the <a href="https://github.com/solid/community-server">Community Solid Server</a> (also nodejs based) and the <a href="https://gitlab.com/ontola/dexpod">DexPod</a> (Ruby on Rails based).</p>
-<p><a href="https://github.com/atomicdata-dev/atomic-data-rust/">Atomic-Server</a> is a database + server written in the Rust programming language, that can be considered an alternative to Solid Pod implementations.
+<p><a href="https://github.com/atomicdata-dev/atomic-server/">Atomic-Server</a> is a database + server written in the Rust programming language, that can be considered an alternative to Solid Pod implementations.
 It was definitely built to be one, at least.
 It implements every part of the Atomic Data specification.
 I believe that as of today (february 2022), Atomic-Server has quite a few advantages over existing Solid implementations:</p>
-<!-- List copied from https://github.com/atomicdata-dev/atomic-data-rust/blob/master/README.md -->
+<!-- List copied from https://github.com/atomicdata-dev/atomic-server/blob/master/README.md -->
 <ul>
 <li><strong>Dynamic schema validation</strong> / type checking using <a href="https://docs.atomicdata.dev/schema/intro.html">Atomic Schema</a>, combining the best of RDF, JSON and type safety.</li>
 <li><strong>Fast</strong> (1ms responses on my laptop)</li>
@@ -262,7 +262,7 @@ I believe that as of today (february 2022), Atomic-Server has quite a few advant
 Here's a list of things missing in Atomic Data, with links to their open issues and links to their existing Solid counterpart.</p>
 <ul>
 <li>No inbox or <a href="https://www.w3.org/TR/ldn/">notifications</a> yet (<a href="https://github.com/ontola/atomic-data/issues/28">issue</a>)</li>
-<li>No OIDC support yet. (<a href="https://github.com/atomicdata-dev/atomic-data-rust/issues/277">issue</a>)</li>
+<li>No OIDC support yet. (<a href="https://github.com/atomicdata-dev/atomic-server/issues/277">issue</a>)</li>
 <li>No support from a big community, a well-funded business or the inventor of the world wide web.</li>
 </ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/atomicdata-dev/atomic-data-docs/edit/main/src/interoperability/solid.md">Edit this page on GitHub.</a></footer>
