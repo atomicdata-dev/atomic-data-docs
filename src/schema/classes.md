@@ -52,7 +52,7 @@ Properties:
 - `binarySerialization` - (optional, AtomicURL, TranslationBox) how the datatype should be parsed / serialized as a byte array.
 - `binaryExample` - (optional, string) an example `binarySerialization` that should be parsed correctly. Should have the same contents as the stringExample. Required if binarySerialization is present on the DataType.
 
-Visit https://atomicdata.dev/collections/datatype for a list of example Datatypes.
+Visit [https://atomicdata.dev/datatypes](https://atomicdata.dev/datatypes) for a list of example Datatypes.
 
 ## Class
 
