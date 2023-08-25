@@ -33,7 +33,7 @@ Properties of a Property instance:
 }
 ```
 
-Visit https://atomicdata.dev/properties for a list of example Properties.
+Visit [https://atomicdata.dev/properties](https://atomicdata.dev/properties) for a list of example Properties.
 
 ## Datatype
 
